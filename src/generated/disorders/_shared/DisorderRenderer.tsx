@@ -3,6 +3,7 @@ import type { ClinicalDisorder } from "./schema";
 export interface DisorderRenderConfig {
   readonly id: string;
   readonly nome: string;
+  readonly sigla?: string | null;
   readonly capitulo_id?: string | null;
   readonly capitulo_nome?: string | null;
   readonly codigo_dsm5?: string | null;
