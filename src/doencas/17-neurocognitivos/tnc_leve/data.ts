@@ -1,0 +1,1336 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "tnc_leve",
+    "nome_completo": "Transtorno Neurocognitivo Leve",
+    "sigla": "TNC Leve",
+    "capitulo_id": "17",
+    "capitulo": "Transtornos Neurocognitivos",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "G31.84",
+      "cid11": "6D81",
+      "dsm5": "331.83"
+    }
+  },
+  "id": "tnc_leve",
+  "item_id": "tnc_leve",
+  "name": "Transtorno Neurocognitivo Leve",
+  "nome_completo": "Transtorno Neurocognitivo Leve",
+  "chapter_id": "17",
+  "chapter_name": "Transtornos Neurocognitivos",
+  "category": "FULL",
+  "estrutura_diagnostica": "monothetic_puro",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "nao_aplica",
+  "has_formal_severity": false,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Declínio Cognitivo Pequeno",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A2",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "independencia_preservada",
+      "letra": "B",
+      "rotulo": "Independência preservada nas AVDs",
+      "descricao_completa": "Os déficits cognitivos não interferem na capacidade de ser independente nas atividades cotidianas (atividades instrumentais complexas da vida diária preservadas, mas pode haver necessidade de mais esforço, estratégias compensatórias ou acomodação).",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_delirium",
+      "letra": "C",
+      "rotulo": "Déficits não ocorrem exclusivamente no contexto de delirium",
+      "descricao_completa": "Os déficits cognitivos não ocorrem exclusivamente no contexto de delirium.",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_outro_mental",
+      "letra": "D",
+      "rotulo": "Não mais bem explicado por outro transtorno mental",
+      "descricao_completa": "Os déficits cognitivos não são mais bem explicados por outro transtorno mental (p. ex., transtorno depressivo maior, esquizofrenia).",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "nao_aplica",
+    "presente": false,
+    "has_formal_severity": false,
+    "regra_atribuicao": "",
+    "niveis": [],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "avd",
+      "label": "Atividades da Vida Diária"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    },
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Delirium",
+      "frequencia": "moderada",
+      "nota": "TNC leve aumenta vulnerabilidade a delirium."
+    },
+    {
+      "condicao": "Transtorno depressivo maior",
+      "frequencia": "moderada",
+      "nota": "None"
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "TNC maior",
+      "ponto_distincao": "TNC leve: independência preservada, prejuízo pequeno; TNC maior: prejuízo substancial, interferência na independência.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Cognição normal/envelhecimento",
+      "ponto_distincao": "TNC leve: declínio documentado a partir de linha de base anterior; envelhecimento normal: sem declínio significativo.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno depressivo maior",
+      "ponto_distincao": "Depressão pode causar queixas cognitivas; melhora com tratamento da depressão.",
+      "pertence_a_classe": false
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Varia por subtipo etiológico",
+    "trajetoria": "Varia por etiologia; pode progredir para TNC maior ou estabilizar.",
+    "prognostico": "Varia conforme etiologia subjacente."
+  },
+  "prevalencia": {
+    "populacao_geral": "2–10% aos 65 anos; 5–25% aos 85 anos",
+    "proporcao_sexo": "None",
+    "variacoes_culturais": "None",
+    "notas": "Estimativas variam conforme definição utilizada."
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "None",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      true,
+      "Subtipo etiológico",
+      true,
+      [
+        {
+          "id": "alzheimer",
+          "codigo": null,
+          "label": "Devido à doença de Alzheimer",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "frontotemporal",
+          "codigo": null,
+          "label": "Devido à degeneração lobar frontotemporal",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "corpos_lewy",
+          "codigo": null,
+          "label": "Com corpos de Lewy",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "vascular",
+          "codigo": null,
+          "label": "Vascular",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "lesao_traumatica",
+          "codigo": null,
+          "label": "Devido a lesão cerebral traumática",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "substancia",
+          "codigo": null,
+          "label": "Induzido por substância/medicamento",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "hiv",
+          "codigo": null,
+          "label": "Devido a infecção por HIV",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "prion",
+          "codigo": null,
+          "label": "Devido à doença do príon",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "parkinson",
+          "codigo": null,
+          "label": "Devido à doença de Parkinson",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "huntington",
+          "codigo": null,
+          "label": "Devido à doença de Huntington",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "outra_condicao",
+          "codigo": null,
+          "label": "Devido a outra condição médica",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "multiplas_etiologias",
+          "codigo": null,
+          "label": "Devido a múltiplas etiologias",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "nao_especificado",
+          "codigo": null,
+          "label": "Não especificado",
+          "descricao": "",
+          "sintomas_caracteristicos": []
+        }
+      ],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Subtipos etiológicos possuem critérios específicos em seções próprias do DSM-5.",
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [
+    {
+      "id": "perturbacao_comportamental",
+      "nome": "Perturbação comportamental",
+      "descricao": ""
+    }
+  ],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "antigravity-gemini",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [
+    {
+      "nome": "Montreal Cognitive Assessment",
+      "sigla": "MoCA",
+      "uso": "triagem",
+      "obrigatorio_para_diagnostico": false,
+      "fonte": "sugestao_clinica_padrao"
+    },
+    {
+      "nome": "Avaliação neuropsicológica formal",
+      "sigla": null,
+      "uso": "neuropsicologico",
+      "obrigatorio_para_diagnostico": false,
+      "fonte": "mencionado_no_dsm"
+    }
+  ],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "tnc_leve",
+      "nome_completo": "Transtorno Neurocognitivo Leve",
+      "sigla": "TNC Leve",
+      "capitulo_id": "17",
+      "capitulo": "Transtornos Neurocognitivos",
+      "grupo": null,
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [
+        "Transtorno cognitivo sem outra especificação (DSM-IV, parcial)"
+      ],
+      "faixa_etaria_alvo": "transversal",
+      "codigo": {
+        "cid10": "G31.84",
+        "cid11": "6D81",
+        "dsm5": "331.83"
+      }
+    },
+    "id": "tnc_leve",
+    "item_id": "tnc_leve",
+    "name": "Transtorno Neurocognitivo Leve",
+    "nome_completo": "Transtorno Neurocognitivo Leve",
+    "chapter_id": "17",
+    "chapter_name": "Transtornos Neurocognitivos",
+    "category": "FULL",
+    "estrutura_diagnostica": "monothetic_puro",
+    "estrutura_geral": "monothetic_puro",
+    "ui_mode": "structured_full",
+    "severity_type": "nao_aplica",
+    "has_formal_severity": false,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Declínio Cognitivo Pequeno",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A2",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "independencia_preservada",
+        "letra": "B",
+        "rotulo": "Independência preservada nas AVDs",
+        "descricao_completa": "Os déficits cognitivos não interferem na capacidade de ser independente nas atividades cotidianas (atividades instrumentais complexas da vida diária preservadas, mas pode haver necessidade de mais esforço, estratégias compensatórias ou acomodação).",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_delirium",
+        "letra": "C",
+        "rotulo": "Déficits não ocorrem exclusivamente no contexto de delirium",
+        "descricao_completa": "Os déficits cognitivos não ocorrem exclusivamente no contexto de delirium.",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_outro_mental",
+        "letra": "D",
+        "rotulo": "Não mais bem explicado por outro transtorno mental",
+        "descricao_completa": "Os déficits cognitivos não são mais bem explicados por outro transtorno mental (p. ex., transtorno depressivo maior, esquizofrenia).",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "nao_aplica",
+      "presente": false,
+      "has_formal_severity": false,
+      "regra_atribuicao": "",
+      "niveis": [],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "avd",
+        "label": "Atividades da Vida Diária"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      },
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Delirium",
+        "frequencia": "moderada",
+        "nota": "TNC leve aumenta vulnerabilidade a delirium."
+      },
+      {
+        "condicao": "Transtorno depressivo maior",
+        "frequencia": "moderada",
+        "nota": "None"
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "TNC maior",
+        "ponto_distincao": "TNC leve: independência preservada, prejuízo pequeno; TNC maior: prejuízo substancial, interferência na independência.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Cognição normal/envelhecimento",
+        "ponto_distincao": "TNC leve: declínio documentado a partir de linha de base anterior; envelhecimento normal: sem declínio significativo.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno depressivo maior",
+        "ponto_distincao": "Depressão pode causar queixas cognitivas; melhora com tratamento da depressão.",
+        "pertence_a_classe": false
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Varia por subtipo etiológico",
+      "trajetoria": "Varia por etiologia; pode progredir para TNC maior ou estabilizar.",
+      "prognostico": "Varia conforme etiologia subjacente."
+    },
+    "prevalencia": {
+      "populacao_geral": "2–10% aos 65 anos; 5–25% aos 85 anos",
+      "proporcao_sexo": "None",
+      "variacoes_culturais": "None",
+      "notas": "Estimativas variam conforme definição utilizada."
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "None",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        true,
+        "Subtipo etiológico",
+        true,
+        [
+          {
+            "id": "alzheimer",
+            "codigo": null,
+            "label": "Devido à doença de Alzheimer",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "frontotemporal",
+            "codigo": null,
+            "label": "Devido à degeneração lobar frontotemporal",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "corpos_lewy",
+            "codigo": null,
+            "label": "Com corpos de Lewy",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "vascular",
+            "codigo": null,
+            "label": "Vascular",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "lesao_traumatica",
+            "codigo": null,
+            "label": "Devido a lesão cerebral traumática",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "substancia",
+            "codigo": null,
+            "label": "Induzido por substância/medicamento",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "hiv",
+            "codigo": null,
+            "label": "Devido a infecção por HIV",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "prion",
+            "codigo": null,
+            "label": "Devido à doença do príon",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "parkinson",
+            "codigo": null,
+            "label": "Devido à doença de Parkinson",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "huntington",
+            "codigo": null,
+            "label": "Devido à doença de Huntington",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "outra_condicao",
+            "codigo": null,
+            "label": "Devido a outra condição médica",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "multiplas_etiologias",
+            "codigo": null,
+            "label": "Devido a múltiplas etiologias",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "nao_especificado",
+            "codigo": null,
+            "label": "Não especificado",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": "Subtipos etiológicos possuem critérios específicos em seções próprias do DSM-5.",
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [
+      {
+        "id": "perturbacao_comportamental",
+        "nome": "Perturbação comportamental",
+        "descricao": ""
+      }
+    ],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "antigravity-gemini",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [
+      {
+        "nome": "Montreal Cognitive Assessment",
+        "sigla": "MoCA",
+        "uso": "triagem",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "sugestao_clinica_padrao"
+      },
+      {
+        "nome": "Avaliação neuropsicológica formal",
+        "sigla": null,
+        "uso": "neuropsicologico",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "mencionado_no_dsm"
+      }
+    ],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "tnc_leve",
+        "nome_completo": "Transtorno Neurocognitivo Leve",
+        "sigla": "TNC Leve",
+        "codigo": {
+          "dsm5": "331.83",
+          "cid10": "G31.84",
+          "cid11": "6D81"
+        },
+        "capitulo": "Transtornos Neurocognitivos",
+        "capitulo_id": "17",
+        "grupo": null,
+        "faixa_etaria_alvo": "transversal",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Transtorno cognitivo sem outra especificação (DSM-IV, parcial)"
+        ]
+      },
+      "estrutura_geral": "monothetic_puro",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Declínio Cognitivo Pequeno",
+          "tipo": "monothetic_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Preocupação com declínio na função cognitiva",
+              "desc": "Preocupação do indivíduo, de um informante com conhecimento ou do clínico de que ocorreu declínio na função cognitiva.",
+              "pergunta": "Há preocupação do paciente, de um informante ou do clínico sobre declínio em algum domínio cognitivo?",
+              "exemplos_clinicos": [
+                "Precisa de mais esforço para tarefas cognitivas",
+                "Uso de estratégias compensatórias"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Prejuízo pequeno no desempenho cognitivo documentado",
+              "desc": "Prejuízo pequeno no desempenho cognitivo, de preferência documentado por teste neuropsicológico padronizado ou, em sua falta, outra avaliação quantificada.",
+              "pergunta": "O desempenho cognitivo está levemente abaixo do esperado, documentado por testes ou avaliação clínica quantificada?",
+              "exemplos_clinicos": [
+                "Desempenho 1–2 desvios-padrão abaixo da norma"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "independencia_preservada",
+          "letra": "B",
+          "rotulo": "Independência preservada nas AVDs",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Os déficits cognitivos não interferem na capacidade de ser independente nas atividades cotidianas (atividades instrumentais complexas da vida diária preservadas, mas pode haver necessidade de mais esforço, estratégias compensatórias ou acomodação).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_delirium",
+          "letra": "C",
+          "rotulo": "Déficits não ocorrem exclusivamente no contexto de delirium",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "delirium"
+          ],
+          "descricao_completa": "Os déficits cognitivos não ocorrem exclusivamente no contexto de delirium.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outro_mental",
+          "letra": "D",
+          "rotulo": "Não mais bem explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_depressivo_maior",
+            "esquizofrenia"
+          ],
+          "descricao_completa": "Os déficits cognitivos não são mais bem explicados por outro transtorno mental (p. ex., transtorno depressivo maior, esquizofrenia).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": true,
+        "nome": "Subtipo etiológico",
+        "mutuamente_exclusivos": true,
+        "subtipos": [
+          {
+            "id": "alzheimer",
+            "codigo": null,
+            "label": "Devido à doença de Alzheimer",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "frontotemporal",
+            "codigo": null,
+            "label": "Devido à degeneração lobar frontotemporal",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "corpos_lewy",
+            "codigo": null,
+            "label": "Com corpos de Lewy",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "vascular",
+            "codigo": null,
+            "label": "Vascular",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "lesao_traumatica",
+            "codigo": null,
+            "label": "Devido a lesão cerebral traumática",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "substancia",
+            "codigo": null,
+            "label": "Induzido por substância/medicamento",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "hiv",
+            "codigo": null,
+            "label": "Devido a infecção por HIV",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "prion",
+            "codigo": null,
+            "label": "Devido à doença do príon",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "parkinson",
+            "codigo": null,
+            "label": "Devido à doença de Parkinson",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "huntington",
+            "codigo": null,
+            "label": "Devido à doença de Huntington",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "outra_condicao",
+            "codigo": null,
+            "label": "Devido a outra condição médica",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "multiplas_etiologias",
+            "codigo": null,
+            "label": "Devido a múltiplas etiologias",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "nao_especificado",
+            "codigo": null,
+            "label": "Não especificado",
+            "descricao": "",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": "Subtipos etiológicos possuem critérios específicos em seções próprias do DSM-5.",
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "perturbacao_comportamental",
+          "nome": "Perturbação comportamental",
+          "tipo": "select_unico",
+          "ortogonal": false,
+          "opcoes": [
+            {
+              "id": "sem",
+              "label": "Sem perturbação comportamental",
+              "codigo_adicional": null
+            },
+            {
+              "id": "com",
+              "label": "Com perturbação comportamental",
+              "codigo_adicional": null
+            }
+          ],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "nao_aplica",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "avd",
+          "label": "Atividades da Vida Diária",
+          "icone_fa": "fa-home",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "TNC maior",
+          "ponto_distincao": "TNC leve: independência preservada, prejuízo pequeno; TNC maior: prejuízo substancial, interferência na independência.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Cognição normal/envelhecimento",
+          "ponto_distincao": "TNC leve: declínio documentado a partir de linha de base anterior; envelhecimento normal: sem declínio significativo.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "ponto_distincao": "Depressão pode causar queixas cognitivas; melhora com tratamento da depressão.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Delirium",
+          "frequencia": "moderada",
+          "nota": "TNC leve aumenta vulnerabilidade a delirium."
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Montreal Cognitive Assessment",
+          "sigla": "MoCA",
+          "uso": "triagem",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "sugestao_clinica_padrao"
+        },
+        {
+          "nome": "Avaliação neuropsicológica formal",
+          "sigla": null,
+          "uso": "neuropsicologico",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "mencionado_no_dsm"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "2–10% aos 65 anos; 5–25% aos 85 anos",
+        "proporcao_sexo": null,
+        "variacoes_culturais": null,
+        "notas": "Estimativas variam conforme definição utilizada.",
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "proporcao_sexo",
+            "variacoes_culturais"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Varia por subtipo etiológico",
+        "trajetoria": "Varia por etiologia; pode progredir para TNC maior ou estabilizar.",
+        "prognostico": "Varia conforme etiologia subjacente.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação de Transtorno Neurocognitivo Leve - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (331.83 / G31.84)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "tnc_leve",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "A1. Preocupacao sobre declinio + A2. Prejuizo pequeno documentado (1-2 DP abaixo, percentil 3-16)",
+          "B. Deficits NAO interferem na independencia em AVDs",
+          "C. Nao ocorre exclusivamente durante delirium",
+          "D. Nao melhor explicado por outro transtorno mental"
+        ],
+        "diagnostic_rule": "A1+A2 + B + C + D todos obrigatorios; limiar: 1-2 DP abaixo (percentil 3-16)",
+        "clusters": [],
+        "duration": "cronico",
+        "age_onset": null,
+        "functional_impairment": "independencia preservada (com esforco adicional ou estrategias compensatorias)",
+        "exclusions": [
+          "delirium",
+          "depressao maior",
+          "envelhecimento normal"
+        ],
+        "subtypes_presentations": [
+          {
+            "id": "alzheimer",
+            "nome_completo": "Doenca de Alzheimer"
+          },
+          {
+            "id": "frontotemporal",
+            "nome_completo": "Frontotemporal"
+          },
+          {
+            "id": "lewy",
+            "nome_completo": "Corpos de Lewy"
+          },
+          {
+            "id": "vascular",
+            "nome_completo": "Vascular"
+          },
+          {
+            "id": "lct",
+            "nome_completo": "Lesao Cerebral Traumatica"
+          },
+          {
+            "id": "substancia",
+            "nome_completo": "Substancia"
+          },
+          {
+            "id": "hiv",
+            "nome_completo": "HIV"
+          },
+          {
+            "id": "prion",
+            "nome_completo": "Prion"
+          },
+          {
+            "id": "parkinson",
+            "nome_completo": "Parkinson"
+          },
+          {
+            "id": "huntington",
+            "nome_completo": "Huntington"
+          },
+          {
+            "id": "outra",
+            "nome_completo": "Outra"
+          },
+          {
+            "id": "multiplas",
+            "nome_completo": "Multiplas Etiologias"
+          }
+        ],
+        "specifiers": [
+          {
+            "id": "sem_perturbacao",
+            "nome_completo": "Sem perturbacao comportamental"
+          },
+          {
+            "id": "com_perturbacao",
+            "nome_completo": "Com perturbacao comportamental"
+          }
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "funcionome_completonto_adaptativo",
+          "levels": [
+            "leve",
+            "moderada",
+            "grave"
+          ],
+          "assignment_rule": "Baseada em nivel de funcionome_completonto adaptativo e desempenho cognitivo",
+          "domains": [
+            "AIVDs complexas",
+            "ABVDs"
+          ]
+        },
+        "critical_differentials": [
+          "envelhecimento normal",
+          "transtorno depressivo maior",
+          "delirium"
+        ],
+        "key_questions": [
+          "Dificuldade para lembrar coisas que antes lembrava?",
+          "Necessidade de listas ou lembretes mais frequentes?",
+          "Tarefas complexas exigem mais esforco?",
+          "Evita situacoes que exigem processamento rapido?",
+          "Independencia funcional preservada?"
+        ],
+        "alerts": [
+          "Reavaliacao longitudinal recomendada; monitorar progressao para TNC Maior"
+        ],
+        "source_trace": {
+          "markdown_section": "## FICHA 17.3: TRANSTORNO NEUROCOGNITIVO LEVE",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TNC Leve",
+      "codigo_dsm5": "331.83",
+      "codigo_cid10": "G31.84",
+      "faixa_etaria_alvo": "transversal",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 331.83 (G31.84) para maioria dos subtipos; 799.59 (R41.9) nao especificado",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Declinio cognitivo modesto em 1+ dominios, sem interferir na independencia (pode exigir mais esforco/estrategias compensatorias). Prejuizo de 1-2 desvios-padrao.",
+        "notas_clinicas": "- **Notas:** Mesmos subtipos etiologicos do TNC maior. Distincao com TNC maior e inerentemente arbitrarria. Prevalencia estimada 2-25% em maiores de 65 anos."
+      },
+      "codigo_cid11": "6D81",
+      "super_enrichment": {
+        "id": "tnc_leve",
+        "nome_original": "TRANSTORNO NEUROCOGNITIVO LEVE",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Delirium",
+            "frequencia": "moderada",
+            "nota": "TNC leve aumenta vulnerabilidade a delirium."
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "TNC maior",
+            "ponto_distincao": "TNC leve: independência preservada, prejuízo pequeno; TNC maior: prejuízo substancial, interferência na independência.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Cognição normal/envelhecimento",
+            "ponto_distincao": "TNC leve: declínio documentado a partir de linha de base anterior; envelhecimento normal: sem declínio significativo.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "ponto_distincao": "Depressão pode causar queixas cognitivas; melhora com tratamento da depressão.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "2–10% aos 65 anos; 5–25% aos 85 anos",
+          "proporcao_sexo": null,
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Varia por subtipo etiológico",
+          "trajetoria": "Varia por etiologia; pode progredir para TNC maior ou estabilizar.",
+          "prognostico": "Varia conforme etiologia subjacente."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Montreal Cognitive Assessment",
+            "sigla": "MoCA",
+            "uso": "triagem",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "sugestao_clinica_padrao"
+          },
+          {
+            "nome": "Avaliação neuropsicológica formal",
+            "sigla": null,
+            "uso": "neuropsicologico",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "mencionado_no_dsm"
+          }
+        ],
+        "identificacao": {},
+        "criterios_diagnosticos": [
+          {
+            "id": "A",
+            "texto": "Evidencias de **declinio cognitivo pequeno** a partir de nivel anterior em **um ou mais domínios cognitivos**, com base em:\n- A1: Preocupacao do individuo, informante ou clinico sobre declinio na funcao cognitiva; **E**\n- A2: Prejuizo pequeno no desempenho cognitivo, preferencialmente documentado por teste (performance entre 1-2 DP abaixo, percentil 3-16)."
+          },
+          {
+            "id": "B",
+            "texto": "Deficits **NAO interferem** na independencia em AVDs (atividades instrumentais complexas preservadas, mas podem exigir mais esforco, estrategias compensatorias ou acomodacao)."
+          },
+          {
+            "id": "C",
+            "texto": "Deficits NAO ocorrem exclusivamente no contexto de delirium."
+          },
+          {
+            "id": "D",
+            "texto": "Deficits NAO sao melhor explicados por outro transtorno mental (depressao maior, esquizofrenia)."
+          }
+        ],
+        "subtipos_etiologicos": [
+          {
+            "#": "17.2.1",
+            "Etiologia": "Alzheimer",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Insidioso + amnesia predominante + progressao gradual",
+            "Chave Diagnostica": "Memoria + outro dominio; ausencia etiologia mista ou mutacao genetica"
+          },
+          {
+            "#": "17.2.2",
+            "Etiologia": "Frontotemporal",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Variante comportamental (desinibicao, apatia) ou linguistica",
+            "Chave Diagnostica": "Preservacao de memoria/perceptomotor; declinio social/linguagem"
+          },
+          {
+            "#": "17.2.3",
+            "Etiologia": "Lewy",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Oscilacao cognitiva + alucinacoes visuais + parkinsonismo",
+            "Chave Diagnostica": "Cognicao oscilante; sensibilidade neuroléptica; sono REM"
+          },
+          {
+            "#": "17.2.4",
+            "Etiologia": "Vascular",
+            "Codigo Principal": "290.40 (F01.5x)",
+            "Estrutura Etiologica Especifica": "Relacao temporal AVC-cognicao + neuroimagem",
+            "Chave Diagnostica": "Historia de AVC; infartos/leucoaraiose significativa"
+          },
+          {
+            "#": "17.2.5",
+            "Etiologia": "LCT",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Historia de trauma craniano com perda de consciencia",
+            "Chave Diagnostica": "Escala Glasgow/LOC/PTA; lesao documentada"
+          },
+          {
+            "#": "17.2.6",
+            "Etiologia": "Substancia",
+            "Codigo Principal": "Varia",
+            "Estrutura Etiologica Especifica": "Persistencia alem da abstinencia aguda; substancia causal",
+            "Chave Diagnostica": "Curso temporal com uso/abstinencia; tipo alcoolico especifico"
+          },
+          {
+            "#": "17.2.7",
+            "Etiologia": "HIV",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Infeccao HIV documentada + padrao subcortical",
+            "Chave Diagnostica": "Teste HIV+; exclusao infeccoes oportunistas"
+          },
+          {
+            "#": "17.2.8",
+            "Etiologia": "Prion",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Progressao rapida + mioclonia/ataxia",
+            "Chave Diagnostica": "Rapida deterioracao; biomarcadores especificos"
+          },
+          {
+            "#": "17.2.9",
+            "Etiologia": "Parkinson",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Parkinson >=1 ano antes do TNC",
+            "Chave Diagnostica": "Sequencia motores -> cognitivos; exclusao Lewy"
+          },
+          {
+            "#": "17.2.10",
+            "Etiologia": "Huntington",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Doenca estabelecida ou mutacao CAG",
+            "Chave Diagnostica": "Coreia + declinio executivo; teste genetico HTT"
+          },
+          {
+            "#": "17.2.11",
+            "Etiologia": "Outra condicao medica",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Relacao causal com condicao medica",
+            "Chave Diagnostica": "Associacao temporal; melhora com tratamento da causa"
+          },
+          {
+            "#": "17.2.12",
+            "Etiologia": "Multiplas etiologias",
+            "Codigo Principal": "294.1x (F02.8x)",
+            "Estrutura Etiologica Especifica": "Evidencia de >1 processo etiologico",
+            "Chave Diagnostica": "Multiplas patologias contribuindo"
+          }
+        ],
+        "especificadores": [
+          "Sem perturbacao comportamental",
+          "Com perturbacao comportamental (especificar a perturbacao)"
+        ],
+        "diferenca_chave_tnc_leve_vs_tnc_maior": "| Aspecto | TNC Leve | TNC Maior |\n|---------|----------|-----------|\n| Performance neuropsicologica | 1-2 DP abaixo (percentil 3-16) | 2+ DP abaixo (< percentil 3) |\n| Funcionamento diario | Independencia preservada (com esforco adicional) | Dependencia parcial a total |\n| AIVDs complexas | Preservadas (com estrategias) | Comprometidas |\n| ABVDs | Preservadas | Comprometidas em estagios moderados/graves |",
+        "diferenciais_criticos": [
+          {
+            "Condicao": "Envelhecimento normal",
+            "Chave": "Nao ha queixa de declinio significativo; performance dentro da faixa normal para a idade"
+          },
+          {
+            "Condicao": "Transtorno depressivo maior",
+            "Chave": "Pseudodemencia; sintomas afetivos predominantes; queixas subjetivas exageradas"
+          },
+          {
+            "Condicao": "Delirium",
+            "Chave": "Curso agudo, oscilante; alteracao de atencao/consciencia"
+          },
+          {
+            "Condicao": "Transtorno especifico da aprendizagem",
+            "Chave": "Deficit persistente desde o desenvolvimento; nao representa declinio"
+          }
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "O paciente notou dificuldade para lembrar coisas que antes lembrava com facilidade?"
+          },
+          {
+            "numero": 2,
+            "texto": "Ha necessidade de listas ou lembretes mais frequentes que antes?"
+          },
+          {
+            "numero": 3,
+            "texto": "Tarefas complexas (organizar viagem, gerir financas) exigem mais esforco?"
+          },
+          {
+            "numero": 4,
+            "texto": "O paciente evita situacoes que exigem processamento cognitivo rapido?"
+          },
+          {
+            "numero": 5,
+            "texto": "Familiares ou colegas notaram alguma mudanca?"
+          },
+          {
+            "numero": 6,
+            "texto": "A independencia funcional esta preservada (trabalho, financas, medicamentos)?"
+          }
+        ],
+        "ui": {},
+        "secao_iv_fluxo_decisoral_clinico": "```\nPACIENTE COM QUEIXA COGNITIVA\n           |\n           v\n    [Presenca de delirium?]\n     - Agudo, oscilante, atencao/consciencia comprometidas\n           |\n    SIM --> DELIRIUM (FICHA 17.1)\n     |         |\n     |         v\n     |    [Identificar etiologia]\n     |     - Condicao medica / Substancia / Medicamento\n     |     - Multiplas etiologias\n     |\n    NAO --> [Avaliar declinio cognitivo significativo?]\n     |         |\n     |    SIM --> [Independencia funcional preservada?]\n     |     |         |\n     |     |    SIM --> TNC LEVE (FICHA 17.3)\n     |     |     |         |\n     |     |     |    [Investigar etiologia]\n     |     |     |     - Alzheimer, Vascular, Lewy, etc.\n     |     |     |\n     |     |    NAO --> TNC MAIOR (FICHA 17.2)\n     |     |       |         |\n     |     |       |    [Identificar etiologia]\n     |     |       |     - Aplicar criterios especificos por etiologia\n     |     |       |     - Determinar provavel vs possivel\n     |     |       |     - Avaliar gravidade (leve/moderada/grave)\n     |     |       |\n     |     |    [Sem declinio significativo]\n     |     |         |\n     |     |    NAO --> Monitorar / Reavaliar em 6-12 meses\n     |     |\n     |    [Excluir depressao, esquizofrenia, delirium]\n```\n\n---\n\n*Documento gerado pelo pipeline dsm-chapter-reduction-swarm. Apenas nucleo operacional para decisao diagnostica. Campos descartados: prevalencia extensa, proporcao por sexo, historia terminologica, relacao com outras classificacoes, fatores de risco extensos, prognostico longo, curso longo, caracteristicas associadas longas, comorbidades longas, questoes culturais e de genero extensas.*"
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/tnc_leve.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

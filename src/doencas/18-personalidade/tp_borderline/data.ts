@@ -1,0 +1,1061 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "tp_borderline",
+    "nome_completo": "Transtorno da Personalidade Borderline",
+    "sigla": "TPB",
+    "capitulo_id": "18",
+    "capitulo": "Transtornos da Personalidade",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F60.3",
+      "cid11": "6D11.5",
+      "dsm5": "301.83"
+    }
+  },
+  "id": "tp_borderline",
+  "item_id": "tp_borderline",
+  "name": "Transtorno da Personalidade Borderline",
+  "nome_completo": "Transtorno da Personalidade Borderline",
+  "chapter_id": "18",
+  "chapter_name": "Transtornos da Personalidade",
+  "category": "FULL",
+  "estrutura_diagnostica": "polythetic_monocluster",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Instabilidade Interpessoal, Autoimagem, Afetos e Impulsividade",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A3",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A4",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A5",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A6",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A7",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A8",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A9",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "None",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "relacoes",
+      "label": "Relações Íntimas"
+    },
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Transtornos depressivos e bipolares",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtornos por uso de substância",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtornos alimentares (bulimia)",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "TEPT",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "TDAH",
+      "frequencia": "moderada",
+      "nota": "None"
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Transtorno Depressivo Maior",
+      "ponto_distincao": "TDM: humor deprimido episódico; TPB: padrão persistente desde início da vida adulta.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno Bipolar",
+      "ponto_distincao": "TB: episódios de humor mais prolongados; TPB: reatividade rápida a estresse interpessoal.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno da Personalidade Histriônica",
+      "ponto_distincao": "Histriônica: busca atenção sem autodestrutividade nem vazio crônico.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtorno da Personalidade Narcisista",
+      "ponto_distincao": "Narcisista: estabilidade da autoimagem, sem autodestrutividade.",
+      "pertence_a_classe": true
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Início da vida adulta",
+    "trajetoria": "Instabilidade crônica no início; melhora gradual após os 30–50 anos.",
+    "prognostico": "Metade não mais preenche critérios após ~10 anos de acompanhamento."
+  },
+  "prevalencia": {
+    "populacao_geral": "1,6% a 5,9%",
+    "proporcao_sexo": "Cerca de 75% diagnosticados no sexo feminino",
+    "variacoes_culturais": "None",
+    "notas": "Até 20% em pacientes psiquiátricos internados."
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "None",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      false,
+      null,
+      true,
+      [],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "18_transtornos_personalidade.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "claude-opus-4-7",
+    "lacunas_globais": [
+      "variacao_cultural"
+    ],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [
+    {
+      "nome": "Zanarini Rating Scale for Borderline Personality Disorder",
+      "sigla": "ZAN-BPD",
+      "uso": "diagnostico",
+      "obrigatorio_para_diagnostico": false,
+      "fonte": "sugestao_clinica_padrao"
+    }
+  ],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "tp_borderline",
+      "nome_completo": "Transtorno da Personalidade Borderline",
+      "sigla": "TPB",
+      "capitulo_id": "18",
+      "capitulo": "Transtornos da Personalidade",
+      "grupo": "Cluster B",
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "adulto",
+      "codigo": {
+        "cid10": "F60.3",
+        "cid11": "6D11.5",
+        "dsm5": "301.83"
+      }
+    },
+    "id": "tp_borderline",
+    "item_id": "tp_borderline",
+    "name": "Transtorno da Personalidade Borderline",
+    "nome_completo": "Transtorno da Personalidade Borderline",
+    "chapter_id": "18",
+    "chapter_name": "Transtornos da Personalidade",
+    "category": "FULL",
+    "estrutura_diagnostica": "polythetic_monocluster",
+    "estrutura_geral": "polythetic_monocluster",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Instabilidade Interpessoal, Autoimagem, Afetos e Impulsividade",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A3",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A4",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A5",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A6",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A7",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A8",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A9",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "None",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "relacoes",
+        "label": "Relações Íntimas"
+      },
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Transtornos depressivos e bipolares",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtornos por uso de substância",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtornos alimentares (bulimia)",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "TEPT",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "TDAH",
+        "frequencia": "moderada",
+        "nota": "None"
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Transtorno Depressivo Maior",
+        "ponto_distincao": "TDM: humor deprimido episódico; TPB: padrão persistente desde início da vida adulta.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno Bipolar",
+        "ponto_distincao": "TB: episódios de humor mais prolongados; TPB: reatividade rápida a estresse interpessoal.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno da Personalidade Histriônica",
+        "ponto_distincao": "Histriônica: busca atenção sem autodestrutividade nem vazio crônico.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtorno da Personalidade Narcisista",
+        "ponto_distincao": "Narcisista: estabilidade da autoimagem, sem autodestrutividade.",
+        "pertence_a_classe": true
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Início da vida adulta",
+      "trajetoria": "Instabilidade crônica no início; melhora gradual após os 30–50 anos.",
+      "prognostico": "Metade não mais preenche critérios após ~10 anos de acompanhamento."
+    },
+    "prevalencia": {
+      "populacao_geral": "1,6% a 5,9%",
+      "proporcao_sexo": "Cerca de 75% diagnosticados no sexo feminino",
+      "variacoes_culturais": "None",
+      "notas": "Até 20% em pacientes psiquiátricos internados."
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "None",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        false,
+        null,
+        true,
+        [],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "18_transtornos_personalidade.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "claude-opus-4-7",
+      "lacunas_globais": [
+        "variacao_cultural"
+      ],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [
+      {
+        "nome": "Zanarini Rating Scale for Borderline Personality Disorder",
+        "sigla": "ZAN-BPD",
+        "uso": "diagnostico",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "sugestao_clinica_padrao"
+      }
+    ],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "tp_borderline",
+        "nome_completo": "Transtorno da Personalidade Borderline",
+        "sigla": "TPB",
+        "codigo": {
+          "dsm5": "301.83",
+          "cid10": "F60.3",
+          "cid11": "6D11.5"
+        },
+        "capitulo": "Transtornos da Personalidade",
+        "capitulo_id": "18",
+        "grupo": "Cluster B",
+        "faixa_etaria_alvo": "adulto",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Instabilidade Interpessoal, Autoimagem, Afetos e Impulsividade",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 5,
+            "pediatria": null
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Esforços desesperados para evitar abandono",
+              "desc": "Esforços desesperados para evitar abandono real ou imaginado por pessoas próximas.",
+              "pergunta": "Você faz esforços desesperados para evitar que pessoas importantes o abandonem, mesmo diante de separações de curto prazo?",
+              "exemplos_clinicos": [
+                "Desespero ao término de consulta",
+                "Fúria por atraso de minutos"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Relacionamentos instáveis e intensos com alternância extrema",
+              "desc": "Um padrão de relacionamentos interpessoais instáveis e intensos caracterizado pela alternância entre extremos de idealização e desvalorização.",
+              "pergunta": "Seus relacionamentos íntimos são intensos e instáveis, alternando rapidamente entre idealizar e desvalorizar a outra pessoa?",
+              "exemplos_clinicos": [
+                "Idealizar em primeiro encontro",
+                "Sentir que outro não se importa o suficiente"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Perturbação da identidade",
+              "desc": "Perturbação da identidade: instabilidade acentuada e persistente da autoimagem ou da percepção de si mesmo.",
+              "pergunta": "Você tem uma sensação instável de quem é, com mudanças súbitas em metas, valores, aspirações ou identidade sexual?",
+              "exemplos_clinicos": [
+                "Mudanças súbitas de carreira",
+                "Sentir que não existe"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Impulsividade em áreas autodestrutivas",
+              "desc": "Impulsividade em pelo menos duas áreas potencialmente autodestrutivas (gastos, sexo, abuso de substância, direção irresponsável, compulsão alimentar).",
+              "pergunta": "Você se comporta de forma impulsiva em áreas que podem ser prejudiciais, como gastos excessivos, sexo de risco, abuso de substâncias, direção irresponsável ou compulsão alimentar?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Comportamento, gestos ou ameaças suicidas/automutilantes",
+              "desc": "Recorrência de comportamento, gestos ou ameaças suicidas ou de comportamento automutilante.",
+              "pergunta": "Você já teve recorrência de pensamentos suicidas, gestos, ameaças ou comportamentos de automutilação?",
+              "exemplos_clinicos": [
+                "Cortes",
+                "Queimaduras"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Instabilidade afetiva por reatividade acentuada",
+              "desc": "Instabilidade afetiva devida a uma acentuada reatividade de humor (disforia episódica, irritabilidade ou ansiedade intensa com duração geralmente de poucas horas).",
+              "pergunta": "Você tem mudanças rápidas e intensas de humor (raiva, ansiedade, tristeza) que duram poucas horas ou dias, geralmente em resposta a estresses interpessoais?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Sentimentos crônicos de vazio",
+              "desc": "Sentimentos crônicos de vazio.",
+              "pergunta": "Você sente vazio crônico ou um vazio interior persistente?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Raiva intensa e inapropriada ou dificuldade em controlá-la",
+              "desc": "Raiva intensa e inapropriada ou dificuldade em controlá-la (mostras frequentes de irritação, raiva constante, brigas físicas recorrentes).",
+              "pergunta": "Você sente raiva intensa e frequentemente inapropriada, ou tem dificuldade em controlar sua raiva?",
+              "exemplos_clinicos": [
+                "Sarcasmo extremo",
+                "Explosões verbais"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Ideação paranoide transitória ou sintomas dissociativos",
+              "desc": "Ideação paranoide transitória associada a estresse ou sintomas dissociativos intensos.",
+              "pergunta": "Em períodos de estresse extremo, você tem ideação paranoide transitória ou sintomas dissociativos intensos (despersonalização, desrealização)?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas; prejuízo leve."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas moderados; prejuízo moderado."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas; prejuízo grave."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "relacoes",
+          "label": "Relações Íntimas",
+          "icone_fa": "fa-heart",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "ponto_distincao": "TDM: humor deprimido episódico; TPB: padrão persistente desde início da vida adulta.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno Bipolar",
+          "ponto_distincao": "TB: episódios de humor mais prolongados; TPB: reatividade rápida a estresse interpessoal.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno da Personalidade Histriônica",
+          "ponto_distincao": "Histriônica: busca atenção sem autodestrutividade nem vazio crônico.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno da Personalidade Narcisista",
+          "ponto_distincao": "Narcisista: estabilidade da autoimagem, sem autodestrutividade.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtornos depressivos e bipolares",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos por uso de substância",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos alimentares (bulimia)",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "TEPT",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "TDAH",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Zanarini Rating Scale for Borderline Personality Disorder",
+          "sigla": "ZAN-BPD",
+          "uso": "diagnostico",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "sugestao_clinica_padrao"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "1,6% a 5,9%",
+        "proporcao_sexo": "Cerca de 75% diagnosticados no sexo feminino",
+        "variacoes_culturais": null,
+        "notas": "Até 20% em pacientes psiquiátricos internados.",
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "variacao_cultural"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Início da vida adulta",
+        "trajetoria": "Instabilidade crônica no início; melhora gradual após os 30–50 anos.",
+        "prognostico": "Metade não mais preenche critérios após ~10 anos de acompanhamento.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno da Personalidade Borderline - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (301.83 / F60.3)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "18_transtornos_personalidade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4-7",
+        "lacunas_globais": [
+          "variacao_cultural"
+        ],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "tp_borderline",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "1. Esforcos desesperados para evitar abandono real ou imaginado",
+          "2. Relacionamentos instaveis com alternancia entre idealizacao e desvalorizacao",
+          "3. Instabilidade acentuada da autoimagem",
+          "4. Impulsividade em 2+ areas autodestrutivas",
+          "5. Recorrencia de comportamento suicida ou automutilacao",
+          "6. Instabilidade afetiva (reatividade de humor, duracao horas)",
+          "7. Sentimentos cronicos de vazio",
+          "8. Raiva intensa e inapropriada",
+          "9. Ideacao paranoide transitoria ou sintomas dissociativos"
+        ],
+        "diagnostic_rule": "Criterios gerais de TP (A-F) + >=5 de 9 criterios; exclusao interna: criterios 1 e 4 excluem suicida/automutilador (contado apenas no 5)",
+        "clusters": [
+          "Instabilidade Relacional",
+          "Instabilidade Identitaria",
+          "Impulsividade",
+          "Disfregulacao Afetiva"
+        ],
+        "duration": "instabilidade cronica; melhora com envelhecimento (30-50 anos); ate 50% nao mais atende criterios apos ~10 anos",
+        "age_onset": "inicio vida adulta",
+        "functional_impairment": "prejuizo interpessoal grave; recorrente perda de empregos; separacoes; risco de suicidio 8-10%; automutilacao",
+        "exclusions": [
+          "transtornos depressivo/bipolar",
+          "histriônica",
+          "dependente",
+          "narcisista",
+          "TEP"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [
+          {
+            "id": "descontrolado",
+            "description": "Variante com afeto/impulsividade predominantes"
+          },
+          {
+            "id": "quiet_borderline",
+            "description": "Variante com retencao, evitacao"
+          }
+        ],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [
+          "transtorno bipolar",
+          "histriônica",
+          "dependente",
+          "narcisista",
+          "TEP"
+        ],
+        "key_questions": [
+          "Esforcos desesperados para evitar abandono?",
+          "Relacionamentos intensos e instaveis (maravilhosa/terrivel)?",
+          "Autoimagem muda muito?",
+          "Impulsividade em areas autodestrutivas?",
+          "Automutilacao ou gestos/ameacas suicidas?",
+          "Humor muda rapidamente (horas)?",
+          "Vazio persistente?",
+          "Raiva intensa, brigas fisicas?",
+          "Sob estresse: sentiu que coisas nao eram reais?"
+        ],
+        "alerts": [
+          "ALTO RISCO DE SUICIDIO (8-10%); avaliar automutilacao em TODA entrevista",
+          "Instabilidade afetiva TPB = horas; bipolar = semanas/meses",
+          "Melhora com idade mas fase inicial de risco elevado"
+        ],
+        "source_trace": {
+          "markdown_section": "## 5. Transtorno da Personalidade Borderline (TPB)",
+          "patches_applied": [
+            "LOW-VERIFY: risco suicidio confirmado"
+          ]
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TPB",
+      "codigo_dsm5": "301.83",
+      "codigo_cid10": "F60.3",
+      "grupo": "Cluster B",
+      "faixa_etaria_alvo": "adulto",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 301.83 / F60.3",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Padrao difuso de instabilidade das relacoes interpessoais, autoimagem e afetos, com impulsividade acentuada. Exige 5+ de 9 criterios: (1) esforcos desesperados para evitar abandono real/imaginado, (2) relacionamentos instaveis e intensos (idealizacao/desvalorizacao), (3) perturbacao da identidade, (4) impulsividade em 2+ areas autodestrutivas, (5) recorrencia de comportamento/gestos/ameacas suicidas ou automutilacao, (6) instabilidade afetiva (reatividade de humor, disforia episodica, duracao de poucas horas, raramente > alguns dias), (7) sentimentos cronicos de vazio, (8) raiva intensa inapropriada ou dificuldade de controle, (9) ideacao paranoide transitoria ou sintomas dissociativos associados a estresse.",
+        "notas_clinicas": "- **Notas:** Prevalencia: 1,6% (ate 5,9%); ~6% atencao primaria; ~10% ambulatorio saude mental; ~20% internados psiquiatricos. Diagnosticado em ~75% mulheres. Suicidio ocorre em 8-10% dos casos. Apos ~10 anos de seguimento, ate metade nao preenche mais criterios. Comorbidade: transtornos depressivos, bipolares, uso de substancia, alimentares (bulimia), TEPT, TDAH. Risco familiar 5x maior. Instabilidade cronica no inicio da vida adulta; melhora a partir dos 30-50 anos com tratamento."
+      },
+      "codigo_cid11": "6D11.5",
+      "super_enrichment": {
+        "id": "tp_borderline",
+        "nome_original": "Transtorno da Personalidade Borderline",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtornos depressivos e bipolares",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos por uso de substância",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos alimentares (bulimia)",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "TEPT",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "TDAH",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "ponto_distincao": "TDM: humor deprimido episódico; TPB: padrão persistente desde início da vida adulta.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno Bipolar",
+            "ponto_distincao": "TB: episódios de humor mais prolongados; TPB: reatividade rápida a estresse interpessoal.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno da Personalidade Histriônica",
+            "ponto_distincao": "Histriônica: busca atenção sem autodestrutividade nem vazio crônico.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno da Personalidade Narcisista",
+            "ponto_distincao": "Narcisista: estabilidade da autoimagem, sem autodestrutividade.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "1,6% a 5,9%",
+          "proporcao_sexo": "Cerca de 75% diagnosticados no sexo feminino",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Início da vida adulta",
+          "trajetoria": "Instabilidade crônica no início; melhora gradual após os 30–50 anos.",
+          "prognostico": "Metade não mais preenche critérios após ~10 anos de acompanhamento."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Zanarini Rating Scale for Borderline Personality Disorder",
+            "sigla": "ZAN-BPD",
+            "uso": "diagnostico",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "sugestao_clinica_padrao"
+          }
+        ],
+        "transtorno_da_personalidade_borderline": "```yaml\ncodigo_dsm5: \"301.83\"\ncodigo_cid10: \"F60.3\"\ncategoria_operacional: FULL\ncluster: B\nestrutura_diagnostica: polythetic_monocluster\n```",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "Padrao difuso de **instabilidade das relacoes interpessoais, da autoimagem e dos afetos** e **impulsividade acentuada**, inicio na vida adulta, presente em varios contextos, indicado por **5+** dos seguintes (9 itens):\n\n| # | Criterio |\n|---|----------|\n| 1 | Esforcos desesperados para evitar abandono real ou imaginado (excluir comportamento suicida/automutilacao do Crit.5) |\n| 2 | Padrao de relacionamentos interpessoais instaveis e intensos com alternancia entre idealizacao e desvalorizacao |\n| 3 | Perturbacao da identidade: instabilidade acentuada e persistente da autoimagem ou percepcao de si |\n| 4 | Impulsividade em 2+ areas potencialmente autodestrutivas (gastos, sexo, abuso de substancia, direcao irresponsavel, compulsao alimentar) [excluir Crit.5] |\n| 5 | Recorrencia de comportamento, gestos ou ameacas suicidas ou automutilacao |\n| 6 | Instabilidade afetiva devida a acentuada reatividade de humor (disforia episodica, irritabilidade, ansiedade intensa - duracao geralmente horas, raramente > dias) |\n| 7 | Sentimentos cronicos de vazio |\n| 8 | Raiva intensa e inapropriada ou dificuldade em controla-la (irritacao frequente, raiva constante, brigas fisicas recorrentes) |\n| 9 | Ideacao paranoide transitoria associada a estresse ou sintomas dissociativos intensos |"
+          }
+        ],
+        "regra_diagnostica": "- Criterios gerais de TP (A-F) + 5+ dos 9 criterios acima\n- **Liminar**: 5/9 sintomas\n- **Regra de exclusao interna**: Criterios 1 e 4 excluem comportamento suicida/automutilador (contado apenas no Criterio 5)",
+        "duracao_idade_prejuizo": {
+          "idade_de_inicio": "Inicio da vida adulta",
+          "duracao": "Instabilidade cronica no inicio da vida adulta com episodios graves; melhora com envelhecimento (30-50 anos: maior estabilidade); até 50% nao mais atende criterios apos ~10 anos",
+          "prejuizo_funcional": "Prejuizo interpessoal grave; recorrente perda de empregos; abandono educacional; separacoes/divorcios; risco de suicidio (8-10%); automutilacao; alto uso de recursos de saude"
+        },
+        "exclusoes_obrigatorias": [
+          "Transtornos depressivo e bipolar (diferenciar: apresentacao momentanea pode mimetizar TPB; exigir inicio precoce e curso prolongado)",
+          "Transtorno de personalidade histriônica (diferenciar: histriônico busca atenção, nao e autodestrutivo)",
+          "Transtorno de personalidade dependente (diferenciar: dependente reage ao abandono com submissao; TPB com furia e vazio)",
+          "Transtorno de personalidade narcisista (diferenciar: estabilidade relativa da autoimagem, falta de autodestrutividade)",
+          "Transtorno de personalidade antissocial (diferenciar: TPB e mais emocionalmente instavel)",
+          "Transtorno de personalidade esquizotipica (diferenciar: sintomas \"psicoticos\" da TPB sao transitorios, reativos, dissociativos)",
+          "Transtorno de estresse pos-traumatico (diferenciar: mudancas de personalidade pos-trauma)",
+          "Mudanca de personalidade devido a condicao medica",
+          "Uso de substancia",
+          "Problema de identidade da adolescencia (desenvolvimento normal)"
+        ],
+        "gravidade": {
+          "tipo": "nao_aplica"
+        },
+        "subtipos": [
+          "Sem subtipos formais"
+        ],
+        "diferenciais_criticos": [
+          {
+            "numero": 1,
+            "condicao": "Exigir inicio precoce",
+            "chave_diferenciacao": "TPB e traco de longo prazo; nao diagnosticar com base apenas em apresentacao momentanea"
+          }
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "Voce faz esforcos desesperados para evitar que as pessoas o abandonem?"
+          },
+          {
+            "numero": 2,
+            "texto": "Seus relacionamentos tendem a ser intensos e instaveis, alternando entre achar a pessoa maravilhosa e terrivel?"
+          },
+          {
+            "numero": 3,
+            "texto": "Sua forma de se ver muda muito (quem voce e, seus valores, seus objetivos)?"
+          },
+          {
+            "numero": 4,
+            "texto": "Voce age impulsivamente em areas que lhe causam problemas (gastar, sexo, substancias, dirigir, comer)?"
+          },
+          {
+            "numero": 5,
+            "texto": "Ja se machucou de proposito ou fez ameacas/gestos suicidas? Com que frequencia?"
+          },
+          {
+            "numero": 6,
+            "texto": "Seu humor muda rapidamente (horas), ficando irritado, ansioso ou desesperado?"
+          },
+          {
+            "numero": 7,
+            "texto": "Voce sente um vazio persistente, como se estivesse vazio por dentro?"
+          },
+          {
+            "numero": 8,
+            "texto": "Tem dificuldade em controlar a raiva? Ja se envolveu em brigas fisicas?"
+          },
+          {
+            "numero": 9,
+            "texto": "Sob estresse, ja teve momentos em que sentiu que as coisas nao eram reais ou que voce nao era voce?"
+          }
+        ],
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_full",
+          "caracteristicas_especiais": "",
+          "alto_risco_suicidio": true,
+          "avaliar_automutilacao": "essencial",
+          "tracos_parcialmente_egossintonicos": "paciente pode reconhecer sofrimento",
+          "necessita_multiplas_entrevistas": true,
+          "risco_evolucao": "melhora com idade mas fase inicial de risco elevado"
+        }
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/tp_borderline.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

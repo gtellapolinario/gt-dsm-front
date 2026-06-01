@@ -1,0 +1,855 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "tp_esquizoide",
+    "nome_completo": "Transtorno da Personalidade Esquizoide",
+    "sigla": "TPE",
+    "capitulo_id": "18",
+    "capitulo": "Transtornos da Personalidade",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F60.1",
+      "cid11": "6D10",
+      "dsm5": "301.20"
+    }
+  },
+  "id": "tp_esquizoide",
+  "item_id": "tp_esquizoide",
+  "name": "Transtorno da Personalidade Esquizoide",
+  "nome_completo": "Transtorno da Personalidade Esquizoide",
+  "chapter_id": "18",
+  "chapter_name": "Transtornos da Personalidade",
+  "category": "FULL",
+  "estrutura_diagnostica": "polythetic_monocluster",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Distanciamento Social e Afeto Restrito",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A3",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A4",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A5",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A6",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A7",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "exclusao_psicotico_autista_medico",
+      "letra": "B",
+      "rotulo": "Não ocorre exclusivamente durante curso de transtorno psicótico, TEA ou condição médica",
+      "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos, outro transtorno psicótico ou transtorno do espectro autista e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "None",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Transtorno Depressivo Maior",
+      "frequencia": "moderada",
+      "nota": "None"
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Esquizofrenia",
+      "ponto_distincao": "Esquizofrenia: sintomas psicóticos persistentes; TPE deve ter estado presente antes.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno do Espectro Autista",
+      "ponto_distincao": "TEA: interação social mais gravemente comprometida, comportamentos estereotipados.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno da Personalidade Evitativa",
+      "ponto_distincao": "Evitativa: deseja relacionamentos mas teme rejeição; esquizoide: falta de desejo de intimidade.",
+      "pertence_a_classe": true
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+    "trajetoria": "Crônico; pode preceder esquizofrenia.",
+    "prognostico": "Funcionamento profissional pode ser adequado em isolamento social."
+  },
+  "prevalencia": {
+    "populacao_geral": "3,1% a 4,9%",
+    "proporcao_sexo": "Diagnosticado um pouco mais em homens",
+    "variacoes_culturais": "Imigrantes podem ser incorretamente vistos como frios ou indiferentes.",
+    "notas": "None"
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "None",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      false,
+      null,
+      true,
+      [],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "18_transtornos_personalidade.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "claude-opus-4-7",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "tp_esquizoide",
+      "nome_completo": "Transtorno da Personalidade Esquizoide",
+      "sigla": "TPE",
+      "capitulo_id": "18",
+      "capitulo": "Transtornos da Personalidade",
+      "grupo": "Cluster A",
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "adulto",
+      "codigo": {
+        "cid10": "F60.1",
+        "cid11": "6D10",
+        "dsm5": "301.20"
+      }
+    },
+    "id": "tp_esquizoide",
+    "item_id": "tp_esquizoide",
+    "name": "Transtorno da Personalidade Esquizoide",
+    "nome_completo": "Transtorno da Personalidade Esquizoide",
+    "chapter_id": "18",
+    "chapter_name": "Transtornos da Personalidade",
+    "category": "FULL",
+    "estrutura_diagnostica": "polythetic_monocluster",
+    "estrutura_geral": "polythetic_monocluster",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Distanciamento Social e Afeto Restrito",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A3",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A4",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A5",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A6",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A7",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "exclusao_psicotico_autista_medico",
+        "letra": "B",
+        "rotulo": "Não ocorre exclusivamente durante curso de transtorno psicótico, TEA ou condição médica",
+        "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos, outro transtorno psicótico ou transtorno do espectro autista e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "None",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Transtorno Depressivo Maior",
+        "frequencia": "moderada",
+        "nota": "None"
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Esquizofrenia",
+        "ponto_distincao": "Esquizofrenia: sintomas psicóticos persistentes; TPE deve ter estado presente antes.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno do Espectro Autista",
+        "ponto_distincao": "TEA: interação social mais gravemente comprometida, comportamentos estereotipados.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno da Personalidade Evitativa",
+        "ponto_distincao": "Evitativa: deseja relacionamentos mas teme rejeição; esquizoide: falta de desejo de intimidade.",
+        "pertence_a_classe": true
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+      "trajetoria": "Crônico; pode preceder esquizofrenia.",
+      "prognostico": "Funcionamento profissional pode ser adequado em isolamento social."
+    },
+    "prevalencia": {
+      "populacao_geral": "3,1% a 4,9%",
+      "proporcao_sexo": "Diagnosticado um pouco mais em homens",
+      "variacoes_culturais": "Imigrantes podem ser incorretamente vistos como frios ou indiferentes.",
+      "notas": "None"
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "None",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        false,
+        null,
+        true,
+        [],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "18_transtornos_personalidade.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "claude-opus-4-7",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "tp_esquizoide",
+        "nome_completo": "Transtorno da Personalidade Esquizoide",
+        "sigla": "TPE",
+        "codigo": {
+          "dsm5": "301.20",
+          "cid10": "F60.1",
+          "cid11": "6D10"
+        },
+        "capitulo": "Transtornos da Personalidade",
+        "capitulo_id": "18",
+        "grupo": "Cluster A",
+        "faixa_etaria_alvo": "adulto",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Distanciamento Social e Afeto Restrito",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 4,
+            "pediatria": null
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Não deseja nem desfruta de relações íntimas",
+              "desc": "Não deseja nem desfruta de relações íntimas, inclusive ser parte de uma família.",
+              "pergunta": "Você não sente desejo ou prazer em ter relações íntimas ou fazer parte de uma família?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Quase sempre opta por atividades solitárias",
+              "desc": "Quase sempre opta por atividades solitárias.",
+              "pergunta": "Você quase sempre prefere atividades ou passatempos que pode fazer sozinho?",
+              "exemplos_clinicos": [
+                "Jogos matemáticos",
+                "Computador"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Pouco ou nenhum interesse em experiências sexuais",
+              "desc": "Manifesta pouco ou nenhum interesse em ter experiências sexuais com outra pessoa.",
+              "pergunta": "Você tem pouco ou nenhum interesse em ter experiências sexuais com outra pessoa?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Tem prazer em poucas atividades",
+              "desc": "Tem prazer em poucas atividades, por vezes em nenhuma.",
+              "pergunta": "Você sente prazer em pouquíssimas atividades, ou em nenhuma?",
+              "exemplos_clinicos": [
+                "Reduzido prazer sensorial ou interpessoal"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Não tem amigos próximos além de parentes de primeiro grau",
+              "desc": "Não tem amigos próximos ou confidentes que não sejam os familiares de primeiro grau.",
+              "pergunta": "Você não tem amigos próximos ou confidentes fora um possível parente de primeiro grau?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Indiferente a elogio ou crítica",
+              "desc": "Mostra-se indiferente ao elogio ou à crítica de outros.",
+              "pergunta": "Você se mostra indiferente ao que os outros pensam de você, seja elogio ou crítica?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Frieza emocional, distanciamento ou embotamento afetivo",
+              "desc": "Demonstra frieza emocional, distanciamento ou embotamento afetivo.",
+              "pergunta": "Você demonstra frieza emocional, distanciamento ou pouca reatividade afetiva nas interações?",
+              "exemplos_clinicos": [
+                "Afeto constrito",
+                "Exterior insípido"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "exclusao_psicotico_autista_medico",
+          "letra": "B",
+          "rotulo": "Não ocorre exclusivamente durante curso de transtorno psicótico, TEA ou condição médica",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "esquizofrenia",
+            "transtorno_bipolar",
+            "tea"
+          ],
+          "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos, outro transtorno psicótico ou transtorno do espectro autista e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas; prejuízo leve."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas moderados; prejuízo moderado."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas; prejuízo grave."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Esquizofrenia",
+          "ponto_distincao": "Esquizofrenia: sintomas psicóticos persistentes; TPE deve ter estado presente antes.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno do Espectro Autista",
+          "ponto_distincao": "TEA: interação social mais gravemente comprometida, comportamentos estereotipados.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno da Personalidade Evitativa",
+          "ponto_distincao": "Evitativa: deseja relacionamentos mas teme rejeição; esquizoide: falta de desejo de intimidade.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "3,1% a 4,9%",
+        "proporcao_sexo": "Diagnosticado um pouco mais em homens",
+        "variacoes_culturais": "Imigrantes podem ser incorretamente vistos como frios ou indiferentes.",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+        "trajetoria": "Crônico; pode preceder esquizofrenia.",
+        "prognostico": "Funcionamento profissional pode ser adequado em isolamento social.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno da Personalidade Esquizoide - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (301.20 / F60.1)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "18_transtornos_personalidade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4-7",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "tp_esquizoide",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "A1. Nao deseja nem desfruta de relacoes intimas",
+          "A2. Quase sempre opta por atividades solitarias",
+          "A3. Pouco ou nenhum interesse em experiencias sexuais",
+          "A4. Tem prazer em poucas atividades",
+          "A5. Nao tem amigos proximos (exceto familiares 1o grau)",
+          "A6. Indiferente a elogio ou critica",
+          "A7. Frieza emocional, distanciamento ou embotamento afetivo"
+        ],
+        "diagnostic_rule": "Criterios gerais de TP (A-F) + >=4 de 7 criterios + exclusao",
+        "clusters": [
+          "Distanciamento Social",
+          "Restricao Afetiva"
+        ],
+        "duration": "padrao persistente e estavel",
+        "age_onset": "inicio vida adulta",
+        "functional_impairment": "isolamento social profundo; poucos relacionamentos intimos; funcionamento profissional pode ser preservado em trabalho isolado",
+        "exclusions": [
+          "esquizofrenia",
+          "transtorno bipolar/depressivo com psicotico",
+          "TEA",
+          "condicao medica"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [
+          "esquizotipica",
+          "paranoide",
+          "evitativa",
+          "TOC personalidade",
+          "depressao maior"
+        ],
+        "key_questions": [
+          "Prefere passar o tempo sozinho?",
+          "Sente pouco prazer nas coisas?",
+          "Pouco interesse em relacionamentos intimos ou sexuais?",
+          "Criticas ou elogios nao o afetam?",
+          "Se descreve como frio ou distante emocionalmente?",
+          "Tem amigos proximos alem de familia?"
+        ],
+        "alerts": [
+          "Distinguir isolamento preferido (TPEsq) de isolamento por medo (evitativa)"
+        ],
+        "source_trace": {
+          "markdown_section": "## 2. Transtorno da Personalidade Esquizoide (TPEsq)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 301.20 / F60.1",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Padrao difuso de distanciamento das relacoes sociais e faixa restrita de expressao emocional. Exige 4+ de 7 criterios: (1) nao deseja nem desfruta relacoes intimas, (2) opta por atividades solitarias, (3) pouco interesse em experiencias sexuais, (4) prazer em poucas/nenhuma atividades, (5) nao tem amigos proximos alem de familiares de 1o grau, (6) indiferente a elogio ou critica, (7) frieza emocional/distantamento/embotamento afetivo. Exclusao: nao ocorre exclusivamente durante esquizofrenia, TB/depressivo com psicose, outro psicotico ou TEA; nao atribuivel a condicao medica.",
+        "notas_clinicas": "- **Notas:** Prevalencia: 3,1% (NESARC) a 4,9% (NCS-R). Incomum em contextos clinicos. Mais diagnosticado em homens. Pode ter episodios psicoticos breves sob estresse. Comorbidade: TP esquizotipica, paranoide, evitativa; transtorno depressivo maior. Especificador \"pre-morbido\". Diferenciar de TEA (TEA tem interacao social mais comprometida e comportamentos estereotipados)."
+      },
+      "codigo_cid11": "6D10",
+      "super_enrichment": {
+        "id": "tp_esquizoide",
+        "nome_original": "Transtorno da Personalidade Esquizoide",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Esquizofrenia",
+            "ponto_distincao": "Esquizofrenia: sintomas psicóticos persistentes; TPE deve ter estado presente antes.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno do Espectro Autista",
+            "ponto_distincao": "TEA: interação social mais gravemente comprometida, comportamentos estereotipados.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno da Personalidade Evitativa",
+            "ponto_distincao": "Evitativa: deseja relacionamentos mas teme rejeição; esquizoide: falta de desejo de intimidade.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "3,1% a 4,9%",
+          "proporcao_sexo": "Diagnosticado um pouco mais em homens",
+          "variacoes_culturais": "Imigrantes podem ser incorretamente vistos como frios ou indiferentes."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+          "trajetoria": "Crônico; pode preceder esquizofrenia.",
+          "prognostico": "Funcionamento profissional pode ser adequado em isolamento social."
+        },
+        "instrumentos_complementares": [],
+        "transtorno_da_personalidade_esquizoide": "```yaml\ncodigo_dsm5: \"301.20\"\ncodigo_cid10: \"F60.1\"\ncategoria_operacional: FULL\ncluster: A\nestrutura_diagnostica: polythetic_monocluster\n```",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "**A.** Padrao difuso de **distanciamento das relacoes sociais** e **faixa restrita de expressao emocional** em contextos interpessoais, inicio na vida adulta, presente em varios contextos, indicado por **4+** dos seguintes (7 itens):\n\n| # | Criterio |\n|---|----------|\n| A1 | Nao deseja nem desfruta de relacoes intimas, inclusive ser parte de uma familia |\n| A2 | Quase sempre opta por atividades solitarias |\n| A3 | Manifesta pouco ou nenhum interesse em experiencias sexuais com outra pessoa |\n| A4 | Tem prazer em poucas atividades, por vezes em nenhuma |\n| A5 | Nao tem amigos proximos ou confidentes que nao sejam familiares de primeiro grau |\n| A6 | Mostra-se indiferente ao elogio ou a critica de outros |\n| A7 | Demonstra frieza emocional, distanciamento ou embotamento afetivo |\n\n**B.** **Exclusao**: Nao ocorre exclusivamente durante esquizofrenia, transtorno bipolar ou depressivo com sintomas psicoticos, outro transtorno psicotico, ou TEA; nao atribuivel a efeitos fisiologicos de outra condicao medica.\n\n> Nota: Se criterios atendidos antes de esquizofrenia → acrescentar \"pre-morbido\"."
+          }
+        ],
+        "regra_diagnostica": "- Criterios gerais de TP (A-F) + Criterio A acima (4+ de 7) + Criterio B (exclusao)\n- **Liminar**: 4/7 sintomas especificos",
+        "duracao_idade_prejuizo": {
+          "idade_de_inicio": "Inicio da vida adulta",
+          "duracao": "Padrao persistente e estavel",
+          "prejuizo_funcional": "Isolamento social profundo; poucos ou nenhum relacionamento intimo; funcionamento profissional pode ser preservado em trabalho isolado; dificuldade em relacionamentos interpessoais"
+        },
+        "exclusoes_obrigatorias": [
+          "Esquizofrenia / Transtorno psicotico (exclusao formal)",
+          "Transtorno bipolar ou depressivo com sintomas psicoticos (exclusao formal)",
+          "TEA (exclusao formal)",
+          "Mudanca de personalidade devido a condicao medica",
+          "Transtorno de personalidade esquizotipica (diferenciar: distorcoes cognitivas/perceptivas ausentes em TPEsq)",
+          "Transtorno de personalidade paranoide (diferenciar: ausencia de ideação paranoide)",
+          "Transtorno de personalidade evitativa (diferenciar: TPEsq nao deseja intimidade; evitativa deseja mas tem medo)",
+          "Transtorno de personalidade obsessivo-compulsiva (diferenciar: distanciamento por trabalho, capacidade subjacente de intimidade)",
+          "Transtorno depressive maior (diferenciar: anedonia como episodio vs. traco permanente)",
+          "Uso de substancia"
+        ],
+        "gravidade": {
+          "tipo": "nao_aplica"
+        },
+        "subtipos": [
+          "Sem subtipos formais"
+        ],
+        "diferenciais_criticos": "1. **Distinguir** isolamento preferido (TPEsq) de isolamento por medo (evitativa)\n2. **Nao confundir** \"frieza emocional\" com alexitimia ou estilo cultural\n3. **Verificar** indiferencia real a elogios/criticas vs. mascaramento\n4. **Nao diagnosticar** durante periodo de luto prolongado ou depressao\n5. Distinguir de TEA: TPEsq nao tem deficits de comunicacao ou comportamentos estereotipados",
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "Voce prefere passar o tempo sozinho a estar com outras pessoas?"
+          },
+          {
+            "numero": 2,
+            "texto": "Sente pouco prazer nas coisas que faz ou ja sentiu isso por muito tempo?"
+          },
+          {
+            "numero": 3,
+            "texto": "Tem pouco interesse em ter relacionamentos intimos ou sexuais?"
+          },
+          {
+            "numero": 4,
+            "texto": "As criticas ou elogios das pessoas parecem nao afeta-lo muito?"
+          },
+          {
+            "numero": 5,
+            "texto": "Voce se descreveria como uma pessoa fria ou distante emocionalmente?"
+          },
+          {
+            "numero": 6,
+            "texto": "Tem amigos proximos (alem de familia direta) com quem confida?"
+          }
+        ],
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_full",
+          "caracteristicas_especiais": "",
+          "tracos_egossintonicos": true,
+          "informantes_colaterais": "essencial",
+          "avaliar_estabilidade_temporal": true
+        }
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/tp_esquizoide.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": false,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "missing",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

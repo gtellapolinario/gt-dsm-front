@@ -1,0 +1,1146 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "transtorno_delirante",
+    "nome_completo": "Transtorno Delirante",
+    "sigla": "",
+    "capitulo_id": "02",
+    "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F22",
+      "cid11": "6A24",
+      "dsm5": "297.1"
+    }
+  },
+  "id": "transtorno_delirante",
+  "item_id": "transtorno_delirante",
+  "name": "Transtorno Delirante",
+  "nome_completo": "Transtorno Delirante",
+  "chapter_id": "02",
+  "chapter_name": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+  "category": "FULL",
+  "estrutura_diagnostica": "categorico_por_subtipo",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "dimensional_psicose",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas Delirantes",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "esquizofrenia_nunca_atendida",
+      "letra": "B",
+      "rotulo": "Critério A de esquizofrenia jamais atendido",
+      "descricao_completa": "O Critério A para esquizofrenia nunca foi atendido. Se alucinações estiverem presentes, não são proeminentes e têm relação com o tema delirante.",
+      "obrigatorio": true
+    },
+    {
+      "id": "funcionamento_preservado",
+      "letra": "C",
+      "rotulo": "Funcionamento preservado fora do delírio",
+      "descricao_completa": "Exceto pelo impacto direto dos delírios ou de suas ramificações, o funcionamento não está acentuadamente prejudicado e o comportamento não é claramente bizarro ou esquisito.",
+      "obrigatorio": true
+    },
+    {
+      "id": "duracao_episodios_humor",
+      "letra": "D",
+      "rotulo": "Humor breve em relação aos delírios",
+      "descricao_completa": "Se episódios maníacos ou depressivos maiores ocorreram, sua duração total foi breve em relação à duração dos períodos delirantes ativos.",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_substancias_outros",
+      "letra": "E",
+      "rotulo": "Não atribuível a substância ou outra condição",
+      "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica, nem é mais bem explicada por outro transtorno mental.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "dimensional_psicose",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "",
+    "niveis": [],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "social",
+      "label": "Relacionamento Social e Familiar"
+    },
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    }
+  ],
+  "comorbidades_frequentes": [],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Transtorno Obsessivo-Compulsivo",
+      "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TOC, deve ser diagnosticado TOC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno Dismórfico Corporal",
+      "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TDC, deve ser diagnosticado TDC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Esquizofrenia",
+      "ponto_distincao": "Diferencia-se pela ausência de outros sintomas característicos da fase ativa da esquizofrenia (ex: discurso desorganizado, sintomas negativos, alucinações auditivas proeminentes).",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtornos de Humor com Características Psicóticas",
+      "ponto_distincao": "No transtorno delirante, os delírios persistem na ausência de episódios de humor, ou os episódios de humor têm duração total breve em relação à perturbação delirante.",
+      "pertence_a_classe": false
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Idade adulta ou mais tardia",
+    "trajetoria": "O diagnóstico costuma ser estável, embora uma parte dos indivíduos possa evoluir no sentido de desenvolver esquizofrenia. A função global é geralmente melhor que a observada na esquizofrenia.",
+    "prognostico": "Costuma apresentar prejuízo funcional mais circunscrito do que outros transtornos psicóticos, permitindo funcionamento social e profissional aceitável fora das discussões delirantes."
+  },
+  "prevalencia": {
+    "populacao_geral": "Aproximadamente 0,2% ao longo da vida.",
+    "proporcao_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",
+    "variacoes_culturais": "Antecedentes culturais e religiosos individuais devem ser levados em conta na avaliação; o conteúdo dos delírios varia conforme os contextos culturais.",
+    "notas": "O subtipo mais frequente é o persecutório. A condição pode ser mais prevalente em indivíduos mais velhos."
+  },
+  "hierarquia": {
+    "presente": true,
+    "notas": "A esquizofrenia e o transtorno esquizoafetivo excluem o diagnóstico de transtorno delirante.",
+    "exclui_se_diagnosticado": [
+      "esquizofrenia",
+      "transtorno_esquizoafetivo"
+    ],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      true,
+      "Subtipo de delírio predominante",
+      true,
+      [
+        {
+          "id": "erotomanico",
+          "codigo": {
+            "dsm5": "297.1",
+            "cid10": "F22",
+            "cid11": null
+          },
+          "label": "Tipo Erotomaníaco",
+          "descricao": "Aplica-se quando o tema central do delírio é que outra pessoa está apaixonada pelo indivíduo.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "grandioso",
+          "codigo": {
+            "dsm5": "297.1",
+            "cid10": "F22",
+            "cid11": null
+          },
+          "label": "Tipo Grandioso",
+          "descricao": "Aplica-se quando o tema central do delírio é a convicção de ter algum grande talento ou insight (embora não reconhecido) ou de ter feito alguma descoberta importante.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "ciumento",
+          "codigo": {
+            "dsm5": "297.1",
+            "cid10": "F22",
+            "cid11": null
+          },
+          "label": "Tipo Ciumento",
+          "descricao": "Aplica-se quando o tema central do delírio do indivíduo é de que seu cônjuge ou parceiro é infiel.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "persecutorio",
+          "codigo": {
+            "dsm5": "297.1",
+            "cid10": "F22",
+            "cid11": null
+          },
+          "label": "Tipo Persecutório",
+          "descricao": "Aplica-se quando o tema central do delírio envolve a crença do indivíduo de que está sendo alvo de conspiração, enganado, espiado, seguido, envenenado ou drogado, difamado de forma maliciosa, assediado ou obstruído na busca de metas de longo prazo.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "somatico",
+          "codigo": {
+            "dsm5": "297.1",
+            "cid10": "F22",
+            "cid11": null
+          },
+          "label": "Tipo Somático",
+          "descricao": "Aplica-se quando o tema central do delírio envolve funções ou sensações corporais.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "misto",
+          "codigo": {
+            "dsm5": "297.1",
+            "cid10": "F22",
+            "cid11": null
+          },
+          "label": "Tipo Misto",
+          "descricao": "Aplica-se quando nenhum tema delirante predomina.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "nao_especificado",
+          "codigo": {
+            "dsm5": "297.1",
+            "cid10": "F22",
+            "cid11": null
+          },
+          "label": "Tipo Não Especificado",
+          "descricao": "Aplica-se quando a crença delirante dominante não pode ser determinada com clareza ou não é descrita nos tipos específicos.",
+          "sintomas_caracteristicos": []
+        }
+      ],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [
+    {
+      "id": "com_conteudo_bizarro",
+      "nome": "Com conteúdo bizarro",
+      "descricao": ""
+    },
+    {
+      "id": "curso_apos_um_ano",
+      "nome": "Especificador de Curso (após 1 ano de duração)",
+      "descricao": ""
+    }
+  ],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
+    "fonte_inventario_md": "inventario/02_inventario.md",
+    "data_extracao": "2026-05-21",
+    "modelo_agente": "antigravity-ide",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "transtorno_delirante",
+      "nome_completo": "Transtorno Delirante",
+      "sigla": "",
+      "capitulo_id": "02",
+      "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+      "grupo": null,
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "transversal",
+      "codigo": {
+        "cid10": "F22",
+        "cid11": "6A24",
+        "dsm5": "297.1"
+      }
+    },
+    "id": "transtorno_delirante",
+    "item_id": "transtorno_delirante",
+    "name": "Transtorno Delirante",
+    "nome_completo": "Transtorno Delirante",
+    "chapter_id": "02",
+    "chapter_name": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+    "category": "FULL",
+    "estrutura_diagnostica": "categorico_por_subtipo",
+    "estrutura_geral": "categorico_por_subtipo",
+    "ui_mode": "structured_full",
+    "severity_type": "dimensional_psicose",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Sintomas Delirantes",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "esquizofrenia_nunca_atendida",
+        "letra": "B",
+        "rotulo": "Critério A de esquizofrenia jamais atendido",
+        "descricao_completa": "O Critério A para esquizofrenia nunca foi atendido. Se alucinações estiverem presentes, não são proeminentes e têm relação com o tema delirante.",
+        "obrigatorio": true
+      },
+      {
+        "id": "funcionamento_preservado",
+        "letra": "C",
+        "rotulo": "Funcionamento preservado fora do delírio",
+        "descricao_completa": "Exceto pelo impacto direto dos delírios ou de suas ramificações, o funcionamento não está acentuadamente prejudicado e o comportamento não é claramente bizarro ou esquisito.",
+        "obrigatorio": true
+      },
+      {
+        "id": "duracao_episodios_humor",
+        "letra": "D",
+        "rotulo": "Humor breve em relação aos delírios",
+        "descricao_completa": "Se episódios maníacos ou depressivos maiores ocorreram, sua duração total foi breve em relação à duração dos períodos delirantes ativos.",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_substancias_outros",
+        "letra": "E",
+        "rotulo": "Não atribuível a substância ou outra condição",
+        "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica, nem é mais bem explicada por outro transtorno mental.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "dimensional_psicose",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "",
+      "niveis": [],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "social",
+        "label": "Relacionamento Social e Familiar"
+      },
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      }
+    ],
+    "comorbidades_frequentes": [],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TOC, deve ser diagnosticado TOC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno Dismórfico Corporal",
+        "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TDC, deve ser diagnosticado TDC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Esquizofrenia",
+        "ponto_distincao": "Diferencia-se pela ausência de outros sintomas característicos da fase ativa da esquizofrenia (ex: discurso desorganizado, sintomas negativos, alucinações auditivas proeminentes).",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtornos de Humor com Características Psicóticas",
+        "ponto_distincao": "No transtorno delirante, os delírios persistem na ausência de episódios de humor, ou os episódios de humor têm duração total breve em relação à perturbação delirante.",
+        "pertence_a_classe": false
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Idade adulta ou mais tardia",
+      "trajetoria": "O diagnóstico costuma ser estável, embora uma parte dos indivíduos possa evoluir no sentido de desenvolver esquizofrenia. A função global é geralmente melhor que a observada na esquizofrenia.",
+      "prognostico": "Costuma apresentar prejuízo funcional mais circunscrito do que outros transtornos psicóticos, permitindo funcionamento social e profissional aceitável fora das discussões delirantes."
+    },
+    "prevalencia": {
+      "populacao_geral": "Aproximadamente 0,2% ao longo da vida.",
+      "proporcao_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",
+      "variacoes_culturais": "Antecedentes culturais e religiosos individuais devem ser levados em conta na avaliação; o conteúdo dos delírios varia conforme os contextos culturais.",
+      "notas": "O subtipo mais frequente é o persecutório. A condição pode ser mais prevalente em indivíduos mais velhos."
+    },
+    "hierarquia": {
+      "presente": true,
+      "notas": "A esquizofrenia e o transtorno esquizoafetivo excluem o diagnóstico de transtorno delirante.",
+      "exclui_se_diagnosticado": [
+        "esquizofrenia",
+        "transtorno_esquizoafetivo"
+      ],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        true,
+        "Subtipo de delírio predominante",
+        true,
+        [
+          {
+            "id": "erotomanico",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Erotomaníaco",
+            "descricao": "Aplica-se quando o tema central do delírio é que outra pessoa está apaixonada pelo indivíduo.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "grandioso",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Grandioso",
+            "descricao": "Aplica-se quando o tema central do delírio é a convicção de ter algum grande talento ou insight (embora não reconhecido) ou de ter feito alguma descoberta importante.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "ciumento",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Ciumento",
+            "descricao": "Aplica-se quando o tema central do delírio do indivíduo é de que seu cônjuge ou parceiro é infiel.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "persecutorio",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Persecutório",
+            "descricao": "Aplica-se quando o tema central do delírio envolve a crença do indivíduo de que está sendo alvo de conspiração, enganado, espiado, seguido, envenenado ou drogado, difamado de forma maliciosa, assediado ou obstruído na busca de metas de longo prazo.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "somatico",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Somático",
+            "descricao": "Aplica-se quando o tema central do delírio envolve funções ou sensações corporais.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "misto",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Misto",
+            "descricao": "Aplica-se quando nenhum tema delirante predomina.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "nao_especificado",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Não Especificado",
+            "descricao": "Aplica-se quando a crença delirante dominante não pode ser determinada com clareza ou não é descrita nos tipos específicos.",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [
+      {
+        "id": "com_conteudo_bizarro",
+        "nome": "Com conteúdo bizarro",
+        "descricao": ""
+      },
+      {
+        "id": "curso_apos_um_ano",
+        "nome": "Especificador de Curso (após 1 ano de duração)",
+        "descricao": ""
+      }
+    ],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
+      "fonte_inventario_md": "inventario/02_inventario.md",
+      "data_extracao": "2026-05-21",
+      "modelo_agente": "antigravity-ide",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_delirante",
+        "nome_completo": "Transtorno Delirante",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "297.1",
+          "cid10": "F22",
+          "cid11": "6A24"
+        },
+        "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+        "capitulo_id": "02",
+        "grupo": null,
+        "faixa_etaria_alvo": "transversal",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "categorico_por_subtipo",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Sintomas Delirantes",
+          "tipo": "unico_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Presença de um ou mais delírios",
+              "desc": "Presença de um ou mais delírios com duração de um mês ou mais.",
+              "pergunta": "Você tem tido ideias ou crenças muito fortes que as outras pessoas dizem não ser reais, durando pelo menos um mês?",
+              "exemplos_clinicos": [
+                "Acreditar estar sendo seguido, envenenado, amado à distância ou traído pelo parceiro"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": "Presença de um ou mais delírios com duração de um mês ou mais. Alucinações, se presentes, não são proeminentes e relacionam-se ao tema delirante.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "esquizofrenia_nunca_atendida",
+          "letra": "B",
+          "rotulo": "Critério A de esquizofrenia jamais atendido",
+          "tipo": "exclusao_outro_transtorno_da_classe",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "esquizofrenia"
+          ],
+          "descricao_completa": "O Critério A para esquizofrenia nunca foi atendido. Se alucinações estiverem presentes, não são proeminentes e têm relação com o tema delirante.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "funcionamento_preservado",
+          "letra": "C",
+          "rotulo": "Funcionamento preservado fora do delírio",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-user-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Exceto pelo impacto direto dos delírios ou de suas ramificações, o funcionamento não está acentuadamente prejudicado e o comportamento não é claramente bizarro ou esquisito.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "duracao_episodios_humor",
+          "letra": "D",
+          "rotulo": "Humor breve em relação aos delírios",
+          "tipo": "temporal_proporcao",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-hourglass-half",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Se episódios maníacos ou depressivos maiores ocorreram, sua duração total foi breve em relação à duração dos períodos delirantes ativos.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancias_outros",
+          "letra": "E",
+          "rotulo": "Não atribuível a substância ou outra condição",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-shield-alt",
+          "ddx_sugeridos": [
+            "transtorno_obsessivo_compulsivo",
+            "transtorno_dismorfico_corporal"
+          ],
+          "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica, nem é mais bem explicada por outro transtorno mental.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": true,
+        "nome": "Subtipo de delírio predominante",
+        "mutuamente_exclusivos": true,
+        "subtipos": [
+          {
+            "id": "erotomanico",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Erotomaníaco",
+            "descricao": "Aplica-se quando o tema central do delírio é que outra pessoa está apaixonada pelo indivíduo.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "grandioso",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Grandioso",
+            "descricao": "Aplica-se quando o tema central do delírio é a convicção de ter algum grande talento ou insight (embora não reconhecido) ou de ter feito alguma descoberta importante.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "ciumento",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Ciumento",
+            "descricao": "Aplica-se quando o tema central do delírio do indivíduo é de que seu cônjuge ou parceiro é infiel.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "persecutorio",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Persecutório",
+            "descricao": "Aplica-se quando o tema central do delírio envolve a crença do indivíduo de que está sendo alvo de conspiração, enganado, espiado, seguido, envenenado ou drogado, difamado de forma maliciosa, assediado ou obstruído na busca de metas de longo prazo.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "somatico",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Somático",
+            "descricao": "Aplica-se quando o tema central do delírio envolve funções ou sensações corporais.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "misto",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Misto",
+            "descricao": "Aplica-se quando nenhum tema delirante predomina.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "nao_especificado",
+            "codigo": {
+              "dsm5": "297.1",
+              "cid10": "F22",
+              "cid11": null
+            },
+            "label": "Tipo Não Especificado",
+            "descricao": "Aplica-se quando a crença delirante dominante não pode ser determinada com clareza ou não é descrita nos tipos específicos.",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "com_conteudo_bizarro",
+          "nome": "Com conteúdo bizarro",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "curso_apos_um_ano",
+          "nome": "Especificador de Curso (após 1 ano de duração)",
+          "tipo": "curso_temporal",
+          "ortogonal": true,
+          "opcoes": [
+            {
+              "id": "primeiro_episodio_agudo",
+              "label": "Primeiro episódio, atualmente em episódio agudo",
+              "codigo_adicional": null
+            },
+            {
+              "id": "primeiro_episodio_remissao_parcial",
+              "label": "Primeiro episódio, atualmente em remissão parcial",
+              "codigo_adicional": null
+            },
+            {
+              "id": "primeiro_episodio_remissao_completa",
+              "label": "Primeiro episódio, atualmente em remissão completa",
+              "codigo_adicional": null
+            },
+            {
+              "id": "episodios_multiplos_agudo",
+              "label": "Episódios múltiplos, atualmente em episódio agudo",
+              "codigo_adicional": null
+            },
+            {
+              "id": "episodios_multiplos_remissao_parcial",
+              "label": "Episódios múltiplos, atualmente em remissão parcial",
+              "codigo_adicional": null
+            },
+            {
+              "id": "episodios_multiplos_remissao_completa",
+              "label": "Episódios múltiplos, atualmente em remissão completa",
+              "codigo_adicional": null
+            },
+            {
+              "id": "continuo",
+              "label": "Contínuo",
+              "codigo_adicional": null
+            },
+            {
+              "id": "nao_especificado",
+              "label": "Não especificado",
+              "codigo_adicional": null
+            }
+          ],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "dimensional_psicose",
+        "sintomas_avaliados": [
+          "delirios",
+          "alucinacoes",
+          "discurso_desorganizado",
+          "comportamento_psicomotor_anormal",
+          "sintomas_negativos"
+        ],
+        "escala": {
+          "min": 0,
+          "max": 4,
+          "labels": [
+            "Ausente",
+            "Equívoco",
+            "Leve",
+            "Moderado",
+            "Grave"
+          ]
+        },
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": true,
+        "exclui_se_diagnosticado": [
+          "esquizofrenia",
+          "transtorno_esquizoafetivo"
+        ],
+        "exclui_diagnostico_de": [],
+        "notas": "A esquizofrenia e o transtorno esquizoafetivo excluem o diagnóstico de transtorno delirante.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "social",
+          "label": "Relacionamento Social e Familiar",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno Obsessivo-Compulsivo",
+          "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TOC, deve ser diagnosticado TOC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno Dismórfico Corporal",
+          "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TDC, deve ser diagnosticado TDC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Esquizofrenia",
+          "ponto_distincao": "Diferencia-se pela ausência de outros sintomas característicos da fase ativa da esquizofrenia (ex: discurso desorganizado, sintomas negativos, alucinações auditivas proeminentes).",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtornos de Humor com Características Psicóticas",
+          "ponto_distincao": "No transtorno delirante, os delírios persistem na ausência de episódios de humor, ou os episódios de humor têm duração total breve em relação à perturbação delirante.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "Aproximadamente 0,2% ao longo da vida.",
+        "proporcao_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",
+        "variacoes_culturais": "Antecedentes culturais e religiosos individuais devem ser levados em conta na avaliação; o conteúdo dos delírios varia conforme os contextos culturais.",
+        "notas": "O subtipo mais frequente é o persecutório. A condição pode ser mais prevalente em indivíduos mais velhos.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Idade adulta ou mais tardia",
+        "trajetoria": "O diagnóstico costuma ser estável, embora uma parte dos indivíduos possa evoluir no sentido de desenvolver esquizofrenia. A função global é geralmente melhor que a observada na esquizofrenia.",
+        "prognostico": "Costuma apresentar prejuízo funcional mais circunscrito do que outros transtornos psicóticos, permitindo funcionamento social e profissional aceitável fora das discussões delirantes.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação de Transtorno Delirante - {nome_paciente}",
+        "rodape_metodologico": "Diagnóstico estabelecido com base nos critérios diagnósticos e especificadores de subtipo e curso definidos pelo DSM-5."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
+        "fonte_inventario_md": "inventario/02_inventario.md",
+        "data_extracao": "2026-05-21",
+        "modelo_agente": "antigravity-ide",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_delirante",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "monothetic_puro",
+        "criteria": [],
+        "diagnostic_rule": "- Delírios persistentes ≥1 mês **E** nunca teve critério A de esquizofrenia **E** funcionome_completonto relativamente preservado **E** exclusões.",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "**Com conteúdo bizarro**: Delírios claramente implausíveis, incompreensíveis, não originados de experiências comuns da vida.",
+          "**Especificadores de curso** (usar SOMENTE após 1 ano):",
+          "Primeiro episódio: agudo / remissão parcial / remissão completa",
+          "Episódios múltiplos: agudo / remissão parcial / remissão completa",
+          "Contínuo"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Você tem alguma crença forte que outras pessoas não compartilham ou consideram estranha?",
+          "Há quanto tempo você mantém essa crença?",
+          "Essa crença interfere em alguma área da sua vida?",
+          "Você já ouviu vozes ou teve outras experiências incomuns?",
+          "Já teve períodos de humor muito elevado ou muito deprimido?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO DELIRANTE",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "297.1",
+      "codigo_cid10": "F22",
+      "faixa_etaria_alvo": "transversal",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Código DSM-5 / CID-10:** 297.1 (F22)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Ancora em A (>=1 delírio por >=1 mês) + B (Critério A da esquizofrenia jamais atendido) + C (funcionamento não acentuadamente prejudicado fora dos delírios; comportamento não bizarro) + D (episódios de humor, se presentes, breves vs. duração delirante) + E (exclusão: substância, condição médica, TOC, dismorfismo corporal)",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "hierarquia_exclusao": {
+        "exclui": [
+          "esquizofrenia",
+          "transtorno_esquizoafetivo"
+        ],
+        "exclui_de": [],
+        "notas_hierarquia": "A esquizofrenia e o transtorno esquizoafetivo excluem o diagnóstico de transtorno delirante."
+      },
+      "codigo_cid11": "6A24",
+      "super_enrichment": {
+        "id": "transtorno_delirante",
+        "nome_original": "TRANSTORNO DELIRANTE",
+        "comorbidades_frequentes": [],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno Obsessivo-Compulsivo",
+            "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TOC, deve ser diagnosticado TOC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno Dismórfico Corporal",
+            "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TDC, deve ser diagnosticado TDC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Esquizofrenia",
+            "ponto_distincao": "Diferencia-se pela ausência de outros sintomas característicos da fase ativa da esquizofrenia (ex: discurso desorganizado, sintomas negativos, alucinações auditivas proeminentes).",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtornos de Humor com Características Psicóticas",
+            "ponto_distincao": "No transtorno delirante, os delírios persistem na ausência de episódios de humor, ou os episódios de humor têm duração total breve em relação à perturbação delirante.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": true,
+          "exclui_se_diagnosticado": [
+            "esquizofrenia",
+            "transtorno_esquizoafetivo"
+          ],
+          "exclui_diagnostico_de": [],
+          "notas": "A esquizofrenia e o transtorno esquizoafetivo excluem o diagnóstico de transtorno delirante."
+        },
+        "prevalencia": {
+          "populacao_geral": "Aproximadamente 0,2% ao longo da vida.",
+          "proporcao_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",
+          "variacoes_culturais": "Antecedentes culturais e religiosos individuais devem ser levados em conta na avaliação; o conteúdo dos delírios varia conforme os contextos culturais."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Idade adulta ou mais tardia",
+          "trajetoria": "O diagnóstico costuma ser estável, embora uma parte dos indivíduos possa evoluir no sentido de desenvolver esquizofrenia. A função global é geralmente melhor que a observada na esquizofrenia.",
+          "prognostico": "Costuma apresentar prejuízo funcional mais circunscrito do que outros transtornos psicóticos, permitindo funcionamento social e profissional aceitável fora das discussões delirantes."
+        },
+        "instrumentos_complementares": [],
+        "transtorno_delirante": "| Campo | Valor |\n|-------|-------|\n| **nome** | Transtorno Delirante |\n| **categoria_operacional** | FULL |\n| **codigo_dsm5** | 297.1 (F22) |\n| **codigo_cid10** | F22 |\n| **estrutura_diagnostica** | monothetic_puro |",
+        "criterios_obrigatorios": [
+          {
+            "id": "A",
+            "texto": "Presença de 1+ delírios com duração de 1 mês ou mais."
+          },
+          {
+            "id": "B",
+            "texto": "Critério A para esquizofrenia JAMAIS foi atendido.\n> Nota: Alucinações, quando presentes, não são proeminentes e têm relação com o tema do delírio."
+          },
+          {
+            "id": "C",
+            "texto": "Exceto pelo impacto do(s) delírio(s), funcionamento não está acentuadamente prejudicado e comportamento não é claramente bizarro ou esquisito."
+          },
+          {
+            "id": "D",
+            "texto": "Se episódios maníacos ou depressivos ocorreram, foram breves em comparação com a duração dos períodos delirantes."
+          },
+          {
+            "id": "E",
+            "texto": "Não atribuível a efeitos fisiológicos de substância ou condição médica; não mais bem explicado por outro transtorno mental (TOC, dismórfico corporal)."
+          }
+        ],
+        "regra_diagnostica": "- Delírios persistentes ≥1 mês **E** nunca teve critério A de esquizofrenia **E** funcionamento relativamente preservado **E** exclusões.",
+        "subtipos": [
+          {
+            "Subtipo": "Erotomaníaco",
+            "Tema Central": "Outra pessoa está apaixonada pelo indivíduo"
+          },
+          {
+            "Subtipo": "Grandioso",
+            "Tema Central": "Grande talento não reconhecido, descoberta importante"
+          },
+          {
+            "Subtipo": "Ciumento",
+            "Tema Central": "Cônjuge/parceiro é infiel"
+          },
+          {
+            "Subtipo": "Persecutório",
+            "Tema Central": "Ser vítima de conspiração, espionagem, perseguição"
+          },
+          {
+            "Subtipo": "Somático",
+            "Tema Central": "Funções ou sensações corporais"
+          },
+          {
+            "Subtipo": "Misto",
+            "Tema Central": "Nenhum tema predominante"
+          },
+          {
+            "Subtipo": "Não especificado",
+            "Tema Central": "Tema dominante não pode ser determinado"
+          }
+        ],
+        "especificadores": [
+          {
+            "nome": "Com conteúdo bizarro",
+            "descricao": "Delírios claramente implausíveis, incompreensíveis, não originados de experiências comuns da vida."
+          }
+        ],
+        "gravidade": {
+          "texto_completo": "- Mesma escala dimensional (0-4 por domínio) - uso opcional"
+        },
+        "diferenciais_criticos": [
+          {
+            "Condição": "Esquizofrenia",
+            "Distinção": "Critério A de esquizofrenia NUNCA foi atendido"
+          },
+          {
+            "Condição": "TOC com insight ausente",
+            "Distinção": "Presença de obsessões/compulsões proeminentes"
+          },
+          {
+            "Condição": "Dismórfico corporal com insight ausente",
+            "Distinção": "Foco preocupação com aparência"
+          },
+          {
+            "Condição": "Transtorno depressivo/bipolar com psicose",
+            "Distinção": "Delírios ocorrem EXCLUSIVAMENTE durante episódio de humor"
+          }
+        ],
+        "perguntas_chave": "1. \"Você tem alguma crença forte que outras pessoas não compartilham ou consideram estranha?\"\n2. \"Há quanto tempo você mantém essa crença?\"\n3. \"Essa crença interfere em alguma área da sua vida?\"\n4. \"Você já ouviu vozes ou teve outras experiências incomuns?\" (excluir esquizofrenia)\n5. \"Já teve períodos de humor muito elevado ou muito deprimido?\" (excluir humor)",
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_full",
+          "observacoes": "Investigar TEMA do delírio cuidadosamente; avaliar insight; risco de violência nos subtipos persecutório/ciumento"
+        }
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_delirante.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

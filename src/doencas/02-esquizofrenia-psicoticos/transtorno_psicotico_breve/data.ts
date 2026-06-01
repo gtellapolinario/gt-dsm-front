@@ -1,0 +1,856 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "transtorno_psicotico_breve",
+    "nome_completo": "Transtorno Psicótico Breve",
+    "sigla": "TPB",
+    "capitulo_id": "02",
+    "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F23",
+      "cid11": "6A23.0",
+      "dsm5": "298.8"
+    }
+  },
+  "id": "transtorno_psicotico_breve",
+  "item_id": "transtorno_psicotico_breve",
+  "name": "Transtorno Psicótico Breve",
+  "nome_completo": "Transtorno Psicótico Breve",
+  "chapter_id": "02",
+  "chapter_name": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+  "category": "FULL",
+  "estrutura_diagnostica": "polythetic_com_ancora",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "dimensional_psicose",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas Psicóticos Ativos",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A3",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A4",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao_breve",
+      "letra": "B",
+      "rotulo": "Duração entre 1 dia e 1 mês",
+      "descricao_completa": "A duração de um episódio da perturbação é de pelo menos um dia, mas menos de um mês, com retorno completo ao nível de funcionamento pré-mórbido.",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_outros_transtornos",
+      "letra": "C",
+      "rotulo": "Não explicado por humor com psicose ou esquizofrenia",
+      "descricao_completa": "A perturbação não é mais bem explicada por transtorno depressivo ou bipolar com características psicóticas, por esquizofrenia ou catatonia, nem é atribuível a substância ou condição médica.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "dimensional_psicose",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "",
+    "niveis": [],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "social",
+      "label": "Relacionamentos Interpessoais"
+    },
+    {
+      "id": "autocuidado",
+      "label": "Autocuidado e Independência"
+    }
+  ],
+  "comorbidades_frequentes": [],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Esquizofrenia ou Transtorno Esquizofreniforme",
+      "ponto_distincao": "Se os sintomas persistirem por 1 mês ou mais, o diagnóstico deve ser alterado para transtorno esquizofreniforme (até 6 meses) ou esquizofrenia (mais de 6 meses).",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtorno Psicótico Induzido por Substância",
+      "ponto_distincao": "Diferencia-se pela relação cronológica do uso da substância com o aparecimento e a remissão das crenças e sintomas psicóticos.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtornos de Humor com Psicose",
+      "ponto_distincao": "Nos transtornos de humor, os sintomas psicóticos ocorrem apenas concomitantemente a episódios graves de humor deprimido ou maníaco.",
+      "pertence_a_classe": false
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Cerca de 30 anos",
+    "trajetoria": "O início dos sintomas é tipicamente súbito, ocorrendo uma mudança de um estado não psicótico para psicótico dentro do intervalo de duas semanas. O retorno ao nível funcional anterior é completo.",
+    "prognostico": "Excelente prognóstico em termos de recuperação total, embora haja risco significativo de comportamento autolesivo e suicídio durante o período agudo."
+  },
+  "prevalencia": {
+    "populacao_geral": "Pode responder por 9% dos casos de primeiro surto psicótico nos EUA.",
+    "proporcao_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",
+    "variacoes_culturais": "None",
+    "notas": "A idade média de início é de cerca de 30 anos."
+  },
+  "hierarquia": {
+    "presente": true,
+    "notas": "Diagnósticos de esquizofrenia, transtorno esquizoafetivo ou esquizofreniforme têm precedência diagnóstica e excluem o diagnóstico de transtorno psicótico breve caso preencham critérios temporais.",
+    "exclui_se_diagnosticado": [
+      "esquizofrenia",
+      "transtorno_esquizoafetivo",
+      "transtorno_esquizofreniforme"
+    ],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      false,
+      null,
+      true,
+      [],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [
+    {
+      "id": "com_estressores_evidentes",
+      "nome": "Com estressor(es) evidente(s) (psicose reativa breve)",
+      "descricao": ""
+    },
+    {
+      "id": "sem_estressores_evidentes",
+      "nome": "Sem estressor(es) evidente(s)",
+      "descricao": ""
+    },
+    {
+      "id": "com_inicio_no_pos_parto",
+      "nome": "Com início no pós-parto",
+      "descricao": ""
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "descricao": ""
+    }
+  ],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
+    "fonte_inventario_md": "inventario/02_inventario.md",
+    "data_extracao": "2026-05-21",
+    "modelo_agente": "antigravity-ide",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "transtorno_psicotico_breve",
+      "nome_completo": "Transtorno Psicótico Breve",
+      "sigla": "TPB",
+      "capitulo_id": "02",
+      "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+      "grupo": null,
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "transversal",
+      "codigo": {
+        "cid10": "F23",
+        "cid11": "6A23.0",
+        "dsm5": "298.8"
+      }
+    },
+    "id": "transtorno_psicotico_breve",
+    "item_id": "transtorno_psicotico_breve",
+    "name": "Transtorno Psicótico Breve",
+    "nome_completo": "Transtorno Psicótico Breve",
+    "chapter_id": "02",
+    "chapter_name": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+    "category": "FULL",
+    "estrutura_diagnostica": "polythetic_com_ancora",
+    "estrutura_geral": "polythetic_com_ancora",
+    "ui_mode": "structured_full",
+    "severity_type": "dimensional_psicose",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Sintomas Psicóticos Ativos",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A3",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A4",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "duracao_breve",
+        "letra": "B",
+        "rotulo": "Duração entre 1 dia e 1 mês",
+        "descricao_completa": "A duração de um episódio da perturbação é de pelo menos um dia, mas menos de um mês, com retorno completo ao nível de funcionamento pré-mórbido.",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_outros_transtornos",
+        "letra": "C",
+        "rotulo": "Não explicado por humor com psicose ou esquizofrenia",
+        "descricao_completa": "A perturbação não é mais bem explicada por transtorno depressivo ou bipolar com características psicóticas, por esquizofrenia ou catatonia, nem é atribuível a substância ou condição médica.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "dimensional_psicose",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "",
+      "niveis": [],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "social",
+        "label": "Relacionamentos Interpessoais"
+      },
+      {
+        "id": "autocuidado",
+        "label": "Autocuidado e Independência"
+      }
+    ],
+    "comorbidades_frequentes": [],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Esquizofrenia ou Transtorno Esquizofreniforme",
+        "ponto_distincao": "Se os sintomas persistirem por 1 mês ou mais, o diagnóstico deve ser alterado para transtorno esquizofreniforme (até 6 meses) ou esquizofrenia (mais de 6 meses).",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtorno Psicótico Induzido por Substância",
+        "ponto_distincao": "Diferencia-se pela relação cronológica do uso da substância com o aparecimento e a remissão das crenças e sintomas psicóticos.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtornos de Humor com Psicose",
+        "ponto_distincao": "Nos transtornos de humor, os sintomas psicóticos ocorrem apenas concomitantemente a episódios graves de humor deprimido ou maníaco.",
+        "pertence_a_classe": false
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Cerca de 30 anos",
+      "trajetoria": "O início dos sintomas é tipicamente súbito, ocorrendo uma mudança de um estado não psicótico para psicótico dentro do intervalo de duas semanas. O retorno ao nível funcional anterior é completo.",
+      "prognostico": "Excelente prognóstico em termos de recuperação total, embora haja risco significativo de comportamento autolesivo e suicídio durante o período agudo."
+    },
+    "prevalencia": {
+      "populacao_geral": "Pode responder por 9% dos casos de primeiro surto psicótico nos EUA.",
+      "proporcao_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",
+      "variacoes_culturais": "None",
+      "notas": "A idade média de início é de cerca de 30 anos."
+    },
+    "hierarquia": {
+      "presente": true,
+      "notas": "Diagnósticos de esquizofrenia, transtorno esquizoafetivo ou esquizofreniforme têm precedência diagnóstica e excluem o diagnóstico de transtorno psicótico breve caso preencham critérios temporais.",
+      "exclui_se_diagnosticado": [
+        "esquizofrenia",
+        "transtorno_esquizoafetivo",
+        "transtorno_esquizofreniforme"
+      ],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        false,
+        null,
+        true,
+        [],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [
+      {
+        "id": "com_estressores_evidentes",
+        "nome": "Com estressor(es) evidente(s) (psicose reativa breve)",
+        "descricao": ""
+      },
+      {
+        "id": "sem_estressores_evidentes",
+        "nome": "Sem estressor(es) evidente(s)",
+        "descricao": ""
+      },
+      {
+        "id": "com_inicio_no_pos_parto",
+        "nome": "Com início no pós-parto",
+        "descricao": ""
+      },
+      {
+        "id": "com_catatonia",
+        "nome": "Com catatonia",
+        "descricao": ""
+      }
+    ],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
+      "fonte_inventario_md": "inventario/02_inventario.md",
+      "data_extracao": "2026-05-21",
+      "modelo_agente": "antigravity-ide",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_psicotico_breve",
+        "nome_completo": "Transtorno Psicótico Breve",
+        "sigla": "TPB",
+        "codigo": {
+          "dsm5": "298.8",
+          "cid10": "F23",
+          "cid11": "6A23.0"
+        },
+        "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
+        "capitulo_id": "02",
+        "grupo": null,
+        "faixa_etaria_alvo": "transversal",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_com_ancora",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Sintomas Psicóticos Ativos",
+          "tipo": "polythetic_com_ancora",
+          "limiar": {
+            "adulto": 1,
+            "pediatria": null
+          },
+          "ancora_obrigatoria": {
+            "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
+            "ids_obrigatorios": [
+              "A1",
+              "A2",
+              "A3"
+            ],
+            "n_minimo": 1
+          },
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Delírios",
+              "desc": "Crenças fixas que não são passíveis de mudança à luz de evidências conflitantes.",
+              "pergunta": "Você vivenciou ideias ou crenças intensas e irreais que surgiram de forma repentina?",
+              "exemplos_clinicos": [
+                "Crenças persecutórias de que está sendo observado ou perseguido repentinamente"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Alucinações",
+              "desc": "Experiências semelhantes a percepções que ocorrem sem um estímulo externo.",
+              "pergunta": "Você ouviu vozes ou viu coisas que outras pessoas ao seu redor disseram não ouvir ou ver?",
+              "exemplos_clinicos": [
+                "Ouvir vozes comentando sobre as ações do paciente de forma nítida"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Discurso desorganizado",
+              "desc": "Desorganização do pensamento expressa pela fala de forma incompreensível ou descarrilada.",
+              "pergunta": "As pessoas disseram que sua conversa estava confusa, sem nexo ou difícil de acompanhar?",
+              "exemplos_clinicos": [
+                "Descarrilamento frequente da conversa ou incoerência marcante"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
+              "desc": "Inquietação física extrema, comportamento tolo e infantil, ou rigidez e estupor catatônico.",
+              "pergunta": "Você ou terceiros perceberam uma agitação incomum ou atitudes bizarras inexplicáveis?",
+              "exemplos_clinicos": [
+                "Agitação sem finalidade ou adoção de posturas corporais rígidas e estranhas"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": "Presença de pelo menos um dos sintomas, com pelo menos um sendo obrigatoriamente A1, A2 ou A3.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "duracao_breve",
+          "letra": "B",
+          "rotulo": "Duração entre 1 dia e 1 mês",
+          "tipo": "temporal_duracao_janela",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar-day",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A duração de um episódio da perturbação é de pelo menos um dia, mas menos de um mês, com retorno completo ao nível de funcionamento pré-mórbido.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros_transtornos",
+          "letra": "C",
+          "rotulo": "Não explicado por humor com psicose ou esquizofrenia",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "esquizofrenia",
+            "transtorno_esquizoafetivo",
+            "transtorno_bipolar",
+            "transtorno_depressivo_maior"
+          ],
+          "descricao_completa": "A perturbação não é mais bem explicada por transtorno depressivo ou bipolar com características psicóticas, por esquizofrenia ou catatonia, nem é atribuível a substância ou condição médica.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "com_estressores_evidentes",
+          "nome": "Com estressor(es) evidente(s) (psicose reativa breve)",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "Sintomas ocorrem em resposta a eventos que causariam estresse acentuado em qualquer pessoa.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "sem_estressores_evidentes",
+          "nome": "Sem estressor(es) evidente(s)",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "com_inicio_no_pos_parto",
+          "nome": "Com início no pós-parto",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "Sintomas iniciam-se durante a gestação ou em até 4 semanas após o parto.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "com_catatonia",
+          "nome": "Com catatonia",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "dimensional_psicose",
+        "sintomas_avaliados": [
+          "delirios",
+          "alucinacoes",
+          "discurso_desorganizado",
+          "comportamento_psicomotor_anormal",
+          "sintomas_negativos"
+        ],
+        "escala": {
+          "min": 0,
+          "max": 4,
+          "labels": [
+            "Ausente",
+            "Equívoco",
+            "Leve",
+            "Moderado",
+            "Grave"
+          ]
+        },
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": true,
+        "exclui_se_diagnosticado": [
+          "esquizofrenia",
+          "transtorno_esquizoafetivo",
+          "transtorno_esquizofreniforme"
+        ],
+        "exclui_diagnostico_de": [],
+        "notas": "Diagnósticos de esquizofrenia, transtorno esquizoafetivo ou esquizofreniforme têm precedência diagnóstica e excluem o diagnóstico de transtorno psicótico breve caso preencham critérios temporais.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "social",
+          "label": "Relacionamentos Interpessoais",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "autocuidado",
+          "label": "Autocuidado e Independência",
+          "icone_fa": "fa-home",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Esquizofrenia ou Transtorno Esquizofreniforme",
+          "ponto_distincao": "Se os sintomas persistirem por 1 mês ou mais, o diagnóstico deve ser alterado para transtorno esquizofreniforme (até 6 meses) ou esquizofrenia (mais de 6 meses).",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno Psicótico Induzido por Substância",
+          "ponto_distincao": "Diferencia-se pela relação cronológica do uso da substância com o aparecimento e a remissão das crenças e sintomas psicóticos.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtornos de Humor com Psicose",
+          "ponto_distincao": "Nos transtornos de humor, os sintomas psicóticos ocorrem apenas concomitantemente a episódios graves de humor deprimido ou maníaco.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "Pode responder por 9% dos casos de primeiro surto psicótico nos EUA.",
+        "proporcao_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",
+        "variacoes_culturais": null,
+        "notas": "A idade média de início é de cerca de 30 anos.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [
+            "prevalencia.variacoes_culturais"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Cerca de 30 anos",
+        "trajetoria": "O início dos sintomas é tipicamente súbito, ocorrendo uma mudança de um estado não psicótico para psicótico dentro do intervalo de duas semanas. O retorno ao nível funcional anterior é completo.",
+        "prognostico": "Excelente prognóstico em termos de recuperação total, embora haja risco significativo de comportamento autolesivo e suicídio durante o período agudo.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação de Transtorno Psicótico Breve - {nome_paciente}",
+        "rodape_metodologico": "Diagnóstico estabelecido com base no início agudo (dentro de 2 semanas) e duração menor que 1 mês, conforme os critérios descritos no DSM-5."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
+        "fonte_inventario_md": "inventario/02_inventario.md",
+        "data_extracao": "2026-05-21",
+        "modelo_agente": "antigravity-ide",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_psicotico_breve",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "temporal_topografico",
+        "criteria": [],
+        "diagnostic_rule": "- Sintomas psicóticos + duração 1 dia a 1 mês + retorno completo ao funcionome_completonto + exclusões",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Com estressor(es) evidente(s) (psicose reativa breve)",
+          "Sem estressor(es) evidente(s)",
+          "Com início no pós-parto (gestação ou até 4 semanas após parto)",
+          "Com catatonia (código adicional 293.89 F06.1)"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Quando esses sintomas começaram?",
+          "Já passaram? Voltou ao normal?",
+          "Houve algum evento estressante que precedeu o início?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO PSICÓTICO BREVE",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TPB",
+      "codigo_dsm5": "298.8",
+      "codigo_cid10": "F23",
+      "faixa_etaria_alvo": "transversal",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Código DSM-5 / CID-10:** 298.8 (F23)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Polythetic (>=1 de 4 sintomas; pelo menos 1 dentre delírios, alucinações ou discurso desorganizado) + B (duração >=1 dia e <1 mês, com retorno completo ao funcionamento pré-mórbido) + C (exclusão: transtorno de humor com psicose, esquizofrenia, catatonia, substância, condição médica)",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "hierarquia_exclusao": {
+        "exclui": [
+          "esquizofrenia",
+          "transtorno_esquizoafetivo",
+          "transtorno_esquizofreniforme"
+        ],
+        "exclui_de": [],
+        "notas_hierarquia": "Diagnósticos de esquizofrenia, transtorno esquizoafetivo ou esquizofreniforme têm precedência diagnóstica e excluem o diagnóstico de transtorno psicótico breve caso preencham critérios temporais."
+      },
+      "codigo_cid11": "6A23.0",
+      "super_enrichment": {
+        "id": "transtorno_psicotico_breve",
+        "nome_original": "TRANSTORNO PSICÓTICO BREVE",
+        "comorbidades_frequentes": [],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Esquizofrenia ou Transtorno Esquizofreniforme",
+            "ponto_distincao": "Se os sintomas persistirem por 1 mês ou mais, o diagnóstico deve ser alterado para transtorno esquizofreniforme (até 6 meses) ou esquizofrenia (mais de 6 meses).",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno Psicótico Induzido por Substância",
+            "ponto_distincao": "Diferencia-se pela relação cronológica do uso da substância com o aparecimento e a remissão das crenças e sintomas psicóticos.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtornos de Humor com Psicose",
+            "ponto_distincao": "Nos transtornos de humor, os sintomas psicóticos ocorrem apenas concomitantemente a episódios graves de humor deprimido ou maníaco.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": true,
+          "exclui_se_diagnosticado": [
+            "esquizofrenia",
+            "transtorno_esquizoafetivo",
+            "transtorno_esquizofreniforme"
+          ],
+          "exclui_diagnostico_de": [],
+          "notas": "Diagnósticos de esquizofrenia, transtorno esquizoafetivo ou esquizofreniforme têm precedência diagnóstica e excluem o diagnóstico de transtorno psicótico breve caso preencham critérios temporais."
+        },
+        "prevalencia": {
+          "populacao_geral": "Pode responder por 9% dos casos de primeiro surto psicótico nos EUA.",
+          "proporcao_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Cerca de 30 anos",
+          "trajetoria": "O início dos sintomas é tipicamente súbito, ocorrendo uma mudança de um estado não psicótico para psicótico dentro do intervalo de duas semanas. O retorno ao nível funcional anterior é completo.",
+          "prognostico": "Excelente prognóstico em termos de recuperação total, embora haja risco significativo de comportamento autolesivo e suicídio durante o período agudo."
+        },
+        "instrumentos_complementares": [],
+        "transtorno_psicotico_breve": "| Campo | Valor |\n|-------|-------|\n| **nome** | Transtorno Psicótico Breve |\n| **categoria_operacional** | SHORT |\n| **codigo_dsm5** | 298.8 (F23) |\n| **codigo_cid10** | F23 |\n| **estrutura_diagnostica** | temporal_topografico |",
+        "criterios_obrigatorios": [
+          {
+            "id": "A",
+            "texto": "1+ dos seguintes; pelo menos 1 deve ser (1), (2) ou (3):\n1. Delírios\n2. Alucinações\n3. Discurso desorganizado\n4. Comportamento grosseiramente desorganizado ou catatônico"
+          },
+          {
+            "id": "B",
+            "texto": "Duração do episódio: pelo menos 1 dia, mas inferior a 1 mês, com eventual retorno COMPLETO ao funcionamento pré-morbido."
+          },
+          {
+            "id": "C",
+            "texto": "Não explicado por TDM/bipolar com psicose, esquizofrenia, catatonia, substância ou condição médica."
+          }
+        ],
+        "especificadores": [
+          "Com estressor(es) evidente(s) (psicose reativa breve)",
+          "Sem estressor(es) evidente(s)",
+          "Com início no pós-parto (gestação ou até 4 semanas após parto)",
+          "Com catatonia (código adicional 293.89 F06.1)"
+        ],
+        "gravidade": {
+          "texto_completo": "- Escala dimensional 0-4 (opcional)"
+        },
+        "regra_diagnostica": "- Sintomas psicóticos + duração 1 dia a 1 mês + retorno completo ao funcionamento + exclusões",
+        "diferenciais": "| Condição | Distinção |\n|----------|-----------|\n| Transtorno esquizofreniforme | Duração 1-6 meses |\n| Transtorno psicótico induzido por substância | Relação temporal com uso de substância |\n| Transtorno de adaptação | Não satisfaz critérios completos de psicose |",
+        "perguntas_chave": "1. \"Quando esses sintomas começaram?\"\n2. \"Já passaram? Voltou ao normal?\"\n3. \"Houve algum evento estressante que precedeu o início?\"",
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_compact",
+          "observacoes": "Enfatizar duração e retorno ao funcionamento; risco de suicídio durante episódio agudo"
+        }
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_psicotico_breve.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

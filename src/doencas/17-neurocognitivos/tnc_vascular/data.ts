@@ -1,0 +1,885 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "tnc_vascular",
+    "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+    "sigla": "",
+    "capitulo_id": "17",
+    "capitulo": "Transtornos Neurocognitivos",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F01.5x",
+      "cid11": "6D80.1",
+      "dsm5": "290.40"
+    }
+  },
+  "id": "tnc_vascular",
+  "item_id": "tnc_vascular",
+  "name": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+  "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+  "chapter_id": "17",
+  "chapter_name": "Transtornos Neurocognitivos",
+  "category": "FULL",
+  "estrutura_diagnostica": "monothetic_puro",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [],
+  "criterios_condicionais": [
+    {
+      "id": "criterios_tnc",
+      "letra": "A",
+      "rotulo": "São atendidos os critérios para TNC maior ou leve",
+      "descricao_completa": "São atendidos os critérios para transtorno neurocognitivo maior ou leve.",
+      "obrigatorio": true
+    },
+    {
+      "id": "etiologia_vascular",
+      "letra": "B",
+      "rotulo": "Aspectos clínicos consistentes com etiologia vascular",
+      "descricao_completa": "O surgimento de déficits cognitivos está temporariamente relacionado com um ou mais eventos cerebrovasculares, OU evidências de declínio destacadas na atenção complexa e na função executiva frontal.",
+      "obrigatorio": true
+    },
+    {
+      "id": "evidencia_doenca_cerebrovascular",
+      "letra": "C",
+      "rotulo": "Evidências de doença cerebrovascular",
+      "descricao_completa": "Há evidências da presença de doença cerebrovascular a partir da história, do exame físico e/ou de neuroimagem consideradas suficientes para responder pelos déficits cognitivos.",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_outras_etiologias",
+      "letra": "D",
+      "rotulo": "Não mais bem explicado por outra doença cerebral ou sistêmica",
+      "descricao_completa": "Os sintomas não são mais bem explicados por outra doença cerebral ou transtorno sistêmico.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "Baseada no nível de dependência funcional nas atividades da vida diária.",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "executiva",
+      "label": "Função Executiva e Atenção"
+    },
+    {
+      "id": "motor",
+      "label": "Funcionamento Motor"
+    },
+    {
+      "id": "avd",
+      "label": "Atividades da Vida Diária"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "TNC Alzheimer",
+      "frequencia": "alta",
+      "nota": "Patologia mista comum em idosos."
+    },
+    {
+      "condicao": "Depressão",
+      "frequencia": "alta",
+      "nota": "Depressão vascular comum."
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "TNC Alzheimer",
+      "ponto_distincao": "Alzheimer: início insidioso, memória precoce; Vascular: relação com AVC, déficits executivos/atenção.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "TNC com corpos de Lewy",
+      "ponto_distincao": "Lewy: oscilação, alucinações visuais; Vascular: história de AVC, infartos em imagem.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Depressão vascular",
+      "ponto_distincao": "Depressão de início tardio com desaceleração psicomotora pode simular TNC vascular; melhora com tratamento antidepressivo.",
+      "pertence_a_classe": false
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Qualquer idade; aumenta exponencialmente após 65a",
+    "trajetoria": "Variável: agudo com melhora parcial, gradual progressivo, ou flutuante com platôs.",
+    "prognostico": "Depende de controle dos fatores de risco vascular."
+  },
+  "prevalencia": {
+    "populacao_geral": "0,2% (65–70a) até 16% (≥80a); 20–30% pós-AVC",
+    "proporcao_sexo": "Mais em homens",
+    "variacoes_culturais": "Mais prevalente em afro-americanos e países do leste asiático.",
+    "notas": "Segunda causa mais comum de TNC."
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "None",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      true,
+      "Certeza diagnóstica",
+      true,
+      [
+        {
+          "id": "provavel",
+          "codigo": {
+            "dsm5": "290.40",
+            "cid10": "F01.5x",
+            "cid11": null
+          },
+          "label": "Provável",
+          "descricao": "Com neuroimagem de lesão parenquimal significativa, relação temporal com AVC documentado, ou evidências clínicas/genéticas de doença cerebrovascular.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "possivel",
+          "codigo": {
+            "dsm5": "331.9",
+            "cid10": "G31.9",
+            "cid11": null
+          },
+          "label": "Possível",
+          "descricao": "Critérios clínicos atendidos sem neuroimagem disponível ou relação temporal não estabelecida.",
+          "sintomas_caracteristicos": []
+        }
+      ],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "antigravity-gemini",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [
+    {
+      "nome": "Neuroimagem (TC/RM)",
+      "sigla": null,
+      "uso": "diagnostico",
+      "obrigatorio_para_diagnostico": true,
+      "fonte": "mencionado_no_dsm"
+    }
+  ],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "tnc_vascular",
+      "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+      "sigla": "",
+      "capitulo_id": "17",
+      "capitulo": "Transtornos Neurocognitivos",
+      "grupo": null,
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [
+        "Demência vascular"
+      ],
+      "faixa_etaria_alvo": "transversal",
+      "codigo": {
+        "cid10": "F01.5x",
+        "cid11": "6D80.1",
+        "dsm5": "290.40"
+      }
+    },
+    "id": "tnc_vascular",
+    "item_id": "tnc_vascular",
+    "name": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+    "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+    "chapter_id": "17",
+    "chapter_name": "Transtornos Neurocognitivos",
+    "category": "FULL",
+    "estrutura_diagnostica": "monothetic_puro",
+    "estrutura_geral": "monothetic_puro",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [],
+    "criterios_condicionais": [
+      {
+        "id": "criterios_tnc",
+        "letra": "A",
+        "rotulo": "São atendidos os critérios para TNC maior ou leve",
+        "descricao_completa": "São atendidos os critérios para transtorno neurocognitivo maior ou leve.",
+        "obrigatorio": true
+      },
+      {
+        "id": "etiologia_vascular",
+        "letra": "B",
+        "rotulo": "Aspectos clínicos consistentes com etiologia vascular",
+        "descricao_completa": "O surgimento de déficits cognitivos está temporariamente relacionado com um ou mais eventos cerebrovasculares, OU evidências de declínio destacadas na atenção complexa e na função executiva frontal.",
+        "obrigatorio": true
+      },
+      {
+        "id": "evidencia_doenca_cerebrovascular",
+        "letra": "C",
+        "rotulo": "Evidências de doença cerebrovascular",
+        "descricao_completa": "Há evidências da presença de doença cerebrovascular a partir da história, do exame físico e/ou de neuroimagem consideradas suficientes para responder pelos déficits cognitivos.",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_outras_etiologias",
+        "letra": "D",
+        "rotulo": "Não mais bem explicado por outra doença cerebral ou sistêmica",
+        "descricao_completa": "Os sintomas não são mais bem explicados por outra doença cerebral ou transtorno sistêmico.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "Baseada no nível de dependência funcional nas atividades da vida diária.",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "executiva",
+        "label": "Função Executiva e Atenção"
+      },
+      {
+        "id": "motor",
+        "label": "Funcionamento Motor"
+      },
+      {
+        "id": "avd",
+        "label": "Atividades da Vida Diária"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "TNC Alzheimer",
+        "frequencia": "alta",
+        "nota": "Patologia mista comum em idosos."
+      },
+      {
+        "condicao": "Depressão",
+        "frequencia": "alta",
+        "nota": "Depressão vascular comum."
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "TNC Alzheimer",
+        "ponto_distincao": "Alzheimer: início insidioso, memória precoce; Vascular: relação com AVC, déficits executivos/atenção.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "TNC com corpos de Lewy",
+        "ponto_distincao": "Lewy: oscilação, alucinações visuais; Vascular: história de AVC, infartos em imagem.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Depressão vascular",
+        "ponto_distincao": "Depressão de início tardio com desaceleração psicomotora pode simular TNC vascular; melhora com tratamento antidepressivo.",
+        "pertence_a_classe": false
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Qualquer idade; aumenta exponencialmente após 65a",
+      "trajetoria": "Variável: agudo com melhora parcial, gradual progressivo, ou flutuante com platôs.",
+      "prognostico": "Depende de controle dos fatores de risco vascular."
+    },
+    "prevalencia": {
+      "populacao_geral": "0,2% (65–70a) até 16% (≥80a); 20–30% pós-AVC",
+      "proporcao_sexo": "Mais em homens",
+      "variacoes_culturais": "Mais prevalente em afro-americanos e países do leste asiático.",
+      "notas": "Segunda causa mais comum de TNC."
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "None",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        true,
+        "Certeza diagnóstica",
+        true,
+        [
+          {
+            "id": "provavel",
+            "codigo": {
+              "dsm5": "290.40",
+              "cid10": "F01.5x",
+              "cid11": null
+            },
+            "label": "Provável",
+            "descricao": "Com neuroimagem de lesão parenquimal significativa, relação temporal com AVC documentado, ou evidências clínicas/genéticas de doença cerebrovascular.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "possivel",
+            "codigo": {
+              "dsm5": "331.9",
+              "cid10": "G31.9",
+              "cid11": null
+            },
+            "label": "Possível",
+            "descricao": "Critérios clínicos atendidos sem neuroimagem disponível ou relação temporal não estabelecida.",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "antigravity-gemini",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [
+      {
+        "nome": "Neuroimagem (TC/RM)",
+        "sigla": null,
+        "uso": "diagnostico",
+        "obrigatorio_para_diagnostico": true,
+        "fonte": "mencionado_no_dsm"
+      }
+    ],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "tnc_vascular",
+        "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "290.40",
+          "cid10": "F01.5x",
+          "cid11": "6D80.1"
+        },
+        "capitulo": "Transtornos Neurocognitivos",
+        "capitulo_id": "17",
+        "grupo": null,
+        "faixa_etaria_alvo": "transversal",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Demência vascular"
+        ]
+      },
+      "estrutura_geral": "monothetic_puro",
+      "clusters_sintomas": [],
+      "criterios_condicionais": [
+        {
+          "id": "criterios_tnc",
+          "letra": "A",
+          "rotulo": "São atendidos os critérios para TNC maior ou leve",
+          "tipo": "condicao_associada_obrigatoria",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "São atendidos os critérios para transtorno neurocognitivo maior ou leve.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "etiologia_vascular",
+          "letra": "B",
+          "rotulo": "Aspectos clínicos consistentes com etiologia vascular",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-heart-pulse",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O surgimento de déficits cognitivos está temporariamente relacionado com um ou mais eventos cerebrovasculares, OU evidências de declínio destacadas na atenção complexa e na função executiva frontal.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "evidencia_doenca_cerebrovascular",
+          "letra": "C",
+          "rotulo": "Evidências de doença cerebrovascular",
+          "tipo": "achado_objetivo_obrigatorio",
+          "ui_widget": "checklist_achados_objetivos",
+          "obrigatorio": true,
+          "icone_fa": "fa-x-ray",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Há evidências da presença de doença cerebrovascular a partir da história, do exame físico e/ou de neuroimagem consideradas suficientes para responder pelos déficits cognitivos.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outras_etiologias",
+          "letra": "D",
+          "rotulo": "Não mais bem explicado por outra doença cerebral ou sistêmica",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "tnc_alzheimer",
+            "tnc_corpos_lewy",
+            "delirium"
+          ],
+          "descricao_completa": "Os sintomas não são mais bem explicados por outra doença cerebral ou transtorno sistêmico.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": true,
+        "nome": "Certeza diagnóstica",
+        "mutuamente_exclusivos": true,
+        "subtipos": [
+          {
+            "id": "provavel",
+            "codigo": {
+              "dsm5": "290.40",
+              "cid10": "F01.5x",
+              "cid11": null
+            },
+            "label": "Provável",
+            "descricao": "Com neuroimagem de lesão parenquimal significativa, relação temporal com AVC documentado, ou evidências clínicas/genéticas de doença cerebrovascular.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "possivel",
+            "codigo": {
+              "dsm5": "331.9",
+              "cid10": "G31.9",
+              "cid11": null
+            },
+            "label": "Possível",
+            "descricao": "Critérios clínicos atendidos sem neuroimagem disponível ou relação temporal não estabelecida.",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Dificuldades com atividades instrumentais da vida diária (AIVDs)."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Dificuldades com atividades básicas da vida diária (ABVDs)."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Totalmente dependente de cuidados."
+          }
+        ],
+        "regra_atribuicao": "Baseada no nível de dependência funcional nas atividades da vida diária.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "executiva",
+          "label": "Função Executiva e Atenção",
+          "icone_fa": "fa-brain",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "motor",
+          "label": "Funcionamento Motor",
+          "icone_fa": "fa-walking",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "avd",
+          "label": "Atividades da Vida Diária",
+          "icone_fa": "fa-home",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "TNC Alzheimer",
+          "ponto_distincao": "Alzheimer: início insidioso, memória precoce; Vascular: relação com AVC, déficits executivos/atenção.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "TNC com corpos de Lewy",
+          "ponto_distincao": "Lewy: oscilação, alucinações visuais; Vascular: história de AVC, infartos em imagem.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Depressão vascular",
+          "ponto_distincao": "Depressão de início tardio com desaceleração psicomotora pode simular TNC vascular; melhora com tratamento antidepressivo.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "TNC Alzheimer",
+          "frequencia": "alta",
+          "nota": "Patologia mista comum em idosos."
+        },
+        {
+          "condicao": "Depressão",
+          "frequencia": "alta",
+          "nota": "Depressão vascular comum."
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Neuroimagem (TC/RM)",
+          "sigla": null,
+          "uso": "diagnostico",
+          "obrigatorio_para_diagnostico": true,
+          "fonte": "mencionado_no_dsm"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "0,2% (65–70a) até 16% (≥80a); 20–30% pós-AVC",
+        "proporcao_sexo": "Mais em homens",
+        "variacoes_culturais": "Mais prevalente em afro-americanos e países do leste asiático.",
+        "notas": "Segunda causa mais comum de TNC.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Qualquer idade; aumenta exponencialmente após 65a",
+        "trajetoria": "Variável: agudo com melhora parcial, gradual progressivo, ou flutuante com platôs.",
+        "prognostico": "Depende de controle dos fatores de risco vascular.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação de TNC Vascular - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (290.40 / F01.5x)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "tnc_vascular",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "etiologico_interno",
+        "criteria": [
+          "A. Atendidos os critérios para Transtorno Neurocognitivo Maior ou Leve",
+          "B. Aspectos clínicos consistentes com etiologia vascular (relação temporal com eventos cerebrovasculares ou declínio proeminente na atenção complexa e velocidade de processamento/função executiva)",
+          "C. Evidências da presença de doença cerebrovascular pela história, exame físico e/ou exames de neuroimagem considerados suficientes para responder pelos déficits cognitivos",
+          "D. Os sintomas não são mais bem explicados por outra doença cerebral ou transtorno sistêmico"
+        ],
+        "diagnostic_rule": "Critérios de TNC (Maior ou Leve) + Relação temporal com AVC ou perfil cognitivo executivo típico + Evidência objetiva de doença cerebrovascular (imagem/clínica) + Exclusão de outras etiologias",
+        "clusters": [
+          "Atenção complexa",
+          "Função executiva",
+          "Velocidade de processamento"
+        ],
+        "duration": "variável (início agudo, progressão em degraus, flutuante ou platôs de estabilização)",
+        "age_onset": "geralmente em idade avançada, correlacionando-se com fatores de risco cardiovascular (hipertensão, diabetes, dislipidemia)",
+        "functional_impairment": "prejuízo funcional correlacionado com déficits executivos (dificuldade de planejamento, tomada de decisões) e comumente associado a sintomas motores ou neurológicos focais",
+        "exclusions": [
+          "Doença de Alzheimer",
+          "TNC com corpos de Lewy",
+          "Delirium",
+          "Depressão vascular"
+        ],
+        "subtypes_presentations": [
+          {
+            "id": "provavel_vascular_maior",
+            "nome_completo": "Provável Transtorno Neurocognitivo Vascular Maior"
+          },
+          {
+            "id": "possivel_vascular_maior",
+            "nome_completo": "Possível Transtorno Neurocognitivo Vascular Maior"
+          },
+          {
+            "id": "provavel_vascular_leve",
+            "nome_completo": "Provável Transtorno Neurocognitivo Vascular Leve"
+          },
+          {
+            "id": "possivel_vascular_leve",
+            "nome_completo": "Possível Transtorno Neurocognitivo Vascular Leve"
+          }
+        ],
+        "specifiers": [
+          {
+            "id": "sem_perturbacao",
+            "nome_completo": "Sem perturbação comportamental"
+          },
+          {
+            "id": "com_perturbacao",
+            "nome_completo": "Com perturbação comportamental"
+          }
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "funcionome_completonto_adaptativo",
+          "levels": [
+            "leve",
+            "moderada",
+            "grave"
+          ],
+          "assignment_rule": "leve: dificuldades com AIVDs complexas; moderada: dificuldades com ABVDs; grave: totalmente dependente de cuidados",
+          "domains": [
+            "AIVDs complexas",
+            "ABVDs"
+          ]
+        },
+        "critical_differentials": [
+          "TNC devido à doença de Alzheimer",
+          "TNC com corpos de Lewy",
+          "Depressão maior",
+          "Delirium"
+        ],
+        "key_questions": [
+          "Houve início abrupto dos déficits ou piora nítida em degraus após um infarto cerebral ou derrame?",
+          "As principais queixas referem-se à lentidão para pensar, dificuldade para planejar tarefas e desatenção, mais do que perda de memória pura?",
+          "Existem exames de neuroimagem (RM ou TC) mostrando lesões vasculares, infartos lacunares ou doença difusa da substância branca substanciais?",
+          "O paciente apresenta sintomas físicos como marcha magnética/instável, incontinência urinária precoce ou paralisia pseudobulbar?"
+        ],
+        "alerts": [
+          "A neuroimagem estrutural (RM ou TC) é essencial para fundamentar a classificação como 'Provável'.",
+          "Comumente coexiste com patologia de Alzheimer (quadros mistos)."
+        ],
+        "source_trace": {
+          "markdown_section": "## FICHA 17.9: TRANSTORNO NEUROCOGNITIVO VASCULAR",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "290.40",
+      "codigo_cid10": "F01.5x",
+      "faixa_etaria_alvo": "transversal",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** Provavel: 290.40 (F01.5x); Possivel: 331.9 (G31.9); Leve: 331.83 (G31.84)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Deficits cognitivos temporalmente relacionados a evento cerebrovascular ou com declinio em atencao complexa/funcao executiva. Evidencia de doenca cerebrovascular em historia/exame/neuroimagem suficiente para explicar deficits.",
+        "notas_clinicas": "- **Notas:** Segunda causa mais comum de TNC. Curso variavel: inicio agudo com melhora parcial a declinio gradual. Fatores de risco: hipertensao, diabetes, tabagismo, fibrilacao atrial. CADASIL como fator genetico. Prevalencia 0,2-16% apos 65 anos."
+      },
+      "codigo_cid11": "6D80.1",
+      "super_enrichment": {
+        "id": "tnc_vascular",
+        "nome_original": "Doenca Vascular",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "TNC Alzheimer",
+            "frequencia": "alta",
+            "nota": "Patologia mista comum em idosos."
+          },
+          {
+            "condicao": "Depressão",
+            "frequencia": "alta",
+            "nota": "Depressão vascular comum."
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "TNC Alzheimer",
+            "ponto_distincao": "Alzheimer: início insidioso, memória precoce; Vascular: relação com AVC, déficits executivos/atenção.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "TNC com corpos de Lewy",
+            "ponto_distincao": "Lewy: oscilação, alucinações visuais; Vascular: história de AVC, infartos em imagem.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Depressão vascular",
+            "ponto_distincao": "Depressão de início tardio com desaceleração psicomotora pode simular TNC vascular; melhora com tratamento antidepressivo.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "0,2% (65–70a) até 16% (≥80a); 20–30% pós-AVC",
+          "proporcao_sexo": "Mais em homens",
+          "variacoes_culturais": "Mais prevalente em afro-americanos e países do leste asiático."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Qualquer idade; aumenta exponencialmente após 65a",
+          "trajetoria": "Variável: agudo com melhora parcial, gradual progressivo, ou flutuante com platôs.",
+          "prognostico": "Depende de controle dos fatores de risco vascular."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Neuroimagem (TC/RM)",
+            "sigla": null,
+            "uso": "diagnostico",
+            "obrigatorio_para_diagnostico": true,
+            "fonte": "mencionado_no_dsm"
+          }
+        ],
+        "17_2_4_doenca_vascular": "**Criterios adicionais:**\n- B: Evidencias cerebrovasculares por exame fisico ou neuroimagem\n- C: Historia de AVC clinicamente documentado; OU evidencias de disturbios cerebrovasculares graves por neuroimagem (infartos extensos, leucoencefalopatia, lesoes estrategicas)\n- D: Presenca temporal entre AVC e inicio do TNC\n- E: Nao explicado por outra condicao"
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/tnc_vascular.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

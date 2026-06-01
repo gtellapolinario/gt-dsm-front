@@ -1,0 +1,1124 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "transtorno_ansiedade_generalizada",
+    "nome_completo": "Transtorno de Ansiedade Generalizada",
+    "sigla": "TAG",
+    "capitulo_id": "05",
+    "capitulo": "Transtornos de Ansiedade",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F41.1",
+      "cid11": "6B00",
+      "dsm5": "300.02"
+    }
+  },
+  "id": "transtorno_ansiedade_generalizada",
+  "item_id": "transtorno_ansiedade_generalizada",
+  "name": "Transtorno de Ansiedade Generalizada",
+  "nome_completo": "Transtorno de Ansiedade Generalizada",
+  "chapter_id": "05",
+  "chapter_name": "Transtornos de Ansiedade",
+  "category": "FULL",
+  "estrutura_diagnostica": "polythetic_com_ancora",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A_C",
+      "nome": "Ansiedade Excessiva + ≥3/6 Sintomas Associados (adultos) / ≥1/6 (crianças)",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "C1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "C2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "C3",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "C4",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "C5",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "C6",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao_6meses",
+      "letra": "B",
+      "rotulo": "Duração ≥6 meses na maioria dos dias",
+      "descricao_completa": "Ansiedade e preocupação excessivas ocorrendo na maioria dos dias por pelo menos 6 meses.",
+      "obrigatorio": true
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "D",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "descricao_completa": "A ansiedade, preocupação ou sintomas físicos causam sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "E",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica (ex: hipertireoidismo).",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "F",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "descricao_completa": "Não mais bem explicado por TP, TAS, agorafobia, TEPT, TOC; se durante TDM/psicose, diagnosticar separadamente.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "None",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    },
+    {
+      "id": "saude",
+      "label": "Uso de Serviços de Saúde"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Transtorno Depressivo Maior",
+      "frequencia": "alta",
+      "nota": "Ocorrem juntos na maioria dos casos de TAG."
+    },
+    {
+      "condicao": "Transtorno de Pânico",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtornos relacionados a substâncias",
+      "frequencia": "moderada",
+      "nota": "None"
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Ansiedade situacional normativa",
+      "ponto_distincao": "TAG: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno de Pânico",
+      "ponto_distincao": "TP: ansiedade focalizada em ataques de pânico; TAG: preocupações difusas e múltiplas.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "TOC",
+      "ponto_distincao": "TOC: pensamentos intrusivos indesejados e egodistônicos; TAG: preocupações sobre problemas reais da vida, mais egossintônicas.",
+      "pertence_a_classe": false
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Relativamente precoce, porém sintomas na vida inteira; mediana de início: ~30 anos; início mais precoce que outros transtornos",
+    "trajetoria": "Crônico, com exacerbações em estresse. Pode apresentar-se de forma flutuante.",
+    "prognostico": "Remissão completa incomum sem tratamento; respondem bem a TCC e farmacoterapia."
+  },
+  "prevalencia": {
+    "populacao_geral": "0,9% em adolescentes; 2,9% em adultos (prevalência de 12 meses nos EUA); 0,4–3,6% internacionalmente",
+    "proporcao_sexo": "2:1 mulheres:homens",
+    "variacoes_culturais": "Sintomas somáticos predominam em países com menor renda; taxas menores na Ásia e África.",
+    "notas": "Segundo transtorno de ansiedade mais comum em atenção primária."
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "None",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      false,
+      null,
+      true,
+      [],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "antigravity-gemini",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [
+    {
+      "nome": "Generalized Anxiety Disorder 7-item Scale",
+      "sigla": "GAD-7",
+      "uso": "triagem",
+      "obrigatorio_para_diagnostico": false,
+      "fonte": "sugestao_clinica_padrao"
+    }
+  ],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "transtorno_ansiedade_generalizada",
+      "nome_completo": "Transtorno de Ansiedade Generalizada",
+      "sigla": "TAG",
+      "capitulo_id": "05",
+      "capitulo": "Transtornos de Ansiedade",
+      "grupo": null,
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "ambos",
+      "codigo": {
+        "cid10": "F41.1",
+        "cid11": "6B00",
+        "dsm5": "300.02"
+      }
+    },
+    "id": "transtorno_ansiedade_generalizada",
+    "item_id": "transtorno_ansiedade_generalizada",
+    "name": "Transtorno de Ansiedade Generalizada",
+    "nome_completo": "Transtorno de Ansiedade Generalizada",
+    "chapter_id": "05",
+    "chapter_name": "Transtornos de Ansiedade",
+    "category": "FULL",
+    "estrutura_diagnostica": "polythetic_com_ancora",
+    "estrutura_geral": "polythetic_com_ancora",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A_C",
+        "nome": "Ansiedade Excessiva + ≥3/6 Sintomas Associados (adultos) / ≥1/6 (crianças)",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "C1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "C2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "C3",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "C4",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "C5",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "C6",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "duracao_6meses",
+        "letra": "B",
+        "rotulo": "Duração ≥6 meses na maioria dos dias",
+        "descricao_completa": "Ansiedade e preocupação excessivas ocorrendo na maioria dos dias por pelo menos 6 meses.",
+        "obrigatorio": true
+      },
+      {
+        "id": "sofrimento_funcional",
+        "letra": "D",
+        "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+        "descricao_completa": "A ansiedade, preocupação ou sintomas físicos causam sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_substancia_medica",
+        "letra": "E",
+        "rotulo": "Não atribuível a substância ou condição médica",
+        "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica (ex: hipertireoidismo).",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_outros",
+        "letra": "F",
+        "rotulo": "Não melhor explicado por outro transtorno mental",
+        "descricao_completa": "Não mais bem explicado por TP, TAS, agorafobia, TEPT, TOC; se durante TDM/psicose, diagnosticar separadamente.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "None",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      },
+      {
+        "id": "saude",
+        "label": "Uso de Serviços de Saúde"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Transtorno Depressivo Maior",
+        "frequencia": "alta",
+        "nota": "Ocorrem juntos na maioria dos casos de TAG."
+      },
+      {
+        "condicao": "Transtorno de Pânico",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtornos relacionados a substâncias",
+        "frequencia": "moderada",
+        "nota": "None"
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Ansiedade situacional normativa",
+        "ponto_distincao": "TAG: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno de Pânico",
+        "ponto_distincao": "TP: ansiedade focalizada em ataques de pânico; TAG: preocupações difusas e múltiplas.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "TOC",
+        "ponto_distincao": "TOC: pensamentos intrusivos indesejados e egodistônicos; TAG: preocupações sobre problemas reais da vida, mais egossintônicas.",
+        "pertence_a_classe": false
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Relativamente precoce, porém sintomas na vida inteira; mediana de início: ~30 anos; início mais precoce que outros transtornos",
+      "trajetoria": "Crônico, com exacerbações em estresse. Pode apresentar-se de forma flutuante.",
+      "prognostico": "Remissão completa incomum sem tratamento; respondem bem a TCC e farmacoterapia."
+    },
+    "prevalencia": {
+      "populacao_geral": "0,9% em adolescentes; 2,9% em adultos (prevalência de 12 meses nos EUA); 0,4–3,6% internacionalmente",
+      "proporcao_sexo": "2:1 mulheres:homens",
+      "variacoes_culturais": "Sintomas somáticos predominam em países com menor renda; taxas menores na Ásia e África.",
+      "notas": "Segundo transtorno de ansiedade mais comum em atenção primária."
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "None",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        false,
+        null,
+        true,
+        [],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "antigravity-gemini",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [
+      {
+        "nome": "Generalized Anxiety Disorder 7-item Scale",
+        "sigla": "GAD-7",
+        "uso": "triagem",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "sugestao_clinica_padrao"
+      }
+    ],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_ansiedade_generalizada",
+        "nome_completo": "Transtorno de Ansiedade Generalizada",
+        "sigla": "TAG",
+        "codigo": {
+          "dsm5": "300.02",
+          "cid10": "F41.1",
+          "cid11": "6B00"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_com_ancora",
+      "clusters_sintomas": [
+        {
+          "id": "A_C",
+          "nome": "Ansiedade Excessiva + ≥3/6 Sintomas Associados (adultos) / ≥1/6 (crianças)",
+          "tipo": "polythetic_com_ancora",
+          "limiar": {
+            "adulto": 3,
+            "pediatria": 1
+          },
+          "ancora_obrigatoria": {
+            "descricao": "A1 (ansiedade e preocupação excessivas) é obrigatório",
+            "ids_obrigatorios": [
+              "A1"
+            ],
+            "n_minimo": 1
+          },
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Ansiedade e preocupação excessivas e incontroláveis",
+              "desc": "Ansiedade e preocupação excessivas (expectativa apreensiva), ocorrendo na maioria dos dias por pelo menos 6 meses, sobre vários eventos/atividades, difíceis de controlar.",
+              "pergunta": "Você se preocupa excessivamente com muitas coisas diferentes na maior parte dos dias, e tem dificuldade em parar de se preocupar?",
+              "exemplos_clinicos": [
+                "Preocupações com saúde, dinheiro, trabalho e família simultaneamente"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C1",
+              "rotulo": "Inquietação ou nervos à flor da pele",
+              "desc": "Inquietação ou sensação de estar com os nervos à flor da pele ou tenso.",
+              "pergunta": "Você se sente inquieto, tenso ou com os nervos à flor da pele a maior parte do tempo?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C2",
+              "rotulo": "Fatigabilidade (cansa-se facilmente)",
+              "desc": "Fatigabilidade — cansa-se facilmente.",
+              "pergunta": "Você se cansa facilmente, mesmo sem fazer muito esforço?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C3",
+              "rotulo": "Dificuldade de concentrar ou mente em branco",
+              "desc": "Dificuldade em concentrar-se ou brancos na mente.",
+              "pergunta": "Você tem dificuldade de concentração ou fica com a mente em branco com frequência?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C4",
+              "rotulo": "Irritabilidade",
+              "desc": "Irritabilidade.",
+              "pergunta": "Você está mais irritável do que o normal?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C5",
+              "rotulo": "Tensão muscular",
+              "desc": "Tensão muscular.",
+              "pergunta": "Você sente tensão muscular frequente (pescoço, ombros, mandíbula)?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C6",
+              "rotulo": "Perturbação do sono",
+              "desc": "Perturbação do sono: dificuldade em adormecer ou manter o sono, ou sono agitado e insatisfatório.",
+              "pergunta": "Você tem dificuldade para dormir ou acordar no meio da noite por preocupações?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "duracao_6meses",
+          "letra": "B",
+          "rotulo": "Duração ≥6 meses na maioria dos dias",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Ansiedade e preocupação excessivas ocorrendo na maioria dos dias por pelo menos 6 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "sofrimento_funcional",
+          "letra": "D",
+          "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A ansiedade, preocupação ou sintomas físicos causam sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "E",
+          "rotulo": "Não atribuível a substância ou condição médica",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "hipertireoidismo"
+          ],
+          "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica (ex: hipertireoidismo).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros",
+          "letra": "F",
+          "rotulo": "Não melhor explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_panico",
+            "tas",
+            "agorafobia",
+            "tept",
+            "toc"
+          ],
+          "descricao_completa": "Não mais bem explicado por TP, TAS, agorafobia, TEPT, TOC; se durante TDM/psicose, diagnosticar separadamente.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "saude",
+          "label": "Uso de Serviços de Saúde",
+          "icone_fa": "fa-hospital",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Ansiedade situacional normativa",
+          "ponto_distincao": "TAG: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno de Pânico",
+          "ponto_distincao": "TP: ansiedade focalizada em ataques de pânico; TAG: preocupações difusas e múltiplas.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "TOC",
+          "ponto_distincao": "TOC: pensamentos intrusivos indesejados e egodistônicos; TAG: preocupações sobre problemas reais da vida, mais egossintônicas.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "alta",
+          "nota": "Ocorrem juntos na maioria dos casos de TAG."
+        },
+        {
+          "condicao": "Transtorno de Pânico",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos relacionados a substâncias",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Generalized Anxiety Disorder 7-item Scale",
+          "sigla": "GAD-7",
+          "uso": "triagem",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "sugestao_clinica_padrao"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "0,9% em adolescentes; 2,9% em adultos (prevalência de 12 meses nos EUA); 0,4–3,6% internacionalmente",
+        "proporcao_sexo": "2:1 mulheres:homens",
+        "variacoes_culturais": "Sintomas somáticos predominam em países com menor renda; taxas menores na Ásia e África.",
+        "notas": "Segundo transtorno de ansiedade mais comum em atenção primária.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Relativamente precoce, porém sintomas na vida inteira; mediana de início: ~30 anos; início mais precoce que outros transtornos",
+        "trajetoria": "Crônico, com exacerbações em estresse. Pode apresentar-se de forma flutuante.",
+        "prognostico": "Remissão completa incomum sem tratamento; respondem bem a TCC e farmacoterapia.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno de Ansiedade Generalizada - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.02 / F41.1)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_ansiedade_generalizada",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A MAJORITY_DAYS_6M) + (B DIFICIL_CONTROLAR) + (C >=3/6 [ou >=1/6 em criancas]) + (D PREJUIZO) + (E NAO_SUBSTANCIA_MEDICA) + (F NAO_OUTRO_TX)\n```",
+        "clusters": [],
+        "duration": "| 6 meses (na maioria dos dias) |",
+        "age_onset": "| 30 anos (mais tardio entre os transtornos de ansiedade) |",
+        "functional_impairment": null,
+        "exclusions": [
+          "→ exames laboratoriais",
+          "→ preocupacao focada em avaliacao social, nao generalizada",
+          "→ preocupacoes sao obsessoes intrusivas, nao excesso de preocupacao futura",
+          "→ ansiedade vinculada a evento traumatico especifico",
+          "→ ansiedade em resposta a estressor identificavel, dentro de 3 meses",
+          "→ nao diagnosticar se ocorreu exclusivamente durante curso desses transtornos",
+          "→ preocupacao centrada em separacao de figuras de apego"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Nenhum especificador formal definido no DSM-5 para TAG"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Nas ultimas semanas, voce tem se sentido preocupado ou ansioso na maioria dos dias?",
+          "Quais sao as areas sobre as quais voce mais se preocupa? (trabalho, saude, financas, familia, outros)",
+          "As preocupacoes parecem maiores ou mais frequentes do que a maioria das pessoas teria?",
+          "Voce consegue controlar ou parar de se preocupar quando quer?",
+          "Voce se sente inquieto ou com os nervos a flor da pele?",
+          "Se sente facilmente cansado?",
+          "Tem dificuldade de concentracao ou sensacao de branco na mente?",
+          "Tem se sentido irritavel?",
+          "Sente tensao muscular ou dores?",
+          "Tem problemas de sono?",
+          "Essa preocupacao tem afetado seu trabalho, relacionome_completontos ou outras areas da vida?",
+          "As preocupacoes sao principalmente sobre sua saude?",
+          "As preocupacoes sao sobre situacoes sociais?",
+          "As preocupacoes sao sobre separacao de pessoas queridas?",
+          "Voce tem pensamentos intrusivos repetidos?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno de Ansiedade Generalizada (TAG)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TAG",
+      "codigo_dsm5": "300.02",
+      "codigo_cid10": "F41.1",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 300.02 (F41.1)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** A (ansiedade/preocupacao >=6 meses) + B (controle dificil) + C (3/6 sintomas; 1/6 criancas) + D funcional + E exclusao substancia + F exclusao outro transtorno",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6B00",
+      "super_enrichment": {
+        "id": "transtorno_ansiedade_generalizada",
+        "nome_original": "Transtorno de Ansiedade Generalizada",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "alta",
+            "nota": "Ocorrem juntos na maioria dos casos de TAG."
+          },
+          {
+            "condicao": "Transtorno de Pânico",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos relacionados a substâncias",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Ansiedade situacional normativa",
+            "ponto_distincao": "TAG: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno de Pânico",
+            "ponto_distincao": "TP: ansiedade focalizada em ataques de pânico; TAG: preocupações difusas e múltiplas.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "TOC",
+            "ponto_distincao": "TOC: pensamentos intrusivos indesejados e egodistônicos; TAG: preocupações sobre problemas reais da vida, mais egossintônicas.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "0,9% em adolescentes; 2,9% em adultos (prevalência de 12 meses nos EUA); 0,4–3,6% internacionalmente",
+          "proporcao_sexo": "2:1 mulheres:homens",
+          "variacoes_culturais": "Sintomas somáticos predominam em países com menor renda; taxas menores na Ásia e África."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Relativamente precoce, porém sintomas na vida inteira; mediana de início: ~30 anos; início mais precoce que outros transtornos",
+          "trajetoria": "Crônico, com exacerbações em estresse. Pode apresentar-se de forma flutuante.",
+          "prognostico": "Remissão completa incomum sem tratamento; respondem bem a TCC e farmacoterapia."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Generalized Anxiety Disorder 7-item Scale",
+            "sigla": "GAD-7",
+            "uso": "triagem",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "sugestao_clinica_padrao"
+          }
+        ],
+        "identificacao": {
+          "nome": "Transtorno de Ansiedade Generalizada",
+          "codigo_dsm_5": "300.02 (F41.1)",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "polythetic_monocluster",
+          "prevalencia": "2,9% (12 meses, adultos EUA)",
+          "razao_f_m": "2:1"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A — Nucleo (obrigatorio)",
+            "texto": "Ansiedade e preocupacao excessivas (expectativa apreensiva), ocorrendo na **maioria dos dias por pelo menos 6 meses**, com diversos eventos ou atividades (desempenho escolar ou profissional)."
+          },
+          {
+            "id": "B — Controle (obrigatorio)",
+            "texto": "O individuo considera **dificil controlar a preocupacao**."
+          },
+          {
+            "id": "C — Sintomas Associados (limiar: 3+ de 6)",
+            "texto": "Nota: Apenas **1 item e exigido para criancas**.\n\n| # | Sintoma | Pergunta Chave |\n|---|---------|----------------|\n| C1 | Inquietacao ou sensacao de \"nervos a flor da pele\" | \"Voce se sente inquieto, agitado, ou com os nervos a flor da pele na maioria dos dias?\" |\n| C2 | Fatigabilidade | \"Voce se sente facilmente cansado ou fatigado?\" |\n| C3 | Dificuldade em concentrar-se ou \"branco\" na mente | \"Tem dificuldade de concentracao ou sensacao de mente em branco?\" |\n| C4 | Irritabilidade | \"Tem se sentido mais irritavel que o habitual?\" |\n| C5 | Tensao muscular | \"Sente tensao muscular, dor ou rigidez?\" |\n| C6 | Perturbacao do sono | \"Tem dificuldade para conciliar ou manter o sono, ou sono insatisfatorio?\" |"
+          },
+          {
+            "id": "D — Prejuizo (obrigatorio)",
+            "texto": "A ansiedade, preocupacao ou sintomas fisicos causam **sofrimento clinicamente significativo ou prejuizo funcional**."
+          },
+          {
+            "id": "E — Exclusao substancia/condicao medica",
+            "texto": "Nao se deve aos efeitos fisiologicos de substancia/medicamento ou condicao medica (ex: hipertireoidismo)."
+          },
+          {
+            "id": "F — Exclusao outro transtorno mental",
+            "texto": "Nao e melhor explicado por outro transtorno mental (panico, ansiedade social, TOC, separacao, TEPT, anorexia, sintomas somaticos, dismorfico corporal, ansiedade de doenca, esquizofrenia, delirante)."
+          }
+        ],
+        "regra_diagnostica": "(A MAJORITY_DAYS_6M) + (B DIFICIL_CONTROLAR) + (C >=3/6 [ou >=1/6 em criancas]) + (D PREJUIZO) + (E NAO_SUBSTANCIA_MEDICA) + (F NAO_OUTRO_TX)",
+        "duracao_idade_prejuizo": {
+          "duracao_minima": "6 meses (na maioria dos dias)",
+          "idade_media_inicio": "30 anos (mais tardio entre os transtornos de ansiedade)",
+          "curso_tipico": "Cronico, com remissoes e recaidas; taxas de remissao completa muito baixas"
+        },
+        "prejuizo_funcional": "- Prejuizo moderado a grave em funcionamento social e profissional\n- 110 milhoes de dias de incapacidade/ano (EUA)\n- Preocupacao excessiva prejudica eficiencia em casa e no trabalho",
+        "exclusoes_obrigatorias": "1. **Hipertireoidismo, feocromocitoma** → exames laboratoriais\n2. **Transtorno de ansiedade social** → preocupacao focada em avaliacao social, nao generalizada\n3. **TOC** → preocupacoes sao obsessoes intrusivas, nao excesso de preocupacao futura\n4. **TEPT** → ansiedade vinculada a evento traumatico especifico\n5. **Transtorno de adaptacao** → ansiedade em resposta a estressor identificavel, dentro de 3 meses\n6. **Transtornos depressivo/bipolar/psicotico** → nao diagnosticar se ocorreu exclusivamente durante curso desses transtornos\n7. **Transtorno de ansiedade de separacao** → preocupacao centrada em separacao de figuras de apego",
+        "gravidade": {
+          "tem_gravidade_formal": "**false** — O DSM-5 nao define niveis formais de gravidade para TAG",
+          "tipo": "nao_aplica",
+          "niveis": "—",
+          "regra_atribuicao": "A gravidade e inferida clinicamente pelo numero de sintomas associados, intensidade da preocupacao e grau de prejuizo funcional",
+          "dominios": "Funcionamento social, profissional, sono"
+        },
+        "especificadores": [
+          "Nenhum especificador formal definido no DSM-5 para TAG"
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "bloco": "Bloco A — Nucleo (preocupacao generalizada)",
+            "numero": 1,
+            "texto": "Nas ultimas semanas, voce tem se sentido preocupado ou ansioso na maioria dos dias?"
+          },
+          {
+            "bloco": "Bloco A — Nucleo (preocupacao generalizada)",
+            "numero": 2,
+            "texto": "Quais sao as areas sobre as quais voce mais se preocupa? (trabalho, saude, financas, familia, outros)"
+          },
+          {
+            "bloco": "Bloco A — Nucleo (preocupacao generalizada)",
+            "numero": 3,
+            "texto": "As preocupacoes parecem maiores ou mais frequentes do que a maioria das pessoas teria?"
+          },
+          {
+            "bloco": "Bloco B — Controle",
+            "numero": 4,
+            "texto": "Voce consegue controlar ou parar de se preocupar quando quer?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 5,
+            "texto": "Voce se sente inquieto ou com os nervos a flor da pele?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 6,
+            "texto": "Se sente facilmente cansado?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 7,
+            "texto": "Tem dificuldade de concentracao ou sensacao de branco na mente?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 8,
+            "texto": "Tem se sentido irritavel?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 9,
+            "texto": "Sente tensao muscular ou dores?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 10,
+            "texto": "Tem problemas de sono?"
+          },
+          {
+            "bloco": "Bloco D — Prejuizo",
+            "numero": 11,
+            "texto": "Essa preocupacao tem afetado seu trabalho, relacionamentos ou outras areas da vida?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 12,
+            "texto": "As preocupacoes sao principalmente sobre sua saude?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 13,
+            "texto": "As preocupacoes sao sobre situacoes sociais?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 14,
+            "texto": "As preocupacoes sao sobre separacao de pessoas queridas?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 15,
+            "texto": "Voce tem pensamentos intrusivos repetidos?"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "condicao": "Ansiedade normal",
+            "chave_diferenciacao": "Preocupacoes nao excessivas, manejaveis, sem prejuizo significativo"
+          },
+          {
+            "condicao": "Hipertireoidismo",
+            "chave_diferenciacao": "Sintomas fisicos similares; exame de TSH obrigatorio"
+          },
+          {
+            "condicao": "Cafeina/estimulantes",
+            "chave_diferenciacao": "Historico de uso; melhora com suspensao"
+          },
+          {
+            "condicao": "TAG vs ansiedade social",
+            "chave_diferenciacao": "TAG = preocupacao generalizada sobre multiplos dominios; Fobia social = medo especifico de avaliacao negativa"
+          },
+          {
+            "condicao": "TAG vs TOC",
+            "chave_diferenciacao": "TAG = preocupacoes futuras excessivas; TOC = obsessoes intrusivas + compulsaoes"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_ansiedade_generalizada.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

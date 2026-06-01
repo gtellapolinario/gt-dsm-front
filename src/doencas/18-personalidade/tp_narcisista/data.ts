@@ -1,0 +1,970 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "tp_narcisista",
+    "nome_completo": "Transtorno da Personalidade Narcisista",
+    "sigla": "TPN",
+    "capitulo_id": "18",
+    "capitulo": "Transtornos da Personalidade",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F60.81",
+      "cid11": "6D10",
+      "dsm5": "301.81"
+    }
+  },
+  "id": "tp_narcisista",
+  "item_id": "tp_narcisista",
+  "name": "Transtorno da Personalidade Narcisista",
+  "nome_completo": "Transtorno da Personalidade Narcisista",
+  "chapter_id": "18",
+  "chapter_name": "Transtornos da Personalidade",
+  "category": "FULL",
+  "estrutura_diagnostica": "polythetic_monocluster",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Grandiosidade, Necessidade de Admiração e Falta de Empatia",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A3",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A4",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A5",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A6",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A7",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A8",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A9",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "None",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "relacoes",
+      "label": "Relações Íntimas"
+    },
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Transtorno Depressivo Maior",
+      "frequencia": "moderada",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtorno depressivo persistente (distimia)",
+      "frequencia": "moderada",
+      "nota": "None"
+    },
+    {
+      "condicao": "Anorexia nervosa",
+      "frequencia": "moderada",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtornos por uso de substância (cocaína)",
+      "frequencia": "moderada",
+      "nota": "None"
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Mania ou hipomania",
+      "ponto_distincao": "Mania: grandiosidade associada a mudanças de humor e prejuízo funcional agudo.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno da Personalidade Borderline",
+      "ponto_distincao": "Borderline: instabilidade da autoimagem, autodestrutividade; narcisista: estabilidade relativa da autoimagem.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtorno da Personalidade Antissocial",
+      "ponto_distincao": "Antissocial: histórico de conduta, impulsividade, agressão; narcisista: busca admiração.",
+      "pertence_a_classe": true
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Início da vida adulta",
+    "trajetoria": "Crônico; dificuldades de adaptação às limitações do envelhecimento.",
+    "prognostico": "Vulnerabilidade da autoestima a críticas pode levar a retraimento ou depressão."
+  },
+  "prevalencia": {
+    "populacao_geral": "0% a 6,2%",
+    "proporcao_sexo": "50 a 75% do sexo masculino entre os diagnosticados",
+    "variacoes_culturais": "None",
+    "notas": "None"
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "None",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      false,
+      null,
+      true,
+      [],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "18_transtornos_personalidade.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "claude-opus-4-7",
+    "lacunas_globais": [
+      "variacao_cultural"
+    ],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "tp_narcisista",
+      "nome_completo": "Transtorno da Personalidade Narcisista",
+      "sigla": "TPN",
+      "capitulo_id": "18",
+      "capitulo": "Transtornos da Personalidade",
+      "grupo": "Cluster B",
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "adulto",
+      "codigo": {
+        "cid10": "F60.81",
+        "cid11": "6D10",
+        "dsm5": "301.81"
+      }
+    },
+    "id": "tp_narcisista",
+    "item_id": "tp_narcisista",
+    "name": "Transtorno da Personalidade Narcisista",
+    "nome_completo": "Transtorno da Personalidade Narcisista",
+    "chapter_id": "18",
+    "chapter_name": "Transtornos da Personalidade",
+    "category": "FULL",
+    "estrutura_diagnostica": "polythetic_monocluster",
+    "estrutura_geral": "polythetic_monocluster",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Grandiosidade, Necessidade de Admiração e Falta de Empatia",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A3",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A4",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A5",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A6",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A7",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A8",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A9",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "None",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "relacoes",
+        "label": "Relações Íntimas"
+      },
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Transtorno Depressivo Maior",
+        "frequencia": "moderada",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtorno depressivo persistente (distimia)",
+        "frequencia": "moderada",
+        "nota": "None"
+      },
+      {
+        "condicao": "Anorexia nervosa",
+        "frequencia": "moderada",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtornos por uso de substância (cocaína)",
+        "frequencia": "moderada",
+        "nota": "None"
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Mania ou hipomania",
+        "ponto_distincao": "Mania: grandiosidade associada a mudanças de humor e prejuízo funcional agudo.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno da Personalidade Borderline",
+        "ponto_distincao": "Borderline: instabilidade da autoimagem, autodestrutividade; narcisista: estabilidade relativa da autoimagem.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtorno da Personalidade Antissocial",
+        "ponto_distincao": "Antissocial: histórico de conduta, impulsividade, agressão; narcisista: busca admiração.",
+        "pertence_a_classe": true
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Início da vida adulta",
+      "trajetoria": "Crônico; dificuldades de adaptação às limitações do envelhecimento.",
+      "prognostico": "Vulnerabilidade da autoestima a críticas pode levar a retraimento ou depressão."
+    },
+    "prevalencia": {
+      "populacao_geral": "0% a 6,2%",
+      "proporcao_sexo": "50 a 75% do sexo masculino entre os diagnosticados",
+      "variacoes_culturais": "None",
+      "notas": "None"
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "None",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        false,
+        null,
+        true,
+        [],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "18_transtornos_personalidade.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "claude-opus-4-7",
+      "lacunas_globais": [
+        "variacao_cultural"
+      ],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "tp_narcisista",
+        "nome_completo": "Transtorno da Personalidade Narcisista",
+        "sigla": "TPN",
+        "codigo": {
+          "dsm5": "301.81",
+          "cid10": "F60.81",
+          "cid11": "6D10"
+        },
+        "capitulo": "Transtornos da Personalidade",
+        "capitulo_id": "18",
+        "grupo": "Cluster B",
+        "faixa_etaria_alvo": "adulto",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Grandiosidade, Necessidade de Admiração e Falta de Empatia",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 5,
+            "pediatria": null
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Sensação grandiosa da própria importância",
+              "desc": "Tem uma sensação grandiosa da própria importância (exagera conquistas e talentos, espera ser reconhecido como superior sem conquistas correspondentes).",
+              "pergunta": "Você exagera suas conquistas e talentos e espera ser reconhecido como superior, mesmo sem ter as conquistas correspondentes?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Preocupado com fantasias de sucesso ilimitado",
+              "desc": "É preocupado com fantasias de sucesso ilimitado, poder, brilho, beleza ou amor ideal.",
+              "pergunta": "Você fica preocupado com fantasias de sucesso ilimitado, poder, beleza ou amor ideal?",
+              "exemplos_clinicos": [
+                "Ruminar sobre admiração 'há muito devida'"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Acredita ser 'especial' e único",
+              "desc": "Acredita ser 'especial' e único e que pode ser somente compreendido por, ou associado a, outras pessoas ou instituições especiais.",
+              "pergunta": "Você acredita que é especial ou único e que só pode ser compreendido ou associado a outras pessoas ou instituições de condição elevada?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Demanda admiração excessiva",
+              "desc": "Demanda admiração excessiva.",
+              "pergunta": "Você exige ou demanda admiração excessiva dos outros, buscando constantemente elogios e atenção?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Sentimento de possuir direitos",
+              "desc": "Apresenta um sentimento de possuir direitos (expectativas irracionais de tratamento especialmente favorável ou automático).",
+              "pergunta": "Você tem expectativas irracionais de receber tratamento especial ou deferência automática dos outros?",
+              "exemplos_clinicos": [
+                "Achar que não precisa esperar em filas"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Explorador em relações interpessoais",
+              "desc": "É explorador em relações interpessoais (tira vantagem de outros para atingir os próprios fins).",
+              "pergunta": "Você tira vantagem de outras pessoas para atingir seus próprios objetivos, sem considerar o impacto nelas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Carece de empatia",
+              "desc": "Carece de empatia: reluta em reconhecer ou identificar-se com os sentimentos e as necessidades dos outros.",
+              "pergunta": "Você tem dificuldade em reconhecer ou se identificar com os sentimentos e necessidades dos outros?",
+              "exemplos_clinicos": [
+                "Falta de interesse recíproco",
+                "Desdém pelos problemas alheios"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Invejoso ou acredita ser invejado",
+              "desc": "É frequentemente invejoso em relação aos outros ou acredita que os outros o invejam.",
+              "pergunta": "Você frequentemente sente inveja dos outros ou acredita que eles o invejam?",
+              "exemplos_clinicos": [
+                "Desvalorizar contribuições de outros que recebem reconhecimento"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Comportamentos ou atitudes arrogantes e insolentes",
+              "desc": "Demonstra comportamentos ou atitudes arrogantes e insolentes.",
+              "pergunta": "Você demonstra comportamentos ou atitudes arrogantemente insolentes, com esnobismo ou desdém?",
+              "exemplos_clinicos": [
+                "Queixar-se da 'estupidez' de garçom",
+                "Apreciação condescendente de médico"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas; prejuízo leve."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas moderados; prejuízo moderado."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas; prejuízo grave."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "relacoes",
+          "label": "Relações Íntimas",
+          "icone_fa": "fa-heart",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Mania ou hipomania",
+          "ponto_distincao": "Mania: grandiosidade associada a mudanças de humor e prejuízo funcional agudo.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno da Personalidade Borderline",
+          "ponto_distincao": "Borderline: instabilidade da autoimagem, autodestrutividade; narcisista: estabilidade relativa da autoimagem.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno da Personalidade Antissocial",
+          "ponto_distincao": "Antissocial: histórico de conduta, impulsividade, agressão; narcisista: busca admiração.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno depressivo persistente (distimia)",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Anorexia nervosa",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos por uso de substância (cocaína)",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "0% a 6,2%",
+        "proporcao_sexo": "50 a 75% do sexo masculino entre os diagnosticados",
+        "variacoes_culturais": null,
+        "notas": null,
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "variacao_cultural"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Início da vida adulta",
+        "trajetoria": "Crônico; dificuldades de adaptação às limitações do envelhecimento.",
+        "prognostico": "Vulnerabilidade da autoestima a críticas pode levar a retraimento ou depressão.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno da Personalidade Narcisista - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (301.81 / F60.81)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "18_transtornos_personalidade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4-7",
+        "lacunas_globais": [
+          "variacao_cultural"
+        ],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "tp_narcisista",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "1. Sensacao grandiosa da propria importancia",
+          "2. Fantasias de sucesso ilimitado, poder, brilho",
+          "3. Acredita ser 'especial' e unico",
+          "4. Demanda admiracao excessiva",
+          "5. Sentimento de possuir direitos",
+          "6. Explorador em relacoes interpessoais",
+          "7. Carece de empatia",
+          "8. Frequentemente invejoso",
+          "9. Comportamentos ou atitudes arrogantes"
+        ],
+        "diagnostic_rule": "Criterios gerais de TP (A-F) + >=5 de 9 criterios",
+        "clusters": [
+          "Grandiosidade",
+          "Necessidade de Admiracao",
+          "Falta de Empatia"
+        ],
+        "duration": "padrao persistente",
+        "age_onset": "inicio vida adulta",
+        "functional_impairment": "relacionamentos prejudicados; trabalho prejudicado; reacoes de furia a feridas narcisicas",
+        "exclusions": [
+          "mania/hipomania",
+          "antissocial",
+          "borderline",
+          "TOC personalidade"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [
+          {
+            "id": "narcisismo_grandioso",
+            "description": "Variante grandiosa (nao formal DSM-5)"
+          },
+          {
+            "id": "narcisismo_vulneravel",
+            "description": "Variante vulneravel (nao formal DSM-5)"
+          }
+        ],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [
+          "mania",
+          "antissocial",
+          "borderline",
+          "paranoide",
+          "esquizotipica"
+        ],
+        "key_questions": [
+          "Se considera especial ou superior?",
+          "Exagera conquistas ou espera reconhecimento sem merecer?",
+          "Fantasia sobre sucesso, poder, beleza?",
+          "Precisa constantemente de elogios?",
+          "Espera tratamento especial?",
+          "Tira vantagem de outras pessoas?",
+          "Dificuldade em se colocar no lugar dos outros?",
+          "Arrogante ou insolente?"
+        ],
+        "alerts": [
+          "Nao confundir alta autoestima, ambicao ou lideranca com TPN; adolescentes podem ter tracos narcisistas normais"
+        ],
+        "source_trace": {
+          "markdown_section": "## 7. Transtorno da Personalidade Narcisista (TPN)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 301.81 / F60.81",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Padrao difuso de grandiosidade, necessidade de admiracao e falta de empatia. Exige 5+ de 9 criterios: (1) sensacao grandiosa da propria importancia, (2) preocupacao com fantasias de sucesso/poder/brilho/beleza/amor ideal, (3) acredita ser \"especial\" e unico, (4) demanda admiracao excessiva, (5) sentimento de possuir direitos (expectativas irracionais de tratamento favoravel), (6) explorador em relacoes interpessoais, (7) carece de empatia, (8) frequentemente invejoso ou acredita que outros o invejam, (9) comportamentos/arrogancia/insolencia.",
+        "notas_clinicas": "- **Notas:** Prevalencia: 0-6,2% em amostras de comunidades. 50-75% sao homens. Tracos narcisistas comuns em adolescentes nem sempre evoluem para o transtorno. Autoestima fragil; sensivel a criticas/derrotas. Comorbidade: anorexia nervosa, transtornos por uso de substancia (cocaina); TP histrionica, borderline, antissocial, paranoide; distimia/depressivo maior. Dificuldade de adaptacao ao envelhecimento."
+      },
+      "codigo_cid11": "6D10",
+      "super_enrichment": {
+        "id": "tp_narcisista",
+        "nome_original": "Transtorno da Personalidade Narcisista",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno depressivo persistente (distimia)",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Anorexia nervosa",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos por uso de substância (cocaína)",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Mania ou hipomania",
+            "ponto_distincao": "Mania: grandiosidade associada a mudanças de humor e prejuízo funcional agudo.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno da Personalidade Borderline",
+            "ponto_distincao": "Borderline: instabilidade da autoimagem, autodestrutividade; narcisista: estabilidade relativa da autoimagem.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno da Personalidade Antissocial",
+            "ponto_distincao": "Antissocial: histórico de conduta, impulsividade, agressão; narcisista: busca admiração.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "0% a 6,2%",
+          "proporcao_sexo": "50 a 75% do sexo masculino entre os diagnosticados",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Início da vida adulta",
+          "trajetoria": "Crônico; dificuldades de adaptação às limitações do envelhecimento.",
+          "prognostico": "Vulnerabilidade da autoestima a críticas pode levar a retraimento ou depressão."
+        },
+        "instrumentos_complementares": [],
+        "transtorno_da_personalidade_narcisista": "```yaml\ncodigo_dsm5: \"301.81\"\ncodigo_cid10: \"F60.81\"\ncategoria_operacional: FULL\ncluster: B\nestrutura_diagnostica: polythetic_monocluster\n```",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "Padrao difuso de **grandiosidade** (fantasia ou comportamento), **necessidade de admiracao** e **falta de empatia**, inicio na vida adulta, presente em varios contextos, indicado por **5+** dos seguintes (9 itens):\n\n| # | Criterio |\n|---|----------|\n| 1 | Sensacao grandiosa da propria importancia (exagera conquistas/talentos, espera ser reconhecido como superior sem conquistas correspondentes) |\n| 2 | Preocupado com fantasias de sucesso ilimitado, poder, brilho, beleza ou amor ideal |\n| 3 | Acredita ser \"especial\" e unico, compreendido apenas por outras pessoas/instituicoes especiais |\n| 4 | Demanda admiracao excessiva |\n| 5 | Sentimento de possuir direitos (expectativas irracionais de tratamento especialmente favoravel) |\n| 6 | Explorador em relacoes interpessoais (tira vantagem de outros para atingir proprios fins) |\n| 7 | Carece de empatia (reluta em reconhecer/identificar-se com sentimentos e necessidades dos outros) |\n| 8 | Frequentemente invejoso ou acredita que outros o invejam |\n| 9 | Comportamentos ou atitudes arrogantes e insolentes |"
+          }
+        ],
+        "regra_diagnostica": "- Criterios gerais de TP (A-F) + 5+ dos 9 criterios acima\n- **Liminar**: 5/9 sintomas",
+        "duracao_idade_prejuizo": {
+          "idade_de_inicio": "Inicio da vida adulta (traços podem ser comuns em adolescentes)",
+          "duracao": "Padrao persistente",
+          "prejuizo_funcional": "Relacionamentos prejudicados (intolerancia a critica); trabalho prejudicado (evita competicao com risco de derrota); reacoes de raiva/furia a feridas narcisicas; depressao/distimia possiveis; risco de TPS, anorexia, uso de cocaina"
+        },
+        "exclusoes_obrigatorias": [
+          "Mania/hipomania (diferenciar: grandiosidade maníaca e episodica, com mudancas de humor)",
+          "Transtorno de personalidade antissocial (diferenciar: TPN busca admiracao; TPA busca ganho material)",
+          "Transtorno de personalidade borderline (diferenciar: TPN tem autoimagem relativamente estavel, sem autodestrutividade)",
+          "Transtorno de personalidade histriônica (diferenciar: TPN busca admiração por superioridade; TPHist por atencao/fragilidade)",
+          "Transtorno de personalidade obsessivo-compulsiva (diferenciar: perfeccionismo do TOC e autocrítico; do TPN e autoexaltante)",
+          "Transtorno de personalidade paranoide/esquizotipica (diferenciar: desconfianca por medo de imperfeicao revelada vs. desconfianca difusa)",
+          "Mudanca de personalidade devido a condicao medica",
+          "Uso de substancia"
+        ],
+        "gravidade": {
+          "tipo": "nao_aplica"
+        },
+        "subtipos": [
+          "Sem subtipos formais"
+        ],
+        "diferenciais_criticos": [
+          {
+            "numero": 6,
+            "condicao": "Adolescentes",
+            "chave_diferenciacao": "Traços narcisistas sao comuns em adolescentes e nao indicam necessariamente TPN"
+          }
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "Voce se considera uma pessoa especial ou superior a maioria?"
+          },
+          {
+            "numero": 2,
+            "texto": "Exagera suas conquistas ou espera reconhecimento especial sem ter feito o suficiente para merecer?"
+          },
+          {
+            "numero": 3,
+            "texto": "Passa muito tempo imaginando sucesso, poder, beleza ou amor ideais?"
+          },
+          {
+            "numero": 4,
+            "texto": "Precisa constantemente de elogios e admiracao das pessoas?"
+          },
+          {
+            "numero": 5,
+            "texto": "Espera tratamento especial ou que as pessoas facam favores automaticamente?"
+          },
+          {
+            "numero": 6,
+            "texto": "Voce tira vantagem de outras pessoas para conseguir o que quer?"
+          },
+          {
+            "numero": 7,
+            "texto": "Tem dificuldade em se colocar no lugar dos outros ou reconhecer os sentimentos deles?"
+          },
+          {
+            "numero": 8,
+            "texto": "E invejoso ou acha que as pessoas o invejam?"
+          },
+          {
+            "numero": 9,
+            "texto": "As pessoas ja disseram que voce e arrogante ou insolente?"
+          }
+        ],
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_full",
+          "caracteristicas_especiais": "",
+          "tracos_egossintonicos": true,
+          "atencao_feridas_narcisicas": "critica pode desencadear furia ou depressao",
+          "nao_confundir_com_adolescencia": true
+        },
+        "clusters_sintomaticos": "---"
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/tp_narcisista.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": false,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "missing",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

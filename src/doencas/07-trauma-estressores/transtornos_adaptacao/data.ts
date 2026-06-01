@@ -1,0 +1,1061 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "transtornos_adaptacao",
+    "nome_completo": "Transtornos de Adaptação",
+    "sigla": "",
+    "capitulo_id": "07",
+    "capitulo": "Transtornos Relacionados a Trauma e a Estressores",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F43.20",
+      "cid11": "6B43",
+      "dsm5": "309.0"
+    }
+  },
+  "id": "transtornos_adaptacao",
+  "item_id": "transtornos_adaptacao",
+  "name": "Transtornos de Adaptação",
+  "nome_completo": "Transtornos de Adaptação",
+  "chapter_id": "07",
+  "chapter_name": "Transtornos Relacionados a Trauma e a Estressores",
+  "category": "FULL",
+  "estrutura_diagnostica": "etiologico_externo",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas Emocionais/Comportamentais em Resposta a Estressor",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_desproporcional_ou_funcional",
+      "letra": "B",
+      "rotulo": "Sofrimento acentuado e desproporcional ao estressor ou pr...",
+      "descricao_completa": "Clinicamente significativo como evidenciado por: (1) sofrimento acentuado desproporcional ao estressor; (2) prejuízo significativo no funcionamento.",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_outro_transtorno",
+      "letra": "C",
+      "rotulo": "Não satisfaz critérios de outro transtorno mental",
+      "descricao_completa": "Não satisfaz critérios de outro transtorno mental específico e não é exacerbação de transtorno pré-existente.",
+      "obrigatorio": true
+    },
+    {
+      "id": "exclusao_luto_normal",
+      "letra": "D",
+      "rotulo": "Não representa luto normal",
+      "descricao_completa": "Não representa luto normal.",
+      "obrigatorio": true
+    },
+    {
+      "id": "remissao_6meses",
+      "letra": "E",
+      "rotulo": "Remite em ≤6 meses após cessação do estressor",
+      "descricao_completa": "Uma vez cessado o estressor (ou suas consequências), os sintomas não persistem por mais de 6 meses adicionais.",
+      "obrigatorio": false
+    }
+  ],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "None",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Condições médicas gerais",
+      "frequencia": "alta",
+      "nota": "Comum em pacientes hospitalizados."
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "TEPT / TEA",
+      "ponto_distincao": "TEPT/TEA: exigem trauma com risco de vida; transtorno de adaptação: qualquer estressor.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtorno Depressivo Maior",
+      "ponto_distincao": "TDM: pode ser diagnosticado mesmo sem estressor identificável; satisfeitos critérios formais A-E do TDM.",
+      "pertence_a_classe": false
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Dentro de 3 meses do estressor; qualquer idade",
+    "trajetoria": "Geralmente remite quando estressor cessa; crônico se estressor persistir.",
+    "prognostico": "Bom com intervenção breve focada no problema."
+  },
+  "prevalencia": {
+    "populacao_geral": "5–20% em amostras ambulatoriais de saúde mental; 50% em serviços médicos",
+    "proporcao_sexo": "2:1 mulheres:homens",
+    "variacoes_culturais": "None",
+    "notas": "None"
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "None",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": []
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      true,
+      "Subtipo clínico",
+      true,
+      [
+        {
+          "id": "humor_deprimido",
+          "codigo": {
+            "dsm5": "309.0",
+            "cid10": "F43.21",
+            "cid11": null
+          },
+          "label": "Com humor deprimido",
+          "descricao": "Baixo astral, choro e sentimentos de desesperança predominam.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "ansiedade",
+          "codigo": {
+            "dsm5": "309.24",
+            "cid10": "F43.22",
+            "cid11": null
+          },
+          "label": "Com ansiedade",
+          "descricao": "Nervosismo, preocupação, agitação ou ansiedade de separação predominam.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "misto_depressivo_ansioso",
+          "codigo": {
+            "dsm5": "309.28",
+            "cid10": "F43.23",
+            "cid11": null
+          },
+          "label": "Com humor deprimido e ansiedade mistos",
+          "descricao": "Combinação de depressão e ansiedade predomina.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "perturbacao_conduta",
+          "codigo": {
+            "dsm5": "309.3",
+            "cid10": "F43.24",
+            "cid11": null
+          },
+          "label": "Com perturbação de conduta",
+          "descricao": "Perturbação de conduta predomina.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "misto_emocoes_conduta",
+          "codigo": {
+            "dsm5": "309.4",
+            "cid10": "F43.25",
+            "cid11": null
+          },
+          "label": "Com perturbação mista de emoções e conduta",
+          "descricao": "Sintomas emocionais e de conduta.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "nao_especificado",
+          "codigo": {
+            "dsm5": "309.9",
+            "cid10": "F43.20",
+            "cid11": null
+          },
+          "label": "Não especificado",
+          "descricao": "Reações mal adaptativas não classificáveis em outros subtipos.",
+          "sintomas_caracteristicos": []
+        }
+      ],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [
+    {
+      "id": "agudo",
+      "nome": "Agudo",
+      "descricao": ""
+    },
+    {
+      "id": "persistente",
+      "nome": "Persistente/crônico",
+      "descricao": ""
+    }
+  ],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "07_transtornos_relacionados_trauma_a_estressores.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "antigravity-gemini",
+    "lacunas_globais": [
+      "variacao_cultural"
+    ],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "transtornos_adaptacao",
+      "nome_completo": "Transtornos de Adaptação",
+      "sigla": "",
+      "capitulo_id": "07",
+      "capitulo": "Transtornos Relacionados a Trauma e a Estressores",
+      "grupo": null,
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "ambos",
+      "codigo": {
+        "cid10": "F43.20",
+        "cid11": "6B43",
+        "dsm5": "309.0"
+      }
+    },
+    "id": "transtornos_adaptacao",
+    "item_id": "transtornos_adaptacao",
+    "name": "Transtornos de Adaptação",
+    "nome_completo": "Transtornos de Adaptação",
+    "chapter_id": "07",
+    "chapter_name": "Transtornos Relacionados a Trauma e a Estressores",
+    "category": "FULL",
+    "estrutura_diagnostica": "etiologico_externo",
+    "estrutura_geral": "etiologico_externo",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Sintomas Emocionais/Comportamentais em Resposta a Estressor",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "sofrimento_desproporcional_ou_funcional",
+        "letra": "B",
+        "rotulo": "Sofrimento acentuado e desproporcional ao estressor ou pr...",
+        "descricao_completa": "Clinicamente significativo como evidenciado por: (1) sofrimento acentuado desproporcional ao estressor; (2) prejuízo significativo no funcionamento.",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_outro_transtorno",
+        "letra": "C",
+        "rotulo": "Não satisfaz critérios de outro transtorno mental",
+        "descricao_completa": "Não satisfaz critérios de outro transtorno mental específico e não é exacerbação de transtorno pré-existente.",
+        "obrigatorio": true
+      },
+      {
+        "id": "exclusao_luto_normal",
+        "letra": "D",
+        "rotulo": "Não representa luto normal",
+        "descricao_completa": "Não representa luto normal.",
+        "obrigatorio": true
+      },
+      {
+        "id": "remissao_6meses",
+        "letra": "E",
+        "rotulo": "Remite em ≤6 meses após cessação do estressor",
+        "descricao_completa": "Uma vez cessado o estressor (ou suas consequências), os sintomas não persistem por mais de 6 meses adicionais.",
+        "obrigatorio": false
+      }
+    ],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "None",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Condições médicas gerais",
+        "frequencia": "alta",
+        "nota": "Comum em pacientes hospitalizados."
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "TEPT / TEA",
+        "ponto_distincao": "TEPT/TEA: exigem trauma com risco de vida; transtorno de adaptação: qualquer estressor.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtorno Depressivo Maior",
+        "ponto_distincao": "TDM: pode ser diagnosticado mesmo sem estressor identificável; satisfeitos critérios formais A-E do TDM.",
+        "pertence_a_classe": false
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Dentro de 3 meses do estressor; qualquer idade",
+      "trajetoria": "Geralmente remite quando estressor cessa; crônico se estressor persistir.",
+      "prognostico": "Bom com intervenção breve focada no problema."
+    },
+    "prevalencia": {
+      "populacao_geral": "5–20% em amostras ambulatoriais de saúde mental; 50% em serviços médicos",
+      "proporcao_sexo": "2:1 mulheres:homens",
+      "variacoes_culturais": "None",
+      "notas": "None"
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "None",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": []
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        true,
+        "Subtipo clínico",
+        true,
+        [
+          {
+            "id": "humor_deprimido",
+            "codigo": {
+              "dsm5": "309.0",
+              "cid10": "F43.21",
+              "cid11": null
+            },
+            "label": "Com humor deprimido",
+            "descricao": "Baixo astral, choro e sentimentos de desesperança predominam.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "ansiedade",
+            "codigo": {
+              "dsm5": "309.24",
+              "cid10": "F43.22",
+              "cid11": null
+            },
+            "label": "Com ansiedade",
+            "descricao": "Nervosismo, preocupação, agitação ou ansiedade de separação predominam.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "misto_depressivo_ansioso",
+            "codigo": {
+              "dsm5": "309.28",
+              "cid10": "F43.23",
+              "cid11": null
+            },
+            "label": "Com humor deprimido e ansiedade mistos",
+            "descricao": "Combinação de depressão e ansiedade predomina.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "perturbacao_conduta",
+            "codigo": {
+              "dsm5": "309.3",
+              "cid10": "F43.24",
+              "cid11": null
+            },
+            "label": "Com perturbação de conduta",
+            "descricao": "Perturbação de conduta predomina.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "misto_emocoes_conduta",
+            "codigo": {
+              "dsm5": "309.4",
+              "cid10": "F43.25",
+              "cid11": null
+            },
+            "label": "Com perturbação mista de emoções e conduta",
+            "descricao": "Sintomas emocionais e de conduta.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "nao_especificado",
+            "codigo": {
+              "dsm5": "309.9",
+              "cid10": "F43.20",
+              "cid11": null
+            },
+            "label": "Não especificado",
+            "descricao": "Reações mal adaptativas não classificáveis em outros subtipos.",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [
+      {
+        "id": "agudo",
+        "nome": "Agudo",
+        "descricao": ""
+      },
+      {
+        "id": "persistente",
+        "nome": "Persistente/crônico",
+        "descricao": ""
+      }
+    ],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "07_transtornos_relacionados_trauma_a_estressores.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "antigravity-gemini",
+      "lacunas_globais": [
+        "variacao_cultural"
+      ],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtornos_adaptacao",
+        "nome_completo": "Transtornos de Adaptação",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "309.0",
+          "cid10": "F43.20",
+          "cid11": "6B43"
+        },
+        "capitulo": "Transtornos Relacionados a Trauma e a Estressores",
+        "capitulo_id": "07",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "etiologico_externo",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Sintomas Emocionais/Comportamentais em Resposta a Estressor",
+          "tipo": "unico_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Sintomas emocionais/comportamentais em resposta a estress...",
+              "desc": "Sintomas emocionais ou comportamentais em resposta a um estressor identificável, com início em até 3 meses após o início do estressor.",
+              "pergunta": "Você começou a ter sintomas emocionais ou comportamentais logo após um evento estressante específico?",
+              "exemplos_clinicos": [
+                "Depressão após demissão",
+                "Ansiedade após separação conjugal"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "sofrimento_desproporcional_ou_funcional",
+          "letra": "B",
+          "rotulo": "Sofrimento acentuado e desproporcional ao estressor ou pr...",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Clinicamente significativo como evidenciado por: (1) sofrimento acentuado desproporcional ao estressor; (2) prejuízo significativo no funcionamento.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outro_transtorno",
+          "letra": "C",
+          "rotulo": "Não satisfaz critérios de outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "tept",
+            "tdm",
+            "tag"
+          ],
+          "descricao_completa": "Não satisfaz critérios de outro transtorno mental específico e não é exacerbação de transtorno pré-existente.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_luto_normal",
+          "letra": "D",
+          "rotulo": "Não representa luto normal",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Não representa luto normal.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "remissao_6meses",
+          "letra": "E",
+          "rotulo": "Remite em ≤6 meses após cessação do estressor",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": false,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Uma vez cessado o estressor (ou suas consequências), os sintomas não persistem por mais de 6 meses adicionais.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": true,
+        "nome": "Subtipo clínico",
+        "mutuamente_exclusivos": true,
+        "subtipos": [
+          {
+            "id": "humor_deprimido",
+            "codigo": {
+              "dsm5": "309.0",
+              "cid10": "F43.21",
+              "cid11": null
+            },
+            "label": "Com humor deprimido",
+            "descricao": "Baixo astral, choro e sentimentos de desesperança predominam.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "ansiedade",
+            "codigo": {
+              "dsm5": "309.24",
+              "cid10": "F43.22",
+              "cid11": null
+            },
+            "label": "Com ansiedade",
+            "descricao": "Nervosismo, preocupação, agitação ou ansiedade de separação predominam.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "misto_depressivo_ansioso",
+            "codigo": {
+              "dsm5": "309.28",
+              "cid10": "F43.23",
+              "cid11": null
+            },
+            "label": "Com humor deprimido e ansiedade mistos",
+            "descricao": "Combinação de depressão e ansiedade predomina.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "perturbacao_conduta",
+            "codigo": {
+              "dsm5": "309.3",
+              "cid10": "F43.24",
+              "cid11": null
+            },
+            "label": "Com perturbação de conduta",
+            "descricao": "Perturbação de conduta predomina.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "misto_emocoes_conduta",
+            "codigo": {
+              "dsm5": "309.4",
+              "cid10": "F43.25",
+              "cid11": null
+            },
+            "label": "Com perturbação mista de emoções e conduta",
+            "descricao": "Sintomas emocionais e de conduta.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "nao_especificado",
+            "codigo": {
+              "dsm5": "309.9",
+              "cid10": "F43.20",
+              "cid11": null
+            },
+            "label": "Não especificado",
+            "descricao": "Reações mal adaptativas não classificáveis em outros subtipos.",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "agudo",
+          "nome": "Agudo",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "Duração <6 meses.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "persistente",
+          "nome": "Persistente/crônico",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "Duração ≥6 meses por causa do estressor crônico.",
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas; sofrimento manejável."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas e prejuízo intermediários."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "TEPT / TEA",
+          "ponto_distincao": "TEPT/TEA: exigem trauma com risco de vida; transtorno de adaptação: qualquer estressor.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "ponto_distincao": "TDM: pode ser diagnosticado mesmo sem estressor identificável; satisfeitos critérios formais A-E do TDM.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Condições médicas gerais",
+          "frequencia": "alta",
+          "nota": "Comum em pacientes hospitalizados."
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "5–20% em amostras ambulatoriais de saúde mental; 50% em serviços médicos",
+        "proporcao_sexo": "2:1 mulheres:homens",
+        "variacoes_culturais": null,
+        "notas": null,
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "variacao_cultural"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Dentro de 3 meses do estressor; qualquer idade",
+        "trajetoria": "Geralmente remite quando estressor cessa; crônico se estressor persistir.",
+        "prognostico": "Bom com intervenção breve focada no problema.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno de Adaptação - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (309.x / F43.2x)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "07_transtornos_relacionados_trauma_a_estressores.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [
+          "variacao_cultural"
+        ],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtornos_adaptacao",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "etiologico_externo",
+        "criteria": [],
+        "diagnostic_rule": "A = estressor_identificado AND inicio_dentro_3_meses AND B ≥ 1 AND C = true AND D = true AND E = true",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO DE AJUSTAMENTO - Varios codigos (F43.2x)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "309.0",
+      "codigo_cid10": "F43.20",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** Codigo base variavel por subtipo (ver abaixo)",
+        "estrutura_efetiva": "- **Estrutura efetiva:**",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6B43",
+      "super_enrichment": {
+        "id": "transtornos_adaptacao",
+        "nome_original": "TRANSTORNO DE AJUSTAMENTO",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Condições médicas gerais",
+            "frequencia": "alta",
+            "nota": "Comum em pacientes hospitalizados."
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "TEPT / TEA",
+            "ponto_distincao": "TEPT/TEA: exigem trauma com risco de vida; transtorno de adaptação: qualquer estressor.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "ponto_distincao": "TDM: pode ser diagnosticado mesmo sem estressor identificável; satisfeitos critérios formais A-E do TDM.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "5–20% em amostras ambulatoriais de saúde mental; 50% em serviços médicos",
+          "proporcao_sexo": "2:1 mulheres:homens",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Dentro de 3 meses do estressor; qualquer idade",
+          "trajetoria": "Geralmente remite quando estressor cessa; crônico se estressor persistir.",
+          "prognostico": "Bom com intervenção breve focada no problema."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {},
+        "criterios_obrigatorios": [
+          {
+            "id": "A",
+            "texto": "Sintomas emocionais ou comportamentais em resposta a estressor(es) identificavel(is) ocorrendo dentro de 3 meses do inicio do estressor"
+          },
+          {
+            "id": "B - Clinicamente significativo (pelo menos 1)",
+            "texto": "1. Sofrimento intenso desproporcional a gravidade do estressor (considerando contexto cultural)\n2. Prejuizo significativo no funcionamento (social, profissional ou outras areas)"
+          },
+          {
+            "id": "C",
+            "texto": "Perturbacao NAO satisfaz criterios de outro transtorno mental e NAO e mera exacerbacao de transtorno preexistente"
+          },
+          {
+            "id": "D",
+            "texto": "Sintomas NAO representam luto normal"
+          },
+          {
+            "id": "E",
+            "texto": "Sintomas nao persistem > 6 meses apos o estressor/ suas consequencias terem cedido"
+          }
+        ],
+        "regra_diagnostica": "A = estressor_identificado AND inicio_dentro_3_meses AND B ≥ 1 AND C = true AND D = true AND E = true",
+        "subtipos": [
+          {
+            "Codigo": "309.0 (F43.21)",
+            "Subtipo": "Com humor deprimido",
+            "Descricao": "Humor deprimido, choro facil, sentimentos de desesperanca predominantes"
+          },
+          {
+            "Codigo": "309.24 (F43.22)",
+            "Subtipo": "Com ansiedade",
+            "Descricao": "Nervosismo, preocupacao, inquietude, ansiedade de separacao predominantes"
+          },
+          {
+            "Codigo": "309.28 (F43.23)",
+            "Subtipo": "Com misto de ansiedade e depressao",
+            "Descricao": "Combinacao de depressao e ansiedade"
+          },
+          {
+            "Codigo": "309.3 (F43.24)",
+            "Subtipo": "Com perturbacao da conduta",
+            "Descricao": "Perturbacao da conduta predominante"
+          },
+          {
+            "Codigo": "309.4 (F43.25)",
+            "Subtipo": "Com perturbacao mista das emocoes e da conduta",
+            "Descricao": "Sintomas emocionais + perturbacao da conduta"
+          },
+          {
+            "Codigo": "309.9 (F43.20)",
+            "Subtipo": "Nao especificado",
+            "Descricao": "Reacoes mal-adaptativas nao classificaveis nos subtipos"
+          }
+        ],
+        "duracao_idade_prejuizo": {
+          "notas": [
+            "**Inicio:** Dentro de 3 meses do estressor",
+            "**Duracao:** Nao persiste > 6 meses apos cesse o estressor",
+            "**Se estressor persistir:** Transtorno pode se manter (forma persistente)",
+            "**Se estressor agudo:** Inicio imediato, duracao breve (poucos meses)"
+          ]
+        },
+        "gravidade": {
+          "texto_completo": "- **tem_gravidade_formal:** false\n- **Tipo:** nao_aplica"
+        },
+        "diferenciais_criticos": "1. **Ajustamento vs TDM:** Se ha criterios plenos para TDM, diagnosticar TDM (nao ajustamento)\n2. **Ajustamento vs TEPT/Estresse agudo:** Estressor de ajustamento = qualquer gravidade (nao precisa atender criterio A de TEPT)\n3. **Ajustamento vs Luto:** Luto normal nao e ajustamento (mas luto excessivo pode ser)\n4. **Ajustamento vs Transtorno da personalidade:** Historia de funcionamento ao longo da vida ajuda a distinguir\n5. **Ajustamento vs Reacao normal de estresse:** Deve haver sofrimento desproporcional ou prejuizo funcional",
+        "perguntas_chave": "- \"O que estava acontecendo na sua vida nos 3 meses antes dos sintomas comecarem?\"\n- \"Voce diria que sua reacao e maior do que se esperaria normalmente para esta situacao?\"\n- \"Os sintomas estao prejudicando seu trabalho, relacionamentos ou outras areas?\"\n- \"Ja tinha sido diagnosticado com algum transtorno mental antes? Os sintomas atuais sao diferentes?\"\n- \"Qual tipo de sintoma predomina: tristeza, ansiedade, mudanca de comportamento, ou misto?\"",
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_full",
+          "selecao_subtipo": "obrigatoria",
+          "subtipos": [
+            "humor_deprimido",
+            "ansiedade",
+            "misto_ansiedade_depressao",
+            "perturbacao_conduta",
+            "misto_emocoes_conduta",
+            "nao_especificado"
+          ],
+          "estressor_temporalidade": "dentro_3_meses",
+          "duracao_max": "6_meses_apos_cessar_estressor"
+        }
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtornos_adaptacao.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

@@ -1,0 +1,1089 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "anorexia_nervosa",
+    "nome_completo": "Anorexia Nervosa",
+    "sigla": "",
+    "capitulo_id": "10",
+    "capitulo": "Transtornos Alimentares",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F50.0x",
+      "cid11": "6B80",
+      "dsm5": "307.1"
+    }
+  },
+  "id": "anorexia_nervosa",
+  "item_id": "anorexia_nervosa",
+  "name": "Anorexia Nervosa",
+  "nome_completo": "Anorexia Nervosa",
+  "chapter_id": "10",
+  "chapter_name": "Transtornos Alimentares",
+  "category": "FULL",
+  "estrutura_diagnostica": "monothetic_puro",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Restrição Calórica com Peso Significativamente Baixo",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "medo_ganho_peso",
+      "letra": "B",
+      "rotulo": "Medo intenso de ganhar peso ou comportamento que interfere no ganho de peso",
+      "descricao_completa": "Medo intenso de ganhar peso ou de engordar, ou comportamento persistente que interfere no ganho de peso, mesmo estando com peso significativamente baixo.",
+      "obrigatorio": true
+    },
+    {
+      "id": "perturbação_peso_forma",
+      "letra": "C",
+      "rotulo": "Perturbação na vivência do peso ou da forma corporal",
+      "descricao_completa": "Perturbação no modo como o próprio peso ou a forma corporal são vivenciados, influência indevida do peso ou da forma corporal na autoavaliação, ou ausência persistente de reconhecimento da gravidade do baixo peso corporal atual.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "Baseia-se no IMC atual para adultos ou no percentil do IMC para crianças e adolescentes. O nível pode ser aumentado para refletir sintomas clínicos, incapacidade funcional e necessidade de supervisão.",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      },
+      {
+        "id": "extrema",
+        "label": "Extrema",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "saude",
+      "label": "Saúde Física e Nutricional"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    },
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional/Acadêmico"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Transtornos de ansiedade",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtorno depressivo maior",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtornos bipolares",
+      "frequencia": "alta",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtorno obsessivo-compulsivo",
+      "frequencia": "moderada",
+      "nota": "Mais frequente no tipo restritivo."
+    },
+    {
+      "condicao": "Transtorno por uso de álcool ou outras substâncias",
+      "frequencia": "moderada",
+      "nota": "Mais frequente no tipo compulsão alimentar purgativa."
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Bulimia nervosa",
+      "ponto_distincao": "Bulimia: peso corporal igual ou acima da faixa mínima normal, com episódios recorrentes de compulsão alimentar e compensação; anorexia: peso significativamente baixo.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtorno alimentar restritivo/evitativo",
+      "ponto_distincao": "TARE: pode haver perda de peso, mas sem medo de ganhar peso ou perturbação na vivência da forma/peso corporal.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Condições médicas (hipertireoidismo, malignidades, SIDA)",
+      "ponto_distincao": "Condições médicas: geralmente sem medo intenso de ganhar peso nem perturbação na vivência da forma/peso corporal.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno depressivo maior",
+      "ponto_distincao": "TDM: pode haver perda de peso grave, mas geralmente sem desejo de perda excessiva nem medo intenso de ganhar peso.",
+      "pertence_a_classe": false
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Adolescência ou idade adulta jovem; raramente antes da puberdade ou após os 40 anos.",
+    "trajetoria": "Altamente variável. Alguns se recuperam após um único episódio; outros apresentam curso crônico. A maioria entra em remissão dentro de cinco anos.",
+    "prognostico": "Taxa bruta de mortalidade de cerca de 5% por década. Morte mais comum por complicações clínicas ou suicídio."
+  },
+  "prevalencia": {
+    "populacao_geral": "0,4% (prevalência de 12 meses entre jovens do sexo feminino).",
+    "proporcao_sexo": "Aproximadamente 10:1 feminino:masculino em populações clínicas.",
+    "variacoes_culturais": "Possivelmente mais prevalente em países ricos pós-industrializados. A ausência de medo intenso manifesto de ganhar peso parece relativamente mais comum na Ásia e entre grupos latinos nos EUA.",
+    "notas": "Pouco se sabe sobre a prevalência no sexo masculino."
+  },
+  "hierarquia": {
+    "presente": true,
+    "notas": "Bulimia nervosa não deve ser diagnosticada durante episódios de anorexia nervosa. A alternância entre subtipos ao longo do curso não é incomum.",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": [
+      "bulimia_nervosa"
+    ]
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      true,
+      "Subtipo",
+      true,
+      [
+        {
+          "id": "tipo_restritivo",
+          "codigo": {
+            "dsm5": "307.1",
+            "cid10": "F50.01",
+            "cid11": null
+          },
+          "label": "Tipo restritivo",
+          "descricao": "Nos últimos três meses, o indivíduo não se envolveu em episódios recorrentes de compulsão alimentar ou comportamento purgativo. A perda de peso é conseguida essencialmente por dieta, jejum e/ou exercício excessivo.",
+          "sintomas_caracteristicos": []
+        },
+        {
+          "id": "tipo_compulsao_alimentar_purgativa",
+          "codigo": {
+            "dsm5": "307.1",
+            "cid10": "F50.02",
+            "cid11": null
+          },
+          "label": "Tipo compulsão alimentar purgativa",
+          "descricao": "Nos últimos três meses, o indivíduo se envolveu em episódios recorrentes de compulsão alimentar purgativa (vômitos autoinduzidos ou uso indevido de laxantes, diuréticos ou enemas).",
+          "sintomas_caracteristicos": []
+        }
+      ],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [
+    {
+      "id": "em_remicao_parcial",
+      "nome": "Em remissão parcial",
+      "descricao": ""
+    },
+    {
+      "id": "em_remicao_completa",
+      "nome": "Em remissão completa",
+      "descricao": ""
+    }
+  ],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "10_transtornos_alimentares.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "antigravity-gemini",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "anorexia_nervosa",
+      "nome_completo": "Anorexia Nervosa",
+      "sigla": "",
+      "capitulo_id": "10",
+      "capitulo": "Transtornos Alimentares",
+      "grupo": null,
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "ambos",
+      "codigo": {
+        "cid10": "F50.0x",
+        "cid11": "6B80",
+        "dsm5": "307.1"
+      }
+    },
+    "id": "anorexia_nervosa",
+    "item_id": "anorexia_nervosa",
+    "name": "Anorexia Nervosa",
+    "nome_completo": "Anorexia Nervosa",
+    "chapter_id": "10",
+    "chapter_name": "Transtornos Alimentares",
+    "category": "FULL",
+    "estrutura_diagnostica": "monothetic_puro",
+    "estrutura_geral": "monothetic_puro",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Restrição Calórica com Peso Significativamente Baixo",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "medo_ganho_peso",
+        "letra": "B",
+        "rotulo": "Medo intenso de ganhar peso ou comportamento que interfere no ganho de peso",
+        "descricao_completa": "Medo intenso de ganhar peso ou de engordar, ou comportamento persistente que interfere no ganho de peso, mesmo estando com peso significativamente baixo.",
+        "obrigatorio": true
+      },
+      {
+        "id": "perturbação_peso_forma",
+        "letra": "C",
+        "rotulo": "Perturbação na vivência do peso ou da forma corporal",
+        "descricao_completa": "Perturbação no modo como o próprio peso ou a forma corporal são vivenciados, influência indevida do peso ou da forma corporal na autoavaliação, ou ausência persistente de reconhecimento da gravidade do baixo peso corporal atual.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "Baseia-se no IMC atual para adultos ou no percentil do IMC para crianças e adolescentes. O nível pode ser aumentado para refletir sintomas clínicos, incapacidade funcional e necessidade de supervisão.",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        },
+        {
+          "id": "extrema",
+          "label": "Extrema",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "saude",
+        "label": "Saúde Física e Nutricional"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      },
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional/Acadêmico"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Transtornos de ansiedade",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtorno depressivo maior",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtornos bipolares",
+        "frequencia": "alta",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtorno obsessivo-compulsivo",
+        "frequencia": "moderada",
+        "nota": "Mais frequente no tipo restritivo."
+      },
+      {
+        "condicao": "Transtorno por uso de álcool ou outras substâncias",
+        "frequencia": "moderada",
+        "nota": "Mais frequente no tipo compulsão alimentar purgativa."
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Bulimia nervosa",
+        "ponto_distincao": "Bulimia: peso corporal igual ou acima da faixa mínima normal, com episódios recorrentes de compulsão alimentar e compensação; anorexia: peso significativamente baixo.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtorno alimentar restritivo/evitativo",
+        "ponto_distincao": "TARE: pode haver perda de peso, mas sem medo de ganhar peso ou perturbação na vivência da forma/peso corporal.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Condições médicas (hipertireoidismo, malignidades, SIDA)",
+        "ponto_distincao": "Condições médicas: geralmente sem medo intenso de ganhar peso nem perturbação na vivência da forma/peso corporal.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno depressivo maior",
+        "ponto_distincao": "TDM: pode haver perda de peso grave, mas geralmente sem desejo de perda excessiva nem medo intenso de ganhar peso.",
+        "pertence_a_classe": false
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Adolescência ou idade adulta jovem; raramente antes da puberdade ou após os 40 anos.",
+      "trajetoria": "Altamente variável. Alguns se recuperam após um único episódio; outros apresentam curso crônico. A maioria entra em remissão dentro de cinco anos.",
+      "prognostico": "Taxa bruta de mortalidade de cerca de 5% por década. Morte mais comum por complicações clínicas ou suicídio."
+    },
+    "prevalencia": {
+      "populacao_geral": "0,4% (prevalência de 12 meses entre jovens do sexo feminino).",
+      "proporcao_sexo": "Aproximadamente 10:1 feminino:masculino em populações clínicas.",
+      "variacoes_culturais": "Possivelmente mais prevalente em países ricos pós-industrializados. A ausência de medo intenso manifesto de ganhar peso parece relativamente mais comum na Ásia e entre grupos latinos nos EUA.",
+      "notas": "Pouco se sabe sobre a prevalência no sexo masculino."
+    },
+    "hierarquia": {
+      "presente": true,
+      "notas": "Bulimia nervosa não deve ser diagnosticada durante episódios de anorexia nervosa. A alternância entre subtipos ao longo do curso não é incomum.",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": [
+        "bulimia_nervosa"
+      ]
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        true,
+        "Subtipo",
+        true,
+        [
+          {
+            "id": "tipo_restritivo",
+            "codigo": {
+              "dsm5": "307.1",
+              "cid10": "F50.01",
+              "cid11": null
+            },
+            "label": "Tipo restritivo",
+            "descricao": "Nos últimos três meses, o indivíduo não se envolveu em episódios recorrentes de compulsão alimentar ou comportamento purgativo. A perda de peso é conseguida essencialmente por dieta, jejum e/ou exercício excessivo.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "tipo_compulsao_alimentar_purgativa",
+            "codigo": {
+              "dsm5": "307.1",
+              "cid10": "F50.02",
+              "cid11": null
+            },
+            "label": "Tipo compulsão alimentar purgativa",
+            "descricao": "Nos últimos três meses, o indivíduo se envolveu em episódios recorrentes de compulsão alimentar purgativa (vômitos autoinduzidos ou uso indevido de laxantes, diuréticos ou enemas).",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [
+      {
+        "id": "em_remicao_parcial",
+        "nome": "Em remissão parcial",
+        "descricao": ""
+      },
+      {
+        "id": "em_remicao_completa",
+        "nome": "Em remissão completa",
+        "descricao": ""
+      }
+    ],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "10_transtornos_alimentares.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "antigravity-gemini",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "anorexia_nervosa",
+        "nome_completo": "Anorexia Nervosa",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "307.1",
+          "cid10": "F50.0x",
+          "cid11": "6B80"
+        },
+        "capitulo": "Transtornos Alimentares",
+        "capitulo_id": "10",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "monothetic_puro",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Restrição Calórica com Peso Significativamente Baixo",
+          "tipo": "monothetic_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Restrição calórica com peso significativamente baixo",
+              "desc": "Restrição da ingesta calórica em relação às necessidades, levando a um peso corporal significativamente baixo no contexto de idade, gênero, trajetória do desenvolvimento e saúde física.",
+              "pergunta": "A pessoa restringe a ingesta calórica de forma a manter um peso corporal significativamente abaixo do mínimo normal para sua idade, gênero e desenvolvimento?",
+              "exemplos_clinicos": [
+                "IMC < 17 kg/m² em adultos",
+                "Percentil de IMC abaixo do 5º em crianças/adolescentes",
+                "Insucesso em manter trajetória de crescimento esperada"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "medo_ganho_peso",
+          "letra": "B",
+          "rotulo": "Medo intenso de ganhar peso ou comportamento que interfere no ganho de peso",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Medo intenso de ganhar peso ou de engordar, ou comportamento persistente que interfere no ganho de peso, mesmo estando com peso significativamente baixo.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "perturbação_peso_forma",
+          "letra": "C",
+          "rotulo": "Perturbação na vivência do peso ou da forma corporal",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Perturbação no modo como o próprio peso ou a forma corporal são vivenciados, influência indevida do peso ou da forma corporal na autoavaliação, ou ausência persistente de reconhecimento da gravidade do baixo peso corporal atual.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": true,
+        "nome": "Subtipo",
+        "mutuamente_exclusivos": true,
+        "subtipos": [
+          {
+            "id": "tipo_restritivo",
+            "codigo": {
+              "dsm5": "307.1",
+              "cid10": "F50.01",
+              "cid11": null
+            },
+            "label": "Tipo restritivo",
+            "descricao": "Nos últimos três meses, o indivíduo não se envolveu em episódios recorrentes de compulsão alimentar ou comportamento purgativo. A perda de peso é conseguida essencialmente por dieta, jejum e/ou exercício excessivo.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "tipo_compulsao_alimentar_purgativa",
+            "codigo": {
+              "dsm5": "307.1",
+              "cid10": "F50.02",
+              "cid11": null
+            },
+            "label": "Tipo compulsão alimentar purgativa",
+            "descricao": "Nos últimos três meses, o indivíduo se envolveu em episódios recorrentes de compulsão alimentar purgativa (vômitos autoinduzidos ou uso indevido de laxantes, diuréticos ou enemas).",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "em_remicao_parcial",
+          "nome": "Em remissão parcial",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "em_remicao_completa",
+          "nome": "Em remissão completa",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "IMC ≥ 17 kg/m² (adultos) ou percentil do IMC correspondente (crianças/adolescentes)."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "IMC 16–16,99 kg/m² (adultos) ou percentil do IMC correspondente."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "IMC 15–15,99 kg/m² (adultos) ou percentil do IMC correspondente."
+          },
+          {
+            "id": "extrema",
+            "label": "Extrema",
+            "descritor": "IMC < 15 kg/m² (adultos) ou percentil do IMC correspondente."
+          }
+        ],
+        "regra_atribuicao": "Baseia-se no IMC atual para adultos ou no percentil do IMC para crianças e adolescentes. O nível pode ser aumentado para refletir sintomas clínicos, incapacidade funcional e necessidade de supervisão.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": true,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [
+          "bulimia_nervosa"
+        ],
+        "notas": "Bulimia nervosa não deve ser diagnosticada durante episódios de anorexia nervosa. A alternância entre subtipos ao longo do curso não é incomum.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "saude",
+          "label": "Saúde Física e Nutricional",
+          "icone_fa": "fa-heartbeat",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional/Acadêmico",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Bulimia nervosa",
+          "ponto_distincao": "Bulimia: peso corporal igual ou acima da faixa mínima normal, com episódios recorrentes de compulsão alimentar e compensação; anorexia: peso significativamente baixo.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno alimentar restritivo/evitativo",
+          "ponto_distincao": "TARE: pode haver perda de peso, mas sem medo de ganhar peso ou perturbação na vivência da forma/peso corporal.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Condições médicas (hipertireoidismo, malignidades, SIDA)",
+          "ponto_distincao": "Condições médicas: geralmente sem medo intenso de ganhar peso nem perturbação na vivência da forma/peso corporal.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "ponto_distincao": "TDM: pode haver perda de peso grave, mas geralmente sem desejo de perda excessiva nem medo intenso de ganhar peso.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtornos de ansiedade",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos bipolares",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno obsessivo-compulsivo",
+          "frequencia": "moderada",
+          "nota": "Mais frequente no tipo restritivo."
+        },
+        {
+          "condicao": "Transtorno por uso de álcool ou outras substâncias",
+          "frequencia": "moderada",
+          "nota": "Mais frequente no tipo compulsão alimentar purgativa."
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "0,4% (prevalência de 12 meses entre jovens do sexo feminino).",
+        "proporcao_sexo": "Aproximadamente 10:1 feminino:masculino em populações clínicas.",
+        "variacoes_culturais": "Possivelmente mais prevalente em países ricos pós-industrializados. A ausência de medo intenso manifesto de ganhar peso parece relativamente mais comum na Ásia e entre grupos latinos nos EUA.",
+        "notas": "Pouco se sabe sobre a prevalência no sexo masculino.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Adolescência ou idade adulta jovem; raramente antes da puberdade ou após os 40 anos.",
+        "trajetoria": "Altamente variável. Alguns se recuperam após um único episódio; outros apresentam curso crônico. A maioria entra em remissão dentro de cinco anos.",
+        "prognostico": "Taxa bruta de mortalidade de cerca de 5% por década. Morte mais comum por complicações clínicas ou suicídio.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação da Anorexia Nervosa - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (307.1 / F50.0x)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "10_transtornos_alimentares.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "anorexia_nervosa",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "monothetic_tripartite",
+        "criteria": [
+          "A. Restricao calorica com peso corporal significativamente baixo (IMC < 17 ou abaixo do 5o percentil em criancas)",
+          "B. Medo intenso de ganhar peso ou engordar, ou comportamento persistente que interfere no ganho de peso",
+          "C. Dismorfia/perturbacao da imagem corporal: influencia indevida do peso/forma na autoavaliacao ou ausencia de reconhecimento da gravidade do baixo peso"
+        ],
+        "diagnostic_rule": "A AND B AND C (todos obrigatorios)",
+        "clusters": [],
+        "duration": null,
+        "age_onset": "Adolescencia ou idade adulta jovem",
+        "functional_impairment": "Potencialmente fatal; complicacoes medicas; prejuizo social/occupacional",
+        "exclusions": [
+          "Condicoes medicas",
+          "TDM",
+          "Esquizofrenia",
+          "Substancias",
+          "ARFID",
+          "Bulimia nervosa",
+          "Pica"
+        ],
+        "subtypes_presentations": [
+          "Tipo restritivo",
+          "Tipo compulsao alimentar purgativa"
+        ],
+        "specifiers": [
+          "Remissao parcial",
+          "Remissao completa"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "marcador_biometrico",
+          "levels": [
+            "Leve (IMC ≥ 17)",
+            "Moderada (IMC 16-16.99)",
+            "Grave (IMC 15-15.99)",
+            "Extrema (IMC < 15)"
+          ],
+          "assignment_rule": "Baseado no IMC do adulto; criancas/adolescentes usar percentil do IMC por idade",
+          "domains": [
+            "IMC"
+          ]
+        },
+        "critical_differentials": [
+          "ARFID",
+          "TDM com perda de peso",
+          "Condicao medica",
+          "Bulimia nervosa"
+        ],
+        "key_questions": [
+          "Qual e seu peso atual?",
+          "Voce tem medo de ganhar peso?",
+          "Como voce se ve?"
+        ],
+        "alerts": [
+          "Condicao potencialmente fatal",
+          "Calculadora de IMC obrigatoria"
+        ],
+        "source_trace": {
+          "markdown_section": "1. ANOREXIA NERVOSA",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "307.1",
+      "codigo_cid10": "F50.0x",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** CID-9-MC 307.1 | CID-10-MC: F50.01 (tipo restritivo) / F50.02 (tipo compulsao alimentar purgativa)",
+        "estrutura_efetiva": "- **Estrutura efetiva:**",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "hierarquia_exclusao": {
+        "exclui": [
+          "bulimia_nervosa"
+        ],
+        "exclui_de": [
+          "bulimia_nervosa"
+        ],
+        "notas_hierarquia": "Bulimia nervosa não deve ser diagnosticada durante episódios de anorexia nervosa. A alternância entre subtipos ao longo do curso não é incomum."
+      },
+      "codigo_cid11": "6B80",
+      "super_enrichment": {
+        "id": "anorexia_nervosa",
+        "nome_original": "ANOREXIA NERVOSA",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtornos de ansiedade",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos bipolares",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno obsessivo-compulsivo",
+            "frequencia": "moderada",
+            "nota": "Mais frequente no tipo restritivo."
+          },
+          {
+            "condicao": "Transtorno por uso de álcool ou outras substâncias",
+            "frequencia": "moderada",
+            "nota": "Mais frequente no tipo compulsão alimentar purgativa."
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Bulimia nervosa",
+            "ponto_distincao": "Bulimia: peso corporal igual ou acima da faixa mínima normal, com episódios recorrentes de compulsão alimentar e compensação; anorexia: peso significativamente baixo.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno alimentar restritivo/evitativo",
+            "ponto_distincao": "TARE: pode haver perda de peso, mas sem medo de ganhar peso ou perturbação na vivência da forma/peso corporal.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Condições médicas (hipertireoidismo, malignidades, SIDA)",
+            "ponto_distincao": "Condições médicas: geralmente sem medo intenso de ganhar peso nem perturbação na vivência da forma/peso corporal.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "ponto_distincao": "TDM: pode haver perda de peso grave, mas geralmente sem desejo de perda excessiva nem medo intenso de ganhar peso.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": true,
+          "exclui_se_diagnosticado": [
+            "bulimia_nervosa"
+          ],
+          "exclui_diagnostico_de": [
+            "bulimia_nervosa"
+          ],
+          "notas": "Bulimia nervosa não deve ser diagnosticada durante episódios de anorexia nervosa. A alternância entre subtipos ao longo do curso não é incomum."
+        },
+        "prevalencia": {
+          "populacao_geral": "0,4% (prevalência de 12 meses entre jovens do sexo feminino).",
+          "proporcao_sexo": "Aproximadamente 10:1 feminino:masculino em populações clínicas.",
+          "variacoes_culturais": "Possivelmente mais prevalente em países ricos pós-industrializados. A ausência de medo intenso manifesto de ganhar peso parece relativamente mais comum na Ásia e entre grupos latinos nos EUA."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Adolescência ou idade adulta jovem; raramente antes da puberdade ou após os 40 anos.",
+          "trajetoria": "Altamente variável. Alguns se recuperam após um único episódio; outros apresentam curso crônico. A maioria entra em remissão dentro de cinco anos.",
+          "prognostico": "Taxa bruta de mortalidade de cerca de 5% por década. Morte mais comum por complicações clínicas ou suicídio."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {},
+        "criterios_obrigatorios": [
+          {
+            "id": "A - Restricao calorica com peso baixo",
+            "texto": "Restricao da ingesta calorica em relacao as necessidades, levando a peso corporal significativamente baixo no contexto de idade, genero, trajetoria do desenvolvimento e saude fisica.\n- Peso significativamente baixo = inferior ao minimo normal (ou menor que o minimamente esperado em criancas/adolescentes)\n- Referencia: IMC < 17,0 kg/m² = magreza moderada/grave (OMS); IMC 17,0-18,5 = limiar\n- Criancas/adolescentes: IMC por idade abaixo do 5o percentil ou fracasso em manter trajetoria de crescimento"
+          },
+          {
+            "id": "B - Medo de ganhar peso",
+            "texto": "Medo intenso de ganhar peso ou engordar, OU comportamento persistente que interfere no ganho de peso, mesmo estando com peso significativamente baixo.\n- Nota: individuos mais jovens podem nao reconhecer medo; inferencia clinica permitida"
+          },
+          {
+            "id": "C - Dismorfia/perturbacao da imagem corporal",
+            "texto": "Perturbacao no modo como o proprio peso ou forma corporal sao vivenciados, influencia indevida do peso/forma na autoavaliacao, OU ausencia persistente de reconhecimento da gravidade do baixo peso.\n- Nota: a estima e altamente dependente da percepcao de peso/forma"
+          }
+        ],
+        "regra_diagnostica": "A = true(peso_significativamente_baixo) AND B = true(medo_ou_comportamento_interferente) AND C = true(dismorfia_ou_negacao_gravidade)",
+        "subtipos": [
+          {
+            "Subtipo": "Tipo restritivo",
+            "Codigo": "F50.01",
+            "Regra": "Ultimos 3 meses: NENHUM episodio recorrente de compulsao + NENHUM comportamento purgativo"
+          },
+          {
+            "Subtipo": "Tipo compulsao alimentar purgativa",
+            "Codigo": "F50.02",
+            "Regra": "Ultimos 3 meses: episodios recorrentes de compulsao + purgacao (vomito autoinduzido, laxantes, diureticos, enemas)"
+          }
+        ],
+        "especificadores": [
+          "Remissao parcial:",
+          "Remissao completa:"
+        ],
+        "gravidade": {
+          "texto_completo": "- **tem_gravidade_formal:** TRUE\n- **Tipo:** marcador_biometrico\n- **Niveis (adultos, IMC):**\n\n| Nivel | IMC Adulto |\n|-------|-----------|\n| Leve | ≥ 17 kg/m² |\n| Moderada | 16 - 16,99 kg/m² |\n| Grave | 15 - 15,99 kg/m² |\n| Extrema | < 15 kg/m² |\n\n- **Criancas/adolescentes:** Usar percentil do IMC por idade\n- **Elevacao permitida:** Nivel pode ser aumentado para refletir sintomas clinicos, incapacidade funcional e necessidade de supervisao"
+        },
+        "duracao_e_curso": "- **Inicio tipico:** Adolescencia ou idade adulta jovem (raro antes da puberdade ou depois dos 40)\n- **Curso:** Variavel — recuperacao unica, flutuante (ganho/relapso) ou cronico\n- **Maioria:** remissao dentro de 5 anos da manifestacao inicial\n- **TBM:** ~5% por decada",
+        "exclusoes_obrigatorias": [
+          "Condicoes medicas (doenca gastrointestinal, hipertireoidismo, malignidades, SIDA)",
+          "Transtorno depressivo maior (perda de peso sem desejo de perder)",
+          "Esquizofrenia (comportamento alimentar estranho sem medo de ganhar peso)",
+          "Transtornos por uso de substancia (perda de peso por apetite suprimido, sem dismorfia)",
+          "Transtorno alimentar restritivo/evitativo (sem medo de ganhar peso nem dismorfia)",
+          "Bulimia nervosa (mantem peso na faixa normal; criterios mutuamente exclusivos quando AN ativa)",
+          "Pica (substancias nao nutritivas sem motivacao de controle de peso)"
+        ],
+        "diferenciais_criticos": "1. **Anorexia vs ARFID:** ARFID nao tem medo de ganhar peso nem perturbacao da imagem corporal\n2. **Anorexia tipo restritivo vs depressao com perda de peso:** Depressao nao tem medo de engordar nem dismorfia\n3. **Anorexia vs condicao medica:** Anorexia requer criterios B e C (componente psicologico); condicao medica nao tem medo intenso de ganhar peso\n4. **Anorexia \"sem fobia de peso\":** Apresentacao mais comum na Asia e entre latinos; requer inferencia a partir de comportamentos persistentes que impedem ganho de peso\n5. **Criancas/adolescentes:** Pode haver insucesso em ganhar peso (vs perda em adultos); negacao do medo e comum em jovens",
+        "perguntas_chave_entrevista": [
+          {
+            "bloco": "Criterio A - Peso/Restricao:",
+            "texto": "Qual e seu peso atual? Qual foi seu peso mais alto? Mais baixo?"
+          },
+          {
+            "bloco": "Criterio A - Peso/Restricao:",
+            "texto": "Voce se alimenta de forma diferente das outras pessoas? Restringe tipos ou quantidades de alimento?"
+          },
+          {
+            "bloco": "Criterio A - Peso/Restricao:",
+            "texto": "Ja houve episodios de compulsao alimentar?"
+          },
+          {
+            "bloco": "Criterio B - Medo de ganhar peso:",
+            "texto": "Voce tem medo de ganhar peso ou de ficar gordo?"
+          },
+          {
+            "bloco": "Criterio B - Medo de ganhar peso:",
+            "texto": "Mesmo estando abaixo do peso, ainda se preocupa com isso?"
+          },
+          {
+            "bloco": "Criterio B - Medo de ganhar peso:",
+            "texto": "Faz coisas para evitar ganhar peso?"
+          },
+          {
+            "bloco": "Criterio B - Medo de ganhar peso:",
+            "texto": "Que medidas toma quando pensa que pode ter ganhado peso?"
+          },
+          {
+            "bloco": "Criterio C - Dismorfia:",
+            "texto": "Como voce se ve? Acredita estar acima do peso mesmo outros dizendo que esta magro?"
+          },
+          {
+            "bloco": "Criterio C - Dismorfia:",
+            "texto": "O peso e a forma do corpo influenciam como voce se sente como pessoa?"
+          },
+          {
+            "bloco": "Criterio C - Dismorfia:",
+            "texto": "Voce reconhece que seu baixo peso pode ser perigoso para sua saude?"
+          },
+          {
+            "bloco": "Criterio C - Dismorfia:",
+            "texto": "Pesa com frequencia? Mede partes do corpo? Usa espelho excessivamente?"
+          },
+          {
+            "bloco": "Subtipo:",
+            "texto": "Nos ultimos 3 meses, teve episodios de comer em excesso com perda de controle?"
+          },
+          {
+            "bloco": "Subtipo:",
+            "texto": "Usa algum metodo para compensar a alimentacao? (vomito, laxantes, diureticos, exercicio excessivo)"
+          }
+        ],
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_full",
+          "imc_calculadora": "obrigatorio",
+          "subtipo_obrigatorio": [
+            "restritivo",
+            "compulsao_purgativa"
+          ],
+          "gravidade_por_imc": true,
+          "faixa_etaria": "adolescencia_a_adulto_jovem",
+          "alerta_medico": "condicao_potencialmente_fatal"
+        }
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/anorexia_nervosa.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

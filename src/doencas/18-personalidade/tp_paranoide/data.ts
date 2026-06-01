@@ -1,0 +1,949 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "tp_paranoide",
+    "nome_completo": "Transtorno da Personalidade Paranóide",
+    "sigla": "TPP",
+    "capitulo_id": "18",
+    "capitulo": "Transtornos da Personalidade",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F60.0",
+      "cid11": "6D10",
+      "dsm5": "301.0"
+    }
+  },
+  "id": "tp_paranoide",
+  "item_id": "tp_paranoide",
+  "name": "Transtorno da Personalidade Paranóide",
+  "nome_completo": "Transtorno da Personalidade Paranóide",
+  "chapter_id": "18",
+  "chapter_name": "Transtornos da Personalidade",
+  "category": "FULL",
+  "estrutura_diagnostica": "polythetic_monocluster",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Padrão de Desconfiança e Suspeita",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A3",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A4",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A5",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A6",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A7",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "exclusao_psicotico_medico",
+      "letra": "B",
+      "rotulo": "Não ocorre exclusivamente durante curso de outro transtorno psicótico ou condição médica",
+      "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos ou outro transtorno psicótico e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "None",
+    "niveis": [
+      {
+        "id": "leve",
+        "label": "Leve",
+        "descricao": ""
+      },
+      {
+        "id": "moderada",
+        "label": "Moderada",
+        "descricao": ""
+      },
+      {
+        "id": "grave",
+        "label": "Grave",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "trabalho",
+      "label": "Desempenho Profissional"
+    },
+    {
+      "id": "social",
+      "label": "Funcionamento Social"
+    },
+    {
+      "id": "relacoes",
+      "label": "Relações Íntimas"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "Transtorno Depressivo Maior",
+      "frequencia": "moderada",
+      "nota": "None"
+    },
+    {
+      "condicao": "Agorafobia",
+      "frequencia": "moderada",
+      "nota": "None"
+    },
+    {
+      "condicao": "Transtorno Obsessivo-Compulsivo",
+      "frequencia": "moderada",
+      "nota": "None"
+    },
+    {
+      "condicao": "Uso de álcool e outras substâncias",
+      "frequencia": "moderada",
+      "nota": "None"
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "Transtorno Delirante",
+      "ponto_distincao": "TDP: delírios persistentes; TPP: desconfiança difusa sem delírios fixos.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Esquizofrenia",
+      "ponto_distincao": "Esquizofrenia: período de sintomas psicóticos persistentes; TPP deve ter estado presente antes.",
+      "pertence_a_classe": false
+    },
+    {
+      "condicao": "Transtorno da Personalidade Esquizotípica",
+      "ponto_distincao": "Esquizotípica inclui pensamento mágico, experiências perceptivas incomuns e discurso estranho.",
+      "pertence_a_classe": true
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+    "trajetoria": "Crônico; pode preceder transtorno delirante ou esquizofrenia.",
+    "prognostico": "Difícil convivência; episódios psicóticos breves sob estresse."
+  },
+  "prevalencia": {
+    "populacao_geral": "2,3% a 4,4%",
+    "proporcao_sexo": "Mais comumente diagnosticado no sexo masculino (amostras clínicas)",
+    "variacoes_culturais": "Comportamentos defensivos de minorias não devem ser confundidos com TPP.",
+    "notas": "None"
+  },
+  "hierarquia": {
+    "presente": true,
+    "notas": "TPA exclui o diagnóstico de transtorno da conduta em indivíduos com 18 anos ou mais.",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": [
+      "conduta"
+    ]
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      false,
+      null,
+      true,
+      [],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "18_transtornos_personalidade.md",
+    "fonte_inventario_md": null,
+    "data_extracao": "2026-05-31",
+    "modelo_agente": "claude-opus-4-7",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "tp_paranoide",
+      "nome_completo": "Transtorno da Personalidade Paranóide",
+      "sigla": "TPP",
+      "capitulo_id": "18",
+      "capitulo": "Transtornos da Personalidade",
+      "grupo": "Cluster A",
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [],
+      "faixa_etaria_alvo": "adulto",
+      "codigo": {
+        "cid10": "F60.0",
+        "cid11": "6D10",
+        "dsm5": "301.0"
+      }
+    },
+    "id": "tp_paranoide",
+    "item_id": "tp_paranoide",
+    "name": "Transtorno da Personalidade Paranóide",
+    "nome_completo": "Transtorno da Personalidade Paranóide",
+    "chapter_id": "18",
+    "chapter_name": "Transtornos da Personalidade",
+    "category": "FULL",
+    "estrutura_diagnostica": "polythetic_monocluster",
+    "estrutura_geral": "polythetic_monocluster",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Padrão de Desconfiança e Suspeita",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A3",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A4",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A5",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A6",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A7",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "exclusao_psicotico_medico",
+        "letra": "B",
+        "rotulo": "Não ocorre exclusivamente durante curso de outro transtorno psicótico ou condição médica",
+        "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos ou outro transtorno psicótico e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "None",
+      "niveis": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "descricao": ""
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "descricao": ""
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "trabalho",
+        "label": "Desempenho Profissional"
+      },
+      {
+        "id": "social",
+        "label": "Funcionamento Social"
+      },
+      {
+        "id": "relacoes",
+        "label": "Relações Íntimas"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "Transtorno Depressivo Maior",
+        "frequencia": "moderada",
+        "nota": "None"
+      },
+      {
+        "condicao": "Agorafobia",
+        "frequencia": "moderada",
+        "nota": "None"
+      },
+      {
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "frequencia": "moderada",
+        "nota": "None"
+      },
+      {
+        "condicao": "Uso de álcool e outras substâncias",
+        "frequencia": "moderada",
+        "nota": "None"
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "Transtorno Delirante",
+        "ponto_distincao": "TDP: delírios persistentes; TPP: desconfiança difusa sem delírios fixos.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Esquizofrenia",
+        "ponto_distincao": "Esquizofrenia: período de sintomas psicóticos persistentes; TPP deve ter estado presente antes.",
+        "pertence_a_classe": false
+      },
+      {
+        "condicao": "Transtorno da Personalidade Esquizotípica",
+        "ponto_distincao": "Esquizotípica inclui pensamento mágico, experiências perceptivas incomuns e discurso estranho.",
+        "pertence_a_classe": true
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+      "trajetoria": "Crônico; pode preceder transtorno delirante ou esquizofrenia.",
+      "prognostico": "Difícil convivência; episódios psicóticos breves sob estresse."
+    },
+    "prevalencia": {
+      "populacao_geral": "2,3% a 4,4%",
+      "proporcao_sexo": "Mais comumente diagnosticado no sexo masculino (amostras clínicas)",
+      "variacoes_culturais": "Comportamentos defensivos de minorias não devem ser confundidos com TPP.",
+      "notas": "None"
+    },
+    "hierarquia": {
+      "presente": true,
+      "notas": "TPA exclui o diagnóstico de transtorno da conduta em indivíduos com 18 anos ou mais.",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": [
+        "conduta"
+      ]
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        false,
+        null,
+        true,
+        [],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "18_transtornos_personalidade.md",
+      "fonte_inventario_md": null,
+      "data_extracao": "2026-05-31",
+      "modelo_agente": "claude-opus-4-7",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "tp_paranoide",
+        "nome_completo": "Transtorno da Personalidade Paranóide",
+        "sigla": "TPP",
+        "codigo": {
+          "dsm5": "301.0",
+          "cid10": "F60.0",
+          "cid11": "6D10"
+        },
+        "capitulo": "Transtornos da Personalidade",
+        "capitulo_id": "18",
+        "grupo": "Cluster A",
+        "faixa_etaria_alvo": "adulto",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Padrão de Desconfiança e Suspeita",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 4,
+            "pediatria": null
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Suspeita de ser explorado, maltratado ou enganado",
+              "desc": "Suspeita, sem embasamento suficiente, de estar sendo explorado, maltratado ou enganado por outros.",
+              "pergunta": "Você frequentemente suspeita que as pessoas estão tentando enganá-lo, prejudicá-lo ou explorá-lo, mesmo sem evidências claras?",
+              "exemplos_clinicos": [
+                "Acha que colegas tramam contra si",
+                "Desconfia de troco em lojas"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Dúvidas injustificadas sobre lealdade de amigos",
+              "desc": "Preocupa-se com dúvidas injustificadas acerca da lealdade ou da confiabilidade de amigos e sócios.",
+              "pergunta": "Você tem dúvidas persistentes sobre a lealdade ou confiança de seus amigos, examinando minuciosamente suas ações em busca de hostilidade?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Relutância em confiar por medo de retaliação",
+              "desc": "Reluta em confiar nos outros devido a medo infundado de que as informações serão usadas maldosamente contra si.",
+              "pergunta": "Você reluta em confiar nas pessoas ou tornar-se íntimo por medo de que suas informações pessoais sejam usadas contra você?",
+              "exemplos_clinicos": [
+                "Recusa responder perguntas pessoais"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Percebe significados ocultos ameaçadores em eventos benignos",
+              "desc": "Percebe significados ocultos humilhantes ou ameaçadores em comentários ou eventos benignos.",
+              "pergunta": "Você frequentemente interpreta comentários casuais ou eventos neutros como contendo críticas ou ameaças ocultas?",
+              "exemplos_clinicos": [
+                "Elogio interpretado como coerção",
+                "Erro de funcionário visto como deliberado"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Guarda rancores persistentemente",
+              "desc": "Guarda rancores de forma persistente (i.e., não perdoa insultos, injúrias ou desprezo).",
+              "pergunta": "Você guarda rancor por muito tempo e tem dificuldade em perdoar insultos ou desprezos, mesmo que leves?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Percebe ataques ao caráter e reage com raiva",
+              "desc": "Percebe ataques a seu caráter ou reputação que não são percebidos pelos outros e reage com raiva ou contra-ataca rapidamente.",
+              "pergunta": "Você sente que seu caráter ou reputação são atacados com frequência e reage com raiva ou contra-ataque rápido?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Suspeitas injustificadas de infidelidade do parceiro",
+              "desc": "Tem suspeitas recorrentes e injustificadas acerca da fidelidade do cônjuge ou parceiro sexual.",
+              "pergunta": "Você tem suspeitas recorrentes e sem fundamento sobre a fidelidade de seu cônjuge ou parceiro?",
+              "exemplos_clinicos": [
+                "Reúne evidências triviais de ciúme",
+                "Questiona constantemente paradeiro"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "exclusao_psicotico_medico",
+          "letra": "B",
+          "rotulo": "Não ocorre exclusivamente durante curso de outro transtorno psicótico ou condição médica",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "esquizofrenia",
+            "transtorno_bipolar",
+            "transtorno_depressivo_com_psicose"
+          ],
+          "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos ou outro transtorno psicótico e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas; prejuízo leve."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas moderados; prejuízo moderado."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas; prejuízo grave."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": true,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [
+          "conduta"
+        ],
+        "notas": "TPA exclui o diagnóstico de transtorno da conduta em indivíduos com 18 anos ou mais.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "relacoes",
+          "label": "Relações Íntimas",
+          "icone_fa": "fa-heart",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno Delirante",
+          "ponto_distincao": "TDP: delírios persistentes; TPP: desconfiança difusa sem delírios fixos.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Esquizofrenia",
+          "ponto_distincao": "Esquizofrenia: período de sintomas psicóticos persistentes; TPP deve ter estado presente antes.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno da Personalidade Esquizotípica",
+          "ponto_distincao": "Esquizotípica inclui pensamento mágico, experiências perceptivas incomuns e discurso estranho.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Agorafobia",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno Obsessivo-Compulsivo",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Uso de álcool e outras substâncias",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "2,3% a 4,4%",
+        "proporcao_sexo": "Mais comumente diagnosticado no sexo masculino (amostras clínicas)",
+        "variacoes_culturais": "Comportamentos defensivos de minorias não devem ser confundidos com TPP.",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+        "trajetoria": "Crônico; pode preceder transtorno delirante ou esquizofrenia.",
+        "prognostico": "Difícil convivência; episódios psicóticos breves sob estresse.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno da Personalidade Paranóide - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (301.0 / F60.0)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "18_transtornos_personalidade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4-7",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "tp_paranoide",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "A1. Suspeita sem embasamento de ser explorado/maltratado/enganado",
+          "A2. Preocupacao com duvidas sobre lealdade/confiabilidade",
+          "A3. Relutancia em confiar devido a medo infundado",
+          "A4. Percepcao de significados ocultos humilhantes/ameacadores",
+          "A5. Guarda rancores persistentes",
+          "A6. Percebe ataques ao carater nao percebidos por outros",
+          "A7. Suspeitas recorrentes sobre fidelidade do conjuge"
+        ],
+        "diagnostic_rule": "Criterios gerais de TP (A-F) + >=4 de 7 criterios especificos + exclusao",
+        "clusters": [
+          "Desconfianca e Suspeita"
+        ],
+        "duration": "padrao persistente, estavel, de longa duracao",
+        "age_onset": "inicio vida adulta (desde adolescencia/inicio adulto)",
+        "functional_impairment": "problemas nos relacionamentos interpessoais; isolamento social; implicacoes legais",
+        "exclusions": [
+          "esquizofrenia",
+          "transtorno bipolar/depressivo com psicotico",
+          "condicao medica"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [
+          "transtorno delirante",
+          "esquizotipica",
+          "esquizoide",
+          "borderline",
+          "evitativa",
+          "antissocial",
+          "narcisista"
+        ],
+        "key_questions": [
+          "Desde a juventude, desconfia das intencoes das pessoas sem motivo?",
+          "Dificil confiar por medo de informacoes serem usadas contra voce?",
+          "Encontra significados ocultos em comentarios normais?",
+          "Dificuldade em perdoar quando se sente desrespeitado?",
+          "Sente que carater/reputacao sao atacados?",
+          "Duvidas sobre fidelidade sem evidencias?"
+        ],
+        "alerts": [
+          "Nao confundir desconfianca justificada por contexto sociocultural com paranoia patologica"
+        ],
+        "source_trace": {
+          "markdown_section": "## 1. Transtorno da Personalidade Paranoide (TPP)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 301.0 / F60.0",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Padrao de desconfianca e suspeita difusa, motivacoes interpretadas como malevolas, inicio na vida adulta, presente em varios contextos. Exige 4+ de 7 criterios: (1) suspeita sem embasamento de exploracao/enganacao, (2) duvidas injustificadas sobre lealdade de amigos, (3) relutancia em confiar, (4) percebe significados ocultos ameacadores em eventos benignos, (5) guarda rancores persistentes, (6) percebe ataques ao carater e reage com raiva, (7) suspeitas injustificadas de infidelidade. Exclusao: nao ocorre exclusivamente durante esquizofrenia, transtorno bipolar/depressivo com sintomas psicoticos ou outro transtorno psicotico; nao atribuivel a condicao medica.",
+        "notas_clinicas": "- **Notas:** Prevalencia: 2,3% (NCS-R) a 4,4% (NESARC). Mais comum em homens. Pode apresentar episodios psicoticos breves sob estresse. Comorbidade frequente: TP esquizotipica, esquizoide, narcisista, evitativa, borderline; transtornos por uso de substancia; TOC; agorafobia. Especificador \"pre-morbido\" se criterios atendidos antes de esquizofrenia."
+      },
+      "hierarquia_exclusao": {
+        "exclui": [],
+        "exclui_de": [
+          "conduta"
+        ],
+        "notas_hierarquia": "TPA exclui o diagnóstico de transtorno da conduta em indivíduos com 18 anos ou mais."
+      },
+      "codigo_cid11": "6D10",
+      "super_enrichment": {
+        "id": "tp_paranoide",
+        "nome_original": "Transtorno da Personalidade Paranoide",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Agorafobia",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno Obsessivo-Compulsivo",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Uso de álcool e outras substâncias",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno Delirante",
+            "ponto_distincao": "TDP: delírios persistentes; TPP: desconfiança difusa sem delírios fixos.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Esquizofrenia",
+            "ponto_distincao": "Esquizofrenia: período de sintomas psicóticos persistentes; TPP deve ter estado presente antes.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno da Personalidade Esquizotípica",
+            "ponto_distincao": "Esquizotípica inclui pensamento mágico, experiências perceptivas incomuns e discurso estranho.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": true,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [
+            "conduta"
+          ],
+          "notas": "TPA exclui o diagnóstico de transtorno da conduta em indivíduos com 18 anos ou mais."
+        },
+        "prevalencia": {
+          "populacao_geral": "2,3% a 4,4%",
+          "proporcao_sexo": "Mais comumente diagnosticado no sexo masculino (amostras clínicas)",
+          "variacoes_culturais": "Comportamentos defensivos de minorias não devem ser confundidos com TPP."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
+          "trajetoria": "Crônico; pode preceder transtorno delirante ou esquizofrenia.",
+          "prognostico": "Difícil convivência; episódios psicóticos breves sob estresse."
+        },
+        "instrumentos_complementares": [],
+        "transtorno_da_personalidade_paranoide": "```yaml\ncodigo_dsm5: \"301.0\"\ncodigo_cid10: \"F60.0\"\ncategoria_operacional: FULL\ncluster: A\nestrutura_diagnostica: polythetic_monocluster\n```",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "**A.** Padrao difuso de **desconfianca e suspeita** dos outros, com motivacoes interpretadas como malevolas, inicio na vida adulta, presente em varios contextos, indicado por **4+** dos seguintes (7 itens):\n\n| # | Criterio |\n|---|----------|\n| A1 | Suspeita sem embasamento de estar sendo explorado, maltratado ou enganado |\n| A2 | Preocupacao com duvidas injustificadas sobre lealdade/confiabilidade de amigos/socios |\n| A3 | Relutancia em confiar devido a medo infundado de informacoes serem usadas maldosamente |\n| A4 | Percepcao de significados ocultos humilhantes ou ameacadores em comentarios/eventos benignos |\n| A5 | Guarda rancores persistentes (nao perdoa insultos, injurias ou desprezo) |\n| A6 | Percebe ataques ao carater/reputacao nao percebidos por outros; reage com raiva ou contra-ataca |\n| A7 | Suspeitas recorrentes e injustificadas sobre fidelidade do conjuge/parceiro sexual |\n\n**B.** **Exclusao**: Nao ocorre exclusivamente durante esquizofrenia, transtorno bipolar ou depressivo com sintomas psicoticos, outro transtorno psicotico; nao atribuivel a efeitos fisiologicos de outra condicao medica.\n\n> Nota: Se criterios atendidos antes de esquizofrenia → acrescentar \"pre-morbido\"."
+          }
+        ],
+        "regra_diagnostica": "- Criterios gerais de TP (A-F) + Criterio A acima (4+ de 7) + Criterio B (exclusao)\n- **Liminar**: 4/7 sintomas especificos",
+        "duracao_idade_prejuizo": {
+          "idade_de_inicio": "Inicio da vida adulta (padrao persistente desde adolescencia/inicio adulto)",
+          "duracao": "Padrao persistente, estavel, de longa duracao",
+          "prejuizo_funcional": "Problemas nos relacionamentos interpessoais; dificuldade de convivencia; risco de isolamento social; possiveis implicacoes legais (disputas); funcionamento profissional prejudicado pela desconfianca e rigidez"
+        },
+        "exclusoes_obrigatorias": [
+          "Esquizofrenia / Transtorno psicotico (exclusao formal - Criterio B)",
+          "Transtorno bipolar ou depressivo com sintomas psicoticos (exclusao formal)",
+          "Mudanca de personalidade devido a condicao medica (exclusao formal)",
+          "Transtorno delirante do tipo persecutorio (diferenciar: delírios persistentes vs. suspeitas/tracos)",
+          "Transtorno de personalidade esquizotipica (diferenciar: pensamento magico, experiencias perceptivas incomuns)",
+          "Transtorno de personalidade esquizoide (diferenciar: frieza, indiferenca, sem ideação paranoide)",
+          "Transtorno de personalidade borderline e histrionica (diferenciar: raiz da raiva)",
+          "Transtorno de personalidade evitativa (diferenciar: medo de vergonha vs. medo de intencoes maldosas)",
+          "Transtorno de personalidade antissocial (diferenciar: vinganca vs. ganho pessoal)",
+          "Transtorno de personalidade narcisista (diferenciar: desconfianca por medo de imperfeicao revelada)",
+          "Uso de substancia"
+        ],
+        "gravidade": {
+          "tipo": "nao_aplica"
+        },
+        "subtipos": [
+          "Sem subtipos formais no DSM-5"
+        ],
+        "diferenciais_criticos": "1. **Nao confundir** desconfianca justificada por contexto sociocultural (minorias, imigrantes, refugiados) com paranoia patologica\n2. **Nao confundir** hipervigilancia defensiva situacional com padrao difuso e inflexivel\n3. **Nao diagnosticar** exclusivamente durante episodio psicotico\n4. **Verificar** estabilidade temporal e consistencia em multiplos contextos",
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "Desde a juventude, voce tem desconfiado das intencoes das pessoas mesmo sem motivo aparente?"
+          },
+          {
+            "numero": 2,
+            "texto": "Voce acha dificil confiar nas pessoas por medo de que usem informacoes contra voce?"
+          },
+          {
+            "numero": 3,
+            "texto": "Ja encontrou significados ocultos ou ameacadores em comentarios que outros consideram normais?"
+          },
+          {
+            "numero": 4,
+            "texto": "Tem dificuldade em perdoar quando se sente desrespeitado ou insultado?"
+          },
+          {
+            "numero": 5,
+            "texto": "Costuma sentir que seu carater ou reputacao estao sendo atacados e reage com raiva?"
+          },
+          {
+            "numero": 6,
+            "texto": "Ja teve duvidas sobre a fidelidade de parceiros sem evidencias claras?"
+          }
+        ],
+        "ui": {
+          "renderiza_entrevista": true,
+          "modo": "structured_full",
+          "caracteristicas_especiais": "",
+          "tracos_egossintonicos": true,
+          "necessita_informantes": true,
+          "evitar_diagnostico_episodio_agudo": true,
+          "avaliar_multiplas_entrevistas": true
+        }
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/tp_paranoide.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": false,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "missing",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;

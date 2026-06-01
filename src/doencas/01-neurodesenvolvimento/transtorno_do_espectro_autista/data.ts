@@ -1,0 +1,1135 @@
+import { TranstornoDSMSchema, type TranstornoDSM } from "@/infra/schemas/dsm-schemas";
+import { parseGeneratedDiseaseData } from "@/infra/validation-helpers";
+
+// Dados brutos normalizados da release DSM operacional
+const rawData = {
+  "$schema_version": "1.0.0",
+  "meta": {
+    "id": "transtorno_do_espectro_autista",
+    "nome_completo": "Transtorno do Espectro Autista",
+    "sigla": "TEA",
+    "capitulo_id": "01",
+    "capitulo": "Transtornos do Neurodesenvolvimento",
+    "grupo": null,
+    "versao_complementar_existe": false,
+    "sinonimos_historicos": [],
+    "faixa_etaria_alvo": "ambos",
+    "codigo": {
+      "cid10": "F84.0",
+      "cid11": "6A02",
+      "dsm5": "299.00"
+    }
+  },
+  "id": "transtorno_do_espectro_autista",
+  "item_id": "transtorno_do_espectro_autista",
+  "name": "Transtorno do Espectro Autista",
+  "nome_completo": "Transtorno do Espectro Autista",
+  "chapter_id": "01",
+  "chapter_name": "Transtornos do Neurodesenvolvimento",
+  "category": "FULL",
+  "estrutura_diagnostica": "polythetic_clusters_assimetricos",
+  "estrutura_geral": "criterios_sintomaticos",
+  "ui_mode": "structured_full",
+  "severity_type": "ordinal_simples",
+  "has_formal_severity": true,
+  "render_structured_interview": true,
+  "diagnostic_rule": "",
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Déficits na Comunicação Social e Interação Social",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "A1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "A3",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "nome": "Padrões Restritivos e Repetitivos de Comportamento",
+      "descricao": "",
+      "sintomas": [
+        {
+          "id": "B1",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "B2",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "B3",
+          "texto": "",
+          "descricao": ""
+        },
+        {
+          "id": "B4",
+          "texto": "",
+          "descricao": ""
+        }
+      ]
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "inicio_precoce_infancia",
+      "letra": "C",
+      "rotulo": "Sintomas presentes no início do período do desenvolvimento",
+      "descricao_completa": "Os sintomas devem estar presentes no início do período do desenvolvimento (mas podem não se manifestar plenamente até que as demandas sociais ultrapassem o limite de suas capacidades).",
+      "obrigatorio": true
+    },
+    {
+      "id": "prejuizo_funcional_geral",
+      "letra": "D",
+      "rotulo": "Prejuízo clinicamente significativo no funcionamento",
+      "descricao_completa": "Os sintomas causam prejuízo clinicamente significativo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo.",
+      "obrigatorio": true
+    },
+    {
+      "id": "nao_explicado_por_di",
+      "letra": "E",
+      "rotulo": "Não são mais bem explicados por deficiência intelectual",
+      "descricao_completa": "Essas perturbações não são mais bem explicadas por deficiência intelectual ou atraso global do desenvolvimento.",
+      "obrigatorio": true
+    }
+  ],
+  "gravidade": {
+    "tipo": "ordinal_simples",
+    "presente": true,
+    "has_formal_severity": true,
+    "regra_atribuicao": "A gravidade deve ser registrada individualmente para o domínio da comunicação social (Critério A) e para os comportamentos repetitivos (Critério B), variando do Nível 1 ao Nível 3.",
+    "niveis": [
+      {
+        "id": "nivel_1",
+        "label": "Nível 1 (Exigindo Apoio)",
+        "descricao": ""
+      },
+      {
+        "id": "nivel_2",
+        "label": "Nível 2 (Exigindo Apoio Substancial)",
+        "descricao": ""
+      },
+      {
+        "id": "nivel_3",
+        "label": "Nível 3 (Exigindo Apoio Muito Substancial)",
+        "descricao": ""
+      }
+    ],
+    "dominios": []
+  },
+  "dominios_impacto": [
+    {
+      "id": "comunicacao_social",
+      "label": "Comunicação e Interação Social"
+    },
+    {
+      "id": "rotinas",
+      "label": "Adaptação a Rotinas e Mudanças"
+    }
+  ],
+  "comorbidades_frequentes": [
+    {
+      "condicao": "TDAH",
+      "frequencia": "alta",
+      "nota": "Ocorre em cerca de 30% a 40% dos casos de TEA."
+    },
+    {
+      "condicao": "Ansiedade e Transtornos Depressivos",
+      "frequencia": "alta",
+      "nota": "Especialmente comum em adolescentes e adultos com TEA nível 1."
+    }
+  ],
+  "diagnostico_diferencial": [
+    {
+      "condicao": "TDAH",
+      "ponto_distincao": "Dificuldades de atenção e hiperatividade no TDAH não incluem necessariamente déficits qualitativos intrínsecos na comunicação recíproca ou comportamentos restritivos.",
+      "pertence_a_classe": true
+    },
+    {
+      "condicao": "Transtorno da Comunicação Social",
+      "ponto_distincao": "TCSP não apresenta padrões de comportamento repetitivos ou interesses restritos (Critério B do TEA).",
+      "pertence_a_classe": true
+    }
+  ],
+  "perguntas_chave": [],
+  "key_questions": [],
+  "curso_desenvolvimento": {
+    "idade_inicio_tipica": "Antes dos 2 anos de idade (embora sintomas sutis possam ser vistos no primeiro ano de vida)",
+    "trajetoria": "Os sintomas costumam ser contínuos e persistentes ao longo da vida, embora intervenções comportamentais precoces e intensivas alterem positivamente a trajetória funcional.",
+    "prognostico": "Altamente dependente da presença de deficiência intelectual e da capacidade de comunicação verbal funcional até os 5 anos de idade."
+  },
+  "prevalencia": {
+    "populacao_geral": "Estima-se em cerca de 1% a 2% da população, com taxas de diagnóstico crescentes nas últimas décadas devido a maior conscientização e mudanças de critérios.",
+    "proporcao_sexo": "Razão de aproximadamente 4:1 a favor do sexo masculino.",
+    "variacoes_culturais": "None",
+    "notas": "As taxas de prevalência parecem ser semelhantes entre diferentes culturas e raças."
+  },
+  "hierarquia": {
+    "presente": false,
+    "notas": "TEA exclui o diagnóstico de Transtorno da Comunicação Social (Pragmática).",
+    "exclui_se_diagnosticado": [],
+    "exclui_diagnostico_de": [
+      "transtorno_comunicacao_social"
+    ]
+  },
+  "subtipos": {
+    "presente": true,
+    "itens": [
+      false,
+      null,
+      false,
+      [],
+      {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    ]
+  },
+  "especificadores": [
+    {
+      "id": "com_comprometimento_intelectual",
+      "nome": "Com comprometimento intelectual associado",
+      "descricao": ""
+    },
+    {
+      "id": "com_comprometimento_linguagem",
+      "nome": "Com comprometimento da linguagem associado",
+      "descricao": ""
+    },
+    {
+      "id": "associado_condicao_medica",
+      "nome": "Associado a alguma condição médica ou genética conhecida ou a fator ambiental",
+      "descricao": ""
+    }
+  ],
+  "template_prontuario": {
+    "titulo": "",
+    "texto": "",
+    "campos": []
+  },
+  "metadados_globais": {
+    "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
+    "fonte_inventario_md": "inventario/01_inventario.md",
+    "data_extracao": "2026-05-21",
+    "modelo_agente": "antigravity-ide",
+    "lacunas_globais": [],
+    "inconsistencias_detectadas": [],
+    "notas_agente_globais": null,
+    "revisao_humana_necessaria": false
+  },
+  "instrumentos_complementares": [
+    {
+      "nome": "Escala de Observação para o Diagnóstico do Autismo",
+      "sigla": "ADOS-2",
+      "uso": "diagnostico",
+      "obrigatorio_para_diagnostico": false,
+      "fonte": "sugestao_clinica_padrao"
+    },
+    {
+      "nome": "Entrevista de Diagnóstico de Autismo Revisada",
+      "sigla": "ADI-R",
+      "uso": "informante",
+      "obrigatorio_para_diagnostico": false,
+      "fonte": "sugestao_clinica_padrao"
+    }
+  ],
+  "raw_document": {
+    "$schema_version": "1.0.0",
+    "meta": {
+      "id": "transtorno_do_espectro_autista",
+      "nome_completo": "Transtorno do Espectro Autista",
+      "sigla": "TEA",
+      "capitulo_id": "01",
+      "capitulo": "Transtornos do Neurodesenvolvimento",
+      "grupo": "Transtorno do Espectro Autista",
+      "versao_complementar_existe": false,
+      "sinonimos_historicos": [
+        "Autismo Infantil",
+        "Síndrome de Asperger",
+        "Transtorno Invasivo do Desenvolvimento"
+      ],
+      "faixa_etaria_alvo": "ambos",
+      "codigo": {
+        "cid10": "F84.0",
+        "cid11": "6A02",
+        "dsm5": "299.00"
+      }
+    },
+    "id": "transtorno_do_espectro_autista",
+    "item_id": "transtorno_do_espectro_autista",
+    "name": "Transtorno do Espectro Autista",
+    "nome_completo": "Transtorno do Espectro Autista",
+    "chapter_id": "01",
+    "chapter_name": "Transtornos do Neurodesenvolvimento",
+    "category": "FULL",
+    "estrutura_diagnostica": "polythetic_clusters_assimetricos",
+    "estrutura_geral": "polythetic_clusters_assimetricos",
+    "ui_mode": "structured_full",
+    "severity_type": "ordinal_simples",
+    "has_formal_severity": true,
+    "render_structured_interview": true,
+    "diagnostic_rule": "",
+    "clusters_sintomas": [
+      {
+        "id": "A",
+        "nome": "Déficits na Comunicação Social e Interação Social",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "A1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "A3",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "nome": "Padrões Restritivos e Repetitivos de Comportamento",
+        "descricao": "",
+        "sintomas": [
+          {
+            "id": "B1",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "B2",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "B3",
+            "texto": "",
+            "descricao": ""
+          },
+          {
+            "id": "B4",
+            "texto": "",
+            "descricao": ""
+          }
+        ]
+      }
+    ],
+    "criterios_condicionais": [
+      {
+        "id": "inicio_precoce_infancia",
+        "letra": "C",
+        "rotulo": "Sintomas presentes no início do período do desenvolvimento",
+        "descricao_completa": "Os sintomas devem estar presentes no início do período do desenvolvimento (mas podem não se manifestar plenamente até que as demandas sociais ultrapassem o limite de suas capacidades).",
+        "obrigatorio": true
+      },
+      {
+        "id": "prejuizo_funcional_geral",
+        "letra": "D",
+        "rotulo": "Prejuízo clinicamente significativo no funcionamento",
+        "descricao_completa": "Os sintomas causam prejuízo clinicamente significativo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo.",
+        "obrigatorio": true
+      },
+      {
+        "id": "nao_explicado_por_di",
+        "letra": "E",
+        "rotulo": "Não são mais bem explicados por deficiência intelectual",
+        "descricao_completa": "Essas perturbações não são mais bem explicadas por deficiência intelectual ou atraso global do desenvolvimento.",
+        "obrigatorio": true
+      }
+    ],
+    "gravidade": {
+      "tipo": "ordinal_simples",
+      "presente": true,
+      "has_formal_severity": true,
+      "regra_atribuicao": "A gravidade deve ser registrada individualmente para o domínio da comunicação social (Critério A) e para os comportamentos repetitivos (Critério B), variando do Nível 1 ao Nível 3.",
+      "niveis": [
+        {
+          "id": "nivel_1",
+          "label": "Nível 1 (Exigindo Apoio)",
+          "descricao": ""
+        },
+        {
+          "id": "nivel_2",
+          "label": "Nível 2 (Exigindo Apoio Substancial)",
+          "descricao": ""
+        },
+        {
+          "id": "nivel_3",
+          "label": "Nível 3 (Exigindo Apoio Muito Substancial)",
+          "descricao": ""
+        }
+      ],
+      "dominios": []
+    },
+    "dominios_impacto": [
+      {
+        "id": "comunicacao_social",
+        "label": "Comunicação e Interação Social"
+      },
+      {
+        "id": "rotinas",
+        "label": "Adaptação a Rotinas e Mudanças"
+      }
+    ],
+    "comorbidades_frequentes": [
+      {
+        "condicao": "TDAH",
+        "frequencia": "alta",
+        "nota": "Ocorre em cerca de 30% a 40% dos casos de TEA."
+      },
+      {
+        "condicao": "Ansiedade e Transtornos Depressivos",
+        "frequencia": "alta",
+        "nota": "Especialmente comum em adolescentes e adultos com TEA nível 1."
+      }
+    ],
+    "diagnostico_diferencial": [
+      {
+        "condicao": "TDAH",
+        "ponto_distincao": "Dificuldades de atenção e hiperatividade no TDAH não incluem necessariamente déficits qualitativos intrínsecos na comunicação recíproca ou comportamentos restritivos.",
+        "pertence_a_classe": true
+      },
+      {
+        "condicao": "Transtorno da Comunicação Social",
+        "ponto_distincao": "TCSP não apresenta padrões de comportamento repetitivos ou interesses restritos (Critério B do TEA).",
+        "pertence_a_classe": true
+      }
+    ],
+    "perguntas_chave": [],
+    "key_questions": [],
+    "curso_desenvolvimento": {
+      "idade_inicio_tipica": "Antes dos 2 anos de idade (embora sintomas sutis possam ser vistos no primeiro ano de vida)",
+      "trajetoria": "Os sintomas costumam ser contínuos e persistentes ao longo da vida, embora intervenções comportamentais precoces e intensivas alterem positivamente a trajetória funcional.",
+      "prognostico": "Altamente dependente da presença de deficiência intelectual e da capacidade de comunicação verbal funcional até os 5 anos de idade."
+    },
+    "prevalencia": {
+      "populacao_geral": "Estima-se em cerca de 1% a 2% da população, com taxas de diagnóstico crescentes nas últimas décadas devido a maior conscientização e mudanças de critérios.",
+      "proporcao_sexo": "Razão de aproximadamente 4:1 a favor do sexo masculino.",
+      "variacoes_culturais": "None",
+      "notas": "As taxas de prevalência parecem ser semelhantes entre diferentes culturas e raças."
+    },
+    "hierarquia": {
+      "presente": false,
+      "notas": "TEA exclui o diagnóstico de Transtorno da Comunicação Social (Pragmática).",
+      "exclui_se_diagnosticado": [],
+      "exclui_diagnostico_de": [
+        "transtorno_comunicacao_social"
+      ]
+    },
+    "subtipos": {
+      "presente": true,
+      "itens": [
+        false,
+        null,
+        false,
+        [],
+        {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      ]
+    },
+    "especificadores": [
+      {
+        "id": "com_comprometimento_intelectual",
+        "nome": "Com comprometimento intelectual associado",
+        "descricao": ""
+      },
+      {
+        "id": "com_comprometimento_linguagem",
+        "nome": "Com comprometimento da linguagem associado",
+        "descricao": ""
+      },
+      {
+        "id": "associado_condicao_medica",
+        "nome": "Associado a alguma condição médica ou genética conhecida ou a fator ambiental",
+        "descricao": ""
+      }
+    ],
+    "template_prontuario": {
+      "titulo": "",
+      "texto": "",
+      "campos": []
+    },
+    "metadados_globais": {
+      "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
+      "fonte_inventario_md": "inventario/01_inventario.md",
+      "data_extracao": "2026-05-21",
+      "modelo_agente": "antigravity-ide",
+      "lacunas_globais": [],
+      "inconsistencias_detectadas": [],
+      "notas_agente_globais": null,
+      "revisao_humana_necessaria": false
+    },
+    "instrumentos_complementares": [
+      {
+        "nome": "Escala de Observação para o Diagnóstico do Autismo",
+        "sigla": "ADOS-2",
+        "uso": "diagnostico",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "sugestao_clinica_padrao"
+      },
+      {
+        "nome": "Entrevista de Diagnóstico de Autismo Revisada",
+        "sigla": "ADI-R",
+        "uso": "informante",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "sugestao_clinica_padrao"
+      }
+    ],
+    "raw_document": {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_do_espectro_autista",
+        "nome_completo": "Transtorno do Espectro Autista",
+        "sigla": "TEA",
+        "codigo": {
+          "dsm5": "299.00",
+          "cid10": "F84.0",
+          "cid11": "6A02"
+        },
+        "capitulo": "Transtornos do Neurodesenvolvimento",
+        "capitulo_id": "01",
+        "grupo": "Transtorno do Espectro Autista",
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Autismo Infantil",
+          "Síndrome de Asperger",
+          "Transtorno Invasivo do Desenvolvimento"
+        ]
+      },
+      "estrutura_geral": "polythetic_clusters_assimetricos",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Déficits na Comunicação Social e Interação Social",
+          "tipo": "monothetic_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Déficits na reciprocidade socioemocional",
+              "desc": "Dificuldade na abordagem social, falha na conversação mútua, compartilhamento reduzido de interesses, emoções ou afeto, e incapacidade de iniciar ou responder a interações sociais.",
+              "pergunta": "Há uma clara falta de interesse em iniciar interações, ou dificuldade de manter um diálogo compartilhado sem focar exclusivamente nos próprios interesses?",
+              "exemplos_clinicos": [
+                "Dificuldade em compartilhar brincadeiras de faz-de-conta",
+                "Conversação puramente focada em fatos ou tópicos específicos de seu interesse"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Déficits nos comportamentos comunicativos não verbais",
+              "desc": "Comunicação verbal e não verbal pouco integrada, anormalidades no contato visual, déficits na linguagem corporal e falta total de expressões faciais ou gestos comunicativos.",
+              "pergunta": "O paciente evita contato visual, tem expressões faciais muito neutras ou rígidas, ou apresenta dificuldades em integrar gestos ao falar?",
+              "exemplos_clinicos": [
+                "Não usar gestos para apontar ou demonstrar afeto",
+                "Ausência de expressões de surpresa ou empatia"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Déficits em desenvolver e manter relacionamentos",
+              "desc": "Dificuldades em ajustar o comportamento a vários contextos sociais, compartilhar brincadeiras imaginativas, fazer amigos ou demonstrar ausência de interesse por pares.",
+              "pergunta": "Demonstra dificuldades significativas em se entrosar com pessoas de mesma idade ou brincar cooperativamente em grupo?",
+              "exemplos_clinicos": [
+                "Preferencia marcante por brincar sozinho",
+                "Falta de compreensão sobre o conceito de amizade"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": "Todos os 3 critérios de comunicação social (A1, A2 e A3) devem estar presentes de forma persistente em múltiplos contextos.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "B",
+          "nome": "Padrões Restritivos e Repetitivos de Comportamento",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 2,
+            "pediatria": 2
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "B1",
+              "rotulo": "Fala ou movimentos motores repetitivos e estereotipados",
+              "desc": "Estereotipias motoras simples, alinhamento de brinquedos, girar objetos, ecolalia ou frases idiossincráticas.",
+              "pergunta": "Apresenta movimentos corporais repetitivos, como sacudir as mãos (flapping), balançar o corpo, ou repetir frases fora de contexto?",
+              "exemplos_clinicos": [
+                "Flapping de mãos sob excitação",
+                "Alinhar carrinhos por cores e protestar se movidos",
+                "Ecolalia imediata"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "B2",
+              "rotulo": "Insistência na mesma rotina e adesão inflexível a padrões",
+              "desc": "Sofrimento extremo frente a pequenas mudanças, dificuldades com transições, padrões rígidos de pensamento, rituais de saudação ou necessidade de fazer o mesmo caminho.",
+              "pergunta": "O indivíduo reage com extrema irritabilidade ou crises de choro diante de pequenas alterações na rotina diária?",
+              "exemplos_clinicos": [
+                "Insistir em comer exatamente a mesma comida nos mesmos pratos",
+                "Ficar desesperado se houver alteração no trajeto para a escola"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "B3",
+              "rotulo": "Interesses altamente restritos e fixos",
+              "desc": "Forte apego ou preocupação com objetos incomuns, interesses excessivamente circunscritos ou perseverantes (hiperfoco).",
+              "pergunta": "Possui interesses obsessivos por assuntos específicos de forma que impede outras conversas ou atividades diárias?",
+              "exemplos_clinicos": [
+                "Memorizar tabelas de horários de trens",
+                "Conhecimento enciclopédico sobre dinossauros que domina toda interação"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "B4",
+              "rotulo": "Hiper ou hiporreatividade a estímulos sensoriais",
+              "desc": "Indiferença aparente a dor/temperatura, reação adversa a sons ou texturas específicas, cheirar ou tocar objetos de forma excessiva, ou fascinação visual por luzes/movimentos.",
+              "pergunta": "Demonstra incômodo extremo com barulhos cotidianos (liquidificador, secador de cabelo) ou texturas de roupas específicas?",
+              "exemplos_clinicos": [
+                "Tapar os ouvidos diante de sons urbanos normais",
+                "Fascinação por ventiladores girando",
+                "Insensibilidade extrema a ferimentos físicos"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": "Pelo menos 2 dos 4 sintomas de comportamento repetitivo/restritivo devem estar presentes.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "inicio_precoce_infancia",
+          "letra": "C",
+          "rotulo": "Sintomas presentes no início do período do desenvolvimento",
+          "tipo": "temporal_idade_inicio",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-clock",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Os sintomas devem estar presentes no início do período do desenvolvimento (mas podem não se manifestar plenamente até que as demandas sociais ultrapassem o limite de suas capacidades).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "prejuizo_funcional_geral",
+          "letra": "D",
+          "rotulo": "Prejuízo clinicamente significativo no funcionamento",
+          "tipo": "temporal_idade_inicio",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-briefcase",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Os sintomas causam prejuízo clinicamente significativo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "nao_explicado_por_di",
+          "letra": "E",
+          "rotulo": "Não são mais bem explicados por deficiência intelectual",
+          "tipo": "temporal_idade_inicio",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-user-md",
+          "ddx_sugeridos": [
+            "deficiencia_intelectual"
+          ],
+          "descricao_completa": "Essas perturbações não são mais bem explicadas por deficiência intelectual ou atraso global do desenvolvimento.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": false,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "com_comprometimento_intelectual",
+          "nome": "Com comprometimento intelectual associado",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "com_comprometimento_linguagem",
+          "nome": "Com comprometimento da linguagem associado",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "associado_condicao_medica",
+          "nome": "Associado a alguma condição médica ou genética conhecida ou a fator ambiental",
+          "tipo": "texto_livre",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "nivel_1",
+            "label": "Nível 1 (Exigindo Apoio)",
+            "descritor": "Comunicação social: apresenta dificuldades para iniciar interações e respostas atípicas. Comportamento repetitivo: inflexibilidade causa interferência significativa em um ou mais contextos."
+          },
+          {
+            "id": "nivel_2",
+            "label": "Nível 2 (Exigindo Apoio Substancial)",
+            "descritor": "Comunicação social: déficits marcantes nas habilidades de comunicação social verbal e não verbal. Comportamento repetitivo: inflexibilidade aparente a observadores casuais e interfere na rotina em múltiplos contextos."
+          },
+          {
+            "id": "nivel_3",
+            "label": "Nível 3 (Exigindo Apoio Muito Substancial)",
+            "descritor": "Comunicação social: déficits graves na comunicação social verbal e não verbal causam prejuízos graves no funcionamento. Comportamento repetitivo: inflexibilidade de comportamento obstrui gravemente o funcionamento em todas as esferas."
+          }
+        ],
+        "regra_atribuicao": "A gravidade deve ser registrada individualmente para o domínio da comunicação social (Critério A) e para os comportamentos repetitivos (Critério B), variando do Nível 1 ao Nível 3.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [
+          "transtorno_comunicacao_social"
+        ],
+        "notas": "TEA exclui o diagnóstico de Transtorno da Comunicação Social (Pragmática).",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "comunicacao_social",
+          "label": "Comunicação e Interação Social",
+          "icone_fa": "fa-comments",
+          "relevante_para": "ambos"
+        },
+        {
+          "id": "rotinas",
+          "label": "Adaptação a Rotinas e Mudanças",
+          "icone_fa": "fa-sync-alt",
+          "relevante_para": "ambos"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "TDAH",
+          "ponto_distincao": "Dificuldades de atenção e hiperatividade no TDAH não incluem necessariamente déficits qualitativos intrínsecos na comunicação recíproca ou comportamentos restritivos.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno da Comunicação Social",
+          "ponto_distincao": "TCSP não apresenta padrões de comportamento repetitivos ou interesses restritos (Critério B do TEA).",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "TDAH",
+          "frequencia": "alta",
+          "nota": "Ocorre em cerca de 30% a 40% dos casos de TEA."
+        },
+        {
+          "condicao": "Ansiedade e Transtornos Depressivos",
+          "frequencia": "alta",
+          "nota": "Especialmente comum em adolescentes e adultos com TEA nível 1."
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Escala de Observação para o Diagnóstico do Autismo",
+          "sigla": "ADOS-2",
+          "uso": "diagnostico",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "sugestao_clinica_padrao"
+        },
+        {
+          "nome": "Entrevista de Diagnóstico de Autismo Revisada",
+          "sigla": "ADI-R",
+          "uso": "informante",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "sugestao_clinica_padrao"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "Estima-se em cerca de 1% a 2% da população, com taxas de diagnóstico crescentes nas últimas décadas devido a maior conscientização e mudanças de critérios.",
+        "proporcao_sexo": "Razão de aproximadamente 4:1 a favor do sexo masculino.",
+        "variacoes_culturais": null,
+        "notas": "As taxas de prevalência parecem ser semelhantes entre diferentes culturas e raças.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [
+            "prevalencia.variacoes_culturais"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Antes dos 2 anos de idade (embora sintomas sutis possam ser vistos no primeiro ano de vida)",
+        "trajetoria": "Os sintomas costumam ser contínuos e persistentes ao longo da vida, embora intervenções comportamentais precoces e intensivas alterem positivamente a trajetória funcional.",
+        "prognostico": "Altamente dependente da presença de deficiência intelectual e da capacidade de comunicação verbal funcional até os 5 anos de idade.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "### Avaliação Neurodesenvolvimental - Transtorno do Espectro Autista",
+        "rodape_metodologico": "Diagnóstico estabelecido através de avaliação multidisciplinar, observação clínica padronizada e anamnese detalhada do desenvolvimento."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
+        "fonte_inventario_md": "inventario/01_inventario.md",
+        "data_extracao": "2026-05-21",
+        "modelo_agente": "antigravity-ide",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_do_espectro_autista",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_com_ancora",
+        "criteria": [
+          "A. Deficits persistentes na comunicacao social e na interacao social em multiplos contextos, conforme manifestado por TODOS os seguintes (atualmente ou por historia previa):",
+          "B. Padroes restritos e repetitivos de comportamento, interesses ou atividades, conforme manifestado por PELO MENOS 2 dos seguintes (atualmente ou por historia previa):",
+          "C. Inicio precoce no periodo do desenvolvimento (sintomas podem nao se manifestar plenome_completonte ate demandas sociais excederem capacidades).",
+          "D. Prejuizo clinicamente significativo no funcionome_completonto social, profissional ou em outras areas.",
+          "E. Nao melhor explicado por deficiencia intelectual ou atraso global do desenvolvimento. DI e TEA podem ser comorbidos; para isso, comunicacao social deve estar abaixo do esperado para o nivel geral de desenvolvimento."
+        ],
+        "diagnostic_rule": "Criterio A (todos os 3 subitens) + Criterio B (pelo menos 2 dos 4 subitens) + Criterios C, D, E = ANCORA obrigatoria (A completo) + cluster polietico (B, minimo 2/4). Historia retrospectiva valida se houver preenchimento no passado, mesmo que mascarado atualmente.",
+        "clusters": [],
+        "duration": null,
+        "age_onset": "** Tipicamente reconhecido no 2o ano de vida (12-24 meses); pode ser antes dos 12 meses se deficits graves; pode ser apos 24 meses se sintomas sutis",
+        "functional_impairment": "- Prejuizo clinicamente significativo no funcionome_completonto social, profissional ou outras areas importantes ATUALMENTE",
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Com / sem comprometimento intelectual concomitante",
+          "Com / sem comprometimento da linguagem concomitante (com nivel atual: sem fala inteligivel / fala telegrafica / frases completas / fala fluente)",
+          "Associado a condicao medica ou genetica conhecida ou fator ambiental",
+          "Associado a outro transtorno do neurodesenvolvimento, mental ou comportamental",
+          "Com catatonia (codigo adicional 293.89 [F06.1])",
+          "Idade da primeira preocupacao",
+          "Com / sem perda de habilidades estabelecidas"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "necessidade_suporte_por_dominio",
+          "levels": [
+            "Nivel 3 - Apoio muito substancial",
+            "Nivel 1 - Apoio",
+            "Nivel 2 - Apoio substancial"
+          ],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "A crianca/initcia interacoes sociais? Compartilha interesses, emocoes, brincadeiras?",
+          "Ha contato visual adequado? Usa gestos (apontar, mostrar) espontaneamente?",
+          "Ha interesse por outras criancas/pares? Consegue fazer/manter amizades?",
+          "Ha comportamentos repetitivos (abanar maos, alinhar brinquedos, ecolalia)?",
+          "Ha insistencia em rotinas, dificuldade com mudancas, rituais?",
+          "Ha interesses muito restritos/fixos que sao anormais em intensidade?",
+          "Ha hipersensibilidade ou hipossensibilidade sensorial (sons, texturas, luzes, dor)?",
+          "Os sintomas comecaram na primeira infancia?",
+          "Ha prejuizo atual no funcionome_completonto (social, escolar, profissional)?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno do Espectro Autista",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TEA",
+      "codigo_dsm5": "299.00",
+      "codigo_cid10": "F84.0",
+      "grupo": "Transtorno do Espectro Autista",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Código DSM-5 / CID-10:** 299.00 (F84.0)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** **A** monoético (3/3 obrigatórios em déficits de comunicação social: reciprocidade, comportamentos não-verbais, desenvolvimento de relacionamentos) + **B** polietético (2/4 em padrões restritivos/repetitivos: estereotipias, rigidez, interesses fixos, hiper/hiporreatividade sensorial) + gravidade em tabela dual (nível de apoio necessário em A × B). + 4 especificadores ortogonais: com/sem comprometimento intelectual, com/sem comprometimento de linguagem, associado a condição médica/genética, associado a outro transtorno do neurodesenvolvimento.",
+        "notas_clinicas": "- **Notas:** Substitui autismo, síndrome de Asperger e TID-NOS do DSM-IV. Tabela de gravidade é bidimensional (social + restritivo). Prevalência ~1%."
+      },
+      "hierarquia_exclusao": {
+        "exclui": [
+          "transtorno_comunicacao_social"
+        ],
+        "exclui_de": [],
+        "notas_hierarquia": "Extraído do índice de hierarquias do capítulo"
+      },
+      "codigo_cid11": "6A02",
+      "super_enrichment": {
+        "id": "transtorno_do_espectro_autista",
+        "nome_original": "Transtorno do Espectro Autista",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "TDAH",
+            "frequencia": "alta",
+            "nota": "Ocorre em cerca de 30% a 40% dos casos de TEA."
+          },
+          {
+            "condicao": "Ansiedade e Transtornos Depressivos",
+            "frequencia": "alta",
+            "nota": "Especialmente comum em adolescentes e adultos com TEA nível 1."
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "TDAH",
+            "ponto_distincao": "Dificuldades de atenção e hiperatividade no TDAH não incluem necessariamente déficits qualitativos intrínsecos na comunicação recíproca ou comportamentos restritivos.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno da Comunicação Social",
+            "ponto_distincao": "TCSP não apresenta padrões de comportamento repetitivos ou interesses restritos (Critério B do TEA).",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": true,
+          "exclui_se_diagnosticado": [
+            "transtorno_comunicacao_social"
+          ],
+          "exclui_diagnostico_de": [
+            "transtorno_comunicacao_social"
+          ],
+          "notas": "TEA exclui o diagnóstico de Transtorno da Comunicação Social (Pragmática)."
+        },
+        "prevalencia": {
+          "populacao_geral": "Estima-se em cerca de 1% a 2% da população, com taxas de diagnóstico crescentes nas últimas décadas devido a maior conscientização e mudanças de critérios.",
+          "proporcao_sexo": "Razão de aproximadamente 4:1 a favor do sexo masculino.",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Antes dos 2 anos de idade (embora sintomas sutis possam ser vistos no primeiro ano de vida)",
+          "trajetoria": "Os sintomas costumam ser contínuos e persistentes ao longo da vida, embora intervenções comportamentais precoces e intensivas alterem positivamente a trajetória funcional.",
+          "prognostico": "Altamente dependente da presença de deficiência intelectual e da capacidade de comunicação verbal funcional até os 5 anos de idade."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Escala de Observação para o Diagnóstico do Autismo",
+            "sigla": "ADOS-2",
+            "uso": "diagnostico",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "sugestao_clinica_padrao"
+          },
+          {
+            "nome": "Entrevista de Diagnóstico de Autismo Revisada",
+            "sigla": "ADI-R",
+            "uso": "informante",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "sugestao_clinica_padrao"
+          }
+        ],
+        "transtorno_do_espectro_autista": "| Campo | Conteudo |\n|-------|----------|\n| **codigo_dsm5** | 299.00 (F84.0) |\n| **categoria_operacional** | FULL |\n| **estrutura_diagnostica** | polythetic_com_ancora |",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "**A.** Deficits persistentes na comunicacao social e na interacao social em multiplos contextos, conforme manifestado por TODOS os seguintes (atualmente ou por historia previa):\n\n- A1. Deficits na reciprocidade socioemocional (abordagem social anormal, dificuldade em conversacao, compartilhamento reduzido de interesses/emoções, dificuldade para iniciar/responder interacoes sociais)\n- A2. Deficits nos comportamentos comunicativos nao verbais usados para interacao social (comunicacao verbal/nao-verbal pouco integrada, anormalidade no contato visual/linguagem corporal, deficits na compreensao/uso de gestos, ausencia de expressoes faciais/nao-verbais)\n- A3. Deficits para desenvolver, manter e compreender relacionamentos (dificuldade em ajustar comportamento a contextos sociais, dificuldade em compartilhar brincadeiras imaginativas/fazer amigos, ausencia de interesse por pares)\n\n**B.** Padroes restritos e repetitivos de comportamento, interesses ou atividades, conforme manifestado por PELO MENOS 2 dos seguintes (atualmente ou por historia previa):\n\n- B1. Movimentos motores, uso de objetos ou fala estereotipados ou repetitivos (estereotipias motoras simples, alinhar brinquedos, girar objetos, ecolalia, frases idiossincraticas)\n- B2. Insistencia nas mesmas coisas, adesao inflexivel a rotinas ou padroes ritualizados (sofrimento com mudancas, dificuldades com transicoes, rituais de saudacao, mesmo caminho/alimentos diariamente)\n- B3. Interesses fixos e altamente restritos que sao anormais em intensidade ou foco (apego a objetos incomuns, interesses excessivamente circunscritos/perseverativos)\n- B4. Hiper ou hiporreatividade a estimulos sensoriais ou interesse incomum por aspectos sensoriais (indiferenca a dor/temperatura, reacao a sons/texturas, cheirar/tocar objetos excessivamente, fascinacao por luzes/movimento)\n\n**C.** Inicio precoce no periodo do desenvolvimento (sintomas podem nao se manifestar plenamente ate demandas sociais excederem capacidades).\n\n**D.** Prejuizo clinicamente significativo no funcionamento social, profissional ou em outras areas.\n\n**E.** Nao melhor explicado por deficiencia intelectual ou atraso global do desenvolvimento. DI e TEA podem ser comorbidos; para isso, comunicacao social deve estar abaixo do esperado para o nivel geral de desenvolvimento."
+          }
+        ],
+        "regra_diagnostica": "Criterio A (todos os 3 subitens) + Criterio B (pelo menos 2 dos 4 subitens) + Criterios C, D, E = ANCORA obrigatoria (A completo) + cluster polietico (B, minimo 2/4). Historia retrospectiva valida se houver preenchimento no passado, mesmo que mascarado atualmente.",
+        "clusters": "| Cluster | Itens | Limiar |\n|---------|-------|--------|\n| Comunicacao social (A) | A1 + A2 + A3 | TODOS obrigatorios |\n| Comportamentos restritos/repetitivos (B) | B1, B2, B3, B4 | Pelo menos 2 |",
+        "duracao_idade_prejuizo": {
+          "notas": [
+            "**Duracao:** Persistente desde o periodo do desenvolvimento; sintomas podem ser mascarados por estrategias compensatorias",
+            "**Idade de inicio:** Tipicamente reconhecido no 2o ano de vida (12-24 meses); pode ser antes dos 12 meses se deficits graves; pode ser apos 24 meses se sintomas sutis",
+            "**Nota:** O criterio pode ser preenchido por historia previa, mesmo que sintomas atuais estejam mascarados"
+          ]
+        },
+        "prejuizo_funcional": "- Prejuizo clinicamente significativo no funcionamento social, profissional ou outras areas importantes ATUALMENTE",
+        "gravidade": {
+          "tem_gravidade_formal": "SIM",
+          "tipo": "necessidade_suporte_por_dominio",
+          "regra_atribuicao": "Gravidade e atribuida SEPARADAMENTE para cada um dos dois dominios (comunicacao social e comportamentos restritos/repetitivos)",
+          "nivel_3_apoio_muito_substancial": "Deficits graves na comunicacao verbal e nao-verbal; prejuizos graves de funcionamento; grande limitacao em iniciar interacoes; resposta minima a aberturas sociais (ex: fala de poucas palavras, raramente inicia interacoes)",
+          "nivel_2_apoio_substancial": "Deficits graves na comunicacao; prejuizos sociais aparentes mesmo com apoio; limitacao em iniciar interacoes; resposta reduzida/anormal a aberturas sociais (ex: frases simples, interacao limitada a interesses especiais, comunicacao nao-verbal estranha)",
+          "nivel_1_apoio": "Na ausencia de apoio, deficits causam prejuizos notaveis; dificuldade para iniciar interacoes; respostas atipicas/sem sucesso a aberturas sociais; interesse reduzido por interacoes (ex: fala frases completas, mas falhas na conversacao; tentativas de amizade estranhas/malsucedidas)"
+        },
+        "especificadores": [
+          "Com / sem comprometimento intelectual concomitante",
+          "Com / sem comprometimento da linguagem concomitante (com nivel atual: sem fala inteligivel / fala telegrafica / frases completas / fala fluente)",
+          "Associado a condicao medica ou genetica conhecida ou fator ambiental",
+          "Associado a outro transtorno do neurodesenvolvimento, mental ou comportamental",
+          "Com catatonia (codigo adicional 293.89 [F06.1])",
+          "Idade da primeira preocupacao",
+          "Com / sem perda de habilidades estabelecidas"
+        ],
+        "diferenciais_criticos": [
+          "**Transtorno da comunicacao social (pragmatica):** Sem padroes restritos/repetitivos de comportamento. Se houver historia de B no passado, o diagnostico e TEA.",
+          "**Deficiencia intelectual:** TEA = comunicacao social significativamente abaixo do nivel de desenvolvimento nao-verbal; DI = deficits alinhados com nivel intelectual geral",
+          "**Mutismo seletivo:** Desenvolvimento precoce normal; habilidades comunicacionais apropriadas em alguns contextos; sem reciprocidade social prejudicada nem padroes restritos/repetitivos",
+          "**Sindrome de Rett:** Periodo regressivo entre 1-4 anos; depois melhora comunicacao social"
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "A crianca/initcia interacoes sociais? Compartilha interesses, emocoes, brincadeiras?"
+          },
+          {
+            "numero": 2,
+            "texto": "Ha contato visual adequado? Usa gestos (apontar, mostrar) espontaneamente?"
+          },
+          {
+            "numero": 3,
+            "texto": "Ha interesse por outras criancas/pares? Consegue fazer/manter amizades?"
+          },
+          {
+            "numero": 4,
+            "texto": "Ha comportamentos repetitivos (abanar maos, alinhar brinquedos, ecolalia)?"
+          },
+          {
+            "numero": 5,
+            "texto": "Ha insistencia em rotinas, dificuldade com mudancas, rituais?"
+          },
+          {
+            "numero": 6,
+            "texto": "Ha interesses muito restritos/fixos que sao anormais em intensidade?"
+          },
+          {
+            "numero": 7,
+            "texto": "Ha hipersensibilidade ou hipossensibilidade sensorial (sons, texturas, luzes, dor)?"
+          },
+          {
+            "numero": 8,
+            "texto": "Os sintomas comecaram na primeira infancia?"
+          },
+          {
+            "numero": 9,
+            "texto": "Ha prejuizo atual no funcionamento (social, escolar, profissional)?"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_do_espectro_autista.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  }
+} as const;
+
+// Validação runtime na borda — falha imediatamente se dados estiverem corrompidos
+export const data: TranstornoDSM = parseGeneratedDiseaseData(rawData);
+
+// Raw document preservado para depuração — acessado via objeto validado
+export const rawDocument = data.raw_document;
