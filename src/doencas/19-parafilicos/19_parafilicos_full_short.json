@@ -1,0 +1,16 @@
+{
+  "$schema_version": "gtmedics.dsm.final_json.v2",
+  "chapter_id": "19",
+  "chapter_name": "Transtornos Parafílicos",
+  "capitulo_id": "19",
+  "capitulo_nome": "Transtornos Parafílicos",
+  "source_markdown": "19_parafilicos_full_short.md",
+  "normalization_round": "4_super_enriched_release",
+  "patch_count": 5,
+  "source_files": {
+    "rich": "dsm/output/json/19_transtornos_parafilicos.json",
+    "poor": "dsm/output/final_json_poor/19_parafilicos_full_short.json",
+    "super_dir": "dsm/output/json_super_adicionado"
+  },
+  "items": []
+}
