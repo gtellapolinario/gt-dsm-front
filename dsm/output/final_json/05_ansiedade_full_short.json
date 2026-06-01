@@ -1,0 +1,4233 @@
+{
+  "$schema_version": "gtmedics.dsm.final_json.v2",
+  "chapter_id": "05",
+  "chapter_name": "Transtornos de Ansiedade",
+  "capitulo_id": "05",
+  "capitulo_nome": "Transtornos de Ansiedade",
+  "source_markdown": "05_ansiedade_full_short.md",
+  "normalization_round": "4_super_enriched_release",
+  "patch_count": 1,
+  "source_files": {
+    "rich": "dsm/output/json/05_transtornos_ansiedade.json",
+    "poor": "dsm/output/final_json_poor/05_ansiedade_full_short.json",
+    "super_dir": "dsm/output/json_super_adicionado"
+  },
+  "items": [
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_ansiedade_separacao",
+        "nome_completo": "Transtorno de Ansiedade de Separação",
+        "sigla": "TAS",
+        "codigo": {
+          "dsm5": "309.21",
+          "cid10": "F93.0",
+          "cid11": "6B05"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Medo/Ansiedade de Separação (≥3/8)",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 3,
+            "pediatria": 3
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Sofrimento com separação antecipada",
+              "desc": "Sofrimento excessivo e recorrente ao antecipar ou experienciar separação de figuras de apego.",
+              "pergunta": "Você fica muito angustiado quando percebe que vai se separar das pessoas próximas?",
+              "exemplos_clinicos": [
+                "Choro intenso ao ser deixado na escola"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Preocupação com dano às figuras de apego",
+              "desc": "Medo ou preocupação persistente e excessiva sobre possível dano ou perda das figuras de apego.",
+              "pergunta": "Você fica preocupado que algo ruim aconteça com as pessoas que ama quando estão longe?",
+              "exemplos_clinicos": [
+                "Medo de que os pais morram num acidente"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Preocupação com evento que cause separação",
+              "desc": "Preocupação com eventos que levem à separação (p.ex., perder-se, ser raptado, acidente, doença).",
+              "pergunta": "Você se preocupa muito em ficar perdido ou que algo aconteça com você e o separe dos seus?",
+              "exemplos_clinicos": [
+                "Medo de ser sequestrado"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Relutância em sair por medo de separação",
+              "desc": "Relutância persistente ou recusa em sair de casa, escola, trabalho ou outros locais por medo de separação.",
+              "pergunta": "Você evita sair de casa ou ir a certos lugares por medo de se separar das pessoas próximas?",
+              "exemplos_clinicos": [
+                "Recusa escolar crônica"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Medo excessivo de estar só",
+              "desc": "Medo excessivo e persistente de estar só ou sem as figuras de apego em casa ou em outros ambientes.",
+              "pergunta": "Você tem muito medo de ficar sozinho, mesmo em casa?",
+              "exemplos_clinicos": [
+                "Não consegue dormir em outro quarto"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Relutância em dormir longe de casa",
+              "desc": "Relutância persistente ou recusa em dormir fora de casa ou sem estar perto de figura de apego.",
+              "pergunta": "Você tem dificuldade para dormir longe de casa ou sem pessoas próximas?",
+              "exemplos_clinicos": [
+                "Nunca pernoita na casa de amigos"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Pesadelos com separação",
+              "desc": "Pesadelos repetidos com tema de separação.",
+              "pergunta": "Você tem pesadelos frequentes sobre se separar de pessoas que ama?",
+              "exemplos_clinicos": [
+                "Pesadelos com pais morrendo"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Queixas físicas ao se separar",
+              "desc": "Queixas repetidas de sintomas físicos (cefaleia, dor abdominal, náusea, vômito) ao ocorrer ou antecipar separação.",
+              "pergunta": "Você sente dores de cabeça, estômago ou mal-estar físico quando vai se separar dos seus?",
+              "exemplos_clinicos": [
+                "Dores abdominais nas manhãs de escola"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "duracao",
+          "letra": "B",
+          "rotulo": "Duração ≥4 semanas (crianças) ou ≥6 meses (adultos)",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A perturbação tem duração de pelo menos 4 semanas em crianças e adolescentes e tipicamente 6 meses ou mais em adultos.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "sofrimento_funcional",
+          "letra": "C",
+          "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A perturbação causa sofrimento clinicamente significativo ou prejuízo no funcionamento social, acadêmico/profissional ou em outras áreas importantes.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros_transtornos",
+          "letra": "D",
+          "rotulo": "Não melhor explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_espectro_autista",
+            "transtorno_delirante",
+            "agorafobia",
+            "transtorno_ansiedade_generalizada",
+            "transtorno_panico",
+            "transtorno_estresse_pos_traumatico"
+          ],
+          "descricao_completa": "A perturbação não é mais bem explicada por outro transtorno mental (ex: TEA, delirante, agorafobia, TAG, TEPT).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "academico",
+          "label": "Frequência Escolar",
+          "icone_fa": "fa-school",
+          "relevante_para": "pediatria"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "ambos"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno de Ansiedade Generalizada",
+          "ponto_distincao": "TAG: preocupações múltiplas não focadas em separação; TAS: medo central é a separação das figuras de apego.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Agorafobia",
+          "ponto_distincao": "Agorafobia: evitação de situações por medo de não conseguir escapar; TAS: evitação por medo de separação.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno do Espectro Autista",
+          "ponto_distincao": "TEA: resistência a mudanças de rotina; TAS: o medo central é a separação, não a perturbação da rotina.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno de Ansiedade Generalizada",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Fobia Específica",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno de Pânico",
+          "frequencia": "moderada",
+          "nota": "Especialmente em adultos."
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "4% em crianças, 1,6% em adolescentes, 0,9–1,9% em adultos (prevalência de 12 meses)",
+        "proporcao_sexo": "Mais comum em mulheres na população geral",
+        "variacoes_culturais": null,
+        "notas": "Um dos mais prevalentes em crianças menores de 12 anos.",
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "variacao_cultural"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Pode iniciar em qualquer idade; mais comum em crianças; média de início em adultos: final da adolescência/início da vida adulta",
+        "trajetoria": "Geralmente remite com o tempo; quando persiste na vida adulta pode ser crônico e causar prejuízo significativo.",
+        "prognostico": "Preditor de transtorno de pânico na vida adulta quando persistente.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno de Ansiedade de Separação - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (309.21 / F93.0)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [
+          "variacao_cultural",
+          "herdabilidade"
+        ],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_ansiedade_separacao",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A >=3/8 MANIFESTACOES) + (B DURACAO: >=4sem criancas / >=6m adultos) + (C PREJUIZO) + (D NAO_OUTRO_TX)\n```",
+        "clusters": [],
+        "duration": "| >= 4 semanas (criancas/adolescentes); >= 6 meses (adultos, guia flexivel) |",
+        "age_onset": "| Pre-escolar; pode ocorrer em qualquer momento da infancia |",
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Nenhum especificador formal no DSM-5",
+          "Nota sobre faixa etaria: em adultos, pode manifestar como preocupacao excessiva com conjuges/filhos"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Sofre ou chora quando precisa se afastar de casa ou de [pessoa]?",
+          "Fica preocupado que algo de mal aconteca com [pessoa]?",
+          "Tem medo de se perder, ser sequestrado ou ter acidente?",
+          "Reluta em sair de casa, ir a escola ou trabalhar por medo?",
+          "Tem medo de ficar sozinho?",
+          "Recusa dormir fora ou sem [pessoa]?",
+          "Tem pesadelos sobre separacao?",
+          "Sente dores de cabeca ou barriga quando vai se separar?",
+          "Ha quanto tempo isso vem acontecendo?",
+          "Os sintomas ocorrem mesmo quando [pessoa] esta presente?",
+          "Ha preocupacoes que nao envolvem separacao?",
+          "E ansioso em situacoes sociais mesmo com [pessoa]?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno de Ansiedade de Separacao",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TAS",
+      "codigo_dsm5": "309.21",
+      "codigo_cid10": "F93.0",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 309.21 (F93.0)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Politico (3/8 em A) + B duracao + C funcional + D exclusao",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6B05",
+      "super_enrichment": {
+        "id": "transtorno_ansiedade_separacao",
+        "nome_original": "Transtorno de Ansiedade de Separacao",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno de Ansiedade Generalizada",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Fobia Específica",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno de Pânico",
+            "frequencia": "moderada",
+            "nota": "Especialmente em adultos."
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno de Ansiedade Generalizada",
+            "ponto_distincao": "TAG: preocupações múltiplas não focadas em separação; TAS: medo central é a separação das figuras de apego.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Agorafobia",
+            "ponto_distincao": "Agorafobia: evitação de situações por medo de não conseguir escapar; TAS: evitação por medo de separação.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno do Espectro Autista",
+            "ponto_distincao": "TEA: resistência a mudanças de rotina; TAS: o medo central é a separação, não a perturbação da rotina.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "4% em crianças, 1,6% em adolescentes, 0,9–1,9% em adultos (prevalência de 12 meses)",
+          "proporcao_sexo": "Mais comum em mulheres na população geral",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Pode iniciar em qualquer idade; mais comum em crianças; média de início em adultos: final da adolescência/início da vida adulta",
+          "trajetoria": "Geralmente remite com o tempo; quando persiste na vida adulta pode ser crônico e causar prejuízo significativo.",
+          "prognostico": "Preditor de transtorno de pânico na vida adulta quando persistente."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Transtorno de Ansiedade de Separacao",
+          "codigo_dsm_5": "309.21 (F93.0)",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "polythetic_monocluster",
+          "prevalencia": "4% (6-12 meses, criancas); 1,6% (adolescentes); 0,9-1,9% (adultos)",
+          "razao_f_m": "Igual (clinica); F>M (comunidade)"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A — Medo/ansiedade excessivo e improprio ao desenvolvimento (3+ de 8)",
+            "texto": "Medo ou ansiedade envolvendo **separacao daquelas com quem tem apego**:\n\n| # | Manifestacao | Pergunta Chave |\n|---|-------------|----------------|\n| A1 | Sofrimento excessivo/recorrente ante previsao de afastamento de casa ou figuras de apego | \"Chora ou sofre muito quando precisa se afastar de casa ou de [pessoa]?\" |\n| A2 | Preocupacao excessiva sobre perda ou perigos envolvendo figuras de apego | \"Fica muito preocupado que algo de mal aconteca com [pessoa]?\" |\n| A3 | Preocupacao excessiva de evento indesejado levar a separacao | \"Tem medo de se perder, ser sequestrado ou sofrer acidente?\" |\n| A4 | Relutancia/recusa a sair de casa, ir a escola/trabalho por medo de separacao | \"Recusa ir a escola/trabalho por medo de se separar?\" |\n| A5 | Temor excessivo/relutancia em ficar sozinho | \"Tem medo de ficar sozinho em casa ou em outros lugares?\" |\n| A6 | Relutancia/recusa a dormir longe de casa ou sem figura de apego | \"Recusa dormir na casa de outra pessoa ou sem [pessoa] por perto?\" |\n| A7 | Pesadelos repetidos com tema de separacao | \"Tem sonhos ruins ou pesadelos sobre separacao?\" |\n| A8 | Queixas somaticas quando ocorre ou e prevista separacao | \"Quando vai se separar, sente dor de cabeca, barriga, nausea ou vomito?\" |"
+          },
+          {
+            "id": "B — Duracao (obrigatorio)",
+            "texto": "Persistente: **>= 4 semanas em criancas/adolescentes**; **geralmente >= 6 meses em adultos**."
+          },
+          {
+            "id": "C — Prejuizo (obrigatorio)",
+            "texto": "Causa sofrimento clinicamente significativo ou prejuizo funcional."
+          },
+          {
+            "id": "D — Exclusao outro transtorno mental (obrigatorio)",
+            "texto": "Nao e melhor explicado por:\n- TEA (resistencia excessiva a mudanca)\n- Transtornos psicoticos (delirios/alucinacoes de separacao)\n- Agorafobia (recusa sem acompanhante confiavel)\n- TAG (preocupacoes mais amplas, nao focadas em separacao)\n- Ansiedade de doenca (preocupacao com doenca propria)"
+          }
+        ],
+        "regra_diagnostica": "(A >=3/8 MANIFESTACOES) + (B DURACAO: >=4sem criancas / >=6m adultos) + (C PREJUIZO) + (D NAO_OUTRO_TX)",
+        "duracao_idade_prejuizo": {
+          "duracao": ">= 4 semanas (criancas/adolescentes); >= 6 meses (adultos, guia flexivel)",
+          "idade_tipica_inicio": "Pre-escolar; pode ocorrer em qualquer momento da infancia",
+          "inicio_na_adolescencia_adulta": "Mais raro",
+          "curso_tipico": "Periodos de exacerbacao e remissao; pode persistir na adulta"
+        },
+        "exclusoes_obrigatorias": [
+          {
+            "numero": 1,
+            "condicao": "TEA",
+            "descricao": "Resistencia a mudanca em contexto mais amplo de deficits sociais/comunicacao"
+          },
+          {
+            "numero": 2,
+            "condicao": "Transtornos psicoticos",
+            "descricao": "Delirios/alucinacoes de separacao (insight ausente)"
+          },
+          {
+            "numero": 3,
+            "condicao": "Agorafobia",
+            "descricao": "Medo de ficar sem companhante por sintomas de panico, nao separacao"
+          },
+          {
+            "numero": 4,
+            "condicao": "TAG",
+            "descricao": "Preocupacoes com multiplos dominios; separacao nao predomina"
+          },
+          {
+            "numero": 5,
+            "condicao": "Ansiedade de doenca",
+            "descricao": "Preocupacao com DOENCA, nao com separacao"
+          },
+          {
+            "numero": 6,
+            "condicao": "Luto",
+            "descricao": "Anseio/saudades de pessoa falecida = resposta esperada"
+          },
+          {
+            "numero": 7,
+            "condicao": "Transtorno depressivo/bipolar",
+            "descricao": "Relutancia por baixa motivacao, nao medo de separacao"
+          },
+          {
+            "numero": 8,
+            "condicao": "Transtorno de conduta",
+            "descricao": "Evasao escolar sem ansiedade por separacao"
+          },
+          {
+            "numero": 9,
+            "condicao": "Transtorno de oposicao desafiante",
+            "descricao": "Oposicao generalizada, nao apenas em contexto de separacao"
+          }
+        ],
+        "gravidade": {
+          "tem_gravidade_formal": "**false**",
+          "tipo": "nao_aplica",
+          "regra_atribuicao": "Inferida pelo numero de sintomas (3-8), grau de prejuizo, idade (mais grave se persiste na adulta)",
+          "dominios": "Escolar, social, independencia, relacionamentos"
+        },
+        "especificadores": [
+          "Nenhum especificador formal no DSM-5",
+          "Nota sobre faixa etaria: em adultos, pode manifestar como preocupacao excessiva com conjuges/filhos"
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 1,
+            "texto": "Sofre ou chora quando precisa se afastar de casa ou de [pessoa]?"
+          },
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 2,
+            "texto": "Fica preocupado que algo de mal aconteca com [pessoa]?"
+          },
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 3,
+            "texto": "Tem medo de se perder, ser sequestrado ou ter acidente?"
+          },
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 4,
+            "texto": "Reluta em sair de casa, ir a escola ou trabalhar por medo?"
+          },
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 5,
+            "texto": "Tem medo de ficar sozinho?"
+          },
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 6,
+            "texto": "Recusa dormir fora ou sem [pessoa]?"
+          },
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 7,
+            "texto": "Tem pesadelos sobre separacao?"
+          },
+          {
+            "bloco": "Bloco A — Sintomas de separacao (3+ de 8)",
+            "numero": 8,
+            "texto": "Sente dores de cabeca ou barriga quando vai se separar?"
+          },
+          {
+            "bloco": "Bloco B — Duracao",
+            "numero": 9,
+            "texto": "Ha quanto tempo isso vem acontecendo?"
+          },
+          {
+            "bloco": "Bloco D — Diferenciais",
+            "numero": 10,
+            "texto": "Os sintomas ocorrem mesmo quando [pessoa] esta presente?"
+          },
+          {
+            "bloco": "Bloco D — Diferenciais",
+            "numero": 11,
+            "texto": "Ha preocupacoes que nao envolvem separacao?"
+          },
+          {
+            "bloco": "Bloco D — Diferenciais",
+            "numero": 12,
+            "texto": "E ansioso em situacoes sociais mesmo com [pessoa]?"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "condicao": "TEA",
+            "chave_diferenciacao": "Deficits sociais/comunicacao amplos; resistencia a mudanca geral"
+          },
+          {
+            "condicao": "Agorafobia",
+            "chave_diferenciacao": "Medo de sintomas do tipo panico sem ajuda, nao medo de separacao"
+          },
+          {
+            "condicao": "Fobia social",
+            "chave_diferenciacao": "Ansiedade social na presenca de figuras de apego → fobia social"
+          },
+          {
+            "condicao": "TEPT",
+            "chave_diferenciacao": "Medo de separacao apos trauma → sintomas centrais sao intrusoes/esquiva traumatica"
+          },
+          {
+            "condicao": "Ansiedade de doenca",
+            "chave_diferenciacao": "Preocupacao com diagnostico medico, nao separacao"
+          },
+          {
+            "condicao": "Luto",
+            "chave_diferenciacao": "Resposta esperada a perda; nao patologica por si so"
+          },
+          {
+            "condicao": "Transtorno depressivo",
+            "chave_diferenciacao": "Relutancia por falta de energia/motivacao, nao medo"
+          }
+        ],
+        "ui": {},
+        "parte_ii_fichas_short_entrevista_estruturada_compacta": "---"
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_ansiedade_separacao.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "mutismo_seletivo",
+        "nome_completo": "Mutismo Seletivo",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "312.23",
+          "cid10": "F94.0",
+          "cid11": "6B06"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "pediatria",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Afasia voluntária",
+          "Mudismo eletivo"
+        ]
+      },
+      "estrutura_geral": "monothetic_puro",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Falha Consistente em Falar em Situações Sociais",
+          "tipo": "monothetic_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Falha consistente em falar em situações sociais específicas",
+              "desc": "Falha consistente em falar em situações sociais específicas nas quais é esperado falar (p.ex., escola), embora fale em outras situações.",
+              "pergunta": "A criança fala normalmente em casa mas se recusa ou falha em falar na escola ou com outros adultos?",
+              "exemplos_clinicos": [
+                "Fala em casa mas não na escola",
+                "Usa gestos e sinais na escola"
+              ],
+              "faixa_aplicavel": "pediatria"
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "interferencia_educacional_social",
+          "letra": "B",
+          "rotulo": "Interfere em realizações educacionais/sociais",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A perturbação interfere nas realizações educacionais ou profissionais ou na comunicação social.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "duracao_1mes",
+          "letra": "C",
+          "rotulo": "Duração ≥1 mês (não apenas o 1º mês de escola)",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A duração é de pelo menos 1 mês (não limitada ao primeiro mês de escola).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_idioma",
+          "letra": "D",
+          "rotulo": "Não devido a desconhecimento da língua",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A falha em falar não se deve ao fato de o indivíduo não conhecer ou estar confortável com a língua falada nas situações sociais.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_transtorno_comunicacao",
+          "letra": "E",
+          "rotulo": "Não melhor explicado por transtorno de comunicação ou psi...",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_linguagem",
+            "gagueira",
+            "tea",
+            "esquizofrenia"
+          ],
+          "descricao_completa": "Não é mais bem explicado por transtorno de comunicação, nem ocorre exclusivamente em TEA, esquizofrenia ou outro transtorno psicótico.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "academico",
+          "label": "Desempenho Escolar",
+          "icone_fa": "fa-graduation-cap",
+          "relevante_para": "pediatria"
+        },
+        {
+          "id": "social",
+          "label": "Comunicação Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "pediatria"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtornos da comunicação",
+          "ponto_distincao": "Mutismo Seletivo: perturbação restrita a situação social específica; transtornos de comunicação: presentes em todos os contextos.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno de Ansiedade Social",
+          "ponto_distincao": "Ambos coexistem frequentemente; se satisfeitos os critérios de ambos, ambos os diagnósticos devem ser dados.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno de Ansiedade Social",
+          "frequencia": "alta",
+          "nota": "Comorbidade mais frequente."
+        },
+        {
+          "condicao": "Transtorno de Ansiedade de Separação",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Fobia Específica",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "0,03–1% (estimativa variável por contexto clínico vs. escolar vs. comunitário)",
+        "proporcao_sexo": "Sem variação significativa por sexo ou raça/etnia documentada",
+        "variacoes_culturais": "Crianças de famílias imigrantes podem se recusar a falar em nova língua — avaliar antes de diagnosticar.",
+        "notas": "Mais frequente em crianças menores que em adolescentes/adultos.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Usualmente antes dos 5 anos; atenção clínica surge na entrada escolar",
+        "trajetoria": "Muitos superam o mutismo seletivo; ansiedade social pode persistir mesmo após remissão.",
+        "prognostico": "Variável; história natural pouco estudada.",
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "dados_prognostico_longo_prazo"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Mutismo Seletivo - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese com pais/escola e observação direta, com base nos critérios DSM-5 (312.23 / F94.0)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [
+          "herdabilidade",
+          "prognostico_longo_prazo"
+        ],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "mutismo_seletivo",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "monothetic_puro",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A FALHA_FALA_SITUACOES_ESPECIFICAS) + (B INTERFERENCIA) + (C >=1_MES) + (D NAO_IDIOMA) + (E NAO_OUTRO_TX)\n```",
+        "clusters": [],
+        "duration": "| >= 1 mes |",
+        "age_onset": "| Parametro | Valor |",
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "A crianca fala em casa com a familia?",
+          "Fala com amigos da escola ou professores?",
+          "O fracasso em falar dura mais de um mes?",
+          "Nao se deve a desconhecimento do idioma?",
+          "Nao e explicado por gagueira, atraso de linguagem ou autismo?",
+          "A crianca usa outros meios para se comunicar? (gestos, apontar, escrever)"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Mutismo Seletivo",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "312.23",
+      "codigo_cid10": "F94.0",
+      "faixa_etaria_alvo": "pediatria",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 313.23 (F94.0)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** A (fracao persistente em falar) + B funcional + C duracao + D exclusao idioma + E exclusao outro transtorno",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6B06",
+      "super_enrichment": {
+        "id": "mutismo_seletivo",
+        "nome_original": "Mutismo Seletivo",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno de Ansiedade Social",
+            "frequencia": "alta",
+            "nota": "Comorbidade mais frequente."
+          },
+          {
+            "condicao": "Transtorno de Ansiedade de Separação",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Fobia Específica",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtornos da comunicação",
+            "ponto_distincao": "Mutismo Seletivo: perturbação restrita a situação social específica; transtornos de comunicação: presentes em todos os contextos.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno de Ansiedade Social",
+            "ponto_distincao": "Ambos coexistem frequentemente; se satisfeitos os critérios de ambos, ambos os diagnósticos devem ser dados.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "0,03–1% (estimativa variável por contexto clínico vs. escolar vs. comunitário)",
+          "proporcao_sexo": "Sem variação significativa por sexo ou raça/etnia documentada",
+          "variacoes_culturais": "Crianças de famílias imigrantes podem se recusar a falar em nova língua — avaliar antes de diagnosticar."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Usualmente antes dos 5 anos; atenção clínica surge na entrada escolar",
+          "trajetoria": "Muitos superam o mutismo seletivo; ansiedade social pode persistir mesmo após remissão.",
+          "prognostico": "Variável; história natural pouco estudada."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Mutismo Seletivo",
+          "codigo_dsm_5": "313.23 (F94.0)",
+          "categoria_operacional": "SHORT",
+          "estrutura_diagnostica": "monothetic_puro",
+          "prevalencia": "0,03-1% (contexto-dependente)",
+          "razao_f_m": "Nao varia por sexo"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "| Criterio | Resumo Operacional |\n|----------|-------------------|\n| **A** | Fracasso **persistente** para falar em situacoes sociais especificas com expectativa de fala (ex: escola), apesar de falar em outras situacoes |\n| **B** | Interfere na realizacao educacional/profissional ou comunicacao social |\n| **C** | Duracao minima: **1 mes** (nao limitado ao primeiro mes de escola) |\n| **D** | Nao se deve a desconhecimento do idioma |\n| **E** | Nao explicado por transtorno da comunicacao, TEA, esquizofrenia ou outro transtorno psicotico |"
+          }
+        ],
+        "regra_diagnostica": "(A FALHA_FALA_SITUACOES_ESPECIFICAS) + (B INTERFERENCIA) + (C >=1_MES) + (D NAO_IDIOMA) + (E NAO_OUTRO_TX)",
+        "caracteristicas_chave": [
+          "Fala em casa com familia imediata; pode nao falar com amigos proximos, avos, primos",
+          "Pode usar comunicacao nao verbal (grunhidos, apontar, escrever)",
+          "Intensa ansiedade social associada",
+          "Quase sempre comorbido com outro transtorno de ansiedade (mais comum: fobia social)"
+        ],
+        "duracao_idade_prejuizo": {
+          "duracao": ">= 1 mes",
+          "inicio_tipico": "Antes dos 5 anos; atencao clinica geralmente na entrada da escola",
+          "curso": "Variavel; pode desaparecer mas sintomas de fobia social permanecem"
+        },
+        "gravidade": {
+          "tem_gravidade_formal": "**false**"
+        },
+        "diferenciais_criticos": [
+          {
+            "condicao": "Transtornos da comunicacao",
+            "chave_diferenciacao": "Fala prejudicada em TODAS as situacoes, nao apenas especificas"
+          },
+          {
+            "condicao": "TEA",
+            "chave_diferenciacao": "Deficits comunicacaois amplos + sintomas restritos/repetitivos"
+          },
+          {
+            "condicao": "Esquizofrenia/psicose",
+            "chave_diferenciacao": "Perda de contato com a realidade, nao seletividade da fala"
+          },
+          {
+            "condicao": "Transtorno de oposicao desafiante",
+            "chave_diferenciacao": "Recusa em falar por oposicao, nao ansiedade"
+          }
+        ],
+        "perguntas_chave_compactas": "1. \"A crianca fala em casa com a familia?\"\n2. \"Fala com amigos da escola ou professores?\"\n3. \"O fracasso em falar dura mais de um mes?\"\n4. \"Nao se deve a desconhecimento do idioma?\"\n5. \"Nao e explicado por gagueira, atraso de linguagem ou autismo?\"\n6. \"A crianca usa outros meios para se comunicar? (gestos, apontar, escrever)\"",
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/mutismo_seletivo.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "fobia_especifica",
+        "nome_completo": "Fobia Específica",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "300.29",
+          "cid10": "F40.2",
+          "cid11": "6B03"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "monothetic_puro",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Medo/Ansiedade Acentuados Acerca de Objeto/Situação Específica",
+          "tipo": "monothetic_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Medo ou ansiedade acentuados sobre objeto/situação",
+              "desc": "Medo ou ansiedade acentuados acerca de objeto ou situação específica (p.ex., voar, alturas, animais, injeção, sangue). Em crianças: pode ser choro, ataques de raiva, imobilidade ou comportamento de agarrar-se.",
+              "pergunta": "Você tem medo intenso de alguma coisa específica, como animais, alturas, agulhas ou lugares fechados?",
+              "exemplos_clinicos": [
+                "Pânico ao ver cobras",
+                "Terror ao entrar em elevador"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "B1",
+              "rotulo": "Resposta imediata de medo/ansiedade ao estímulo",
+              "desc": "O objeto ou situação fóbica quase invariavelmente provoca uma resposta imediata de medo ou ansiedade.",
+              "pergunta": "Quando você se depara com esse objeto ou situação, sente medo imediatamente?",
+              "exemplos_clinicos": [
+                "Ataque de pânico ao ver sangue"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C1",
+              "rotulo": "Evitação ativa ou suportação com sofrimento intenso",
+              "desc": "O objeto ou situação fóbica é ativamente evitado ou suportado com intensa ansiedade ou sofrimento.",
+              "pergunta": "Você evita esse objeto/situação ou suporta com muito sofrimento?",
+              "exemplos_clinicos": [
+                "Recusa de viagens aéreas"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "desproporcional_contexto",
+          "letra": "D",
+          "rotulo": "Medo desproporcional ao perigo real",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-balance-scale",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo ou ansiedade é desproporcional ao perigo real imposto pelo objeto/situação e ao contexto sociocultural.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "duracao_6meses",
+          "letra": "E",
+          "rotulo": "Duração ≥6 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo, ansiedade ou esquiva é persistente, com duração mínima de seis meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "sofrimento_funcional",
+          "letra": "F",
+          "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo, ansiedade ou esquiva causa sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou outras áreas.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros",
+          "letra": "G",
+          "rotulo": "Não melhor explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "tas",
+            "agorafobia",
+            "tag",
+            "tept",
+            "transtorno_ansiedade_social"
+          ],
+          "descricao_completa": "Não mais bem explicado por TAS, agorafobia, TAG, TEPT, TAG, transtorno obsessivo-compulsivo, transtorno de ansiedade social.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": true,
+        "nome": "Tipo de estímulo",
+        "mutuamente_exclusivos": false,
+        "subtipos": [
+          {
+            "id": "animal",
+            "codigo": {
+              "dsm5": "300.29",
+              "cid10": "F40.218",
+              "cid11": null
+            },
+            "label": "Tipo animal",
+            "descricao": "Medo de animais ou insetos.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "ambiente_natural",
+            "codigo": {
+              "dsm5": "300.29",
+              "cid10": "F40.228",
+              "cid11": null
+            },
+            "label": "Tipo ambiente natural",
+            "descricao": "Medo de alturas, tempestades, água.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "sangue_injecao_ferimento",
+            "codigo": {
+              "dsm5": "300.29",
+              "cid10": "F40.23x",
+              "cid11": null
+            },
+            "label": "Tipo sangue-injeção-ferimento",
+            "descricao": "Medo de sangue, ferimentos, agulhas, procedimentos médicos.",
+            "sintomas_caracteristicos": [
+              "Resposta vasovagal — desmaio"
+            ]
+          },
+          {
+            "id": "situacional",
+            "codigo": {
+              "dsm5": "300.29",
+              "cid10": "F40.248",
+              "cid11": null
+            },
+            "label": "Tipo situacional",
+            "descricao": "Medo de aviões, elevadores, espaços fechados.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "outro",
+            "codigo": {
+              "dsm5": "300.29",
+              "cid10": "F40.298",
+              "cid11": null
+            },
+            "label": "Tipo outro",
+            "descricao": "Outros estímulos (engasgar, vomitar, contrair doença, palhaços etc.).",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": "Múltiplas fobias específicas devem ser diagnosticadas — cada objeto/situação distinto recebe seu próprio código.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "ambos"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Agorafobia",
+          "ponto_distincao": "Agorafobia: medo de situações múltiplas por impossibilidade de escapar; fobia específica: objeto/situação único.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno de Ansiedade Social",
+          "ponto_distincao": "TAS: situações de avaliação social; fobia específica: objeto/situação específico não vinculado à avaliação.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno de Estresse Pós-Traumático",
+          "ponto_distincao": "TEPT: medo surge após trauma; fobia específica: estímulo fóbico não necessariamente relacionado a trauma.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Outros transtornos de ansiedade",
+          "frequencia": "alta",
+          "nota": "Frequentemente múltiplas fobias coexistem."
+        },
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno por uso de substâncias",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "7–9% (prevalência de 12 meses); 13,2% (prevalência na vida)",
+        "proporcao_sexo": "2:1 mulheres:homens; tipo sangue-injeção-ferimento: razão menor",
+        "variacoes_culturais": "Taxas variam; medo de magia e espíritos em algumas culturas; não classificar se sancionado culturalmente.",
+        "notas": "Prevalência decresce com a idade.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Infância; tipo situacional: início mais tardio (~20 anos)",
+        "trajetoria": "Início na infância frequentemente remite; quando persiste na adultícia raramente remite espontaneamente.",
+        "prognostico": "Com tratamento (terapia de exposição), remissão em 80%+ dos casos.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação de Fobia Específica - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.29 / F40.2xx)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "fobia_especifica",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "monothetic_tripartite",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A OBJETO_ESPECIFICO) + (B QUASE_INVARIAVEL_IMEDIATO) + (C EVITA_OU_INTENSO) + (D DESPROPORCIONAL) + (E >=6M) + (F PREJUIZO) + (G NAO_OUTRO_TX)\n```",
+        "clusters": [],
+        "duration": "| >= 6 meses |",
+        "age_onset": "| 7-11 anos (media ~10 anos); situacionais tem inicio mais tardio |",
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Tem medo intenso de algum objeto ou situacao especifica?",
+          "O medo comeca imediatamente quando ve/encontra [estimulo]?",
+          "Evita [estimulo] ou suporta com muito sofrimento?",
+          "O medo e maior do que o perigo real justificaria?",
+          "Ha quanto tempo isso dura?",
+          "O medo interfere na sua vida?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Fobia Especifica",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "300.29",
+      "codigo_cid10": "F40.2",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 300.29 (subcodigos variados por estímulo)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** A (medo/ansiedade) + B (resposta imediata) + C (evitacao/sofrimento) + D (desproporcional) + E duracao + F funcional + G exclusao",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6B03",
+      "super_enrichment": {
+        "id": "fobia_especifica",
+        "nome_original": "Fobia Especifica",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Outros transtornos de ansiedade",
+            "frequencia": "alta",
+            "nota": "Frequentemente múltiplas fobias coexistem."
+          },
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno por uso de substâncias",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Agorafobia",
+            "ponto_distincao": "Agorafobia: medo de situações múltiplas por impossibilidade de escapar; fobia específica: objeto/situação único.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno de Ansiedade Social",
+            "ponto_distincao": "TAS: situações de avaliação social; fobia específica: objeto/situação específico não vinculado à avaliação.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno de Estresse Pós-Traumático",
+            "ponto_distincao": "TEPT: medo surge após trauma; fobia específica: estímulo fóbico não necessariamente relacionado a trauma.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": "Múltiplas fobias específicas devem ser diagnosticadas — cada objeto/situação distinto recebe seu próprio código."
+        },
+        "prevalencia": {
+          "populacao_geral": "7–9% (prevalência de 12 meses); 13,2% (prevalência na vida)",
+          "proporcao_sexo": "2:1 mulheres:homens; tipo sangue-injeção-ferimento: razão menor",
+          "variacoes_culturais": "Taxas variam; medo de magia e espíritos em algumas culturas; não classificar se sancionado culturalmente."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Infância; tipo situacional: início mais tardio (~20 anos)",
+          "trajetoria": "Início na infância frequentemente remite; quando persiste na adultícia raramente remite espontaneamente.",
+          "prognostico": "Com tratamento (terapia de exposição), remissão em 80%+ dos casos."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Fobia Especifica",
+          "codigo_dsm_5": "300.29 (varios F40.2xx)",
+          "categoria_operacional": "SHORT",
+          "estrutura_diagnostica": "monothetic_tripartite",
+          "prevalencia": "7-9% (12 meses, EUA)",
+          "razao_f_m": "2:1 (geral); aprox. 1:1 (sangue-injecao-ferimentos)"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "| Criterio | Resumo Operacional |\n|----------|-------------------|\n| **A** | Medo ou ansiedade **acentuados** de objeto/situacao especifica (ex: voar, alturas, animais, injecao, sangue) |\n| **B** | Objeto/situacao **quase invariavelmente** provoca resposta imediata de medo/ansiedade |\n| **C** | Ativamente **evitado** ou suportado com **intensa ansiedade/sofrimento** |\n| **D** | Medo/ansiedade **desproporcional** ao perigo real e ao contexto sociocultural |\n| **E** | Persistente: geralmente **>= 6 meses** |\n| **F** | Causa **sofrimento ou prejuizo** clinicamente significativo |\n| **G** | Nao melhor explicado por: agorafobia, TOC, TEPT, ansiedade de separacao, fobia social |\n\n> Nota: Em criancas, medo/ansiedade pode ser expresso por choro, ataques de raiva, imobilidade ou agarrar-se."
+          }
+        ],
+        "tipos_codigos": [
+          {
+            "Tipo": "Animal",
+            "Codigo CID-10": "F40.218",
+            "Exemplos": "Aranhas, insetos, caes"
+          },
+          {
+            "Tipo": "Ambiente natural",
+            "Codigo CID-10": "F40.228",
+            "Exemplos": "Alturas, tempestades, agua"
+          },
+          {
+            "Tipo": "Sangue-injecao-ferimentos",
+            "Codigo CID-10": "F40.23x",
+            "Exemplos": "Agulhas, procedimentos medicos"
+          },
+          {
+            "Tipo": "Situacional",
+            "Codigo CID-10": "F40.248",
+            "Exemplos": "Avioes, elevadores, locais fechados"
+          },
+          {
+            "Tipo": "Outro",
+            "Codigo CID-10": "F40.298",
+            "Exemplos": "Asfixia, vomitos, sons altos"
+          }
+        ],
+        "regra_diagnostica": "(A OBJETO_ESPECIFICO) + (B QUASE_INVARIAVEL_IMEDIATO) + (C EVITA_OU_INTENSO) + (D DESPROPORCIONAL) + (E >=6M) + (F PREJUIZO) + (G NAO_OUTRO_TX)",
+        "caracteristica_distintiva_sangue_injecao_ferimentos": "Resposta vasovagal peculiar: **breve aceleracao cardiaca → desaceleracao → queda de PA → desmaio/quase desmaio**. Diferencia-se de outros tipos que tem excitacao simpatica.",
+        "duracao_idade_prejuizo": {
+          "duracao": ">= 6 meses",
+          "idade_media_inicio": "7-11 anos (media ~10 anos); situacionais tem inicio mais tardio",
+          "curso": "Persistente se chega a adulta; recaidas e remissoes na infancia/adolescencia"
+        },
+        "gravidade": {
+          "tem_gravidade_formal": "**false**",
+          "tipo": "nao_aplica",
+          "regra_atribuicao": "Inferida pelo numero de objetos temidos (75% temem >1), grau de esquiva, prejuizo funcional"
+        },
+        "diferenciais_criticos": [
+          {
+            "condicao": "Agorafobia",
+            "chave_diferenciacao": "Se APENAS 1 situacao agorafobica → fobia especifica; se 2+ → agorafobia"
+          },
+          {
+            "condicao": "Fobia social",
+            "chave_diferenciacao": "Medo de avaliacao negativa em situacoes sociais"
+          },
+          {
+            "condicao": "TOC",
+            "chave_diferenciacao": "Medo de contaminacao por sangue com obsessoes/compulsoes"
+          },
+          {
+            "condicao": "TEPT",
+            "chave_diferenciacao": "Fobia apos trauma → avaliar criterios TEPT completos"
+          }
+        ],
+        "perguntas_chave_compactas": "1. \"Tem medo intenso de algum objeto ou situacao especifica?\"\n2. \"O medo comeca imediatamente quando ve/encontra [estimulo]?\"\n3. \"Evita [estimulo] ou suporta com muito sofrimento?\"\n4. \"O medo e maior do que o perigo real justificaria?\"\n5. \"Ha quanto tempo isso dura?\" (>= 6 meses)\n6. \"O medo interfere na sua vida?\"",
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/fobia_especifica.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_ansiedade_social",
+        "nome_completo": "Transtorno de Ansiedade Social (Fobia Social)",
+        "sigla": "TAS",
+        "codigo": {
+          "dsm5": "300.23",
+          "cid10": "F40.10",
+          "cid11": "6B04"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Fobia Social"
+        ]
+      },
+      "estrutura_geral": "monothetic_puro",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Medo Acentuado em Situações Sociais",
+          "tipo": "monothetic_obrigatorio",
+          "limiar": null,
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Medo de avaliação negativa em situações sociais",
+              "desc": "Medo ou ansiedade acentuados de situações sociais em que pode ser exposto ao exame minucioso dos outros (p.ex., conversas, encontros com pessoas estranhas, ser observado a comer, apresentações em público). Em crianças: pode ocorrer com pares, não apenas adultos.",
+              "pergunta": "Você sente ansiedade intensa quando está em situações sociais onde pode ser observado ou avaliado pelos outros?",
+              "exemplos_clinicos": [
+                "Pavor de falar em público",
+                "Terror ao comer em restaurantes"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "B1",
+              "rotulo": "Medo de agir de forma constrangedora/humilhante",
+              "desc": "O indivíduo teme que agirá de uma maneira ou mostrará sintomas de ansiedade que serão avaliados negativamente (humilhação, constrangimento, rejeição).",
+              "pergunta": "Você teme humilhar a si mesmo ou ser rejeitado nas situações sociais?",
+              "exemplos_clinicos": [
+                "Medo de suar em público e ser julgado"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "situacao_provoca_ansiedade",
+          "letra": "C",
+          "rotulo": "Situação social quase sempre provoca ansiedade",
+          "tipo": "temporal_proporcao",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation",
+          "ddx_sugeridos": [],
+          "descricao_completa": "As situações sociais quase sempre provocam medo ou ansiedade. Em crianças: choro, ataques de raiva, imobilidade, apego excessivo.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "evitacao_sofrimento",
+          "letra": "D",
+          "rotulo": "Situações evitadas ou suportadas com sofrimento intenso",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "As situações sociais são evitadas ou suportadas com intenso medo ou ansiedade.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "desproporcional",
+          "letra": "E",
+          "rotulo": "Medo desproporcional ao perigo real",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-balance-scale",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo ou ansiedade é desproporcional à ameaça real e ao contexto sociocultural.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "duracao_6meses",
+          "letra": "F",
+          "rotulo": "Duração ≥6 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo, ansiedade ou esquiva é persistente com duração mínima de 6 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "sofrimento_funcional",
+          "letra": "G",
+          "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo, ansiedade ou esquiva causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "H",
+          "rotulo": "Não atribuível a substância ou condição médica",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Não atribuível aos efeitos fisiológicos de substância ou condição médica.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros_transtornos",
+          "letra": "I",
+          "rotulo": "Não melhor explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_panico",
+            "tddh",
+            "tea",
+            "transtorno_esquizofreniforme"
+          ],
+          "descricao_completa": "Não mais bem explicado por transtorno de pânico, TDD, TEA ou transtorno esquizoafetivo/esquizofrenia.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "apenas_desempenho",
+          "nome": "Somente de desempenho",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "Para quando o medo é limitado a falar ou realizar em público.",
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "academico",
+          "label": "Desempenho Acadêmico",
+          "icone_fa": "fa-graduation-cap",
+          "relevante_para": "ambos"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Timidez/ansiedade social normativa",
+          "ponto_distincao": "Timidez normal: não causa prejuízo funcional significativo; TAS: prejuízo clinicamente significativo.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Agorafobia",
+          "ponto_distincao": "Agorafobia: medo de situações por impossibilidade de escape; TAS: medo de avaliação social.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtorno de Pânico",
+          "ponto_distincao": "Pânico: medo de ataques de pânico futuros; TAS: medo de situações sociais especificamente.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Outros transtornos de ansiedade",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "alta",
+          "nota": "Frequentemente secundário ao TAS."
+        },
+        {
+          "condicao": "Transtorno por uso de álcool",
+          "frequencia": "alta",
+          "nota": "Álcool como automedicação."
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "7% (prevalência de 12 meses nos EUA); 2–3% em outros países",
+        "proporcao_sexo": "1,5–2:1 mulheres:homens na população geral; sem diferença em amostras clínicas",
+        "variacoes_culturais": "Taijin kyofusho (Japão): variante com medo de ofender os outros; taxas mais baixas em Ásia.",
+        "notas": "Segundo transtorno de ansiedade mais prevalente após fobia específica.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Mediana de início: ~13 anos; raro início após 25 anos",
+        "trajetoria": "Geralmente crônico sem tratamento; pode deteriorar com responsabilidades sociais crescentes.",
+        "prognostico": "Boa resposta à TCC; remissão menor que em outros transtornos de ansiedade sem tratamento.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno de Ansiedade Social - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.23 / F40.10)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_ansiedade_social",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "monothetic_tripartite",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A SITUACAO_SOCIAL_1+) + (B MEDO_DEMONSTRAR_ANSIEDADE) + (C QUASE_SEMPRE) + (D EVITA_OU_INTENSO) + (E DESPROPORCIONAL) + (F >=6_MESES) + (G PREJUIZO) + (H NAO_SUBSTANCIA_MEDICA) + (I NAO_OUTRO_TX) + (J NAO_CONDICAO_MEDICA)\n```",
+        "clusters": [],
+        "duration": "| 6 meses |",
+        "age_onset": "| 13 anos (75% entre 8-15 anos) |",
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Sente medo ou ansiedade quando precisa interagir com pessoas que nao conhece?",
+          "Fica ansioso quando e observado comendo ou bebendo?",
+          "Tem medo de falar ou se apresentar em publico?",
+          "A ansiedade ocorre com seus pares/na escola?",
+          "Tem medo de que as pessoas percebam que voce esta ansioso?",
+          "Tem medo de ruborizar, tremer, suar ou tropecar nas palavras?",
+          "Tem medo de ser humilhado, rejeitado ou de ofender os outros?",
+          "ESSAS situacoes SEMPRE causam ansiedade?",
+          "Em criancas: chora, tem raiva, fica imovel ou se agarra?",
+          "Evita essas situacoes ou as suporta com muito medo?",
+          "O medo e APENAS em situacoes de falar ou atuar em publico, ou tambem em interacoes sociais casuais?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno de Ansiedade Social (Fobia Social)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TAS",
+      "codigo_dsm5": "300.23",
+      "codigo_cid10": "F40.10",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 300.23 (F40.10)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Politico (A-J; 10 criterios)",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6B04",
+      "super_enrichment": {
+        "id": "transtorno_ansiedade_social",
+        "nome_original": "Transtorno de Ansiedade Social",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Outros transtornos de ansiedade",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "alta",
+            "nota": "Frequentemente secundário ao TAS."
+          },
+          {
+            "condicao": "Transtorno por uso de álcool",
+            "frequencia": "alta",
+            "nota": "Álcool como automedicação."
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Timidez/ansiedade social normativa",
+            "ponto_distincao": "Timidez normal: não causa prejuízo funcional significativo; TAS: prejuízo clinicamente significativo.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Agorafobia",
+            "ponto_distincao": "Agorafobia: medo de situações por impossibilidade de escape; TAS: medo de avaliação social.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtorno de Pânico",
+            "ponto_distincao": "Pânico: medo de ataques de pânico futuros; TAS: medo de situações sociais especificamente.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "7% (prevalência de 12 meses nos EUA); 2–3% em outros países",
+          "proporcao_sexo": "1,5–2:1 mulheres:homens na população geral; sem diferença em amostras clínicas",
+          "variacoes_culturais": "Taijin kyofusho (Japão): variante com medo de ofender os outros; taxas mais baixas em Ásia."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Mediana de início: ~13 anos; raro início após 25 anos",
+          "trajetoria": "Geralmente crônico sem tratamento; pode deteriorar com responsabilidades sociais crescentes.",
+          "prognostico": "Boa resposta à TCC; remissão menor que em outros transtornos de ansiedade sem tratamento."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Transtorno de Ansiedade Social (Fobia Social)",
+          "codigo_dsm_5": "300.23 (F40.10)",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "monothetic_tripartite",
+          "prevalencia": "7% (12 meses, EUA)",
+          "razao_f_m": "1,5-2,2:1 (populacao); equivalente ou M>F (amostras clinicas)"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A — Medo/ansiedade acentuado de 1+ situacoes sociais (obrigatorio)",
+            "texto": "Medo de ser exposto a **possivel avaliacao por outras pessoas**. Inclui:\n- Interacoes sociais (conversas, encontrar pessoas desconhecidas)\n- Ser observado (comendo, bebendo)\n- Situacoes de desempenho diante de outros (palestras)\n\n> Nota: Em criancas, ansiedade deve ocorrer em contextos com pares, nao apenas com adultos."
+          },
+          {
+            "id": "B — Medo de demonstrar ansiedade (obrigatorio)",
+            "texto": "Tem medo de agir de forma a demonstrar sintomas de ansiedade que serao avaliados negativamente (humilhante, constrangedor, rejeicao, ofender outros)."
+          },
+          {
+            "id": "C — Resposta consistente (obrigatorio)",
+            "texto": "Situacoes sociais **quase sempre** provocam medo ou ansiedade.\n\n> Nota: Em criancas, pode ser expresso por choro, ataques de raiva, imobilidade, agarrar-se, encolher-se ou fracasso em falar."
+          },
+          {
+            "id": "D — Esquiva ou suporte angustiado (obrigatorio)",
+            "texto": "Situacoes sociais sao **evitadas** ou **suportadas com intenso medo/ansiedade**."
+          },
+          {
+            "id": "E — Desproporcionalidade (obrigatorio)",
+            "texto": "Medo/ansiedade e desproporcional a ameaca real e ao contexto sociocultural."
+          },
+          {
+            "id": "F — Duracao (obrigatorio)",
+            "texto": "Persistente, geralmente **mais de 6 meses**."
+          },
+          {
+            "id": "G — Prejuizo (obrigatorio)",
+            "texto": "Causa sofrimento clinicamente significativo ou prejuizo funcional."
+          },
+          {
+            "id": "H — Nao e efeito de substancia/condicao medica",
+            "texto": ""
+          },
+          {
+            "id": "I — Exclusao outro transtorno mental",
+            "texto": "Nao e melhor explicado por: panico, dismorfico corporal, TEA."
+          },
+          {
+            "id": "J — Nao relacionado a condicao medica presente",
+            "texto": "Se outra condicao medica presente (doenca de Parkinson, obesidade, desfiguracao), medo e claramente **nao relacionado ou excessivo**."
+          }
+        ],
+        "regra_diagnostica": "(A SITUACAO_SOCIAL_1+) + (B MEDO_DEMONSTRAR_ANSIEDADE) + (C QUASE_SEMPRE) + (D EVITA_OU_INTENSO) + (E DESPROPORCIONAL) + (F >=6_MESES) + (G PREJUIZO) + (H NAO_SUBSTANCIA_MEDICA) + (I NAO_OUTRO_TX) + (J NAO_CONDICAO_MEDICA)",
+        "especificador": "| Especificador | Descricao |\n|---------------|-----------|\n| **Somente desempenho** | Medo restrito a fala ou atuar em publico. Preocupacoes prejudiciais na vida profissional (musicos, dancarinos, atletas). NAO temem situacoes sociais que nao envolvam desempenho. |\n\n> Nota: O especificador \"somente desempenho\" indica uma forma mais circumscrita do transtorno, com melhor prognostico e menor comorbidade.",
+        "duracao_idade_prejuizo": {
+          "duracao_minima": "6 meses",
+          "idade_media_inicio": "13 anos (75% entre 8-15 anos)",
+          "inicio_na_adulta": "Raro; geralmente apos evento estressante/humilhante",
+          "curso_tipico": "Persistente; ~30% remissao em 1 ano (comunidade); 50% em poucos anos"
+        },
+        "exclusoes_obrigatorias": [
+          {
+            "numero": 1,
+            "condicao": "Timidez normal",
+            "descricao": "Sem impacto adverso significativo no funcionamento"
+          },
+          {
+            "numero": 2,
+            "condicao": "Agorafobia",
+            "descricao": "Medo de dificuldade de fuga/auxilio, nao de avaliacao"
+          },
+          {
+            "numero": 3,
+            "condicao": "TEA",
+            "descricao": "Deficits persistentes em comunicacao/interacao social; TAG social e sobreposta"
+          },
+          {
+            "numero": 4,
+            "condicao": "Dismorfico corporal",
+            "descricao": "Medo causado APENAS por preocupacao com aparencia"
+          },
+          {
+            "numero": 5,
+            "condicao": "Transtorno depressivo maior",
+            "descricao": "Preocupacao por se sentir mau/nao merecedor"
+          },
+          {
+            "numero": 6,
+            "condicao": "Esquizofrenia/TEP",
+            "descricao": "Outras evidencias psicoticas presentes"
+          },
+          {
+            "numero": 7,
+            "condicao": "Transtorno de oposicao desafiante",
+            "descricao": "Recusa em falar por oposicao, nao medo"
+          }
+        ],
+        "gravidade": {
+          "tem_gravidade_formal": "**false**",
+          "tipo": "nao_aplica",
+          "regra_atribuicao": "Inferida pelo numero de situacoes temidas (generalizado vs. circunscrito), intensidade da ansiedade, grau de esquiva, prejuizo funcional",
+          "dominios": "Funcionamento social, profissional/academico, relacionamentos"
+        },
+        "perguntas_chave_entrevista": [
+          {
+            "bloco": "Bloco A — Situacoes sociais temidas",
+            "numero": 1,
+            "texto": "Sente medo ou ansiedade quando precisa interagir com pessoas que nao conhece?"
+          },
+          {
+            "bloco": "Bloco A — Situacoes sociais temidas",
+            "numero": 2,
+            "texto": "Fica ansioso quando e observado comendo ou bebendo?"
+          },
+          {
+            "bloco": "Bloco A — Situacoes sociais temidas",
+            "numero": 3,
+            "texto": "Tem medo de falar ou se apresentar em publico?"
+          },
+          {
+            "bloco": "Bloco A — Situacoes sociais temidas",
+            "numero": 4,
+            "texto": "A ansiedade ocorre com seus pares/na escola?"
+          },
+          {
+            "bloco": "Bloco B — Medo de demonstrar ansiedade",
+            "numero": 5,
+            "texto": "Tem medo de que as pessoas percebam que voce esta ansioso?"
+          },
+          {
+            "bloco": "Bloco B — Medo de demonstrar ansiedade",
+            "numero": 6,
+            "texto": "Tem medo de ruborizar, tremer, suar ou tropecar nas palavras?"
+          },
+          {
+            "bloco": "Bloco B — Medo de demonstrar ansiedade",
+            "numero": 7,
+            "texto": "Tem medo de ser humilhado, rejeitado ou de ofender os outros?"
+          },
+          {
+            "bloco": "Bloco C — Frequencia e expressao",
+            "numero": 8,
+            "texto": "ESSAS situacoes SEMPRE causam ansiedade?"
+          },
+          {
+            "bloco": "Bloco C — Frequencia e expressao",
+            "numero": 9,
+            "texto": "Em criancas: chora, tem raiva, fica imovel ou se agarra?"
+          },
+          {
+            "bloco": "Bloco D — Esquiva",
+            "numero": 10,
+            "texto": "Evita essas situacoes ou as suporta com muito medo?"
+          },
+          {
+            "bloco": "Bloco — Especificador desempenho",
+            "numero": 11,
+            "texto": "O medo e APENAS em situacoes de falar ou atuar em publico, ou tambem em interacoes sociais casuais?"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "condicao": "Tag vs. TAG",
+            "chave_diferenciacao": "TAG = preocupacao sobre multiplos dominios; Fobia social = medo especifico de avaliacao negativa"
+          },
+          {
+            "condicao": "Mutismo seletivo",
+            "chave_diferenciacao": "Falha em falar por medo de avaliacao; porem SEM medo em outras situacoes sociais nao verbais"
+          },
+          {
+            "condicao": "Transtorno da personalidade evitativa",
+            "chave_diferenciacao": "Padrao mais amplo de esquiva; mais comorbido que com outros transtornos"
+          },
+          {
+            "condicao": "Doenca de Parkinson, tremor",
+            "chave_diferenciacao": "Medo excessivo da condicao medica → considerar se o medo e independente"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_ansiedade_social.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_panico",
+        "nome_completo": "Transtorno de Pânico",
+        "sigla": "TP",
+        "codigo": {
+          "dsm5": "300.01",
+          "cid10": "F41.0",
+          "cid11": "6B01"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Síndrome do pânico"
+        ]
+      },
+      "estrutura_geral": "polythetic_com_ancora",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Ataque de Pânico Recorrente e Inesperado (âncora) + Sequela",
+          "tipo": "polythetic_com_ancora",
+          "limiar": {
+            "adulto": 4,
+            "pediatria": 4
+          },
+          "ancora_obrigatoria": {
+            "descricao": "Surto abrupto de medo intenso ou desconforto intenso que atinge um pico em minutos e inclui ≥4 sintomas somáticos/cognitivos",
+            "ids_obrigatorios": [
+              "A_ancora"
+            ],
+            "n_minimo": 1
+          },
+          "sintomas": [
+            {
+              "id": "A_ancora",
+              "rotulo": "Ataque de pânico recorrente e inesperado",
+              "desc": "Ataques de pânico recorrentes e inesperados: surto abrupto de medo/desconforto intenso que atinge o pico em minutos.",
+              "pergunta": "Você tem ataques súbitos de medo intenso ou desconforto que chegam ao máximo em poucos minutos?",
+              "exemplos_clinicos": [
+                "Despertar com ataque de pânico à noite",
+                "Ataque sem gatilho identificável"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A1",
+              "rotulo": "Palpitações / taquicardia",
+              "desc": "Palpitações, coração acelerado ou taquicardia durante o ataque.",
+              "pergunta": "Durante o ataque, sente o coração bater forte ou acelerado?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Sudorese",
+              "desc": "Sudorese excessiva durante o ataque.",
+              "pergunta": "Você transpira muito durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Tremores ou abalos",
+              "desc": "Tremores ou abalos durante o ataque.",
+              "pergunta": "Você treme durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Falta de ar / sensação de sufocamento",
+              "desc": "Sensações de falta de ar ou sufocamento.",
+              "pergunta": "Você sente que não consegue respirar ou que vai sufocar durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Sensações de asfixia",
+              "desc": "Sensações de asfixia/garganta fechando.",
+              "pergunta": "Sente a garganta fechando ou como se fosse engasgar?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Dor ou desconforto no tórax",
+              "desc": "Dor ou desconforto torácico durante o ataque.",
+              "pergunta": "Sente dor ou pressão no peito durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Náusea ou desconforto abdominal",
+              "desc": "Náusea ou desconforto abdominal.",
+              "pergunta": "Sente náusea ou mal-estar no estômago durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Tontura, instabilidade ou desmaio",
+              "desc": "Sensação de tontura, instabilidade, atordoamento ou desmaio.",
+              "pergunta": "Você sente tontura, vertigem ou que vai desmaiar durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Calafrios ou ondas de calor",
+              "desc": "Calafrios ou ondas de calor.",
+              "pergunta": "Sente calafrios ou ondas de calor intenso durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A10",
+              "rotulo": "Parestesias (dormência/formigamento)",
+              "desc": "Parestesias — sensações de dormência ou formigamento.",
+              "pergunta": "Sente dormência ou formigamento (especialmente nas mãos, pés ou rosto) durante o ataque?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A11",
+              "rotulo": "Desrealização ou despersonalização",
+              "desc": "Desrealização (sentir que o mundo não é real) ou despersonalização (sentir-se separado de si mesmo).",
+              "pergunta": "Durante o ataque, sente que o mundo ao redor não é real ou que está fora do seu corpo?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A12",
+              "rotulo": "Medo de perder o controle ou 'enlouquecer'",
+              "desc": "Medo de perder o controle ou 'enlouquecer'.",
+              "pergunta": "Durante o ataque, você tem medo de perder o controle ou de ficar louco?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A13",
+              "rotulo": "Medo de morrer",
+              "desc": "Medo de morrer durante o ataque.",
+              "pergunta": "Durante o ataque, você sente que vai morrer?",
+              "exemplos_clinicos": [
+                "Certeza de estar tendo infarto"
+              ],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "preocupacao_ou_mudanca",
+          "letra": "B",
+          "rotulo": "≥1 mês com preocupação/esquiva após ataques",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Ao menos um ataque foi seguido por ≥1 mês de: (1) preocupação persistente sobre novos ataques ou suas consequências; OU (2) mudança significativa no comportamento (esquivas) relacionada aos ataques.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "C",
+          "rotulo": "Não atribuível a substância ou condição médica",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "hipertireoidismo",
+            "hiperparatireoidismo",
+            "taquiarritmias",
+            "feocromocitoma"
+          ],
+          "descricao_completa": "Não atribuível aos efeitos fisiológicos de substância ou condição médica (hipertireoidismo, cardiopatias).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros",
+          "letra": "D",
+          "rotulo": "Não melhor explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_ansiedade_social",
+            "fobia_especifica",
+            "tept",
+            "tag",
+            "tas"
+          ],
+          "descricao_completa": "Os ataques não são mais bem explicados por TAS, fobia específica, TAS (separação), TEPT, TAG.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "saude",
+          "label": "Uso de Serviços de Saúde",
+          "icone_fa": "fa-hospital",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Outros transtornos de ansiedade",
+          "ponto_distincao": "Pânico: ataques inesperados; em outros transtornos, a ansiedade é situacional e previsível.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Outras condições médicas",
+          "ponto_distincao": "Exames laboratoriais para excluir causas orgânicas (tireoide, coração, sistema nervoso).",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno de depressão maior",
+          "ponto_distincao": "Ataques de pânico ocorrem frequentemente no TDM; o diagnóstico de TP pode ser dado se satisfeitos todos os critérios.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Outros transtornos de ansiedade",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno Bipolar",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno por uso de álcool",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "2–3% (prevalência de 12 meses em adultos e adolescentes nos EUA e Europa)",
+        "proporcao_sexo": "2:1 mulheres:homens",
+        "variacoes_culturais": "Ataque de pânico pode apresentar-se como khyâl cap (cultura cambojana) ou ataque de nervios (latino). Prevalência menor em africanos americanos, asiáticos americanos, latinos.",
+        "notas": "Prevalência de ataques de pânico (isolados) é ~11%/ano; critérios plenos do TP não atingidos na maioria.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Adulto jovem; pico 20–24 anos; raro antes dos 14 e após os 45",
+        "trajetoria": "Geralmente crônico com flutuações. Episódio mais grave raramente excede 1 ano isoladamente.",
+        "prognostico": "Variável; prognóstico pior associado a esquiva fóbica marcada, depressão comórbida.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno de Pânico - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.01 / F41.0)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_panico",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "episodico_com_sintomas",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A: >=2 ataques inesperados COM >=4/13 sintomas atingindo pico em minutos) + (B1 OU B2 por >=1 mes) + (C NAO_SUBSTANCIA_MEDICA) + (D NAO_OUTRO_TX)\n```\n\n**Conceito-chave: \"Inesperado\"**\nAtaque sem indicio ou desencadeante obvio no momento — parece \"vir do nada\" (relaxando, emergindo do sono). A presenca de ataques esperados NAO exclui o diagnostico de transtorno de transtorno_panico (aprox. metade dos individuos tem ambos).",
+        "clusters": [],
+        "duration": null,
+        "age_onset": "| 20-24 anos |",
+        "functional_impairment": null,
+        "exclusions": [
+          "→ exames laboratoriais",
+          "3. **Outros transtornos de ansiedade** → se ataques ocorrem SOMENTE em contexto do outro transtorno, nao diagnosticar transtorno_panico"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "**Com agorafobia** (quando criterios para agorafobia satisfeitos)",
+          "Ataque de transtorno_panico como especificador pode ser anotado em outros transtornos"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Ja sentiu medo intenso ou desconforto que apareceu de repente e atingiu o maximo em poucos minutos?",
+          "Quantas vezes isso aconteceu?",
+          "O primeiro ataque pareceu vir 'do nada' ou havia um motivo obvio?",
+          "Durante esses surtos, voce sentiu: palpitacoes? falta de ar? tontura? suor? tremores? dor no peito? nausea? calafrios/ondas de calor? formigamento? sensacao de irrealidade? medo de enlouquecer? medo de morrer?",
+          "Depois dos ataques, ficou preocupado que pudessem acontecer novamente?",
+          "Mudou algum comportamento por causa dos ataques? (evitar exercicios, lugares, situacoes)",
+          "Usa cafeina, anfetaminas, cocaina ou outras substancias?",
+          "Tem problemas de tireoide, coracao ou respiracao?",
+          "Os ataques acontecem SOMENTE em situacoes sociais?",
+          "Os ataques acontecem SOMENTE em situacoes ou com objetos especificos?",
+          "Evita transporte publico, espacos abertos, espacos fechados, multidoes ou sair de casa sozinho por medo de ter um ataque?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno de Panico",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TP",
+      "codigo_dsm5": "300.01",
+      "codigo_cid10": "F41.0",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 300.01 (F41.0)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** A (ataques recorrentes inesperados) + B (preocupacao/comportamento >=1 mes) + C exclusao substancia + D exclusao outro transtorno",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "hierarquia_exclusao": {
+        "exclui": [],
+        "exclui_de": [],
+        "notas_hierarquia": "Extraído do índice de hierarquias do capítulo"
+      },
+      "codigo_cid11": "6B01",
+      "super_enrichment": {
+        "id": "transtorno_panico",
+        "nome_original": "Transtorno de Panico",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Outros transtornos de ansiedade",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno Bipolar",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno por uso de álcool",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Outros transtornos de ansiedade",
+            "ponto_distincao": "Pânico: ataques inesperados; em outros transtornos, a ansiedade é situacional e previsível.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Outras condições médicas",
+            "ponto_distincao": "Exames laboratoriais para excluir causas orgânicas (tireoide, coração, sistema nervoso).",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno de depressão maior",
+            "ponto_distincao": "Ataques de pânico ocorrem frequentemente no TDM; o diagnóstico de TP pode ser dado se satisfeitos todos os critérios.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "2–3% (prevalência de 12 meses em adultos e adolescentes nos EUA e Europa)",
+          "proporcao_sexo": "2:1 mulheres:homens",
+          "variacoes_culturais": "Ataque de pânico pode apresentar-se como khyâl cap (cultura cambojana) ou ataque de nervios (latino). Prevalência menor em africanos americanos, asiáticos americanos, latinos."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Adulto jovem; pico 20–24 anos; raro antes dos 14 e após os 45",
+          "trajetoria": "Geralmente crônico com flutuações. Episódio mais grave raramente excede 1 ano isoladamente.",
+          "prognostico": "Variável; prognóstico pior associado a esquiva fóbica marcada, depressão comórbida."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Transtorno de Panico",
+          "codigo_dsm_5": "300.01 (F41.0)",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "episodico_com_sintomas",
+          "prevalencia": "2-3% (12 meses, adultos EUA)",
+          "razao_f_m": "2:1"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A — Ataques de panico (obrigatorio)",
+            "texto": "Ataques de panico **recorrentes e inesperados**. Um ataque de panico = surto abrupto de medo intenso ou desconforto intenso que atinge um pico em **minutos** e durante o qual ocorrem **4 (ou mais)** dos seguintes 13 sintomas:\n\n| # | Sintoma | Categoria |\n|---|---------|-----------|\n| 1 | Palpitacoes, coracao acelerado, taquicardia | Cardiovascular |\n| 2 | Sudorese | Autonomica |\n| 3 | Tremores ou abalos | Motor |\n| 4 | Sensacoes de falta de ar ou sufocamento | Respiratoria |\n| 5 | Sensacoes de asfixia | Respiratoria |\n| 6 | Dor ou desconforto toracico | Cardiovascular |\n| 7 | Nausea ou desconforto abdominal | Gastrointestinal |\n| 8 | Sensacao de tontura, instabilidade, vertigem ou desmaio | Neurologica |\n| 9 | Calafrios ou ondas de calor | Termoregulacao |\n| 10 | Parestesias (anestesia ou formigamento) | Neurologica |\n| 11 | Desrealizacao (sensacoes de irrealidade) ou despersonalizacao (distanciamento de si mesmo) | Dissociativo |\n| 12 | Medo de perder o controle ou \"enlouquecer\" | Cognitivo |\n| 13 | Medo de morrer | Cognitivo |\n\n> Nota: Sintomas especificos da cultura (tinido, dor na nuca, cefaleia, gritos/choro) NAO contam como um dos 4 sintomas exigidos."
+          },
+          {
+            "id": "B — Consequencias (obrigatorio: 1 ou ambas por >=1 mes)",
+            "texto": "- B1: **Apreensao/preocupacao persistente** acerca de ataques de panico adicionais ou suas consequencias (perder controle, ataque cardiaco, \"enlouquecer\")\n- B2: **Mudanca desadaptativa significativa no comportamento** relacionada aos ataques (ex: esquiva de exercicios, situacoes desconhecidas)"
+          },
+          {
+            "id": "C — Exclusao substancia/condicao medica",
+            "texto": "Nao e consequencia dos efeitos psicologicos de substancia ou condicao medica (hipertireoidismo, doencas cardiopulmonares)."
+          },
+          {
+            "id": "D — Exclusao outro transtorno mental",
+            "texto": "Ataques de panico NAO ocorrem apenas em resposta a:\n- Situacoes sociais temidas (fobia social)\n- Objetos/situacoes fobicas circunscritas (fobia especifica)\n- Obsessoes (TOC)\n- Evocacao de eventos traumaticos (TEPT)\n- Separacao de figuras de apego (ansiedade de separacao)"
+          }
+        ],
+        "regra_diagnostica": "(A: >=2 ataques inesperados COM >=4/13 sintomas atingindo pico em minutos) + (B1 OU B2 por >=1 mes) + (C NAO_SUBSTANCIA_MEDICA) + (D NAO_OUTRO_TX)\n\n**Conceito-chave: \"Inesperado\"**\nAtaque sem indicio ou desencadeante obvio no momento — parece \"vir do nada\" (relaxando, emergindo do sono). A presenca de ataques esperados NAO exclui o diagnostico de transtorno de panico (aprox. metade dos individuos tem ambos).",
+        "subtipos": [
+          {
+            "Apresentacao": "Panico sem agorafobia",
+            "Descricao": "Ataques inesperados sem esquiva de situacoes agorafobicas"
+          },
+          {
+            "Apresentacao": "Panico com agorafobia",
+            "Descricao": "Ataques + medo/esquiva de 2+ situacoes agorafobicas (diagnosticar AMBOS)"
+          },
+          {
+            "Apresentacao": "Ataques com sintomas limitados",
+            "Descricao": "<4 sintomas — NAO satisfaz criterio A; usar especificador ou outro especificado"
+          }
+        ],
+        "duracao_idade_prejuizo": {
+          "duracao_criterio_b": ">= 1 mes de preocupacao/comportamento alterado",
+          "idade_media_inicio": "20-24 anos",
+          "curso_tipico": "Cronico com oscilacoes; surtos episodicos ou sintomatologia grave continua",
+          "remissao": "Minorias tem remissao completa sem recaida; 30% remissao em 1 ano (comunidade)"
+        },
+        "exclusoes_obrigatorias": "1. **Hipertireoidismo, hiperparatireoidismo, feocromocitoma, arritmias, taquicardia supraventricular, asma, DPOC** → exames laboratoriais\n2. **Intoxicacao por estimulantes (cocaina, anfetaminas, cafeina) ou abstinencia de depressores (alcool)**\n3. **Outros transtornos de ansiedade** → se ataques ocorrem SOMENTE em contexto do outro transtorno, nao diagnosticar panico",
+        "gravidade": {
+          "tem_gravidade_formal": "**false** — O DSM-5 nao define niveis formais de gravidade",
+          "tipo": "nao_aplica",
+          "niveis": "—",
+          "regra_atribuicao": "Inferida pela frequencia dos ataques, numero/tipo de sintomas, grau de prejuizo, presenca de agorafobia e comorbidades",
+          "dominios": "Frequencia de ataques, incapacidade social/profissional, uso de servicos de saude"
+        },
+        "especificadores": [
+          "Com agorafobia"
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "bloco": "Bloco A — Ataques de panico (screening)",
+            "numero": 1,
+            "texto": "Ja sentiu medo intenso ou desconforto que apareceu de repente e atingiu o maximo em poucos minutos?"
+          },
+          {
+            "bloco": "Bloco A — Ataques de panico (screening)",
+            "numero": 2,
+            "texto": "Quantas vezes isso aconteceu?"
+          },
+          {
+            "bloco": "Bloco A — Ataques de panico (screening)",
+            "numero": 3,
+            "texto": "O primeiro ataque pareceu vir 'do nada' ou havia um motivo obvio?"
+          },
+          {
+            "bloco": "Bloco A.1 — Sintomas durante o ataque (4+ de 13)",
+            "numero": 4,
+            "texto": "Durante esses surtos, voce sentiu: palpitacoes? falta de ar? tontura? suor? tremores? dor no peito? nausea? calafrios/ondas de calor? formigamento? sensacao de irrealidade? medo de enlouquecer? medo de morrer?"
+          },
+          {
+            "bloco": "Bloco B — Consequencias (1+ por >=1 mes)",
+            "numero": 5,
+            "texto": "Depois dos ataques, ficou preocupado que pudessem acontecer novamente?"
+          },
+          {
+            "bloco": "Bloco B — Consequencias (1+ por >=1 mes)",
+            "numero": 6,
+            "texto": "Mudou algum comportamento por causa dos ataques? (evitar exercicios, lugares, situacoes)"
+          },
+          {
+            "bloco": "Bloco C/D — Exclusoes",
+            "numero": 7,
+            "texto": "Usa cafeina, anfetaminas, cocaina ou outras substancias?"
+          },
+          {
+            "bloco": "Bloco C/D — Exclusoes",
+            "numero": 8,
+            "texto": "Tem problemas de tireoide, coracao ou respiracao?"
+          },
+          {
+            "bloco": "Bloco C/D — Exclusoes",
+            "numero": 9,
+            "texto": "Os ataques acontecem SOMENTE em situacoes sociais?"
+          },
+          {
+            "bloco": "Bloco C/D — Exclusoes",
+            "numero": 10,
+            "texto": "Os ataques acontecem SOMENTE em situacoes ou com objetos especificos?"
+          },
+          {
+            "bloco": "Bloco — Agorafobia (screening conjunto)",
+            "numero": 11,
+            "texto": "Evita transporte publico, espacos abertos, espacos fechados, multidoes ou sair de casa sozinho por medo de ter um ataque?"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "condicao": "Ataque de panico isolado",
+            "chave_diferenciacao": "1 unico ataque ou ataques esperados sem preocupacao persistente → nao e transtorno"
+          },
+          {
+            "condicao": "Agorafobia sem historico de panico",
+            "chave_diferenciacao": "Criterios para agorafobia podem ser satisfeitos sem panico previo"
+          },
+          {
+            "condicao": "Transtorno de ansiedade induzido por substancia",
+            "chave_diferenciacao": "Ataques ocorrem durante intoxicacao/abstinencia"
+          },
+          {
+            "condicao": "Cardiopatia, arritmia, hipertireoidismo",
+            "chave_diferenciacao": "Exames obrigatorios (TSH, ECG, Holter)"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_panico.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "agorafobia",
+        "nome_completo": "Agorafobia",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "300.22",
+          "cid10": "F40.00",
+          "cid11": "6B02"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Medo/Ansiedade em ≥2 de 5 Situações Agorafóbicas",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 2,
+            "pediatria": 2
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Uso de transporte público",
+              "desc": "Medo ou ansiedade acentuados de uso de transporte público (ônibus, metrô, trens, barcos, aviões).",
+              "pergunta": "Você sente medo intenso ao usar transporte público (ônibus, metrô, avião)?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Estar em espaços abertos",
+              "desc": "Medo ou ansiedade de estar em espaços abertos (estacionamentos, feiras, pontes).",
+              "pergunta": "Você sente medo em espaços abertos como estacionamentos ou praças?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Estar em locais fechados",
+              "desc": "Medo ou ansiedade de estar em locais fechados (lojas, cinemas, teatros).",
+              "pergunta": "Você sente medo em lugares fechados como shoppings ou cinemas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Estar em fila ou multidão",
+              "desc": "Medo ou ansiedade de estar em fila ou no meio de uma multidão.",
+              "pergunta": "Você evita filas ou aglomerações?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Estar fora de casa sozinho",
+              "desc": "Medo ou ansiedade de estar fora de casa sozinho.",
+              "pergunta": "Você tem medo de sair de casa sozinho?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "natureza_medo",
+          "letra": "B",
+          "rotulo": "Medo por dificuldade de escapar/sem socorro se incapacitado",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-running",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O indivíduo teme ou evita essas situações por pensar que escapar seria difícil ou que ajuda não estaria disponível se desenvolver sintomas de pânico ou outros sintomas incapacitantes/embaraçosos.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "evitacao_sofrimento",
+          "letra": "C",
+          "rotulo": "Situações agorafóbicas quase sempre provocam medo/ansiedade",
+          "tipo": "temporal_proporcao",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation",
+          "ddx_sugeridos": [],
+          "descricao_completa": "As situações agorafóbicas quase sempre provocam medo ou ansiedade.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "evitacao_ativa",
+          "letra": "D",
+          "rotulo": "Situações evitadas, requerem companhia ou suportadas com...",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "As situações agorafóbicas são ativamente evitadas, requerem presença de companheiro, ou são suportadas com intenso medo/ansiedade.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "desproporcional",
+          "letra": "E",
+          "rotulo": "Medo desproporcional ao perigo real",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-balance-scale",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo ou ansiedade é desproporcional ao perigo real imposto pelas situações agorafóbicas e ao contexto sociocultural.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "duracao_6meses",
+          "letra": "F",
+          "rotulo": "Duração ≥6 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O medo, ansiedade ou esquiva é persistente com duração mínima de 6 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "sofrimento_funcional",
+          "letra": "G",
+          "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo funcional.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "H",
+          "rotulo": "Não atribuível a substância ou condição médica",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros",
+          "letra": "I",
+          "rotulo": "Não melhor explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "fobia_especifica",
+            "tas",
+            "tept",
+            "tag"
+          ],
+          "descricao_completa": "Não mais bem explicado por fobia específica situacional, TAS, TEPT, TAG. Se coexistir com TP, ambos os diagnósticos devem ser dados.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": "Agorafobia e transtorno de pânico são diagnósticos independentes — ambos podem ser dados se critérios satisfeitos.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social e Autonomia",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno de Pânico",
+          "ponto_distincao": "TP sem agorafobia: ataques inesperados mas sem evitação de situações agorafóbicas; ambos podem coexistir.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Fobia Específica situacional",
+          "ponto_distincao": "Fobia específica: limitada a um tipo de situação; agorafobia: múltiplas situações pela razão comum (incapacidade de escape).",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "TEPT",
+          "ponto_distincao": "TEPT: evitação relacionada a lembrança do trauma; agorafobia: evitação por medo de sintomas incapacitantes.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno de Pânico",
+          "frequencia": "alta",
+          "nota": "Frequentemente comórbidos."
+        },
+        {
+          "condicao": "Outros transtornos de ansiedade",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "alta",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "1,7% (prevalência de 12 meses em adolescentes e adultos)",
+        "proporcao_sexo": "2:1 mulheres:homens",
+        "variacoes_culturais": null,
+        "notas": "Casos graves podem tornar a pessoa completamente homebound.",
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "variacao_cultural"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Qualquer idade; pico: adolescência tardia e início da vida adulta; mediana ~17 anos",
+        "trajetoria": "Geralmente crônico e persistente sem tratamento; com tratamento, remissão possível.",
+        "prognostico": "Prognóstico pior que TP isolado; funcionalidade frequentemente comprometida.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação de Agorafobia - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.22 / F40.00)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [
+          "variacao_cultural"
+        ],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "agorafobia",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A >=2/5 SITUACOES) + (B COGNICAO_FUGA_AUXILIO) + (C QUASE_SEMPRE) + (D EVITA_OU_ACOMPANHADO) + (E DESPROPORCIONAL) + (F >=6_MESES) + (G PREJUIZO) + (H NAO_EXCESSO_MEDICO) + (I NAO_OUTRO_TX)\n```",
+        "clusters": [],
+        "duration": "| 6 meses |",
+        "age_onset": "| 17 anos (2/3 dos casos antes dos 35) |",
+        "functional_impairment": null,
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Nenhum especificador formal no DSM-5"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Tem medo ou ansiedade em transporte publico?",
+          "Sente ansiedade em espacos abertos como pracas ou estacionome_completontos?",
+          "Sente ansiedade em lugares fechados como lojas ou cinemas?",
+          "Fica ansioso em filas ou multidoes?",
+          "Tem medo de sair de casa sozinho?",
+          "O que voce pensa poderia acontecer nessas situacoes?",
+          "Essas situacoes SEMPRE lhe causam ansiedade?",
+          "Voce as evita, precisa de alguem acompanhando, ou suporta com muito medo?",
+          "Ja teve ataques de transtorno_panico inesperados?",
+          "Se tem agorafobia + transtorno_panico, ambos devem ser diagnosticados"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Agorafobia",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "300.22",
+      "codigo_cid10": "F40.00",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 300.22 (F40.00)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Politico (A: 2/5 situacoes) + B (cognicao de escape/auxilio) + C (resposta consistente) + D (evitacao/acompanhante/sofrimento) + E (desproporcional) + F duracao + G funcional + H condicao medica + I exclusao",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "hierarquia_exclusao": {
+        "exclui": [],
+        "exclui_de": [],
+        "notas_hierarquia": "Extraído do índice de hierarquias do capítulo"
+      },
+      "codigo_cid11": "6B02",
+      "super_enrichment": {
+        "id": "agorafobia",
+        "nome_original": "Agorafobia",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno de Pânico",
+            "frequencia": "alta",
+            "nota": "Frequentemente comórbidos."
+          },
+          {
+            "condicao": "Outros transtornos de ansiedade",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "alta",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno de Pânico",
+            "ponto_distincao": "TP sem agorafobia: ataques inesperados mas sem evitação de situações agorafóbicas; ambos podem coexistir.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Fobia Específica situacional",
+            "ponto_distincao": "Fobia específica: limitada a um tipo de situação; agorafobia: múltiplas situações pela razão comum (incapacidade de escape).",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "TEPT",
+            "ponto_distincao": "TEPT: evitação relacionada a lembrança do trauma; agorafobia: evitação por medo de sintomas incapacitantes.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": "Agorafobia e transtorno de pânico são diagnósticos independentes — ambos podem ser dados se critérios satisfeitos."
+        },
+        "prevalencia": {
+          "populacao_geral": "1,7% (prevalência de 12 meses em adolescentes e adultos)",
+          "proporcao_sexo": "2:1 mulheres:homens",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Qualquer idade; pico: adolescência tardia e início da vida adulta; mediana ~17 anos",
+          "trajetoria": "Geralmente crônico e persistente sem tratamento; com tratamento, remissão possível.",
+          "prognostico": "Prognóstico pior que TP isolado; funcionalidade frequentemente comprometida."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Agorafobia",
+          "codigo_dsm_5": "300.22 (F40.00)",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "polythetic_monocluster",
+          "prevalencia": "1,7% (12 meses, adolescentes e adultos EUA)",
+          "razao_f_m": "2:1"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A — Medo/ansiedade marcante de 2+ de 5 situacoes (obrigatorio)",
+            "texto": "| # | Situacao | Exemplos |\n|---|----------|----------|\n| A1 | Uso de transporte publico | Automoveis, onibus, trens, navios, avioes |\n| A2 | Permanecer em espacos abertos | Areas de estacionamento, mercados, pontes |\n| A3 | Permanecer em locais fechados | Lojas, teatros, cinemas |\n| A4 | Ficar em fila ou em meio a multidao | Filas, eventos, shopping |\n| A5 | Sair de casa sozinho | Qualquer saida sem companhia |"
+          },
+          {
+            "id": "B — Cognicao (obrigatorio)",
+            "texto": "Medo/evita por pensamentos de que pode ser **dificil escapar** ou que **auxilio pode nao estar disponivel** caso desenvolva sintomas do tipo panico ou outros sintomas incapacitantes/constrangedores."
+          },
+          {
+            "id": "C — Resposta consistente (obrigatorio)",
+            "texto": "As situacoes agorafobicas **quase sempre** provocam medo ou ansiedade."
+          },
+          {
+            "id": "D — Esquiva/acompanhamento (obrigatorio)",
+            "texto": "Situacoes sao **ativamente evitadas**, **requerem presenca de companhia** ou sao **suportadas com intenso medo/ansiedade**."
+          },
+          {
+            "id": "E — Desproporcionalidade (obrigatorio)",
+            "texto": "Medo/ansiedade e desproporcional ao perigo real e ao contexto sociocultural."
+          },
+          {
+            "id": "F — Duracao (obrigatorio)",
+            "texto": "Persistente, geralmente **mais de 6 meses**."
+          },
+          {
+            "id": "G — Prejuizo (obrigatorio)",
+            "texto": "Causa sofrimento clinicamente significativo ou prejuizo funcional."
+          },
+          {
+            "id": "H — Nao excessivo por condicao medica",
+            "texto": "Se condicao medica presente, medo/ansiedade e **claramente excessivo**."
+          },
+          {
+            "id": "I — Exclusao outro transtorno mental",
+            "texto": "Nao e melhor explicado por:\n- Fobia especifica situacional (1 situacao apenas)\n- Fobia social (medo de avaliacao negativa)\n- TOC (relacionado a obsessoes)\n- Dismorfico corporal (defeitos na aparencia)\n- Ansiedade de separacao (medo de separacao de figuras de apego)\n\n> **NOTA CRITICA**: A agorafobia e diagnosticada **independentemente** da presenca de transtorno de panico. Se ambos satisfeitos, **ambos os diagnosticos** devem ser dados."
+          }
+        ],
+        "regra_diagnostica": "(A >=2/5 SITUACOES) + (B COGNICAO_FUGA_AUXILIO) + (C QUASE_SEMPRE) + (D EVITA_OU_ACOMPANHADO) + (E DESPROPORCIONAL) + (F >=6_MESES) + (G PREJUIZO) + (H NAO_EXCESSO_MEDICO) + (I NAO_OUTRO_TX)",
+        "duracao_idade_prejuizo": {
+          "duracao_minima": "6 meses",
+          "idade_media_inicio": "17 anos (2/3 dos casos antes dos 35)",
+          "inicio_sem_panico_previo": "25-29 anos",
+          "curso_tipico": "Persistente e cronico; remissao completa rara (10% se nao tratada)"
+        },
+        "exclusoes_obrigatorias": [
+          {
+            "numero": 1,
+            "condicao": "Fobia especifica situacional",
+            "descricao": "Se teme APENAS 1 situacao → fobia especifica, nao agorafobia"
+          },
+          {
+            "numero": 2,
+            "condicao": "Transtorno de ansiedade de separacao",
+            "descricao": "Medo centrado em separacao de pessoas vs. sintomas do tipo panico"
+          },
+          {
+            "numero": 3,
+            "condicao": "Transtorno depressivo maior",
+            "descricao": "Esquiva por apatia/energia baixa, nao medo de panico"
+          },
+          {
+            "numero": 4,
+            "condicao": "Condicoes medicas",
+            "descricao": "Esquiva por preocupacao realista de incapacitacao (ex: doenca de Crohn)"
+          }
+        ],
+        "gravidade": {
+          "tem_gravidade_formal": "**false**",
+          "tipo": "nao_aplica",
+          "regra_atribuicao": "Inferida pelo numero de situacoes temidas, grau de restricao (ate confinamento domiciliar total), necessidade de acompanhante",
+          "dominios": "N. situacoes temidas, capacidade de sair sozinho, funcionamento profissional"
+        },
+        "especificadores": [
+          "Nenhum especificador formal no DSM-5"
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "bloco": "Bloco A — Situacoes temidas (2+ de 5)",
+            "numero": 1,
+            "texto": "Tem medo ou ansiedade em transporte publico?"
+          },
+          {
+            "bloco": "Bloco A — Situacoes temidas (2+ de 5)",
+            "numero": 2,
+            "texto": "Sente ansiedade em espacos abertos como pracas ou estacionamentos?"
+          },
+          {
+            "bloco": "Bloco A — Situacoes temidas (2+ de 5)",
+            "numero": 3,
+            "texto": "Sente ansiedade em lugares fechados como lojas ou cinemas?"
+          },
+          {
+            "bloco": "Bloco A — Situacoes temidas (2+ de 5)",
+            "numero": 4,
+            "texto": "Fica ansioso em filas ou multidoes?"
+          },
+          {
+            "bloco": "Bloco A — Situacoes temidas (2+ de 5)",
+            "numero": 5,
+            "texto": "Tem medo de sair de casa sozinho?"
+          },
+          {
+            "bloco": "Bloco B — Cognicao",
+            "numero": 6,
+            "texto": "O que voce pensa poderia acontecer nessas situacoes?"
+          },
+          {
+            "bloco": "Bloco C/D — Resposta e esquiva",
+            "numero": 7,
+            "texto": "Essas situacoes SEMPRE lhe causam ansiedade?"
+          },
+          {
+            "bloco": "Bloco C/D — Resposta e esquiva",
+            "numero": 8,
+            "texto": "Voce as evita, precisa de alguem acompanhando, ou suporta com muito medo?"
+          },
+          {
+            "bloco": "Bloco — Panico (screening conjunto)",
+            "numero": 9,
+            "texto": "Ja teve ataques de panico inesperados?"
+          },
+          {
+            "bloco": "Bloco — Panico (screening conjunto)",
+            "numero": 10,
+            "texto": "Se tem agorafobia + panico, ambos devem ser diagnosticados"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "condicao": "Fobia especifica situacional",
+            "chave_diferenciacao": "APENAS 1 situacao temida (ex: so avioes) → fobia especifica"
+          },
+          {
+            "condicao": "Fobia social",
+            "chave_diferenciacao": "Medo de avaliacao negativa, nao de incapacitacao/panico"
+          },
+          {
+            "condicao": "Ansiedade de separacao",
+            "chave_diferenciacao": "Foco em separacao de figuras de apego, nao em sintomas do tipo panico"
+          },
+          {
+            "condicao": "TEPT",
+            "chave_diferenciacao": "Medo restrito a lembrancas de evento traumatico"
+          },
+          {
+            "condicao": "Doenca de Parkinson, DPOC, doenca inflamatoria intestinal",
+            "chave_diferenciacao": "Medo pode ser proporcional"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/agorafobia.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_ansiedade_generalizada",
+        "nome_completo": "Transtorno de Ansiedade Generalizada",
+        "sigla": "TAG",
+        "codigo": {
+          "dsm5": "300.02",
+          "cid10": "F41.1",
+          "cid11": "6B00"
+        },
+        "capitulo": "Transtornos de Ansiedade",
+        "capitulo_id": "05",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_com_ancora",
+      "clusters_sintomas": [
+        {
+          "id": "A_C",
+          "nome": "Ansiedade Excessiva + ≥3/6 Sintomas Associados (adultos) / ≥1/6 (crianças)",
+          "tipo": "polythetic_com_ancora",
+          "limiar": {
+            "adulto": 3,
+            "pediatria": 1
+          },
+          "ancora_obrigatoria": {
+            "descricao": "A1 (ansiedade e preocupação excessivas) é obrigatório",
+            "ids_obrigatorios": [
+              "A1"
+            ],
+            "n_minimo": 1
+          },
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Ansiedade e preocupação excessivas e incontroláveis",
+              "desc": "Ansiedade e preocupação excessivas (expectativa apreensiva), ocorrendo na maioria dos dias por pelo menos 6 meses, sobre vários eventos/atividades, difíceis de controlar.",
+              "pergunta": "Você se preocupa excessivamente com muitas coisas diferentes na maior parte dos dias, e tem dificuldade em parar de se preocupar?",
+              "exemplos_clinicos": [
+                "Preocupações com saúde, dinheiro, trabalho e família simultaneamente"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C1",
+              "rotulo": "Inquietação ou nervos à flor da pele",
+              "desc": "Inquietação ou sensação de estar com os nervos à flor da pele ou tenso.",
+              "pergunta": "Você se sente inquieto, tenso ou com os nervos à flor da pele a maior parte do tempo?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C2",
+              "rotulo": "Fatigabilidade (cansa-se facilmente)",
+              "desc": "Fatigabilidade — cansa-se facilmente.",
+              "pergunta": "Você se cansa facilmente, mesmo sem fazer muito esforço?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C3",
+              "rotulo": "Dificuldade de concentrar ou mente em branco",
+              "desc": "Dificuldade em concentrar-se ou brancos na mente.",
+              "pergunta": "Você tem dificuldade de concentração ou fica com a mente em branco com frequência?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C4",
+              "rotulo": "Irritabilidade",
+              "desc": "Irritabilidade.",
+              "pergunta": "Você está mais irritável do que o normal?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C5",
+              "rotulo": "Tensão muscular",
+              "desc": "Tensão muscular.",
+              "pergunta": "Você sente tensão muscular frequente (pescoço, ombros, mandíbula)?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "C6",
+              "rotulo": "Perturbação do sono",
+              "desc": "Perturbação do sono: dificuldade em adormecer ou manter o sono, ou sono agitado e insatisfatório.",
+              "pergunta": "Você tem dificuldade para dormir ou acordar no meio da noite por preocupações?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "duracao_6meses",
+          "letra": "B",
+          "rotulo": "Duração ≥6 meses na maioria dos dias",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Ansiedade e preocupação excessivas ocorrendo na maioria dos dias por pelo menos 6 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "sofrimento_funcional",
+          "letra": "D",
+          "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-exclamation-circle",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A ansiedade, preocupação ou sintomas físicos causam sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "E",
+          "rotulo": "Não atribuível a substância ou condição médica",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "hipertireoidismo"
+          ],
+          "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica (ex: hipertireoidismo).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros",
+          "letra": "F",
+          "rotulo": "Não melhor explicado por outro transtorno mental",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_panico",
+            "tas",
+            "agorafobia",
+            "tept",
+            "toc"
+          ],
+          "descricao_completa": "Não mais bem explicado por TP, TAS, agorafobia, TEPT, TOC; se durante TDM/psicose, diagnosticar separadamente.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos sintomas além do mínimo; sofrimento manejável; pouco prejuízo funcional."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Sintomas, sofrimento e prejuízo funcional moderados."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos sintomas além do mínimo; sofrimento intenso; prejuízo funcional acentuado."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "saude",
+          "label": "Uso de Serviços de Saúde",
+          "icone_fa": "fa-hospital",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Ansiedade situacional normativa",
+          "ponto_distincao": "TAG: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno de Pânico",
+          "ponto_distincao": "TP: ansiedade focalizada em ataques de pânico; TAG: preocupações difusas e múltiplas.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "TOC",
+          "ponto_distincao": "TOC: pensamentos intrusivos indesejados e egodistônicos; TAG: preocupações sobre problemas reais da vida, mais egossintônicas.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno Depressivo Maior",
+          "frequencia": "alta",
+          "nota": "Ocorrem juntos na maioria dos casos de TAG."
+        },
+        {
+          "condicao": "Transtorno de Pânico",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos relacionados a substâncias",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Generalized Anxiety Disorder 7-item Scale",
+          "sigla": "GAD-7",
+          "uso": "triagem",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "sugestao_clinica_padrao"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "0,9% em adolescentes; 2,9% em adultos (prevalência de 12 meses nos EUA); 0,4–3,6% internacionalmente",
+        "proporcao_sexo": "2:1 mulheres:homens",
+        "variacoes_culturais": "Sintomas somáticos predominam em países com menor renda; taxas menores na Ásia e África.",
+        "notas": "Segundo transtorno de ansiedade mais comum em atenção primária.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Relativamente precoce, porém sintomas na vida inteira; mediana de início: ~30 anos; início mais precoce que outros transtornos",
+        "trajetoria": "Crônico, com exacerbações em estresse. Pode apresentar-se de forma flutuante.",
+        "prognostico": "Remissão completa incomum sem tratamento; respondem bem a TCC e farmacoterapia.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno de Ansiedade Generalizada - {nome_paciente}",
+        "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.02 / F41.1)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "05_transtornos_ansiedade.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "antigravity-gemini",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_ansiedade_generalizada",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [],
+        "diagnostic_rule": "```\n(A MAJORITY_DAYS_6M) + (B DIFICIL_CONTROLAR) + (C >=3/6 [ou >=1/6 em criancas]) + (D PREJUIZO) + (E NAO_SUBSTANCIA_MEDICA) + (F NAO_OUTRO_TX)\n```",
+        "clusters": [],
+        "duration": "| 6 meses (na maioria dos dias) |",
+        "age_onset": "| 30 anos (mais tardio entre os transtornos de ansiedade) |",
+        "functional_impairment": null,
+        "exclusions": [
+          "→ exames laboratoriais",
+          "→ preocupacao focada em avaliacao social, nao generalizada",
+          "→ preocupacoes sao obsessoes intrusivas, nao excesso de preocupacao futura",
+          "→ ansiedade vinculada a evento traumatico especifico",
+          "→ ansiedade em resposta a estressor identificavel, dentro de 3 meses",
+          "→ nao diagnosticar se ocorreu exclusivamente durante curso desses transtornos",
+          "→ preocupacao centrada em separacao de figuras de apego"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Nenhum especificador formal definido no DSM-5 para TAG"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Nas ultimas semanas, voce tem se sentido preocupado ou ansioso na maioria dos dias?",
+          "Quais sao as areas sobre as quais voce mais se preocupa? (trabalho, saude, financas, familia, outros)",
+          "As preocupacoes parecem maiores ou mais frequentes do que a maioria das pessoas teria?",
+          "Voce consegue controlar ou parar de se preocupar quando quer?",
+          "Voce se sente inquieto ou com os nervos a flor da pele?",
+          "Se sente facilmente cansado?",
+          "Tem dificuldade de concentracao ou sensacao de branco na mente?",
+          "Tem se sentido irritavel?",
+          "Sente tensao muscular ou dores?",
+          "Tem problemas de sono?",
+          "Essa preocupacao tem afetado seu trabalho, relacionome_completontos ou outras areas da vida?",
+          "As preocupacoes sao principalmente sobre sua saude?",
+          "As preocupacoes sao sobre situacoes sociais?",
+          "As preocupacoes sao sobre separacao de pessoas queridas?",
+          "Voce tem pensamentos intrusivos repetidos?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno de Ansiedade Generalizada (TAG)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TAG",
+      "codigo_dsm5": "300.02",
+      "codigo_cid10": "F41.1",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 300.02 (F41.1)",
+        "estrutura_efetiva": "- **Estrutura efetiva:** A (ansiedade/preocupacao >=6 meses) + B (controle dificil) + C (3/6 sintomas; 1/6 criancas) + D funcional + E exclusao substancia + F exclusao outro transtorno",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6B00",
+      "super_enrichment": {
+        "id": "transtorno_ansiedade_generalizada",
+        "nome_original": "Transtorno de Ansiedade Generalizada",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno Depressivo Maior",
+            "frequencia": "alta",
+            "nota": "Ocorrem juntos na maioria dos casos de TAG."
+          },
+          {
+            "condicao": "Transtorno de Pânico",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos relacionados a substâncias",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Ansiedade situacional normativa",
+            "ponto_distincao": "TAG: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno de Pânico",
+            "ponto_distincao": "TP: ansiedade focalizada em ataques de pânico; TAG: preocupações difusas e múltiplas.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "TOC",
+            "ponto_distincao": "TOC: pensamentos intrusivos indesejados e egodistônicos; TAG: preocupações sobre problemas reais da vida, mais egossintônicas.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "0,9% em adolescentes; 2,9% em adultos (prevalência de 12 meses nos EUA); 0,4–3,6% internacionalmente",
+          "proporcao_sexo": "2:1 mulheres:homens",
+          "variacoes_culturais": "Sintomas somáticos predominam em países com menor renda; taxas menores na Ásia e África."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Relativamente precoce, porém sintomas na vida inteira; mediana de início: ~30 anos; início mais precoce que outros transtornos",
+          "trajetoria": "Crônico, com exacerbações em estresse. Pode apresentar-se de forma flutuante.",
+          "prognostico": "Remissão completa incomum sem tratamento; respondem bem a TCC e farmacoterapia."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Generalized Anxiety Disorder 7-item Scale",
+            "sigla": "GAD-7",
+            "uso": "triagem",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "sugestao_clinica_padrao"
+          }
+        ],
+        "identificacao": {
+          "nome": "Transtorno de Ansiedade Generalizada",
+          "codigo_dsm_5": "300.02 (F41.1)",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "polythetic_monocluster",
+          "prevalencia": "2,9% (12 meses, adultos EUA)",
+          "razao_f_m": "2:1"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A — Nucleo (obrigatorio)",
+            "texto": "Ansiedade e preocupacao excessivas (expectativa apreensiva), ocorrendo na **maioria dos dias por pelo menos 6 meses**, com diversos eventos ou atividades (desempenho escolar ou profissional)."
+          },
+          {
+            "id": "B — Controle (obrigatorio)",
+            "texto": "O individuo considera **dificil controlar a preocupacao**."
+          },
+          {
+            "id": "C — Sintomas Associados (limiar: 3+ de 6)",
+            "texto": "Nota: Apenas **1 item e exigido para criancas**.\n\n| # | Sintoma | Pergunta Chave |\n|---|---------|----------------|\n| C1 | Inquietacao ou sensacao de \"nervos a flor da pele\" | \"Voce se sente inquieto, agitado, ou com os nervos a flor da pele na maioria dos dias?\" |\n| C2 | Fatigabilidade | \"Voce se sente facilmente cansado ou fatigado?\" |\n| C3 | Dificuldade em concentrar-se ou \"branco\" na mente | \"Tem dificuldade de concentracao ou sensacao de mente em branco?\" |\n| C4 | Irritabilidade | \"Tem se sentido mais irritavel que o habitual?\" |\n| C5 | Tensao muscular | \"Sente tensao muscular, dor ou rigidez?\" |\n| C6 | Perturbacao do sono | \"Tem dificuldade para conciliar ou manter o sono, ou sono insatisfatorio?\" |"
+          },
+          {
+            "id": "D — Prejuizo (obrigatorio)",
+            "texto": "A ansiedade, preocupacao ou sintomas fisicos causam **sofrimento clinicamente significativo ou prejuizo funcional**."
+          },
+          {
+            "id": "E — Exclusao substancia/condicao medica",
+            "texto": "Nao se deve aos efeitos fisiologicos de substancia/medicamento ou condicao medica (ex: hipertireoidismo)."
+          },
+          {
+            "id": "F — Exclusao outro transtorno mental",
+            "texto": "Nao e melhor explicado por outro transtorno mental (panico, ansiedade social, TOC, separacao, TEPT, anorexia, sintomas somaticos, dismorfico corporal, ansiedade de doenca, esquizofrenia, delirante)."
+          }
+        ],
+        "regra_diagnostica": "(A MAJORITY_DAYS_6M) + (B DIFICIL_CONTROLAR) + (C >=3/6 [ou >=1/6 em criancas]) + (D PREJUIZO) + (E NAO_SUBSTANCIA_MEDICA) + (F NAO_OUTRO_TX)",
+        "duracao_idade_prejuizo": {
+          "duracao_minima": "6 meses (na maioria dos dias)",
+          "idade_media_inicio": "30 anos (mais tardio entre os transtornos de ansiedade)",
+          "curso_tipico": "Cronico, com remissoes e recaidas; taxas de remissao completa muito baixas"
+        },
+        "prejuizo_funcional": "- Prejuizo moderado a grave em funcionamento social e profissional\n- 110 milhoes de dias de incapacidade/ano (EUA)\n- Preocupacao excessiva prejudica eficiencia em casa e no trabalho",
+        "exclusoes_obrigatorias": "1. **Hipertireoidismo, feocromocitoma** → exames laboratoriais\n2. **Transtorno de ansiedade social** → preocupacao focada em avaliacao social, nao generalizada\n3. **TOC** → preocupacoes sao obsessoes intrusivas, nao excesso de preocupacao futura\n4. **TEPT** → ansiedade vinculada a evento traumatico especifico\n5. **Transtorno de adaptacao** → ansiedade em resposta a estressor identificavel, dentro de 3 meses\n6. **Transtornos depressivo/bipolar/psicotico** → nao diagnosticar se ocorreu exclusivamente durante curso desses transtornos\n7. **Transtorno de ansiedade de separacao** → preocupacao centrada em separacao de figuras de apego",
+        "gravidade": {
+          "tem_gravidade_formal": "**false** — O DSM-5 nao define niveis formais de gravidade para TAG",
+          "tipo": "nao_aplica",
+          "niveis": "—",
+          "regra_atribuicao": "A gravidade e inferida clinicamente pelo numero de sintomas associados, intensidade da preocupacao e grau de prejuizo funcional",
+          "dominios": "Funcionamento social, profissional, sono"
+        },
+        "especificadores": [
+          "Nenhum especificador formal definido no DSM-5 para TAG"
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "bloco": "Bloco A — Nucleo (preocupacao generalizada)",
+            "numero": 1,
+            "texto": "Nas ultimas semanas, voce tem se sentido preocupado ou ansioso na maioria dos dias?"
+          },
+          {
+            "bloco": "Bloco A — Nucleo (preocupacao generalizada)",
+            "numero": 2,
+            "texto": "Quais sao as areas sobre as quais voce mais se preocupa? (trabalho, saude, financas, familia, outros)"
+          },
+          {
+            "bloco": "Bloco A — Nucleo (preocupacao generalizada)",
+            "numero": 3,
+            "texto": "As preocupacoes parecem maiores ou mais frequentes do que a maioria das pessoas teria?"
+          },
+          {
+            "bloco": "Bloco B — Controle",
+            "numero": 4,
+            "texto": "Voce consegue controlar ou parar de se preocupar quando quer?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 5,
+            "texto": "Voce se sente inquieto ou com os nervos a flor da pele?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 6,
+            "texto": "Se sente facilmente cansado?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 7,
+            "texto": "Tem dificuldade de concentracao ou sensacao de branco na mente?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 8,
+            "texto": "Tem se sentido irritavel?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 9,
+            "texto": "Sente tensao muscular ou dores?"
+          },
+          {
+            "bloco": "Bloco C — Sintomas associados (3+ de 6)",
+            "numero": 10,
+            "texto": "Tem problemas de sono?"
+          },
+          {
+            "bloco": "Bloco D — Prejuizo",
+            "numero": 11,
+            "texto": "Essa preocupacao tem afetado seu trabalho, relacionamentos ou outras areas da vida?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 12,
+            "texto": "As preocupacoes sao principalmente sobre sua saude?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 13,
+            "texto": "As preocupacoes sao sobre situacoes sociais?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 14,
+            "texto": "As preocupacoes sao sobre separacao de pessoas queridas?"
+          },
+          {
+            "bloco": "Bloco E — Diferenciais clinicos",
+            "numero": 15,
+            "texto": "Voce tem pensamentos intrusivos repetidos?"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "condicao": "Ansiedade normal",
+            "chave_diferenciacao": "Preocupacoes nao excessivas, manejaveis, sem prejuizo significativo"
+          },
+          {
+            "condicao": "Hipertireoidismo",
+            "chave_diferenciacao": "Sintomas fisicos similares; exame de TSH obrigatorio"
+          },
+          {
+            "condicao": "Cafeina/estimulantes",
+            "chave_diferenciacao": "Historico de uso; melhora com suspensao"
+          },
+          {
+            "condicao": "TAG vs ansiedade social",
+            "chave_diferenciacao": "TAG = preocupacao generalizada sobre multiplos dominios; Fobia social = medo especifico de avaliacao negativa"
+          },
+          {
+            "condicao": "TAG vs TOC",
+            "chave_diferenciacao": "TAG = preocupacoes futuras excessivas; TOC = obsessoes intrusivas + compulsaoes"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_ansiedade_generalizada.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  ]
+}

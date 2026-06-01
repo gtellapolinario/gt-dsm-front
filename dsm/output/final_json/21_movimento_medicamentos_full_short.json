@@ -1,0 +1,16 @@
+{
+  "$schema_version": "gtmedics.dsm.final_json.v2",
+  "chapter_id": "21",
+  "chapter_name": "Transtornos do Movimento Induzidos por Medicamentos e Outros Efeitos Adversos de Medicamentos",
+  "capitulo_id": "21",
+  "capitulo_nome": "Transtornos do Movimento Induzidos por Medicamentos e Outros Efeitos Adversos de Medicamentos",
+  "source_markdown": "21_movimento_medicamentos_full_short.md",
+  "normalization_round": "4_super_enriched_release",
+  "patch_count": 3,
+  "source_files": {
+    "rich": "dsm/output/json/21_transtornos_movimento_induzidos_por_medicamentos_outros_efeitos_adversos_medicamentos.json",
+    "poor": "dsm/output/final_json_poor/21_movimento_medicamentos_full_short.json",
+    "super_dir": "dsm/output/json_super_adicionado"
+  },
+  "items": []
+}
