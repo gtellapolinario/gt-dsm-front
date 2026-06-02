@@ -38,9 +38,9 @@ function ClinicalBlock({ title, value }: { readonly title: string; readonly valu
   const text = previewText(value);
   if (text !== null) {
     return (
-      <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-        <h2 className="mb-2 text-base font-semibold text-slate-900">{title}</h2>
-        <p className="whitespace-pre-wrap text-sm leading-6 text-slate-700">{text}</p>
+      <section className="rounded-xl border border-border bg-surface p-4 shadow-sm">
+        <h2 className="mb-2 text-base font-semibold text-text-1">{title}</h2>
+        <p className="whitespace-pre-wrap text-sm leading-6 text-text-2">{text}</p>
       </section>
     );
   }
@@ -51,8 +51,8 @@ function ClinicalBlock({ title, value }: { readonly title: string; readonly valu
     }
 
     return (
-      <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-        <h2 className="mb-3 text-base font-semibold text-slate-900">{title}</h2>
+      <section className="rounded-xl border border-border bg-surface p-4 shadow-sm">
+        <h2 className="mb-3 text-base font-semibold text-text-1">{title}</h2>
         <div className="space-y-3">
           {value.map((item, index) => (
             <ClinicalBlock key={typeof item === "object" && item !== null && "id" in item ? String(item.id) : index} title={`${title} ${index + 1}`} value={item} />
@@ -69,15 +69,15 @@ function ClinicalBlock({ title, value }: { readonly title: string; readonly valu
     }
 
     return (
-      <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-        <h2 className="mb-3 text-base font-semibold text-slate-900">{title}</h2>
+      <section className="rounded-xl border border-border bg-surface p-4 shadow-sm">
+        <h2 className="mb-3 text-base font-semibold text-text-1">{title}</h2>
         <dl className="grid gap-3 md:grid-cols-2">
           {entries.map(([key, itemValue]) => {
             const entryText = previewText(itemValue);
             return (
-              <div key={key} className="rounded-lg bg-slate-50 p-3">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{titleFromValue(key)}</dt>
-                <dd className="mt-1 text-sm leading-6 text-slate-700">
+              <div key={key} className="rounded-lg bg-bg p-3">
+                <dt className="text-xs font-semibold uppercase tracking-wide text-text-3">{titleFromValue(key)}</dt>
+                <dd className="mt-1 text-sm leading-6 text-text-2">
                   {entryText ?? <pre className="max-h-80 overflow-auto whitespace-pre-wrap text-xs">{JSON.stringify(itemValue, null, 2)}</pre>}
                 </dd>
               </div>
@@ -112,15 +112,15 @@ export function DisorderRenderer({ data, config }: { readonly data: ClinicalDiso
   ] as const;
 
   return (
-    <main className="mx-auto flex max-w-6xl flex-col gap-4 p-6">
-      <header className="rounded-2xl bg-slate-950 p-6 text-white shadow-lg">
-        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{config.capitulo_nome ?? config.capitulo_id ?? "DSM"}</p>
-        <h1 className="mt-2 text-3xl font-bold">{config.nome}</h1>
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-200">
-          {config.codigo_dsm5 ? <span className="rounded-full bg-white/10 px-3 py-1">DSM-5: {config.codigo_dsm5}</span> : null}
-          {config.codigo_cid10 ? <span className="rounded-full bg-white/10 px-3 py-1">CID-10: {config.codigo_cid10}</span> : null}
-          {config.codigo_cid11 ? <span className="rounded-full bg-white/10 px-3 py-1">CID-11: {config.codigo_cid11}</span> : null}
-          {config.estrutura_geral ? <span className="rounded-full bg-white/10 px-3 py-1">{config.estrutura_geral}</span> : null}
+    <main className="mx-auto flex w-full max-w-6xl flex-col gap-4 p-6">
+      <header className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+        <p className="text-sm uppercase tracking-[0.2em] text-text-3">{config.capitulo_nome ?? config.capitulo_id ?? "DSM"}</p>
+        <h1 className="mt-2 text-3xl font-bold text-text-1">{config.nome}</h1>
+        <div className="mt-4 flex flex-wrap gap-2 text-xs text-text-2">
+          {config.codigo_dsm5 ? <span className="rounded-full border border-border bg-bg px-3 py-1">DSM-5: {config.codigo_dsm5}</span> : null}
+          {config.codigo_cid10 ? <span className="rounded-full border border-border bg-bg px-3 py-1">CID-10: {config.codigo_cid10}</span> : null}
+          {config.codigo_cid11 ? <span className="rounded-full border border-border bg-bg px-3 py-1">CID-11: {config.codigo_cid11}</span> : null}
+          {config.estrutura_geral ? <span className="rounded-full border border-border bg-bg px-3 py-1">{config.estrutura_geral}</span> : null}
         </div>
       </header>
 

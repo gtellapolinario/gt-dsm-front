@@ -1,8 +1,8 @@
 import { useMemo, useRef, useCallback, useEffect, useState } from "react";
 import ForceGraph2D from "react-force-graph-2d";
 import { useNavigate } from "@tanstack/react-router";
-import { CHAPTERS } from "@/lib/dsm";
-import { DISEASE_CATALOG } from "@/lib/disease-catalog";
+import { CHAPTERS } from "@/lib/disease-catalog";
+import { listGeneratedDisordersByChapter } from "@/infra/generated-disorder-catalog";
 
 interface GraphNode {
   id: string;
@@ -61,7 +61,7 @@ export function MapaDiagnostico() {
       // Chapter node
       nodes.push({
         id: chapter.key,
-        name: chapter.title,
+        name: chapter.nome,
         group: "chapter",
         val: 10,
         color: chapter.hue,
@@ -74,7 +74,7 @@ export function MapaDiagnostico() {
       });
 
       // Disease nodes
-      const diseases = DISEASE_CATALOG[chapter.key] || [];
+      const diseases = listGeneratedDisordersByChapter(chapter.id);
       diseases.forEach((disease) => {
         nodes.push({
           id: disease.id,

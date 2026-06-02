@@ -1,6 +1,15 @@
-// Auto-generated from DSM operational release. Do not edit manually.
 import type { ComponentType } from "react";
-import type { EstruturaDiagnostica } from "@/infra/schemas/dsm-schemas";
+import {
+  generatedDisorderImports,
+  generatedDisorderMetadata,
+  type GeneratedDisorderId,
+  type GeneratedDisorderMetadata,
+  type GeneratedDisorderModule,
+} from "@/generated/disorders";
+import {
+  isEstruturaDiagnostica,
+  type EstruturaDiagnostica,
+} from "@/infra/schemas/dsm-schemas";
 
 export interface DiseaseModule {
   default: ComponentType;
@@ -14,113 +23,82 @@ export interface DiseaseModule {
     estrutura?: EstruturaDiagnostica;
     route?: string;
   };
+  data?: GeneratedDisorderModule["data"];
 }
 
-export const diseaseImports: Record<string, () => Promise<DiseaseModule>> = {
-  deficiencia_intelectual: () =>
-    import("@/doencas/01-neurodesenvolvimento/deficiencia_intelectual"),
-  transtorno_deficit_atencao_hiperatividade: () =>
-    import("@/doencas/01-neurodesenvolvimento/transtorno_deficit_atencao_hiperatividade/y"),
-  transtorno_do_espectro_autista: () =>
-    import("@/doencas/01-neurodesenvolvimento/transtorno_do_espectro_autista"),
-  transtorno_especifico_aprendizagem: () =>
-    import("@/doencas/01-neurodesenvolvimento/transtorno_especifico_aprendizagem"),
-  transtorno_linguagem: () =>
-    import("@/doencas/01-neurodesenvolvimento/transtorno_linguagem"),
-  esquizofrenia: () =>
-    import("@/doencas/02-esquizofrenia-psicoticos/esquizofrenia"),
-  transtorno_delirante: () =>
-    import("@/doencas/02-esquizofrenia-psicoticos/transtorno_delirante"),
-  transtorno_esquizoafetivo: () =>
-    import("@/doencas/02-esquizofrenia-psicoticos/transtorno_esquizoafetivo"),
-  transtorno_esquizofreniforme: () =>
-    import("@/doencas/02-esquizofrenia-psicoticos/transtorno_esquizofreniforme"),
-  transtorno_psicotico_breve: () =>
-    import("@/doencas/02-esquizofrenia-psicoticos/transtorno_psicotico_breve"),
-  transtorno_bipolar_tipo_1: () =>
-    import("@/doencas/03-bipolar-relacionados/transtorno_bipolar_tipo_1"),
-  transtorno_bipolar_tipo_2: () =>
-    import("@/doencas/03-bipolar-relacionados/transtorno_bipolar_tipo_2"),
-  transtorno_depressivo_maior: () =>
-    import("@/doencas/04-depressivos/transtorno_depressivo_maior"),
-  transtorno_depressivo_persistente: () =>
-    import("@/doencas/04-depressivos/transtorno_depressivo_persistente"),
-  transtorno_disruptivo_desregulacao_humor: () =>
-    import("@/doencas/04-depressivos/transtorno_disruptivo_desregulacao_humor"),
-  agorafobia: () => import("@/doencas/05-ansiedade/agorafobia"),
-  fobia_especifica: () => import("@/doencas/05-ansiedade/fobia_especifica"),
-  mutismo_seletivo: () => import("@/doencas/05-ansiedade/mutismo_seletivo"),
-  transtorno_ansiedade_generalizada: () =>
-    import("@/doencas/05-ansiedade/transtorno_ansiedade_generalizada"),
-  transtorno_ansiedade_separacao: () =>
-    import("@/doencas/05-ansiedade/transtorno_ansiedade_separacao"),
-  transtorno_ansiedade_social: () =>
-    import("@/doencas/05-ansiedade/transtorno_ansiedade_social"),
-  transtorno_panico: () => import("@/doencas/05-ansiedade/transtorno_panico"),
-  transtorno_acumulacao: () =>
-    import("@/doencas/06-obsessivo-compulsivo/transtorno_acumulacao"),
-  transtorno_dismorfico_corporal: () =>
-    import("@/doencas/06-obsessivo-compulsivo/transtorno_dismorfico_corporal"),
-  transtorno_escoriacao: () =>
-    import("@/doencas/06-obsessivo-compulsivo/transtorno_escoriacao"),
-  transtorno_obsessivo_compulsivo: () =>
-    import("@/doencas/06-obsessivo-compulsivo/transtorno_obsessivo_compulsivo"),
-  tricotilomania: () =>
-    import("@/doencas/06-obsessivo-compulsivo/tricotilomania"),
-  tept: () => import("@/doencas/07-trauma-estressores/tept"),
-  transtornos_adaptacao: () =>
-    import("@/doencas/07-trauma-estressores/transtornos_adaptacao"),
-  transtorno_ansiedade_doenca: () =>
-    import("@/doencas/09-sintomas-somaticos/transtorno_ansiedade_doenca"),
-  transtorno_conversao: () =>
-    import("@/doencas/09-sintomas-somaticos/transtorno_conversao"),
-  anorexia_nervosa: () => import("@/doencas/10-alimentares/anorexia_nervosa"),
-  bulimia_nervosa: () => import("@/doencas/10-alimentares/bulimia_nervosa"),
-  transtorno_alimentar_restritivo_evitativo: () =>
-    import("@/doencas/10-alimentares/transtorno_alimentar_restritivo_evitativo"),
-  transtorno_compulsao_alimentar: () =>
-    import("@/doencas/10-alimentares/transtorno_compulsao_alimentar"),
-  transtorno_insonia: () =>
-    import("@/doencas/12-sono-vigilia/transtorno_insonia"),
-  conduta: () => import("@/doencas/15-disruptivos-impulsos-conduta/conduta"),
-  explosivo_intermittente: () =>
-    import("@/doencas/15-disruptivos-impulsos-conduta/explosivo_intermittente"),
-  oposicao_desafiante: () =>
-    import("@/doencas/15-disruptivos-impulsos-conduta/oposicao_desafiante"),
-  transtorno_por_uso_de_alcool: () =>
-    import("@/doencas/16-substancias-aditivos/transtorno_por_uso_de_alcool"),
-  transtorno_por_uso_de_estimulantes: () =>
-    import("@/doencas/16-substancias-aditivos/transtorno_por_uso_de_estimulantes"),
-  transtorno_por_uso_de_opioides: () =>
-    import("@/doencas/16-substancias-aditivos/transtorno_por_uso_de_opioides"),
-  transtorno_por_uso_de_tabaco: () =>
-    import("@/doencas/16-substancias-aditivos/transtorno_por_uso_de_tabaco"),
-  delirium: () => import("@/doencas/17-neurocognitivos/delirium"),
-  tnc_alzheimer: () => import("@/doencas/17-neurocognitivos/tnc_alzheimer"),
-  tnc_leve: () => import("@/doencas/17-neurocognitivos/tnc_leve"),
-  tnc_maior: () => import("@/doencas/17-neurocognitivos/tnc_maior"),
-  tnc_vascular: () => import("@/doencas/17-neurocognitivos/tnc_vascular"),
-  tp_antissocial: () => import("@/doencas/18-personalidade/tp_antissocial"),
-  tp_borderline: () => import("@/doencas/18-personalidade/tp_borderline"),
-  tp_dependente: () => import("@/doencas/18-personalidade/tp_dependente"),
-  tp_esquizoide: () => import("@/doencas/18-personalidade/tp_esquizoide"),
-  tp_esquizotipico: () => import("@/doencas/18-personalidade/tp_esquizotipico"),
-  tp_evitativo: () => import("@/doencas/18-personalidade/tp_evitativo"),
-  tp_histrionico: () => import("@/doencas/18-personalidade/tp_histrionico"),
-  tp_narcisista: () => import("@/doencas/18-personalidade/tp_narcisista"),
-  tp_obsessivo_compulsivo: () =>
-    import("@/doencas/18-personalidade/tp_obsessivo_compulsivo"),
-  tp_paranoide: () => import("@/doencas/18-personalidade/tp_paranoide"),
-};
+export type DiseaseImporter = () => Promise<DiseaseModule>;
 
-export function isDiseaseRegistered(id: string): boolean {
+function adaptDiseaseConfig(
+  config: GeneratedDisorderModule["config"] | undefined,
+): DiseaseModule["config"] | undefined {
+  if (!config) {
+    return undefined;
+  }
+
+  return {
+    estrutura: isEstruturaDiagnostica(config.estrutura_geral)
+      ? config.estrutura_geral
+      : undefined,
+    route: config.route_path,
+  };
+}
+
+function adaptDiseaseMeta(
+  module: GeneratedDisorderModule,
+  fallback: GeneratedDisorderMetadata,
+): NonNullable<DiseaseModule["meta"]> {
+  return {
+    id: module.meta?.id ?? fallback.id,
+    nome: module.meta?.nome ?? fallback.nome,
+    sigla: module.meta?.sigla ?? undefined,
+    capituloId: module.meta?.capituloId ?? fallback.capitulo_id,
+  };
+}
+
+function adaptGeneratedModule(
+  module: GeneratedDisorderModule,
+  fallback: GeneratedDisorderMetadata,
+): DiseaseModule {
+  return {
+    default: module.default,
+    meta: adaptDiseaseMeta(module, fallback),
+    config: adaptDiseaseConfig(module.config),
+    data: module.data,
+  };
+}
+
+const generatedMetadataById: Readonly<Record<GeneratedDisorderId, GeneratedDisorderMetadata>> =
+  Object.freeze(
+    Object.fromEntries(
+      generatedDisorderMetadata.map((metadata) => [metadata.id, metadata]),
+    ) as Record<GeneratedDisorderId, GeneratedDisorderMetadata>,
+  );
+
+function createDiseaseImporter(id: GeneratedDisorderId): DiseaseImporter {
+  return async () => {
+    const module = await generatedDisorderImports[id]();
+    return adaptGeneratedModule(module, generatedMetadataById[id]);
+  };
+}
+
+export const diseaseImports: Readonly<Record<string, DiseaseImporter>> =
+  Object.freeze(
+    Object.fromEntries(
+      generatedDisorderMetadata.map((metadata) => [
+        metadata.id,
+        createDiseaseImporter(metadata.id),
+      ]),
+    ) as Record<GeneratedDisorderId, DiseaseImporter>,
+  );
+
+export function isDiseaseRegistered(id: string): id is GeneratedDisorderId {
   return id in diseaseImports;
 }
 
 export async function loadDiseaseModule(id: string): Promise<DiseaseModule> {
-  const importer = diseaseImports[id];
+  const importer = getDiseaseImporter(id);
   if (!importer) {
-    throw new Error(`Doença não encontrada no registro: "${id}"`);
+    throw new Error(`Doença não encontrada no registro gerado: "${id}"`);
   }
   return importer();
 }
@@ -129,10 +107,8 @@ export function listRegisteredDiseases(): string[] {
   return Object.keys(diseaseImports);
 }
 
-export function getDiseaseImporter(
-  id: string,
-): (() => Promise<DiseaseModule>) | undefined {
-  return diseaseImports[id];
+export function getDiseaseImporter(id: string): DiseaseImporter | undefined {
+  return isDiseaseRegistered(id) ? diseaseImports[id] : undefined;
 }
 
 export const structureHookMap: Record<
