@@ -76,6 +76,13 @@ for (const relativeDir of sourceDirs) {
 
 const legacyRoot = path.join(repoRoot, "src", "doencas");
 if (await fileExists(legacyRoot)) {
+  findings.push({
+    type: "legacy-disorder-root",
+    file: "src/doencas",
+    line: 1,
+    detail: "Legacy disorder source tree was removed after audit validation; use src/generated/disorders and dsm/output/final_json instead.",
+  });
+
   for (const filePath of await walk(legacyRoot)) {
     const repoPath = toRepoPath(filePath);
     const extension = path.extname(repoPath);
@@ -99,4 +106,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log("Legacy disorder audit passed: no legacy runtime modules or imports outside the generated-disorders migration boundary.");
+console.log("Legacy disorder audit passed: no legacy src/doencas tree, runtime modules, or imports outside the generated-disorders migration boundary.");
