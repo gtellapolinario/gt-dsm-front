@@ -71,3 +71,7 @@ export default defineConfig([
   },
 ])
 ```
+## Documentação do projeto
+
+- [Como usar o `DisorderRenderer`](docs/disorder-renderer.md)
+
