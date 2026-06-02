@@ -267,7 +267,7 @@ export function validateRegistryCatalogAlignment(
  *
  * @example
  * ```typescript
- * const result = await safeLoadDiseaseModule(() => import("@/doencas/..."));
+ * const result = await safeLoadDiseaseModule(() => import("@/generated/disorders/<id>"));
  * if (result.success) {
  *   const Component = result.module.default;
  *   return <Component />;
