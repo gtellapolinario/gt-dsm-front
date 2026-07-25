@@ -3,7 +3,7 @@
 // Pass children for screen-specific content. Receive overlay slot for
 // modal-like surfaces (command palette, dialogs).
 
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import type { ChapterKey } from "@/lib/dsm";
@@ -33,9 +33,7 @@ export function WorkspaceShell({
         <Sidebar />
         <SidebarInset className="flex-1 flex flex-col min-w-0 bg-bg">
           <Header onSearchClick={onCommandOpen} />
-          <main className="flex-1 overflow-auto relative">
-            {children}
-          </main>
+          <main className="flex-1 overflow-auto relative">{children}</main>
         </SidebarInset>
         {overlay}
       </div>

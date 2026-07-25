@@ -1,5 +1,5 @@
 import React from "react";
-import { Check, User, Calendar, Clipboard, AlertTriangle, Activity, Sliders, Layers, HelpCircle } from "lucide-react";
+import { User, Calendar } from "lucide-react";
 
 // =============================================================================
 // TYPES & SCHEMAS DEFINITIONS (extracted / mapped)

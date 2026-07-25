@@ -9,61 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
-import { Route as SolicitarAcessoRouteImport } from './routes/solicitar-acesso'
-import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as FinalizarCadastroRouteImport } from './routes/finalizar-cadastro'
-import { Route as EsqueciSenhaRouteImport } from './routes/esqueci-senha'
-import { Route as CriarContaRouteImport } from './routes/criar-conta'
-import { Route as ConfirmarVinculoRouteImport } from './routes/confirmar-vinculo'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as DashboardRouteImport } from './routes/Dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
-import { Route as AppMapaRouteImport } from './routes/app.mapa'
 import { Route as AppAssessAssessmentIdRouteImport } from './routes/app.assess.$assessmentId'
 
-const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
-  id: '/termos-de-uso',
-  path: '/termos-de-uso',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SolicitarAcessoRoute = SolicitarAcessoRouteImport.update({
-  id: '/solicitar-acesso',
-  path: '/solicitar-acesso',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
-  id: '/politica-de-privacidade',
-  path: '/politica-de-privacidade',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FinalizarCadastroRoute = FinalizarCadastroRouteImport.update({
-  id: '/finalizar-cadastro',
-  path: '/finalizar-cadastro',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsqueciSenhaRoute = EsqueciSenhaRouteImport.update({
-  id: '/esqueci-senha',
-  path: '/esqueci-senha',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CriarContaRoute = CriarContaRouteImport.update({
-  id: '/criar-conta',
-  path: '/criar-conta',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConfirmarVinculoRoute = ConfirmarVinculoRouteImport.update({
-  id: '/confirmar-vinculo',
-  path: '/confirmar-vinculo',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AppRoute = AppRouteImport.update({
   id: '/app',
   path: '/app',
@@ -84,11 +35,6 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
-const AppMapaRoute = AppMapaRouteImport.update({
-  id: '/mapa',
-  path: '/mapa',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppAssessAssessmentIdRoute = AppAssessAssessmentIdRouteImport.update({
   id: '/assess/$assessmentId',
   path: '/assess/$assessmentId',
@@ -99,30 +45,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/Dashboard': typeof DashboardRoute
   '/app': typeof AppRouteWithChildren
-  '/confirmar-vinculo': typeof ConfirmarVinculoRoute
-  '/criar-conta': typeof CriarContaRoute
-  '/esqueci-senha': typeof EsqueciSenhaRoute
-  '/finalizar-cadastro': typeof FinalizarCadastroRoute
-  '/login': typeof LoginRoute
-  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/solicitar-acesso': typeof SolicitarAcessoRoute
-  '/termos-de-uso': typeof TermosDeUsoRoute
-  '/app/mapa': typeof AppMapaRoute
   '/app/': typeof AppIndexRoute
   '/app/assess/$assessmentId': typeof AppAssessAssessmentIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/Dashboard': typeof DashboardRoute
-  '/confirmar-vinculo': typeof ConfirmarVinculoRoute
-  '/criar-conta': typeof CriarContaRoute
-  '/esqueci-senha': typeof EsqueciSenhaRoute
-  '/finalizar-cadastro': typeof FinalizarCadastroRoute
-  '/login': typeof LoginRoute
-  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/solicitar-acesso': typeof SolicitarAcessoRoute
-  '/termos-de-uso': typeof TermosDeUsoRoute
-  '/app/mapa': typeof AppMapaRoute
   '/app': typeof AppIndexRoute
   '/app/assess/$assessmentId': typeof AppAssessAssessmentIdRoute
 }
@@ -131,64 +59,19 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/Dashboard': typeof DashboardRoute
   '/app': typeof AppRouteWithChildren
-  '/confirmar-vinculo': typeof ConfirmarVinculoRoute
-  '/criar-conta': typeof CriarContaRoute
-  '/esqueci-senha': typeof EsqueciSenhaRoute
-  '/finalizar-cadastro': typeof FinalizarCadastroRoute
-  '/login': typeof LoginRoute
-  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/solicitar-acesso': typeof SolicitarAcessoRoute
-  '/termos-de-uso': typeof TermosDeUsoRoute
-  '/app/mapa': typeof AppMapaRoute
   '/app/': typeof AppIndexRoute
   '/app/assess/$assessmentId': typeof AppAssessAssessmentIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/Dashboard'
-    | '/app'
-    | '/confirmar-vinculo'
-    | '/criar-conta'
-    | '/esqueci-senha'
-    | '/finalizar-cadastro'
-    | '/login'
-    | '/politica-de-privacidade'
-    | '/solicitar-acesso'
-    | '/termos-de-uso'
-    | '/app/mapa'
-    | '/app/'
-    | '/app/assess/$assessmentId'
+  fullPaths: '/' | '/Dashboard' | '/app' | '/app/' | '/app/assess/$assessmentId'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/Dashboard'
-    | '/confirmar-vinculo'
-    | '/criar-conta'
-    | '/esqueci-senha'
-    | '/finalizar-cadastro'
-    | '/login'
-    | '/politica-de-privacidade'
-    | '/solicitar-acesso'
-    | '/termos-de-uso'
-    | '/app/mapa'
-    | '/app'
-    | '/app/assess/$assessmentId'
+  to: '/' | '/Dashboard' | '/app' | '/app/assess/$assessmentId'
   id:
     | '__root__'
     | '/'
     | '/Dashboard'
     | '/app'
-    | '/confirmar-vinculo'
-    | '/criar-conta'
-    | '/esqueci-senha'
-    | '/finalizar-cadastro'
-    | '/login'
-    | '/politica-de-privacidade'
-    | '/solicitar-acesso'
-    | '/termos-de-uso'
-    | '/app/mapa'
     | '/app/'
     | '/app/assess/$assessmentId'
   fileRoutesById: FileRoutesById
@@ -197,74 +80,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
   AppRoute: typeof AppRouteWithChildren
-  ConfirmarVinculoRoute: typeof ConfirmarVinculoRoute
-  CriarContaRoute: typeof CriarContaRoute
-  EsqueciSenhaRoute: typeof EsqueciSenhaRoute
-  FinalizarCadastroRoute: typeof FinalizarCadastroRoute
-  LoginRoute: typeof LoginRoute
-  PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
-  SolicitarAcessoRoute: typeof SolicitarAcessoRoute
-  TermosDeUsoRoute: typeof TermosDeUsoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/termos-de-uso': {
-      id: '/termos-de-uso'
-      path: '/termos-de-uso'
-      fullPath: '/termos-de-uso'
-      preLoaderRoute: typeof TermosDeUsoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/solicitar-acesso': {
-      id: '/solicitar-acesso'
-      path: '/solicitar-acesso'
-      fullPath: '/solicitar-acesso'
-      preLoaderRoute: typeof SolicitarAcessoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/politica-de-privacidade': {
-      id: '/politica-de-privacidade'
-      path: '/politica-de-privacidade'
-      fullPath: '/politica-de-privacidade'
-      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/finalizar-cadastro': {
-      id: '/finalizar-cadastro'
-      path: '/finalizar-cadastro'
-      fullPath: '/finalizar-cadastro'
-      preLoaderRoute: typeof FinalizarCadastroRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/esqueci-senha': {
-      id: '/esqueci-senha'
-      path: '/esqueci-senha'
-      fullPath: '/esqueci-senha'
-      preLoaderRoute: typeof EsqueciSenhaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/criar-conta': {
-      id: '/criar-conta'
-      path: '/criar-conta'
-      fullPath: '/criar-conta'
-      preLoaderRoute: typeof CriarContaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/confirmar-vinculo': {
-      id: '/confirmar-vinculo'
-      path: '/confirmar-vinculo'
-      fullPath: '/confirmar-vinculo'
-      preLoaderRoute: typeof ConfirmarVinculoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/app': {
       id: '/app'
       path: '/app'
@@ -293,13 +112,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
-    '/app/mapa': {
-      id: '/app/mapa'
-      path: '/mapa'
-      fullPath: '/app/mapa'
-      preLoaderRoute: typeof AppMapaRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/app/assess/$assessmentId': {
       id: '/app/assess/$assessmentId'
       path: '/assess/$assessmentId'
@@ -311,13 +123,11 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
-  AppMapaRoute: typeof AppMapaRoute
   AppIndexRoute: typeof AppIndexRoute
   AppAssessAssessmentIdRoute: typeof AppAssessAssessmentIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
-  AppMapaRoute: AppMapaRoute,
   AppIndexRoute: AppIndexRoute,
   AppAssessAssessmentIdRoute: AppAssessAssessmentIdRoute,
 }
@@ -328,14 +138,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
   AppRoute: AppRouteWithChildren,
-  ConfirmarVinculoRoute: ConfirmarVinculoRoute,
-  CriarContaRoute: CriarContaRoute,
-  EsqueciSenhaRoute: EsqueciSenhaRoute,
-  FinalizarCadastroRoute: FinalizarCadastroRoute,
-  LoginRoute: LoginRoute,
-  PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
-  SolicitarAcessoRoute: SolicitarAcessoRoute,
-  TermosDeUsoRoute: TermosDeUsoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

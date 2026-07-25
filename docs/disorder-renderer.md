@@ -124,9 +124,9 @@ Payload clínico validável por `ClinicalDisorderSchema`. Campos relevantes:
 | `diagnostico_diferencial` | array ou objeto opcional | Renderiza seleção de diagnóstico diferencial. |
 | `gravidade` | objeto opcional | Alimenta a seção complementar e dados preservados no Markdown. |
 | `dominios_impacto` | array opcional | Alimenta a seção de impacto funcional e dados complementares. |
-| `instrumentos_complementares`, `prevalencia`, `curso_desenvolvimento`, `template_prontuario`, `super_enrichment` | objetos/arrays opcionais | Aparecem em acordeões complementares quando houver dados. |
+| `instrumentos_complementares`, `prevalencia`, `curso_desenvolvimento` | objetos/arrays opcionais | Aparecem em acordeões complementares quando houver dados; o conteúdo é renderizado como Markdown (tabelas, negrito, listas). |
 
-O schema usa `.passthrough()`, então campos extras podem ser preservados e exibidos em seções complementares quando o renderer conseguir normalizá-los.
+O schema usa `.passthrough()`, então campos extras podem ser preservados e exibidos em seções complementares quando o renderer conseguir normalizá-los. As chaves `hierarquia`, `template_prontuario` e `super_enrichment` **não são exibidas** pelo renderer.
 
 ### `config: DisorderRenderConfig`
 
@@ -179,21 +179,20 @@ O renderer aceita arrays ou objetos e normaliza automaticamente `id`, `label`/`n
 
 ### Impacto funcional e seções complementares
 
-O impacto funcional usa a mesma escala de gravidade. Seções clínicas complementares são abertas em acordeões quando há dados no payload:
+O impacto funcional usa a mesma escala de gravidade. Seções clínicas complementares são abertas em acordeões quando há dados no payload, e seu conteúdo é renderizado como Markdown (tabelas pipe, negrito, listas, headings):
 
 - `criterios_condicionais`;
 - `subtipos`;
 - `especificadores`;
 - `gravidade`;
-- `hierarquia`;
 - `dominios_impacto`;
 - `diagnostico_diferencial`;
 - `comorbidades_frequentes`;
 - `instrumentos_complementares`;
 - `prevalencia`;
-- `curso_desenvolvimento`;
-- `template_prontuario`;
-- `super_enrichment`.
+- `curso_desenvolvimento`.
+
+`hierarquia`, `template_prontuario` e `super_enrichment` ficam de fora da renderização (seguem no payload apenas para geração de Markdown, quando aplicável).
 
 ### Markdown clínico
 

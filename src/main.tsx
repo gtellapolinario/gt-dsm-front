@@ -6,15 +6,11 @@ import './index.css'
 import { TooltipProvider } from "@ui/tooltip"
 
 import { queryClient } from './routes/__root'
-import { getCurrentUser } from './api/auth'
 
 const router = createRouter({
   routeTree,
   context: {
     queryClient,
-    auth: {
-      getCurrentUser,
-    },
   },
 })
 

@@ -5,16 +5,10 @@
 import { useEffect } from "react";
 import { Outlet, createRootRouteWithContext, useRouterState } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { getCurrentUser } from "@/api/auth";
 
 export interface RouterContext {
   queryClient: QueryClient;
-  auth: {
-    getCurrentUser: typeof getCurrentUser;
-  };
 }
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import { useThemeSync } from "@/stores/theme-store";
 import { useCommandStore } from "@/stores/command-store";
@@ -51,12 +45,6 @@ function RootLayout() {
 
       <GTMedicsLoadingModal open={isLoading} message="Carregando..." />
       <CommandPalette open={open} onOpenChange={setOpen} />
-      {import.meta.env.DEV && (
-        <>
-          <ReactQueryDevtools buttonPosition="bottom-left" />
-          <TanStackRouterDevtools position="bottom-right" />
-        </>
-      )}
     </QueryClientProvider>
   );
 }

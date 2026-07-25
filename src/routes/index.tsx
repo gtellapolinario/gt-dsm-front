@@ -1,8 +1,9 @@
-// src/routes/index.tsx — public landing page
+// src/routes/index.tsx — entrada: redireciona para o workspace.
 
-import { createFileRoute } from "@tanstack/react-router";
-import { Landing } from "@/components/landing/Landing";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
-  component: Landing,
+  beforeLoad: () => {
+    throw redirect({ to: "/app" });
+  },
 });

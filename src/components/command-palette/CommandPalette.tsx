@@ -8,9 +8,8 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
-  Search, ClipboardList, Users, Plus, Network, MessageSquare,
+  Search, ClipboardList, Users, Plus, MessageSquare,
 } from "lucide-react";
-import { useNavigate } from "@tanstack/react-router";
 import { Kbd } from "@/components/ui/kbd";
 import { cn } from "@/lib/cn";
 
@@ -22,7 +21,6 @@ interface CommandPaletteProps {
 export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const [q, setQ] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
 
   // Focus input on open; clear query on close.
   useEffect(() => {
@@ -92,13 +90,6 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
               right={<><Kbd>⌘</Kbd> <Kbd>N</Kbd></>} />
             <PaletteRow icon={<Users size={14} />} left="Novo paciente"
               right={<><Kbd>⌘</Kbd> <Kbd>P</Kbd></>} />
-            <PaletteRow icon={<Network size={14} />} left="Abrir Mapa de Diagnósticos"
-              right={<><Kbd>⌘</Kbd> <Kbd>G</Kbd></>} 
-              onSelect={() => {
-                navigate({ to: '/app/mapa' });
-                onOpenChange(false);
-              }}
-            />
             <PaletteRow icon={<MessageSquare size={14} />} left="Perguntar ao Assistente Clínico…" />
           </PaletteGroup>
         </div>

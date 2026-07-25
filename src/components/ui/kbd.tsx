@@ -1,23 +1,26 @@
-// src/components/ui/Kbd.tsx
-import type { HTMLAttributes, ReactNode } from "react";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils"
 
-interface KbdProps extends HTMLAttributes<HTMLElement> {
-  children: ReactNode;
-}
-
-export function Kbd({ className, children, ...rest }: KbdProps) {
+function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   return (
     <kbd
-      {...rest}
+      data-slot="kbd"
       className={cn(
-        "inline-flex items-center justify-center min-w-[18px] h-[18px] px-1",
-        "text-[11px] font-medium leading-none text-text-3",
-        "bg-surface-2 border border-border rounded-[3px] font-sans",
+        "pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm bg-muted px-1 font-sans text-xs font-medium text-muted-foreground select-none in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 [&_svg:not([class*='size-'])]:size-3",
         className
       )}
-    >
-      {children}
-    </kbd>
-  );
+      {...props}
+    />
+  )
 }
+
+function KbdGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <kbd
+      data-slot="kbd-group"
+      className={cn("inline-flex items-center gap-1", className)}
+      {...props}
+    />
+  )
+}
+
+export { Kbd, KbdGroup }

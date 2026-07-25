@@ -4,7 +4,7 @@
 // All data comes from a parent route via TanStack Query; this component
 // composes the sections and the persistent header.
 
-import { Copy, Download, FileText, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Assessment, Patient, Disorder } from "@/lib/schemas";

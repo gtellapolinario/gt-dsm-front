@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title>Guia TEA DSM-5 – Avaliação Clínica em Adultos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Source Serif 4"', 'Georgia', 'serif'],
+            body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+              400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+              800: '#3730a3', 900: '#312e81',
+            },
+            surface: {
+              0: '#ffffff', 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569',
+              700: '#334155', 800: '#1e293b',
+            },
+            clinical: {
+              green: '#059669', greenBg: '#ecfdf5',
+              amber: '#d97706', amberBg: '#fffbeb',
+              red: '#dc2626', redBg: '#fef2f2',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-heading {
+      font-family: 'Source Serif 4', Georgia, serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .symptom-check input[type="checkbox"] {
+      accent-color: #4f46e5;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .severity-select {
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      color: #475569;
+      cursor: pointer;
+      min-width: 90px;
+    }
+
+    .severity-select:focus {
+      outline: 2px solid #4f46e5;
+      outline-offset: 1px;
+    }
+
+    .level-select {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      color: #475569;
+      cursor: pointer;
+    }
+
+    .level-select:focus {
+      outline: 2px solid #4f46e5;
+      outline-offset: 1px;
+    }
+
+    .toggle-chip {
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .toggle-chip.active {
+      background: #e0e7ff !important;
+      border-color: #4f46e5 !important;
+      color: #3730a3 !important;
+    }
+
+    .comorb-chip {
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .comorb-chip.active {
+      background: #fef3c7 !important;
+      border-color: #d97706 !important;
+      color: #92400e !important;
+    }
+
+    .spec-chip {
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .spec-chip.active {
+      background: #ede9fe !important;
+      border-color: #7c3aed !important;
+      color: #5b21b6 !important;
+    }
+
+    textarea {
+      transition: border-color 0.15s ease;
+    }
+
+    textarea:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    .symptom-item:hover {
+      background: #f8fafc;
+    }
+
+    #markdownOutput {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      tab-size: 2;
+    }
+
+    .count-badge {
+      transition: all 0.2s ease;
+    }
+
+    [data-accordion-panel] {
+      transition: max-height 0.25s ease-out;
+    }
+
+    [data-accordion-icon] {
+      transition: transform 0.2s ease;
+    }
+
+    @media print {
+      body {
+        background: #fff !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      [data-accordion-panel] {
+        max-height: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-surface-50 text-surface-700 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white border-b border-surface-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center">
+          <i class="fa-solid fa-puzzle-piece text-white text-sm"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-heading font-bold text-surface-800 leading-tight">Guia TEA DSM-5 – Adulto</h1>
+          <p class="text-xs text-surface-400">Transtorno do Espectro Autista – Avaliação clínica estruturada (≥18 anos)
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 no-print">
+        <button id="expandirTodos"
+          class="text-xs text-surface-400 hover:text-surface-600 border border-surface-200 rounded-lg px-3 py-1.5 hover:bg-surface-50 transition">
+          <i class="fa-solid fa-angles-down mr-1"></i> Expandir
+        </button>
+        <button id="recolherTodos"
+          class="text-xs text-surface-400 hover:text-surface-600 border border-surface-200 rounded-lg px-3 py-1.5 hover:bg-surface-50 transition">
+          <i class="fa-solid fa-angles-up mr-1"></i> Recolher
+        </button>
+        <button onclick="window.print()"
+          class="text-xs text-surface-400 hover:text-surface-600 border border-surface-200 rounded-lg px-3 py-1.5 hover:bg-surface-50 transition">
+          <i class="fa-solid fa-print mr-1"></i> Imprimir
+        </button>
+        <button id="btnResetar"
+          class="text-xs text-clinical-red hover:text-red-800 border border-red-200 rounded-lg px-3 py-1.5 hover:bg-red-50 transition">
+          <i class="fa-solid fa-rotate-left mr-1"></i> Limpar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+    <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+
+      <!-- ════════════════════════════════════════ -->
+      <!-- LEFT COLUMN                              -->
+      <!-- ════════════════════════════════════════ -->
+      <div class="xl:col-span-7 space-y-3">
+
+        <!-- ─── 1. IDENTIFICAÇÃO ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="identificacao" aria-controls="panel-identificacao" aria-expanded="true">
+            <div class="flex items-center gap-2 text-indigo-700 font-bold">
+              <i class="fa-solid fa-user-pen"></i>
+              <span>Identificação do Paciente</span>
+            </div>
+            <i class="fa-solid fa-chevron-up text-xs text-slate-400" data-accordion-icon="identificacao"></i>
+          </button>
+          <div id="panel-identificacao" data-accordion-panel="identificacao"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-[1000px]">
+            <div class="p-5 space-y-3 border-t border-surface-100">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Nome / ID</label>
+                  <input id="paciente" type="text"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white"
+                    placeholder="Identificação">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Idade</label>
+                  <input id="idade" type="number" min="18" max="99"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white"
+                    placeholder="anos">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Sexo</label>
+                  <select id="sexo"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white">
+                    <option value="">Não informado</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Escolaridade</label>
+                  <input id="escolaridade" type="text"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white"
+                    placeholder="Ex.: superior completo">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Ocupação atual</label>
+                  <input id="ocupacao" type="text"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white"
+                    placeholder="Ex.: programador, desempregado">
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Informante colateral</label>
+                  <input id="informante" type="text"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white"
+                    placeholder="Ex.: mãe, cônjuge, irmão (fundamental no TEA adulto)">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Encaminhamento</label>
+                  <input id="encaminhamento" type="text"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white"
+                    placeholder="Ex.: autodemanda, psicólogo, neurologista">
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Queixa principal / motivo da
+                  avaliação</label>
+                <textarea id="queixa" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Descreva a queixa principal e o que motivou a busca por avaliação diagnóstica neste momento"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 2. HISTÓRICO E CRITÉRIOS C–E ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="historico" aria-controls="panel-historico" aria-expanded="true">
+            <div class="flex items-center gap-2 text-indigo-700 font-bold">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>Histórico Evolutivo e Critérios C–E</span>
+            </div>
+            <span class="flex items-center gap-2">
+              <span id="badgeCE"
+                class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-surface-100 text-surface-400">0/3</span>
+              <i class="fa-solid fa-chevron-up text-xs text-slate-400" data-accordion-icon="historico"></i>
+            </span>
+          </button>
+          <div id="panel-historico" data-accordion-panel="historico"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-[2000px]">
+            <div class="p-5 space-y-4 border-t border-surface-100">
+              <div>
+                <p class="text-xs text-surface-400 mb-2">Critérios obrigatórios. Em adultos, sintomas podem ter sido
+                  mascarados por estratégias compensatórias (camuflagem/masking).</p>
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    class="toggle-chip text-xs font-medium border border-surface-200 rounded-full px-3 py-1.5 bg-white text-surface-500 hover:border-indigo-300"
+                    data-toggle="inicioPrecoce">
+                    <i class="fa-solid fa-baby mr-1"></i> Início precoce no desenvolvimento (C)
+                  </button>
+                  <button
+                    class="toggle-chip text-xs font-medium border border-surface-200 rounded-full px-3 py-1.5 bg-white text-surface-500 hover:border-indigo-300"
+                    data-toggle="prejuizo">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Prejuízo funcional atual (D)
+                  </button>
+                  <button
+                    class="toggle-chip text-xs font-medium border border-surface-200 rounded-full px-3 py-1.5 bg-white text-surface-500 hover:border-indigo-300"
+                    data-toggle="exclusao">
+                    <i class="fa-solid fa-ban mr-1"></i> Não explicado por DI isolada (E)
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">
+                  <i class="fa-solid fa-baby-carriage mr-1 text-surface-400"></i>
+                  Desenvolvimento precoce (marcos, temperamento, interações iniciais)
+                </label>
+                <textarea id="desenvPrecoce" rows="3"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Marcos motores e de linguagem, temperamento na infância, interação com pares na pré-escola, brincadeiras imaginativas, apego a rotinas, comportamentos repetitivos precoces..."></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">
+                  <i class="fa-solid fa-school mr-1 text-surface-400"></i>
+                  Trajetória escolar e social na infância/adolescência
+                </label>
+                <textarea id="trajetoriaEscolar" rows="3"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Qualidade das amizades, bullying, adaptação escolar, interesses restritos notados, comportamento em grupo, dificuldades acadêmicas específicas..."></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">
+                  <i class="fa-solid fa-masks-theater mr-1 text-surface-400"></i>
+                  Estratégias compensatórias / camuflagem (masking)
+                </label>
+                <textarea id="masking" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Imitar comportamento social de outros, scripts sociais decorados, esforço consciente para manter contato visual, exaustão após interações sociais..."></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">
+                  <i class="fa-solid fa-people-roof mr-1 text-surface-400"></i>
+                  História familiar (TEA, TDAH, transtornos do neurodesenvolvimento)
+                </label>
+                <textarea id="hxFamiliar" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Familiares com traços autísticos, diagnóstico formal de TEA/TDAH, dificuldades sociais marcantes, interesses restritos..."></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 3. CRITÉRIO A – COMUNICAÇÃO SOCIAL ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="criterioA" aria-controls="panel-criterioA" aria-expanded="true">
+            <div class="flex items-center gap-2 text-violet-700 font-bold">
+              <i class="fa-solid fa-comments"></i>
+              <span>Critério A – Comunicação Social e Interação</span>
+            </div>
+            <span class="flex items-center gap-2">
+              <span id="contadorA"
+                class="count-badge text-xs font-semibold px-2.5 py-0.5 rounded-full bg-surface-100 text-surface-500">0/3</span>
+              <i class="fa-solid fa-chevron-up text-xs text-slate-400" data-accordion-icon="criterioA"></i>
+            </span>
+          </button>
+          <div id="panel-criterioA" data-accordion-panel="criterioA"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-[3000px]">
+            <div class="border-t border-surface-100">
+              <p class="text-xs text-surface-400 px-5 pt-3 mb-1">DSM-5: <strong>todos os 3 domínios</strong> devem estar
+                presentes (atualmente ou por história prévia). Considere manifestação atual E relatos da infância.</p>
+              <div class="p-5 pt-2 space-y-1" id="cluster-criterioA"></div>
+              <div class="px-5 pb-4 space-y-3">
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Nível de suporte – Comunicação social
+                    (Tabela 2 DSM-5)</label>
+                  <select id="nivelA" class="level-select w-full sm:w-auto">
+                    <option value="">Não classificado</option>
+                    <option value="1">Nível 1 – Exigindo apoio</option>
+                    <option value="2">Nível 2 – Exigindo apoio substancial</option>
+                    <option value="3">Nível 3 – Exigindo apoio muito substancial</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">
+                    <i class="fa-solid fa-comment-medical mr-1 text-surface-400"></i> Observações clínicas – Comunicação
+                    social
+                  </label>
+                  <textarea id="com_A" rows="2"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                    placeholder="Ex.: conversa unidirecional sobre interesses restritos, dificuldade em interpretar sarcasmo/ironia, contato visual atípico, expressão facial incongruente..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 4. CRITÉRIO B – PADRÕES RESTRITOS E REPETITIVOS ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="criterioB" aria-controls="panel-criterioB" aria-expanded="true">
+            <div class="flex items-center gap-2 text-amber-700 font-bold">
+              <i class="fa-solid fa-repeat"></i>
+              <span>Critério B – Padrões Restritos e Repetitivos</span>
+            </div>
+            <span class="flex items-center gap-2">
+              <span id="contadorB"
+                class="count-badge text-xs font-semibold px-2.5 py-0.5 rounded-full bg-surface-100 text-surface-500">0/2</span>
+              <i class="fa-solid fa-chevron-up text-xs text-slate-400" data-accordion-icon="criterioB"></i>
+            </span>
+          </button>
+          <div id="panel-criterioB" data-accordion-panel="criterioB"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-[3000px]">
+            <div class="border-t border-surface-100">
+              <p class="text-xs text-surface-400 px-5 pt-3 mb-1">DSM-5: <strong>pelo menos 2 de 4</strong> domínios
+                devem estar presentes (atualmente ou por história prévia).</p>
+              <div class="p-5 pt-2 space-y-1" id="cluster-criterioB"></div>
+              <div class="px-5 pb-4 space-y-3">
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Nível de suporte – Comportamentos
+                    restritos/repetitivos (Tabela 2 DSM-5)</label>
+                  <select id="nivelB" class="level-select w-full sm:w-auto">
+                    <option value="">Não classificado</option>
+                    <option value="1">Nível 1 – Exigindo apoio</option>
+                    <option value="2">Nível 2 – Exigindo apoio substancial</option>
+                    <option value="3">Nível 3 – Exigindo apoio muito substancial</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">
+                    <i class="fa-solid fa-comment-medical mr-1 text-surface-400"></i> Observações clínicas – Padrões
+                    restritos/repetitivos
+                  </label>
+                  <textarea id="com_B" rows="2"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                    placeholder="Ex.: interesses circunscritos intensos, rigidez com rotinas diárias, sofrimento com mudanças inesperadas, hipersensibilidade a ruídos/texturas..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 5. ESPECIFICADORES ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="especificadores" aria-controls="panel-especificadores" aria-expanded="false">
+            <div class="flex items-center gap-2 text-indigo-700 font-bold">
+              <i class="fa-solid fa-tags"></i>
+              <span>Especificadores DSM-5</span>
+            </div>
+            <i class="fa-solid fa-chevron-up text-xs text-slate-400 rotate-180"
+              data-accordion-icon="especificadores"></i>
+          </button>
+          <div id="panel-especificadores" data-accordion-panel="especificadores"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-0">
+            <div class="p-5 space-y-4 border-t border-surface-100">
+              <div>
+                <p class="text-xs text-surface-400 mb-2">Selecione os especificadores aplicáveis.</p>
+                <div class="flex flex-wrap gap-2" id="specChips"></div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Nível intelectual estimado</label>
+                  <select id="nivelIntelectual"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white">
+                    <option value="">Não avaliado formalmente</option>
+                    <option value="sem_comprometimento">Sem comprometimento intelectual</option>
+                    <option value="com_comprometimento">Com comprometimento intelectual concomitante</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-surface-500 mb-1">Linguagem</label>
+                  <select id="nivelLinguagem"
+                    class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white">
+                    <option value="">Não avaliado formalmente</option>
+                    <option value="sem_comprometimento">Sem comprometimento da linguagem (fala fluente)</option>
+                    <option value="com_comprometimento">Com comprometimento da linguagem concomitante</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Condição médica/genética associada ou
+                  fatores ambientais</label>
+                <textarea id="condAssociada" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Ex.: síndrome do X-frágil, epilepsia, exposição pré-natal a valproato..."></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Catatonia associada</label>
+                <select id="catatonia"
+                  class="w-full sm:w-auto text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none bg-white">
+                  <option value="nao">Não</option>
+                  <option value="sim">Sim – catatonia associada ao TEA (F06.1)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 6. IMPACTO FUNCIONAL ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="impacto" aria-controls="panel-impacto" aria-expanded="false">
+            <div class="flex items-center gap-2 text-indigo-700 font-bold">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Avaliação de Impacto Funcional</span>
+            </div>
+            <i class="fa-solid fa-chevron-up text-xs text-slate-400 rotate-180" data-accordion-icon="impacto"></i>
+          </button>
+          <div id="panel-impacto" data-accordion-panel="impacto"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-0">
+            <div class="p-5 space-y-3 border-t border-surface-100">
+              <p class="text-xs text-surface-400 mb-1">Classifique o grau de prejuízo (0 = sem prejuízo, 1 = leve, 2 =
+                moderado, 3 = grave).</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="impactoGrid"></div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Observações sobre impacto funcional /
+                  autonomia</label>
+                <textarea id="com_impacto" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Nível de independência, necessidade de supervisão, capacidade de manter emprego, gestão financeira, moradia independente..."></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 7. COMORBIDADES ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="comorbidades" aria-controls="panel-comorbidades" aria-expanded="false">
+            <div class="flex items-center gap-2 text-indigo-700 font-bold">
+              <i class="fa-solid fa-layer-group"></i>
+              <span>Comorbidades e Diagnóstico Diferencial</span>
+            </div>
+            <span class="flex items-center gap-2">
+              <span id="badgeComorb"
+                class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-surface-100 text-surface-400 hidden">0</span>
+              <i class="fa-solid fa-chevron-up text-xs text-slate-400 rotate-180"
+                data-accordion-icon="comorbidades"></i>
+            </span>
+          </button>
+          <div id="panel-comorbidades" data-accordion-panel="comorbidades"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-0">
+            <div class="p-5 space-y-3 border-t border-surface-100">
+              <p class="text-xs text-surface-400 mb-1">~70% dos indivíduos com TEA têm pelo menos uma comorbidade
+                psiquiátrica; ~40% têm duas ou mais.</p>
+              <div class="flex flex-wrap gap-2" id="comorbChips"></div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Detalhamento das comorbidades /
+                  DDx</label>
+                <textarea id="comorb" rows="3"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Detalhe quadros comórbidos, diagnósticos diferenciais considerados (esquizofrenia, TP esquizóide/evitativa, transtorno da comunicação social pragmática, TDAH isolado)..."></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 8. TRATAMENTOS ─── -->
+        <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+          <button type="button"
+            class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+            data-accordion-header="tratamentos" aria-controls="panel-tratamentos" aria-expanded="false">
+            <div class="flex items-center gap-2 text-indigo-700 font-bold">
+              <i class="fa-solid fa-pills"></i>
+              <span>Tratamentos e Suporte</span>
+            </div>
+            <i class="fa-solid fa-chevron-up text-xs text-slate-400 rotate-180" data-accordion-icon="tratamentos"></i>
+          </button>
+          <div id="panel-tratamentos" data-accordion-panel="tratamentos"
+            class="overflow-hidden transition-all duration-200 ease-out max-h-0">
+            <div class="p-5 space-y-3 border-t border-surface-100">
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Medicações atuais (para comorbidades /
+                  sintomas-alvo)</label>
+                <textarea id="medAtual" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Liste medicações em uso para ansiedade, depressão, insônia, irritabilidade, TDAH comórbido..."></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Intervenções não farmacológicas (atuais e
+                  prévias)</label>
+                <textarea id="naoFarmaco" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Ex.: TCC adaptada, treino de habilidades sociais, TO (integração sensorial), fonoaudiologia, coaching, grupos de pares..."></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-surface-500 mb-1">Suporte atual (formal e informal)</label>
+                <textarea id="suporte" rows="2"
+                  class="w-full text-sm border border-surface-200 rounded-lg px-3 py-2 focus:outline-none resize-y"
+                  placeholder="Ex.: apoio familiar, AT, suporte no trabalho, CAPS, serviços especializados, benefícios..."></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BOTÕES -->
+        <div class="flex flex-wrap items-center gap-3 no-print pt-1">
+          <button id="atualizar"
+            class="inline-flex items-center gap-2 text-sm font-medium bg-white border border-surface-200 text-surface-600 rounded-lg px-5 py-2.5 hover:bg-surface-50 hover:border-surface-300 transition shadow-sm">
+            <i class="fa-solid fa-arrows-rotate"></i> Atualizar síntese
+          </button>
+          <button id="copiar"
+            class="inline-flex items-center gap-2 text-sm font-medium bg-indigo-600 text-white rounded-lg px-5 py-2.5 hover:bg-indigo-700 transition shadow-sm shadow-indigo-600/20">
+            <i class="fa-solid fa-copy"></i> Copiar Markdown
+          </button>
+          <span class="text-xs text-surface-400">Formato pronto para prontuário eletrônico ou Obsidian.</span>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════ -->
+      <!-- RIGHT COLUMN                             -->
+      <!-- ════════════════════════════════════════ -->
+      <div class="xl:col-span-5 space-y-3">
+        <div class="xl:sticky xl:top-20">
+
+          <!-- PAINEL -->
+          <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden mb-3">
+            <button type="button"
+              class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+              data-accordion-header="painel" aria-controls="panel-painel" aria-expanded="true">
+              <div class="flex items-center gap-2 text-indigo-700 font-bold">
+                <i class="fa-solid fa-clipboard-check"></i>
+                <span>Painel de Critérios</span>
+              </div>
+              <i class="fa-solid fa-chevron-up text-xs text-slate-400" data-accordion-icon="painel"></i>
+            </button>
+            <div id="panel-painel" data-accordion-panel="painel"
+              class="overflow-hidden transition-all duration-200 ease-out max-h-[2000px]">
+              <div class="p-5 space-y-3 border-t border-surface-100">
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="rounded-lg border border-surface-200 p-3 text-center" id="painelA">
+                    <p class="text-xs text-surface-400 mb-1">Comunicação Social (A)</p>
+                    <p class="text-2xl font-bold font-heading text-surface-700" id="painelANum">0</p>
+                    <p class="text-xs text-surface-400">de 3 necessários</p>
+                  </div>
+                  <div class="rounded-lg border border-surface-200 p-3 text-center" id="painelB">
+                    <p class="text-xs text-surface-400 mb-1">Restritos/Repetit. (B)</p>
+                    <p class="text-2xl font-bold font-heading text-surface-700" id="painelBNum">0</p>
+                    <p class="text-xs text-surface-400">de 2 necessários (de 4)</p>
+                  </div>
+                </div>
+
+                <div id="painelNiveis" class="rounded-lg border border-surface-200 p-3">
+                  <p class="text-xs text-surface-400 mb-1"><i class="fa-solid fa-layer-group mr-1"></i> Níveis de
+                    suporte</p>
+                  <div id="painelNiveisStatus" class="space-y-1"></div>
+                </div>
+
+                <div class="rounded-lg border border-surface-200 p-3">
+                  <p class="text-xs text-surface-400 mb-1"><i class="fa-solid fa-list-check mr-1"></i> Critérios C–E</p>
+                  <div id="painelCEStatus" class="space-y-1"></div>
+                </div>
+
+                <div class="rounded-lg border border-surface-200 p-3">
+                  <p class="text-xs text-surface-400 mb-1"><i class="fa-solid fa-chart-bar mr-1"></i> Impacto funcional
+                  </p>
+                  <div id="painelImpactoBarras"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- MARKDOWN -->
+          <section class="bg-white rounded-xl border border-surface-200 shadow-sm overflow-hidden">
+            <button type="button"
+              class="bg-indigo-50 w-full flex items-center justify-between px-5 py-3 text-sm font-medium text-slate-800 hover:bg-indigo-100 transition-colors"
+              data-accordion-header="markdown" aria-controls="panel-markdown" aria-expanded="true">
+              <div class="flex items-center gap-2 text-indigo-700 font-bold">
+                <i class="fa-brands fa-markdown"></i>
+                <span>Pré-visualização Markdown</span>
+              </div>
+              <span class="flex items-center gap-2">
+                <button id="copiar2"
+                  class="text-[10px] text-indigo-600 hover:text-indigo-800 font-medium no-print bg-indigo-100 px-2 py-0.5 rounded-full"
+                  onclick="event.stopPropagation()">
+                  <i class="fa-solid fa-copy mr-0.5"></i> Copiar
+                </button>
+                <i class="fa-solid fa-chevron-up text-xs text-slate-400" data-accordion-icon="markdown"></i>
+              </span>
+            </button>
+            <div id="panel-markdown" data-accordion-panel="markdown"
+              class="overflow-hidden transition-all duration-200 ease-out max-h-[3000px]">
+              <div class="p-4 border-t border-surface-100">
+                <pre id="markdownOutput"
+                  class="text-surface-600 bg-surface-50 rounded-lg border border-surface-200 p-4 overflow-auto max-h-[65vh] whitespace-pre-wrap leading-relaxed"></pre>
+              </div>
+              <div class="px-5 pb-4">
+                <p class="text-[10px] text-surface-400 leading-relaxed">
+                  <i class="fa-solid fa-circle-info mr-1"></i>
+                  Baseado nos critérios DSM-5/DSM-5-TR para TEA (299.00 / F84.0). Ferramenta auxiliar – não substitui
+                  julgamento clínico nem instrumentos padronizados (ADOS-2, ADI-R).
+                </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // ═══════════════════════════════════════════
+    // ACCORDION
+    // ═══════════════════════════════════════════
+    document.querySelectorAll('[data-accordion-header]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-accordion-header');
+        const panel = document.querySelector(`[data-accordion-panel="${id}"]`);
+        const icon = document.querySelector(`[data-accordion-icon="${id}"]`);
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isExpanded));
+        if (isExpanded) {
+          panel.classList.remove('max-h-[1000px]', 'max-h-[2000px]', 'max-h-[3000px]');
+          panel.classList.add('max-h-0');
+        } else {
+          panel.classList.remove('max-h-0');
+          const h = panel.scrollHeight;
+          panel.classList.add(h > 2000 ? 'max-h-[3000px]' : h > 1000 ? 'max-h-[2000px]' : 'max-h-[1000px]');
+        }
+        if (icon) icon.classList.toggle('rotate-180', isExpanded);
+      });
+    });
+    document.getElementById('expandirTodos').addEventListener('click', () => {
+      document.querySelectorAll('[data-accordion-header]').forEach(b => { if (b.getAttribute('aria-expanded') === 'false') b.click(); });
+    });
+    document.getElementById('recolherTodos').addEventListener('click', () => {
+      document.querySelectorAll('[data-accordion-header]').forEach(b => { if (b.getAttribute('aria-expanded') === 'true') b.click(); });
+    });
+
+    // ═══════════════════════════════════════════
+    // DATA LAYER
+    // ═══════════════════════════════════════════
+
+    const teaSchema = {
+      criterioA: [
+        {
+          id: "A1", rotulo: "Reciprocidade socioemocional",
+          desc: "Déficits na reciprocidade socioemocional: abordagem social anormal, dificuldade em manter conversa bidirecional, compartilhamento reduzido de interesses/emoções/afeto, dificuldade para iniciar ou responder a interações sociais.",
+          pergunta: "Você tem dificuldade em iniciar ou manter conversas? Sente que as trocas sociais não fluem naturalmente? Tem dificuldade em compartilhar emoções ou perceber quando é sua vez na conversa?",
+          exemplos_adulto: "Conversa tendendo ao monólogo sobre interesses; dificuldade em perceber quando o outro perde interesse; poucas iniciativas sociais espontâneas; respostas sociais atípicas."
+        },
+        {
+          id: "A2", rotulo: "Comunicação não verbal",
+          desc: "Déficits nos comportamentos comunicativos não verbais: comunicação verbal e não verbal pouco integrada, contato visual e linguagem corporal anormais, déficits na compreensão/uso de gestos, ausência ou redução de expressões faciais.",
+          pergunta: "Seu contato visual é diferente do que os outros esperam? Você tem dificuldade em usar ou interpretar gestos, expressões faciais ou tom de voz? As pessoas comentam que sua linguagem corporal é 'diferente'?",
+          exemplos_adulto: "Contato visual evitativo ou fixo; expressão facial flat ou incongruente; gesticulação reduzida; prosódia monótona ou atípica; dificuldade em ler linguagem corporal dos outros."
+        },
+        {
+          id: "A3", rotulo: "Relacionamentos",
+          desc: "Déficits para desenvolver, manter e compreender relacionamentos: dificuldade em ajustar comportamento a diferentes contextos sociais, dificuldade em compartilhar brincadeiras/fazer amigos, interesse reduzido por pares.",
+          pergunta: "Manter amizades é difícil para você? Tem dificuldade em entender as 'regras' sociais implícitas? Sente que interações sociais exigem muito esforço consciente?",
+          exemplos_adulto: "Poucos ou nenhum amigo próximo; amizades baseadas exclusivamente em interesses compartilhados; dificuldade em navegar hierarquias sociais no trabalho; incompreensão de normas sociais implícitas."
+        }
+      ],
+      criterioB: [
+        {
+          id: "B1", rotulo: "Estereotipias motoras / fala repetitiva",
+          desc: "Movimentos motores, uso de objetos ou fala estereotipados ou repetitivos (estereotipias motoras, ecolalia, frases idiossincráticas, uso repetitivo de objetos).",
+          pergunta: "Você tem movimentos repetitivos (balançar, estalar dedos, flapping)? Repete frases, palavras ou sons? Tem maneirismos motores que faz quando concentrado ou ansioso?",
+          exemplos_adulto: "Stimming (flapping, balançar, torcer dedos); ecolalia funcional; uso repetitivo de frases/citações; vocalização repetitiva; manipulação repetitiva de objetos."
+        },
+        {
+          id: "B2", rotulo: "Insistência em mesmice / rigidez",
+          desc: "Insistência nas mesmas coisas, adesão inflexível a rotinas ou padrões ritualizados de comportamento verbal ou não verbal. Sofrimento extremo com pequenas mudanças.",
+          pergunta: "Mudanças inesperadas na rotina causam grande desconforto? Você segue rituais rígidos no dia a dia? Tem dificuldade com transições entre atividades?",
+          exemplos_adulto: "Rotinas diárias inflexíveis; sofrimento desproporcional com mudanças de planos; rituais alimentares; mesmo caminho para o trabalho; rigidez de pensamento; necessidade de previsibilidade."
+        },
+        {
+          id: "B3", rotulo: "Interesses fixos e restritos",
+          desc: "Interesses fixos e altamente restritos, anormais em intensidade ou foco. Forte apego a objetos ou temas incomuns, interesses excessivamente circunscritos ou perseverativos.",
+          pergunta: "Você tem interesses muito intensos e específicos que ocupam grande parte do seu tempo? Outros consideram seus interesses incomuns em intensidade? É difícil se interessar por assuntos fora dessas áreas?",
+          exemplos_adulto: "Hiperfoco em temas específicos (horários de trens, taxonomia, sistemas); colecionar compulsivamente; enciclopedismo sobre tema restrito; dificuldade em se engajar fora do interesse especial."
+        },
+        {
+          id: "B4", rotulo: "Hiper/hiporreatividade sensorial",
+          desc: "Hiper ou hiporreatividade a estímulos sensoriais ou interesse incomum por aspectos sensoriais do ambiente (indiferença a dor/temperatura, reação a sons/texturas, cheirar/tocar objetos, fascinação por luzes/movimento).",
+          pergunta: "Você é muito sensível a sons, luzes, texturas de roupas ou alimentos? Ou ao contrário, parece não perceber estímulos que outros notam? Tem fascínio por estímulos sensoriais específicos?",
+          exemplos_adulto: "Hipersensibilidade auditiva (ruídos cotidianos insuportáveis); seletividade alimentar por textura; desconforto com etiquetas/costuras; busca sensorial (pressão profunda); sobrecarga sensorial em ambientes movimentados."
+        }
+      ]
+    };
+
+    const dominiosImpacto = [
+      { id: "imp_social", label: "Relacionamentos sociais", icon: "fa-people-arrows" },
+      { id: "imp_trabalho", label: "Trabalho / Produtividade", icon: "fa-briefcase" },
+      { id: "imp_autonomia", label: "Autonomia / vida diária", icon: "fa-house-chimney" },
+      { id: "imp_comunicacao", label: "Comunicação", icon: "fa-comments" },
+      { id: "imp_sensorial", label: "Regulação sensorial", icon: "fa-ear-listen" },
+      { id: "imp_emocional", label: "Regulação emocional", icon: "fa-heart" },
+      { id: "imp_flexib", label: "Flexibilidade / adaptação", icon: "fa-shuffle" },
+      { id: "imp_saude", label: "Saúde física / sono", icon: "fa-moon" },
+    ];
+
+    const comorbidades = [
+      "TDAH", "Depressão maior", "Distimia", "TAG", "Fobia social", "TOC",
+      "TEPT", "Transt. bipolar", "Esquizofrenia (DDx)", "TP esquizóide (DDx)",
+      "TP evitativa (DDx)", "Transt. comunicação social pragmática (DDx)",
+      "Deficiência intelectual", "Transt. aprendizagem", "Epilepsia",
+      "Transt. alimentar restritivo/evitativo", "Insônia crônica",
+      "Transt. coordenação motora", "Tiques / Tourette", "Autolesão",
+      "Alexitimia", "Mutismo seletivo (DDx)"
+    ];
+
+    const especificadores = [
+      "Com comprometimento intelectual",
+      "Sem comprometimento intelectual",
+      "Com comprometimento da linguagem",
+      "Sem comprometimento da linguagem",
+      "Associado a condição médica/genética",
+      "Associado a outro transt. neurodesenvolvimento",
+      "Com catatonia"
+    ];
+
+    const estado = {
+      inicioPrecoce: false,
+      prejuizo: false,
+      exclusao: false,
+      comorbAtivas: new Set(),
+      specAtivos: new Set()
+    };
+
+    // ═══════════════════════════════════════════
+    // RENDER
+    // ═══════════════════════════════════════════
+
+    function renderCriterion(items, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      items.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "symptom-item flex items-start gap-3 p-3 rounded-lg transition border border-transparent";
+        div.innerHTML = `
+      <div class="symptom-check flex items-start pt-0.5">
+        <input type="checkbox" id="${item.id}" data-item-id="${item.id}">
+      </div>
+      <label for="${item.id}" class="flex-1 cursor-pointer select-none">
+        <div class="flex items-center gap-2 mb-0.5">
+          <span class="text-[10px] font-semibold tracking-wide uppercase text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">${item.id}</span>
+          <span class="text-sm font-semibold text-surface-700">${item.rotulo}</span>
+        </div>
+        <p class="text-xs text-surface-500 leading-relaxed mb-1.5">${item.desc}</p>
+        <p class="text-[11px] text-surface-400 italic leading-relaxed mb-1">
+          <i class="fa-solid fa-message text-surface-300 mr-1" style="font-size:9px"></i>${item.pergunta}
+        </p>
+        <p class="text-[10px] text-indigo-400 leading-relaxed">
+          <i class="fa-solid fa-user text-indigo-300 mr-1" style="font-size:8px"></i><strong>Adulto:</strong> ${item.exemplos_adulto}
+        </p>
+      </label>
+      <select class="severity-select" id="sev_${item.id}" title="Intensidade do déficit">
+        <option value="">—</option>
+        <option value="leve">Leve</option>
+        <option value="moderado">Moderado</option>
+        <option value="grave">Grave</option>
+      </select>
+    `;
+        container.appendChild(div);
+      });
+    }
+
+    renderCriterion(teaSchema.criterioA, "cluster-criterioA");
+    renderCriterion(teaSchema.criterioB, "cluster-criterioB");
+
+    function renderImpacto() {
+      const grid = document.getElementById("impactoGrid");
+      grid.innerHTML = "";
+      dominiosImpacto.forEach(d => {
+        const div = document.createElement("div");
+        div.className = "flex items-center gap-2";
+        div.innerHTML = `
+      <i class="fa-solid ${d.icon} text-surface-400 text-xs w-4 text-center"></i>
+      <label for="${d.id}" class="text-xs text-surface-600 flex-1">${d.label}</label>
+      <select id="${d.id}" class="severity-select" style="min-width:100px">
+        <option value="0">0 – Sem prejuízo</option>
+        <option value="1">1 – Leve</option>
+        <option value="2">2 – Moderado</option>
+        <option value="3">3 – Grave</option>
+      </select>
+    `;
+        grid.appendChild(div);
+      });
+    }
+    renderImpacto();
+
+    function renderComorbChips() {
+      const container = document.getElementById("comorbChips");
+      container.innerHTML = "";
+      comorbidades.forEach(c => {
+        const btn = document.createElement("button");
+        btn.className = "comorb-chip text-xs font-medium border border-surface-200 rounded-full px-3 py-1.5 bg-white text-surface-500 hover:border-amber-300 transition";
+        btn.textContent = c;
+        btn.addEventListener("click", () => {
+          estado.comorbAtivas.has(c) ? estado.comorbAtivas.delete(c) : estado.comorbAtivas.add(c);
+          btn.classList.toggle("active", estado.comorbAtivas.has(c));
+          atualizarSintese();
+        });
+        container.appendChild(btn);
+      });
+    }
+    renderComorbChips();
+
+    function renderSpecChips() {
+      const container = document.getElementById("specChips");
+      container.innerHTML = "";
+      especificadores.forEach(s => {
+        const btn = document.createElement("button");
+        btn.className = "spec-chip text-xs font-medium border border-surface-200 rounded-full px-3 py-1.5 bg-white text-surface-500 hover:border-violet-300 transition";
+        btn.textContent = s;
+        btn.addEventListener("click", () => {
+          estado.specAtivos.has(s) ? estado.specAtivos.delete(s) : estado.specAtivos.add(s);
+          btn.classList.toggle("active", estado.specAtivos.has(s));
+          atualizarSintese();
+        });
+        container.appendChild(btn);
+      });
+    }
+    renderSpecChips();
+
+    // Toggle chips C-E
+    document.querySelectorAll(".toggle-chip").forEach(chip => {
+      const key = chip.dataset.toggle;
+      if (!key) return;
+      chip.addEventListener("click", () => {
+        estado[key] = !estado[key];
+        chip.classList.toggle("active", estado[key]);
+        atualizarSintese();
+      });
+    });
+
+    // ═══════════════════════════════════════════
+    // HELPERS
+    // ═══════════════════════════════════════════
+
+    function contarSelecionados(items) {
+      return items.filter(i => document.getElementById(i.id)?.checked).length;
+    }
+    function listarSelecionados(items) {
+      return items.filter(i => document.getElementById(i.id)?.checked).map(i => {
+        const sev = document.getElementById("sev_" + i.id)?.value;
+        return `${i.id} – ${i.rotulo}${sev ? " (" + sev + ")" : ""}`;
+      });
+    }
+    const niveisLabel = { "": "Não classificado", "1": "Nível 1 – Exigindo apoio", "2": "Nível 2 – Exigindo apoio substancial", "3": "Nível 3 – Exigindo apoio muito substancial" };
+
+    // ═══════════════════════════════════════════
+    // MARKDOWN
+    // ═══════════════════════════════════════════
+
+    function gerarMarkdown() {
+      const v = id => (document.getElementById(id)?.value || "").trim();
+      const nome = v("paciente") || "Paciente";
+      const idade = v("idade");
+      const sexo = v("sexo") || "não informado";
+      const escol = v("escolaridade");
+      const ocup = v("ocupacao");
+      const informante = v("informante");
+      const encam = v("encaminhamento");
+      const queixa = v("queixa");
+      const desenvPrecoce = v("desenvPrecoce");
+      const trajetoria = v("trajetoriaEscolar");
+      const masking = v("masking");
+      const hxFam = v("hxFamiliar");
+      const comA = v("com_A");
+      const comB = v("com_B");
+      const nivelA = v("nivelA");
+      const nivelB = v("nivelB");
+      const nivelInt = v("nivelIntelectual");
+      const nivelLing = v("nivelLinguagem");
+      const condAssoc = v("condAssociada");
+      const catatonia = v("catatonia");
+      const comImpacto = v("com_impacto");
+      const comorbTxt = v("comorb");
+      const medAtual = v("medAtual");
+      const naoFarm = v("naoFarmaco");
+      const suporte = v("suporte");
+
+      const nA = contarSelecionados(teaSchema.criterioA);
+      const nB = contarSelecionados(teaSchema.criterioB);
+      const listaA = listarSelecionados(teaSchema.criterioA);
+      const listaB = listarSelecionados(teaSchema.criterioB);
+      const data = new Date().toLocaleDateString("pt-BR");
+
+      let md = `## Avaliação de TEA em Adulto – ${nome}\n\n`;
+      md += `- **Data:** ${data}\n`;
+      md += `- **Idade:** ${idade || "não informada"}`;
+      if (sexo !== "não informado") md += ` | **Sexo:** ${sexo}`;
+      md += `\n`;
+      if (escol) md += `- **Escolaridade:** ${escol}\n`;
+      if (ocup) md += `- **Ocupação:** ${ocup}\n`;
+      if (informante) md += `- **Informante colateral:** ${informante}\n`;
+      if (encam) md += `- **Encaminhamento:** ${encam}\n`;
+      if (queixa) md += `- **Queixa principal:** ${queixa}\n`;
+      md += `\n---\n\n`;
+
+      // Critério A
+      md += `### Critério A – Comunicação Social e Interação (todos os 3 necessários)\n\n`;
+      md += `**Domínios presentes:** ${nA}/3\n`;
+      if (listaA.length) { listaA.forEach(l => md += `  - ${l}\n`); }
+      if (comA) md += `  - *Observação clínica:* ${comA}\n`;
+      if (nivelA) md += `\n**Nível de suporte (comunicação social):** ${niveisLabel[nivelA]}\n`;
+      md += `\n`;
+
+      // Critério B
+      md += `### Critério B – Padrões Restritos e Repetitivos (≥2 de 4 necessários)\n\n`;
+      md += `**Domínios presentes:** ${nB}/4 (mínimo: 2)\n`;
+      if (listaB.length) { listaB.forEach(l => md += `  - ${l}\n`); }
+      if (comB) md += `  - *Observação clínica:* ${comB}\n`;
+      if (nivelB) md += `\n**Nível de suporte (comportamentos restritos/repetitivos):** ${niveisLabel[nivelB]}\n`;
+      md += `\n`;
+
+      // Critérios C-E
+      md += `### Critérios C–E\n\n`;
+      md += `| Critério | Status |\n|---|---|\n`;
+      md += `| C – Início precoce no desenvolvimento | ${estado.inicioPrecoce ? "✓ Confirmado" : "✗ Não confirmado / em investigação"} |\n`;
+      md += `| D – Prejuízo funcional atual | ${estado.prejuizo ? "✓ Confirmado" : "✗ Não confirmado"} |\n`;
+      md += `| E – Não explicado por DI isolada | ${estado.exclusao ? "✓ Confirmado" : "✗ Em investigação"} |\n`;
+      md += `\n`;
+
+      if (desenvPrecoce) md += `**Desenvolvimento precoce:** ${desenvPrecoce}\n\n`;
+      if (trajetoria) md += `**Trajetória escolar/social:** ${trajetoria}\n\n`;
+      if (masking) md += `**Estratégias compensatórias (masking):** ${masking}\n\n`;
+      if (hxFam) md += `**História familiar:** ${hxFam}\n\n`;
+
+      // Especificadores
+      const specs = [];
+      if (nivelInt) specs.push(nivelInt === "sem_comprometimento" ? "Sem comprometimento intelectual" : "Com comprometimento intelectual concomitante");
+      if (nivelLing) specs.push(nivelLing === "sem_comprometimento" ? "Sem comprometimento da linguagem (fala fluente)" : "Com comprometimento da linguagem concomitante");
+      if (estado.specAtivos.size) [...estado.specAtivos].forEach(s => specs.push(s));
+      if (condAssoc) specs.push(`Associado a: ${condAssoc}`);
+      if (catatonia === "sim") specs.push("Com catatonia associada (F06.1)");
+
+      if (specs.length) {
+        md += `### Especificadores DSM-5\n\n`;
+        specs.forEach(s => md += `- ${s}\n`);
+        md += `\n`;
+      }
+
+      // Diagnóstico sintetizado
+      const criterioAok = nA === 3;
+      const criterioBok = nB >= 2;
+      const criterioCEok = estado.inicioPrecoce && estado.prejuizo && estado.exclusao;
+      md += `### Síntese Diagnóstica\n\n`;
+      if (criterioAok && criterioBok && criterioCEok) {
+        md += `**Critérios preenchidos para Transtorno do Espectro Autista (299.00 / F84.0)**`;
+        if (nivelA || nivelB) {
+          md += ` – `;
+          if (nivelA) md += `comunicação social ${niveisLabel[nivelA].toLowerCase()}`;
+          if (nivelA && nivelB) md += `; `;
+          if (nivelB) md += `comportamentos restritos/repetitivos ${niveisLabel[nivelB].toLowerCase()}`;
+        }
+        md += `.\n\n`;
+      } else {
+        const faltam = [];
+        if (!criterioAok) faltam.push(`A (${nA}/3 domínios)`);
+        if (!criterioBok) faltam.push(`B (${nB}/4, mín. 2)`);
+        if (!estado.inicioPrecoce) faltam.push("C (início precoce)");
+        if (!estado.prejuizo) faltam.push("D (prejuízo funcional)");
+        if (!estado.exclusao) faltam.push("E (exclusão DI)");
+        md += `**Critérios não totalmente preenchidos.** Pendentes: ${faltam.join(", ")}.\n\n`;
+      }
+
+      // Impacto
+      md += `### Impacto Funcional\n\n`;
+      const niveis = ["Sem prejuízo", "Leve", "Moderado", "Grave"];
+      dominiosImpacto.forEach(d => {
+        const val = parseInt(document.getElementById(d.id)?.value || "0");
+        if (val > 0) md += `- **${d.label}:** ${niveis[val]}\n`;
+      });
+      if (comImpacto) md += `\n*Observações:* ${comImpacto}\n`;
+      md += `\n`;
+
+      // Comorbidades
+      md += `### Comorbidades e Diagnóstico Diferencial\n\n`;
+      if (estado.comorbAtivas.size) md += `**Condições em investigação/confirmadas:** ${[...estado.comorbAtivas].join(", ")}\n\n`;
+      if (comorbTxt) md += `${comorbTxt}\n\n`;
+      if (!estado.comorbAtivas.size && !comorbTxt) md += `Em avaliação.\n\n`;
+
+      // Tratamento
+      if (medAtual || naoFarm || suporte) {
+        md += `### Tratamentos e Suporte\n\n`;
+        if (medAtual) md += `**Medicações atuais:** ${medAtual}\n`;
+        if (naoFarm) md += `**Intervenções não farmacológicas:** ${naoFarm}\n`;
+        if (suporte) md += `**Suporte atual:** ${suporte}\n`;
+        md += `\n`;
+      }
+
+      md += `---\n\n`;
+      md += `> Avaliação clínica estruturada com base nos critérios DSM-5/DSM-5-TR para TEA (299.00 / F84.0), incluindo história do desenvolvimento obtida com informante colateral, avaliação de masking/camuflagem e classificação por níveis de suporte. Ferramenta auxiliar – não substitui instrumentos padronizados (ADOS-2, ADI-R) nem julgamento clínico.\n`;
+
+      return { markdown: md, nA, nB };
+    }
+
+    // ═══════════════════════════════════════════
+    // UPDATE
+    // ═══════════════════════════════════════════
+
+    function atualizarSintese() {
+      const { markdown, nA, nB } = gerarMarkdown();
+      document.getElementById("markdownOutput").textContent = markdown;
+
+      // Header badges
+      const bA = document.getElementById("contadorA");
+      const bB = document.getElementById("contadorB");
+      bA.textContent = `${nA}/3`;
+      bB.textContent = `${nB}/2`;
+      bA.className = "count-badge text-xs font-semibold px-2.5 py-0.5 rounded-full " + (nA === 3 ? "bg-green-100 text-green-700" : "bg-surface-100 text-surface-500");
+      bB.className = "count-badge text-xs font-semibold px-2.5 py-0.5 rounded-full " + (nB >= 2 ? "bg-green-100 text-green-700" : "bg-surface-100 text-surface-500");
+
+      // C-E badge
+      const nCE = [estado.inicioPrecoce, estado.prejuizo, estado.exclusao].filter(Boolean).length;
+      const bCE = document.getElementById("badgeCE");
+      bCE.textContent = `${nCE}/3`;
+      bCE.className = "text-[10px] font-semibold px-2 py-0.5 rounded-full " + (nCE === 3 ? "bg-green-100 text-green-700" : "bg-surface-100 text-surface-400");
+
+      // Comorb badge
+      const bc = document.getElementById("badgeComorb");
+      if (estado.comorbAtivas.size) { bc.textContent = estado.comorbAtivas.size; bc.className = "text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700"; bc.classList.remove("hidden"); }
+      else bc.classList.add("hidden");
+
+      // Panel A/B
+      document.getElementById("painelANum").textContent = nA;
+      document.getElementById("painelBNum").textContent = nB;
+      document.getElementById("painelA").className = "rounded-lg border p-3 text-center " + (nA === 3 ? "border-green-300 bg-green-50" : "border-surface-200");
+      document.getElementById("painelB").className = "rounded-lg border p-3 text-center " + (nB >= 2 ? "border-green-300 bg-green-50" : "border-surface-200");
+
+      // Levels
+      const nivDiv = document.getElementById("painelNiveisStatus");
+      nivDiv.innerHTML = "";
+      const nA_ = document.getElementById("nivelA").value;
+      const nB_ = document.getElementById("nivelB").value;
+      [{ l: "Comunicação social", v: nA_ }, { l: "Restritos/repetitivos", v: nB_ }].forEach(n => {
+        const d = document.createElement("div");
+        d.className = "flex items-center gap-2 text-xs";
+        d.innerHTML = `<i class="fa-solid ${n.v ? "fa-circle-check text-indigo-600" : "fa-circle-minus text-surface-300"} text-sm"></i><span class="${n.v ? "text-indigo-700 font-medium" : "text-surface-400"}">${n.l}: ${n.v ? niveisLabel[n.v] : "não classificado"}</span>`;
+        nivDiv.appendChild(d);
+      });
+
+      // C-E panel
+      const ceDiv = document.getElementById("painelCEStatus");
+      ceDiv.innerHTML = "";
+      [{ k: "inicioPrecoce", l: "C – Início precoce" }, { k: "prejuizo", l: "D – Prejuízo funcional" }, { k: "exclusao", l: "E – Não explicado por DI" }].forEach(b => {
+        const ok = estado[b.k];
+        const d = document.createElement("div");
+        d.className = "flex items-center gap-2 text-xs";
+        d.innerHTML = `<i class="fa-solid ${ok ? "fa-circle-check text-green-600" : "fa-circle-xmark text-surface-300"} text-sm"></i><span class="${ok ? "text-green-700 font-medium" : "text-surface-400"}">${b.l}</span>`;
+        ceDiv.appendChild(d);
+      });
+
+      // Impact bars
+      const barras = document.getElementById("painelImpactoBarras");
+      barras.innerHTML = "";
+      const cores = ["bg-surface-200", "bg-yellow-400", "bg-amber-500", "bg-red-500"];
+      const coresT = ["text-surface-400", "text-yellow-700", "text-amber-700", "text-red-700"];
+      dominiosImpacto.forEach(d => {
+        const val = parseInt(document.getElementById(d.id)?.value || "0");
+        const row = document.createElement("div");
+        row.className = "flex items-center gap-2 mb-1.5";
+        row.innerHTML = `<span class="text-[10px] text-surface-400 w-28 truncate">${d.label}</span><div class="flex-1 h-2 bg-surface-100 rounded-full overflow-hidden"><div class="${cores[val]} h-full rounded-full transition-all" style="width:${val / 3 * 100}%"></div></div><span class="text-[10px] font-semibold ${coresT[val]} w-4 text-right">${val}</span>`;
+        barras.appendChild(row);
+      });
+    }
+
+    atualizarSintese();
+
+    // ═══════════════════════════════════════════
+    // EVENTS
+    // ═══════════════════════════════════════════
+
+    document.querySelectorAll("input, textarea, select").forEach(el => {
+      el.addEventListener("change", atualizarSintese);
+      if (["TEXTAREA", "INPUT"].includes(el.tagName)) el.addEventListener("input", debounce(atualizarSintese, 300));
+    });
+    document.getElementById("atualizar").addEventListener("click", atualizarSintese);
+
+    function copiarMD() {
+      navigator.clipboard.writeText(gerarMarkdown().markdown).then(() => showToast("Markdown copiado!")).catch(() => showToast("Falha ao copiar.", true));
+    }
+    document.getElementById("copiar").addEventListener("click", copiarMD);
+    document.getElementById("copiar2").addEventListener("click", copiarMD);
+
+    document.getElementById("btnResetar").addEventListener("click", () => {
+      if (!confirm("Limpar todos os dados preenchidos?")) return;
+      document.querySelectorAll("input[type=checkbox]").forEach(cb => cb.checked = false);
+      document.querySelectorAll("input[type=text], input[type=number], textarea").forEach(el => el.value = "");
+      document.querySelectorAll("select").forEach(sel => sel.selectedIndex = 0);
+      document.querySelectorAll(".toggle-chip, .comorb-chip, .spec-chip").forEach(c => c.classList.remove("active"));
+      estado.inicioPrecoce = estado.prejuizo = estado.exclusao = false;
+      estado.comorbAtivas = new Set();
+      estado.specAtivos = new Set();
+      atualizarSintese();
+    });
+
+    function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+    function showToast(msg, isError = false) {
+      document.getElementById("toast-msg")?.remove();
+      const t = document.createElement("div");
+      t.id = "toast-msg";
+      t.className = `fixed bottom-6 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-lg shadow-lg text-sm font-medium z-[999] transition-opacity ${isError ? "bg-red-600" : "bg-surface-800"} text-white`;
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(() => { t.style.opacity = "0"; setTimeout(() => t.remove(), 300); }, 2200);
+    }
+  </script>
+</body>
+
+</html>

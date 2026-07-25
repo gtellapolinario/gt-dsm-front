@@ -5,8 +5,8 @@ export type UnknownRecord = Record<string, unknown>;
 export const severityOptions = ["ausente", "leve", "moderado", "grave"] as const;
 export type SeverityLevel = (typeof severityOptions)[number];
 
-const labelKeys = ["label", "nome", "rotulo", "titulo", "name"] as const;
-const descriptionKeys = ["descricao", "desc", "texto", "descricao_completa", "description", "descritor"] as const;
+const labelKeys = ["label", "nome", "rotulo", "titulo", "name", "condicao"] as const;
+const descriptionKeys = ["descricao", "desc", "texto", "descricao_completa", "description", "descritor", "ponto_distincao"] as const;
 
 export function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -103,9 +103,12 @@ export function normalizeChoiceItems(value: unknown): Array<{ id: string; label:
   return source.map((item, index) => {
     const record = isRecord(item) ? item : { label: item };
     const id = getRecordId(record, index);
+    const rawLabel = getDisplayLabel(record, id);
     return {
       id,
-      label: getDisplayLabel(record, id),
+      // Quando o label cai no fallback do proprio id (chave snake_case do JSON),
+      // humaniza: "grav_leve" -> "Grav Leve" em vez de exibir o id cru.
+      label: rawLabel === id ? titleFromValue(id) : rawLabel,
       description: getDisplayDescription(record),
       raw: item,
     };
