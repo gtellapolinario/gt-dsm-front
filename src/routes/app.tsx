@@ -4,14 +4,11 @@
 
 import { Outlet, createFileRoute } from "@tanstack/react-router";
 import { WorkspaceShell } from "@/components/workspace/WorkspaceShell";
-import { useCommandStore } from "@/stores/command-store";
 
 function AppLayout() {
-  const openPalette = useCommandStore((s) => s.setOpen);
   return (
     <WorkspaceShell
       activeNav="home"
-      onCommandOpen={() => openPalette(true)}
     >
       <Outlet />
     </WorkspaceShell>

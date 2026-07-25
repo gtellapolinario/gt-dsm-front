@@ -81,7 +81,7 @@ function createDiseaseImporter(id: GeneratedDisorderId): DiseaseImporter {
   };
 }
 
-export const diseaseImports: Readonly<Record<string, DiseaseImporter>> =
+const diseaseImports: Readonly<Record<string, DiseaseImporter>> =
   Object.freeze(
     Object.fromEntries(
       generatedDisorderMetadata.map((metadata) => [
@@ -95,96 +95,6 @@ export function isDiseaseRegistered(id: string): id is GeneratedDisorderId {
   return id in diseaseImports;
 }
 
-export async function loadDiseaseModule(id: string): Promise<DiseaseModule> {
-  const importer = getDiseaseImporter(id);
-  if (!importer) {
-    throw new Error(`Doença não encontrada no registro gerado: "${id}"`);
-  }
-  return importer();
-}
-
-export function listRegisteredDiseases(): string[] {
-  return Object.keys(diseaseImports);
-}
-
 export function getDiseaseImporter(id: string): DiseaseImporter | undefined {
   return isDiseaseRegistered(id) ? diseaseImports[id] : undefined;
 }
-
-export const structureHookMap: Record<
-  string,
-  { hook: string; renderer: string }
-> = {
-  categorico_por_subtipo: {
-    hook: "useCategoricoSubtipoEvaluation",
-    renderer: "CategoricoPorSubtipoRenderer",
-  },
-  conjuncao_temporal_complexa: {
-    hook: "useConjuncaoTemporalEvaluation",
-    renderer: "ConjuncaoTemporalComplexaRenderer",
-  },
-  episodico: { hook: "useEpisodicEvaluation", renderer: "EpisodicoRenderer" },
-  episodico_com_sintomas: {
-    hook: "useEpisodicEvaluation",
-    renderer: "EpisodicoComSintomasRenderer",
-  },
-  etiologico_externo: {
-    hook: "useEtiologicoExternoEvaluation",
-    renderer: "EtiologicoExternoRenderer",
-  },
-  mixed_monothetic_polythetic: {
-    hook: "useMixedEvaluation",
-    renderer: "MixedMonotheticPolytheticRenderer",
-  },
-  monothetic_puro: {
-    hook: "useMonotheticPureEvaluation",
-    renderer: "MonotheticPuroRenderer",
-  },
-  monothetic_tripartite: {
-    hook: "useMonotheticTripartiteEvaluation",
-    renderer: "MonotheticTripartiteRenderer",
-  },
-  polythetic_clusters_assimetricos: {
-    hook: "usePolytheticClusterEvaluation",
-    renderer: "PolytheticAssimetricosRenderer",
-  },
-  polythetic_clusters_simetricos: {
-    hook: "usePolytheticClusterEvaluation",
-    renderer: "PolytheticClusterRenderer",
-  },
-  polythetic_com_ancora: {
-    hook: "usePolytheticAncoraEvaluation",
-    renderer: "PolytheticComAncoraRenderer",
-  },
-  polythetic_monocluster: {
-    hook: "usePolytheticMonoClusterEvaluation",
-    renderer: "PolytheticMonoclusterRenderer",
-  },
-  psicomotor_polythetic: {
-    hook: "usePsicomotorPolytheticEvaluation",
-    renderer: "PsicomotorPolytheticRenderer",
-  },
-  qualitativo_descritivo: {
-    hook: "useQualitativoDescritivoEvaluation",
-    renderer: "QualitativoDescritivoRenderer",
-  },
-  temporal_topografico: {
-    hook: "useTemporalTopograficEvaluation",
-    renderer: "TemporalTopograficoRenderer",
-  },
-  tripartite_funcional: {
-    hook: "useTripartiteFunctionalEvaluation",
-    renderer: "TripartiteFuncionalRenderer",
-  },
-};
-
-export function getStructureInfo(estrutura: EstruturaDiagnostica | string) {
-  return (
-    structureHookMap[estrutura] || {
-      hook: "useDefaultEvaluation",
-      renderer: "DefaultRenderer",
-    }
-  );
-}
-
-export const diseaseImportMap = diseaseImports;

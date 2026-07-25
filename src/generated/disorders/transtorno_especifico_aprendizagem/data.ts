@@ -318,10 +318,7 @@ export const data = TranstornoEspecificoAprendizagemSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "### Avaliação Psicopedagógica - Transtorno Específico da Aprendizagem",
-    "rodape_metodologico": "Diagnóstico baseado em testes psicométricos acadêmicos padronizados, histórico escolar detalhado e resposta a intervenções anteriores."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
     "fonte_inventario_md": "inventario/01_inventario.md",

@@ -282,10 +282,7 @@ export const data = ExplosivoIntermittenteSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno Explosivo Intermitente - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (312.34 / F63.81)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "15_transtornos_disruptivos,_controle_impulsos_da_conduta.md",
     "fonte_inventario_md": null,

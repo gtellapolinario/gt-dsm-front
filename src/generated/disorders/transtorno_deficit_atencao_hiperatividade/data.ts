@@ -519,10 +519,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "### Avaliação Neuropsicológica e Comportamental - TDAH",
-    "rodape_metodologico": "Diagnóstico estabelecido com base em escala SNAP-IV/ASRS, histórico escolar, avaliação do desenvolvimento e múltiplos relatos (pais, professores)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
     "fonte_inventario_md": "inventario/01_inventario.md",

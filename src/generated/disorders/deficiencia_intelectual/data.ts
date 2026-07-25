@@ -250,10 +250,7 @@ export const data = DeficienciaIntelectualSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "### Avaliação do Transtorno do Desenvolvimento Intelectual",
-    "rodape_metodologico": "Diagnóstico estabelecido com base em avaliação adaptativa e história do desenvolvimento."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
     "fonte_inventario_md": "inventario/01_inventario.md",

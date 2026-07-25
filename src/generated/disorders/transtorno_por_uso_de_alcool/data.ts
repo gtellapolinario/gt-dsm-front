@@ -341,10 +341,7 @@ export const data = TranstornoPorUsoDeAlcoolSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno por Uso de Álcool - {nome_paciente}",
-    "rodape_metodologico": "DSM-5 (303.90 / F10.20)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "16_transtornos_relacionados_substancias_transtornos_aditivos.md",
     "fonte_inventario_md": null,

@@ -284,10 +284,7 @@ export const data = TpBorderlineSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno da Personalidade Borderline - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (301.83 / F60.3)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "18_transtornos_personalidade.md",
     "fonte_inventario_md": null,

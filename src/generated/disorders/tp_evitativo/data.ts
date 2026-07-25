@@ -237,10 +237,7 @@ export const data = TpEvitativoSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno da Personalidade Evitativo - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (301.82 / F60.6)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "18_transtornos_personalidade.md",
     "fonte_inventario_md": null,

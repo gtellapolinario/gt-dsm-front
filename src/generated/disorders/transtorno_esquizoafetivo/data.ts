@@ -379,10 +379,7 @@ export const data = TranstornoEsquizoafetivoSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Transtorno Esquizoafetivo - {nome_paciente}",
-    "rodape_metodologico": "Diagnóstico baseado na concomitância de episódios de humor e sintomas de fase ativa, com episódios psicóticos isolados superiores a 2 semanas."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",

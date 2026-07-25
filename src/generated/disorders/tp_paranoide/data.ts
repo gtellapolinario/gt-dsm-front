@@ -268,10 +268,7 @@ export const data = TpParanoideSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno da Personalidade Paranóide - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (301.0 / F60.0)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "18_transtornos_personalidade.md",
     "fonte_inventario_md": null,

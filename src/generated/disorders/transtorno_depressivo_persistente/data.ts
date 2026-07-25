@@ -490,10 +490,7 @@ export const data = TranstornoDepressivoPersistenteSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno Depressivo Persistente (Distimia) - {nome_paciente}",
-    "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 para Transtorno Depressivo Persistente/Distimia (300.4 / F34.1)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "04_transtornos_depressivos.md",
     "fonte_inventario_md": "inventario/04_inventario.md",

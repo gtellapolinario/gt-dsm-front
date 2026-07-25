@@ -18,21 +18,18 @@ interface WorkspaceShellProps {
   children: ReactNode;
   /** Modal overlay (palette, dialog) rendered above the main area. */
   overlay?: ReactNode;
-  /** Called when ⌘K is requested via header search button. */
-  onCommandOpen?: () => void;
 }
 
 export function WorkspaceShell({
   children,
   overlay,
-  onCommandOpen,
 }: WorkspaceShellProps) {
   return (
     <SidebarProvider>
       <div className="w-full h-dvh bg-bg text-text font-sans flex overflow-hidden">
         <Sidebar />
         <SidebarInset className="flex-1 flex flex-col min-w-0 bg-bg">
-          <Header onSearchClick={onCommandOpen} />
+          <Header />
           <main className="flex-1 overflow-auto relative">{children}</main>
         </SidebarInset>
         {overlay}

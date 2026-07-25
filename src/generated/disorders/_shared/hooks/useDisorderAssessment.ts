@@ -5,11 +5,11 @@ import { severityOptions, thresholdNumber, type SeverityLevel } from "../utils/d
 
 export interface PatientIdentification {
   nomeId: string;
-  idadeNascimento: string;
+  dataNascimento: string;
   sexo: string;
+  genero: string;
   escolaridade: string;
   ocupacao: string;
-  informante: string;
   queixaPrincipal: string;
 }
 
@@ -38,11 +38,11 @@ export interface ClusterCounter {
 
 const initialPatient: PatientIdentification = {
   nomeId: "",
-  idadeNascimento: "",
+  dataNascimento: "",
   sexo: "",
+  genero: "",
   escolaridade: "",
   ocupacao: "",
-  informante: "",
   queixaPrincipal: "",
 };
 

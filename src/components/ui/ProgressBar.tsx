@@ -1,5 +1,5 @@
 // src/components/ui/ProgressBar.tsx
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 
 interface ProgressBarProps {
   /** 0..1 */

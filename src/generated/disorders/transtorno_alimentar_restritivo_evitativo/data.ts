@@ -300,10 +300,7 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno Alimentar Restritivo/Evitativo - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (307.59 / F50.8)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "10_transtornos_alimentares.md",
     "fonte_inventario_md": null,

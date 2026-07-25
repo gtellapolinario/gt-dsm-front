@@ -355,10 +355,7 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno Disruptivo da Desregulação do Humor - {nome_paciente}",
-    "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com pais/responsáveis e observação direta, com base nos critérios do DSM-5 (296.99 / F34.8)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "04_transtornos_depressivos.md",
     "fonte_inventario_md": "inventario/04_inventario.md",

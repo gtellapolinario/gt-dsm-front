@@ -1,5 +1,10 @@
 import { getIcone } from "@/lib/mapear-icones";
-import type { DominioImpacto } from "@/infra/types";
+
+interface DominioImpacto {
+  id: string;
+  label: string;
+  icone_fa: string;
+}
 
 interface NivelImpactoProps {
   dominio: DominioImpacto;

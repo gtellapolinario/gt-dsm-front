@@ -385,10 +385,7 @@ export const data = TranstornoDeliranteSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Transtorno Delirante - {nome_paciente}",
-    "rodape_metodologico": "Diagnóstico estabelecido com base nos critérios diagnósticos e especificadores de subtipo e curso definidos pelo DSM-5."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",

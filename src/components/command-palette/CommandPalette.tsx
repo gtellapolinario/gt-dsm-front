@@ -11,7 +11,7 @@ import {
   Search, ClipboardList, Users, Plus, MessageSquare,
 } from "lucide-react";
 import { Kbd } from "@/components/ui/kbd";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 
 interface CommandPaletteProps {
   open: boolean;

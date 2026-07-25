@@ -331,10 +331,7 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno por Uso de Estimulantes - {nome_paciente}",
-    "rodape_metodologico": "DSM-5 (304.40 / F15.20)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "16_transtornos_relacionados_substancias_transtornos_aditivos.md",
     "fonte_inventario_md": null,

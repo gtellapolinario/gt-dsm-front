@@ -394,10 +394,7 @@ export const data = EsquizofreniaSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Esquizofrenia - {nome_paciente}",
-    "rodape_metodologico": "Avaliação clínica baseada na presença persistente (>=6 meses) de sintomas psicóticos ativos e prejuízo funcional severo, segundo o DSM-5."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",

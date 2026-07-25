@@ -538,10 +538,7 @@ export const data = TeptSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do TEPT - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica estruturada com base nos critérios DSM-5 para TEPT (309.81 / F43.10)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "07_transtornos_relacionados_trauma_a_estressores.md",
     "fonte_inventario_md": null,

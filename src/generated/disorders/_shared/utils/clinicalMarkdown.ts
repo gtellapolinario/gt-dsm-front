@@ -27,6 +27,23 @@ function line(label: string, value: string | null | undefined) {
   return `- **${label}:** ${value && value.trim().length > 0 ? value : "Não informado"}`;
 }
 
+/** "1994-02-10" (input date) → "10/02/1994 (32 anos)". */
+function formatNascimento(isoDate: string): string {
+  if (!isoDate) return "";
+  const [year, month, day] = isoDate.split("-").map(Number);
+  if (!year || !month || !day) return isoDate;
+  const today = new Date();
+  let age = today.getFullYear() - year;
+  if (
+    today.getMonth() < month - 1 ||
+    (today.getMonth() === month - 1 && today.getDate() < day)
+  ) {
+    age -= 1;
+  }
+  const formatted = `${String(day).padStart(2, "0")}/${String(month).padStart(2, "0")}/${year}`;
+  return age >= 0 && age < 150 ? `${formatted} (${age} anos)` : formatted;
+}
+
 function selectedLabels(value: unknown, selected: Record<string, boolean>) {
   return normalizeChoiceItems(value)
     .filter((item) => selected[item.id])
@@ -55,12 +72,12 @@ export function generateClinicalMarkdown(state: DisorderAssessmentState, data: C
     "",
     "## Identificação",
     line("Paciente", state.patient.nomeId),
-    line("Idade/data de nascimento", state.patient.idadeNascimento),
+    line("Data de nascimento", formatNascimento(state.patient.dataNascimento)),
     line("Sexo", state.patient.sexo),
+    line("Gênero", state.patient.genero),
     line("Escolaridade", state.patient.escolaridade),
     line("Ocupação", state.patient.ocupacao),
-    line("Informante/encaminhamento", state.patient.informante),
-    line("Queixa principal", state.patient.queixaPrincipal),
+    line("Motivo da consulta", state.patient.queixaPrincipal),
     "",
     "## Critérios e sintomas por cluster",
   ];

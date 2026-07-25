@@ -248,10 +248,7 @@ export const data = MutismoSeletivoSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Mutismo Seletivo - {nome_paciente}",
-    "rodape_metodologico": "Dados obtidos por anamnese com pais/escola e observação direta, com base nos critérios DSM-5 (312.23 / F94.0)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "05_transtornos_ansiedade.md",
     "fonte_inventario_md": null,

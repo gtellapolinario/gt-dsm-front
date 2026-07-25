@@ -350,10 +350,7 @@ export const data = AgorafobiaSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Agorafobia - {nome_paciente}",
-    "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.22 / F40.00)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "05_transtornos_ansiedade.md",
     "fonte_inventario_md": null,

@@ -451,10 +451,7 @@ export const data = TranstornoInsoniaSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno de Insônia - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (307.42 / F51.01)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "12_transtornos_sono_vigilia.md",
     "fonte_inventario_md": null,

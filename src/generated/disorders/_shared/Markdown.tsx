@@ -4,7 +4,7 @@
 // *itálico* e `código`. Usado pelos cards das seções complementares.
 
 import { Fragment, type ReactNode } from "react";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 
 /* ─── Inline: **negrito**, *itálico*, `código` ──────────────────────────── */
 

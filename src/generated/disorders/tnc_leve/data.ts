@@ -361,10 +361,7 @@ export const data = TncLeveSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Transtorno Neurocognitivo Leve - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (331.83 / G31.84)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
     "fonte_inventario_md": null,

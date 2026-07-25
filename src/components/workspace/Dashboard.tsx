@@ -6,7 +6,7 @@ import { Link } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
 import { CHAPTERS } from "@/lib/disease-catalog";
 import { listGeneratedDisordersByChapter } from "@/infra/generated-disorder-catalog";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 
 export function Dashboard() {
   const chapters = CHAPTERS.map((chapter) => ({

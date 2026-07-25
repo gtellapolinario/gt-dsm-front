@@ -416,10 +416,7 @@ export const data = TncMaiorSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Transtorno Neurocognitivo Maior - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (294.1x / F02.8x)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "17_transtornos_neurocognitivos.md",
     "fonte_inventario_md": null,

@@ -598,10 +598,7 @@ export const data = TranstornoBipolarTipo2Schema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno Bipolar Tipo II - {nome_paciente}",
-    "rodape_metodologico": "Avaliação clínica fundamentada no histórico de flutuação de episódios hipomaníacos e depressivos maiores segundo o DSM-5."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "03_transtorno_bipolar_transtornos_relacionados.md",
     "fonte_inventario_md": "inventario/03_inventario.md",

@@ -556,10 +556,7 @@ export const data = TranstornoDepressivoMaiorSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno Depressivo Maior - {nome_paciente}",
-    "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 para Transtorno Depressivo Maior (296.x / F32.x ou F33.x)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "04_transtornos_depressivos.md",
     "fonte_inventario_md": "inventario/04_inventario.md",

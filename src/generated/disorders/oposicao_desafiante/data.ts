@@ -332,10 +332,7 @@ export const data = OposicaoDesafianteSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno de Oposição Desafiante - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (313.81 / F91.3)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "15_transtornos_disruptivos,_controle_impulsos_da_conduta.md",
     "fonte_inventario_md": null,

@@ -1,14 +1,13 @@
 import { Bell, ChevronDown } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 
 interface HeaderProps {
-  onSearchClick?: () => void;
   className?: string;
 }
 
-export function Header({ onSearchClick, className }: HeaderProps) {
+export function Header({ className }: HeaderProps) {
   return (
     <header
       className={cn(

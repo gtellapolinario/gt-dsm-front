@@ -7,23 +7,33 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import {
+  Activity,
+  BookOpen,
   Brain,
-  ChevronUp,
+  Briefcase,
+  Cake,
   ChevronsDown,
   ChevronsUp,
   ClipboardList,
+  Clock,
   Copy,
+  FileSpreadsheet,
   FileText,
+  GraduationCap,
   Info,
   Layers,
   ListChecks,
   MessageSquare,
+  MessageSquarePlus,
   Printer,
   RotateCcw,
   SearchCheck,
   SlidersHorizontal,
   TrendingUp,
+  User,
   UserPen,
+  Users,
+  VenusAndMars,
   type LucideIcon,
 } from "lucide-react";
 import type { ClinicalDisorder } from "./schema";
@@ -41,10 +51,37 @@ import {
   titleFromValue,
   type SeverityLevel,
 } from "./utils/disorderDataAccess";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 import { getIcone } from "@/lib/mapear-icones";
+import { Input } from "@/components/ui/input";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { Toggle } from "@/components/ui/toggle";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Markdown, MarkdownInline } from "./Markdown";
-
 /** Ícone lucide a partir do `icone_fa` (Font Awesome) presente no payload clínico. */
 function itemIcon(raw: unknown): LucideIcon | null {
   return isRecord(raw) && typeof raw.icone_fa === "string"
@@ -98,13 +135,6 @@ type Assessment = ReturnType<typeof useDisorderAssessment>;
 
 /* ─── Primitivos visuais (tokens do app, cara da referência) ────────────── */
 
-const inputCls =
-  "w-full text-md border border-border rounded-lg px-3 py-2 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition";
-const textareaCls = cn(inputCls, "resize-y");
-const labelCls = "block text-sm font-semibold text-text-2 mb-1";
-const severitySelectCls =
-  "text-sm px-1.5 py-1 rounded-md border border-border bg-surface-2 text-text-2 cursor-pointer min-w-[96px] focus:outline-none focus:ring-2 focus:ring-primary/20";
-
 function CountBadge({
   n,
   total,
@@ -128,46 +158,40 @@ function CountBadge({
 }
 
 function Section({
+  id,
   icon: Icon,
   iconClass = "text-blue-600",
   title,
   badge,
-  open,
-  onToggle,
   children,
 }: {
+  readonly id: string;
   readonly icon: LucideIcon;
   readonly iconClass?: string;
   readonly title: ReactNode;
   readonly badge?: ReactNode;
-  readonly open: boolean;
-  readonly onToggle: () => void;
   readonly children: ReactNode;
 }) {
   return (
-    <section className="bg-surface rounded-xl border border-border shadow-sm overflow-hidden">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={open}
-        className="bg-muted/60 w-full flex items-center justify-between px-5 py-3 text-md hover:bg-muted transition-colors cursor-pointer"
-      >
-        <span className={cn("flex items-center gap-2 font-bold", iconClass)}>
-          <Icon className="h-4 w-4" />
-          <span className="text-text">{title}</span>
+    <AccordionItem
+      value={id}
+      className="bg-surface rounded-xl border border-border shadow-sm overflow-hidden not-last:border-b-0 data-open:bg-transparent"
+    >
+      <AccordionTrigger className="bg-muted/60 w-full items-center px-5 py-3 text-md hover:bg-muted hover:no-underline transition-colors cursor-pointer">
+        <span className="flex flex-1 items-center justify-between gap-2">
+          <span className={cn("flex items-center gap-2 font-bold", iconClass)}>
+            <Icon className="h-4 w-4" />
+            <span className="text-text">{title}</span>
+          </span>
+          {badge ? (
+            <span className="flex items-center gap-2">{badge}</span>
+          ) : null}
         </span>
-        <span className="flex items-center gap-2">
-          {badge}
-          <ChevronUp
-            className={cn(
-              "h-3.5 w-3.5 text-text-3 transition-transform duration-200",
-              !open && "rotate-180",
-            )}
-          />
-        </span>
-      </button>
-      {open ? <div className="border-t border-border">{children}</div> : null}
-    </section>
+      </AccordionTrigger>
+      <AccordionContent className="border-t border-border p-0 [&_p:not(:last-child)]:mb-0">
+        {children}
+      </AccordionContent>
+    </AccordionItem>
   );
 }
 
@@ -181,19 +205,15 @@ function ToggleChip({
   readonly children: ReactNode;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={cn(
-        "text-sm font-semibold border rounded-full px-3 py-1.5 transition-all select-none cursor-pointer",
-        active
-          ? "bg-accent border-primary text-primary"
-          : "bg-surface border-border text-text-2 hover:border-primary/50",
-      )}
+    <Toggle
+      variant="outline"
+      size="sm"
+      pressed={active}
+      onPressedChange={() => onClick()}
+      className="rounded-full font-semibold aria-pressed:bg-accent aria-pressed:border-primary aria-pressed:text-primary"
     >
       {children}
-    </button>
+    </Toggle>
   );
 }
 
@@ -205,17 +225,17 @@ function SymptomSeveritySelect({
   readonly onChange: (value: SeverityLevel) => void;
 }) {
   return (
-    <select
-      className={severitySelectCls}
-      title="Gravidade"
-      value={value}
-      onChange={(event) => onChange(event.target.value as SeverityLevel)}
-    >
-      <option value="ausente">—</option>
-      <option value="leve">Leve</option>
-      <option value="moderado">Moderado</option>
-      <option value="grave">Grave</option>
-    </select>
+    <Select value={value} onValueChange={(v) => onChange(v as SeverityLevel)}>
+      <SelectTrigger size="sm" className="w-[96px]" title="Gravidade">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="ausente">—</SelectItem>
+        <SelectItem value="leve">Leve</SelectItem>
+        <SelectItem value="moderado">Moderado</SelectItem>
+        <SelectItem value="grave">Grave</SelectItem>
+      </SelectContent>
+    </Select>
   );
 }
 
@@ -229,129 +249,139 @@ function IdentificationSection({
   const { state, setPatientField } = assessment;
   return (
     <div className="p-5 space-y-3">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div>
-          <label className={labelCls} htmlFor="paciente">
-            Nome / ID
-          </label>
-          <input
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <Field>
+          <FieldLabel htmlFor="paciente">
+            <User className="h-3.5 w-3.5" /> Nome / ID
+          </FieldLabel>
+          <Input
             id="paciente"
             type="text"
-            className={inputCls}
             placeholder="Identificação"
             value={state.patient.nomeId}
             onChange={(e) => setPatientField("nomeId", e.target.value)}
           />
-        </div>
-        <div>
-          <label className={labelCls} htmlFor="idadeNasc">
-            Idade / nascimento
-          </label>
-          <input
-            id="idadeNasc"
-            type="text"
-            className={inputCls}
-            placeholder="Ex.: 32 anos ou 10/02/1994"
-            value={state.patient.idadeNascimento}
-            onChange={(e) => setPatientField("idadeNascimento", e.target.value)}
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="dataNasc">
+            <Cake className="h-3.5 w-3.5" /> Data de nascimento
+          </FieldLabel>
+          <Input
+            id="dataNasc"
+            type="date"
+            value={state.patient.dataNascimento}
+            onChange={(e) => setPatientField("dataNascimento", e.target.value)}
           />
-        </div>
-        <div>
-          <label className={labelCls} htmlFor="sexo">
-            Sexo
-          </label>
-          <select
-            id="sexo"
-            className={inputCls}
+        </Field>
+        <Field>
+          <FieldLabel>
+            <VenusAndMars className="h-3.5 w-3.5" /> Sexo
+          </FieldLabel>
+          <RadioGroup
             value={state.patient.sexo}
-            onChange={(e) => setPatientField("sexo", e.target.value)}
+            onValueChange={(v) => setPatientField("sexo", v)}
+            className="flex items-center gap-4 h-9"
           >
-            <option value="">Não informado</option>
-            <option value="Feminino">Feminino</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Não-binário">Não-binário</option>
-            <option value="Mulher Trans">Mulher Trans</option>
-            <option value="Homem Trans">Homem Trans</option>
-            <option value="Outro">Outro</option>
-            <option value="Prefiro não informar">Prefiro não informar</option>
-          </select>
-        </div>
+            <div className="flex items-center gap-1.5">
+              <RadioGroupItem value="M" id="sexo-m" />
+              <Label htmlFor="sexo-m">M</Label>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <RadioGroupItem value="F" id="sexo-f" />
+              <Label htmlFor="sexo-f">F</Label>
+            </div>
+          </RadioGroup>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="genero">
+            <Users className="h-3.5 w-3.5" /> Gênero
+          </FieldLabel>
+          <Select
+            value={state.patient.genero}
+            onValueChange={(v) => setPatientField("genero", v)}
+          >
+            <SelectTrigger id="genero" className="w-full">
+              <SelectValue placeholder="Selecione" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Mulher cis">Mulher cis</SelectItem>
+              <SelectItem value="Homem cis">Homem cis</SelectItem>
+              <SelectItem value="Mulher trans">Mulher trans</SelectItem>
+              <SelectItem value="Homem trans">Homem trans</SelectItem>
+              <SelectItem value="Não-binário">Não-binário</SelectItem>
+              <SelectItem value="Outro">Outro</SelectItem>
+              <SelectItem value="Prefiro não informar">
+                Prefiro não informar
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div>
-          <label className={labelCls} htmlFor="escolaridade">
-            Escolaridade
-          </label>
-          <select
-            id="escolaridade"
-            className={inputCls}
+        <Field>
+          <FieldLabel htmlFor="escolaridade">
+            <GraduationCap className="h-3.5 w-3.5" /> Escolaridade
+          </FieldLabel>
+          <Select
             value={state.patient.escolaridade}
-            onChange={(e) => setPatientField("escolaridade", e.target.value)}
+            onValueChange={(v) => setPatientField("escolaridade", v)}
           >
-            <option value="">Selecione</option>
-            <option value="Ensino Fundamental Incompleto">
-              Ensino Fundamental Incompleto
-            </option>
-            <option value="Ensino Fundamental Completo">
-              Ensino Fundamental Completo
-            </option>
-            <option value="Ensino Médio Incompleto">
-              Ensino Médio Incompleto
-            </option>
-            <option value="Ensino Médio Completo">Ensino Médio Completo</option>
-            <option value="Ensino Técnico">Ensino Técnico</option>
-            <option value="Ensino Superior Incompleto">
-              Ensino Superior Incompleto
-            </option>
-            <option value="Ensino Superior Completo">
-              Ensino Superior Completo
-            </option>
-            <option value="Pós-graduação">Pós-graduação</option>
-            <option value="Mestrado">Mestrado</option>
-            <option value="Doutorado">Doutorado</option>
-            <option value="Outro">Outro</option>
-          </select>
-        </div>
-        <div>
-          <label className={labelCls} htmlFor="ocupacao">
-            Ocupação atual
-          </label>
-          <input
+            <SelectTrigger id="escolaridade" className="w-full">
+              <SelectValue placeholder="Selecione" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Ensino Fundamental Incompleto">
+                Ensino Fundamental Incompleto
+              </SelectItem>
+              <SelectItem value="Ensino Fundamental Completo">
+                Ensino Fundamental Completo
+              </SelectItem>
+              <SelectItem value="Ensino Médio Incompleto">
+                Ensino Médio Incompleto
+              </SelectItem>
+              <SelectItem value="Ensino Médio Completo">
+                Ensino Médio Completo
+              </SelectItem>
+              <SelectItem value="Ensino Técnico">Ensino Técnico</SelectItem>
+              <SelectItem value="Ensino Superior Incompleto">
+                Ensino Superior Incompleto
+              </SelectItem>
+              <SelectItem value="Ensino Superior Completo">
+                Ensino Superior Completo
+              </SelectItem>
+              <SelectItem value="Pós-graduação">Pós-graduação</SelectItem>
+              <SelectItem value="Mestrado">Mestrado</SelectItem>
+              <SelectItem value="Doutorado">Doutorado</SelectItem>
+              <SelectItem value="Outro">Outro</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="ocupacao">
+            <Briefcase className="h-3.5 w-3.5" /> Ocupação atual
+          </FieldLabel>
+          <Input
             id="ocupacao"
             type="text"
-            className={inputCls}
             placeholder="Ex.: analista financeiro"
             value={state.patient.ocupacao}
             onChange={(e) => setPatientField("ocupacao", e.target.value)}
           />
-        </div>
+        </Field>
       </div>
-      <div>
-        <label className={labelCls} htmlFor="informante">
-          Informante / encaminhamento
-        </label>
-        <input
-          id="informante"
-          type="text"
-          className={inputCls}
-          placeholder="Fonte das informações"
-          value={state.patient.informante}
-          onChange={(e) => setPatientField("informante", e.target.value)}
-        />
-      </div>
-      <div>
-        <label className={labelCls} htmlFor="queixa">
-          Queixa principal / motivo da consulta
-        </label>
-        <textarea
+      <Field>
+        <FieldLabel htmlFor="queixa">
+          <MessageSquarePlus className="h-3.5 w-3.5" /> Motivo da consulta e
+          observações
+        </FieldLabel>
+        <Textarea
           id="queixa"
-          rows={2}
-          className={textareaCls}
-          placeholder="Descreva a queixa principal que motivou a avaliação"
+          rows={3}
+          placeholder="Descreva o motivo da consulta e observações iniciais"
           value={state.patient.queixaPrincipal}
           onChange={(e) => setPatientField("queixaPrincipal", e.target.value)}
         />
-      </div>
+      </Field>
     </div>
   );
 }
@@ -449,14 +479,13 @@ function ClusterSectionBody({
               key={symptom.id}
               className="flex items-start gap-3 p-2.5 rounded-lg transition hover:bg-surface-2"
             >
-              <input
-                type="checkbox"
+              <Checkbox
                 id={`sym-${symptom.id}`}
                 checked={checked}
-                onChange={(e) =>
-                  assessment.setSymptomChecked(symptom.id, e.target.checked)
+                onCheckedChange={(v) =>
+                  assessment.setSymptomChecked(symptom.id, v === true)
                 }
-                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-blue-600"
+                className="mt-0.5"
                 aria-label={`Marcar ${symptom.rotulo ?? symptom.id}`}
               />
               <label
@@ -496,19 +525,20 @@ function ClusterSectionBody({
         })}
       </div>
       <div className="px-5 pb-4">
-        <label className={labelCls} htmlFor={`obs-${cluster.id}`}>
-          Observações clínicas — {cluster.nome ?? cluster.id}
-        </label>
-        <textarea
-          id={`obs-${cluster.id}`}
-          rows={2}
-          className={textareaCls}
-          placeholder="Exemplos, frequência, contexto, fontes de informação..."
-          value={assessment.state.clusterNotes[cluster.id] ?? ""}
-          onChange={(e) =>
-            assessment.setClusterNote(cluster.id, e.target.value)
-          }
-        />
+        <Field>
+          <FieldLabel htmlFor={`obs-${cluster.id}`}>
+            Observações clínicas — {cluster.nome ?? cluster.id}
+          </FieldLabel>
+          <Textarea
+            id={`obs-${cluster.id}`}
+            rows={2}
+            placeholder="Exemplos, frequência, contexto, fontes de informação..."
+            value={assessment.state.clusterNotes[cluster.id] ?? ""}
+            onChange={(e) =>
+              assessment.setClusterNote(cluster.id, e.target.value)
+            }
+          />
+        </Field>
       </div>
     </div>
   );
@@ -552,18 +582,15 @@ function ChoiceChipsSection({
           </ToggleChip>
         ))}
       </div>
-      <div>
-        <label className={labelCls} htmlFor={`note-${noteKey}`}>
-          {noteLabel}
-        </label>
-        <textarea
+      <Field>
+        <FieldLabel htmlFor={`note-${noteKey}`}>{noteLabel}</FieldLabel>
+        <Textarea
           id={`note-${noteKey}`}
           rows={2}
-          className={textareaCls}
           value={assessment.state.sectionNotes[noteKey] ?? ""}
           onChange={(e) => assessment.setSectionNote(noteKey, e.target.value)}
         />
-      </div>
+      </Field>
     </div>
   );
 }
@@ -590,18 +617,13 @@ function DifferentialSection({
               key={item.id}
               className="flex items-start gap-3 p-2.5 rounded-lg transition hover:bg-surface-2"
             >
-              <input
-                type="checkbox"
+              <Checkbox
                 id={`ddx-${item.id}`}
                 checked={checked}
-                onChange={(e) =>
-                  assessment.setToggle(
-                    "comorbidities",
-                    item.id,
-                    e.target.checked,
-                  )
+                onCheckedChange={(v) =>
+                  assessment.setToggle("comorbidities", item.id, v === true)
                 }
-                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-blue-600"
+                className="mt-0.5"
               />
               <label
                 htmlFor={`ddx-${item.id}`}
@@ -620,20 +642,19 @@ function DifferentialSection({
           );
         })}
       </div>
-      <div>
-        <label className={labelCls} htmlFor="note-ddx">
+      <Field>
+        <FieldLabel htmlFor="note-ddx">
           Notas sobre diagnóstico diferencial
-        </label>
-        <textarea
+        </FieldLabel>
+        <Textarea
           id="note-ddx"
           rows={2}
-          className={textareaCls}
           value={assessment.state.sectionNotes.diagnostico_diferencial ?? ""}
           onChange={(e) =>
             assessment.setSectionNote("diagnostico_diferencial", e.target.value)
           }
         />
-      </div>
+      </Field>
     </div>
   );
 }
@@ -648,39 +669,41 @@ function ImpactSection({
   return (
     <div className="p-5 space-y-3">
       <div className="grid grid-cols-1 sm:grid-cols-[12rem_1fr] gap-3 items-start">
-        <div>
-          <label className={labelCls} htmlFor="impacto-global">
+        <Field>
+          <FieldLabel htmlFor="impacto-global">
             Impacto funcional global
-          </label>
-          <select
-            id="impacto-global"
-            className={severitySelectCls}
+          </FieldLabel>
+          <Select
             value={assessment.state.impactFunctional}
-            onChange={(e) =>
-              assessment.setImpactFunctional(e.target.value as SeverityLevel)
+            onValueChange={(v) =>
+              assessment.setImpactFunctional(v as SeverityLevel)
             }
           >
-            <option value="ausente">Sem prejuízo</option>
-            <option value="leve">Leve</option>
-            <option value="moderado">Moderado</option>
-            <option value="grave">Grave</option>
-          </select>
-        </div>
-        <div>
-          <label className={labelCls} htmlFor="impacto-obs">
+            <SelectTrigger id="impacto-global" className="w-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ausente">Sem prejuízo</SelectItem>
+              <SelectItem value="leve">Leve</SelectItem>
+              <SelectItem value="moderado">Moderado</SelectItem>
+              <SelectItem value="grave">Grave</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="impacto-obs">
             Observações sobre impacto funcional
-          </label>
-          <textarea
+          </FieldLabel>
+          <Textarea
             id="impacto-obs"
             rows={2}
-            className={textareaCls}
             placeholder="Prejuízo acadêmico, ocupacional, familiar, social, autocuidado, segurança..."
             value={assessment.state.sectionNotes.impacto_funcional ?? ""}
             onChange={(e) =>
               assessment.setSectionNote("impacto_funcional", e.target.value)
             }
           />
-        </div>
+        </Field>
       </div>
       {sectionHasData(data.dominios_impacto) ? (
         <CompactClinicalValue value={data.dominios_impacto} />
@@ -755,18 +778,17 @@ function SupplementalSection({
   return (
     <div className="p-5 space-y-3">
       <CompactClinicalValue value={value} />
-      <div>
-        <label className={labelCls} htmlFor={`note-${section}`}>
+      <Field>
+        <FieldLabel htmlFor={`note-${section}`}>
           Observações clínicas — {titleFromValue(section).toLowerCase()}
-        </label>
-        <textarea
+        </FieldLabel>
+        <Textarea
           id={`note-${section}`}
           rows={2}
-          className={textareaCls}
           value={assessment.state.sectionNotes[section] ?? ""}
           onChange={(e) => assessment.setSectionNote(section, e.target.value)}
         />
-      </div>
+      </Field>
     </div>
   );
 }
@@ -791,61 +813,80 @@ function CriteriaPanel({
   ).filter(Boolean).length;
 
   return (
-    <div className="p-5 space-y-3">
+    <div
+      className={cn(
+        "p-5 grid gap-3 items-start",
+        counters.length > 0 ? "lg:grid-cols-[2fr_1fr]" : "",
+      )}
+    >
       {counters.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {counters.map((counter) => (
-            <div
-              key={counter.id}
-              className={cn(
-                "rounded-lg border p-3 text-center transition-colors",
-                counter.met
-                  ? "border-green-300 bg-green-50"
-                  : "border-border bg-surface",
-              )}
-            >
-              <p
-                className="text-sm text-text-3 mb-1 truncate"
-                title={counter.label}
-              >
-                {counter.label}
-              </p>
-              <p className="text-2xl font-bold font-serif text-text tabular-nums">
-                {counter.checked}
-              </p>
-              <p className="text-sm text-text-3">
-                de {counter.threshold} necessários
-              </p>
+        <Card size="sm">
+          <CardHeader>
+            <CardTitle>Critérios por cluster</CardTitle>
+            <CardDescription>
+              Sintomas marcados em relação ao mínimo necessário
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {counters.map((counter) => (
+                <div
+                  key={counter.id}
+                  className={cn(
+                    "rounded-lg border p-3 text-center transition-colors",
+                    counter.met
+                      ? "border-green-300 bg-green-50"
+                      : "border-border bg-surface",
+                  )}
+                >
+                  <p
+                    className="text-sm text-text-3 mb-1 truncate"
+                    title={counter.label}
+                  >
+                    {counter.label}
+                  </p>
+                  <p className="text-2xl font-bold font-serif text-text tabular-nums">
+                    {counter.checked}
+                  </p>
+                  <p className="text-sm text-text-3">
+                    de {counter.threshold} necessários
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </CardContent>
+        </Card>
       ) : null}
 
-      <div className="rounded-lg border border-border p-3 space-y-1.5">
-        <p className="text-sm text-text-3 mb-1">Resumo da avaliação</p>
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-text-2">Critérios condicionais</span>
-          <CountBadge n={requiredMet} met={requiredMet > 0} />
-        </div>
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-text-2">Especificadores</span>
-          <CountBadge n={selectedSpecs} met={selectedSpecs > 0} />
-        </div>
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-text-2">Comorbidades / DDx</span>
-          <CountBadge
-            n={selectedComorbidities}
-            met={selectedComorbidities > 0}
-          />
-        </div>
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-text-2">Impacto funcional</span>
-          <CountBadge
-            n={titleFromValue(assessment.state.impactFunctional)}
-            met={assessment.state.impactFunctional !== "ausente"}
-          />
-        </div>
-      </div>
+      <Card size="sm">
+        <CardHeader>
+          <CardTitle>Resumo da avaliação</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-1.5">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-text-2">Critérios condicionais</span>
+            <CountBadge n={requiredMet} met={requiredMet > 0} />
+          </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-text-2">Especificadores</span>
+            <CountBadge n={selectedSpecs} met={selectedSpecs > 0} />
+          </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-text-2">Comorbidades / DDx</span>
+            <CountBadge
+              n={selectedComorbidities}
+              met={selectedComorbidities > 0}
+            />
+          </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-text-2">Impacto funcional</span>
+            <CountBadge
+              n={titleFromValue(assessment.state.impactFunctional)}
+              met={assessment.state.impactFunctional !== "ausente"}
+            />
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
@@ -863,6 +904,158 @@ async function copyText(text: string) {
   element.select();
   document.execCommand("copy");
   document.body.removeChild(element);
+}
+
+/* ─── Guia Clínico Informativo (Resumo do Aplicador) ───────────────────── */
+
+function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
+  const rawData = data as any;
+  const prevalencia = rawData.prevalencia;
+  const curso = rawData.curso_desenvolvimento;
+  const gravidade = rawData.rendering?.severity;
+  const instrumentos: Array<{ nome?: string; sigla?: string }> =
+    rawData.instrumentos_complementares ?? [];
+  const subtipos: string[] = rawData.rendering?.subtypes_presentations ?? [];
+
+  return (
+    <div className="p-5 space-y-5">
+      {/* Grade de 3 Cards de Resumo Rápidos */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* 📊 Prevalência & Epidemiologia */}
+        <div className="bg-surface-2/60 rounded-xl p-4 border border-border space-y-2">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <Activity className="h-4 w-4" />
+            <span>Prevalência & Demografia</span>
+          </div>
+          <div className="text-xs space-y-1 text-text-2">
+            {prevalencia?.populacao_geral ? (
+              <p>
+                <strong className="text-text font-semibold">Geral:</strong>{" "}
+                {String(prevalencia.populacao_geral)}
+              </p>
+            ) : null}
+            {prevalencia?.proporcao_sexo ? (
+              <p>
+                <strong className="text-text font-semibold">
+                  Razão (♀:♂):
+                </strong>{" "}
+                {String(prevalencia.proporcao_sexo)}
+              </p>
+            ) : null}
+            {prevalencia?.notas ? (
+              <p className="text-[11px] text-text-3 italic mt-1">
+                {String(prevalencia.notas)}
+              </p>
+            ) : null}
+            {!prevalencia?.populacao_geral &&
+            !prevalencia?.proporcao_sexo &&
+            !prevalencia?.notas ? (
+              <p className="text-text-3 italic">
+                Dados epidemiológicos padronizados do DSM-5-TR.
+              </p>
+            ) : null}
+          </div>
+        </div>
+
+        {/* ⏳ Curso & Desenvolvimento */}
+        <div className="bg-surface-2/60 rounded-xl p-4 border border-border space-y-2">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+            <Clock className="h-4 w-4" />
+            <span>Curso & Desenvolvimento</span>
+          </div>
+          <div className="text-xs space-y-1 text-text-2">
+            {curso?.idade_inicio_tipica ? (
+              <p>
+                <strong className="text-text font-semibold">
+                  Início Típico:
+                </strong>{" "}
+                {String(curso.idade_inicio_tipica)}
+              </p>
+            ) : null}
+            {curso?.trajetoria ? (
+              <p>
+                <strong className="text-text font-semibold">Trajetória:</strong>{" "}
+                {String(curso.trajetoria)}
+              </p>
+            ) : null}
+            {curso?.prognostico ? (
+              <p className="text-[11px] text-text-3 italic mt-1">
+                {String(curso.prognostico)}
+              </p>
+            ) : null}
+            {!curso?.idade_inicio_tipica && !curso?.trajetoria ? (
+              <p className="text-text-3 italic">
+                Evolução longitudinal e curso clínico típicos do capítulo.
+              </p>
+            ) : null}
+          </div>
+        </div>
+
+        {/* 📋 Instrumentos & Escalas */}
+        <div className="bg-surface-2/60 rounded-xl p-4 border border-border space-y-2">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+            <FileSpreadsheet className="h-4 w-4" />
+            <span>Escalas Complementares</span>
+          </div>
+          {instrumentos.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {instrumentos.map((inst, idx) => (
+                <span
+                  key={idx}
+                  title={inst.nome}
+                  className="text-xs font-medium px-2 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                >
+                  {inst.sigla || inst.nome}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="text-xs text-text-3">
+              Avaliação primariamente clínica baseada no checklist DSM-5-TR.
+            </p>
+          )}
+        </div>
+      </div>
+
+      {/* Grade Inferior: Gravidade e Subtipos */}
+      {gravidade?.levels?.length || subtipos.length ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {gravidade?.levels &&
+          Array.isArray(gravidade.levels) &&
+          gravidade.levels.length > 0 ? (
+            <div className="bg-surface-2/40 rounded-xl p-4 border border-border space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-text-2">
+                Parâmetros de Gravidade
+              </h4>
+              <ul className="space-y-1.5 text-xs">
+                {gravidade.levels.map((lvl: any, i: number) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="font-semibold text-text min-w-[70px]">
+                      {String(lvl.label || lvl.id)}:
+                    </span>
+                    <span className="text-text-2">{String(lvl.descritor)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {subtipos.length > 0 ? (
+            <div className="bg-surface-2/40 rounded-xl p-4 border border-border space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-text-2">
+                Subtipos / Especificadores Clínicos
+              </h4>
+              <ul className="list-disc pl-4 space-y-1 text-xs text-text-2">
+                {subtipos.map((sub: string, i: number) => (
+                  <li key={i}>{String(sub)}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 /* ─── Renderer principal ────────────────────────────────────────────────── */
@@ -920,15 +1113,8 @@ export function DisorderRenderer({
   clusters.forEach((cluster) => defaultOpen.push(`cluster-${cluster.id}`));
 
   const [openSections, setOpenSections] = useState<string[]>(defaultOpen);
-  const toggleSection = (id: string) =>
-    setOpenSections((current) =>
-      current.includes(id)
-        ? current.filter((item) => item !== id)
-        : [...current, id],
-    );
-  const isOpen = (id: string) => openSections.includes(id);
 
-  const allSectionIds: string[] = ["identificacao"];
+  const allSectionIds: string[] = ["identificacao", "guia-clinico"];
   if (criteriaItems.length > 0) allSectionIds.push("criterios");
   clusters.forEach((cluster) => allSectionIds.push(`cluster-${cluster.id}`));
   allSectionIds.push("impacto");
@@ -986,59 +1172,59 @@ export function DisorderRenderer({
             </div>
           </div>
           <div className="flex items-center gap-2 shrink-0">
-            <button
-              type="button"
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => setOpenSections(allSectionIds)}
-              className="text-sm font-semibold bg-surface border border-border text-text-2 rounded-lg px-3 py-1.5 hover:bg-surface-2 transition cursor-pointer"
             >
-              <ChevronsDown className="inline h-3.5 w-3.5 mr-1" />
+              <ChevronsDown data-icon="inline-start" />
               Expandir
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => setOpenSections([])}
-              className="text-sm font-semibold bg-surface border border-border text-text-2 rounded-lg px-3 py-1.5 hover:bg-surface-2 transition cursor-pointer"
             >
-              <ChevronsUp className="inline h-3.5 w-3.5 mr-1" />
+              <ChevronsUp data-icon="inline-start" />
               Recolher
-            </button>
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="text-sm font-semibold bg-blue-700 text-white rounded-lg px-3 py-1.5 hover:bg-blue-800 transition cursor-pointer"
-            >
-              <Printer className="inline h-3.5 w-3.5 mr-1" />
+            </Button>
+            <Button size="sm" onClick={() => window.print()}>
+              <Printer data-icon="inline-start" />
               Imprimir
-            </button>
-            <button
-              type="button"
-              onClick={handleReset}
-              className="text-sm font-semibold bg-orange-700 text-white rounded-lg px-3 py-1.5 hover:bg-orange-800 transition cursor-pointer"
-            >
-              <RotateCcw className="inline h-3.5 w-3.5 mr-1" />
+            </Button>
+            <Button variant="destructive" size="sm" onClick={handleReset}>
+              <RotateCcw data-icon="inline-start" />
               Limpar
-            </button>
+            </Button>
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
-        <div className="space-y-3">
+        <Accordion
+          type="multiple"
+          value={openSections}
+          onValueChange={setOpenSections}
+          className="space-y-3 border-0"
+        >
           <Section
+            id="identificacao"
             icon={UserPen}
             title="Identificação do Paciente"
-            open={isOpen("identificacao")}
-            onToggle={() => toggleSection("identificacao")}
           >
             <IdentificationSection assessment={assessment} />
           </Section>
 
           <Section
-            icon={ListChecks}
-            title="Painel de Critérios"
-            open={isOpen("painel")}
-            onToggle={() => toggleSection("painel")}
+            id="guia-clinico"
+            icon={BookOpen}
+            iconClass="text-emerald-600 dark:text-emerald-400"
+            title="Guia Clínico & Informativo (Resumo do Aplicador)"
           >
+            <ClinicalGuideSection data={data} />
+          </Section>
+
+          <Section id="painel" icon={ListChecks} title="Painel de Critérios">
             <CriteriaPanel
               counters={assessment.clusterCounters}
               assessment={assessment}
@@ -1047,6 +1233,7 @@ export function DisorderRenderer({
 
           {criteriaItems.length > 0 ? (
             <Section
+              id="criterios"
               icon={ListChecks}
               title="Critérios Condicionais"
               badge={
@@ -1062,8 +1249,6 @@ export function DisorderRenderer({
                   )}
                 />
               }
-              open={isOpen("criterios")}
-              onToggle={() => toggleSection("criterios")}
             >
               <ConditionalCriteriaSection data={data} assessment={assessment} />
             </Section>
@@ -1076,6 +1261,7 @@ export function DisorderRenderer({
             return (
               <Section
                 key={cluster.id}
+                id={`cluster-${cluster.id}`}
                 icon={ClipboardList}
                 iconClass={index % 2 === 0 ? "text-amber-600" : "text-red-600"}
                 title={`${cluster.id} – ${cluster.nome ?? `Cluster ${index + 1}`}`}
@@ -1086,8 +1272,6 @@ export function DisorderRenderer({
                     met={counter?.met}
                   />
                 }
-                open={isOpen(`cluster-${cluster.id}`)}
-                onToggle={() => toggleSection(`cluster-${cluster.id}`)}
               >
                 <ClusterSectionBody cluster={cluster} assessment={assessment} />
               </Section>
@@ -1095,16 +1279,16 @@ export function DisorderRenderer({
           })}
 
           <Section
+            id="impacto"
             icon={TrendingUp}
             title="Avaliação de Impacto Funcional"
-            open={isOpen("impacto")}
-            onToggle={() => toggleSection("impacto")}
           >
             <ImpactSection data={data} assessment={assessment} />
           </Section>
 
           {comorbidityItems.length > 0 ? (
             <Section
+              id="comorbidades"
               icon={Layers}
               title="Comorbidades Frequentes"
               badge={
@@ -1119,8 +1303,6 @@ export function DisorderRenderer({
                   )}
                 />
               }
-              open={isOpen("comorbidades")}
-              onToggle={() => toggleSection("comorbidades")}
             >
               <ChoiceChipsSection
                 data={data.comorbidades_frequentes}
@@ -1135,11 +1317,10 @@ export function DisorderRenderer({
 
           {ddxItems.length > 0 ? (
             <Section
+              id="ddx"
               icon={SearchCheck}
               iconClass="text-purple-700"
               title="Diagnóstico Diferencial (DDx)"
-              open={isOpen("ddx")}
-              onToggle={() => toggleSection("ddx")}
             >
               <DifferentialSection data={data} assessment={assessment} />
             </Section>
@@ -1147,6 +1328,7 @@ export function DisorderRenderer({
 
           {specifierItems.length > 0 ? (
             <Section
+              id="especificadores"
               icon={SlidersHorizontal}
               iconClass="text-violet-700"
               title="Especificadores"
@@ -1159,8 +1341,6 @@ export function DisorderRenderer({
                   met={Object.values(assessment.state.specifiers).some(Boolean)}
                 />
               }
-              open={isOpen("especificadores")}
-              onToggle={() => toggleSection("especificadores")}
             >
               <ChoiceChipsSection
                 data={data.especificadores}
@@ -1176,6 +1356,7 @@ export function DisorderRenderer({
           {visibleSupplemental.map((section) => (
             <Section
               key={section}
+              id={section}
               icon={Info}
               iconClass="text-teal-700"
               title={titleFromValue(section)}
@@ -1184,8 +1365,6 @@ export function DisorderRenderer({
                   complementar
                 </span>
               }
-              open={isOpen(section)}
-              onToggle={() => toggleSection(section)}
             >
               <SupplementalSection
                 section={section}
@@ -1197,20 +1376,12 @@ export function DisorderRenderer({
 
           {/* ─── Botões de ação ─── */}
           <div className="flex flex-wrap items-center gap-3 no-print pt-1">
-            <button
-              type="button"
-              onClick={assessment.refreshMarkdown}
-              className="inline-flex items-center gap-2 text-md font-semibold bg-surface border border-border text-text-2 rounded-lg px-5 py-2.5 hover:bg-surface-2 transition cursor-pointer"
-            >
-              <RotateCcw className="h-4 w-4" /> Atualizar síntese
-            </button>
-            <button
-              type="button"
-              onClick={handleCopy}
-              className="inline-flex items-center gap-2 text-md font-semibold bg-blue-600 text-white rounded-lg px-5 py-2.5 hover:bg-blue-700 transition cursor-pointer"
-            >
-              <Copy className="h-4 w-4" /> {copyFeedback}
-            </button>
+            <Button variant="outline" onClick={assessment.refreshMarkdown}>
+              <RotateCcw data-icon="inline-start" /> Atualizar síntese
+            </Button>
+            <Button onClick={handleCopy}>
+              <Copy data-icon="inline-start" /> {copyFeedback}
+            </Button>
             <span className="text-sm text-text-3">
               Formato pronto para prontuário eletrônico ou Obsidian.
             </span>
@@ -1218,22 +1389,22 @@ export function DisorderRenderer({
 
           {/* ─── Markdown: sempre por último ─── */}
           <Section
+            id="markdown"
             icon={FileText}
             title="Pré-visualização Markdown"
             badge={
-              <button
-                type="button"
+              <Button
+                variant="secondary"
+                size="xs"
+                className="no-print"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleCopy();
                 }}
-                className="text-sm text-blue-600 hover:text-blue-800 font-semibold bg-blue-50 px-2 py-0.5 rounded-full no-print cursor-pointer"
               >
-                <Copy className="inline h-2.5 w-2.5 mr-0.5" /> Copiar
-              </button>
+                <Copy data-icon="inline-start" /> Copiar
+              </Button>
             }
-            open={isOpen("markdown")}
-            onToggle={() => toggleSection("markdown")}
           >
             <div className="p-4">
               <pre className="text-text-2 bg-surface-2 rounded-lg border border-border p-4 overflow-auto max-h-[65vh] whitespace-pre-wrap leading-relaxed font-mono text-[0.8rem]">
@@ -1248,7 +1419,7 @@ export function DisorderRenderer({
               </p>
             </div>
           </Section>
-        </div>
+        </Accordion>
       </main>
     </div>
   );

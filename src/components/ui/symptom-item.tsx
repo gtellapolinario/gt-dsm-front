@@ -7,7 +7,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import type { Sintoma } from "@/infra/types";
+
+interface Sintoma {
+  id: string;
+  rotulo?: string;
+  desc?: string;
+  pergunta?: string;
+}
 
 interface SymptomItemProps {
   sintoma: Sintoma;

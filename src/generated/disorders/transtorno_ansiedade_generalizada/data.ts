@@ -321,10 +321,7 @@ export const data = TranstornoAnsiedadeGeneralizadaSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno de Ansiedade Generalizada - {nome_paciente}",
-    "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.02 / F41.1)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "05_transtornos_ansiedade.md",
     "fonte_inventario_md": null,

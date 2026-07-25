@@ -311,10 +311,7 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Transtorno Esquizofreniforme (Provisório) - {nome_paciente}",
-    "rodape_metodologico": "Diagnóstico estabelecido provisoriamente com base em quadro psicótico ativo superior a 1 mês e inferior a 6 meses, sob critérios do DSM-5."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",

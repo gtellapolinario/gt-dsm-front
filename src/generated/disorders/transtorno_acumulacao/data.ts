@@ -271,10 +271,7 @@ export const data = TranstornoAcumulacaoSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno de Acumulação - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (300.3 / F42)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "06_transtorno_obsessivo_compulsivo_transtornos_relacionados.md",
     "fonte_inventario_md": null,

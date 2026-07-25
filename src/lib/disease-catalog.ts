@@ -98,14 +98,6 @@ export const CHAPTER_BY_ID: Readonly<Record<string, ChapterMeta>> = Object.freez
   Object.fromEntries(CHAPTERS.map((c) => [c.id, c]))
 );
 
-/** Lookup O(1) de capitulo por chave abreviada (neuro, psico, ...). */
-export const CHAPTER_BY_KEY: Readonly<Record<string, ChapterMeta>> = Object.freeze(
-  Object.fromEntries(CHAPTERS.map((c) => [c.key, c]))
-);
-
-/** Chaves abreviadas dos capitulos em ordem. */
-export const CHAPTER_KEYS: readonly string[] = CHAPTERS.map((c) => c.key);
-
 /* =============================================================================
    ARRAY BRUTO — todas as ~160 doencas renderizaveis
    ============================================================================= */
@@ -933,17 +925,16 @@ const RAW_RENDERABLE_DISEASES = [
    ============================================================================= */
 
 /** Union literal de todos os IDs de doenca validos (automatizado). */
-export type DiseaseId = (typeof RAW_RENDERABLE_DISEASES)[number]["id"];
+type DiseaseId = (typeof RAW_RENDERABLE_DISEASES)[number]["id"];
 
 /* =============================================================================
    VALIDACAO RUNTIME VIA ZOD
    ============================================================================= */
 
 /**
- * Array validado de doencas. Este e o unico export de dados que deve ser usado
- * pelos componentes — garante que todo dado passou pelo parse do Zod.
+ * Array validado de doencas. Todo dado passou pelo parse do Zod.
  */
-export const RENDERABLE_DISEASES: DiseaseCatalogItem[] = z
+const RENDERABLE_DISEASES: DiseaseCatalogItem[] = z
   .array(DiseaseCatalogItemSchema)
   .parse(RAW_RENDERABLE_DISEASES);
 
@@ -952,7 +943,7 @@ export const RENDERABLE_DISEASES: DiseaseCatalogItem[] = z
    ============================================================================= */
 
 /** Lookup O(1): doenca por ID exato. O type guard `isDiseaseId` garante acesso seguro. */
-export const DISEASE_BY_ID: Readonly<
+const DISEASE_BY_ID: Readonly<
   Record<string, DiseaseCatalogItem>
 > = Object.freeze(
   Object.fromEntries(
@@ -960,32 +951,12 @@ export const DISEASE_BY_ID: Readonly<
   )
 );
 
-/** Lookup O(1): array de doencas por capituloId ("01".."21"). */
-export const DISEASES_BY_CHAPTER: Readonly<
-  Record<string, DiseaseCatalogItem[]>
-> = Object.freeze(
-  RENDERABLE_DISEASES.reduce<Record<string, DiseaseCatalogItem[]>>((acc, d) => {
-    (acc[d.capituloId] ??= []).push(d);
-    return acc;
-  }, {})
-);
-
-/** Apenas doencas FULL (formularios completos). */
-export const FULL_DISEASES: Readonly<DiseaseCatalogItem[]> = Object.freeze(
-  RENDERABLE_DISEASES.filter((d: DiseaseCatalogItem) => d.categoria === "FULL")
-);
-
-/** Apenas doencas SHORT (formularios resumidos). */
-export const SHORT_DISEASES: Readonly<DiseaseCatalogItem[]> = Object.freeze(
-  RENDERABLE_DISEASES.filter((d: DiseaseCatalogItem) => d.categoria === "SHORT")
-);
-
 /* =============================================================================
    DISEASE_CATALOG — organizado por chave abreviada de capitulo
    ============================================================================= */
 
 /** Catalogo organizado por chave abreviada do capitulo (neuro, psico, bipo...). */
-export const DISEASE_CATALOG: Readonly<
+const DISEASE_CATALOG: Readonly<
   Record<string, readonly DiseaseCatalogItem[]>
 > = Object.freeze(
   Object.fromEntries(
@@ -997,19 +968,6 @@ export const DISEASE_CATALOG: Readonly<
 );
 
 /* =============================================================================
-   CONSTANTES DERIVADAS
-   ============================================================================= */
-
-/** Total de doencas renderizaveis. */
-export const TOTAL_RENDERABLE: number = RENDERABLE_DISEASES.length;
-
-/** Total de doencas FULL. */
-export const TOTAL_FULL: number = FULL_DISEASES.length;
-
-/** Total de doencas SHORT. */
-export const TOTAL_SHORT: number = SHORT_DISEASES.length;
-
-/* =============================================================================
    HELPERS TYPE-SAFE
    ============================================================================= */
 
@@ -1018,7 +976,7 @@ export const TOTAL_SHORT: number = SHORT_DISEASES.length;
  * @param id - string arbitraria a testar
  * @returns `true` quando `id` existe no catalogo
  */
-export function isDiseaseId(id: string): id is DiseaseId {
+function isDiseaseId(id: string): id is DiseaseId {
   return id in DISEASE_BY_ID;
 }
 
@@ -1027,19 +985,10 @@ export function isDiseaseId(id: string): id is DiseaseId {
  * @param id - ID da doenca
  * @returns O item do catalogo ou `undefined`
  */
-export function getDiseaseById(id: string): DiseaseCatalogItem | undefined {
+function getDiseaseById(id: string): DiseaseCatalogItem | undefined {
   if (!isDiseaseId(id)) return undefined;
   // isDiseaseId garante que id e uma chave valida de DISEASE_BY_ID
   return DISEASE_BY_ID[id];
-}
-
-/**
- * Alias para `getDiseaseById`. Retorna uma doenca pelo ID.
- * @param id - ID da doenca
- * @returns O item do catalogo ou `undefined`
- */
-export function findDiseaseById(id: string): DiseaseCatalogItem | undefined {
-  return getDiseaseById(id);
 }
 
 /**
@@ -1054,17 +1003,6 @@ export function searchDiseases(query: string): DiseaseCatalogItem[] {
     const sigla = (d.sigla ?? "").toLowerCase();
     return nome.includes(q) || sigla.includes(q);
   });
-}
-
-/**
- * Retorna todas as doencas de um capitulo pelo capituloId.
- * @param capituloId - ID de dois digitos do capitulo (ex: "01", "18")
- * @returns Array de doencas do capitulo (vazio se nao existir)
- */
-export function getDiseasesByChapter(
-  capituloId: string
-): DiseaseCatalogItem[] {
-  return DISEASES_BY_CHAPTER[capituloId] ?? [];
 }
 
 /* =============================================================================

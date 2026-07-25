@@ -328,10 +328,7 @@ export const data = TranstornosAdaptacaoSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno de Adaptação - {nome_paciente}",
-    "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (309.x / F43.2x)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "07_transtornos_relacionados_trauma_a_estressores.md",
     "fonte_inventario_md": null,

@@ -517,10 +517,7 @@ export const data = TranstornoBipolarTipo1Schema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação do Transtorno Bipolar Tipo I - {nome_paciente}",
-    "rodape_metodologico": "Avaliação clínica baseada nos critérios e especificadores descritos no DSM-5 e histórico do paciente."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "03_transtorno_bipolar_transtornos_relacionados.md",
     "fonte_inventario_md": "inventario/03_inventario.md",

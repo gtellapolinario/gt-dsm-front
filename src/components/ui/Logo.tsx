@@ -1,5 +1,5 @@
 // src/components/ui/Logo.tsx
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 
 interface LogoProps {
   size?: number;

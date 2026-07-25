@@ -327,10 +327,7 @@ export const data = FobiaEspecificaSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Fobia Específica - {nome_paciente}",
-    "rodape_metodologico": "Dados obtidos por anamnese clínica estruturada com base nos critérios DSM-5 (300.29 / F40.2xx)."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "05_transtornos_ansiedade.md",
     "fonte_inventario_md": null,

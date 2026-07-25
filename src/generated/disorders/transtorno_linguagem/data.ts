@@ -226,10 +226,7 @@ export const data = TranstornoLinguagemSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "### Avaliação da Comunicação - Transtorno da Linguagem",
-    "rodape_metodologico": "Diagnóstico estabelecido através de avaliação fonoaudiológica e psicométrica da linguagem."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
     "fonte_inventario_md": "inventario/01_inventario.md",

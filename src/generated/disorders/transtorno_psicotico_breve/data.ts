@@ -297,10 +297,7 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
       "fonte_passada_1": true
     }
   },
-  "template_prontuario": {
-    "cabecalho": "## Avaliação de Transtorno Psicótico Breve - {nome_paciente}",
-    "rodape_metodologico": "Diagnóstico estabelecido com base no início agudo (dentro de 2 semanas) e duração menor que 1 mês, conforme os critérios descritos no DSM-5."
-  },
+  
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",
