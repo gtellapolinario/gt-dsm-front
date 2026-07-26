@@ -1,7 +1,7 @@
 import { TranstornoDisruptivoDesregulacaoHumorSchema } from "./schema";
 
 export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_disruptivo_desregulacao_humor",
     "nome_completo": "Transtorno Disruptivo da Desregulação do Humor",
@@ -21,205 +21,196 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Explosões de Raiva Recorrentes e Graves",
-      "tipo": "monothetic_obrigatorio",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Explosões verbais/comportamentais desproporcionais",
-          "desc": "Explosões de raiva recorrentes e graves (verbal ou comportamental/agressão física), desproporcionais em intensidade ou duração à situação.",
-          "pergunta": "A criança tem explosões de raiva graves que são muito maiores do que a situação justificaria?",
-          "exemplos_clinicos": [
-            "Violência verbal intensa ante frustrações menores",
-            "Destruição de objetos quando contrariada"
-          ],
-          "faixa_aplicavel": "pediatria"
-        },
-        {
-          "id": "A2",
-          "rotulo": "Explosões inconsistentes com nível de desenvolvimento",
-          "desc": "As explosões de raiva são inapropriadas para o nível desenvolvimental da criança.",
-          "pergunta": "As explosões são muito mais intensas do que seria esperado para a idade da criança?",
-          "exemplos_clinicos": [
-            "Comportamento de crise típico de criança muito menor"
-          ],
-          "faixa_aplicavel": "pediatria"
-        },
-        {
-          "id": "A3",
-          "rotulo": "Frequência: ≥3 vezes por semana",
-          "desc": "As explosões de raiva ocorrem, em média, três ou mais vezes por semana.",
-          "pergunta": "As explosões acontecem pelo menos três vezes na semana?",
-          "exemplos_clinicos": [
-            "Explosões diárias ou quase diárias"
-          ],
-          "faixa_aplicavel": "pediatria"
-        },
-        {
-          "id": "D1",
-          "rotulo": "Humor irritável/zangado persistente entre explosões",
-          "desc": "Humor entre as explosões de raiva é persistentemente irritável ou zangado na maior parte do dia, quase todos os dias, observável por outras pessoas.",
-          "pergunta": "A criança parece irritável ou zangada durante a maior parte do dia, todos os dias, mesmo quando não está tendo explosões?",
-          "exemplos_clinicos": [
-            "Professores relatam que a criança parece sempre com raiva"
-          ],
-          "faixa_aplicavel": "pediatria"
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "A",
+        "nome": "Explosões verbais/comportamentais desproporcionais",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Explosões verbais/comportamentais desproporcionais",
+                "desc": "Explosões de raiva recorrentes e graves (verbal ou comportamental/agressão física), desproporcionais em intensidade ou duração à situação.",
+                "pergunta": "A criança tem explosões de raiva graves que são muito maiores do que a situação justificaria?",
+                "faixa_aplicavel": "pediatria",
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Violência verbal intensa ante frustrações menores",
+                    "Destruição de objetos quando contrariada"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
+    },
+    {
+        "id": "B",
+        "nome": "Explosões inconsistentes com nível de desenvolvimento",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "B1",
+                "rotulo": "Explosões inconsistentes com nível de desenvolvimento",
+                "desc": "As explosões de raiva são inapropriadas para o nível desenvolvimental da criança.",
+                "pergunta": "As explosões são muito mais intensas do que seria esperado para a idade da criança?",
+                "faixa_aplicavel": "pediatria",
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Comportamento de crise típico de criança muito menor"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
+    },
+    {
+        "id": "C",
+        "nome": "Frequência: ≥3 vezes por semana",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "C1",
+                "rotulo": "Frequência: ≥3 vezes por semana",
+                "desc": "As explosões de raiva ocorrem, em média, três ou mais vezes por semana.",
+                "pergunta": "As explosões acontecem pelo menos três vezes na semana?",
+                "faixa_aplicavel": "pediatria",
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Explosões diárias ou quase diárias"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
+    },
+    {
+        "id": "D",
+        "nome": "Humor irritável/zangado persistente entre explosões",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "D1",
+                "rotulo": "Humor irritável/zangado persistente entre explosões",
+                "desc": "Humor entre as explosões de raiva é persistentemente irritável ou zangado na maior parte do dia, quase todos os dias, observável por outras pessoas.",
+                "pergunta": "A criança parece irritável ou zangada durante a maior parte do dia, todos os dias, mesmo quando não está tendo explosões?",
+                "faixa_aplicavel": "pediatria",
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Professores relatam que a criança parece sempre com raiva"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "duracao_12meses",
-      "letra": "E",
-      "rotulo": "Duração ≥12 meses sem pausa de 3 meses",
-      "tipo": "temporal_duracao_minima",
-      "ui_widget": "campo_duracao_meses",
-      "obrigatorio": true,
-      "icone": "Calendar",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Os Critérios A-D estão presentes por 12 meses ou mais; sem período de 3 ou mais meses consecutivos sem todos os sintomas.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "duracao_12meses",
+        "letra": "E",
+        "rotulo": "Duração ≥12 meses sem pausa de 3 meses",
+        "tipo": "temporal_duracao_minima",
+        "ui_widget": "campo_duracao_meses",
+        "obrigatorio": true,
+        "icone": "Calendar",
+        "descricao_completa": "Os Critérios A-D estão presentes por 12 meses ou mais; sem período de 3 ou mais meses consecutivos sem todos os sintomas.",
+        "nota": null
     },
     {
-      "id": "multicontexto",
-      "letra": "F",
-      "rotulo": "Presente em ≥2 ambientes, grave em ≥1",
-      "tipo": "multicontexto",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "House",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Os Critérios A e D estão presentes em pelo menos dois de três ambientes (em casa, na escola, com os pares) e são graves em pelo menos um deles.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "multicontexto",
+        "letra": "F",
+        "rotulo": "Presente em ≥2 ambientes, grave em ≥1",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "House",
+        "descricao_completa": "Os Critérios A e D estão presentes em pelo menos dois de três ambientes (em casa, na escola, com os pares) e são graves em pelo menos um deles.",
+        "nota": null
     },
     {
-      "id": "faixa_etaria_diagnostico",
-      "letra": "G",
-      "rotulo": "Diagnóstico entre 6 e 18 anos",
-      "tipo": "temporal_idade_inicio",
-      "ui_widget": "campo_data",
-      "obrigatorio": true,
-      "icone": "Baby",
-      "ddx_sugeridos": [],
-      "descricao_completa": "O diagnóstico não deve ser feito pela primeira vez antes dos 6 anos ou após os 18 anos de idade.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "faixa_etaria_diagnostico",
+        "letra": "G",
+        "rotulo": "Diagnóstico entre 6 e 18 anos",
+        "tipo": "condicional_etario",
+        "ui_widget": "campo_idade",
+        "obrigatorio": true,
+        "icone": "Baby",
+        "descricao_completa": "O diagnóstico não deve ser feito pela primeira vez antes dos 6 anos ou após os 18 anos de idade.",
+        "nota": null
     },
     {
-      "id": "inicio_antes_10anos",
-      "letra": "H",
-      "rotulo": "Início dos sintomas A-E antes dos 10 anos",
-      "tipo": "temporal_idade_inicio",
-      "ui_widget": "campo_data",
-      "obrigatorio": true,
-      "icone": "Baby",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Por relato ou observação, a idade de início dos Critérios A-E é antes dos 10 anos.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "inicio_antes_10anos",
+        "letra": "H",
+        "rotulo": "Início dos sintomas A-E antes dos 10 anos",
+        "tipo": "condicional_etario",
+        "ui_widget": "campo_idade",
+        "obrigatorio": true,
+        "icone": "Baby",
+        "descricao_completa": "Por relato ou observação, a idade de início dos Critérios A-E é antes dos 10 anos.",
+        "nota": null
     },
     {
-      "id": "exclusao_mania_hipomania",
-      "letra": "I",
-      "rotulo": "Sem episódio maníaco/hipomaníaco >1 dia",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "transtorno_bipolar_tipo_1",
-        "transtorno_bipolar_tipo_2"
-      ],
-      "descricao_completa": "Nunca houve período distinto >1 dia com todos os critérios de sintomas (exceto duração) para episódio maníaco ou hipomaníaco.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_mania_hipomania",
+        "letra": "I",
+        "rotulo": "Sem episódio maníaco/hipomaníaco superior a 1 dia",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Nunca houve período distinto superior a 1 dia com todos os critérios de sintomas (exceto duração) para episódio maníaco ou hipomaníaco.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "transtorno_bipolar_tipo_1",
+            "transtorno_bipolar_tipo_2"
+        ]
     },
     {
-      "id": "exclusao_diagnostica_outros",
-      "letra": "J",
-      "rotulo": "Não exclusivamente durante EDM; não TEA, TEPT etc.",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "select_multiplos_ddx",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "transtorno_depressivo_maior",
-        "transtorno_espectro_autista",
-        "tept",
-        "transtorno_ansiedade_separacao",
-        "transtorno_depressivo_persistente"
-      ],
-      "descricao_completa": "Não ocorre exclusivamente durante EDM; não é mais bem explicado por TEA, TEPT, ansiedade de separação, TDP. Não coexiste com TOD, transtorno explosivo intermitente ou transtorno bipolar.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_diagnostica_outros",
+        "letra": "J",
+        "rotulo": "Não exclusivamente durante EDM; não TEA, TEPT etc.",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Não ocorre exclusivamente durante EDM; não é mais bem explicado por TEA, TEPT, ansiedade de separação, TDP. Não coexiste com TOD, transtorno explosivo intermitente ou transtorno bipolar.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "transtorno_depressivo_maior",
+            "transtorno_espectro_autista",
+            "transtorno_estresse_pos_traumatico",
+            "transtorno_ansiedade_separacao",
+            "transtorno_depressivo_persistente",
+            "transtorno_bipolar_tipo_i"
+        ]
     },
     {
-      "id": "exclusao_substancias_condicao_medica",
-      "letra": "K",
-      "rotulo": "Não atribuível a substância ou condição médica",
-      "tipo": "exclusao_substancia_medica",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Os sintomas não são consequência dos efeitos psicológicos de uma substância ou de outra condição médica ou neurológica.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_substancias_condicao_medica",
+        "letra": "K",
+        "rotulo": "Não atribuível a substância ou condição médica",
+        "tipo": "exclusao_substancia_medica",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Os sintomas não são consequência dos efeitos psicológicos de uma substância ou de outra condição médica ou neurológica.",
+        "nota": null
     }
-  ],
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
@@ -237,13 +228,7 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
       "transtorno_explosivo_intermitente"
     ],
     "notas": "TDDH tem precedência sobre TOD e transtorno explosivo intermitente quando critérios de ambos são satisfeitos. Não pode coexistir com transtorno bipolar.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "academico",
@@ -309,28 +294,61 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
     "proporcao_sexo": "Predominantemente masculino em amostras clínicas e comunitárias",
     "variacoes_culturais": null,
     "notas": "Estimativas baseadas em critério de irritabilidade persistente crônica e grave. Taxas mais elevadas em crianças do sexo masculino e em idade escolar.",
-    "metadados": {
-      "completo": false,
-      "lacunas": [
-        "prevalencia_ponto_precisa",
-        "variacao_cultural"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Antes dos 10 anos (critério obrigatório); diagnóstico entre 7-18 anos",
     "trajetoria": "Aproximadamente 50% das crianças com irritabilidade grave satisfarão critérios 1 ano depois. Baixas taxas de conversão para transtorno bipolar. Crianças com irritabilidade crônica têm risco aumentado de transtornos depressivos unipolares e/ou ansiedade na idade adulta.",
     "prognostico": "Transtorno bipolar é mais comum antes da adolescência (<1%); TDDH tende a diminuir com a transição para a vida adulta.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [],
+        "diagnostic_rule": "- Critérios A (explosões) + B (desproporção) + C (≥3x/semana) + D (humor irritável) + E (≥12 meses) + F (≥2 ambientes) + G (6-18 anos) + H (início <10 anos) + I (sem mania) + J (excluir outros TM) + K (excluir substância/condição médica)",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "A criança tem birras ou explosões de raiva frequentes? Com que frequência?",
+          "Essas explosões são desproporcionais ao que aconteceu?",
+          "Como é o humor dela entre as explosões? Fica irritada/zangada a maior parte do tempo?",
+          "Há quanto tempo isso vem acontecendo? Houve algum período de 3 meses sem esses problemas?",
+          "Isso acontece em casa, na escola e com os amigos?",
+          "A criança tem idade entre 6 e 18 anos? Os sintomas começaram antes dos 10?",
+          "Já teve algum período de mais de 1 dia em que o humor estava muito elevado, com energia aumentada e pouca necessidade de sono?",
+          "Os problemas acontecem SÓ quando ela está deprimida ou ansiosa?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno DISRUPTIVO DA DESREGULAÇÃO DO HUMOR (TDDC)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "04_transtornos_depressivos.md",
     "fonte_inventario_md": "inventario/04_inventario.md",
@@ -344,74 +362,13 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_disruptivo_desregulacao_humor",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_monocluster",
-    "criteria": [],
-    "diagnostic_rule": "- Critérios A (explosões) + B (desproporção) + C (≥3x/semana) + D (humor irritável) + E (≥12 meses) + F (≥2 ambientes) + G (6-18 anos) + H (início <10 anos) + I (sem mania) + J (excluir outros TM) + K (excluir substância/condição médica)",
-    "clusters": [],
-    "duration": null,
-    "age_onset": null,
-    "functional_impairment": null,
-    "exclusions": [],
-    "specifiers": [],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "A criança tem birras ou explosões de raiva frequentes? Com que frequência?",
-      "Essas explosões são desproporcionais ao que aconteceu?",
-      "Como é o humor dela entre as explosões? Fica irritada/zangada a maior parte do tempo?",
-      "Há quanto tempo isso vem acontecendo? Houve algum período de 3 meses sem esses problemas?",
-      "Isso acontece em casa, na escola e com os amigos?",
-      "A criança tem idade entre 6 e 18 anos? Os sintomas começaram antes dos 10?",
-      "Já teve algum período de mais de 1 dia em que o humor estava muito elevado, com energia aumentada e pouca necessidade de sono?",
-      "Os problemas acontecem SÓ quando ela está deprimida ou ansiosa?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### Transtorno DISRUPTIVO DA DESREGULAÇÃO DO HUMOR (TDDC)",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "sigla": "TDDH",
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 296.99 (F34.8)",
     "estrutura_efetiva": "- **Estrutura efetiva:** Politetico — A (explosões de raiva recorrentes graves, desproporcionais) + B (inconsistentes com nivel de desenvolvimento) + C (>=3 explosões/semana em média) + D (humor persistentemente irritável/zangado entre explosões, maior parte do dia, quase todos os dias) + E (duracao >=12 meses, sem periodo livre >=3 meses) + F (presente em >=2 de 3 ambientes, grave em ao menos 1) + G (idade 6-18 anos) + H (inicio antes dos 10 anos) + I (nunca episodio maníaco/hipomaníaco >1 dia) + J (nao exclusivamente durante TDM, nao melhor explicado por outro transtorno) + K (nao por substancia/condicao médica)",
     "notas_clinicas": "- **Notas:** Diagnostico restrito a crianças/adolescentes (6-18 anos). Inicio antes dos 10. Nao coexiste com transtorno de oposicao desafiante, transtorno explosivo intermitente ou transtorno bipolar. Pode coexistir com TDM, TDAH, transtorno da conduta, transtornos por uso de substancia. Prevalencia estimada 2-5% em criancas/adolescentes. Predominancia masculina. Curso: irritabilidade cronica nao-episodica; risco futuro de transtornos depressivos unipolares e ansiedade (nao bipolar)."
   },
-  "hierarquia_exclusao": {
-    "exclui": [
-      "transtorno_bipolar_tipo_1",
-      "transtorno_bipolar_tipo_2"
-    ],
-    "exclui_de": [
-      "transtorno_oposicao_desafiante",
-      "transtorno_explosivo_intermitente"
-    ],
-    "notas_hierarquia": "TDDH tem precedência sobre TOD e transtorno explosivo intermitente quando critérios de ambos são satisfeitos. Não pode coexistir com transtorno bipolar."
-  },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": true,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "id",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

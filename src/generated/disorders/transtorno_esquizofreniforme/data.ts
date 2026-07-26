@@ -1,7 +1,7 @@
 import { TranstornoEsquizofreniformeSchema } from "./schema";
 
 export const data = TranstornoEsquizofreniformeSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_esquizofreniforme",
     "nome_completo": "Transtorno Esquizofreniforme",
@@ -21,193 +21,150 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Sintomas da Fase Ativa",
-      "tipo": "polythetic_com_ancora",
-      "limiar": {
-        "adulto": 2,
-        "pediatria": null
-      },
-      "ancora_obrigatoria": {
-        "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
-        "ids_obrigatorios": [
-          "A1",
-          "A2",
-          "A3"
+        "id": "A",
+        "nome": "Sintomas da Fase Ativa",
+        "tipo": "polythetic_com_ancora",
+        "limiar": {
+            "adulto": 2,
+            "pediatria": 2
+        },
+        "ancora_obrigatoria": {
+            "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
+            "ids_obrigatorios": [
+                "A1",
+                "A2",
+                "A3"
+            ],
+            "n_minimo": 1
+        },
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Delírios",
+                "desc": "Crenças fixas não abaláveis pela realidade.",
+                "pergunta": "A pessoa tem tido ideias persistentes que as outras pessoas dizem não fazer sentido ou não ser reais?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Crenças persecutórias, de controle ou de referência"
+                ]
+            },
+            {
+                "id": "A2",
+                "rotulo": "Alucinações",
+                "desc": "Percepções sem o estímulo sensorial correspondente.",
+                "pergunta": "A pessoa ouviu ruídos, vozes ou viu coisas que outras pessoas disseram não perceber?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Vozes discutindo ou conversando entre si na mente/ouvidos"
+                ]
+            },
+            {
+                "id": "A3",
+                "rotulo": "Discurso desorganizado",
+                "desc": "Incoerência ou descarrilamento frequente do pensamento expresso na fala.",
+                "pergunta": "A pessoa sentiu dificuldades em manter um raciocínio lógico que as pessoas conseguissem acompanhar?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Falar mudando de tema de forma incompreensível"
+                ]
+            },
+            {
+                "id": "A4",
+                "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
+                "desc": "Comportamento motor anormal que varia de agitação tola e sem sentido à rigidez extrema catatônica.",
+                "pergunta": "A pessoa tem agido de forma estranha, excessivamente agitada ou sem controle do seu corpo?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Comportamento tolo infantil ou ausência de reatividade motora"
+                ]
+            },
+            {
+                "id": "A5",
+                "rotulo": "Sintomas negativos",
+                "desc": "Expressão emocional diminuída ou avolia marcante.",
+                "pergunta": "A pessoa tem se sentido sem motivação para iniciar atividades ou sentiu falta de emoções?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Contato visual pobre, afeto embotado, apatia ou avolia marcante"
+                ]
+            }
         ],
-        "n_minimo": 1
-      },
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Delírios",
-          "desc": "Crenças fixas não abaláveis pela realidade.",
-          "pergunta": "Você tem tido ideias persistentes que as outras pessoas dizem não fazer sentido ou não ser reais?",
-          "exemplos_clinicos": [
-            "Crenças persecutórias, de controle ou de referência"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2",
-          "rotulo": "Alucinações",
-          "desc": "Percepções sem o estímulo sensorial correspondente.",
-          "pergunta": "Você ouviu ruídos, vozes ou viu coisas que outras pessoas disseram não perceber?",
-          "exemplos_clinicos": [
-            "Vozes discutindo ou conversando entre si na mente/ouvidos"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Discurso desorganizado",
-          "desc": "Incoerência ou descarrilamento frequente do pensamento expresso na fala.",
-          "pergunta": "Você sentiu dificuldades em manter um raciocínio lógico que as pessoas conseguissem acompanhar?",
-          "exemplos_clinicos": [
-            "Falar mudando de tema de forma incompreensível"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A4",
-          "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
-          "desc": "Comportamento motor anormal que varia de agitação tola e sem sentido à rigidez extrema catatônica.",
-          "pergunta": "Você tem agido de forma estranha, excessivamente agitada ou sem controle do seu corpo?",
-          "exemplos_clinicos": [
-            "Comportamento tolo infantil ou ausência de reatividade motora"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A5",
-          "rotulo": "Sintomas negativos",
-          "desc": "Expressão emocional diminuída ou avolia marcante.",
-          "pergunta": "Você tem se sentido sem motivação para iniciar atividades ou sentiu falta de emoções?",
-          "exemplos_clinicos": [
-            "Contato visual pobre, afeto embotado, apatia ou avolia marcante"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": "Presença de pelo menos dois sintomas por parte significativa de tempo em 1 mês, com um deles sendo obrigatoriamente A1, A2 ou A3.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "descricao_qualitativa": "Presença de pelo menos dois sintomas por parte significativa de tempo em 1 mês, com um deles sendo obrigatoriamente A1, A2 ou A3.",
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "duracao_esquizofreniforme",
-      "letra": "B",
-      "rotulo": "Duração entre 1 e 6 meses",
-      "tipo": "temporal_duracao_janela",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "History",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Um episódio da perturbação dura pelo menos um mês, mas menos de seis meses. Quando o diagnóstico deve ser feito sem aguardar a recuperação, deve ser qualificado como 'provisório'.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "duracao_esquizofreniforme",
+        "letra": "B",
+        "rotulo": "Duração entre 1 e 6 meses",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "ClipboardCheck",
+        "descricao_completa": "Um episódio da perturbação dura pelo menos um mês, mas menos de seis meses. Quando o diagnóstico deve ser feito sem aguardar a recuperação, deve ser qualificado como 'provisório'.",
+        "nota": null
     },
     {
-      "id": "exclusao_esquizoafetivo_humor",
-      "letra": "C",
-      "rotulo": "Exclusão de esquizoafetivo e humor com psicose",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "select_multiplos_ddx",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "transtorno_esquizoafetivo",
-        "transtorno_depressivo_maior",
-        "transtorno_bipolar"
-      ],
-      "descricao_completa": "Transtorno esquizoafetivo e transtorno depressivo ou bipolar com características psicóticas foram descartados.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_esquizoafetivo_humor",
+        "letra": "C",
+        "rotulo": "Exclusão de esquizoafetivo e humor com psicose",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Transtorno esquizoafetivo e transtorno depressivo ou bipolar com características psicóticas foram descartados.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "transtorno_esquizoafetivo",
+            "transtorno_depressivo_maior",
+            "transtorno_bipolar"
+        ]
     },
     {
-      "id": "nao_atribuivel_substancia",
-      "letra": "D",
-      "rotulo": "Não atribuível a substância ou condição médica",
-      "tipo": "exclusao_substancia_medica",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Pill",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "nao_atribuivel_substancia",
+        "letra": "D",
+        "rotulo": "Não atribuível a substância ou condição médica",
+        "tipo": "exclusao_substancia_medica",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Pill",
+        "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica.",
+        "nota": null
     }
-  ],
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "com_caracteristicas_bom_prognostico",
-      "nome": "Com características de bom prognóstico",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Exige >=2 de: início agudo (dentro de 4 semanas); confusão/perplexidade; bom funcionamento pré-mórbido; ausência de afeto plano/embotado.",
-        "fonte_passada_1": true
-      }
+        "id": "prognostico",
+        "nome": "Características de prognóstico",
+        "tipo": "enum",
+        "ortogonal": false,
+        "opcoes": [
+            "Com características de bom prognóstico",
+            "Sem características de bom prognóstico"
+        ],
+        "regra_criterial": "Com características de bom prognóstico: Exige ≥2 de: início agudo (dentro de 4 semanas); confusão/perplexidade; bom funcionamento pré-mórbido; ausência de afeto plano/embotado."
     },
     {
-      "id": "sem_caracteristicas_bom_prognostico",
-      "nome": "Sem características de bom prognóstico",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "com_catatonia",
-      "nome": "Com catatonia",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
-        "fonte_passada_1": true
-      }
+        "id": "com_catatonia",
+        "nome": "Com catatonia",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": "Exige o uso do código adicional 293.89 (F06.1)."
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -267,21 +224,10 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
 },
   "hierarquia": {
     "presente": true,
-    "exclui_se_diagnosticado": [
-      "esquizofrenia",
-      "transtorno_esquizoafetivo"
-    ],
-    "exclui_diagnostico_de": [
-      "transtorno_psicotico_breve"
-    ],
+    "exclui_se_diagnosticado": ["esquizofrenia", "transtorno_esquizoafetivo", "transtorno_psicotico_breve"],
+    "exclui_diagnostico_de": ["transtorno_psicotico_breve"],
     "notas": "O transtorno esquizofreniforme é um diagnóstico intermediário; se os sintomas ultrapassarem 6 meses, o diagnóstico é alterado para esquizofrenia.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -320,27 +266,62 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
     "proporcao_sexo": "Incidência similar entre os sexos.",
     "variacoes_culturais": null,
     "notas": "Aproximadamente um terço dos indivíduos recupera-se em até 6 meses, mantendo o diagnóstico de esquizofreniforme; os dois terços restantes evoluem para esquizofrenia ou esquizoafetivo.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [
-        "prevalencia.variacoes_culturais"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Início da idade adulta",
     "trajetoria": "O curso do transtorno esquizofreniforme é intermediário em termos de duração. Cerca de 60-80% dos diagnósticos provisórios acabam evoluindo para esquizofrenia ao longo de 6 meses.",
     "prognostico": "Depende muito das características de bom prognóstico. Se presentes, a recuperação total é significativamente mais provável.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_clusters_assimetricos",
+        "criteria": [],
+        "diagnostic_rule": "- Critério A (2+ sintomas, 1 obrigatório) **E** Critério B (1-6 meses) **E** Critério C (excluir humor) **E** Critério D (excluir substância/condição médica)",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "specifiers": [
+          "**Com características de bom prognóstico**: requer ≥2 de:",
+          "Início de sintomas psicóticos proeminentes em ≤4 semanas da primeira mudança no comportamento",
+          "Confusão ou perplexidade",
+          "Bom funcionome_completonto social/profissional pré-morbido",
+          "Ausência de afeto embotado ou plano",
+          "**Sem características de bom prognóstico**: se ≥2 das anteriores NÃO estiveram presentes",
+          "**Com catatonia**: código adicional 293.89 (F06.1)"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO ESQUIZOFRENIFORME",
+          "patches_applied": [
+            "gravidade: Mesma escala dimensional da esquizofrenia (0-4 por dominio) - uso opcional -> Sim (especificador dimensional OPCIONAL) + tipo=ordinal_por_dominio + escala 0-4 + USO_OPCIONAL=True"
+          ]
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",
@@ -351,74 +332,13 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_esquizofreniforme",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_clusters_assimetricos",
-    "criteria": [],
-    "diagnostic_rule": "- Critério A (2+ sintomas, 1 obrigatório) **E** Critério B (1-6 meses) **E** Critério C (excluir humor) **E** Critério D (excluir substância/condição médica)",
-    "clusters": [],
-    "duration": null,
-    "age_onset": null,
-    "functional_impairment": null,
-    "exclusions": [],
-    "specifiers": [
-      "**Com características de bom prognóstico**: requer ≥2 de:",
-      "Início de sintomas psicóticos proeminentes em ≤4 semanas da primeira mudança no comportamento",
-      "Confusão ou perplexidade",
-      "Bom funcionome_completonto social/profissional pré-morbido",
-      "Ausência de afeto embotado ou plano",
-      "**Sem características de bom prognóstico**: se ≥2 das anteriores NÃO estiveram presentes",
-      "**Com catatonia**: código adicional 293.89 (F06.1)"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### TRANSTORNO ESQUIZOFRENIFORME",
-      "patches_applied": [
-        "gravidade: Mesma escala dimensional da esquizofrenia (0-4 por dominio) - uso opcional -> Sim (especificador dimensional OPCIONAL) + tipo=ordinal_por_dominio + escala 0-4 + USO_OPCIONAL=True"
-      ]
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Código DSM-5 / CID-10:** 295.40 (F20.81)",
     "estrutura_efetiva": "- **Estrutura efetiva:** Polythetic (2/5 sintomas do Critério A da esquizofrenia; >=1 dentre delírios, alucinações ou discurso desorganizado) presente por >=1 mês (ou menos se tratado) + B (duração total >=1 mês e <6 meses; diagnóstico provisório se ainda não recuperado) + C (esquizoafetivo e humor com psicose descartados) + D (exclusão: substância, condição médica). Sem exigência de declínio funcional (diferente da esquizofrenia).",
     "notas_clinicas": "- **Notas:**"
   },
-  "hierarquia_exclusao": {
-    "exclui": [
-      "esquizofrenia",
-      "transtorno_esquizoafetivo",
-      "transtorno_psicotico_breve"
-    ],
-    "exclui_de": [
-      "transtorno_psicotico_breve"
-    ],
-    "notas_hierarquia": "O transtorno esquizofreniforme é um diagnóstico intermediário; se os sintomas ultrapassarem 6 meses, o diagnóstico é alterado para esquizofrenia."
-  },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": true,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "id",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

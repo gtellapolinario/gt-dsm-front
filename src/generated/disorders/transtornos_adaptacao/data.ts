@@ -1,7 +1,7 @@
 import { TranstornosAdaptacaoSchema } from "./schema";
 
 export const data = TranstornosAdaptacaoSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtornos_adaptacao",
     "nome_completo": "Transtornos de Adaptação",
@@ -21,107 +21,81 @@ export const data = TranstornosAdaptacaoSchema.parse({
   "estrutura_geral": "etiologico_externo",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Sintomas Emocionais/Comportamentais em Resposta a Estressor",
-      "tipo": "unico_obrigatorio",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Sintomas emocionais/comportamentais em resposta a estress...",
-          "desc": "Sintomas emocionais ou comportamentais em resposta a um estressor identificável, com início em até 3 meses após o início do estressor.",
-          "pergunta": "Você começou a ter sintomas emocionais ou comportamentais logo após um evento estressante específico?",
-          "exemplos_clinicos": [
-            "Depressão após demissão",
-            "Ansiedade após separação conjugal"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "A",
+        "nome": "Sintomas Emocionais/Comportamentais em Resposta a Estressor",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Sintomas em resposta a estressor identificável",
+                "desc": "Sintomas emocionais ou comportamentais em resposta a um estressor identificável, com início em até 3 meses após o início do estressor.",
+                "pergunta": "A pessoa começou a ter sintomas emocionais ou comportamentais logo após um evento estressante específico?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Depressão após demissão",
+                    "Ansiedade após separação conjugal"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "sofrimento_desproporcional_ou_funcional",
-      "letra": "B",
-      "rotulo": "Sofrimento acentuado e desproporcional ao estressor ou pr...",
-      "tipo": "prejuizo_funcional",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Frown",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Clinicamente significativo como evidenciado por: (1) sofrimento acentuado desproporcional ao estressor; (2) prejuízo significativo no funcionamento.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "sofrimento_desproporcional_ou_funcional",
+        "letra": "B",
+        "rotulo": "Sofrimento desproporcional ou prejuízo funcional significativo",
+        "tipo": "prejuizo_funcional",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Frown",
+        "descricao_completa": "Clinicamente significativo como evidenciado por: (1) sofrimento acentuado desproporcional ao estressor; (2) prejuízo significativo no funcionamento.",
+        "nota": null
     },
     {
-      "id": "exclusao_outro_transtorno",
-      "letra": "C",
-      "rotulo": "Não satisfaz critérios de outro transtorno mental",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "tept",
-        "tdm",
-        "tag"
-      ],
-      "descricao_completa": "Não satisfaz critérios de outro transtorno mental específico e não é exacerbação de transtorno pré-existente.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_outro_transtorno",
+        "letra": "C",
+        "rotulo": "Não satisfaz critérios de outro transtorno mental",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Não satisfaz critérios de outro transtorno mental específico e não é exacerbação de transtorno pré-existente.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "transtorno_estresse_pos_traumatico",
+            "transtorno_depressivo_maior",
+            "transtorno_ansiedade_generalizada"
+        ]
     },
     {
-      "id": "exclusao_luto_normal",
-      "letra": "D",
-      "rotulo": "Não representa luto normal",
-      "tipo": "qualitativo_descritivo",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Não representa luto normal.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_luto_normal",
+        "letra": "D",
+        "rotulo": "Não representa luto normal",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Não representa luto normal.",
+        "nota": null
     },
     {
-      "id": "remissao_6meses",
-      "letra": "E",
-      "rotulo": "Remite em ≤6 meses após cessação do estressor",
-      "tipo": "qualitativo_descritivo",
-      "ui_widget": "campo_duracao_meses",
-      "obrigatorio": false,
-      "icone": "Calendar",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Uma vez cessado o estressor (ou suas consequências), os sintomas não persistem por mais de 6 meses adicionais.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "remissao_6meses",
+        "letra": "E",
+        "rotulo": "Remite em ≤6 meses após cessação do estressor",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": false,
+        "icone": "Calendar",
+        "descricao_completa": "Uma vez cessado o estressor (ou suas consequências), os sintomas não persistem por mais de 6 meses adicionais.",
+        "nota": null
     }
-  ],
+],
   "subtipos": {
     "presente": true,
     "nome": "Subtipo clínico",
@@ -194,41 +168,20 @@ export const data = TranstornosAdaptacaoSchema.parse({
         "sintomas_caracteristicos": []
       }
     ],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "agudo",
-      "nome": "Agudo",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Duração <6 meses.",
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "persistente",
-      "nome": "Persistente/crônico",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Duração ≥6 meses por causa do estressor crônico.",
-        "fonte_passada_1": true
-      }
+        "id": "curso",
+        "nome": "Curso",
+        "tipo": "enum",
+        "ortogonal": false,
+        "opcoes": [
+            "Agudo",
+            "Persistente/crônico"
+        ],
+        "regra_criterial": "Agudo: Duração <6 meses.; Persistente/crônico: Duração ≥6 meses por causa do estressor crônico."
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -239,13 +192,7 @@ export const data = TranstornosAdaptacaoSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "trabalho",
@@ -285,27 +232,52 @@ export const data = TranstornosAdaptacaoSchema.parse({
     "proporcao_sexo": "2:1 mulheres:homens",
     "variacoes_culturais": null,
     "notas": null,
-    "metadados": {
-      "completo": false,
-      "lacunas": [
-        "variacao_cultural"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Dentro de 3 meses do estressor; qualquer idade",
     "trajetoria": "Geralmente remite quando estressor cessa; crônico se estressor persistir.",
     "prognostico": "Bom com intervenção breve focada no problema.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "etiologico_externo",
+        "criteria": [],
+        "diagnostic_rule": "A = estressor_identificado AND inicio_dentro_3_meses AND B ≥ 1 AND C = true AND D = true AND E = true",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO DE AJUSTAMENTO - Varios codigos (F43.2x)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "07_transtornos_relacionados_trauma_a_estressores.md",
     "fonte_inventario_md": null,
@@ -318,53 +290,13 @@ export const data = TranstornosAdaptacaoSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtornos_adaptacao",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "etiologico_externo",
-    "criteria": [],
-    "diagnostic_rule": "A = estressor_identificado AND inicio_dentro_3_meses AND B ≥ 1 AND C = true AND D = true AND E = true",
-    "clusters": [],
-    "duration": null,
-    "age_onset": null,
-    "functional_impairment": null,
-    "exclusions": [],
-    "specifiers": [],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### TRANSTORNO DE AJUSTAMENTO - Varios codigos (F43.2x)",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** Codigo base variavel por subtipo (ver abaixo)",
     "estrutura_efetiva": "- **Estrutura efetiva:**",
     "notas_clinicas": "- **Notas:**"
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

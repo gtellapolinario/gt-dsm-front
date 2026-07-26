@@ -31,6 +31,7 @@ import {
   RotateCcw,
   SearchCheck,
   SlidersHorizontal,
+  Network,
   Tags,
   TrendingUp,
   User,
@@ -1092,6 +1093,21 @@ function SeverityBlock({ data }: { readonly data: ClinicalDisorder }) {
 }
 
 /** O guia só existe quando há algo para mostrar: campo nulo não renderiza. */
+/** Hierarquia diagnóstica com conteúdo exibível. */
+function hierarquiaDe(data: ClinicalDisorder): {
+  exclui: string[];
+  excluidoPor: string[];
+  notas: string | null;
+} | null {
+  const h = (data as any).hierarquia;
+  if (!h) return null;
+  const exclui: string[] = h.exclui_se_diagnosticado ?? [];
+  const excluidoPor: string[] = h.exclui_diagnostico_de ?? [];
+  const notas = h.notas ? String(h.notas) : null;
+  if (exclui.length === 0 && excluidoPor.length === 0 && !notas) return null;
+  return { exclui, excluidoPor, notas };
+}
+
 function clinicalGuideHasData(data: ClinicalDisorder): boolean {
   const rawData = data as any;
   return Boolean(
@@ -1107,6 +1123,7 @@ function clinicalGuideHasData(data: ClinicalDisorder): boolean {
     rawData.curso_desenvolvimento?.prognostico ||
     rawData.gravidade?.classificacao_dsm != null ||
     subtiposLabelsOf(data).length > 0 ||
+    hierarquiaDe(data) != null ||
     rawData.instrumentos_complementares?.length > 0,
   );
 }
@@ -1118,6 +1135,7 @@ function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
   const instrumentos: Array<{ nome?: string; sigla?: string; uso?: string }> =
     rawData.instrumentos_complementares ?? [];
   const subtipos = subtiposLabelsOf(data);
+  const hierarquia = hierarquiaDe(data);
 
   const codigos = [
     { sistema: "DSM-5", valor: rawData.meta?.codigo?.dsm5 },
@@ -1146,6 +1164,7 @@ function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
     cursoEtapas.length === 0 &&
     !temGravidade &&
     subtipos.length === 0 &&
+    hierarquia == null &&
     instrumentos.length === 0
   ) {
     return null;
@@ -1225,7 +1244,7 @@ function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
 
       <SeverityBlock data={data} />
 
-      {subtipos.length > 0 || instrumentos.length > 0 ? (
+      {subtipos.length > 0 || instrumentos.length > 0 || hierarquia ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
           {subtipos.length > 0 ? (
             <div className="rounded-xl border border-border bg-surface-2/40 p-4">
@@ -1244,6 +1263,40 @@ function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
                     {String(sub)}
                   </span>
                 ))}
+              </div>
+            </div>
+          ) : null}
+
+          {hierarquia ? (
+            <div className="rounded-xl border border-border bg-surface-2/40 p-4">
+              <GuideCardHeader
+                icon={Network}
+                iconClass="text-cyan-700 dark:text-cyan-400"
+              >
+                Hierarquia Diagnóstica
+              </GuideCardHeader>
+              <div className="mt-2 space-y-2 text-xs leading-relaxed">
+                {hierarquia.exclui.length > 0 ? (
+                  <p className="text-text-2">
+                    <span className="font-semibold text-text">
+                      Tem precedência sobre:
+                    </span>{" "}
+                    {hierarquia.exclui.map(titleFromValue).join(", ")}
+                  </p>
+                ) : null}
+                {hierarquia.excluidoPor.length > 0 ? (
+                  <p className="text-text-2">
+                    <span className="font-semibold text-text">
+                      Precedido por:
+                    </span>{" "}
+                    {hierarquia.excluidoPor.map(titleFromValue).join(", ")}
+                  </p>
+                ) : null}
+                {hierarquia.notas ? (
+                  <p className="border-t border-border pt-2 italic text-text-3">
+                    {hierarquia.notas}
+                  </p>
+                ) : null}
               </div>
             </div>
           ) : null}

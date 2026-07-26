@@ -1,7 +1,7 @@
 import { TranstornoPorUsoDeEstimulantesSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_por_uso_de_estimulantes",
     "nome_completo": "Transtorno por Uso de Estimulantes",
@@ -25,149 +25,110 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Critérios de Uso Problemático de estimulante",
-      "tipo": "polythetic_com_limiar",
-      "limiar": {
-        "adulto": 2,
-        "pediatria": 2
-      },
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Quantidades/periodo maiores que pretendido",
-          "desc": "estimulante consumido em maiores quantidades ou por período mais longo do que pretendido.",
-          "pergunta": "Você já usou estimulante em quantidades maiores ou por mais tempo do que pretendia?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
+        "id": "A",
+        "nome": "Critérios de Uso Problemático de estimulante",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 2,
+            "pediatria": 2
         },
-        {
-          "id": "A2",
-          "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
-          "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de estimulante.",
-          "pergunta": "Você já tentou reduzir ou parar de usar estimulante sem sucesso?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
-          "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de estimulante.",
-          "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de estimulante?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A4",
-          "rotulo": "Fissura ou forte desejo de usar",
-          "desc": "Fissura ou forte desejo ou necessidade de usar estimulante.",
-          "pergunta": "Você sente forte desejo ou necessidade de usar estimulante?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A5",
-          "rotulo": "Fracasso em papéis por uso recorrente",
-          "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
-          "pergunta": "O uso de estimulante já causou problemas no trabalho, na escola ou em casa?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A6",
-          "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
-          "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
-          "pergunta": "Você continua usando estimulante mesmo tendo problemas com outras pessoas por causa disso?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A7",
-          "rotulo": "Abandono de atividades importantes",
-          "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
-          "pergunta": "Você deixou de fazer atividades importantes por causa do uso de estimulante?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A8",
-          "rotulo": "Uso recorrente em situações perigosas",
-          "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
-          "pergunta": "Você já usou estimulante em situações que poderiam ser perigosas?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A9",
-          "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
-          "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
-          "pergunta": "Você continua usando estimulante mesmo sabendo que isso agrava problemas de saúde?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A10",
-          "rotulo": "Tolerância",
-          "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
-          "pergunta": "Você precisa de quantidades maiores de estimulante para sentir o mesmo efeito?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A11",
-          "rotulo": "Abstinência",
-          "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
-          "pergunta": "Você sente sintomas desagradáveis quando para de usar estimulante, ou o usa para evitar esses sintomas?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Quantidades/periodo maiores que pretendido",
+                "desc": "estimulante consumido em maiores quantidades ou por período mais longo do que pretendido.",
+                "pergunta": "A pessoa já usou estimulante em quantidades maiores ou por mais tempo do que pretendia?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A2",
+                "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+                "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de estimulante.",
+                "pergunta": "A pessoa já tentou reduzir ou parar de usar estimulante sem sucesso?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A3",
+                "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+                "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de estimulante.",
+                "pergunta": "A pessoa passa muito tempo obtendo, usando ou se recuperando dos efeitos de estimulante?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A4",
+                "rotulo": "Fissura ou forte desejo de usar",
+                "desc": "Fissura ou forte desejo ou necessidade de usar estimulante.",
+                "pergunta": "A pessoa sente forte desejo ou necessidade de usar estimulante?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A5",
+                "rotulo": "Fracasso em papéis por uso recorrente",
+                "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+                "pergunta": "O uso de estimulante já causou problemas no trabalho, na escola ou em casa?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A6",
+                "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+                "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+                "pergunta": "A pessoa continua usando estimulante mesmo tendo problemas com outras pessoas por causa disso?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A7",
+                "rotulo": "Abandono de atividades importantes",
+                "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+                "pergunta": "A pessoa deixou de fazer atividades importantes por causa do uso de estimulante?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A8",
+                "rotulo": "Uso recorrente em situações perigosas",
+                "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+                "pergunta": "A pessoa já usou estimulante em situações que poderiam ser perigosas?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A9",
+                "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+                "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+                "pergunta": "A pessoa continua usando estimulante mesmo sabendo que isso agrava problemas de saúde?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A10",
+                "rotulo": "Tolerância",
+                "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+                "pergunta": "A pessoa precisa de quantidades maiores de estimulante para sentir o mesmo efeito?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A11",
+                "rotulo": "Abstinência",
+                "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+                "pergunta": "A pessoa sente sintomas desagradáveis quando para de usar estimulante, ou o usa para evitar esses sintomas?",
+                "faixa_aplicavel": null,
+                "nota": null
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": "Um padrão de uso de substância tipo anfetamina, cocaína ou outro estimulante, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses."
     }
-  ],
-  "criterios_condicionais": [
-    {
-      "id": "periodo_12meses",
-      "letra": "A",
-      "rotulo": "Padrão problemático em 12 meses",
-      "tipo": "temporal_duracao_minima",
-      "ui_widget": "campo_duracao_meses",
-      "obrigatorio": true,
-      "icone": "Calendar",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Um padrão de uso de substância tipo anfetamina, cocaína ou outro estimulante, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "exclusao_substancia_medica",
-      "letra": "D",
-      "rotulo": "Não atribuível a outra condição médica ou substância",
-      "tipo": "exclusao_substancia_medica",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    }
-  ],
+],
+  "criterios_condicionais": [],
   "subtipos": {
     "presente": true,
     "nome": null,
@@ -186,54 +147,27 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
       "label": "Outro estimulante"
     }
   ],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "remissao_inicial",
-      "nome": "Em remissão inicial",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "3-12 meses sem critérios (exceto fissura) para estimulante.",
-        "fonte_passada_1": true
-      }
+        "id": "estado_remissao",
+        "nome": "Estado de remissão",
+        "tipo": "enum",
+        "ortogonal": false,
+        "opcoes": [
+            "Em remissão inicial",
+            "Em remissão sustentada"
+        ],
+        "regra_criterial": "Em remissão inicial: 3–12 meses sem critérios (exceto fissura) para estimulante.; Em remissão sustentada: ≥12 meses sem critérios (exceto fissura) para estimulante."
     },
     {
-      "id": "remissao_sustentada",
-      "nome": "Em remissão sustentada",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "≥12 meses sem critérios (exceto fissura) para estimulante.",
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "ambiente_protegido",
-      "nome": "Em ambiente protegido",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "ambiente_protegido",
+        "nome": "Em ambiente protegido",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -263,13 +197,7 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "trabalho",
@@ -320,27 +248,94 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
     "proporcao_sexo": "Cocaína: mais em homens (0,4% vs 0,1% adultos).",
     "variacoes_culturais": null,
     "notas": null,
-    "metadados": {
-      "completo": false,
-      "lacunas": [
-        "variacoes_culturais"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "12-25 anos",
     "trajetoria": "Progressão rápida com uso fumado/intravenoso; gradual com uso intranasal/oral.",
     "prognostico": "Reservado para uso crônico; depressão/ideação suicida durante abstinência.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "Dose/tempo excessivo",
+          "Tentativas de reducao",
+          "Tempo gasto",
+          "Fissura",
+          "Fracasso em obrigacoes",
+          "Problemas sociais",
+          "Abandono de atividades",
+          "Uso perigoso",
+          "Uso apesar de problemas de saude",
+          "Tolerancia",
+          "Abstinencia (fadiga excessiva, depressao, fome aumentada, pesadelos)"
+        ],
+        "diagnostic_rule": "pelo menos 2 de 11 criterios em 12 meses",
+        "clusters": [
+          "Baixo Controle",
+          "Prejuizo Social",
+          "Uso Arriscado",
+          "Farmacologicos"
+        ],
+        "duration": "12 meses",
+        "age_onset": null,
+        "functional_impairment": "comprometimento clinicamente significativo",
+        "exclusions": [
+          "Uso de estimulantes sob supervisao medica adequada (ex: TDAH, narcolepsia) - tolerancia e abstinencia desconsideradas"
+        ],
+        "specifiers": [
+          "em remissao inicial",
+          "em remissao sustentada",
+          "em ambiente protegido"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "Usou mais cocaina/anfetamina do que pretendia? Ficou usando por dias sem parar (binges)?",
+          "Ja tentou parar ou controlar? Conseguiu?",
+          "Quanto tempo investe em conseguir ou usar?",
+          "Sentiu necessidade intensa de usar?",
+          "O uso atrapalhou trabalho, estudo ou responsabilidades?",
+          "Brigou ou perdeu amizades por causa do uso?",
+          "Deixou de fazer coisas importantes para usar?",
+          "Usou e dirigiu? Usou de formas perigosas (injeccao, desconhecidos)?",
+          "Continua usando apesar de dor no peito, perda de peso, problemas nasais?",
+          "Precisa de mais para sentir o mesmo efeito?",
+          "Quando para, sente fadiga excessiva, depressao, fome aumentada, pesadelos?"
+        ],
+        "alerts": [
+          "Complicacoes agudas: Infarto do miocardio, arritmias, morte subita",
+          "AVC, convulsoes",
+          "Pneumotorax (manobra Valsalva ao fumar)",
+          "Transtorno psicotico induzido (delirios paranoides, alucinacoes tateis)",
+          "Risco de suicidio durante abstinencia (repe)",
+          "Nota Critica: Criterios de tolerancia e abstinencia sao DESCONSIDERADOS em individuos cujo uso se da unicamente sob supervisao medica adequada."
+        ],
+        "source_trace": {
+          "markdown_section": "## 10. TRANSTORNO POR USO DE ESTIMULANTES (TUEst)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "16_transtornos_relacionados_substancias_transtornos_aditivos.md",
     "fonte_inventario_md": null,
@@ -353,96 +348,14 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_por_uso_de_estimulantes",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_monocluster",
-    "criteria": [
-      "Dose/tempo excessivo",
-      "Tentativas de reducao",
-      "Tempo gasto",
-      "Fissura",
-      "Fracasso em obrigacoes",
-      "Problemas sociais",
-      "Abandono de atividades",
-      "Uso perigoso",
-      "Uso apesar de problemas de saude",
-      "Tolerancia",
-      "Abstinencia (fadiga excessiva, depressao, fome aumentada, pesadelos)"
-    ],
-    "diagnostic_rule": "pelo menos 2 de 11 criterios em 12 meses",
-    "clusters": [
-      "Baixo Controle",
-      "Prejuizo Social",
-      "Uso Arriscado",
-      "Farmacologicos"
-    ],
-    "duration": "12 meses",
-    "age_onset": null,
-    "functional_impairment": "comprometimento clinicamente significativo",
-    "exclusions": [
-      "Uso de estimulantes sob supervisao medica adequada (ex: TDAH, narcolepsia) - tolerancia e abstinencia desconsideradas"
-    ],
-    "specifiers": [
-      "em remissao inicial",
-      "em remissao sustentada",
-      "em ambiente protegido"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "Usou mais cocaina/anfetamina do que pretendia? Ficou usando por dias sem parar (binges)?",
-      "Ja tentou parar ou controlar? Conseguiu?",
-      "Quanto tempo investe em conseguir ou usar?",
-      "Sentiu necessidade intensa de usar?",
-      "O uso atrapalhou trabalho, estudo ou responsabilidades?",
-      "Brigou ou perdeu amizades por causa do uso?",
-      "Deixou de fazer coisas importantes para usar?",
-      "Usou e dirigiu? Usou de formas perigosas (injeccao, desconhecidos)?",
-      "Continua usando apesar de dor no peito, perda de peso, problemas nasais?",
-      "Precisa de mais para sentir o mesmo efeito?",
-      "Quando para, sente fadiga excessiva, depressao, fome aumentada, pesadelos?"
-    ],
-    "alerts": [
-      "Complicacoes agudas: Infarto do miocardio, arritmias, morte subita",
-      "AVC, convulsoes",
-      "Pneumotorax (manobra Valsalva ao fumar)",
-      "Transtorno psicotico induzido (delirios paranoides, alucinacoes tateis)",
-      "Risco de suicidio durante abstinencia (repe)",
-      "Nota Critica: Criterios de tolerancia e abstinencia sao DESCONSIDERADOS em individuos cujo uso se da unicamente sob supervisao medica adequada."
-    ],
-    "source_trace": {
-      "markdown_section": "## 10. TRANSTORNO POR USO DE ESTIMULANTES (TUEst)",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
   "grupo": "Estimulantes",
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "",
     "estrutura_efetiva": "",
     "notas_clinicas": "Padrão problemático de uso de cocaína (pó, crack, freebase) com comprometimento significativo. Critérios idênticos aos de anfetamina-type."
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

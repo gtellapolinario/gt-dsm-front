@@ -1,7 +1,7 @@
 import { BulimiaNervosaSchema } from "./schema";
 
 export const data = BulimiaNervosaSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "bulimia_nervosa",
     "nome_completo": "Bulimia Nervosa",
@@ -21,151 +21,124 @@ export const data = BulimiaNervosaSchema.parse({
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
-      "id": "A_B",
-      "nome": "Compulsão Alimentar e Comportamentos Compensatórios",
-      "tipo": "monothetic_obrigatorio",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Episódios recorrentes de compulsão com ingestão excessiva",
-          "desc": "Ingestão, em um período de tempo determinado (geralmente < 2 horas), de uma quantidade de alimento definitivamente maior do que a maioria dos indivíduos consumiria no mesmo período sob circunstâncias semelhantes.",
-          "pergunta": "A pessoa tem episódios nos quais come uma quantidade de alimento definitivamente maior do que a maioria das pessoas comeria em um período similar?",
-          "exemplos_clinicos": [
-            "Ingestão excessiva em festas ou celebrações deve ser contextualizada"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2",
-          "rotulo": "Sensação de falta de controle durante a compulsão",
-          "desc": "Sensação de falta de controle sobre a ingestão durante o episódio, como sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo.",
-          "pergunta": "Durante esses episódios, a pessoa sente que não consegue parar de comer ou controlar o que e quanto está ingerindo?",
-          "exemplos_clinicos": [
-            "Incapacidade de abster-se de comer",
-            "Parar apenas quando desconfortavelmente cheio"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "B1",
-          "rotulo": "Comportamentos compensatórios inapropriados recorrentes",
-          "desc": "Comportamentos compensatórios inapropriados recorrentes a fim de impedir o ganho de peso, como vômitos autoinduzidos, uso indevido de laxantes, diuréticos ou outros medicamentos, jejum ou exercício em excesso.",
-          "pergunta": "A pessoa adota comportamentos compensatórios inapropriados de forma recorrente para impedir o ganho de peso após episódios de compulsão?",
-          "exemplos_clinicos": [
-            "Vômitos autoinduzidos",
-            "Uso indevido de laxantes ou diuréticos",
-            "Jejum",
-            "Exercício excessivo"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "A",
+        "nome": "Episódios recorrentes de compulsão alimentar",
+        "tipo": "monothetic_conjuntivo",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Episódios recorrentes de compulsão com ingestão excessiva",
+                "desc": "Ingestão, em um período de tempo determinado (geralmente < 2 horas), de uma quantidade de alimento definitivamente maior do que a maioria dos indivíduos consumiria no mesmo período sob circunstâncias semelhantes.",
+                "pergunta": "A pessoa tem episódios nos quais come uma quantidade de alimento definitivamente maior do que a maioria das pessoas comeria em um período similar?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Ingestão excessiva em festas ou celebrações deve ser contextualizada"
+                ]
+            },
+            {
+                "id": "A2",
+                "rotulo": "Sensação de falta de controle durante a compulsão",
+                "desc": "Sensação de falta de controle sobre a ingestão durante o episódio, como sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo.",
+                "pergunta": "Durante esses episódios, a pessoa sente que não consegue parar de comer ou controlar o que e quanto está ingerindo?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Incapacidade de abster-se de comer",
+                    "Parar apenas quando desconfortavelmente cheio"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
+    },
+    {
+        "id": "B",
+        "nome": "Comportamentos compensatórios inapropriados recorrentes",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "B1",
+                "rotulo": "Comportamentos compensatórios inapropriados recorrentes",
+                "desc": "Comportamentos compensatórios inapropriados recorrentes a fim de impedir o ganho de peso, como vômitos autoinduzidos, uso indevido de laxantes, diuréticos ou outros medicamentos, jejum ou exercício em excesso.",
+                "pergunta": "A pessoa adota comportamentos compensatórios inapropriados de forma recorrente para impedir o ganho de peso após episódios de compulsão?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Vômitos autoinduzidos",
+                    "Uso indevido de laxantes ou diuréticos",
+                    "Jejum",
+                    "Exercício excessivo"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "frequencia_minima",
-      "letra": "C",
-      "rotulo": "Frequência mínima: ≥1 vez por semana durante 3 meses",
-      "tipo": "temporal_duracao_minima",
-      "ui_widget": "campo_duracao_meses",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A compulsão alimentar e os comportamentos compensatórios inapropriados ocorrem, em média, no mínimo uma vez por semana durante três meses.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "frequencia_minima",
+        "letra": "C",
+        "rotulo": "Frequência mínima: ≥1 vez por semana durante 3 meses",
+        "tipo": "temporal_frequencia",
+        "ui_widget": "campo_frequencia_semanal",
+        "obrigatorio": true,
+        "icone": "Repeat",
+        "descricao_completa": "A compulsão alimentar e os comportamentos compensatórios inapropriados ocorrem, em média, no mínimo uma vez por semana durante três meses.",
+        "nota": null
     },
     {
-      "id": "autoavaliação_peso_forma",
-      "letra": "D",
-      "rotulo": "Autoavaliação indevidamente influenciada por forma e peso corporais",
-      "tipo": "qualitativo_descritivo",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A autoavaliação é indevidamente influenciada pela forma e pelo peso corporais.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "autoavaliacao_peso_forma",
+        "letra": "D",
+        "rotulo": "Autoavaliação indevidamente influenciada por forma e peso corporais",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "ClipboardCheck",
+        "descricao_completa": "A autoavaliação é indevidamente influenciada pela forma e pelo peso corporais.",
+        "nota": null
     },
     {
-      "id": "exclusao_anorexia",
-      "letra": "E",
-      "rotulo": "Não ocorre exclusivamente durante episódios de anorexia nervosa",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "select_multiplos_ddx",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [
-        "anorexia_nervosa"
-      ],
-      "descricao_completa": "A perturbação não ocorre exclusivamente durante episódios de anorexia nervosa.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_anorexia",
+        "letra": "E",
+        "rotulo": "Não ocorre exclusivamente durante episódios de anorexia nervosa",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "A perturbação não ocorre exclusivamente durante episódios de anorexia nervosa.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "anorexia_nervosa"
+        ]
     }
-  ],
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "em_remicao_parcial",
-      "nome": "Em remissão parcial",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "em_remicao_completa",
-      "nome": "Em remissão completa",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "estado_remissao",
+        "nome": "Estado de remissão",
+        "tipo": "enum",
+        "ortogonal": false,
+        "opcoes": [
+            "Em remissão parcial",
+            "Em remissão completa"
+        ],
+        "regra_criterial": null
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "gravidade_atual",
@@ -203,13 +176,7 @@ export const data = BulimiaNervosaSchema.parse({
     ],
     "exclui_diagnostico_de": [],
     "notas": "Não ocorre exclusivamente durante episódios de anorexia nervosa. Indivíduos que evoluem de anorexia para bulimia comumente alternam entre os dois transtornos.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "saude",
@@ -285,25 +252,76 @@ export const data = BulimiaNervosaSchema.parse({
     "proporcao_sexo": "Aproximadamente 10:1 feminino:masculino.",
     "variacoes_culturais": "Ocorrência relatada em frequências relativamente similares na maioria dos países industrializados.",
     "notas": "A prevalência-ponto é maior entre adultos, já que o transtorno atinge seu pico no fim da adolescência e início da idade adulta.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Adolescência ou idade adulta jovem; incomum antes da puberdade ou após os 40 anos.",
     "trajetoria": "Curso crônico ou intermitente com períodos de remissão e recorrência. Sintomas tendem a diminuir ao longo do tempo, especialmente com tratamento.",
     "prognostico": "Períodos de remissão acima de um ano estão associados a evolução de longo prazo mais favorável. Taxa bruta de mortalidade de aproximadamente 2% por década.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "monothetic_tripartite",
+        "criteria": [
+          "A. Episodios recorrentes de compulsao alimentar (quantidade excessiva + perda de controle)",
+          "B. Comportamentos compensatorios inapropriados recorrentes (vomito, laxantes, diureticos, jejum, exercicio excessivo)",
+          "C. Frequencia minima: ≥1x/semana durante 3 meses",
+          "D. Autoavaliacao indevidamente influenciada por peso/forma",
+          "E. NAO ocorre exclusivamente durante anorexia nervosa"
+        ],
+        "diagnostic_rule": "A AND B AND C(≥1x/semana_3meses) AND D AND E",
+        "clusters": [],
+        "duration": "≥3 meses de frequencia ≥1x/semana",
+        "age_onset": "Adolescencia ou idade adulta jovem",
+        "functional_impairment": "Complicacoes eletroliticas possiveis; prejuizo funcional significativo",
+        "exclusions": [
+          "Anorexia nervosa (quando AN ativa)",
+          "Sindrome de Kleine-Levin",
+          "TDM atipico"
+        ],
+        "specifiers": [
+          "Remissao parcial",
+          "Remissao completa"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [
+          "Anorexia tipo compulsao-purgativa",
+          "TCA",
+          "TDM atipico"
+        ],
+        "key_questions": [
+          "Ja teve momentos de comer muito com perda de controle?",
+          "Faz algo para compensar?",
+          "Qual seu peso atual?"
+        ],
+        "alerts": [
+          "Complicacoes eletroliticas possiveis",
+          "Mutuamente exclusivo com Anorexia"
+        ],
+        "source_trace": {
+          "markdown_section": "2. BULIMIA NERVOSA",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "10_transtornos_alimentares.md",
     "fonte_inventario_md": null,
@@ -314,84 +332,13 @@ export const data = BulimiaNervosaSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "bulimia_nervosa",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "monothetic_tripartite",
-    "criteria": [
-      "A. Episodios recorrentes de compulsao alimentar (quantidade excessiva + perda de controle)",
-      "B. Comportamentos compensatorios inapropriados recorrentes (vomito, laxantes, diureticos, jejum, exercicio excessivo)",
-      "C. Frequencia minima: ≥1x/semana durante 3 meses",
-      "D. Autoavaliacao indevidamente influenciada por peso/forma",
-      "E. NAO ocorre exclusivamente durante anorexia nervosa"
-    ],
-    "diagnostic_rule": "A AND B AND C(≥1x/semana_3meses) AND D AND E",
-    "clusters": [],
-    "duration": "≥3 meses de frequencia ≥1x/semana",
-    "age_onset": "Adolescencia ou idade adulta jovem",
-    "functional_impairment": "Complicacoes eletroliticas possiveis; prejuizo funcional significativo",
-    "exclusions": [
-      "Anorexia nervosa (quando AN ativa)",
-      "Sindrome de Kleine-Levin",
-      "TDM atipico"
-    ],
-    "specifiers": [
-      "Remissao parcial",
-      "Remissao completa"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [
-      "Anorexia tipo compulsao-purgativa",
-      "TCA",
-      "TDM atipico"
-    ],
-    "key_questions": [
-      "Ja teve momentos de comer muito com perda de controle?",
-      "Faz algo para compensar?",
-      "Qual seu peso atual?"
-    ],
-    "alerts": [
-      "Complicacoes eletroliticas possiveis",
-      "Mutuamente exclusivo com Anorexia"
-    ],
-    "source_trace": {
-      "markdown_section": "2. BULIMIA NERVOSA",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 307.51 (F50.2)",
     "estrutura_efetiva": "- **Estrutura efetiva:**",
     "notas_clinicas": "- **Notas:**"
   },
-  "hierarquia_exclusao": {
-    "exclui": [
-      "anorexia_nervosa"
-    ],
-    "exclui_de": [],
-    "notas_hierarquia": "Não ocorre exclusivamente durante episódios de anorexia nervosa. Indivíduos que evoluem de anorexia para bulimia comumente alternam entre os dois transtornos."
-  },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": true,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "id",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

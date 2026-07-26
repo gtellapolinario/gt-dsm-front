@@ -1,7 +1,7 @@
 import { TranstornoDismorficoCorporalSchema } from "./schema";
 
 export const data = TranstornoDismorficoCorporalSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_dismorfico_corporal",
     "nome_completo": "Transtorno Dismórfico Corporal",
@@ -23,138 +23,110 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Preocupação com Defeito Percebido na Aparência",
-      "tipo": "monothetic_obrigatorio",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Preocupação com defeito físico imperceptível/leve",
-          "desc": "Preocupação com um ou mais defeitos ou falhas percebidas na aparência física que não são observáveis ou que parecem leves para os outros.",
-          "pergunta": "Você se preocupa intensamente com alguma falha na sua aparência que outros dizem não enxergar ou ser mínima?",
-          "exemplos_clinicos": [
-            "Convicção de nariz torto não visto por outros",
-            "Preocupação obsessiva com acne mínima"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "B1",
-          "rotulo": "Comportamentos repetitivos ou atos mentais em resposta",
-          "desc": "Em algum momento, o indivíduo executou comportamentos repetitivos (verificar-se no espelho, arrumar-se, beliscar a pele, buscar tranquilização) ou atos mentais (comparar aparência com a de outros) em resposta às preocupações.",
-          "pergunta": "Você verifica repetidamente a aparência no espelho, se arruma excessivamente ou compara sua aparência com a de outros?",
-          "exemplos_clinicos": [
-            "2-3h/dia no espelho",
-            "Cirurgias estéticas recorrentes"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    }
-  ],
-  "criterios_condicionais": [
-    {
-      "id": "sofrimento_funcional",
-      "letra": "C",
-      "rotulo": "Causa sofrimento ou prejuízo funcional significativo",
-      "tipo": "prejuizo_funcional",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Frown",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A preocupação causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "A",
+        "nome": "Preocupação com Defeito Percebido na Aparência",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Preocupação com defeito físico imperceptível/leve",
+                "desc": "Preocupação com um ou mais defeitos ou falhas percebidas na aparência física que não são observáveis ou que parecem leves para os outros.",
+                "pergunta": "A pessoa se preocupa intensamente com alguma falha na sua aparência que outros dizem não enxergar ou ser mínima?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Convicção de nariz torto não visto por outros",
+                    "Preocupação obsessiva com acne mínima"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     },
     {
-      "id": "exclusao_transtorno_alimentar",
-      "letra": "D",
-      "rotulo": "Não melhor explicado por transtorno alimentar",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "anorexia_nervosa"
-      ],
-      "descricao_completa": "A preocupação com a aparência não é mais bem explicada por preocupações com gordura/peso em transtorno alimentar.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "B",
+        "nome": "Comportamentos repetitivos ou atos mentais",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "B1",
+                "rotulo": "Comportamentos repetitivos ou atos mentais em resposta",
+                "desc": "Em algum momento, o indivíduo executou comportamentos repetitivos (verificar-se no espelho, arrumar-se, beliscar a pele, buscar tranquilização) ou atos mentais (comparar aparência com a de outros) em resposta às preocupações.",
+                "pergunta": "A pessoa verifica repetidamente a aparência no espelho, se arruma excessivamente ou compara sua aparência com a de outros?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "2–3h/dia no espelho",
+                    "Cirurgias estéticas recorrentes"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
+  "criterios_condicionais": [
+    {
+        "id": "sofrimento_funcional",
+        "letra": "C",
+        "rotulo": "Causa sofrimento ou prejuízo funcional significativo",
+        "tipo": "prejuizo_funcional",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Frown",
+        "descricao_completa": "A preocupação causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+        "nota": null
+    },
+    {
+        "id": "exclusao_transtorno_alimentar",
+        "letra": "D",
+        "rotulo": "Não melhor explicado por transtorno alimentar",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "A preocupação com a aparência não é mais bem explicada por preocupações com gordura/peso em transtorno alimentar.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "anorexia_nervosa",
+            "bulimia_nervosa",
+            "transtorno_compulsao_alimentar"
+        ]
+    }
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "com_dismorfia_muscular",
-      "nome": "Com dismorfia muscular",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "com_dismorfia_muscular",
+        "nome": "Com dismorfia muscular",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     },
     {
-      "id": "insight",
-      "nome": "Nível de insight",
-      "tipo": "select_unico",
-      "ortogonal": false,
-      "opcoes": [
-        {
-          "id": "bom",
-          "label": "Com bom ou razoável insight",
-          "codigo_adicional": null
-        },
-        {
-          "id": "pobre",
-          "label": "Com pobre insight",
-          "codigo_adicional": null
-        },
-        {
-          "id": "ausente",
-          "label": "Com ausência de insight/crenças delirantes",
-          "codigo_adicional": null
-        }
-      ],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "insight",
+        "nome": "Nível de insight",
+        "tipo": "enum",
+        "ortogonal": false,
+        "regra_criterial": null,
+        "opcoes": [
+            "Com bom ou razoável insight",
+            "Com pobre insight",
+            "Com ausência de insight/crenças delirantes"
+        ]
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -165,13 +137,7 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -216,27 +182,80 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
     "proporcao_sexo": "Levemente mais comum em mulheres na população geral",
     "variacoes_culturais": null,
     "notas": "Taxas de ideação suicida extremamente elevadas.",
-    "metadados": {
-      "completo": false,
-      "lacunas": [
-        "variacao_cultural"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Mediana ~16–17 anos; frequentemente início gradual",
     "trajetoria": "Geralmente crônico sem tratamento; alta taxa de hospitalizações e tentativas de suicídio.",
     "prognostico": "Responde a ISRSs em doses altas e TCC adaptada.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [],
+        "diagnostic_rule": "**A(preocupacao_aparencia_defeito_percebido) AND B(comportamentos_repetitivos) AND C(sofrimento/prejuizo) AND D(exclusao_TA)**",
+        "clusters": [],
+        "duration": null,
+        "age_onset": "** Media 16-17 anos; 2/3 iniciam antes dos 18; mediana 15 anos",
+        "functional_impairment": null,
+        "exclusions": [
+          "Transtornos alimentares (foco em peso/gordura = TA, nao BDD; ambos podem ser comorbidos)",
+          "TOC (no TOC, obsessoes/compulsoes nao se limitam a aparencia)",
+          "Transtorno de escoriacao (se beliscar e para melhorar aparencia = BDD; se sem intencao = escoriacao)",
+          "Tricotilomania (se arrancar pelo e para melhorar defeito = BDD; se sem intencao = trico)",
+          "Ansiedade de doenca (BDD: foco em aparencia; ansiedade de doenca: medo de ter doenca)",
+          "TDM (em TDM, preocupacao nao e proeminente; comportamentos repetitivos nao estao presentes)",
+          "Transtorno psicotico (BDD com insight ausente = BDD, NAO delirium/esquizofrenia)",
+          "Disforia de genero (foco: desconforto com caracteristicas sexuais)"
+        ],
+        "specifiers": [
+          "- Com dismorfia muscular: preocupacao de que a estrutura corporal e muito pequena ou insuficientemente musculosa. Usado mesmo se houver outras preocupacoes corporais.",
+          "- Com insight bom ou razoavel: reconhece que as crencas sao provavelmente/definitivamente nao verdadeiras",
+          "Com insight pobre: acredita que as crencas sao provavelmente verdadeiras",
+          "Com insight ausente/crencas delirantes: completamente convencido de que as crencas sao verdadeiras",
+          "Para individuos com insight ausente/crencas delirantes, os sintomas NAO devem ser diagnosticados como transtorno psicotico (e BDD com especificador)."
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "Voce tem preocupacoes intensas com algum aspecto da sua aparencia fisica que considera defeituoso ou feio?",
+          "Outras pessoas dizem que esse defeito e leve ou nem percebem?",
+          "Essa preocupacao ocupa muito do seu tempo ou causa sofrimento significativo?",
+          "Voce se verifica frequentemente no espelho, se arruma excessivamente, ou belisca a pele por causa dessa preocupacao?",
+          "Voce compara sua aparencia com a de outras pessoas com frequencia?",
+          "Voce busca tranquilizacao de outras pessoas sobre sua aparencia?",
+          "Essa preocupacao ja interferiu no trabalho, nos relacionome_completontos ou fez voce evitar situacoes sociais?",
+          "Sua preocupacao e principalmente sobre peso ou gordura corporal?",
+          "Voce ja procurou tratamento estetico/cirurgico por causa dessa preocupacao?",
+          "Voce acha que sua percepcao sobre esses defeitos pode estar exagerada ou distorcida?",
+          "Voce ja esteve completamente convencido de que os outros veem o mesmo defeito que voce?",
+          "Voce se preocupa em ser muito pequeno ou ter pouca musculatura, apesar de ter aparentemente um corpo normal ou musculoso?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO DISMORFICO CORPORAL / BDD",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "06_transtorno_obsessivo_compulsivo_transtornos_relacionados.md",
     "fonte_inventario_md": null,
@@ -249,82 +268,13 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_dismorfico_corporal",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_monocluster",
-    "criteria": [],
-    "diagnostic_rule": "**A(preocupacao_aparencia_defeito_percebido) AND B(comportamentos_repetitivos) AND C(sofrimento/prejuizo) AND D(exclusao_TA)**",
-    "clusters": [],
-    "duration": null,
-    "age_onset": "** Media 16-17 anos; 2/3 iniciam antes dos 18; mediana 15 anos",
-    "functional_impairment": null,
-    "exclusions": [
-      "Transtornos alimentares (foco em peso/gordura = TA, nao BDD; ambos podem ser comorbidos)",
-      "TOC (no TOC, obsessoes/compulsoes nao se limitam a aparencia)",
-      "Transtorno de escoriacao (se beliscar e para melhorar aparencia = BDD; se sem intencao = escoriacao)",
-      "Tricotilomania (se arrancar pelo e para melhorar defeito = BDD; se sem intencao = trico)",
-      "Ansiedade de doenca (BDD: foco em aparencia; ansiedade de doenca: medo de ter doenca)",
-      "TDM (em TDM, preocupacao nao e proeminente; comportamentos repetitivos nao estao presentes)",
-      "Transtorno psicotico (BDD com insight ausente = BDD, NAO delirium/esquizofrenia)",
-      "Disforia de genero (foco: desconforto com caracteristicas sexuais)"
-    ],
-    "specifiers": [
-      "- Com dismorfia muscular: preocupacao de que a estrutura corporal e muito pequena ou insuficientemente musculosa. Usado mesmo se houver outras preocupacoes corporais.",
-      "- Com insight bom ou razoavel: reconhece que as crencas sao provavelmente/definitivamente nao verdadeiras",
-      "Com insight pobre: acredita que as crencas sao provavelmente verdadeiras",
-      "Com insight ausente/crencas delirantes: completamente convencido de que as crencas sao verdadeiras",
-      "Para individuos com insight ausente/crencas delirantes, os sintomas NAO devem ser diagnosticados como transtorno psicotico (e BDD com especificador)."
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "Voce tem preocupacoes intensas com algum aspecto da sua aparencia fisica que considera defeituoso ou feio?",
-      "Outras pessoas dizem que esse defeito e leve ou nem percebem?",
-      "Essa preocupacao ocupa muito do seu tempo ou causa sofrimento significativo?",
-      "Voce se verifica frequentemente no espelho, se arruma excessivamente, ou belisca a pele por causa dessa preocupacao?",
-      "Voce compara sua aparencia com a de outras pessoas com frequencia?",
-      "Voce busca tranquilizacao de outras pessoas sobre sua aparencia?",
-      "Essa preocupacao ja interferiu no trabalho, nos relacionome_completontos ou fez voce evitar situacoes sociais?",
-      "Sua preocupacao e principalmente sobre peso ou gordura corporal?",
-      "Voce ja procurou tratamento estetico/cirurgico por causa dessa preocupacao?",
-      "Voce acha que sua percepcao sobre esses defeitos pode estar exagerada ou distorcida?",
-      "Voce ja esteve completamente convencido de que os outros veem o mesmo defeito que voce?",
-      "Voce se preocupa em ser muito pequeno ou ter pouca musculatura, apesar de ter aparentemente um corpo normal ou musculoso?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### TRANSTORNO DISMORFICO CORPORAL / BDD",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "sigla": "TDC",
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 300.7 (F45.22)",
     "estrutura_efetiva": "- **Estrutura efetiva:**",
     "notas_clinicas": "- **Notas:**"
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

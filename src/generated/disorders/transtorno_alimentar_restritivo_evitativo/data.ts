@@ -1,7 +1,7 @@
 import { TranstornoAlimentarRestritivoEvitativoSchema } from "./schema";
 
 export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_alimentar_restritivo_evitativo",
     "nome_completo": "Transtorno Alimentar Restritivo/Evitativo",
@@ -21,141 +21,105 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Perturbação Alimentar com Comprometimento Nutricional ou Psicossocial",
-      "tipo": "polythetic_com_ancora",
-      "limiar": {
-        "adulto": 1,
-        "pediatria": 1
-      },
-      "ancora_obrigatoria": {
-        "descricao": "Pelo menos 1 entre A_core (perturbação alimentar com fracasso nutricional/energético).",
-        "ids_obrigatorios": [
-          "A_core"
+        "id": "A",
+        "nome": "Perturbação Alimentar com Comprometimento Nutricional ou Psicossocial",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 1,
+            "pediatria": 1
+        },
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Perda de peso ou insucesso no ganho de peso/crescimento",
+                "desc": "Perda de peso significativa, insucesso em obter o ganho de peso esperado ou atraso de crescimento em crianças.",
+                "pergunta": "Houve perda de peso significativa, insucesso em ganhar peso adequadamente ou atraso no crescimento?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A2",
+                "rotulo": "Deficiência nutricional significativa",
+                "desc": "Deficiência nutricional significativa com impacto na saúde física.",
+                "pergunta": "Há deficiência nutricional significativa com consequências para a saúde física?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Hipotermia",
+                    "Bradicardia",
+                    "Anemia"
+                ]
+            },
+            {
+                "id": "A3",
+                "rotulo": "Dependência de alimentação enteral ou suplementos orais",
+                "desc": "Dependência de alimentação enteral ou de suplementos nutricionais orais.",
+                "pergunta": "A pessoa depende de alimentação por sonda ou suplementos nutricionais orais para manter a nutrição adequada?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Gastrostomia",
+                    "Suplementos nutricionalmente completos"
+                ]
+            },
+            {
+                "id": "A4",
+                "rotulo": "Interferência marcante no funcionamento psicossocial",
+                "desc": "Incapacidade de participar de atividades sociais normais envolvendo alimentação ou prejuízo em relacionamentos devido à perturbação.",
+                "pergunta": "A perturbação alimentar interfere de forma marcada no funcionamento social, nas relações ou na participação em refeições com outras pessoas?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Evita jantares sociais",
+                    "Conflitos familiares nas refeições"
+                ]
+            }
         ],
-        "n_minimo": 1
-      },
-      "sintomas": [
-        {
-          "id": "A_core",
-          "rotulo": "Perturbação alimentar com fracasso nutricional persistente",
-          "desc": "Falta aparente de interesse na alimentação ou em alimentos; esquiva baseada nas características sensoriais do alimento; ou preocupação acerca de consequências aversivas da alimentação, manifestada por fracasso persistente em satisfazer as necessidades nutricionais e/ou energéticas apropriadas.",
-          "pergunta": "A pessoa apresenta evitação ou restrição alimentar persistente que leva a insuficiência nutricional ou energética?",
-          "exemplos_clinicos": [
-            "Falta de interesse em alimentos",
-            "Esquiva sensorial alimentar",
-            "Medo de engasgo ou vômito"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1",
-          "rotulo": "Perda de peso ou insucesso no ganho de peso/crescimento",
-          "desc": "Perda de peso significativa, insucesso em obter o ganho de peso esperado ou atraso de crescimento em crianças.",
-          "pergunta": "Houve perda de peso significativa, insucesso em ganhar peso adequadamente ou atraso no crescimento?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2",
-          "rotulo": "Deficiência nutricional significativa",
-          "desc": "Deficiência nutricional significativa com impacto na saúde física.",
-          "pergunta": "Há deficiência nutricional significativa com consequências para a saúde física?",
-          "exemplos_clinicos": [
-            "Hipotermia",
-            "Bradicardia",
-            "Anemia"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Dependência de alimentação enteral ou suplementos orais",
-          "desc": "Necessidade de suplementação enteral ou de suplementos nutricionais orais para manter ingesta adequada, na ausência de condição médica subjacente.",
-          "pergunta": "A pessoa depende de alimentação por sonda ou suplementos nutricionais orais para manter a nutrição adequada?",
-          "exemplos_clinicos": [
-            "Gastrostomia",
-            "Suplementos nutricionalmente completos"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A4",
-          "rotulo": "Interferência marcante no funcionamento psicossocial",
-          "desc": "Incapacidade de participar de atividades sociais normais envolvendo alimentação ou prejuízo em relacionamentos devido à perturbação.",
-          "pergunta": "A perturbação alimentar interfere de forma marcada no funcionamento social, nas relações ou na participação em refeições com outras pessoas?",
-          "exemplos_clinicos": [
-            "Evita jantares sociais",
-            "Conflitos familiares nas refeições"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "descricao_qualitativa": "Falta aparente de interesse na alimentação ou em alimentos; esquiva baseada nas características sensoriais do alimento; ou preocupação acerca de consequências aversivas da alimentação, manifestada por fracasso persistente em satisfazer as necessidades nutricionais e/ou energéticas apropriadas.",
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "nao_cultural_nao_indisponibilidade",
-      "letra": "B",
-      "rotulo": "Não explicada por indisponibilidade de alimento ou prática cultural",
-      "tipo": "qualitativo_descritivo",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A perturbação não é mais bem explicada por indisponibilidade de alimento ou por uma prática culturalmente aceita (p. ex., jejum religioso).",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "nao_cultural_nao_indisponibilidade",
+        "letra": "B",
+        "rotulo": "Não ocorre apenas por falta de alimento ou prática cultural",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "ClipboardCheck",
+        "descricao_completa": "A perturbação não é mais bem explicada por indisponibilidade de alimento ou por uma prática culturalmente aceita (p. ex. , jejum religioso).",
+        "nota": null
     },
     {
-      "id": "exclusao_anorexia_bulimia",
-      "letra": "C",
-      "rotulo": "Não ocorre exclusivamente durante anorexia ou bulimia; sem perturbação de peso/forma",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "select_multiplos_ddx",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [
-        "anorexia_nervosa",
-        "bulimia_nervosa"
-      ],
-      "descricao_completa": "A perturbação alimentar não ocorre exclusivamente durante o curso de anorexia nervosa ou bulimia nervosa, e não há evidência de perturbação na maneira como o peso ou a forma corporal é vivenciada.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_anorexia_bulimia",
+        "letra": "C",
+        "rotulo": "Não ocorre apenas durante anorexia ou bulimia nervosa",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "A perturbação alimentar não ocorre exclusivamente durante o curso de anorexia nervosa ou bulimia nervosa, e não há evidência de perturbação na maneira como o peso ou a forma corporal é vivenciada.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "anorexia_nervosa",
+            "bulimia_nervosa"
+        ]
     },
     {
-      "id": "exclusao_medica_outro_tm",
-      "letra": "D",
-      "rotulo": "Não atribuível a condição médica ou melhor explicada por outro transtorno mental",
-      "tipo": "exclusao_substancia_medica",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A perturbação alimentar não é atribuível a uma condição médica concomitante ou mais bem explicada por outro transtorno mental. Quando ocorre no contexto de outra condição, sua gravidade excede a habitualmente associada.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_medica_outro_tm",
+        "letra": "D",
+        "rotulo": "Excede o esperado para condição médica ou outro transtorno",
+        "tipo": "condicional_comorbidade",
+        "ui_widget": "toggle_condicional",
+        "obrigatorio": true,
+        "icone": "GitBranch",
+        "descricao_completa": "Quando o transtorno alimentar ocorre no contexto de outra condição médica ou transtorno mental, sua gravidade excede a habitualmente associada à condição ou ao transtorno e justifica atenção clínica adicional.",
+        "nota": null
     }
-  ],
+],
   "subtipos": {
     "presente": true,
     "nome": null,
@@ -174,28 +138,16 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
       "label": "Preocupação com consequências aversivas"
     }
   ],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "em_remicao",
-      "nome": "Em remissão",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "em_remissao",
+        "nome": "Em remissão",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -206,13 +158,7 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "nutricao",
@@ -288,27 +234,79 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
     "proporcao_sexo": "Igualmente comum em ambos os sexos na lactência e primeira infância; comórbido com TEA, é mais comum no sexo masculino.",
     "variacoes_culturais": "Não deve ser diagnosticado quando a evitação estiver relacionada unicamente a práticas religiosas ou culturais específicas.",
     "notas": "Mais comum em crianças do que em adultos; pode haver grande demora entre manifestação inicial e apresentação clínica.",
-    "metadados": {
-      "completo": false,
-      "lacunas": [
-        "epidemiologia"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Lactência ou primeira infância (evitação baseada em sensibilidade sensorial tende a surgir na primeira década).",
     "trajetoria": "A evitação/restricão baseada em aspectos sensoriais é relativamente estável e duradoura. Pode persistir na idade adulta com funcionamento relativamente normal.",
     "prognostico": "Pouca evidência associando diretamente TARE e manifestação subsequente de outro transtorno alimentar.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "A. Perturbacao alimentar com fracasso nutricional (≥1 consequencia: perda de peso, deficiencia nutricional, dependencia de sonda/suplementos, interferencia psicossocial marcante)",
+          "B. NAO explicada por indisponibilidade de alimento ou pratica culturalmente aceita",
+          "C. NAO ocorre exclusivamente durante anorexia/bulimia; NAO ha evidencia de perturbacao na vivencia de peso/forma",
+          "D. NAO atribuivel a condicao medica concomitante"
+        ],
+        "diagnostic_rule": "A(≥1 consequencia) AND B AND C AND D",
+        "clusters": [
+          "Consequencias nutricionais/funcionais"
+        ],
+        "duration": null,
+        "age_onset": "Fase de lactente, primeira infancia ou qualquer idade",
+        "functional_impairment": "Desnutricao potencialmente fatal; prejuizo psicossocial marcante",
+        "exclusions": [
+          "Anorexia nervosa",
+          "Bulimia nervosa",
+          "Indisponibilidade de alimento",
+          "Pratica cultural",
+          "Condicao medica explicativa"
+        ],
+        "specifiers": [
+          "Em remissao"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [
+          "Anorexia nervosa",
+          "Crianca exigente",
+          "Condicao medica",
+          "TEA"
+        ],
+        "key_questions": [
+          "Tem dificuldade com alimentacao?",
+          "Perdeu peso recentemente?",
+          "Tem medo de ganhar peso?"
+        ],
+        "alerts": [
+          "Desnutricao potencialmente fatal",
+          "Excluir Anorexia obrigatorio"
+        ],
+        "source_trace": {
+          "markdown_section": "4. TRANSTORNO ALIMENTAR RESTRITIVO/EVITATIVO (ARFID)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "10_transtornos_alimentares.md",
     "fonte_inventario_md": null,
@@ -321,81 +319,13 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_alimentar_restritivo_evitativo",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_monocluster",
-    "criteria": [
-      "A. Perturbacao alimentar com fracasso nutricional (≥1 consequencia: perda de peso, deficiencia nutricional, dependencia de sonda/suplementos, interferencia psicossocial marcante)",
-      "B. NAO explicada por indisponibilidade de alimento ou pratica culturalmente aceita",
-      "C. NAO ocorre exclusivamente durante anorexia/bulimia; NAO ha evidencia de perturbacao na vivencia de peso/forma",
-      "D. NAO atribuivel a condicao medica concomitante"
-    ],
-    "diagnostic_rule": "A(≥1 consequencia) AND B AND C AND D",
-    "clusters": [
-      "Consequencias nutricionais/funcionais"
-    ],
-    "duration": null,
-    "age_onset": "Fase de lactente, primeira infancia ou qualquer idade",
-    "functional_impairment": "Desnutricao potencialmente fatal; prejuizo psicossocial marcante",
-    "exclusions": [
-      "Anorexia nervosa",
-      "Bulimia nervosa",
-      "Indisponibilidade de alimento",
-      "Pratica cultural",
-      "Condicao medica explicativa"
-    ],
-    "specifiers": [
-      "Em remissao"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [
-      "Anorexia nervosa",
-      "Crianca exigente",
-      "Condicao medica",
-      "TEA"
-    ],
-    "key_questions": [
-      "Tem dificuldade com alimentacao?",
-      "Perdeu peso recentemente?",
-      "Tem medo de ganhar peso?"
-    ],
-    "alerts": [
-      "Desnutricao potencialmente fatal",
-      "Excluir Anorexia obrigatorio"
-    ],
-    "source_trace": {
-      "markdown_section": "4. TRANSTORNO ALIMENTAR RESTRITIVO/EVITATIVO (ARFID)",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "sigla": "TARE",
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 307.59 (F50.8)",
     "estrutura_efetiva": "- **Estrutura efetiva:**",
     "notas_clinicas": "- **Notas:**"
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

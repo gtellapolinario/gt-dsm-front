@@ -1,7 +1,7 @@
 import { TpEvitativoSchema } from "./schema";
 
 export const data = TpEvitativoSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "tp_evitativo",
     "nome_completo": "Transtorno da Personalidade Evitativa",
@@ -21,98 +21,90 @@ export const data = TpEvitativoSchema.parse({
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Inibição Social, Inadequação e Hipersensibilidade à Avaliação",
-      "tipo": "polythetic_com_limiar",
-      "limiar": {
-        "adulto": 4,
-        "pediatria": null
-      },
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Evita atividades profissionais por medo de crítica",
-          "desc": "Evita atividades profissionais que envolvam contato interpessoal significativo por medo de crítica, desaprovação ou rejeição.",
-          "pergunta": "Você evita atividades no trabalho que exijam contato interpessoal significativo por medo de crítica ou rejeição?",
-          "exemplos_clinicos": [
-            "Recusar promoções por medo de críticas"
-          ],
-          "faixa_aplicavel": null
+        "id": "A",
+        "nome": "Inibição Social, Inadequação e Hipersensibilidade à Avaliação",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 4,
+            "pediatria": 4
         },
-        {
-          "id": "A2",
-          "rotulo": "Só se envolve se tiver certeza de ser recebido positivamente",
-          "desc": "Não se dispõe a envolver-se com pessoas, a menos que tenha certeza de que será recebido de forma positiva.",
-          "pergunta": "Você só se dispõe a fazer novos amigos ou se envolver com pessoas se tiver certeza de que será aceito sem críticas?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Reservado em relacionamentos íntimos por medo de vergonha",
-          "desc": "Mostra-se reservado em relacionamentos íntimos devido a medo de passar vergonha ou de ser ridicularizado.",
-          "pergunta": "Você se mostra reservado em relacionamentos íntimos por medo de ser ridicularizado ou passar vergonha?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A4",
-          "rotulo": "Preocupação com críticas ou rejeição em situações sociais",
-          "desc": "Preocupa-se com críticas ou rejeição em situações sociais.",
-          "pergunta": "Você está constantemente preocupado com ser criticado ou rejeitado em situações sociais?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A5",
-          "rotulo": "Inibe-se em situações interpessoais novas por inadequação",
-          "desc": "Inibe-se em situações interpessoais novas em razão de sentimentos de inadequação.",
-          "pergunta": "Você se sente inibido em novas situações sociais por se sentir inadequado ou inferior?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A6",
-          "rotulo": "Vê a si mesmo como socialmente incapaz ou inferior",
-          "desc": "Vê a si mesmo como socialmente incapaz, sem atrativos pessoais ou inferior aos outros.",
-          "pergunta": "Você se vê como socialmente incapaz, sem atrativos ou inferior aos outros?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A7",
-          "rotulo": "Reluta em assumir riscos pessoais por constrangimento",
-          "desc": "Reluta de forma incomum em assumir riscos pessoais ou se envolver em quaisquer novas atividades, pois estas podem ser constrangedoras.",
-          "pergunta": "Você reluta em assumir riscos pessoais ou tentar novas atividades por medo de se constranger?",
-          "exemplos_clinicos": [
-            "Cancelar entrevista por medo de vestuário inadequado"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Evita atividades profissionais por medo de crítica",
+                "desc": "Evita atividades profissionais que envolvam contato interpessoal significativo por medo de crítica, desaprovação ou rejeição.",
+                "pergunta": "A pessoa evita atividades no trabalho que exijam contato interpessoal significativo por medo de crítica ou rejeição?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Recusar promoções por medo de críticas"
+                ]
+            },
+            {
+                "id": "A2",
+                "rotulo": "Só se envolve se tiver certeza de ser recebido positivamente",
+                "desc": "Não se dispõe a envolver-se com pessoas, a menos que tenha certeza de que será recebido de forma positiva.",
+                "pergunta": "A pessoa só se dispõe a fazer novos amigos ou se envolver com pessoas se tiver certeza de que será aceito sem críticas?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A3",
+                "rotulo": "Reservado em relacionamentos íntimos por medo de vergonha",
+                "desc": "Mostra-se reservado em relacionamentos íntimos devido a medo de passar vergonha ou de ser ridicularizado.",
+                "pergunta": "A pessoa se mostra reservado em relacionamentos íntimos por medo de ser ridicularizado ou passar vergonha?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A4",
+                "rotulo": "Preocupação com críticas ou rejeição em situações sociais",
+                "desc": "Preocupa-se com críticas ou rejeição em situações sociais.",
+                "pergunta": "A pessoa está constantemente preocupado com ser criticado ou rejeitado em situações sociais?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A5",
+                "rotulo": "Inibe-se em situações interpessoais novas por inadequação",
+                "desc": "Inibe-se em situações interpessoais novas em razão de sentimentos de inadequação.",
+                "pergunta": "A pessoa se sente inibido em novas situações sociais por se sentir inadequado ou inferior?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A6",
+                "rotulo": "Vê a si mesmo como socialmente incapaz ou inferior",
+                "desc": "Vê a si mesmo como socialmente incapaz, sem atrativos pessoais ou inferior aos outros.",
+                "pergunta": "A pessoa se vê como socialmente incapaz, sem atrativos ou inferior aos outros?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A7",
+                "rotulo": "Reluta em assumir riscos pessoais por constrangimento",
+                "desc": "Reluta de forma incomum em assumir riscos pessoais ou se envolver em quaisquer novas atividades, pois estas podem ser constrangedoras.",
+                "pergunta": "A pessoa reluta em assumir riscos pessoais ou tentar novas atividades por medo de se constranger?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Cancelar entrevista por medo de vestuário inadequado"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
@@ -124,13 +116,7 @@ export const data = TpEvitativoSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -196,25 +182,85 @@ export const data = TpEvitativoSchema.parse({
     "proporcao_sexo": "Igualmente frequente em ambos os sexos",
     "variacoes_culturais": "Retraimento pode ser consequência de aculturação após imigração.",
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Infância (timidez, medo de estranhos)",
     "trajetoria": "Tendência a piorar na adolescência; pode remitir com o envelhecimento.",
     "prognostico": "Uso cauteloso em crianças e adolescentes, pois timidez pode ser adequada ao desenvolvimento.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "1. Evita atividades com contato interpessoal por medo de critica",
+          "2. Nao se dispoe a envolver-se sem certeza de recepcao positiva",
+          "3. Reservado em relacionamentos intimos por medo de vergonha",
+          "4. Preocupa-se com criticas ou rejeicao",
+          "5. Inibe-se em situacoes novas por inadequacao",
+          "6. Ve a si mesmo como socialmente incapaz/inferior",
+          "7. Reluta em assumir riscos por medo de constrangimento"
+        ],
+        "diagnostic_rule": "Criterios gerais de TP (A-F) + >=4 de 7 criterios",
+        "clusters": [
+          "Inibicao Social",
+          "Sentimentos de Inadequacao",
+          "Hipersensibilidade a Avaliacao"
+        ],
+        "duration": "tende a persistir; pode atenuar com envelhecimento",
+        "age_onset": "inicio vida adulta",
+        "functional_impairment": "isolamento social; rede de apoio restrita; funcionamento profissional prejudicado",
+        "exclusions": [
+          "fobia social",
+          "agorafobia",
+          "dependente",
+          "esquizoide",
+          "esquizotipica"
+        ],
+        "specifiers": [],
+        "operational_profiles": [],
+        "critical_differentials": [
+          "fobia social",
+          "esquizoide",
+          "dependente",
+          "borderline"
+        ],
+        "key_questions": [
+          "Evita atividades no trabalho por medo de ser criticado?",
+          "So se aproxima se tiver certeza de gentileza?",
+          "Reservado em intimidade por medo de vergonha?",
+          "Preocupado com criticas antes de situacoes sociais?",
+          "Inibido por se sentir inadequado?",
+          "Ve-se como socialmente incapaz ou inferior?",
+          "Evita riscos por medo de constrangimento?"
+        ],
+        "alerts": [
+          "Desejo de relacionamentos deve estar presente (diferencial chave de esquizoide)"
+        ],
+        "source_trace": {
+          "markdown_section": "## 8. Transtorno da Personalidade Evitativa (TPEv)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": false,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "missing",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "18_transtornos_personalidade.md",
     "fonte_inventario_md": null,
@@ -225,85 +271,13 @@ export const data = TpEvitativoSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "tp_evitativo",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_monocluster",
-    "criteria": [
-      "1. Evita atividades com contato interpessoal por medo de critica",
-      "2. Nao se dispoe a envolver-se sem certeza de recepcao positiva",
-      "3. Reservado em relacionamentos intimos por medo de vergonha",
-      "4. Preocupa-se com criticas ou rejeicao",
-      "5. Inibe-se em situacoes novas por inadequacao",
-      "6. Ve a si mesmo como socialmente incapaz/inferior",
-      "7. Reluta em assumir riscos por medo de constrangimento"
-    ],
-    "diagnostic_rule": "Criterios gerais de TP (A-F) + >=4 de 7 criterios",
-    "clusters": [
-      "Inibicao Social",
-      "Sentimentos de Inadequacao",
-      "Hipersensibilidade a Avaliacao"
-    ],
-    "duration": "tende a persistir; pode atenuar com envelhecimento",
-    "age_onset": "inicio vida adulta",
-    "functional_impairment": "isolamento social; rede de apoio restrita; funcionamento profissional prejudicado",
-    "exclusions": [
-      "fobia social",
-      "agorafobia",
-      "dependente",
-      "esquizoide",
-      "esquizotipica"
-    ],
-    "specifiers": [],
-    "operational_profiles": [],
-    "critical_differentials": [
-      "fobia social",
-      "esquizoide",
-      "dependente",
-      "borderline"
-    ],
-    "key_questions": [
-      "Evita atividades no trabalho por medo de ser criticado?",
-      "So se aproxima se tiver certeza de gentileza?",
-      "Reservado em intimidade por medo de vergonha?",
-      "Preocupado com criticas antes de situacoes sociais?",
-      "Inibido por se sentir inadequado?",
-      "Ve-se como socialmente incapaz ou inferior?",
-      "Evita riscos por medo de constrangimento?"
-    ],
-    "alerts": [
-      "Desejo de relacionamentos deve estar presente (diferencial chave de esquizoide)"
-    ],
-    "source_trace": {
-      "markdown_section": "## 8. Transtorno da Personalidade Evitativa (TPEv)",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 301.82 / F60.6",
     "estrutura_efetiva": "- **Estrutura efetiva:** Padrao difuso de inibicao social, sentimentos de inadequacao e hipersensibilidade a avaliacao negativa. Exige 4+ de 7 criterios: (1) evita atividades profissionais com contato interpessoal significativo, (2) nao se envolve com pessoas sem certeza de aceitacao positiva, (3) reservado em relacoes intimas por medo de vergonha, (4) preocupa-se com criticas/rejeicao em situacoes sociais, (5) inibe-se em situacoes interpessoais novas, (6) ve-se como socialmente incapaz/inferior, (7) reluta em assumir riscos ou novas atividades por medo de constrangimento.",
     "notas_clinicas": "- **Notas:** Prevalencia: 2,4% (NESARC). Igualmente frequente em ambos os sexos. Inicio na infancia (timidez, isolamento, medo de estranhos). Tende a remitir com envelhecimento. Grande sobreposicao com transtorno de ansiedade social (fobia social) - podem ser conceitos alternativos da mesma condicao. Comorbidade: TP dependente (particularmente frequente), borderline, Grupo A; transtornos depressivos, bipolares, ansiedade. Cautela em criancas/adolescentes (timidez pode ser adequada ao desenvolvimento)."
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": false,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "missing",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

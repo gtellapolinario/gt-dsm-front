@@ -1,0 +1,10333 @@
+# Critérios Diagnósticos e Adicionais dos 58 Transtornos (DSM-5-TR)
+
+## Agorafobia
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Medo/Ansiedade em ≥2 de 5 Situações Agorafóbicas",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Uso de transporte público",
+          "desc": "Medo ou ansiedade acentuados de uso de transporte público (ônibus, metrô, trens, barcos, aviões).",
+          "pergunta": "Você sente medo intenso ao usar transporte público (ônibus, metrô, avião)?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Estar em espaços abertos",
+          "desc": "Medo ou ansiedade de estar em espaços abertos (estacionamentos, feiras, pontes).",
+          "pergunta": "Você sente medo em espaços abertos como estacionamentos ou praças?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Estar em locais fechados",
+          "desc": "Medo ou ansiedade de estar em locais fechados (lojas, cinemas, teatros).",
+          "pergunta": "Você sente medo em lugares fechados como shoppings ou cinemas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Estar em fila ou multidão",
+          "desc": "Medo ou ansiedade de estar em fila ou no meio de uma multidão.",
+          "pergunta": "Você evita filas ou aglomerações?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Estar fora de casa sozinho",
+          "desc": "Medo ou ansiedade de estar fora de casa sozinho.",
+          "pergunta": "Você tem medo de sair de casa sozinho?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "natureza_medo",
+      "letra": "B",
+      "rotulo": "Medo por dificuldade de escapar/sem socorro se incapacitado",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "LifeBuoy",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O indivíduo teme ou evita essas situações por pensar que escapar seria difícil ou que ajuda não estaria disponível se desenvolver sintomas de pânico ou outros sintomas incapacitantes/embaraçosos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "evitacao_sofrimento",
+      "letra": "C",
+      "rotulo": "Situações agorafóbicas quase sempre provocam medo/ansiedade",
+      "tipo": "temporal_proporcao",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "CircleAlert",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As situações agorafóbicas quase sempre provocam medo ou ansiedade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "evitacao_ativa",
+      "letra": "D",
+      "rotulo": "Situações evitadas, requerem companhia ou suportadas com...",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "EyeOff",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As situações agorafóbicas são ativamente evitadas, requerem presença de companheiro, ou são suportadas com intenso medo/ansiedade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "desproporcional",
+      "letra": "E",
+      "rotulo": "Medo desproporcional ao perigo real",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Scale",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo ou ansiedade é desproporcional ao perigo real imposto pelas situações agorafóbicas e ao contexto sociocultural.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_6meses",
+      "letra": "F",
+      "rotulo": "Duração ≥6 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo, ansiedade ou esquiva é persistente com duração mínima de 6 meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "G",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo funcional.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "H",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "I",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "fobia_especifica",
+        "tas",
+        "tept",
+        "tag"
+      ],
+      "descricao_completa": "Não mais bem explicado por fobia específica situacional, TAS, TEPT, TAG. Se coexistir com TP, ambos os diagnósticos devem ser dados.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Anorexia Nervosa
+
+```json
+{
+  clusters_sintomas: [
+    {
+      id: "A",
+      nome: "Restrição Calórica com Peso Significativamente Baixo",
+      tipo: "monothetic_obrigatorio",
+      limiar: null,
+      ancora_obrigatoria: null,
+      sintomas: [
+        {
+          id: "A1",
+          rotulo: "Restrição calórica com peso significativamente baixo",
+          desc: "Restrição da ingesta calórica em relação às necessidades, levando a um peso corporal significativamente baixo no contexto de idade, gênero, trajetória do desenvolvimento e saúde física.",
+          pergunta:
+            "A pessoa restringe a ingesta calórica de forma a manter um peso corporal significativamente abaixo do mínimo normal para sua idade, gênero e desenvolvimento?",
+          exemplos_clinicos: [
+            "IMC < 17 kg/m² em adultos",
+            "Percentil de IMC abaixo do 5º em crianças/adolescentes",
+            "Insucesso em manter trajetória de crescimento esperada"],
+          faixa_aplicavel: null}],
+      descricao_qualitativa: null,
+      metadados: {
+        completo: true,
+        lacunas: [],
+        notas_agente: null,
+        fonte_passada_1: true}}],
+  criterios_condicionais: [
+    {
+      id: "medo_ganho_peso",
+      letra: "B",
+      rotulo:
+        "Medo intenso de ganhar peso ou comportamento que interfere no ganho de peso",
+      tipo: "qualitativo_descritivo",
+      ui_widget: "toggle_com_justificativa_obrigatoria",
+      obrigatorio: true,
+      icone: "Check",
+      ddx_sugeridos: [],
+      descricao_completa:
+        "Medo intenso de ganhar peso ou de engordar, ou comportamento persistente que interfere no ganho de peso, mesmo estando com peso significativamente baixo.",
+      metadados: {
+        completo: true,
+        lacunas: [],
+        notas_agente: null,
+        fonte_passada_1: true}},
+    {
+      id: "perturbação_peso_forma",
+      letra: "C",
+      rotulo: "Perturbação na vivência do peso ou da forma corporal",
+      tipo: "qualitativo_descritivo",
+      ui_widget: "toggle_com_justificativa_obrigatoria",
+      obrigatorio: true,
+      icone: "Check",
+      ddx_sugeridos: [],
+      descricao_completa:
+        "Perturbação no modo como o próprio peso ou a forma corporal são vivenciados, influência indevida do peso ou da forma corporal na autoavaliação, ou ausência persistente de reconhecimento da gravidade do baixo peso corporal atual.",
+      metadados: {
+        completo: true,
+        lacunas: [],
+        notas_agente: null,
+        fonte_passada_1: true}}],
+  especificadores: [
+    {
+      id: "em_remicao_parcial",
+      nome: "Em remissão parcial",
+      tipo: "booleano",
+      ortogonal: false,
+      opcoes: [],
+      metadados: {
+        completo: true,
+        lacunas: [],
+        notas_agente: null,
+        fonte_passada_1: true}},
+    {
+      id: "em_remicao_completa",
+      nome: "Em remissão completa",
+      tipo: "booleano",
+      ortogonal: false,
+      opcoes: [],
+      metadados: {
+        completo: true,
+        lacunas: [],
+        notas_agente: null,
+        fonte_passada_1: true}}]
+}
+```
+
+---
+
+## Bulimia Nervosa
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_B",
+      "nome": "Compulsão Alimentar e Comportamentos Compensatórios",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Episódios recorrentes de compulsão com ingestão excessiva",
+          "desc": "Ingestão, em um período de tempo determinado (geralmente < 2 horas), de uma quantidade de alimento definitivamente maior do que a maioria dos indivíduos consumiria no mesmo período sob circunstâncias semelhantes.",
+          "pergunta": "A pessoa tem episódios nos quais come uma quantidade de alimento definitivamente maior do que a maioria das pessoas comeria em um período similar?",
+          "exemplos_clinicos": [
+            "Ingestão excessiva em festas ou celebrações deve ser contextualizada"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Sensação de falta de controle durante a compulsão",
+          "desc": "Sensação de falta de controle sobre a ingestão durante o episódio, como sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo.",
+          "pergunta": "Durante esses episódios, a pessoa sente que não consegue parar de comer ou controlar o que e quanto está ingerindo?",
+          "exemplos_clinicos": [
+            "Incapacidade de abster-se de comer",
+            "Parar apenas quando desconfortavelmente cheio"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Comportamentos compensatórios inapropriados recorrentes",
+          "desc": "Comportamentos compensatórios inapropriados recorrentes a fim de impedir o ganho de peso, como vômitos autoinduzidos, uso indevido de laxantes, diuréticos ou outros medicamentos, jejum ou exercício em excesso.",
+          "pergunta": "A pessoa adota comportamentos compensatórios inapropriados de forma recorrente para impedir o ganho de peso após episódios de compulsão?",
+          "exemplos_clinicos": [
+            "Vômitos autoinduzidos",
+            "Uso indevido de laxantes ou diuréticos",
+            "Jejum",
+            "Exercício excessivo"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "frequencia_minima",
+      "letra": "C",
+      "rotulo": "Frequência mínima: ≥1 vez por semana durante 3 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A compulsão alimentar e os comportamentos compensatórios inapropriados ocorrem, em média, no mínimo uma vez por semana durante três meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "autoavaliação_peso_forma",
+      "letra": "D",
+      "rotulo": "Autoavaliação indevidamente influenciada por forma e peso corporais",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A autoavaliação é indevidamente influenciada pela forma e pelo peso corporais.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_anorexia",
+      "letra": "E",
+      "rotulo": "Não ocorre exclusivamente durante episódios de anorexia nervosa",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [
+        "anorexia_nervosa"
+      ],
+      "descricao_completa": "A perturbação não ocorre exclusivamente durante episódios de anorexia nervosa.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "em_remicao_parcial",
+      "nome": "Em remissão parcial",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "em_remicao_completa",
+      "nome": "Em remissão completa",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno da Conduta
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Comportamentos de violação de direitos ou normas",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": 3
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Pelo menos um dos sintomas do cluster A deve estar presente nos últimos seis meses.",
+        "ids_obrigatorios": [
+          "A1",
+          "A2",
+          "A3",
+          "A4",
+          "A5",
+          "A6",
+          "A7",
+          "A8",
+          "A9",
+          "A10",
+          "A11",
+          "A12",
+          "A13",
+          "A14",
+          "A15"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Provoca, ameaça ou intimida outros",
+          "desc": "Frequentemente provoca, ameaça ou intimida outros.",
+          "pergunta": "Você provoca, ameaça ou intimida outras pessoas com frequência?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Inicia brigas físicas",
+          "desc": "Frequentemente inicia brigas físicas.",
+          "pergunta": "Você começa brigas físicas com frequência?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Usou arma capaz de causar danos graves",
+          "desc": "Usou alguma arma que pode causar danos físicos graves a outros (p. ex., bastão, tijolo, garrafa quebrada, faca, arma de fogo).",
+          "pergunta": "Você já usou alguma arma ou objeto que poderia causar ferimentos graves em outra pessoa?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Fisicamente cruel com pessoas",
+          "desc": "Foi fisicamente cruel com pessoas.",
+          "pergunta": "Você foi fisicamente cruel ou violentou outras pessoas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Fisicamente cruel com animais",
+          "desc": "Foi fisicamente cruel com animais.",
+          "pergunta": "Você foi fisicamente cruel com animais?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Roubou durante confronto com vítima",
+          "desc": "Roubou durante o confronto com uma vítima (p. ex., assalto, roubo de bolsa, extorsão, roubo à mão armada).",
+          "pergunta": "Você já roubou algo usando força, ameaça ou confrontando a vítima?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Forçou alguém a atividade sexual",
+          "desc": "Forçou alguém a atividade sexual.",
+          "pergunta": "Você já forçou ou coagiu alguém a praticar atos sexuais?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Provocou incêndios deliberadamente",
+          "desc": "Envolveu-se deliberadamente na provocação de incêndios com a intenção de causar danos graves.",
+          "pergunta": "Você já provocou incêndios de forma deliberada para causar danos?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Destruiu deliberadamente propriedade alheia",
+          "desc": "Destruiu deliberadamente propriedade de outras pessoas (excluindo provocação de incêndios).",
+          "pergunta": "Você já destruiu de propósito propriedade ou bens de outras pessoas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A10",
+          "rotulo": "Invadiu casa, edifício ou carro",
+          "desc": "Invadiu a casa, o edifício ou o carro de outra pessoa.",
+          "pergunta": "Você já invadiu a casa, um prédio ou o carro de outra pessoa?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A11",
+          "rotulo": "Mente para obter bens ou favores (trapaceia)",
+          "desc": "Frequentemente mente para obter bens materiais ou favores ou para evitar obrigações (i.e., 'trapaceia').",
+          "pergunta": "Você mente frequentemente para conseguir coisas, favores ou para escapar de obrigações?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A12",
+          "rotulo": "Furtou itens de valor sem confrontar vítima",
+          "desc": "Furtou itens de valores consideráveis sem confrontar a vítima (p. ex., furto em lojas, mas sem invadir ou forçar a entrada; falsificação).",
+          "pergunta": "Você já furtou itens de valor sem confrontar a vítima (furto em lojas, falsificação)?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A13",
+          "rotulo": "Fica fora de casa à noite apesar de proibição (<13a)",
+          "desc": "Frequentemente fica fora de casa à noite, apesar da proibição dos pais, com início antes dos 13 anos de idade.",
+          "pergunta": "Antes dos 13 anos, você ficava fora de casa à noite contra a vontade dos pais?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": "pediatria"
+        },
+        {
+          "id": "A14",
+          "rotulo": "Fugiu de casa pelo menos duas vezes",
+          "desc": "Fugiu de casa, passando a noite fora, pelo menos duas vezes enquanto morando com os pais ou em lar substituto, ou uma vez sem retornar por um longo período.",
+          "pergunta": "Você já fugiu de casa e passou a noite fora pelo menos duas vezes?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": "pediatria"
+        },
+        {
+          "id": "A15",
+          "rotulo": "Falta às aulas com frequência (<13a)",
+          "desc": "Com frequência falta às aulas, com início antes dos 13 anos de idade.",
+          "pergunta": "Antes dos 13 anos, você faltava às aulas com frequência?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": "pediatria"
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "janela_12meses",
+      "letra": "A_cont",
+      "rotulo": "Pelo menos 3 comportamentos nos últimos 12 meses",
+      "tipo": "temporal_duracao_janela",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Pelo menos três dos 15 comportamentos devem estar presentes nos últimos 12 meses, com pelo menos um comportamento presente nos últimos seis meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "prejuizo_funcional",
+      "letra": "B",
+      "rotulo": "Prejuízo clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação comportamental causa prejuízos clinicamente significativos no funcionamento social, acadêmico ou profissional.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_tpa",
+      "letra": "C",
+      "rotulo": "Não preenche critérios para TPA (se ≥18 anos)",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_personalidade_antissocial"
+      ],
+      "descricao_completa": "Se o indivíduo tem 18 anos ou mais, os critérios para transtorno da personalidade antissocial não são preenchidos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "emocoes_prosociais_limitadas",
+      "nome": "Com emoções pró-sociais limitadas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Especificador aplicado quando pelo menos duas das quatro características (ausência de remorso, insensível/falta de empatia, despreocupado com desempenho, afeto superficial) estão presentes de forma persistente durante ≥12 meses e em múltiplos contextos.",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Déficits nas Funções Intelectuais",
+      "tipo": "qualitativo_sem_lista",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Déficits no raciocínio e solução de problemas",
+          "desc": "Comprometimento no raciocínio, resolução de problemas, planejamento, pensamento abstrato, juízo, aprendizagem acadêmica e aprendizagem pela experiência.",
+          "pergunta": "O paciente demonstra dificuldades acentuadas em planejar atividades diárias, compreender conceitos abstratos ou aprender com erros do passado?",
+          "exemplos_clinicos": [
+            "Dificuldade em gerenciar finanças",
+            "Dificuldade na tomada de decisões lógicas diárias"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Confirmados por avaliação clínica e testes de inteligência padronizados individualizados (geralmente QI ≥ 2 desvios-padrão abaixo da média, ou seja, ~70 ou menos).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "B",
+      "nome": "Déficits no Funcionamento Adaptativo",
+      "tipo": "qualitativo_sem_lista",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "B1",
+          "rotulo": "Limitação no domínio conceitual",
+          "desc": "Dificuldades em habilidades acadêmicas, linguagem, leitura, escrita, raciocínio, memória e conhecimento prático.",
+          "pergunta": "Há necessidade de suporte para tarefas acadêmicas, leitura, escrita ou controle de tempo?",
+          "exemplos_clinicos": [
+            "Necessita de ajuda para preencher formulários",
+            "Dificuldade no uso de dinheiro"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B2",
+          "rotulo": "Limitação no domínio social",
+          "desc": "Alterações na percepção de pistas sociais, comunicação, julgamento interpessoal e empatia.",
+          "pergunta": "A pessoa tem dificuldades em interpretar pistas sociais ou manter relacionamentos adequados à idade?",
+          "exemplos_clinicos": [
+            "Comportamento ingênuo",
+            "Ser facilmente enganado por outros"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B3",
+          "rotulo": "Limitação no domínio prático",
+          "desc": "Dificuldades no autocuidado, responsabilidades profissionais, organização de tarefas e lazer.",
+          "pergunta": "O indivíduo necessita de auxílio para banho, alimentação, uso de transporte público ou tarefas domésticas?",
+          "exemplos_clinicos": [
+            "Necessita de supervisão para morar sozinho",
+            "Dificuldade na organização do lar"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Resultam em fracasso para atingir padrões de desenvolvimento e socioculturais de independência e responsabilidade social. Sem suporte, os déficits limitam o funcionamento em uma ou mais atividades diárias.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "inicio_desenvolvimento",
+      "letra": "C",
+      "rotulo": "Início durante o período do desenvolvimento",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Clock",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Início dos déficits intelectuais e adaptativos durante o período do desenvolvimento (infância ou adolescência).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Delirium
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Perturbação da Atenção e Consciência",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Capacidade reduzida de direcionar e manter a atenção",
+          "desc": "Perturbação da atenção evidenciada por capacidade reduzida de direcionar, focalizar, manter e mudar a atenção.",
+          "pergunta": "A pessoa apresenta dificuldade para manter a atenção, sendo facilmente distraída ou precisando que as perguntas sejam repetidas?",
+          "exemplos_clinicos": [
+            "Perguntas precisam ser repetidas",
+            "Perseveração em respostas anteriores",
+            "Distração por estímulos irrelevantes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Menor orientação para o ambiente (consciência)",
+          "desc": "Perturbação da consciência manifestada por menor orientação ao ambiente ou, por vezes, até para si mesmo.",
+          "pergunta": "A pessoa está desorientada em relação ao ambiente ou a si mesma?",
+          "exemplos_clinicos": [
+            "Desorientação para tempo e lugar"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "curso_temporal",
+      "letra": "B",
+      "rotulo": "Surge em período breve e tende a oscilar",
+      "tipo": "temporal_duracao_janela",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Clock",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação se desenvolve em um período breve de tempo (normalmente de horas a poucos dias), representa uma mudança da atenção e da consciência basais e tende a oscilar quanto à gravidade ao longo de um dia.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "perturbacao_adicional_cognicao",
+      "letra": "C",
+      "rotulo": "Perturbação adicional na cognição",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Brain",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Perturbação adicional na cognição (p. ex., déficit de memória, desorientação, linguagem, capacidade visuoespacial ou percepção).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outro_tnc_coma",
+      "letra": "D",
+      "rotulo": "Não explicado por outro TNC preexistente nem ocorre em coma",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "tnc_maior",
+        "tnc_leve"
+      ],
+      "descricao_completa": "As perturbações dos Critérios A e C não são mais bem explicadas por outro transtorno neurocognitivo preexistente, estabelecido ou em desenvolvimento e não ocorrem no contexto de um nível gravemente diminuído de estimulação, como no coma.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "etiologia_fisiologica",
+      "letra": "E",
+      "rotulo": "Evidências de etiologia fisiológica",
+      "tipo": "condicao_associada_obrigatoria",
+      "ui_widget": "checklist_achados_objetivos",
+      "obrigatorio": true,
+      "icone": "Stethoscope",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Há evidências a partir da história, do exame físico ou de achados laboratoriais de que a perturbação é uma consequência fisiológica direta de outra condição médica, intoxicação ou abstinência de substância, de exposição a uma toxina ou de que ela se deva a múltiplas etiologias.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "curso",
+      "nome": "Curso",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "agudo",
+          "label": "Agudo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "persistente",
+          "label": "Persistente",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "nivel_atividade",
+      "nome": "Nível de atividade psicomotora",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "hiperativo",
+          "label": "Hiperativo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "hipoativo",
+          "label": "Hipoativo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "misto",
+          "label": "Misto",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Esquizofrenia
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas da Fase Ativa",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
+        "ids_obrigatorios": [
+          "A1",
+          "A2",
+          "A3"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Delírios",
+          "desc": "Crenças fixas não abaláveis por evidências contrárias abundantes.",
+          "pergunta": "Você tem tido ideias persistentes que as outras pessoas dizem não ser reais ou não fazer sentido?",
+          "exemplos_clinicos": [
+            "Crenças de controle externo, paranoia severa, telepatia ou transmissão de pensamento"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Alucinações",
+          "desc": "Percepções que ocorrem na ausência de estímulo correspondente, sendo vívidas e claras.",
+          "pergunta": "Você tem percebido sons, vozes ou visões que outras pessoas dizem não existir?",
+          "exemplos_clinicos": [
+            "Vozes que conversam entre si ou que comentam de forma depreciativa as ações do indivíduo"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Discurso desorganizado",
+          "desc": "Pensamento desorganizado manifesto na fala por descarrilamento constante ou incoerência.",
+          "pergunta": "Tem sido difícil para você estruturar as frases ou acompanhar uma conversa de forma lógica?",
+          "exemplos_clinicos": [
+            "Respostas tangenciais frequentes, salada de palavras ou afasia pragmática"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
+          "desc": "Comportamento psicomotor alterado, variando de agitação inadequada à rigidez, estupor e flexibilidade cérea.",
+          "pergunta": "Você percebeu uma agitação desmedida ou uma rigidez que o impeça de mover o corpo?",
+          "exemplos_clinicos": [
+            "Agitação tola e sem propósito, desleixo extremo com higiene, posturas bizarras repetitivas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Sintomas negativos",
+          "desc": "Diminuição expressiva da expressão emocional, do afeto ou avolia e anedonia acentuadas.",
+          "pergunta": "Você sente que perdeu a iniciativa para interagir, trabalhar ou que suas emoções estão enfraquecidas?",
+          "exemplos_clinicos": [
+            "Alogia (pobreza de discurso), avolia (falta de iniciativa), afeto embotado e achatamento facial"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Presença de pelo menos dois sintomas por parte significativa de tempo em 1 mês, com um deles sendo obrigatoriamente A1, A2 ou A3.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "declinio_funcional",
+      "letra": "B",
+      "rotulo": "Déficit ou declínio funcional marcante",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "TrendingDown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Por parte significativa do tempo desde o início da perturbação, o nível de funcionamento em uma ou mais áreas principais (trabalho, relações interpessoais ou autocuidado) está acentuadamente abaixo do nível alcançado antes do início.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_continua",
+      "letra": "C",
+      "rotulo": "Duração contínua de pelo menos 6 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Hourglass",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Sinais contínuos da perturbação persistem por pelo menos seis meses. Esse período deve incluir pelo menos um mês de sintomas da fase ativa e pode incluir períodos prodrômicos ou residuais.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_esquizoafetivo_humor_esquizofrenia",
+      "letra": "D",
+      "rotulo": "Exclusão de esquizoafetivo e humor com psicose",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_esquizoafetivo",
+        "transtorno_depressivo_maior_com_psicose",
+        "transtorno_bipolar_com_psicose"
+      ],
+      "descricao_completa": "Transtorno esquizoafetivo e transtorno depressivo ou bipolar com características psicóticas foram descartados porque não ocorreram episódios de humor concomitantemente com os sintomas ativos, ou sua duração foi breve.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_esquizofrenia",
+      "letra": "E",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Pill",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "relacao_autismo_comunicacao",
+      "letra": "F",
+      "rotulo": "Relação com autismo ou transtorno da comunicação",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Baby",
+      "ddx_sugeridos": [
+        "transtorno_do_espectro_autista",
+        "transtorno_comunicacao_social"
+      ],
+      "descricao_completa": "Se houver história de transtorno do espectro autista ou de transtorno da comunicação social de início na infância, o diagnóstico adicional de esquizofrenia só é feito se delírios ou alucinações proeminentes estiverem presentes por pelo menos 1 mês.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "curso_apos_um_ano",
+      "nome": "Especificador de Curso (após 1 ano de duração)",
+      "tipo": "curso_temporal",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "primeiro_episodio_agudo",
+          "label": "Primeiro episódio, atualmente em episódio agudo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "primeiro_episodio_remissao_parcial",
+          "label": "Primeiro episódio, atualmente em remissão parcial",
+          "codigo_adicional": null
+        },
+        {
+          "id": "primeiro_episodio_remissao_completa",
+          "label": "Primeiro episódio, atualmente em remissão completa",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_agudo",
+          "label": "Episódios múltiplos, atualmente em episódio agudo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_remissao_parcial",
+          "label": "Episódios múltiplos, atualmente em remissão parcial",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_remissao_completa",
+          "label": "Episódios múltiplos, atualmente em remissão completa",
+          "codigo_adicional": null
+        },
+        {
+          "id": "continuo",
+          "label": "Contínuo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "nao_especificado",
+          "label": "Não especificado",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Explosivo Intermitente
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Explosões comportamentais recorrentes",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 1,
+        "pediatria": 1
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Agressão verbal ou física frequente sem danos graves",
+          "desc": "Agressão verbal ou física dirigida a propriedade, animais ou outros indivíduos, ocorrendo em média de duas vezes por semana, durante três meses, sem danos ou destruição de propriedade nem lesões físicas.",
+          "pergunta": "Nos últimos 3 meses, houve em média pelo menos duas vezes por semana explosões de agressão verbal ou física que não causaram lesões ou danos graves?",
+          "exemplos_clinicos": [
+            "Acessos de raiva",
+            "Injúrias",
+            "Discussões verbais"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Três explosões com danos ou lesões em 12 meses",
+          "desc": "Três explosões comportamentais envolvendo danos ou destruição de propriedade e/ou agressão física com lesões contra animais ou outros indivíduos, ocorrendo dentro de 12 meses.",
+          "pergunta": "No último ano, houve pelo menos três explosões de agressão que causaram danos a propriedade ou lesões físicas a outras pessoas/animais?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "desproporcional",
+      "letra": "B",
+      "rotulo": "Magnitude desproporcional à provocação",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Scale",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A magnitude da agressividade expressa durante as explosões recorrentes é grosseiramente desproporcional em relação à provocação ou a quaisquer estressores psicossociais precipitantes.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "impulsivo_nao_instrumental",
+      "letra": "C",
+      "rotulo": "Não premeditado e sem objetivo tangível",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Zap",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As explosões de agressividade recorrentes não são premeditadas (i.e., são impulsivas e/ou decorrentes de raiva) e não têm por finalidade atingir algum objetivo tangível (p. ex., dinheiro, poder, intimidação).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "prejuizo_sofrimento",
+      "letra": "D",
+      "rotulo": "Sofrimento ou prejuízo funcional/consequências",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As explosões de agressividade recorrentes causam sofrimento acentuado ao indivíduo ou prejuízo no funcionamento profissional ou interpessoal, ou estão associadas a consequências financeiras ou legais.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "idade_minima",
+      "letra": "E",
+      "rotulo": "Idade cronológica ≥6 anos",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "campo_duracao_anos",
+      "obrigatorio": true,
+      "icone": "Baby",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A idade cronológica é de pelo menos 6 anos (ou nível de desenvolvimento equivalente).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "F",
+      "rotulo": "Não mais bem explicado por outro transtorno ou condição",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_depressivo_maior",
+        "transtorno_bipolar",
+        "transtorno_desregulacao_humor",
+        "transtorno_psicotico",
+        "transtorno_personalidade_antissocial",
+        "transtorno_personalidade_borderline"
+      ],
+      "descricao_completa": "As explosões de agressividade recorrentes não são mais bem explicadas por outro transtorno mental, condição médica ou efeitos fisiológicos de uma substância. Em crianças de 6 a 18 anos, o comportamento agressivo como parte de transtorno de adaptação não deve ser considerado.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Fobia Específica
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Medo/Ansiedade Acentuados Acerca de Objeto/Situação Específica",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Medo ou ansiedade acentuados sobre objeto/situação",
+          "desc": "Medo ou ansiedade acentuados acerca de objeto ou situação específica (p.ex., voar, alturas, animais, injeção, sangue). Em crianças: pode ser choro, ataques de raiva, imobilidade ou comportamento de agarrar-se.",
+          "pergunta": "Você tem medo intenso de alguma coisa específica, como animais, alturas, agulhas ou lugares fechados?",
+          "exemplos_clinicos": [
+            "Pânico ao ver cobras",
+            "Terror ao entrar em elevador"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Resposta imediata de medo/ansiedade ao estímulo",
+          "desc": "O objeto ou situação fóbica quase invariavelmente provoca uma resposta imediata de medo ou ansiedade.",
+          "pergunta": "Quando você se depara com esse objeto ou situação, sente medo imediatamente?",
+          "exemplos_clinicos": [
+            "Ataque de pânico ao ver sangue"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C1",
+          "rotulo": "Evitação ativa ou suportação com sofrimento intenso",
+          "desc": "O objeto ou situação fóbica é ativamente evitado ou suportado com intensa ansiedade ou sofrimento.",
+          "pergunta": "Você evita esse objeto/situação ou suporta com muito sofrimento?",
+          "exemplos_clinicos": [
+            "Recusa de viagens aéreas"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "desproporcional_contexto",
+      "letra": "D",
+      "rotulo": "Medo desproporcional ao perigo real",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Scale",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo ou ansiedade é desproporcional ao perigo real imposto pelo objeto/situação e ao contexto sociocultural.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_6meses",
+      "letra": "E",
+      "rotulo": "Duração ≥6 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo, ansiedade ou esquiva é persistente, com duração mínima de seis meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "F",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo, ansiedade ou esquiva causa sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou outras áreas.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "G",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "tas",
+        "agorafobia",
+        "tag",
+        "tept",
+        "transtorno_ansiedade_social"
+      ],
+      "descricao_completa": "Não mais bem explicado por TAS, agorafobia, TAG, TEPT, TAG, transtorno obsessivo-compulsivo, transtorno de ansiedade social.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Mutismo Seletivo
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Falha Consistente em Falar em Situações Sociais",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Falha consistente em falar em situações sociais específicas",
+          "desc": "Falha consistente em falar em situações sociais específicas nas quais é esperado falar (p.ex., escola), embora fale em outras situações.",
+          "pergunta": "A criança fala normalmente em casa mas se recusa ou falha em falar na escola ou com outros adultos?",
+          "exemplos_clinicos": [
+            "Fala em casa mas não na escola",
+            "Usa gestos e sinais na escola"
+          ],
+          "faixa_aplicavel": "pediatria"
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "interferencia_educacional_social",
+      "letra": "B",
+      "rotulo": "Interfere em realizações educacionais/sociais",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "CircleAlert",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação interfere nas realizações educacionais ou profissionais ou na comunicação social.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_1mes",
+      "letra": "C",
+      "rotulo": "Duração ≥1 mês (não apenas o 1º mês de escola)",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A duração é de pelo menos 1 mês (não limitada ao primeiro mês de escola).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_idioma",
+      "letra": "D",
+      "rotulo": "Não devido a desconhecimento da língua",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A falha em falar não se deve ao fato de o indivíduo não conhecer ou estar confortável com a língua falada nas situações sociais.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_transtorno_comunicacao",
+      "letra": "E",
+      "rotulo": "Não melhor explicado por transtorno de comunicação ou psi...",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_linguagem",
+        "gagueira",
+        "tea",
+        "esquizofrenia"
+      ],
+      "descricao_completa": "Não é mais bem explicado por transtorno de comunicação, nem ocorre exclusivamente em TEA, esquizofrenia ou outro transtorno psicótico.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno de Oposição Desafiante
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Humor raivoso, comportamento questionador ou índole vingativa",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 4,
+        "pediatria": 4
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Perde a calma com frequência",
+          "desc": "Perde a calma com frequência.",
+          "pergunta": "Você (ou a criança) perde a calma com frequência, mesmo com estímulos pequenos?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Sensível ou facilmente incomodado",
+          "desc": "É sensível ou facilmente incomodado com frequência.",
+          "pergunta": "Você se irrita ou se incomoda facilmente com coisas que outras pessoas toleram?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Raivoso e ressentido com frequência",
+          "desc": "É raivoso e ressentido com frequência.",
+          "pergunta": "Você se sente frequentemente com raiva ou ressentido?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Questiona figuras de autoridade",
+          "desc": "Questiona figuras de autoridade ou, no caso de crianças e adolescentes, adultos.",
+          "pergunta": "Você questiona ou discute com figuras de autoridade com frequência?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Desafia ou recusa obedecer regras",
+          "desc": "Desafia acintosamente ou se recusa a obedecer a regras ou pedidos de figuras de autoridade.",
+          "pergunta": "Você desafia ou se recusa a seguir regras ou pedidos de autoridade?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Incomoda deliberadamente outras pessoas",
+          "desc": "Incomoda deliberadamente outras pessoas com frequência.",
+          "pergunta": "Você incomoda ou provoca outras pessoas de propósito com frequência?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Culpa outros por seus erros",
+          "desc": "Culpa outros por seus erros ou mau comportamento com frequência.",
+          "pergunta": "Você costuma culpar outras pessoas por seus próprios erros ou comportamento?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Malvado ou vingativo",
+          "desc": "Foi malvado ou vingativo pelo menos duas vezes nos últimos seis meses.",
+          "pergunta": "Nos últimos seis meses, houve pelo menos duas vezes em que você foi deliberadamente vingativo ou malvado?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao_6meses",
+      "letra": "A_cont",
+      "rotulo": "Duração mínima de 6 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Padrão de comportamento com duração de pelo menos seis meses. Nota: para <5 anos, na maioria dos dias; para ≥5 anos, pelo menos uma vez por semana.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "nao_irmao",
+      "letra": "A_cont2",
+      "rotulo": "Exibido com pelo menos um indivíduo que não seja irmão",
+      "tipo": "multicontexto",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Users",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O comportamento deve ser exibido na interação com pelo menos um indivíduo que não seja um irmão.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "prejuizo_funcional",
+      "letra": "B",
+      "rotulo": "Sofrimento ou prejuízo funcional",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação no comportamento está associada a sofrimento para o indivíduo ou para os outros em seu contexto social imediato, ou causa impactos negativos no funcionamento social, educacional, profissional ou outras áreas importantes.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "C",
+      "rotulo": "Não ocorre exclusivamente em curso de outro transtorno",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_psicotico",
+        "transtorno_uso_substancia",
+        "transtorno_depressivo",
+        "transtorno_bipolar",
+        "transtorno_desregulacao_humor"
+      ],
+      "descricao_completa": "Os comportamentos não ocorrem exclusivamente durante o curso de um transtorno psicótico, por uso de substância, depressivo ou bipolar. Além disso, os critérios para transtorno disruptivo da desregulação do humor não são preenchidos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno de Estresse Pós-Traumático
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Exposição a Trauma",
+      "tipo": "unico_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Exposição direta a morte, ameaça de morte, ferimento ou v...",
+          "desc": "Exposição a morte real ou ameaçada, ferimento grave, ou violência sexual, de uma das formas: exposição direta, testemunhar pessoalmente, tomar conhecimento de evento com familiar/amigo próximo, ou exposição repetida/extrema indireta (profissionais).",
+          "pergunta": "Você vivenciou, presenciou ou soube de um evento que envolveu morte, ferimento grave ou violência sexual?",
+          "exemplos_clinicos": [
+            "Sobrevivente de acidente grave",
+            "Socorrista exposto repetidamente a mortes"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "B",
+      "nome": "Sintomas de Intrusão (≥1/5)",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 1,
+        "pediatria": 1
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "B1",
+          "rotulo": "Memórias intrusivas involuntárias do trauma",
+          "desc": "Memórias angustiantes e intrusivas recorrentes e involuntárias do evento traumático.",
+          "pergunta": "Você tem memórias perturbadoras do trauma que surgem sem querer?",
+          "exemplos_clinicos": [
+            "Flashbacks de violência sexual"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B2",
+          "rotulo": "Sonhos perturbadores do trauma",
+          "desc": "Sonhos angustiantes repetidos com conteúdo e/ou emoções relacionados ao trauma.",
+          "pergunta": "Você tem pesadelos frequentes sobre o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B3",
+          "rotulo": "Reações dissociativas (flashbacks)",
+          "desc": "Reações dissociativas em que o indivíduo sente ou age como se o trauma estivesse ocorrendo novamente.",
+          "pergunta": "Você tem flashbacks em que sente que o trauma está acontecendo de novo?",
+          "exemplos_clinicos": [
+            "Flashback com perda de contato com a realidade"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B4",
+          "rotulo": "Sofrimento psicológico intenso a estímulos relacionados",
+          "desc": "Sofrimento psicológico intenso ao ser exposto a estímulos internos ou externos que simbolizam/se assemelham ao trauma.",
+          "pergunta": "Você fica muito angustiado quando algo lembra o trauma?",
+          "exemplos_clinicos": [
+            "Pânico ao ouvir barulho de tiros"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B5",
+          "rotulo": "Reações fisiológicas a estímulos relacionados",
+          "desc": "Reações fisiológicas marcadas a estímulos que simbolizam o evento traumático.",
+          "pergunta": "Você tem reações físicas intensas (coração acelerado, suor) quando algo lembra o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "C",
+      "nome": "Evitação Persistente (≥1/2)",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 1,
+        "pediatria": 1
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "C1",
+          "rotulo": "Evitação de pensamentos/sentimentos sobre o trauma",
+          "desc": "Esforços para evitar pensamentos, sentimentos ou sensações angustiantes associados ao evento traumático.",
+          "pergunta": "Você evita pensar, sentir ou falar sobre o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C2",
+          "rotulo": "Evitação de estímulos externos relacionados ao trauma",
+          "desc": "Esforços para evitar lembretes externos (pessoas, lugares, conversas, atividades, objetos, situações) que despertem recordações.",
+          "pergunta": "Você evita lugares, pessoas ou situações que lembram o trauma?",
+          "exemplos_clinicos": [
+            "Recusa de usar carro após acidente grave"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "D",
+      "nome": "Alterações Negativas em Cognições e Humor (≥2/7)",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "D1",
+          "rotulo": "Incapacidade de recordar aspecto importante do trauma",
+          "desc": "Incapacidade de recordar um aspecto importante do evento traumático (amnésia dissociativa, não outro fator).",
+          "pergunta": "Você tem dificuldade de lembrar detalhes importantes sobre o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D2",
+          "rotulo": "Crenças ou expectativas negativas persistentes",
+          "desc": "Crenças ou expectativas negativas persistentes e exageradas sobre si mesmo, os outros ou o mundo.",
+          "pergunta": "Você tem pensamentos negativos persistentes como 'Sou uma pessoa ruim' ou 'O mundo é completamente perigoso'?",
+          "exemplos_clinicos": [
+            "'Não posso confiar em ninguém'"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D3",
+          "rotulo": "Cognições distorcidas sobre a causa do trauma",
+          "desc": "Cognições persistentes e distorcidas sobre a causa ou consequências do trauma que levam o indivíduo a culpar a si mesmo ou aos outros.",
+          "pergunta": "Você se culpa ou culpa outros de forma exagerada pelo que aconteceu?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D4",
+          "rotulo": "Estado emocional negativo persistente",
+          "desc": "Estado emocional negativo persistente (medo, horror, raiva, culpa, vergonha).",
+          "pergunta": "Você se sente persistentemente com medo, horror, culpa ou vergonha desde o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D5",
+          "rotulo": "Interesse acentuadamente diminuído em atividades",
+          "desc": "Interesse ou participação acentuadamente diminuídos em atividades significativas.",
+          "pergunta": "Você perdeu o interesse em atividades que gostava antes do trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D6",
+          "rotulo": "Sentimentos de distanciamento dos outros",
+          "desc": "Sentimentos de distanciamento ou estranhamento em relação aos outros.",
+          "pergunta": "Você se sente distante ou desconectado das pessoas próximas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D7",
+          "rotulo": "Incapacidade persistente de sentir emoções positivas",
+          "desc": "Incapacidade persistente de experimentar emoções positivas (incapacidade de sentir amor, alegria, satisfação).",
+          "pergunta": "Você tem dificuldade de sentir alegria, amor ou satisfação desde o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "E",
+      "nome": "Alterações em Excitabilidade e Reatividade (≥2/6)",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "E1",
+          "rotulo": "Comportamento irritável e explosões de raiva",
+          "desc": "Comportamento irritável e explosões de raiva (com pouca ou nenhuma provocação).",
+          "pergunta": "Você está mais irritável ou tem explosões de raiva desde o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "E2",
+          "rotulo": "Comportamento imprudente ou autodestrutivo",
+          "desc": "Comportamento imprudente ou autodestrutivo.",
+          "pergunta": "Você tem agido de forma imprudente ou arriscada desde o trauma?",
+          "exemplos_clinicos": [
+            "Direção imprudente",
+            "Uso de drogas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "E3",
+          "rotulo": "Hipervigilância",
+          "desc": "Hipervigilância.",
+          "pergunta": "Você está constantemente em alerta ou com sensação de estar sendo ameaçado?",
+          "exemplos_clinicos": [
+            "Sentar de costas para a parede em restaurantes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "E4",
+          "rotulo": "Resposta de sobressalto exagerada",
+          "desc": "Resposta de sobressalto exagerada.",
+          "pergunta": "Você se assusta exageradamente com sons ou movimentos inesperados?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "E5",
+          "rotulo": "Problemas de concentração",
+          "desc": "Problemas de concentração.",
+          "pergunta": "Você tem tido dificuldade de se concentrar desde o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "E6",
+          "rotulo": "Perturbação do sono",
+          "desc": "Perturbação do sono (dificuldade em adormecer ou manter o sono, ou sono agitado).",
+          "pergunta": "Você tem problemas com o sono desde o trauma?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao",
+      "letra": "F",
+      "rotulo": "Duração >1 mês",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A duração da perturbação (Critérios B, C, D, E) é superior a 1 mês.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "G",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "H",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_sintomas_dissociativos",
+      "nome": "Com sintomas dissociativos",
+      "tipo": "select_unico",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "despersonalizacao",
+          "label": "Com despersonalização",
+          "codigo_adicional": null
+        },
+        {
+          "id": "desrealizacao",
+          "label": "Com desrealização",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "inicio_retardado",
+      "nome": "Com início retardado",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Início ≥6 meses após o evento.",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer
+
+```json
+{
+  "clusters_sintomas": [],
+  "criterios_condicionais": [
+    {
+      "id": "criterios_tnc",
+      "letra": "A",
+      "rotulo": "São atendidos os critérios para TNC maior ou leve",
+      "tipo": "condicao_associada_obrigatoria",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "São atendidos os critérios para transtorno neurocognitivo maior ou leve.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "inicio_progressao",
+      "letra": "B",
+      "rotulo": "Surgimento insidioso e progressão gradual",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "ChartLine",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Há surgimento insidioso e progressão gradual de prejuízo em um ou mais domínios cognitivos (no caso de TNC maior, pelo menos dois domínios devem estar prejudicados).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "certeza_diagnostica",
+      "letra": "C",
+      "rotulo": "Critérios para doença de Alzheimer provável ou possível",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Brain",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os critérios são atendidos para doença de Alzheimer provável ou possível: provável = evidência de mutação genética causadora OU declínio clássico progressivo sem etiologia mista; possível = ausência de evidência de mutação genética com declínio progressivo na memória/aprendizagem sem etiologia mista (TNC leve).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outras_etiologias",
+      "letra": "D",
+      "rotulo": "Não mais bem explicado por outra doença ou transtorno",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "tnc_vascular",
+        "tnc_corpos_lewy",
+        "tnc_frontotemporal"
+      ],
+      "descricao_completa": "A perturbação não é mais bem explicada por doença cerebrovascular, outra doença neurodegenerativa, efeitos de uma substância ou outro transtorno mental, neurológico ou sistêmico.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno Neurocognitivo Leve
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Declínio Cognitivo Pequeno",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Preocupação com declínio na função cognitiva",
+          "desc": "Preocupação do indivíduo, de um informante com conhecimento ou do clínico de que ocorreu declínio na função cognitiva.",
+          "pergunta": "Há preocupação do paciente, de um informante ou do clínico sobre declínio em algum domínio cognitivo?",
+          "exemplos_clinicos": [
+            "Precisa de mais esforço para tarefas cognitivas",
+            "Uso de estratégias compensatórias"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Prejuízo pequeno no desempenho cognitivo documentado",
+          "desc": "Prejuízo pequeno no desempenho cognitivo, de preferência documentado por teste neuropsicológico padronizado ou, em sua falta, outra avaliação quantificada.",
+          "pergunta": "O desempenho cognitivo está levemente abaixo do esperado, documentado por testes ou avaliação clínica quantificada?",
+          "exemplos_clinicos": [
+            "Desempenho 1–2 desvios-padrão abaixo da norma"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "independencia_preservada",
+      "letra": "B",
+      "rotulo": "Independência preservada nas AVDs",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os déficits cognitivos não interferem na capacidade de ser independente nas atividades cotidianas (atividades instrumentais complexas da vida diária preservadas, mas pode haver necessidade de mais esforço, estratégias compensatórias ou acomodação).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_delirium",
+      "letra": "C",
+      "rotulo": "Déficits não ocorrem exclusivamente no contexto de delirium",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "delirium"
+      ],
+      "descricao_completa": "Os déficits cognitivos não ocorrem exclusivamente no contexto de delirium.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outro_mental",
+      "letra": "D",
+      "rotulo": "Não mais bem explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_depressivo_maior",
+        "esquizofrenia"
+      ],
+      "descricao_completa": "Os déficits cognitivos não são mais bem explicados por outro transtorno mental (p. ex., transtorno depressivo maior, esquizofrenia).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "perturbacao_comportamental",
+      "nome": "Perturbação comportamental",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "sem",
+          "label": "Sem perturbação comportamental",
+          "codigo_adicional": null
+        },
+        {
+          "id": "com",
+          "label": "Com perturbação comportamental",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Neurocognitivo Maior
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Declínio Cognitivo Importante",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Preocupação com declínio significativo na função cognitiva",
+          "desc": "Preocupação do indivíduo, de um informante com conhecimento ou do clínico de que há declínio significativo na função cognitiva.",
+          "pergunta": "Há preocupação do paciente, de um informante ou do clínico sobre declínio significativo em algum domínio cognitivo?",
+          "exemplos_clinicos": [
+            "Dificuldade de recordar eventos recentes",
+            "Confusão em ambientes familiares"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Prejuízo substancial no desempenho cognitivo documentado",
+          "desc": "Prejuízo substancial no desempenho cognitivo, de preferência documentado por teste neuropsicológico padronizado ou, em sua falta, por outra investigação clínica quantificada.",
+          "pergunta": "O desempenho cognitivo está substancialmente abaixo do esperado, documentado por testes ou avaliação clínica quantificada?",
+          "exemplos_clinicos": [
+            "Desempenho 2+ desvios-padrão abaixo da norma",
+            "Declínio documentado em testes em série"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "prejuizo_independencia",
+      "letra": "B",
+      "rotulo": "Déficits interferem na independência em AVDs",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Accessibility",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os déficits cognitivos interferem na independência em atividades da vida diária (no mínimo, necessita de assistência em atividades instrumentais complexas da vida diária, tais como pagamento de contas ou controle medicamentoso).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_delirium",
+      "letra": "C",
+      "rotulo": "Déficits não ocorrem exclusivamente no contexto de delirium",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "delirium"
+      ],
+      "descricao_completa": "Os déficits cognitivos não ocorrem exclusivamente no contexto de delirium.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outro_mental",
+      "letra": "D",
+      "rotulo": "Não mais bem explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_depressivo_maior",
+        "esquizofrenia"
+      ],
+      "descricao_completa": "Os déficits cognitivos não são mais bem explicados por outro transtorno mental (p. ex., transtorno depressivo maior, esquizofrenia).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "perturbacao_comportamental",
+      "nome": "Perturbação comportamental",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "sem",
+          "label": "Sem perturbação comportamental",
+          "codigo_adicional": null
+        },
+        {
+          "id": "com",
+          "label": "Com perturbação comportamental",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "gravidade_atual",
+      "nome": "Gravidade atual",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "leve",
+          "label": "Leve",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderada",
+          "label": "Moderada",
+          "codigo_adicional": null
+        },
+        {
+          "id": "grave",
+          "label": "Grave",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Neurocognitivo Vascular Maior ou Leve
+
+```json
+{
+  "clusters_sintomas": [],
+  "criterios_condicionais": [
+    {
+      "id": "criterios_tnc",
+      "letra": "A",
+      "rotulo": "São atendidos os critérios para TNC maior ou leve",
+      "tipo": "condicao_associada_obrigatoria",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "São atendidos os critérios para transtorno neurocognitivo maior ou leve.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "etiologia_vascular",
+      "letra": "B",
+      "rotulo": "Aspectos clínicos consistentes com etiologia vascular",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "HeartPulse",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O surgimento de déficits cognitivos está temporariamente relacionado com um ou mais eventos cerebrovasculares, OU evidências de declínio destacadas na atenção complexa e na função executiva frontal.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "evidencia_doenca_cerebrovascular",
+      "letra": "C",
+      "rotulo": "Evidências de doença cerebrovascular",
+      "tipo": "achado_objetivo_obrigatorio",
+      "ui_widget": "checklist_achados_objetivos",
+      "obrigatorio": true,
+      "icone": "Brain",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Há evidências da presença de doença cerebrovascular a partir da história, do exame físico e/ou de neuroimagem consideradas suficientes para responder pelos déficits cognitivos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outras_etiologias",
+      "letra": "D",
+      "rotulo": "Não mais bem explicado por outra doença cerebral ou sistêmica",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "tnc_alzheimer",
+        "tnc_corpos_lewy",
+        "delirium"
+      ],
+      "descricao_completa": "Os sintomas não são mais bem explicados por outra doença cerebral ou transtorno sistêmico.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Antissocial
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Desconsideração e Violação dos Direitos dos Outros",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Fracasso em ajustar-se às normas sociais legais",
+          "desc": "Fracasso em ajustar-se às normas sociais relativas a comportamentos legais, conforme indicado pela repetição de atos que constituem motivos de detenção.",
+          "pergunta": "Você tem dificuldade recorrente em seguir leis e normas sociais, tendo cometido atos que poderiam levar à prisão?",
+          "exemplos_clinicos": [
+            "Destruição de propriedade",
+            "Roubo",
+            "Ocupações ilegais"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Tendência à falsidade",
+          "desc": "Tendência à falsidade, conforme indicado por mentiras repetidas, uso de nomes falsos ou de trapaça para ganho ou prazer pessoal.",
+          "pergunta": "Você mente repetidamente, usa nomes falsos ou trapaceia para obter ganho ou prazer pessoal?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Impulsividade ou fracasso em planejar o futuro",
+          "desc": "Impulsividade ou fracasso em fazer planos para o futuro.",
+          "pergunta": "Você age de forma impulsiva ou tem dificuldade em fazer planos para o futuro, tomando decisões no calor do momento?",
+          "exemplos_clinicos": [
+            "Mudanças repentinas de emprego",
+            "Mudanças de moradia sem planejamento"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Irritabilidade e agressividade",
+          "desc": "Irritabilidade e agressividade, conforme indicado por repetidas lutas corporais ou agressões físicas.",
+          "pergunta": "Você é frequentemente irritável e agressivo, se envolvendo em brigas corporais ou agressões físicas repetidas?",
+          "exemplos_clinicos": [
+            "Espancamento de cônjuge ou filho"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Descaso pela segurança de si ou de outros",
+          "desc": "Descaso pela segurança de si ou de outros.",
+          "pergunta": "Você demonstra descaso recorrente pela sua própria segurança ou pela de outras pessoas?",
+          "exemplos_clinicos": [
+            "Velocidade excessiva recorrente",
+            "Direção sob intoxicação",
+            "Sexo de risco"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Irresponsabilidade reiterada",
+          "desc": "Irresponsabilidade reiterada, conforme indicado por falha repetida em manter uma conduta consistente no trabalho ou honrar obrigações financeiras.",
+          "pergunta": "Você tem falhas repetidas em manter empregos ou honrar obrigações financeiras e familiares?",
+          "exemplos_clinicos": [
+            "Inadimplência",
+            "Falha em sustentar dependentes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Ausência de remorso",
+          "desc": "Ausência de remorso, conforme indicado pela indiferença ou racionalização em relação a ter ferido, maltratado ou roubado outras pessoas.",
+          "pergunta": "Você sente pouco ou nenhum remorso por ter ferido, maltratado ou roubado outras pessoas, racionalizando esses atos?",
+          "exemplos_clinicos": [
+            "'Perdedores merecem perder'",
+            "Culpar vítimas"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "idade_minima",
+      "letra": "B",
+      "rotulo": "Idade mínima de 18 anos",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "campo_data",
+      "obrigatorio": true,
+      "icone": "Cake",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O indivíduo tem no mínimo 18 anos de idade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "historico_conduta",
+      "letra": "C",
+      "rotulo": "Evidências de transtorno da conduta antes dos 15 anos",
+      "tipo": "condicao_associada_obrigatoria",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Baby",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Há evidências de transtorno da conduta com surgimento anterior aos 15 anos de idade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_psicotico",
+      "letra": "D",
+      "rotulo": "Não ocorre exclusivamente durante esquizofrenia ou transtorno bipolar",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "esquizofrenia",
+        "transtorno_bipolar"
+      ],
+      "descricao_completa": "A ocorrência de comportamento antissocial não se dá exclusivamente durante o curso de esquizofrenia ou transtorno bipolar.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Borderline
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Instabilidade Interpessoal, Autoimagem, Afetos e Impulsividade",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Esforços desesperados para evitar abandono",
+          "desc": "Esforços desesperados para evitar abandono real ou imaginado por pessoas próximas.",
+          "pergunta": "Você faz esforços desesperados para evitar que pessoas importantes o abandonem, mesmo diante de separações de curto prazo?",
+          "exemplos_clinicos": [
+            "Desespero ao término de consulta",
+            "Fúria por atraso de minutos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Relacionamentos instáveis e intensos com alternância extrema",
+          "desc": "Um padrão de relacionamentos interpessoais instáveis e intensos caracterizado pela alternância entre extremos de idealização e desvalorização.",
+          "pergunta": "Seus relacionamentos íntimos são intensos e instáveis, alternando rapidamente entre idealizar e desvalorizar a outra pessoa?",
+          "exemplos_clinicos": [
+            "Idealizar em primeiro encontro",
+            "Sentir que outro não se importa o suficiente"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Perturbação da identidade",
+          "desc": "Perturbação da identidade: instabilidade acentuada e persistente da autoimagem ou da percepção de si mesmo.",
+          "pergunta": "Você tem uma sensação instável de quem é, com mudanças súbitas em metas, valores, aspirações ou identidade sexual?",
+          "exemplos_clinicos": [
+            "Mudanças súbitas de carreira",
+            "Sentir que não existe"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Impulsividade em áreas autodestrutivas",
+          "desc": "Impulsividade em pelo menos duas áreas potencialmente autodestrutivas (gastos, sexo, abuso de substância, direção irresponsável, compulsão alimentar).",
+          "pergunta": "Você se comporta de forma impulsiva em áreas que podem ser prejudiciais, como gastos excessivos, sexo de risco, abuso de substâncias, direção irresponsável ou compulsão alimentar?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Comportamento, gestos ou ameaças suicidas/automutilantes",
+          "desc": "Recorrência de comportamento, gestos ou ameaças suicidas ou de comportamento automutilante.",
+          "pergunta": "Você já teve recorrência de pensamentos suicidas, gestos, ameaças ou comportamentos de automutilação?",
+          "exemplos_clinicos": [
+            "Cortes",
+            "Queimaduras"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Instabilidade afetiva por reatividade acentuada",
+          "desc": "Instabilidade afetiva devida a uma acentuada reatividade de humor (disforia episódica, irritabilidade ou ansiedade intensa com duração geralmente de poucas horas).",
+          "pergunta": "Você tem mudanças rápidas e intensas de humor (raiva, ansiedade, tristeza) que duram poucas horas ou dias, geralmente em resposta a estresses interpessoais?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Sentimentos crônicos de vazio",
+          "desc": "Sentimentos crônicos de vazio.",
+          "pergunta": "Você sente vazio crônico ou um vazio interior persistente?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Raiva intensa e inapropriada ou dificuldade em controlá-la",
+          "desc": "Raiva intensa e inapropriada ou dificuldade em controlá-la (mostras frequentes de irritação, raiva constante, brigas físicas recorrentes).",
+          "pergunta": "Você sente raiva intensa e frequentemente inapropriada, ou tem dificuldade em controlar sua raiva?",
+          "exemplos_clinicos": [
+            "Sarcasmo extremo",
+            "Explosões verbais"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Ideação paranoide transitória ou sintomas dissociativos",
+          "desc": "Ideação paranoide transitória associada a estresse ou sintomas dissociativos intensos.",
+          "pergunta": "Em períodos de estresse extremo, você tem ideação paranoide transitória ou sintomas dissociativos intensos (despersonalização, desrealização)?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Dependente
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Necessidade Excessiva de Ser Cuidado",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Dificuldade em tomar decisões sem conselhos excessivos",
+          "desc": "Tem dificuldades em tomar decisões cotidianas sem uma quantidade excessiva de conselhos e reasseguramento de outros.",
+          "pergunta": "Você tem grande dificuldade em tomar decisões cotidianas sem conselhos e reasseguramentos excessivos de outras pessoas?",
+          "exemplos_clinicos": [
+            "Dúvida sobre cor de camisa ou levar guarda-chuva"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Precisa que outros assumam responsabilidade por sua vida",
+          "desc": "Precisa que outros assumam responsabilidade pela maior parte das principais áreas de sua vida.",
+          "pergunta": "Você precisa que outras pessoas assumam a responsabilidade pela maior parte das áreas importantes da sua vida?",
+          "exemplos_clinicos": [
+            "Dependência de pai/mãe ou cônjuge para decisões de moradia e trabalho"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Dificuldade em manifestar desacordo por medo de perder apoio",
+          "desc": "Tem dificuldades em manifestar desacordo com outros devido a medo de perder apoio ou aprovação.",
+          "pergunta": "Você tem dificuldade em discordar de outras pessoas por medo de perder o apoio ou aprovação delas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Dificuldade em iniciar projetos por falta de autoconfiança",
+          "desc": "Apresenta dificuldade em iniciar projetos ou fazer coisas por conta própria devido mais a falta de autoconfiança do que a falta de motivação.",
+          "pergunta": "Você tem dificuldade para iniciar projetos ou fazer coisas sozinho por falta de confiança em seu julgamento ou capacidades?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Vai a extremos para obter carinho e apoio",
+          "desc": "Vai a extremos para obter carinho e apoio de outros, a ponto de voluntariar-se para fazer coisas desagradáveis.",
+          "pergunta": "Você vai a extremos para conseguir carinho e apoio, chegando a se voluntariar para tarefas desagradáveis?",
+          "exemplos_clinicos": [
+            "Tolerar abuso para manter vínculo"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Desconfortável ou desamparado quando sozinho",
+          "desc": "Sente-se desconfortável ou desamparado quando sozinho devido a temores exagerados de ser incapaz de cuidar de si mesmo.",
+          "pergunta": "Você se sente desconfortável ou desamparado quando está sozinho por medo excessivo de não conseguir cuidar de si?",
+          "exemplos_clinicos": [
+            "Grudar-se em outros apenas para evitar solidão"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Busca urgentemente novo relacionamento após término",
+          "desc": "Busca com urgência outro relacionamento como fonte de cuidado e amparo logo após o término de um relacionamento íntimo.",
+          "pergunta": "Logo após o término de um relacionamento íntimo, você busca urgentemente outro relacionamento para obter cuidado e apoio?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Preocupações irreais com medos de ser abandonado",
+          "desc": "Tem preocupações irreais com medos de ser abandonado à própria sorte.",
+          "pergunta": "Você tem preocupações excessivas e irreais com o medo de ser abandonado à própria sorte?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Esquizoide
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Distanciamento Social e Afeto Restrito",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 4,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Não deseja nem desfruta de relações íntimas",
+          "desc": "Não deseja nem desfruta de relações íntimas, inclusive ser parte de uma família.",
+          "pergunta": "Você não sente desejo ou prazer em ter relações íntimas ou fazer parte de uma família?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Quase sempre opta por atividades solitárias",
+          "desc": "Quase sempre opta por atividades solitárias.",
+          "pergunta": "Você quase sempre prefere atividades ou passatempos que pode fazer sozinho?",
+          "exemplos_clinicos": [
+            "Jogos matemáticos",
+            "Computador"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Pouco ou nenhum interesse em experiências sexuais",
+          "desc": "Manifesta pouco ou nenhum interesse em ter experiências sexuais com outra pessoa.",
+          "pergunta": "Você tem pouco ou nenhum interesse em ter experiências sexuais com outra pessoa?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Tem prazer em poucas atividades",
+          "desc": "Tem prazer em poucas atividades, por vezes em nenhuma.",
+          "pergunta": "Você sente prazer em pouquíssimas atividades, ou em nenhuma?",
+          "exemplos_clinicos": [
+            "Reduzido prazer sensorial ou interpessoal"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Não tem amigos próximos além de parentes de primeiro grau",
+          "desc": "Não tem amigos próximos ou confidentes que não sejam os familiares de primeiro grau.",
+          "pergunta": "Você não tem amigos próximos ou confidentes fora um possível parente de primeiro grau?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Indiferente a elogio ou crítica",
+          "desc": "Mostra-se indiferente ao elogio ou à crítica de outros.",
+          "pergunta": "Você se mostra indiferente ao que os outros pensam de você, seja elogio ou crítica?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Frieza emocional, distanciamento ou embotamento afetivo",
+          "desc": "Demonstra frieza emocional, distanciamento ou embotamento afetivo.",
+          "pergunta": "Você demonstra frieza emocional, distanciamento ou pouca reatividade afetiva nas interações?",
+          "exemplos_clinicos": [
+            "Afeto constrito",
+            "Exterior insípido"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "exclusao_psicotico_autista_medico",
+      "letra": "B",
+      "rotulo": "Não ocorre exclusivamente durante curso de transtorno psicótico, TEA ou condição médica",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "esquizofrenia",
+        "transtorno_bipolar",
+        "tea"
+      ],
+      "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos, outro transtorno psicótico ou transtorno do espectro autista e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Esquizotípica
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Déficits Sociais, Distorções Cognitivas e Excentricidade",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Ideias de referência",
+          "desc": "Ideias de referência (excluindo delírios de referência).",
+          "pergunta": "Você frequentemente sente que eventos casuais ou comentários de outras pessoas têm um significado especial e particular para você?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Crenças estranhas ou pensamento mágico",
+          "desc": "Crenças estranhas ou pensamento mágico que influenciam o comportamento e são inconsistentes com as normas subculturais.",
+          "pergunta": "Você tem crenças incomuns ou pensamento mágico que influenciam seu comportamento (superstições, clarividência, telepatia)?",
+          "exemplos_clinicos": [
+            "Crença de controlar outros por pensamento",
+            "Rituais mágicos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Experiências perceptivas incomuns",
+          "desc": "Experiências perceptivas incomuns, incluindo ilusões corporais.",
+          "pergunta": "Você tem experiências perceptivas incomuns, como sentir a presença de alguém ou ouvir vozes murmurando seu nome?",
+          "exemplos_clinicos": [
+            "Sentir outra pessoa presente",
+            "Ouvir nome murmurado"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Pensamento e discurso estranhos",
+          "desc": "Pensamento e discurso estranhos (p. ex., vago, circunstancial, metafórico, excessivamente elaborado ou estereotipado).",
+          "pergunta": "Seu modo de pensar ou falar é frequentemente vago, circunstancial, metafórico ou de difícil compreensão para os outros?",
+          "exemplos_clinicos": [
+            "Respostas excessivamente concretas ou abstratas",
+            "Uso idiossincrásico de palavras"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Desconfiança ou ideação paranoide",
+          "desc": "Desconfiança ou ideação paranoide.",
+          "pergunta": "Você é frequentemente desconfiado ou tem ideias paranoides sobre as intenções dos outros?",
+          "exemplos_clinicos": [
+            "Crer que colegas tramam contra si"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Afeto inadequado ou constrito",
+          "desc": "Afeto inadequado ou constrito.",
+          "pergunta": "Você demonstra afeto que parece inadequado à situação ou muito constrito nas interações sociais?",
+          "exemplos_clinicos": [
+            "Interação formal ou excessivamente contida"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Comportamento ou aparência estranha, excêntrica ou peculiar",
+          "desc": "Comportamento ou aparência estranha, excêntrica ou peculiar.",
+          "pergunta": "Você tem maneirismos incomuns, forma desleixada de vestir-se ou aparência que os outros consideram estranha ou excêntrica?",
+          "exemplos_clinicos": [
+            "Evitar contato visual",
+            "Roupas manchadas ou inadequadas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Ausência de amigos próximos fora parentes de primeiro grau",
+          "desc": "Ausência de amigos próximos ou confidentes que não sejam parentes de primeiro grau.",
+          "pergunta": "Você tem poucos ou nenhum amigo próximo ou confidente fora um possível parente de primeiro grau?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Ansiedade social excessiva associada a temores paranoides",
+          "desc": "Ansiedade social excessiva que não diminui com o convívio e que tende a estar associada mais a temores paranoides do que a julgamentos negativos sobre si mesmo.",
+          "pergunta": "Você sente ansiedade social intensa que não diminui mesmo com o tempo, mais ligada a desconfiança das intenções dos outros do que a julgamentos sobre si?",
+          "exemplos_clinicos": [
+            "Ficar mais tenso durante jantar em vez de relaxar"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "exclusao_psicotico_autista",
+      "letra": "B",
+      "rotulo": "Não ocorre exclusivamente durante curso de transtorno psicótico ou TEA",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "esquizofrenia",
+        "transtorno_bipolar",
+        "tea"
+      ],
+      "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos, outro transtorno psicótico ou transtorno do espectro autista.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Evitativa
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Inibição Social, Inadequação e Hipersensibilidade à Avaliação",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 4,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Evita atividades profissionais por medo de crítica",
+          "desc": "Evita atividades profissionais que envolvam contato interpessoal significativo por medo de crítica, desaprovação ou rejeição.",
+          "pergunta": "Você evita atividades no trabalho que exijam contato interpessoal significativo por medo de crítica ou rejeição?",
+          "exemplos_clinicos": [
+            "Recusar promoções por medo de críticas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Só se envolve se tiver certeza de ser recebido positivamente",
+          "desc": "Não se dispõe a envolver-se com pessoas, a menos que tenha certeza de que será recebido de forma positiva.",
+          "pergunta": "Você só se dispõe a fazer novos amigos ou se envolver com pessoas se tiver certeza de que será aceito sem críticas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Reservado em relacionamentos íntimos por medo de vergonha",
+          "desc": "Mostra-se reservado em relacionamentos íntimos devido a medo de passar vergonha ou de ser ridicularizado.",
+          "pergunta": "Você se mostra reservado em relacionamentos íntimos por medo de ser ridicularizado ou passar vergonha?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Preocupação com críticas ou rejeição em situações sociais",
+          "desc": "Preocupa-se com críticas ou rejeição em situações sociais.",
+          "pergunta": "Você está constantemente preocupado com ser criticado ou rejeitado em situações sociais?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Inibe-se em situações interpessoais novas por inadequação",
+          "desc": "Inibe-se em situações interpessoais novas em razão de sentimentos de inadequação.",
+          "pergunta": "Você se sente inibido em novas situações sociais por se sentir inadequado ou inferior?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Vê a si mesmo como socialmente incapaz ou inferior",
+          "desc": "Vê a si mesmo como socialmente incapaz, sem atrativos pessoais ou inferior aos outros.",
+          "pergunta": "Você se vê como socialmente incapaz, sem atrativos ou inferior aos outros?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Reluta em assumir riscos pessoais por constrangimento",
+          "desc": "Reluta de forma incomum em assumir riscos pessoais ou se envolver em quaisquer novas atividades, pois estas podem ser constrangedoras.",
+          "pergunta": "Você reluta em assumir riscos pessoais ou tentar novas atividades por medo de se constranger?",
+          "exemplos_clinicos": [
+            "Cancelar entrevista por medo de vestuário inadequado"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Histriônica
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Emocionalidade e Busca de Atenção em Excesso",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Desconforto quando não é centro das atenções",
+          "desc": "Desconforto em situações em que não é o centro das atenções.",
+          "pergunta": "Você se sente desconfortável ou não valorizado quando não está no centro das atenções?",
+          "exemplos_clinicos": [
+            "Criar cena para atrair atenção"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Interação sexualmente sedutora ou provocativa inadequada",
+          "desc": "A interação com os outros é frequentemente caracterizada por comportamento sexualmente sedutor inadequado ou provocativo.",
+          "pergunta": "Você frequentemente interage com as pessoas de forma sexualmente sedutora ou provocativa, mesmo quando inapropriado ao contexto?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Mudanças rápidas e expressão superficial das emoções",
+          "desc": "Exibe mudanças rápidas e expressão superficial das emoções.",
+          "pergunta": "Suas emoções mudam rapidamente e parecem superficiais, ligando e desligando com muita velocidade?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Usa reiteradamente a aparência para atrair atenção",
+          "desc": "Usa reiteradamente a aparência física para atrair a atenção para si.",
+          "pergunta": "Você usa sua aparência física reiteradamente para chamar atenção, dedicando muito tempo a roupas e embelezamento?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Discurso excessivamente impressionista e carente de detalhes",
+          "desc": "Tem um estilo de discurso que é excessivamente impressionista e carente de detalhes.",
+          "pergunta": "Você tem um estilo de falar excessivamente impressionista, dramático, mas vago e carente de fatos específicos?",
+          "exemplos_clinicos": [
+            "Opiniões fortes sem exemplos concretos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Autodramatização e expressão exagerada e teatral das emoções",
+          "desc": "Mostra autodramatização, teatralidade e expressão exagerada das emoções.",
+          "pergunta": "Você se dramatiza ou exibe emoções de forma teatral e exagerada, chamando a atenção em público?",
+          "exemplos_clinicos": [
+            "Choro inconsolável em ocasiões menores",
+            "Abraços excessivos a conhecidos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Sugestionável",
+          "desc": "É sugestionável (i.e., facilmente influenciado pelos outros ou pelas circunstâncias).",
+          "pergunta": "Você é facilmente influenciado por outras pessoas ou pelas circunstâncias, adotando opiniões rapidamente?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Considera relações mais íntimas do que na realidade são",
+          "desc": "Considera as relações pessoais mais íntimas do que na realidade são.",
+          "pergunta": "Você considera seus relacionamentos mais íntimos do que eles realmente são, tratando conhecidos casuais como amigos próximos?",
+          "exemplos_clinicos": [
+            "Chamar médico pelo primeiro nome após uma consulta"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Narcisista
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Grandiosidade, Necessidade de Admiração e Falta de Empatia",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Sensação grandiosa da própria importância",
+          "desc": "Tem uma sensação grandiosa da própria importância (exagera conquistas e talentos, espera ser reconhecido como superior sem conquistas correspondentes).",
+          "pergunta": "Você exagera suas conquistas e talentos e espera ser reconhecido como superior, mesmo sem ter as conquistas correspondentes?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Preocupado com fantasias de sucesso ilimitado",
+          "desc": "É preocupado com fantasias de sucesso ilimitado, poder, brilho, beleza ou amor ideal.",
+          "pergunta": "Você fica preocupado com fantasias de sucesso ilimitado, poder, beleza ou amor ideal?",
+          "exemplos_clinicos": [
+            "Ruminar sobre admiração 'há muito devida'"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Acredita ser 'especial' e único",
+          "desc": "Acredita ser 'especial' e único e que pode ser somente compreendido por, ou associado a, outras pessoas ou instituições especiais.",
+          "pergunta": "Você acredita que é especial ou único e que só pode ser compreendido ou associado a outras pessoas ou instituições de condição elevada?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Demanda admiração excessiva",
+          "desc": "Demanda admiração excessiva.",
+          "pergunta": "Você exige ou demanda admiração excessiva dos outros, buscando constantemente elogios e atenção?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Sentimento de possuir direitos",
+          "desc": "Apresenta um sentimento de possuir direitos (expectativas irracionais de tratamento especialmente favorável ou automático).",
+          "pergunta": "Você tem expectativas irracionais de receber tratamento especial ou deferência automática dos outros?",
+          "exemplos_clinicos": [
+            "Achar que não precisa esperar em filas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Explorador em relações interpessoais",
+          "desc": "É explorador em relações interpessoais (tira vantagem de outros para atingir os próprios fins).",
+          "pergunta": "Você tira vantagem de outras pessoas para atingir seus próprios objetivos, sem considerar o impacto nelas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Carece de empatia",
+          "desc": "Carece de empatia: reluta em reconhecer ou identificar-se com os sentimentos e as necessidades dos outros.",
+          "pergunta": "Você tem dificuldade em reconhecer ou se identificar com os sentimentos e necessidades dos outros?",
+          "exemplos_clinicos": [
+            "Falta de interesse recíproco",
+            "Desdém pelos problemas alheios"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Invejoso ou acredita ser invejado",
+          "desc": "É frequentemente invejoso em relação aos outros ou acredita que os outros o invejam.",
+          "pergunta": "Você frequentemente sente inveja dos outros ou acredita que eles o invejam?",
+          "exemplos_clinicos": [
+            "Desvalorizar contribuições de outros que recebem reconhecimento"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Comportamentos ou atitudes arrogantes e insolentes",
+          "desc": "Demonstra comportamentos ou atitudes arrogantes e insolentes.",
+          "pergunta": "Você demonstra comportamentos ou atitudes arrogantemente insolentes, com esnobismo ou desdém?",
+          "exemplos_clinicos": [
+            "Queixar-se da 'estupidez' de garçom",
+            "Apreciação condescendente de médico"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Obsessivo-Compulsiva
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Preocupação com Ordem, Perfeccionismo e Controle",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 4,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Preocupação excessiva com detalhes, regras e ordem",
+          "desc": "É tão preocupado com detalhes, regras, listas, ordem, organização ou horários a ponto de o objetivo principal da atividade ser perdido.",
+          "pergunta": "Você é tão preocupado com detalhes, regras, listas e organização que acaba perdendo o objetivo principal das atividades?",
+          "exemplos_clinicos": [
+            "Gastar tempo excessivo procurando lista em vez de refazê-la"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Perfeccionismo que interfere na conclusão de tarefas",
+          "desc": "Demonstra perfeccionismo que interfere na conclusão de tarefas (não consegue completar projeto porque seus padrões rígidos não são atingidos).",
+          "pergunta": "Seu perfeccionismo é tão rígido que interfere na conclusão de tarefas ou projetos?",
+          "exemplos_clinicos": [
+            "Relatório nunca concluído por reescritas infindáveis"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Dedicação excessiva ao trabalho em detrimento do lazer",
+          "desc": "É excessivamente dedicado ao trabalho e à produtividade em detrimento de atividades de lazer e amizades (não explicado por necessidade financeira).",
+          "pergunta": "Você é excessivamente dedicado ao trabalho e à produtividade, excluindo atividades de lazer e amizades, mesmo sem necessidade financeira?",
+          "exemplos_clinicos": [
+            "Postergar férias indefinidamente",
+            "Transformar brincadeiras em tarefas estruturadas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Excessivamente consciencioso e inflexível em moralidade",
+          "desc": "É excessivamente consciencioso, escrupuloso e inflexível quanto a assuntos de moralidade, ética ou valores (não explicado por identificação cultural ou religiosa).",
+          "pergunta": "Você é excessivamente rigoroso e inflexível em questões de moralidade, ética ou valores, além do que seria esperado por sua cultura ou religião?",
+          "exemplos_clinicos": [
+            "Não emprestar moeda a amigo por 'princípio'"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Incapaz de descartar objetos usados ou sem valor",
+          "desc": "É incapaz de descartar objetos usados ou sem valor mesmo quando não têm valor sentimental.",
+          "pergunta": "Você tem dificuldade em descartar objetos usados ou sem valor, mesmo quando não têm valor sentimental?",
+          "exemplos_clinicos": [
+            "Acumular peças e revistas antigas",
+            "Objetos estragados"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Reluta em delegar tarefas",
+          "desc": "Reluta em delegar tarefas ou trabalhar com outras pessoas a menos que elas se submetam à sua forma exata de fazer as coisas.",
+          "pergunta": "Você reluta em delegar tarefas ou trabalhar com outras pessoas a menos que façam exatamente do seu jeito?",
+          "exemplos_clinicos": [
+            "Dar instruções detalhadas sobre como lavar pratos",
+            "Rejeitar ajuda mesmo atrasado"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Estilo miserável de gastos",
+          "desc": "Adota um estilo miserável de gastos em relação a si e a outros; o dinheiro é visto como algo a ser acumulado para futuras catástrofes.",
+          "pergunta": "Você é excessivamente poupador ou mesquinho consigo mesmo e com outros, acumulando dinheiro para catástrofes futuras?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Rigidez e teimosia",
+          "desc": "Exibe rigidez e teimosia.",
+          "pergunta": "Você é rígido e teimoso, com dificuldade em concordar com ideias diferentes ou mudar de planos?",
+          "exemplos_clinicos": [
+            "Recusar ceder mesmo reconhecendo interesse próprio",
+            "'É o princípio da coisa'"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno da Personalidade Paranóide
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Padrão de Desconfiança e Suspeita",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 4,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Suspeita de ser explorado, maltratado ou enganado",
+          "desc": "Suspeita, sem embasamento suficiente, de estar sendo explorado, maltratado ou enganado por outros.",
+          "pergunta": "Você frequentemente suspeita que as pessoas estão tentando enganá-lo, prejudicá-lo ou explorá-lo, mesmo sem evidências claras?",
+          "exemplos_clinicos": [
+            "Acha que colegas tramam contra si",
+            "Desconfia de troco em lojas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Dúvidas injustificadas sobre lealdade de amigos",
+          "desc": "Preocupa-se com dúvidas injustificadas acerca da lealdade ou da confiabilidade de amigos e sócios.",
+          "pergunta": "Você tem dúvidas persistentes sobre a lealdade ou confiança de seus amigos, examinando minuciosamente suas ações em busca de hostilidade?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Relutância em confiar por medo de retaliação",
+          "desc": "Reluta em confiar nos outros devido a medo infundado de que as informações serão usadas maldosamente contra si.",
+          "pergunta": "Você reluta em confiar nas pessoas ou tornar-se íntimo por medo de que suas informações pessoais sejam usadas contra você?",
+          "exemplos_clinicos": [
+            "Recusa responder perguntas pessoais"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Percebe significados ocultos ameaçadores em eventos benignos",
+          "desc": "Percebe significados ocultos humilhantes ou ameaçadores em comentários ou eventos benignos.",
+          "pergunta": "Você frequentemente interpreta comentários casuais ou eventos neutros como contendo críticas ou ameaças ocultas?",
+          "exemplos_clinicos": [
+            "Elogio interpretado como coerção",
+            "Erro de funcionário visto como deliberado"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Guarda rancores persistentemente",
+          "desc": "Guarda rancores de forma persistente (i.e., não perdoa insultos, injúrias ou desprezo).",
+          "pergunta": "Você guarda rancor por muito tempo e tem dificuldade em perdoar insultos ou desprezos, mesmo que leves?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Percebe ataques ao caráter e reage com raiva",
+          "desc": "Percebe ataques a seu caráter ou reputação que não são percebidos pelos outros e reage com raiva ou contra-ataca rapidamente.",
+          "pergunta": "Você sente que seu caráter ou reputação são atacados com frequência e reage com raiva ou contra-ataque rápido?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Suspeitas injustificadas de infidelidade do parceiro",
+          "desc": "Tem suspeitas recorrentes e injustificadas acerca da fidelidade do cônjuge ou parceiro sexual.",
+          "pergunta": "Você tem suspeitas recorrentes e sem fundamento sobre a fidelidade de seu cônjuge ou parceiro?",
+          "exemplos_clinicos": [
+            "Reúne evidências triviais de ciúme",
+            "Questiona constantemente paradeiro"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "exclusao_psicotico_medico",
+      "letra": "B",
+      "rotulo": "Não ocorre exclusivamente durante curso de outro transtorno psicótico ou condição médica",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "esquizofrenia",
+        "transtorno_bipolar",
+        "transtorno_depressivo_com_psicose"
+      ],
+      "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos ou outro transtorno psicótico e não é atribuível aos efeitos fisiológicos de outra condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno de Acumulação
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_C",
+      "nome": "Dificuldade Persistente de Descartar Pertences com Acumulação",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Dificuldade persistente de descartar pertences",
+          "desc": "Dificuldade persistente de descartar ou se desfazer de pertences, independentemente de seu valor real.",
+          "pergunta": "Você tem muita dificuldade de se desfazer de objetos, mesmo quando não têm valor?",
+          "exemplos_clinicos": [
+            "Pilhas de jornais antigos",
+            "Dezenas de embalagens guardadas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Necessidade percebida de guardar e sofrimento ao descartar",
+          "desc": "A dificuldade se deve a uma necessidade percebida de guardar os itens e ao sofrimento associado a descartá-los.",
+          "pergunta": "Você sente que precisa guardar as coisas e fica angustiado quando tenta se desfazer delas?",
+          "exemplos_clinicos": [
+            "'Posso precisar disso algum dia'"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C1",
+          "rotulo": "Acúmulo congestionando áreas de estar",
+          "desc": "A dificuldade resulta em acumulação de itens que congestionam áreas de uso e comprometem seu uso pretendido.",
+          "pergunta": "Os objetos acumulados impedem o uso normal de cômodos da casa (cozinha, banheiro, quarto)?",
+          "exemplos_clinicos": [
+            "Cozinha inutilizável por acúmulo de itens"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_funcional",
+      "letra": "D",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "E",
+      "rotulo": "Não atribuível a condição médica ou outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "lesao_cerebral",
+        "toc",
+        "transtorno_depressivo_maior",
+        "esquizofrenia"
+      ],
+      "descricao_completa": "Não atribuível a outra condição médica (lesão cerebral, Prader-Willi, síndrome de Prada-Willi) nem mais bem explicado por TOC, TDM, esquizofrenia, TEA, TND.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "aquisicao_excessiva",
+      "nome": "Com aquisição excessiva",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "insight",
+      "nome": "Nível de insight",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "bom",
+          "label": "Com bom ou razoável insight",
+          "codigo_adicional": null
+        },
+        {
+          "id": "pobre",
+          "label": "Com pobre insight",
+          "codigo_adicional": null
+        },
+        {
+          "id": "ausente",
+          "label": "Com ausência de insight/crenças delirantes",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Alimentar Restritivo/Evitativo
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Perturbação Alimentar com Comprometimento Nutricional ou Psicossocial",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 1,
+        "pediatria": 1
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Pelo menos 1 entre A_core (perturbação alimentar com fracasso nutricional/energético).",
+        "ids_obrigatorios": [
+          "A_core"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A_core",
+          "rotulo": "Perturbação alimentar com fracasso nutricional persistente",
+          "desc": "Falta aparente de interesse na alimentação ou em alimentos; esquiva baseada nas características sensoriais do alimento; ou preocupação acerca de consequências aversivas da alimentação, manifestada por fracasso persistente em satisfazer as necessidades nutricionais e/ou energéticas apropriadas.",
+          "pergunta": "A pessoa apresenta evitação ou restrição alimentar persistente que leva a insuficiência nutricional ou energética?",
+          "exemplos_clinicos": [
+            "Falta de interesse em alimentos",
+            "Esquiva sensorial alimentar",
+            "Medo de engasgo ou vômito"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1",
+          "rotulo": "Perda de peso ou insucesso no ganho de peso/crescimento",
+          "desc": "Perda de peso significativa, insucesso em obter o ganho de peso esperado ou atraso de crescimento em crianças.",
+          "pergunta": "Houve perda de peso significativa, insucesso em ganhar peso adequadamente ou atraso no crescimento?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Deficiência nutricional significativa",
+          "desc": "Deficiência nutricional significativa com impacto na saúde física.",
+          "pergunta": "Há deficiência nutricional significativa com consequências para a saúde física?",
+          "exemplos_clinicos": [
+            "Hipotermia",
+            "Bradicardia",
+            "Anemia"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Dependência de alimentação enteral ou suplementos orais",
+          "desc": "Necessidade de suplementação enteral ou de suplementos nutricionais orais para manter ingesta adequada, na ausência de condição médica subjacente.",
+          "pergunta": "A pessoa depende de alimentação por sonda ou suplementos nutricionais orais para manter a nutrição adequada?",
+          "exemplos_clinicos": [
+            "Gastrostomia",
+            "Suplementos nutricionalmente completos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Interferência marcante no funcionamento psicossocial",
+          "desc": "Incapacidade de participar de atividades sociais normais envolvendo alimentação ou prejuízo em relacionamentos devido à perturbação.",
+          "pergunta": "A perturbação alimentar interfere de forma marcada no funcionamento social, nas relações ou na participação em refeições com outras pessoas?",
+          "exemplos_clinicos": [
+            "Evita jantares sociais",
+            "Conflitos familiares nas refeições"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "nao_cultural_nao_indisponibilidade",
+      "letra": "B",
+      "rotulo": "Não explicada por indisponibilidade de alimento ou prática cultural",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação não é mais bem explicada por indisponibilidade de alimento ou por uma prática culturalmente aceita (p. ex., jejum religioso).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_anorexia_bulimia",
+      "letra": "C",
+      "rotulo": "Não ocorre exclusivamente durante anorexia ou bulimia; sem perturbação de peso/forma",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [
+        "anorexia_nervosa",
+        "bulimia_nervosa"
+      ],
+      "descricao_completa": "A perturbação alimentar não ocorre exclusivamente durante o curso de anorexia nervosa ou bulimia nervosa, e não há evidência de perturbação na maneira como o peso ou a forma corporal é vivenciada.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_medica_outro_tm",
+      "letra": "D",
+      "rotulo": "Não atribuível a condição médica ou melhor explicada por outro transtorno mental",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação alimentar não é atribuível a uma condição médica concomitante ou mais bem explicada por outro transtorno mental. Quando ocorre no contexto de outra condição, sua gravidade excede a habitualmente associada.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "em_remicao",
+      "nome": "Em remissão",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Ansiedade de Doença
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_B",
+      "nome": "Preocupação com Ter Doença Grave",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Preocupação em ter ou contrair doença grave",
+          "desc": "Preocupação em ter ou contrair doença grave e séria.",
+          "pergunta": "Você está constantemente preocupado em ter ou desenvolver uma doença grave (câncer, cardiopatia)?",
+          "exemplos_clinicos": [
+            "Convicção de ter câncer apesar de exames normais"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Sintomas somáticos ausentes ou leves",
+          "desc": "Sintomas somáticos ausentes ou, se presentes, de intensidade leve. Preocupação com doença, não com sintomas em si.",
+          "pergunta": "Você se preocupa com doença mesmo sem sintomas físicos ou quando os sintomas são muito leves?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "alto_nivel_ansiedade",
+      "letra": "C",
+      "rotulo": "Alto nível de ansiedade sobre saúde",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Há alto nível de ansiedade sobre saúde; o indivíduo se alarma facilmente com questões de saúde.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "comportamentos_excessivos",
+      "letra": "D",
+      "rotulo": "Comportamentos excessivos ou evitação relacionados à saúde",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Verifica excessivamente o próprio estado de saúde OU exibe evitação mal adaptativa de consultas médicas.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_6meses",
+      "letra": "E",
+      "rotulo": "Duração ≥6 meses (doença específica pode mudar)",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A preocupação com a doença dura pelo menos 6 meses, mas a doença temida específica pode mudar.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "F",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [
+        "tss",
+        "tag",
+        "toc"
+      ],
+      "descricao_completa": "Não mais bem explicado por TSS, TAG, TP, TAG, TDM, TOC ou transtorno delirante.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "tipo_busca_cuidado",
+      "nome": "Tipo com busca de cuidado",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "tipo_evitacao",
+      "nome": "Tipo com evitação de cuidado",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Ansiedade Generalizada
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_C",
+      "nome": "Ansiedade Excessiva + ≥3/6 Sintomas Associados (adultos) / ≥1/6 (crianças)",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": 1
+      },
+      "ancora_obrigatoria": {
+        "descricao": "A1 (ansiedade e preocupação excessivas) é obrigatório",
+        "ids_obrigatorios": [
+          "A1"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Ansiedade e preocupação excessivas e incontroláveis",
+          "desc": "Ansiedade e preocupação excessivas (expectativa apreensiva), ocorrendo na maioria dos dias por pelo menos 6 meses, sobre vários eventos/atividades, difíceis de controlar.",
+          "pergunta": "Você se preocupa excessivamente com muitas coisas diferentes na maior parte dos dias, e tem dificuldade em parar de se preocupar?",
+          "exemplos_clinicos": [
+            "Preocupações com saúde, dinheiro, trabalho e família simultaneamente"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C1",
+          "rotulo": "Inquietação ou nervos à flor da pele",
+          "desc": "Inquietação ou sensação de estar com os nervos à flor da pele ou tenso.",
+          "pergunta": "Você se sente inquieto, tenso ou com os nervos à flor da pele a maior parte do tempo?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C2",
+          "rotulo": "Fatigabilidade (cansa-se facilmente)",
+          "desc": "Fatigabilidade — cansa-se facilmente.",
+          "pergunta": "Você se cansa facilmente, mesmo sem fazer muito esforço?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C3",
+          "rotulo": "Dificuldade de concentrar ou mente em branco",
+          "desc": "Dificuldade em concentrar-se ou brancos na mente.",
+          "pergunta": "Você tem dificuldade de concentração ou fica com a mente em branco com frequência?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C4",
+          "rotulo": "Irritabilidade",
+          "desc": "Irritabilidade.",
+          "pergunta": "Você está mais irritável do que o normal?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C5",
+          "rotulo": "Tensão muscular",
+          "desc": "Tensão muscular.",
+          "pergunta": "Você sente tensão muscular frequente (pescoço, ombros, mandíbula)?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "C6",
+          "rotulo": "Perturbação do sono",
+          "desc": "Perturbação do sono: dificuldade em adormecer ou manter o sono, ou sono agitado e insatisfatório.",
+          "pergunta": "Você tem dificuldade para dormir ou acordar no meio da noite por preocupações?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao_6meses",
+      "letra": "B",
+      "rotulo": "Duração ≥6 meses na maioria dos dias",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Ansiedade e preocupação excessivas ocorrendo na maioria dos dias por pelo menos 6 meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "D",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A ansiedade, preocupação ou sintomas físicos causam sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "E",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "hipertireoidismo"
+      ],
+      "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica (ex: hipertireoidismo).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "F",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_panico",
+        "tas",
+        "agorafobia",
+        "tept",
+        "toc"
+      ],
+      "descricao_completa": "Não mais bem explicado por TP, TAS, agorafobia, TEPT, TOC; se durante TDM/psicose, diagnosticar separadamente.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno de Ansiedade de Separação
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Medo/Ansiedade de Separação (≥3/8)",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": 3
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Sofrimento com separação antecipada",
+          "desc": "Sofrimento excessivo e recorrente ao antecipar ou experienciar separação de figuras de apego.",
+          "pergunta": "Você fica muito angustiado quando percebe que vai se separar das pessoas próximas?",
+          "exemplos_clinicos": [
+            "Choro intenso ao ser deixado na escola"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Preocupação com dano às figuras de apego",
+          "desc": "Medo ou preocupação persistente e excessiva sobre possível dano ou perda das figuras de apego.",
+          "pergunta": "Você fica preocupado que algo ruim aconteça com as pessoas que ama quando estão longe?",
+          "exemplos_clinicos": [
+            "Medo de que os pais morram num acidente"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Preocupação com evento que cause separação",
+          "desc": "Preocupação com eventos que levem à separação (p.ex., perder-se, ser raptado, acidente, doença).",
+          "pergunta": "Você se preocupa muito em ficar perdido ou que algo aconteça com você e o separe dos seus?",
+          "exemplos_clinicos": [
+            "Medo de ser sequestrado"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Relutância em sair por medo de separação",
+          "desc": "Relutância persistente ou recusa em sair de casa, escola, trabalho ou outros locais por medo de separação.",
+          "pergunta": "Você evita sair de casa ou ir a certos lugares por medo de se separar das pessoas próximas?",
+          "exemplos_clinicos": [
+            "Recusa escolar crônica"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Medo excessivo de estar só",
+          "desc": "Medo excessivo e persistente de estar só ou sem as figuras de apego em casa ou em outros ambientes.",
+          "pergunta": "Você tem muito medo de ficar sozinho, mesmo em casa?",
+          "exemplos_clinicos": [
+            "Não consegue dormir em outro quarto"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Relutância em dormir longe de casa",
+          "desc": "Relutância persistente ou recusa em dormir fora de casa ou sem estar perto de figura de apego.",
+          "pergunta": "Você tem dificuldade para dormir longe de casa ou sem pessoas próximas?",
+          "exemplos_clinicos": [
+            "Nunca pernoita na casa de amigos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Pesadelos com separação",
+          "desc": "Pesadelos repetidos com tema de separação.",
+          "pergunta": "Você tem pesadelos frequentes sobre se separar de pessoas que ama?",
+          "exemplos_clinicos": [
+            "Pesadelos com pais morrendo"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Queixas físicas ao se separar",
+          "desc": "Queixas repetidas de sintomas físicos (cefaleia, dor abdominal, náusea, vômito) ao ocorrer ou antecipar separação.",
+          "pergunta": "Você sente dores de cabeça, estômago ou mal-estar físico quando vai se separar dos seus?",
+          "exemplos_clinicos": [
+            "Dores abdominais nas manhãs de escola"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao",
+      "letra": "B",
+      "rotulo": "Duração ≥4 semanas (crianças) ou ≥6 meses (adultos)",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação tem duração de pelo menos 4 semanas em crianças e adolescentes e tipicamente 6 meses ou mais em adultos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "C",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação causa sofrimento clinicamente significativo ou prejuízo no funcionamento social, acadêmico/profissional ou em outras áreas importantes.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros_transtornos",
+      "letra": "D",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_espectro_autista",
+        "transtorno_delirante",
+        "agorafobia",
+        "transtorno_ansiedade_generalizada",
+        "transtorno_panico",
+        "transtorno_estresse_pos_traumatico"
+      ],
+      "descricao_completa": "A perturbação não é mais bem explicada por outro transtorno mental (ex: TEA, delirante, agorafobia, TAG, TEPT).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno de Ansiedade Social (Fobia Social)
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Medo Acentuado em Situações Sociais",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Medo de avaliação negativa em situações sociais",
+          "desc": "Medo ou ansiedade acentuados de situações sociais em que pode ser exposto ao exame minucioso dos outros (p.ex., conversas, encontros com pessoas estranhas, ser observado a comer, apresentações em público). Em crianças: pode ocorrer com pares, não apenas adultos.",
+          "pergunta": "Você sente ansiedade intensa quando está em situações sociais onde pode ser observado ou avaliado pelos outros?",
+          "exemplos_clinicos": [
+            "Pavor de falar em público",
+            "Terror ao comer em restaurantes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Medo de agir de forma constrangedora/humilhante",
+          "desc": "O indivíduo teme que agirá de uma maneira ou mostrará sintomas de ansiedade que serão avaliados negativamente (humilhação, constrangimento, rejeição).",
+          "pergunta": "Você teme humilhar a si mesmo ou ser rejeitado nas situações sociais?",
+          "exemplos_clinicos": [
+            "Medo de suar em público e ser julgado"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "situacao_provoca_ansiedade",
+      "letra": "C",
+      "rotulo": "Situação social quase sempre provoca ansiedade",
+      "tipo": "temporal_proporcao",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "CircleAlert",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As situações sociais quase sempre provocam medo ou ansiedade. Em crianças: choro, ataques de raiva, imobilidade, apego excessivo.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "evitacao_sofrimento",
+      "letra": "D",
+      "rotulo": "Situações evitadas ou suportadas com sofrimento intenso",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "EyeOff",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As situações sociais são evitadas ou suportadas com intenso medo ou ansiedade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "desproporcional",
+      "letra": "E",
+      "rotulo": "Medo desproporcional ao perigo real",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Scale",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo ou ansiedade é desproporcional à ameaça real e ao contexto sociocultural.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_6meses",
+      "letra": "F",
+      "rotulo": "Duração ≥6 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo, ansiedade ou esquiva é persistente com duração mínima de 6 meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "G",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O medo, ansiedade ou esquiva causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "H",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Não atribuível aos efeitos fisiológicos de substância ou condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros_transtornos",
+      "letra": "I",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_panico",
+        "tddh",
+        "tea",
+        "transtorno_esquizofreniforme"
+      ],
+      "descricao_completa": "Não mais bem explicado por transtorno de pânico, TDD, TEA ou transtorno esquizoafetivo/esquizofrenia.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "apenas_desempenho",
+      "nome": "Somente de desempenho",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Para quando o medo é limitado a falar ou realizar em público.",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Bipolar Tipo I
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "B",
+      "nome": "Sintomas de Mania (Episódio Maníaco)",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "B1",
+          "rotulo": "Autoestima inflada ou grandiosidade",
+          "desc": "Presença de autoconfiança excessiva sem senso crítico ou sentimento acentuado de grandiosidade, podendo alcançar proporções delirantes.",
+          "pergunta": "Você tem se sentido extremamente confiante, com a sensação de ter capacidades ou importância muito acima do comum?",
+          "exemplos_clinicos": [
+            "Iniciar tarefas complexas sem qualquer treinamento",
+            "Acreditar ter relação especial com celebridades"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B2",
+          "rotulo": "Necessidade de sono reduzida",
+          "desc": "Sensação de estar plenamente descansado e cheio de energia após dormir uma quantidade de horas significativamente menor que o habitual.",
+          "pergunta": "Você sentiu que precisava de muito menos sono para se sentir descansado, como apenas duas ou três horas de sono por noite?",
+          "exemplos_clinicos": [
+            "Ficar sem dormir por dias sem se sentir cansado",
+            "Acordar muito cedo cheio de energia"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B3",
+          "rotulo": "Discurso loquaz ou pressionado",
+          "desc": "Falar de forma mais rápida, volumosa e contínua do que o normal, demonstrando urgência ou pressão para continuar falando.",
+          "pergunta": "As pessoas comentaram que você estava falando muito rápido ou que era difícil interromper a sua fala?",
+          "exemplos_clinicos": [
+            "Falar sem parar e de forma invasiva",
+            "Fazer piadas constantes, trocadilhos ou gestos dramáticos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B4",
+          "rotulo": "Fuga de ideias ou pensamentos acelerados",
+          "desc": "Experiência subjetiva de que os pensamentos estão ocorrendo em velocidade excessiva, ou fluxo contínuo de fala com mudanças abruptas de tema.",
+          "pergunta": "Você sentiu como se sua mente estivesse correndo rápido demais, com os pensamentos atropelando uns aos outros?",
+          "exemplos_clinicos": [
+            "Mudanças repentinas de um tópico para outro na fala",
+            "Sensação de mente abarrotada que dificulta a fala"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B5",
+          "rotulo": "Distratibilidade",
+          "desc": "Incapacidade de ignorar ou filtrar estímulos externos irrelevantes, fazendo com que a atenção seja facilmente desviada de tarefas principais.",
+          "pergunta": "Ficou muito difícil manter a atenção nas coisas porque qualquer barulho ou detalhe ao redor chamava sua atenção?",
+          "exemplos_clinicos": [
+            "Desviar a conversa por causa de barulhos ao fundo ou objetos na sala",
+            "Não conseguir seguir orientações simples"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B6",
+          "rotulo": "Aumento da atividade ou agitação psicomotora",
+          "desc": "Aumento marcante em atividades direcionadas a objetivos (sociais, profissionais, acadêmicos ou sexuais) ou agitação psicomotora improdutiva.",
+          "pergunta": "Você se envolveu em muito mais projetos ao mesmo tempo, ou sentiu uma agitação física que o impedia de ficar parado?",
+          "exemplos_clinicos": [
+            "Assumir múltiplos novos projetos simultaneamente em horários incomuns",
+            "Andar de um lado para o outro de forma inquieta"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B7",
+          "rotulo": "Envolvimento em atividades de alto risco",
+          "desc": "Engajamento impulsivo em atividades prazerosas com alta probabilidade de consequências prejudiciais ou catastróficas.",
+          "pergunta": "Você tomou atitudes impulsivas ou arriscadas, como compras excessivas ou investimentos arriscados, sem pensar nas consequências?",
+          "exemplos_clinicos": [
+            "Compras desenfreadas sem fundos para pagamento",
+            "Investimentos financeiros insensatos ou comportamento sexual de risco"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "humor_energia_elevados",
+      "letra": "A",
+      "rotulo": "Humor e energia elevados",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Zap",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Período distinto de humor anormal e persistentemente elevado, expansivo ou irritável e aumento persistente da atividade ou energia, durando pelo menos uma semana, na maior parte do dia, quase todos os dias (ou qualquer duração se houver hospitalização).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "prejuizo_grave_hospitalizacao",
+      "letra": "C",
+      "rotulo": "Prejuízo acentuado ou psicose",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "TriangleAlert",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação do humor é grave a ponto de causar prejuízo acentuado no funcionamento social ou profissional, ou necessitar de hospitalização para prevenir danos a si mesmo ou a outros, ou há presença de características psicóticas.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancias_medicas",
+      "letra": "D",
+      "rotulo": "Não atribuível a substância/condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "intoxicacao_estimulantes",
+        "hipertireoidismo"
+      ],
+      "descricao_completa": "O episódio não é atribuível aos efeitos fisiológicos diretos de uma substância (droga de abuso, medicamento ou outro tratamento) ou a outra condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_espectro_psicotico",
+      "letra": "E",
+      "rotulo": "Não melhor explicado por psicose",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Brain",
+      "ddx_sugeridos": [
+        "transtorno_esquizoafetivo",
+        "esquizofrenia",
+        "transtorno_delirante"
+      ],
+      "descricao_completa": "A ocorrência do episódio maníaco não é mais bem explicada por transtorno esquizoafetivo, esquizofrenia, transtorno esquizofreniforme, transtorno delirante ou outros transtornos do espectro da esquizofrenia.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_sintomas_ansiosos",
+      "nome": "Com sintomas ansiosos",
+      "tipo": "gravidade_ordinal",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "leve",
+          "label": "Leve (2 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderado",
+          "label": "Moderado (3 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderado_grave",
+          "label": "Moderado-grave (4 a 5 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "grave",
+          "label": "Grave (4 a 5 sintomas com agitação motora extrema)",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_mistas",
+      "nome": "Com características mistas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_ciclagem_rapida",
+      "nome": "Com ciclagem rápida",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_melancolicas",
+      "nome": "Com características melancólicas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_atipicas",
+      "nome": "Com características atípicas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_psicoticas",
+      "nome": "Com características psicóticas",
+      "tipo": "select_unico",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "congruentes_humor",
+          "label": "Com características psicóticas congruentes com o humor",
+          "codigo_adicional": null
+        },
+        {
+          "id": "incongruentes_humor",
+          "label": "Com características psicóticas incongruentes com o humor",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_inicio_periparto",
+      "nome": "Com início no periparto",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_padrao_sazonal",
+      "nome": "Com padrão sazonal",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Bipolar Tipo II
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "H",
+      "nome": "Sintomas de Hipomania (Episódio Hipomaníaco)",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "H1",
+          "rotulo": "Autoestima inflada ou grandiosidade",
+          "desc": "Sentimento exacerbado de importância ou autoconfiança inadequada ao contexto, mas de grau não delirante.",
+          "pergunta": "Você sentiu um aumento acentuado na autoconfiança, agindo de forma muito mais otimista ou decidida que o normal?",
+          "exemplos_clinicos": [
+            "Assumir múltiplos compromissos profissionais adicionais com facilidade excessiva"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "H2",
+          "rotulo": "Necessidade de sono reduzida",
+          "desc": "Sentir-se revigorado e com energia mesmo com poucas horas de sono diárias, sem experimentar a fadiga esperada.",
+          "pergunta": "Você percebeu que conseguia dormir pouquíssimas horas e ainda assim acordar cheio de energia?",
+          "exemplos_clinicos": [
+            "Dormir 3 horas e sentir-se plenamente descansado"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "H3",
+          "rotulo": "Mais loquaz ou pressão para falar",
+          "desc": "Falar mais rápido, em maior quantidade e com pressa incomum para se expressar.",
+          "pergunta": "Sentiu uma vontade urgente ou uma necessidade forte de falar muito mais do que o habitual?",
+          "exemplos_clinicos": [
+            "Comunicação verbal acelerada ou loquacidade"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "H4",
+          "rotulo": "Fuga de ideias ou pensamentos acelerados",
+          "desc": "Experiência de fluxo mental acelerado ou sensação subjetiva de rapidez no raciocínio.",
+          "pergunta": "Você percebeu que seus pensamentos pareciam mais velozes ou que sua mente trabalhava de forma muito acelerada?",
+          "exemplos_clinicos": [
+            "Percepção subjetiva de velocidade mental elevada"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "H5",
+          "rotulo": "Distratibilidade",
+          "desc": "Atenção facilmente desviada por estímulos externos de menor relevância.",
+          "pergunta": "Foi difícil manter a concentração devido ao surgimento constante de distrações?",
+          "exemplos_clinicos": [
+            "Desvios de foco durante tarefas ou conversas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "H6",
+          "rotulo": "Aumento de atividade direcionada a objetivos",
+          "desc": "Elevação palpável na realização de tarefas ou projetos, ou agitação psicomotora.",
+          "pergunta": "Sentiu-se motivado a iniciar muitas atividades novas ou a se movimentar excessivamente?",
+          "exemplos_clinicos": [
+            "Mobilização aumentada para trabalho, estudos ou contatos sociais"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "H7",
+          "rotulo": "Envolvimento em atividades de alto risco",
+          "desc": "Busca excessiva por atividades que trazem satisfação imediata mas carregam riscos financeiros ou interpessoais.",
+          "pergunta": "Você agiu impulsivamente de formas que poderiam causar problemas, como compras excessivas ou decisões imprudentes?",
+          "exemplos_clinicos": [
+            "Surtos leves de compras",
+            "Decisões de negócios tomadas sem reflexão suficiente"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "D",
+      "nome": "Sintomas Depressivos (Episódio Depressivo Maior)",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Pelo menos um dos sintomas no cluster deve ser Humor Deprimido (D1) ou Acentuada diminuição de interesse ou prazer (D2).",
+        "ids_obrigatorios": [
+          "D1",
+          "D2"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "D1",
+          "rotulo": "Humor deprimido",
+          "desc": "Humor triste, vazio, sem esperança ou irritável na maior parte do dia, quase todos os dias.",
+          "pergunta": "Você tem se sentido persistentemente triste, desanimado ou deprimido na maior parte do tempo?",
+          "exemplos_clinicos": [
+            "Sente-se choroso ou sem esperança",
+            "Pode se apresentar como irritabilidade acentuada em crianças/adolescentes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D2",
+          "rotulo": "Diminuição do interesse ou prazer",
+          "desc": "Acentuada perda de interesse ou prazer em quase todas as atividades habituais.",
+          "pergunta": "Você perdeu o interesse ou não consegue sentir prazer nas atividades que costumava gostar?",
+          "exemplos_clinicos": [
+            "Desinteresse total por hobbies, trabalho ou convívio social"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D3",
+          "rotulo": "Alteração de peso ou apetite",
+          "desc": "Ganho ou perda significativa de peso sem dieta, ou alteração proeminente do apetite quase diária.",
+          "pergunta": "Houve alguma mudança marcante no seu apetite ou no seu peso recentemente?",
+          "exemplos_clinicos": [
+            "Perda ou ganho de mais de 5% do peso corporal em um mês",
+            "Insucesso em atingir ganhos esperados em crianças"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D4",
+          "rotulo": "Alteração do sono",
+          "desc": "Insônia ou hipersonia acentuada quase diariamente.",
+          "pergunta": "Seu sono foi prejudicado, apresentando insônia persistente ou excesso de sono quase todos os dias?",
+          "exemplos_clinicos": [
+            "Insônia terminal ou de manutenção",
+            "Hipersonia severa com cansaço ao acordar"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D5",
+          "rotulo": "Agitação ou retardo psicomotor",
+          "desc": "Inquietação física ou lentidão psicomotora proeminente, observável externamente por terceiros.",
+          "pergunta": "Você tem se sentido muito agitado ou excessivamente lento nos seus movimentos e fala?",
+          "exemplos_clinicos": [
+            "Inquietação ou incapacidade de permanecer sentado",
+            "Fala arrastada e pausas excessivas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D6",
+          "rotulo": "Fadiga ou perda de energia",
+          "desc": "Falta crônica de energia ou sensação constante de esgotamento físico e mental.",
+          "pergunta": "Você sentiu cansaço persistente ou falta de forças para realizar até mesmo tarefas simples?",
+          "exemplos_clinicos": [
+            "Sentir que atividades básicas demandam esforço monumental"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D7",
+          "rotulo": "Sentimento de desvalia ou culpa excessiva",
+          "desc": "Sentimentos irrealistas de inutilidade ou culpa inadequada acerca de eventos cotidianos.",
+          "pergunta": "Você tem se sentido culpado por coisas fora do seu controle ou com um sentimento forte de inutilidade?",
+          "exemplos_clinicos": [
+            "Ruminação severa sobre falhas menores do passado",
+            "Auto-recriminação excessiva"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D8",
+          "rotulo": "Dificuldade de concentração ou indecisão",
+          "desc": "Capacidade severamente reduzida para pensar, concentrar-se ou tomar decisões cotidianas simples.",
+          "pergunta": "Tem sido muito difícil focar a sua mente, organizar as ideias ou tomar decisões básicas?",
+          "exemplos_clinicos": [
+            "Incapacidade de ler notícias ou assistir a um programa curto",
+            "Indecisão crônica incapacitante"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "D9",
+          "rotulo": "Pensamentos de morte ou ideação suicida",
+          "desc": "Pensamentos recorrentes sobre morte, ideação suicida recorrente com ou sem planejamento de tentativas.",
+          "pergunta": "Você teve pensamentos frequentes sobre morte, ou sentiu que não valia mais a pena viver?",
+          "exemplos_clinicos": [
+            "Ideação suicida ativa ou passiva",
+            "Planos específicos ou tentativas de autoextermínio"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "hipomania_duracao_letra_a",
+      "letra": "A_H",
+      "rotulo": "Duração hipomania >=4 dias",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O episódio hipomaníaco deve apresentar humor elevado, expansivo ou irritável com duração mínima de 4 dias consecutivos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "depressao_duracao_letra_a",
+      "letra": "A_D",
+      "rotulo": "Duração depressão >=2 semanas",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas do episódio depressivo maior devem persistir por pelo menos duas semanas e representar mudança do funcionamento prévio.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "jamais_episodio_maniaco",
+      "letra": "B",
+      "rotulo": "Jamais houve episódio maníaco",
+      "tipo": "exclusao_outro_transtorno_da_classe",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_bipolar_tipo_1"
+      ],
+      "descricao_completa": "O indivíduo nunca apresentou critérios para um episódio maníaco completo na história de vida.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "nao_melhor_explicado_psicose",
+      "letra": "C",
+      "rotulo": "Não explicado por psicose",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Shield",
+      "ddx_sugeridos": [
+        "transtorno_esquizoafetivo",
+        "esquizofrenia",
+        "transtorno_delirante"
+      ],
+      "descricao_completa": "Os episódios de alteração de humor não são explicados de forma mais adequada por esquizofrenia, esquizoafetivo ou outro transtorno psicótico.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_prejuizo_clinico",
+      "letra": "D",
+      "rotulo": "Sofrimento ou prejuízo clínico",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A imprevisibilidade e flutuação do humor causam sofrimento clinicamente significativo ou prejuízo severo no funcionamento social ou ocupacional.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_sintomas_ansiosos",
+      "nome": "Com sintomas ansiosos",
+      "tipo": "gravidade_ordinal",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "leve",
+          "label": "Leve (2 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderado",
+          "label": "Moderado (3 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderado_grave",
+          "label": "Moderado-grave (4 a 5 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "grave",
+          "label": "Grave (4 a 5 sintomas com agitação motora extrema)",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_mistas",
+      "nome": "Com características mistas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_ciclagem_rapida",
+      "nome": "Com ciclagem rápida",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_psicoticas",
+      "nome": "Com características psicóticas",
+      "tipo": "select_unico",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "congruentes_humor",
+          "label": "Com características psicóticas congruentes com o humor",
+          "codigo_adicional": null
+        },
+        {
+          "id": "incongruentes_humor",
+          "label": "Com características psicóticas incongruentes com o humor",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_inicio_periparto",
+      "nome": "Com início no periparto",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_padrao_sazonal",
+      "nome": "Com padrão sazonal",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Aplica-se apenas ao padrão de episódios depressivos maiores.",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Compulsão Alimentar
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Episódios Recorrentes de Compulsão Alimentar",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Ingestão excessiva de alimento em período determinado",
+          "desc": "Ingestão, em um período determinado (geralmente inferior a duas horas), de uma quantidade de alimento definitivamente maior do que a maioria das pessoas consumiria no mesmo período sob circunstâncias semelhantes.",
+          "pergunta": "A pessoa tem episódios nos quais come uma quantidade de alimento definitivamente maior do que a maioria das pessoas comeria em um período similar?",
+          "exemplos_clinicos": [
+            "A quantidade deve ser contextualizada às circunstâncias (p. ex., refeições comemorativas)."
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Sensação de falta de controle durante a ingestão",
+          "desc": "Sensação de falta de controle sobre a ingestão durante o episódio, como sentimento de não conseguir parar de comer ou controlar o que e o quanto se está ingerindo.",
+          "pergunta": "Durante esses episódios, a pessoa sente que não consegue parar de comer ou controlar o que e quanto está ingerindo?",
+          "exemplos_clinicos": [
+            "Incapacidade de evitar comer",
+            "Desistiu de tentar controlar a ingesta"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "B",
+      "nome": "Características Associadas à Compulsão Alimentar",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": 3
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "B1",
+          "rotulo": "Comer mais rapidamente do que o normal",
+          "desc": "Comer mais rapidamente do que o normal durante os episódios de compulsão.",
+          "pergunta": "Durante os episódios, a pessoa come mais rápido do que o habitual?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B2",
+          "rotulo": "Comer até se sentir desconfortavelmente cheio",
+          "desc": "Comer até se sentir desconfortavelmente cheio.",
+          "pergunta": "A pessoa continua comendo até ficar desconfortavelmente cheia?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B3",
+          "rotulo": "Comer grandes quantidades na ausência de fome física",
+          "desc": "Comer grandes quantidades de alimento na ausência da sensação física de fome.",
+          "pergunta": "A pessoa come grandes quantidades mesmo quando não está fisicamente com fome?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B4",
+          "rotulo": "Comer sozinho por vergonha",
+          "desc": "Comer sozinho por vergonha do quanto se está comendo.",
+          "pergunta": "A pessoa come sozinha ou esconde a alimentação por vergonha da quantidade ingerida?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B5",
+          "rotulo": "Sentir-se desgostoso, deprimido ou culpado após a compulsão",
+          "desc": "Sentir-se desgostoso de si mesmo, deprimido ou muito culpado em seguida ao episódio.",
+          "pergunta": "Após os episódios de compulsão, a pessoa se sente envergonhada, deprimida ou muito culpada?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_marcante",
+      "letra": "C",
+      "rotulo": "Sofrimento marcante em virtude da compulsão alimentar",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Sofrimento marcante em virtude da compulsão alimentar.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "frequencia_minima",
+      "letra": "D",
+      "rotulo": "Frequência mínima: ≥1 vez por semana durante 3 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os episódios de compulsão alimentar ocorrem, em média, ao menos uma vez por semana durante três meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_compensacao_bulimia_anorexia",
+      "letra": "E",
+      "rotulo": "Sem comportamento compensatório inapropriado recorrente; não exclusivo de bulimia ou anorexia",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [
+        "bulimia_nervosa",
+        "anorexia_nervosa"
+      ],
+      "descricao_completa": "A compulsão alimentar não está associada ao uso recorrente de comportamento compensatório inapropriado como na bulimia nervosa e não ocorre exclusivamente durante o curso de bulimia nervosa ou anorexia nervosa.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "em_remicao_parcial",
+      "nome": "Em remissão parcial",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "em_remicao_completa",
+      "nome": "Em remissão completa",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Conversão (Transtorno de Sintomas Neurológicos Funcionais)
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_B",
+      "nome": "Sintoma Motor/Sensorial Incompatível com Condição Neurológica",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Sintoma(s) motor ou sensorial alterados",
+          "desc": "Um ou mais sintomas de função motora ou sensorial voluntária alteradas.",
+          "pergunta": "Você tem fraqueza, paralisia, tremores ou perda sensorial que os médicos dizem não ter causa neurológica identificável?",
+          "exemplos_clinicos": [
+            "Fraqueza funcional de membros",
+            "Crises não epilépticas",
+            "Cegueira funcional"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Incompatibilidade com doença neurológica conhecida",
+          "desc": "Achados clínicos fornecem evidências de incompatibilidade entre o sintoma e condições neurológicas ou médicas reconhecidas.",
+          "pergunta": "O médico confirmou que seus sintomas não são explicados por doença neurológica ou médica conhecida?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "exclusao_facticio",
+      "letra": "C",
+      "rotulo": "Não melhor explicado por transtorno factício ou simulação",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [
+        "transtorno_facticio"
+      ],
+      "descricao_completa": "Não melhor explicado por outro transtorno médico, transtorno factício ou simulação.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "D",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "episodio_agudo",
+      "nome": "Episódio agudo",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Sintomas <6 meses.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "persistente",
+      "nome": "Persistente",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Sintomas ≥6 meses.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "estressor_psicologico",
+      "nome": "Com estressor psicológico",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sem_estressor",
+      "nome": "Sem estressor psicológico",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Déficit de Atenção/Hiperatividade
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A1",
+      "nome": "Sintomas de Desatenção",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": 6
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1a",
+          "rotulo": "Erros por descuido ou falta de atenção a detalhes",
+          "desc": "Frequentemente deixa de prestar atenção a detalhes ou comete erros por descuido em atividades escolares, no trabalho ou durante outras atividades.",
+          "pergunta": "Você costuma cometer erros bobos por distração no trabalho ou estudos, ou deixar passar detalhes importantes em tarefas longas?",
+          "exemplos_clinicos": [
+            "Ignorar instruções em testes e errar perguntas fáceis",
+            "Trabalho impreciso com dados incorretos por pura distração"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1b",
+          "rotulo": "Dificuldade em manter a atenção",
+          "desc": "Frequentemente tem dificuldade em manter a atenção em tarefas ou atividades lúdicas (ex: palestras, conversas, leituras longas).",
+          "pergunta": "Fica muito difícil se concentrar em conversas demoradas, aulas ou leituras de textos extensos sem que sua mente divague?",
+          "exemplos_clinicos": [
+            "Perder o foco rapidamente durante reuniões de 30 minutos",
+            "Não conseguir concluir um livro simples por dispersão"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1c",
+          "rotulo": "Parece não escutar quando se fala diretamente",
+          "desc": "Frequentemente parece não escutar quando alguém lhe dirige a palavra diretamente, com a mente parecendo estar em outro lugar.",
+          "pergunta": "As pessoas costumam reclamar que chamam você ou falam diretamente com você e você parece estar 'no mundo da lua'?",
+          "exemplos_clinicos": [
+            "Não ouvir quando o cônjuge fala na mesma sala",
+            "Necessitar que repitam instruções dadas individualmente"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1d",
+          "rotulo": "Não segue instruções e não termina tarefas",
+          "desc": "Frequentemente não segue instruções até o fim e deixa de concluir tarefas escolares, tarefas domésticas ou deveres no trabalho.",
+          "pergunta": "Você costuma iniciar projetos ou tarefas com muito entusiasmo, mas acaba deixando-os pela metade por cansaço ou perda de interesse?",
+          "exemplos_clinicos": [
+            "Deixar relatórios profissionais sem a conclusão",
+            "Não seguir receitas de cozinha até o fim, pulando etapas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1e",
+          "rotulo": "Dificuldade para organizar tarefas e atividades",
+          "desc": "Frequentemente tem dificuldade para organizar tarefas e atividades (ex: gerenciar materiais, organizar tempo, cumprir prazos).",
+          "pergunta": "Como é a sua capacidade de organizar sua rotina, gerenciar o tempo, prazos e manter seu espaço de trabalho arrumado?",
+          "exemplos_clinicos": [
+            "Perder prazos profissionais frequentemente por desorganização",
+            "Mesa de trabalho extremamente bagunçada de forma crônica"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1f",
+          "rotulo": "Evita tarefas que exigem esforço mental prolongado",
+          "desc": "Frequentemente evita, antipatiza ou reluta em envolver-se em tarefas que exijam esforço mental prolongado.",
+          "pergunta": "Você costuma procrastinar ou adiar tarefas longas que exigem muito raciocínio e atenção, como relatórios ou burocracias?",
+          "exemplos_clinicos": [
+            "Adiar o preenchimento de impostos até o último dia",
+            "Crianças que se recusam enfaticamente a fazer a lição de casa"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1g",
+          "rotulo": "Perde coisas necessárias para tarefas ou atividades",
+          "desc": "Frequentemente perde objetos necessários para tarefas ou atividades (ex: materiais escolares, carteira, chaves, óculos, celulares).",
+          "pergunta": "Você perde chaves, celular, documentos ou ferramentas de trabalho com uma frequência muito maior do que as outras pessoas?",
+          "exemplos_clinicos": [
+            "Passar horas procurando chaves ou celular perdidos pela casa",
+            "Esquecer objetos pessoais em táxis ou restaurantes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1h",
+          "rotulo": "Facilmente distraído por estímulos externos",
+          "desc": "Frequentemente é facilmente distraído por estímulos externos (inclusive pensamentos não relacionados em adultos).",
+          "pergunta": "Qualquer barulho na rua ou passagem de uma pessoa na sala de trabalho faz você perder a concentração no que estava fazendo?",
+          "exemplos_clinicos": [
+            "Olhar pela janela a cada ruído",
+            "Dispersar o raciocínio no meio de um relatório por causa de um email que chegou"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1i",
+          "rotulo": "Esquecido em atividades diárias",
+          "desc": "Frequentemente é esquecido em atividades diárias (ex: tarefas domésticas, pagar contas, manter compromissos).",
+          "pergunta": "Você costuma esquecer compromissos marcados, aniversários importantes ou o pagamento de contas recorrentes no dia a dia?",
+          "exemplos_clinicos": [
+            "Pagar juros de contas por esquecimento",
+            "Esquecer de levar o almoço para o trabalho"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Os sintomas devem persistir por pelo menos 6 meses, em um grau inconsistente com o nível do desenvolvimento e que causa impacto negativo nas atividades sociais e acadêmicas/profissionais.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "A2",
+      "nome": "Sintomas de Hiperatividade e Impulsividade",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": 6
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A2a",
+          "rotulo": "Remexer-se na cadeira ou batucar mãos/pés",
+          "desc": "Frequentemente remexe as mãos ou os pés ou se contorce na cadeira.",
+          "pergunta": "Você tem dificuldade em ficar sentado imóvel, movimentando constantemente as pernas ou batucando os dedos na mesa?",
+          "exemplos_clinicos": [
+            "Balançar as pernas sem parar enquanto trabalha",
+            "Batucar caneta na mesa de reuniões de forma irritante"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2b",
+          "rotulo": "Levantar-se quando deveria permanecer sentado",
+          "desc": "Frequentemente levanta-se da cadeira em sala de aula ou em outras situações nas quais se espera que permaneça sentado.",
+          "pergunta": "Você sente necessidade de se levantar ou caminhar em situações em que deveria ficar sentado, como em reuniões ou cinema?",
+          "exemplos_clinicos": [
+            "Levantar da mesa de jantar antes de terminar a refeição",
+            "Criança que circula pela sala de aula enquanto o professor explica"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2c",
+          "rotulo": "Correr ou subir nas coisas em situações inapropriadas",
+          "desc": "Frequentemente corre ou sobe nas coisas em situações em que isso é inapropriado (em adolescentes/adultos pode se limitar a sensações subjetivas de inquietude).",
+          "pergunta": "Você sente uma inquietude física interna constante, como se estivesse ligado na tomada, mesmo em momentos de descanso?",
+          "exemplos_clinicos": [
+            "Criança subindo em estantes de lojas",
+            "Adulto com sensação de agitação motora interna insuportável ao tentar relaxar"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2d",
+          "rotulo": "Dificuldade em brincar ou fazer lazer em silêncio",
+          "desc": "Frequentemente tem dificuldade para brincar ou envolver-se em atividades de lazer de forma silenciosa.",
+          "pergunta": "Acha difícil aproveitar momentos de lazer de forma silenciosa e calma, preferindo atividades mais barulhentas ou ativas?",
+          "exemplos_clinicos": [
+            "Falar alto demais em ambientes calmos",
+            "Crianças que sempre brincam de forma muito barulhenta"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2e",
+          "rotulo": "Inquietude motora extrema e sensação de 'motor ligado'",
+          "desc": "Frequentemente está 'a mil' ou age como se estivesse 'ligado por um motor' (incapaz de ficar parado ou desconfortável em jantares/reuniões).",
+          "pergunta": "As pessoas já disseram que você parece estar sempre acelerado, ativo demais ou inquieto como se estivesse 'ligado na tomada'?",
+          "exemplos_clinicos": [
+            "Não conseguir participar de longos jantares de negócios sem inquietude óbvia",
+            "Falar rápido demais de forma impaciente"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2f",
+          "rotulo": "Falar em excesso",
+          "desc": "Frequentemente fala em excesso.",
+          "pergunta": "Você percebe que costuma falar muito mais que as outras pessoas em interações sociais, monopolizando conversas?",
+          "exemplos_clinicos": [
+            "Dominar as conversas em grupos sociais",
+            "Monólogos frequentes sem pausa para ouvir o outro"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2g",
+          "rotulo": "Responder a perguntas antes que sejam concluídas",
+          "desc": "Frequentemente deixa escapar uma resposta antes que a pergunta tenha sido concluída ou completa frases dos outros.",
+          "pergunta": "Costuma responder às pessoas ou completar as frases delas antes mesmo que elas terminem de fazer a pergunta?",
+          "exemplos_clinicos": [
+            "Completar de forma impaciente as frases de interlocutores lentos",
+            "Responder antes do término da pergunta de um entrevistador"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2h",
+          "rotulo": "Dificuldade em esperar a sua vez",
+          "desc": "Frequentemente tem dificuldade para esperar a sua vez (ex: em filas, conversas).",
+          "pergunta": "Ficar em filas longas ou esperar sua vez no trânsito ou jogos causa um sofrimento ou impaciência extrema em você?",
+          "exemplos_clinicos": [
+            "Demonstrar irritação visível em filas de supermercado",
+            "Furar a vez em jogos infantis"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2i",
+          "rotulo": "Interromper ou intrometer-se nas atividades alheias",
+          "desc": "Frequentemente interrompe ou se intromete em conversas, jogos ou atividades de outros, podendo usar coisas dos outros sem pedir.",
+          "pergunta": "Você costuma se meter em conversas de colegas de trabalho ou jogos alheios de forma intrusiva?",
+          "exemplos_clinicos": [
+            "Criança que invade a brincadeira de outras sem ser convidada",
+            "Interromper a fala de colegas de escritório para colocar sua opinião"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Os sintomas devem persistir por pelo menos 6 meses de forma desadaptativa.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "inicio_antes_12",
+      "letra": "B",
+      "rotulo": "Sintomas presentes antes dos 12 anos",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Baby",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Vários sintomas de desatenção ou hiperatividade-impulsividade estavam presentes antes dos 12 anos de idade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "dois_ou_mais_ambientes",
+      "letra": "C",
+      "rotulo": "Sintomas em dois ou mais ambientes",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "MapPin",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Vários sintomas de desatenção ou hiperatividade-impulsividade estão presentes em dois ou mais ambientes (ex: em casa, na escola, no trabalho; com amigos ou parentes).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "prejuizo_social_tdah",
+      "letra": "D",
+      "rotulo": "Interferência ou redução da qualidade do funcionamento",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "TrendingDown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Há evidências claras de que os sintomas interferem no funcionamento social, acadêmico ou profissional ou reduzem sua qualidade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_psicotico",
+      "letra": "E",
+      "rotulo": "Sintomas não explicados por outro transtorno",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "esquizofrenia",
+        "transtorno_bipolar_tipo_1"
+      ],
+      "descricao_completa": "Os sintomas não ocorrem exclusivamente durante o curso de esquizofrenia ou outro transtorno psicótico e não são mais bem explicados por outro transtorno mental.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "em_remissao_parcial",
+      "nome": "Em remissão parcial",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Delirante
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas Delirantes",
+      "tipo": "unico_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Presença de um ou mais delírios",
+          "desc": "Presença de um ou mais delírios com duração de um mês ou mais.",
+          "pergunta": "Você tem tido ideias ou crenças muito fortes que as outras pessoas dizem não ser reais, durando pelo menos um mês?",
+          "exemplos_clinicos": [
+            "Acreditar estar sendo seguido, envenenado, amado à distância ou traído pelo parceiro"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Presença de um ou mais delírios com duração de um mês ou mais. Alucinações, se presentes, não são proeminentes e relacionam-se ao tema delirante.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "esquizofrenia_nunca_atendida",
+      "letra": "B",
+      "rotulo": "Critério A de esquizofrenia jamais atendido",
+      "tipo": "exclusao_outro_transtorno_da_classe",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "esquizofrenia"
+      ],
+      "descricao_completa": "O Critério A para esquizofrenia nunca foi atendido. Se alucinações estiverem presentes, não são proeminentes e têm relação com o tema delirante.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "funcionamento_preservado",
+      "letra": "C",
+      "rotulo": "Funcionamento preservado fora do delírio",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "UserCheck",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Exceto pelo impacto direto dos delírios ou de suas ramificações, o funcionamento não está acentuadamente prejudicado e o comportamento não é claramente bizarro ou esquisito.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_episodios_humor",
+      "letra": "D",
+      "rotulo": "Humor breve em relação aos delírios",
+      "tipo": "temporal_proporcao",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Hourglass",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Se episódios maníacos ou depressivos maiores ocorreram, sua duração total foi breve em relação à duração dos períodos delirantes ativos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancias_outros",
+      "letra": "E",
+      "rotulo": "Não atribuível a substância ou outra condição",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Shield",
+      "ddx_sugeridos": [
+        "transtorno_obsessivo_compulsivo",
+        "transtorno_dismorfico_corporal"
+      ],
+      "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica, nem é mais bem explicada por outro transtorno mental.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_conteudo_bizarro",
+      "nome": "Com conteúdo bizarro",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "curso_apos_um_ano",
+      "nome": "Especificador de Curso (após 1 ano de duração)",
+      "tipo": "curso_temporal",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "primeiro_episodio_agudo",
+          "label": "Primeiro episódio, atualmente em episódio agudo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "primeiro_episodio_remissao_parcial",
+          "label": "Primeiro episódio, atualmente em remissão parcial",
+          "codigo_adicional": null
+        },
+        {
+          "id": "primeiro_episodio_remissao_completa",
+          "label": "Primeiro episódio, atualmente em remissão completa",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_agudo",
+          "label": "Episódios múltiplos, atualmente em episódio agudo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_remissao_parcial",
+          "label": "Episódios múltiplos, atualmente em remissão parcial",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_remissao_completa",
+          "label": "Episódios múltiplos, atualmente em remissão completa",
+          "codigo_adicional": null
+        },
+        {
+          "id": "continuo",
+          "label": "Contínuo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "nao_especificado",
+          "label": "Não especificado",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Depressivo Maior
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Episódio Depressivo Maior (5/9 com âncora)",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 5,
+        "pediatria": 5
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Ao menos 1 entre: A1 (humor deprimido) ou A2 (anedonia)",
+        "ids_obrigatorios": [
+          "A1",
+          "A2"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Humor deprimido na maior parte do dia",
+          "desc": "Humor deprimido na maior parte do dia, quase todos os dias (relato subjetivo ou observação). Em crianças/adolescentes pode ser irritável.",
+          "pergunta": "Você se sente triste, vazio ou sem esperança na maior parte do dia, quase todos os dias?",
+          "exemplos_clinicos": [
+            "Parece prestes a chorar",
+            "Descreve sentir vazio",
+            "Irritabilidade persistente em crianças"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Perda de interesse ou prazer (anedonia)",
+          "desc": "Acentuada diminuição do interesse ou prazer em todas ou quase todas as atividades, na maior parte do dia, quase todos os dias.",
+          "pergunta": "Você perdeu o interesse ou o prazer em coisas que antes gostava de fazer?",
+          "exemplos_clinicos": [
+            "Parou de praticar hobbies",
+            "Não sente prazer em atividades sociais"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Perda/ganho de peso ou alteração do apetite",
+          "desc": "Perda ou ganho significativo de peso sem dieta (>5% do peso corporal em 1 mês) ou redução/aumento do apetite quase todos os dias. Em crianças, insucesso no ganho de peso esperado.",
+          "pergunta": "Você notou mudança significativa no seu peso ou apetite sem estar fazendo dieta?",
+          "exemplos_clinicos": [
+            "Perda de 5kg em um mês",
+            "Avidez por carboidratos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Insônia ou hipersonia",
+          "desc": "Insônia (inicial, intermediária ou terminal) ou hipersonia quase todos os dias.",
+          "pergunta": "Você tem tido dificuldade para dormir ou está dormindo em excesso?",
+          "exemplos_clinicos": [
+            "Acorda às 3h e não consegue voltar a dormir",
+            "Dorme 12 horas por dia"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Agitação ou retardo psicomotor observável",
+          "desc": "Agitação ou retardo psicomotor quase todos os dias, observáveis por outras pessoas (não apenas sensações subjetivas).",
+          "pergunta": "Outras pessoas notaram que você está muito agitado ou muito lento nos movimentos e na fala?",
+          "exemplos_clinicos": [
+            "Andar sem parar de um lado para o outro",
+            "Fala lentificada com pausas longas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Fadiga ou perda de energia",
+          "desc": "Fadiga ou perda de energia quase todos os dias, mesmo sem esforço físico prévio.",
+          "pergunta": "Você se sente cansado ou sem energia quase todos os dias, mesmo para tarefas simples?",
+          "exemplos_clinicos": [
+            "Tomar banho e se vestir leva o dobro do tempo habitual"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Inutilidade ou culpa excessiva/inapropriada",
+          "desc": "Sentimentos de inutilidade ou culpa excessiva/inapropriada (que podem ser delirantes) quase todos os dias.",
+          "pergunta": "Você se sente inútil ou com culpa excessiva por coisas que não são sua responsabilidade?",
+          "exemplos_clinicos": [
+            "Convicção de ser pessoalmente responsável por problemas alheios"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Dificuldade de concentração ou indecisão",
+          "desc": "Capacidade diminuída para pensar, concentrar-se ou tomar decisões quase todos os dias.",
+          "pergunta": "Você tem tido dificuldade para se concentrar, pensar claramente ou tomar decisões?",
+          "exemplos_clinicos": [
+            "Queda no rendimento escolar em crianças",
+            "Dificuldade de memória em idosos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Pensamentos de morte ou ideação suicida",
+          "desc": "Pensamentos recorrentes de morte, ideação suicida sem plano específico, tentativa de suicídio ou plano específico.",
+          "pergunta": "Você tem pensado em morte, em se machucar ou em suicídio?",
+          "exemplos_clinicos": [
+            "Desejo passivo de não acordar",
+            "Plano específico elaborado"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_funcional",
+      "letra": "B",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas causam sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou em outras áreas importantes da vida.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "C",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "hipotireoidismo",
+        "avc",
+        "cancer"
+      ],
+      "descricao_completa": "O episódio não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_psicotico",
+      "letra": "D",
+      "rotulo": "Não melhor explicado por transtorno psicótico",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Brain",
+      "ddx_sugeridos": [
+        "transtorno_esquizoafetivo",
+        "esquizofrenia",
+        "transtorno_esquizofreniforme",
+        "transtorno_delirante"
+      ],
+      "descricao_completa": "A ocorrência do EDM não é mais bem explicada por transtorno esquizoafetivo, esquizofrenia, transtorno esquizofreniforme, transtorno delirante, outro transtorno do espectro da esquizofrenia.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_mania_hipomania",
+      "letra": "E",
+      "rotulo": "Nunca houve episódio maníaco ou hipomaníaco",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_bipolar_tipo_1",
+        "transtorno_bipolar_tipo_2"
+      ],
+      "descricao_completa": "Nunca houve episódio maníaco ou hipomaníaco (exclusão não se aplica se episódios foram induzidos por substância ou condição médica).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_sintomas_ansiosos",
+      "nome": "Com sintomas ansiosos",
+      "tipo": "gravidade_ordinal",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "leve",
+          "label": "Leve (2 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderado",
+          "label": "Moderado (3 sintomas ansiosos)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderado_grave",
+          "label": "Moderado-grave (4-5 sintomas)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "grave",
+          "label": "Grave (4-5 sintomas + agitação motora)",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_mistas",
+      "nome": "Com características mistas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_melancolicas",
+      "nome": "Com características melancólicas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_atipicas",
+      "nome": "Com características atípicas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_psicoticas",
+      "nome": "Com características psicóticas",
+      "tipo": "select_unico",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "congruentes_humor",
+          "label": "Com características psicóticas congruentes com o humor",
+          "codigo_adicional": null
+        },
+        {
+          "id": "incongruentes_humor",
+          "label": "Com características psicóticas incongruentes com o humor",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Código adicional 293.89 (F06.1).",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_inicio_periparto",
+      "nome": "Com início no periparto",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_padrao_sazonal",
+      "nome": "Com padrão sazonal",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Aplica-se somente ao episódio recorrente.",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Depressivo Persistente (Distimia)
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Humor Deprimido Crônico (âncora) + ≥2 de Critério B",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": {
+        "descricao": "A1 (humor deprimido) é obrigatório; mais ≥2 sintomas de B1-B6",
+        "ids_obrigatorios": [
+          "A1"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Humor deprimido persistente (≥2 anos/≥1 ano criança)",
+          "desc": "Humor deprimido na maior parte do dia, na maioria dos dias, por no mínimo 2 anos em adultos (1 ano em crianças/adolescentes; pode ser irritável).",
+          "pergunta": "Você tem se sentido deprimido a maior parte do tempo durante os últimos 2 anos (ou 1 ano para crianças)?",
+          "exemplos_clinicos": [
+            "'Sempre fui assim'",
+            "Tristeza crônica de baixa intensidade"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Apetite diminuído ou alimentação excessiva",
+          "desc": "Apetite diminuído ou alimentação em excesso enquanto deprimido.",
+          "pergunta": "Você come muito menos ou muito mais do que o habitual quando está deprimido?",
+          "exemplos_clinicos": [
+            "Perda de apetite crônica",
+            "Comer compulsivamente"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B2",
+          "rotulo": "Insônia ou hipersonia",
+          "desc": "Dificuldade para dormir ou dormir em excesso.",
+          "pergunta": "Você tem problemas crônicos com o sono?",
+          "exemplos_clinicos": [
+            "Insônia de manutenção crônica"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B3",
+          "rotulo": "Baixa energia ou fadiga",
+          "desc": "Sensação persistente de baixa energia ou fadiga.",
+          "pergunta": "Você se sente com pouca energia ou cansado a maior parte do tempo?",
+          "exemplos_clinicos": [
+            "Fadiga crônica sem causa médica identificada"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B4",
+          "rotulo": "Baixa autoestima",
+          "desc": "Visão negativa persistente de si mesmo.",
+          "pergunta": "Você costuma se sentir incapaz, sem valor ou inferior aos outros?",
+          "exemplos_clinicos": [
+            "Autocrítica constante",
+            "Sentimento de inadequação crônica"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B5",
+          "rotulo": "Concentração pobre ou dificuldade de decidir",
+          "desc": "Dificuldade em se concentrar ou tomar decisões.",
+          "pergunta": "Você tem dificuldade para se concentrar ou para decidir sobre coisas do dia a dia?",
+          "exemplos_clinicos": [
+            "Indecisão crônica em situações simples"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B6",
+          "rotulo": "Sentimentos de desesperança",
+          "desc": "Sensação persistente de que as coisas não vão melhorar.",
+          "pergunta": "Você frequentemente sente que as coisas nunca vão melhorar?",
+          "exemplos_clinicos": [
+            "Pessimismo crônico sobre o futuro"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sem_periodo_livre_maior_2meses",
+      "letra": "C",
+      "rotulo": "Sem período livre >2 meses durante os 2 anos",
+      "tipo": "temporal_proporcao",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Durante o período de 2 anos (1 ano para crianças/adolescentes), o indivíduo jamais esteve sem os sintomas dos Critérios A e B por mais de 2 meses consecutivos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "edm_pode_estar_presente",
+      "letra": "D",
+      "rotulo": "EDM pode estar presente continuamente por 2 anos",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": false,
+      "icone": "Info",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os critérios para EDM podem estar continuamente presentes por 2 anos — nesse caso, ambos os diagnósticos são feitos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_mania_hipomania_ciclotimia",
+      "letra": "E",
+      "rotulo": "Nunca houve episódio maníaco/hipomaníaco ou ciclotimia",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_bipolar_tipo_1",
+        "transtorno_bipolar_tipo_2",
+        "transtorno_ciclotimico"
+      ],
+      "descricao_completa": "Jamais houve episódio maníaco ou hipomaníaco e jamais foram satisfeitos critérios para transtorno ciclotímico.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_psicotico_persistente",
+      "letra": "F",
+      "rotulo": "Não melhor explicado por transtorno psicótico persistente",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_esquizoafetivo_persistente",
+        "esquizofrenia",
+        "transtorno_delirante"
+      ],
+      "descricao_completa": "A perturbação não é mais bem explicada por transtorno esquizoafetivo persistente, esquizofrenia, transtorno delirante ou outro transtorno psicótico.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "G",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "hipotireoidismo"
+      ],
+      "descricao_completa": "Os sintomas não se devem aos efeitos fisiológicos de uma substância ou a outra condição médica (ex: hipotireoidismo).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sofrimento_funcional",
+      "letra": "H",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas causam sofrimento clinicamente significativo ou prejuízo no funcionamento social, profissional ou em outras áreas importantes.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "inicio_precoce",
+      "nome": "Início precoce",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Início antes dos 21 anos.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "inicio_tardio",
+      "nome": "Início tardio",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Início aos 21 anos ou mais.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_sintomas_ansiosos",
+      "nome": "Com sintomas ansiosos",
+      "tipo": "gravidade_ordinal",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "leve",
+          "label": "Leve (2 sintomas)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "moderado",
+          "label": "Moderado (3 sintomas)",
+          "codigo_adicional": null
+        },
+        {
+          "id": "grave",
+          "label": "Grave (4-5 sintomas + agitação)",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_caracteristicas_mistas",
+      "nome": "Com características mistas",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Dismórfico Corporal
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Preocupação com Defeito Percebido na Aparência",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Preocupação com defeito físico imperceptível/leve",
+          "desc": "Preocupação com um ou mais defeitos ou falhas percebidas na aparência física que não são observáveis ou que parecem leves para os outros.",
+          "pergunta": "Você se preocupa intensamente com alguma falha na sua aparência que outros dizem não enxergar ou ser mínima?",
+          "exemplos_clinicos": [
+            "Convicção de nariz torto não visto por outros",
+            "Preocupação obsessiva com acne mínima"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Comportamentos repetitivos ou atos mentais em resposta",
+          "desc": "Em algum momento, o indivíduo executou comportamentos repetitivos (verificar-se no espelho, arrumar-se, beliscar a pele, buscar tranquilização) ou atos mentais (comparar aparência com a de outros) em resposta às preocupações.",
+          "pergunta": "Você verifica repetidamente a aparência no espelho, se arruma excessivamente ou compara sua aparência com a de outros?",
+          "exemplos_clinicos": [
+            "2-3h/dia no espelho",
+            "Cirurgias estéticas recorrentes"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_funcional",
+      "letra": "C",
+      "rotulo": "Causa sofrimento ou prejuízo funcional significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A preocupação causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_transtorno_alimentar",
+      "letra": "D",
+      "rotulo": "Não melhor explicado por transtorno alimentar",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "anorexia_nervosa"
+      ],
+      "descricao_completa": "A preocupação com a aparência não é mais bem explicada por preocupações com gordura/peso em transtorno alimentar.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_dismorfia_muscular",
+      "nome": "Com dismorfia muscular",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "insight",
+      "nome": "Nível de insight",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "bom",
+          "label": "Com bom ou razoável insight",
+          "codigo_adicional": null
+        },
+        {
+          "id": "pobre",
+          "label": "Com pobre insight",
+          "codigo_adicional": null
+        },
+        {
+          "id": "ausente",
+          "label": "Com ausência de insight/crenças delirantes",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Disruptivo da Desregulação do Humor
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Explosões de Raiva Recorrentes e Graves",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Explosões verbais/comportamentais desproporcionais",
+          "desc": "Explosões de raiva recorrentes e graves (verbal ou comportamental/agressão física), desproporcionais em intensidade ou duração à situação.",
+          "pergunta": "A criança tem explosões de raiva graves que são muito maiores do que a situação justificaria?",
+          "exemplos_clinicos": [
+            "Violência verbal intensa ante frustrações menores",
+            "Destruição de objetos quando contrariada"
+          ],
+          "faixa_aplicavel": "pediatria"
+        },
+        {
+          "id": "A2",
+          "rotulo": "Explosões inconsistentes com nível de desenvolvimento",
+          "desc": "As explosões de raiva são inapropriadas para o nível desenvolvimental da criança.",
+          "pergunta": "As explosões são muito mais intensas do que seria esperado para a idade da criança?",
+          "exemplos_clinicos": [
+            "Comportamento de crise típico de criança muito menor"
+          ],
+          "faixa_aplicavel": "pediatria"
+        },
+        {
+          "id": "A3",
+          "rotulo": "Frequência: ≥3 vezes por semana",
+          "desc": "As explosões de raiva ocorrem, em média, três ou mais vezes por semana.",
+          "pergunta": "As explosões acontecem pelo menos três vezes na semana?",
+          "exemplos_clinicos": [
+            "Explosões diárias ou quase diárias"
+          ],
+          "faixa_aplicavel": "pediatria"
+        },
+        {
+          "id": "D1",
+          "rotulo": "Humor irritável/zangado persistente entre explosões",
+          "desc": "Humor entre as explosões de raiva é persistentemente irritável ou zangado na maior parte do dia, quase todos os dias, observável por outras pessoas.",
+          "pergunta": "A criança parece irritável ou zangada durante a maior parte do dia, todos os dias, mesmo quando não está tendo explosões?",
+          "exemplos_clinicos": [
+            "Professores relatam que a criança parece sempre com raiva"
+          ],
+          "faixa_aplicavel": "pediatria"
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao_12meses",
+      "letra": "E",
+      "rotulo": "Duração ≥12 meses sem pausa de 3 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os Critérios A-D estão presentes por 12 meses ou mais; sem período de 3 ou mais meses consecutivos sem todos os sintomas.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "multicontexto",
+      "letra": "F",
+      "rotulo": "Presente em ≥2 ambientes, grave em ≥1",
+      "tipo": "multicontexto",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "House",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os Critérios A e D estão presentes em pelo menos dois de três ambientes (em casa, na escola, com os pares) e são graves em pelo menos um deles.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "faixa_etaria_diagnostico",
+      "letra": "G",
+      "rotulo": "Diagnóstico entre 6 e 18 anos",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "campo_data",
+      "obrigatorio": true,
+      "icone": "Baby",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O diagnóstico não deve ser feito pela primeira vez antes dos 6 anos ou após os 18 anos de idade.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "inicio_antes_10anos",
+      "letra": "H",
+      "rotulo": "Início dos sintomas A-E antes dos 10 anos",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "campo_data",
+      "obrigatorio": true,
+      "icone": "Baby",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Por relato ou observação, a idade de início dos Critérios A-E é antes dos 10 anos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_mania_hipomania",
+      "letra": "I",
+      "rotulo": "Sem episódio maníaco/hipomaníaco >1 dia",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_bipolar_tipo_1",
+        "transtorno_bipolar_tipo_2"
+      ],
+      "descricao_completa": "Nunca houve período distinto >1 dia com todos os critérios de sintomas (exceto duração) para episódio maníaco ou hipomaníaco.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_diagnostica_outros",
+      "letra": "J",
+      "rotulo": "Não exclusivamente durante EDM; não TEA, TEPT etc.",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_depressivo_maior",
+        "transtorno_espectro_autista",
+        "tept",
+        "transtorno_ansiedade_separacao",
+        "transtorno_depressivo_persistente"
+      ],
+      "descricao_completa": "Não ocorre exclusivamente durante EDM; não é mais bem explicado por TEA, TEPT, ansiedade de separação, TDP. Não coexiste com TOD, transtorno explosivo intermitente ou transtorno bipolar.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancias_condicao_medica",
+      "letra": "K",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas não são consequência dos efeitos psicológicos de uma substância ou de outra condição médica ou neurológica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno do Espectro Autista
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Déficits na Comunicação Social e Interação Social",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Déficits na reciprocidade socioemocional",
+          "desc": "Dificuldade na abordagem social, falha na conversação mútua, compartilhamento reduzido de interesses, emoções ou afeto, e incapacidade de iniciar ou responder a interações sociais.",
+          "pergunta": "Há uma clara falta de interesse em iniciar interações, ou dificuldade de manter um diálogo compartilhado sem focar exclusivamente nos próprios interesses?",
+          "exemplos_clinicos": [
+            "Dificuldade em compartilhar brincadeiras de faz-de-conta",
+            "Conversação puramente focada em fatos ou tópicos específicos de seu interesse"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Déficits nos comportamentos comunicativos não verbais",
+          "desc": "Comunicação verbal e não verbal pouco integrada, anormalidades no contato visual, déficits na linguagem corporal e falta total de expressões faciais ou gestos comunicativos.",
+          "pergunta": "O paciente evita contato visual, tem expressões faciais muito neutras ou rígidas, ou apresenta dificuldades em integrar gestos ao falar?",
+          "exemplos_clinicos": [
+            "Não usar gestos para apontar ou demonstrar afeto",
+            "Ausência de expressões de surpresa ou empatia"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Déficits em desenvolver e manter relacionamentos",
+          "desc": "Dificuldades em ajustar o comportamento a vários contextos sociais, compartilhar brincadeiras imaginativas, fazer amigos ou demonstrar ausência de interesse por pares.",
+          "pergunta": "Demonstra dificuldades significativas em se entrosar com pessoas de mesma idade ou brincar cooperativamente em grupo?",
+          "exemplos_clinicos": [
+            "Preferencia marcante por brincar sozinho",
+            "Falta de compreensão sobre o conceito de amizade"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Todos os 3 critérios de comunicação social (A1, A2 e A3) devem estar presentes de forma persistente em múltiplos contextos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "B",
+      "nome": "Padrões Restritivos e Repetitivos de Comportamento",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "B1",
+          "rotulo": "Fala ou movimentos motores repetitivos e estereotipados",
+          "desc": "Estereotipias motoras simples, alinhamento de brinquedos, girar objetos, ecolalia ou frases idiossincráticas.",
+          "pergunta": "Apresenta movimentos corporais repetitivos, como sacudir as mãos (flapping), balançar o corpo, ou repetir frases fora de contexto?",
+          "exemplos_clinicos": [
+            "Flapping de mãos sob excitação",
+            "Alinhar carrinhos por cores e protestar se movidos",
+            "Ecolalia imediata"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B2",
+          "rotulo": "Insistência na mesma rotina e adesão inflexível a padrões",
+          "desc": "Sofrimento extremo frente a pequenas mudanças, dificuldades com transições, padrões rígidos de pensamento, rituais de saudação ou necessidade de fazer o mesmo caminho.",
+          "pergunta": "O indivíduo reage com extrema irritabilidade ou crises de choro diante de pequenas alterações na rotina diária?",
+          "exemplos_clinicos": [
+            "Insistir em comer exatamente a mesma comida nos mesmos pratos",
+            "Ficar desesperado se houver alteração no trajeto para a escola"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B3",
+          "rotulo": "Interesses altamente restritos e fixos",
+          "desc": "Forte apego ou preocupação com objetos incomuns, interesses excessivamente circunscritos ou perseverantes (hiperfoco).",
+          "pergunta": "Possui interesses obsessivos por assuntos específicos de forma que impede outras conversas ou atividades diárias?",
+          "exemplos_clinicos": [
+            "Memorizar tabelas de horários de trens",
+            "Conhecimento enciclopédico sobre dinossauros que domina toda interação"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B4",
+          "rotulo": "Hiper ou hiporreatividade a estímulos sensoriais",
+          "desc": "Indiferença aparente a dor/temperatura, reação adversa a sons ou texturas específicas, cheirar ou tocar objetos de forma excessiva, ou fascinação visual por luzes/movimentos.",
+          "pergunta": "Demonstra incômodo extremo com barulhos cotidianos (liquidificador, secador de cabelo) ou texturas de roupas específicas?",
+          "exemplos_clinicos": [
+            "Tapar os ouvidos diante de sons urbanos normais",
+            "Fascinação por ventiladores girando",
+            "Insensibilidade extrema a ferimentos físicos"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Pelo menos 2 dos 4 sintomas de comportamento repetitivo/restritivo devem estar presentes.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "inicio_precoce_infancia",
+      "letra": "C",
+      "rotulo": "Sintomas presentes no início do período do desenvolvimento",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Clock",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas devem estar presentes no início do período do desenvolvimento (mas podem não se manifestar plenamente até que as demandas sociais ultrapassem o limite de suas capacidades).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "prejuizo_funcional_geral",
+      "letra": "D",
+      "rotulo": "Prejuízo clinicamente significativo no funcionamento",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "TrendingDown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas causam prejuízo clinicamente significativo no funcionamento social, profissional ou em outras áreas importantes da vida do indivíduo.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "nao_explicado_por_di",
+      "letra": "E",
+      "rotulo": "Não são mais bem explicados por deficiência intelectual",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Stethoscope",
+      "ddx_sugeridos": [
+        "deficiencia_intelectual"
+      ],
+      "descricao_completa": "Essas perturbações não são mais bem explicadas por deficiência intelectual ou atraso global do desenvolvimento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_comprometimento_intelectual",
+      "nome": "Com comprometimento intelectual associado",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_comprometimento_linguagem",
+      "nome": "Com comprometimento da linguagem associado",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "associado_condicao_medica",
+      "nome": "Associado a alguma condição médica ou genética conhecida ou a fator ambiental",
+      "tipo": "texto_livre",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Escoriação (Skin-Picking)
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_B",
+      "nome": "Beliscar Pele Recorrente com Lesões e Tentativas Fracassadas",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Beliscar a pele de forma recorrente causando lesões",
+          "desc": "Beliscar ou escoriar a pele de forma recorrente, resultando em lesões cutâneas.",
+          "pergunta": "Você belisca repetidamente a pele (rosto, mãos, braços) causando feridas ou cicatrizes?",
+          "exemplos_clinicos": [
+            "Feridas abertas no rosto",
+            "Cicatrizes nos braços"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Tentativas repetidas de parar o comportamento",
+          "desc": "Tentativas repetidas de parar ou diminuir o comportamento de beliscar a pele.",
+          "pergunta": "Você já tentou parar de beliscar a pele sem conseguir?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_funcional",
+      "letra": "C",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo funcional.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_medica_outros",
+      "letra": "D",
+      "rotulo": "Não atribuível a substância, CMG ou outro transtorno",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "scabiose",
+        "psoriase",
+        "toc"
+      ],
+      "descricao_completa": "Não atribuível a efeitos de substância ou condição médica dermatológica; não mais bem explicado por outro transtorno mental.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno Específico da Aprendizagem
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Dificuldades na Aprendizagem e no Uso de Habilidades Acadêmicas",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 1,
+        "pediatria": 1
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Leitura de palavras imprecisa ou lenta",
+          "desc": "Dificuldade na leitura de palavras de forma imprecisa ou lenta e hesitante (lê palavras isoladas em voz alta incorretamente ou de forma lenta e hesitante).",
+          "pergunta": "Você ou a criança lê de forma silabada, hesitante ou comete erros frequentes trocando letras na leitura de palavras?",
+          "exemplos_clinicos": [
+            "Leitura excessivamente lenta para a idade",
+            "Adivinhar palavras pelo contexto gráfico"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Dificuldade para compreender o sentido do que é lido",
+          "desc": "Dificuldade para compreender o sentido da leitura (lê o texto com precisão, mas não compreende a sequência, a lógica ou o significado do texto).",
+          "pergunta": "Ao terminar de ler uma página, é difícil lembrar ou explicar o que acabou de ler?",
+          "exemplos_clinicos": [
+            "Ler um parágrafo e não conseguir responder perguntas sobre ele",
+            "Dificuldade em reter detalhes lidos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Dificuldades com a ortografia",
+          "desc": "Dificuldade com a ortografia (pode omitir, acrescentar ou substituir letras de forma inadequada).",
+          "pergunta": "A escrita apresenta muitos erros ortográficos primários, mesmo após anos de treinamento escolar?",
+          "exemplos_clinicos": [
+            "Trocar 'v' por 'f' ou 'b' por 'p' de forma persistente na adolescência",
+            "Escrita sem regras ortográficas básicas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Dificuldades com a expressão escrita",
+          "desc": "Erros graves de gramática, pontuação, organização frasal de parágrafos pobre ou falta de clareza na expressão de ideias por escrito.",
+          "pergunta": "Há sérias dificuldades em estruturar um texto escrito, com erros de pontuação graves ou ideias desorganizadas?",
+          "exemplos_clinicos": [
+            "Parágrafos sem coesão gramatical",
+            "Incômodo grave em realizar redações de qualquer tipo"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Dificuldades em dominar o sentido numérico",
+          "desc": "Pobre compreensão de números, sua magnitude e relações, conta nos dedos para somar um dígito só.",
+          "pergunta": "Fazer cálculos matemáticos simples de cabeça ou compreender conceitos numéricos básicos é extremamente difícil?",
+          "exemplos_clinicos": [
+            "Uso de dedos para somas triviais na adolescência",
+            "Incompreensão de estimativas de valores numéricos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Dificuldades no raciocínio matemático",
+          "desc": "Dificuldade extrema em aplicar conceitos, fatos ou fórmulas matemáticas para resolver problemas quantitativos.",
+          "pergunta": "Problemas matemáticos de lógica ou situações cotidianas com cálculos causam grande bloqueio?",
+          "exemplos_clinicos": [
+            "Incapacidade de resolver problemas matemáticos básicos de livros escolares",
+            "Bloqueio completo com equações simples"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Presença de pelo menos 1 dos 6 sintomas por no mínimo 6 meses, a despeito da provisão de intervenções dirigidas.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "abaixo_da_media",
+      "letra": "B",
+      "rotulo": "Habilidades muito abaixo do esperado",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "ChartColumn",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As habilidades acadêmicas afetadas estão substancial e quantificavelmente abaixo do esperado para a idade cronológica e causam interferência no desempenho.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "manifesto_escolar",
+      "letra": "C",
+      "rotulo": "Início nos anos escolares",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "GraduationCap",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As dificuldades de aprendizagem iniciam-se durante os anos escolares, mas podem não se manifestar plenamente até que as exigências ultrapassem a capacidade limitada.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "nao_explicado_neurologico",
+      "letra": "D",
+      "rotulo": "Não explicado por outras causas",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "EyeOff",
+      "ddx_sugeridos": [
+        "deficiencia_intelectual"
+      ],
+      "descricao_completa": "Não são mais bem explicadas por deficiências intelectuais, acuidade visual ou auditiva não corrigida, outros transtornos mentais ou neurológicos.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_prejuizo_leitura",
+      "nome": "Com prejuízo na leitura (Dislexia)",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_prejuizo_expressao_escrita",
+      "nome": "Com prejuízo na expressão escrita",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_prejuizo_matematica",
+      "nome": "Com prejuízo na matemática (Discalculia)",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Esquizoafetivo
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas da Fase Ativa (Critério A Esquizofrenia)",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
+        "ids_obrigatorios": [
+          "A1",
+          "A2",
+          "A3"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Delírios",
+          "desc": "Crenças fixas e falsas não abaláveis.",
+          "pergunta": "Você vivenciou ideias ou crenças persistentes e irracionais?",
+          "exemplos_clinicos": [
+            "Crenças de perseguição ou grandiosidade marcantes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Alucinações",
+          "desc": "Percepções reais sem estímulos físicos.",
+          "pergunta": "Você ouviu ou viu coisas que pareciam reais mas que os outros não percebiam?",
+          "exemplos_clinicos": [
+            "Ouvir vozes nítidas na ausência de pessoas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Discurso desorganizado",
+          "desc": "Pensamento e fala desorganizados.",
+          "pergunta": "Ficou difícil para você organizar as palavras de modo coerente?",
+          "exemplos_clinicos": [
+            "Incoerência ou descarrilamento frequente da fala"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
+          "desc": "Comportamento motor tolo, agressivo ou catatônico.",
+          "pergunta": "Você apresentou movimentos involuntários, rigidez extrema ou agitação sem motivo?",
+          "exemplos_clinicos": [
+            "Posturas rígidas e bizarras ou agitação incontrolável"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Sintomas negativos",
+          "desc": "Expressão emocional diminuída ou avolia.",
+          "pergunta": "Sentiu falta de motivação, apatia ou diminuição das expressões faciais?",
+          "exemplos_clinicos": [
+            "Alogia ou expressão facial inalterada e pobre de reatividade"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Um período ininterrupto de doença durante o qual há um episódio de humor maior concomitante com o Critério A da esquizofrenia.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "B",
+      "nome": "Sintoma de Episódio de Humor Maior",
+      "tipo": "unico_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "B1",
+          "rotulo": "Episódio Maníaco ou Depressivo Concomitante",
+          "desc": "Período ininterrupto de doença com a concomitância de um episódio maníaco ou depressivo maior (humor deprimido obrigatório no depressivo).",
+          "pergunta": "Você apresentou flutuações profundas de depressão ou mania (como excesso de energia ou tristeza paralisante) ao mesmo tempo que os sintomas de confusão mental?",
+          "exemplos_clinicos": [
+            "Apresentação de mania florida ou depressão grave com ideias de ruína concomitantemente aos delírios"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Presença concomitante de episódio maníaco ou depressivo maior (se depressivo, exige humor deprimido, não apenas anedonia).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "delirios_sem_humor",
+      "letra": "B",
+      "rotulo": "Psicose sem humor >= 2 semanas",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Clock",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Delírios ou alucinações na ausência de um episódio de humor maior (depressivo ou maníaco) por pelo menos duas semanas em algum momento durante a duração total da doença ao longo da vida.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "proporcao_humor",
+      "letra": "C",
+      "rotulo": "Humor presente na maior parte da doença",
+      "tipo": "temporal_proporcao",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Percent",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas que satisfazem os critérios para um episódio de humor maior estão presentes na maior parte da duração total das fases ativa e residual do período de doença.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_esquizoafetivo",
+      "letra": "D",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação não é atribuível aos efeitos de uma substância (droga de abuso, medicamento) ou a outra condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "curso_apos_um_ano",
+      "nome": "Especificador de Curso (após 1 ano de duração)",
+      "tipo": "curso_temporal",
+      "ortogonal": true,
+      "opcoes": [
+        {
+          "id": "primeiro_episodio_agudo",
+          "label": "Primeiro episódio, atualmente em episódio agudo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "primeiro_episodio_remissao_parcial",
+          "label": "Primeiro episódio, atualmente em remissão parcial",
+          "codigo_adicional": null
+        },
+        {
+          "id": "primeiro_episodio_remissao_completa",
+          "label": "Primeiro episódio, atualmente em remissão completa",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_agudo",
+          "label": "Episódios múltiplos, atualmente em episódio agudo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_remissao_parcial",
+          "label": "Episódios múltiplos, atualmente em remissão parcial",
+          "codigo_adicional": null
+        },
+        {
+          "id": "episodios_multiplos_remissao_completa",
+          "label": "Episódios múltiplos, atualmente em remissão completa",
+          "codigo_adicional": null
+        },
+        {
+          "id": "continuo",
+          "label": "Contínuo",
+          "codigo_adicional": null
+        },
+        {
+          "id": "nao_especificado",
+          "label": "Não especificado",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Esquizofreniforme
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas da Fase Ativa",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
+        "ids_obrigatorios": [
+          "A1",
+          "A2",
+          "A3"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Delírios",
+          "desc": "Crenças fixas não abaláveis pela realidade.",
+          "pergunta": "Você tem tido ideias persistentes que as outras pessoas dizem não fazer sentido ou não ser reais?",
+          "exemplos_clinicos": [
+            "Crenças persecutórias, de controle ou de referência"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Alucinações",
+          "desc": "Percepções sem o estímulo sensorial correspondente.",
+          "pergunta": "Você ouviu ruídos, vozes ou viu coisas que outras pessoas disseram não perceber?",
+          "exemplos_clinicos": [
+            "Vozes discutindo ou conversando entre si na mente/ouvidos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Discurso desorganizado",
+          "desc": "Incoerência ou descarrilamento frequente do pensamento expresso na fala.",
+          "pergunta": "Você sentiu dificuldades em manter um raciocínio lógico que as pessoas conseguissem acompanhar?",
+          "exemplos_clinicos": [
+            "Falar mudando de tema de forma incompreensível"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
+          "desc": "Comportamento motor anormal que varia de agitação tola e sem sentido à rigidez extrema catatônica.",
+          "pergunta": "Você tem agido de forma estranha, excessivamente agitada ou sem controle do seu corpo?",
+          "exemplos_clinicos": [
+            "Comportamento tolo infantil ou ausência de reatividade motora"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Sintomas negativos",
+          "desc": "Expressão emocional diminuída ou avolia marcante.",
+          "pergunta": "Você tem se sentido sem motivação para iniciar atividades ou sentiu falta de emoções?",
+          "exemplos_clinicos": [
+            "Contato visual pobre, afeto embotado, apatia ou avolia marcante"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Presença de pelo menos dois sintomas por parte significativa de tempo em 1 mês, com um deles sendo obrigatoriamente A1, A2 ou A3.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao_esquizofreniforme",
+      "letra": "B",
+      "rotulo": "Duração entre 1 e 6 meses",
+      "tipo": "temporal_duracao_janela",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "History",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Um episódio da perturbação dura pelo menos um mês, mas menos de seis meses. Quando o diagnóstico deve ser feito sem aguardar a recuperação, deve ser qualificado como 'provisório'.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_esquizoafetivo_humor",
+      "letra": "C",
+      "rotulo": "Exclusão de esquizoafetivo e humor com psicose",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_esquizoafetivo",
+        "transtorno_depressivo_maior",
+        "transtorno_bipolar"
+      ],
+      "descricao_completa": "Transtorno esquizoafetivo e transtorno depressivo ou bipolar com características psicóticas foram descartados.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "nao_atribuivel_substancia",
+      "letra": "D",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Pill",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_caracteristicas_bom_prognostico",
+      "nome": "Com características de bom prognóstico",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Exige >=2 de: início agudo (dentro de 4 semanas); confusão/perplexidade; bom funcionamento pré-mórbido; ausência de afeto plano/embotado.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sem_caracteristicas_bom_prognostico",
+      "nome": "Sem características de bom prognóstico",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Insônia
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Queixas de Insatisfação com Quantidade ou Qualidade do Sono",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 1,
+        "pediatria": 1
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Dificuldade para iniciar o sono",
+          "desc": "Dificuldade predominante para conciliar o sono na hora de deitar. Em crianças, pode manifestar-se como dificuldade para iniciar o sono sem intervenção de cuidadores.",
+          "pergunta": "Você tem dificuldade para pegar no sono quando vai deitar?",
+          "exemplos_clinicos": [
+            "Latência do sono superior a 20–30 minutos"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Dificuldade para manter o sono",
+          "desc": "Dificuldade para manter o sono, com despertares frequentes ou problemas para retornar ao sono após cada despertar. Em crianças, pode manifestar-se como dificuldade para retornar ao sono sem intervenção de cuidadores.",
+          "pergunta": "Você acorda várias vezes durante a noite ou tem dificuldade de voltar a dormir?",
+          "exemplos_clinicos": [
+            "Permanecer desperto mais de 20–30 minutos após despertar"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Despertar antes do horário habitual",
+          "desc": "Despertar antes do horário habitual com incapacidade de retornar ao sono.",
+          "pergunta": "Você acorda muito mais cedo do que gostaria e não consegue voltar a dormir?",
+          "exemplos_clinicos": [
+            "Despertar pelo menos 30 minutos antes do programado"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "prejuizo_funcional",
+      "letra": "B",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A perturbação do sono causa sofrimento clinicamente significativo e prejuízo no funcionamento social, profissional, educacional, acadêmico, comportamental ou em outras áreas importantes.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "frequencia_3x_semana",
+      "letra": "C",
+      "rotulo": "Dificuldades pelo menos três noites por semana",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As dificuldades relacionadas ao sono ocorrem pelo menos três noites por semana.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "duracao_3meses",
+      "letra": "D",
+      "rotulo": "Duração mínima de três meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As dificuldades relacionadas ao sono permanecem durante pelo menos três meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "oportunidades_adequadas",
+      "letra": "E",
+      "rotulo": "Ocorrem a despeito de oportunidades adequadas para dormir",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As dificuldades relacionadas ao sono ocorrem a despeito de oportunidades adequadas para dormir.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outro_sono",
+      "letra": "F",
+      "rotulo": "Não explicada por outro transtorno do sono-vigília",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [
+        "narcolepsia",
+        "apneia_sono",
+        "ritmo_circadiano",
+        "parassonia"
+      ],
+      "descricao_completa": "A insônia não é mais bem explicada ou não ocorre exclusivamente durante o curso de outro transtorno do sono-vigília (narcolepsia, transtorno do sono relacionado à respiração, transtorno do sono-vigília do ritmo circadiano, parassonia).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia",
+      "letra": "G",
+      "rotulo": "Não atribuível aos efeitos fisiológicos de substância",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A insônia não é atribuída aos efeitos fisiológicos de alguma substância (drogas ilícitas, medicamentos).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_comorbidade",
+      "letra": "H",
+      "rotulo": "Coexistência de transtornos mentais ou médicos não explica a queixa predominante",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Check",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A coexistência de transtornos mentais e de condições médicas não explica adequadamente a queixa predominante de insônia.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_comorbidade_mental",
+      "nome": "Com comorbidade mental",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_comorbidade_medica",
+      "nome": "Com outra comorbidade médica",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_outro_transtorno_sono",
+      "nome": "Com outro transtorno do sono",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "curso_episodico",
+      "nome": "Episódico",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Sintomas duram pelo menos um mês, porém menos que três meses.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "curso_persistente",
+      "nome": "Persistente",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Sintomas duram três meses ou mais.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "curso_recorrente",
+      "nome": "Recorrente",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Dois ou mais episódios dentro do espaço de um ano.",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno da Linguagem
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Dificuldades Persistentes na Aquisição e Uso da Linguagem",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 3,
+        "pediatria": 3
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Vocabulário reduzido",
+          "desc": "Extensão e uso do vocabulário abaixo do esperado para a idade cronológica.",
+          "pergunta": "A criança apresenta um vocabulário muito restrito, demonstrando dificuldade em nomear objetos conhecidos ou expressar ideias?",
+          "exemplos_clinicos": [
+            "Dificuldade em lembrar palavras comuns",
+            "Uso excessivo de termos genéricos como 'coisa' ou 'negócio'"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Estrutura frasal limitada",
+          "desc": "Dificuldade em combinar palavras para formar frases gramaticalmente corretas e estruturadas.",
+          "pergunta": "Há dificuldades evidentes em formar frases longas, omitindo conectivos, verbos ou preposições de forma recorrente?",
+          "exemplos_clinicos": [
+            "Falar de forma telegráfica",
+            "Erros graves na conjugação de verbos infantis comuns"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Prejuízos no discurso",
+          "desc": "Dificuldades em conectar frases para explicar ou descrever um tópico ou manter uma conversação.",
+          "pergunta": "A pessoa demonstra grande dificuldade em contar uma história simples ou relatar um acontecimento cotidiano de maneira lógica?",
+          "exemplos_clinicos": [
+            "Discurso desorganizado e sem coesão temporal",
+            "Dificuldade extrema em responder perguntas consecutivas sobre o mesmo assunto"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Dificuldades persistentes nas modalidades falada, escrita, de sinais ou outras, devido a déficits de compreensão ou produção.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "habilidades_abaixo",
+      "letra": "B",
+      "rotulo": "Habilidades de linguagem significativamente abaixo do esperado",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "ChartLine",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As capacidades de linguagem estão substancial e quantificavelmente abaixo do esperado para a idade, resultando em limitações no funcionamento interpessoal e acadêmico.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "inicio_precoce",
+      "letra": "C",
+      "rotulo": "Início no período inicial do desenvolvimento",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Clock",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sintomas surgem no período inicial do desenvolvimento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "D",
+      "rotulo": "Dificuldades não atribuíveis a outras condições",
+      "tipo": "temporal_idade_inicio",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "HeartPulse",
+      "ddx_sugeridos": [
+        "deficiencia_intelectual"
+      ],
+      "descricao_completa": "As dificuldades não são atribuíveis a deficiência auditiva ou sensorial, disfunção motora ou outra condição médica/neurológica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno Obsessivo-Compulsivo
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_obs",
+      "nome": "Obsessões",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "OB1",
+          "rotulo": "Pensamentos/impulsos/imagens intrusivos recorrentes",
+          "desc": "Pensamentos, impulsos ou imagens recorrentes e persistentes, experimentados como intrusivos e indesejados, causando ansiedade ou sofrimento acentuados.",
+          "pergunta": "Você tem pensamentos, impulsos ou imagens perturbadores que aparecem repetidamente contra sua vontade?",
+          "exemplos_clinicos": [
+            "Pensamentos de contaminar alguém",
+            "Impulso de machucar ente querido",
+            "Imagens blasfemas intrusivas"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "OB2",
+          "rotulo": "Tentativas de ignorar/suprimir ou neutralizar obsessões",
+          "desc": "O indivíduo tenta ignorar ou suprimir tais pensamentos/impulsos/imagens, ou neutralizá-los com outro pensamento ou ação (i.e., realizando uma compulsão).",
+          "pergunta": "Você tenta afastar esses pensamentos ou neutralizá-los fazendo algo repetidamente?",
+          "exemplos_clinicos": [
+            "Rezar para neutralizar pensamento blasfemo"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "A_comp",
+      "nome": "Compulsões",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "CO1",
+          "rotulo": "Compulsões repetitivas em resposta a obsessão",
+          "desc": "Comportamentos repetitivos (lavar mãos, ordenar, verificar) ou atos mentais (rezar, contar, repetir palavras) que o indivíduo se sente compelido a executar em resposta à obsessão ou conforme regras rígidas.",
+          "pergunta": "Você realiza comportamentos repetitivos ou rituais mentais em resposta a esses pensamentos?",
+          "exemplos_clinicos": [
+            "Lavar mãos 30x por dia",
+            "Verificar fogão 10 vezes antes de sair"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "CO2",
+          "rotulo": "Comportamentos visam prevenir ansiedade/evento temido",
+          "desc": "Os comportamentos ou atos mentais visam prevenir ou reduzir a ansiedade/sofrimento, ou prevenir algum evento temido; contudo, não têm conexão realista com o que visam neutralizar.",
+          "pergunta": "Esses rituais têm como objetivo reduzir sua ansiedade ou prevenir algo ruim de acontecer?",
+          "exemplos_clinicos": [
+            "Verificar o fogão para prevenir incêndio"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "tempo_funcional",
+      "letra": "B",
+      "rotulo": "Obsessões/compulsões >1h/dia ou causam sofrimento",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Clock",
+      "ddx_sugeridos": [],
+      "descricao_completa": "As obsessões ou compulsões tomam mais de uma hora por dia OU causam sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "C",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Não atribuível a efeitos fisiológicos de substância ou condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "D",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "tag",
+        "transtorno_dismorffico_corporal",
+        "tea"
+      ],
+      "descricao_completa": "Não mais bem explicado por TAG (preocupações), TDC (aparência), acumulação, tricotilomania, escoriação, estereotipias, transtornos alimentares, TB/substâncias, ansiedade de doença, parafílias, transtornos disruptivos, TDM, transtornos psicóticos, TEA.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "insight_bom",
+      "nome": "Com bom insight ou razoável insight",
+      "tipo": "select_unico",
+      "ortogonal": false,
+      "opcoes": [
+        {
+          "id": "bom",
+          "label": "Com bom ou razoável insight",
+          "codigo_adicional": null
+        },
+        {
+          "id": "pobre",
+          "label": "Com pobre insight",
+          "codigo_adicional": null
+        },
+        {
+          "id": "ausente_crencas_delirantes",
+          "label": "Com ausência de insight/crenças delirantes",
+          "codigo_adicional": null
+        }
+      ],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "relacionado_tiques",
+      "nome": "Relacionado a tiques",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno de Pânico
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Ataque de Pânico Recorrente e Inesperado (âncora) + Sequela",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 4,
+        "pediatria": 4
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Surto abrupto de medo intenso ou desconforto intenso que atinge um pico em minutos e inclui ≥4 sintomas somáticos/cognitivos",
+        "ids_obrigatorios": [
+          "A_ancora"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A_ancora",
+          "rotulo": "Ataque de pânico recorrente e inesperado",
+          "desc": "Ataques de pânico recorrentes e inesperados: surto abrupto de medo/desconforto intenso que atinge o pico em minutos.",
+          "pergunta": "Você tem ataques súbitos de medo intenso ou desconforto que chegam ao máximo em poucos minutos?",
+          "exemplos_clinicos": [
+            "Despertar com ataque de pânico à noite",
+            "Ataque sem gatilho identificável"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A1",
+          "rotulo": "Palpitações / taquicardia",
+          "desc": "Palpitações, coração acelerado ou taquicardia durante o ataque.",
+          "pergunta": "Durante o ataque, sente o coração bater forte ou acelerado?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Sudorese",
+          "desc": "Sudorese excessiva durante o ataque.",
+          "pergunta": "Você transpira muito durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Tremores ou abalos",
+          "desc": "Tremores ou abalos durante o ataque.",
+          "pergunta": "Você treme durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Falta de ar / sensação de sufocamento",
+          "desc": "Sensações de falta de ar ou sufocamento.",
+          "pergunta": "Você sente que não consegue respirar ou que vai sufocar durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Sensações de asfixia",
+          "desc": "Sensações de asfixia/garganta fechando.",
+          "pergunta": "Sente a garganta fechando ou como se fosse engasgar?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Dor ou desconforto no tórax",
+          "desc": "Dor ou desconforto torácico durante o ataque.",
+          "pergunta": "Sente dor ou pressão no peito durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Náusea ou desconforto abdominal",
+          "desc": "Náusea ou desconforto abdominal.",
+          "pergunta": "Sente náusea ou mal-estar no estômago durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Tontura, instabilidade ou desmaio",
+          "desc": "Sensação de tontura, instabilidade, atordoamento ou desmaio.",
+          "pergunta": "Você sente tontura, vertigem ou que vai desmaiar durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Calafrios ou ondas de calor",
+          "desc": "Calafrios ou ondas de calor.",
+          "pergunta": "Sente calafrios ou ondas de calor intenso durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A10",
+          "rotulo": "Parestesias (dormência/formigamento)",
+          "desc": "Parestesias — sensações de dormência ou formigamento.",
+          "pergunta": "Sente dormência ou formigamento (especialmente nas mãos, pés ou rosto) durante o ataque?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A11",
+          "rotulo": "Desrealização ou despersonalização",
+          "desc": "Desrealização (sentir que o mundo não é real) ou despersonalização (sentir-se separado de si mesmo).",
+          "pergunta": "Durante o ataque, sente que o mundo ao redor não é real ou que está fora do seu corpo?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A12",
+          "rotulo": "Medo de perder o controle ou 'enlouquecer'",
+          "desc": "Medo de perder o controle ou 'enlouquecer'.",
+          "pergunta": "Durante o ataque, você tem medo de perder o controle ou de ficar louco?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A13",
+          "rotulo": "Medo de morrer",
+          "desc": "Medo de morrer durante o ataque.",
+          "pergunta": "Durante o ataque, você sente que vai morrer?",
+          "exemplos_clinicos": [
+            "Certeza de estar tendo infarto"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "preocupacao_ou_mudanca",
+      "letra": "B",
+      "rotulo": "≥1 mês com preocupação/esquiva após ataques",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Ao menos um ataque foi seguido por ≥1 mês de: (1) preocupação persistente sobre novos ataques ou suas consequências; OU (2) mudança significativa no comportamento (esquivas) relacionada aos ataques.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "C",
+      "rotulo": "Não atribuível a substância ou condição médica",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "hipertireoidismo",
+        "hiperparatireoidismo",
+        "taquiarritmias",
+        "feocromocitoma"
+      ],
+      "descricao_completa": "Não atribuível aos efeitos fisiológicos de substância ou condição médica (hipertireoidismo, cardiopatias).",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros",
+      "letra": "D",
+      "rotulo": "Não melhor explicado por outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "transtorno_ansiedade_social",
+        "fobia_especifica",
+        "tept",
+        "tag",
+        "tas"
+      ],
+      "descricao_completa": "Os ataques não são mais bem explicados por TAS, fobia específica, TAS (separação), TEPT, TAG.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---
+
+## Transtorno por Uso de Álcool
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Critérios de Uso Problemático de álcool",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Quantidades/periodo maiores que pretendido",
+          "desc": "álcool consumido em maiores quantidades ou por período mais longo do que pretendido.",
+          "pergunta": "Você já usou álcool em quantidades maiores ou por mais tempo do que pretendia?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+          "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de álcool.",
+          "pergunta": "Você já tentou reduzir ou parar de usar álcool sem sucesso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+          "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de álcool.",
+          "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de álcool?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Fissura ou forte desejo de usar",
+          "desc": "Fissura ou forte desejo ou necessidade de usar álcool.",
+          "pergunta": "Você sente forte desejo ou necessidade de usar álcool?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Fracasso em papéis por uso recorrente",
+          "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+          "pergunta": "O uso de álcool já causou problemas no trabalho, na escola ou em casa?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+          "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+          "pergunta": "Você continua usando álcool mesmo tendo problemas com outras pessoas por causa disso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Abandono de atividades importantes",
+          "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+          "pergunta": "Você deixou de fazer atividades importantes por causa do uso de álcool?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Uso recorrente em situações perigosas",
+          "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+          "pergunta": "Você já usou álcool em situações que poderiam ser perigosas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+          "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+          "pergunta": "Você continua usando álcool mesmo sabendo que isso agrava problemas de saúde?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A10",
+          "rotulo": "Tolerância",
+          "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+          "pergunta": "Você precisa de quantidades maiores de álcool para sentir o mesmo efeito?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A11",
+          "rotulo": "Abstinência",
+          "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+          "pergunta": "Você sente sintomas desagradáveis quando para de usar álcool, ou o usa para evitar esses sintomas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "periodo_12meses",
+      "letra": "A",
+      "rotulo": "Padrão problemático em 12 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Um padrão problemático de uso de álcool, levando a comprometimento ou sofrimento clinicamente significativos, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "D",
+      "rotulo": "Não atribuível a outra condição médica ou substância",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "remissao_inicial",
+      "nome": "Em remissão inicial",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "3-12 meses sem critérios (exceto fissura) para álcool.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "remissao_sustentada",
+      "nome": "Em remissão sustentada",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "≥12 meses sem critérios (exceto fissura) para álcool.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "ambiente_protegido",
+      "nome": "Em ambiente protegido",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno por Uso de Estimulantes
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Critérios de Uso Problemático de estimulante",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Quantidades/periodo maiores que pretendido",
+          "desc": "estimulante consumido em maiores quantidades ou por período mais longo do que pretendido.",
+          "pergunta": "Você já usou estimulante em quantidades maiores ou por mais tempo do que pretendia?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+          "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de estimulante.",
+          "pergunta": "Você já tentou reduzir ou parar de usar estimulante sem sucesso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+          "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de estimulante.",
+          "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de estimulante?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Fissura ou forte desejo de usar",
+          "desc": "Fissura ou forte desejo ou necessidade de usar estimulante.",
+          "pergunta": "Você sente forte desejo ou necessidade de usar estimulante?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Fracasso em papéis por uso recorrente",
+          "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+          "pergunta": "O uso de estimulante já causou problemas no trabalho, na escola ou em casa?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+          "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+          "pergunta": "Você continua usando estimulante mesmo tendo problemas com outras pessoas por causa disso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Abandono de atividades importantes",
+          "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+          "pergunta": "Você deixou de fazer atividades importantes por causa do uso de estimulante?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Uso recorrente em situações perigosas",
+          "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+          "pergunta": "Você já usou estimulante em situações que poderiam ser perigosas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+          "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+          "pergunta": "Você continua usando estimulante mesmo sabendo que isso agrava problemas de saúde?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A10",
+          "rotulo": "Tolerância",
+          "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+          "pergunta": "Você precisa de quantidades maiores de estimulante para sentir o mesmo efeito?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A11",
+          "rotulo": "Abstinência",
+          "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+          "pergunta": "Você sente sintomas desagradáveis quando para de usar estimulante, ou o usa para evitar esses sintomas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "periodo_12meses",
+      "letra": "A",
+      "rotulo": "Padrão problemático em 12 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Um padrão de uso de substância tipo anfetamina, cocaína ou outro estimulante, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "D",
+      "rotulo": "Não atribuível a outra condição médica ou substância",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "remissao_inicial",
+      "nome": "Em remissão inicial",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "3-12 meses sem critérios (exceto fissura) para estimulante.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "remissao_sustentada",
+      "nome": "Em remissão sustentada",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "≥12 meses sem critérios (exceto fissura) para estimulante.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "ambiente_protegido",
+      "nome": "Em ambiente protegido",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno por Uso de Opioides
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Critérios de Uso Problemático de opioides",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Quantidades/periodo maiores que pretendido",
+          "desc": "opioides consumido em maiores quantidades ou por período mais longo do que pretendido.",
+          "pergunta": "Você já usou opioides em quantidades maiores ou por mais tempo do que pretendia?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+          "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de opioides.",
+          "pergunta": "Você já tentou reduzir ou parar de usar opioides sem sucesso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+          "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de opioides.",
+          "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de opioides?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Fissura ou forte desejo de usar",
+          "desc": "Fissura ou forte desejo ou necessidade de usar opioides.",
+          "pergunta": "Você sente forte desejo ou necessidade de usar opioides?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Fracasso em papéis por uso recorrente",
+          "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+          "pergunta": "O uso de opioides já causou problemas no trabalho, na escola ou em casa?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+          "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+          "pergunta": "Você continua usando opioides mesmo tendo problemas com outras pessoas por causa disso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Abandono de atividades importantes",
+          "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+          "pergunta": "Você deixou de fazer atividades importantes por causa do uso de opioides?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Uso recorrente em situações perigosas",
+          "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+          "pergunta": "Você já usou opioides em situações que poderiam ser perigosas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+          "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+          "pergunta": "Você continua usando opioides mesmo sabendo que isso agrava problemas de saúde?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A10",
+          "rotulo": "Tolerância",
+          "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+          "pergunta": "Você precisa de quantidades maiores de opioides para sentir o mesmo efeito?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A11",
+          "rotulo": "Abstinência",
+          "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+          "pergunta": "Você sente sintomas desagradáveis quando para de usar opioides, ou o usa para evitar esses sintomas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "periodo_12meses",
+      "letra": "A",
+      "rotulo": "Padrão problemático em 12 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Um padrão problemático de uso de opioides, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "D",
+      "rotulo": "Não atribuível a outra condição médica ou substância",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "remissao_inicial",
+      "nome": "Em remissão inicial",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "3-12 meses sem critérios (exceto fissura) para opioides.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "remissao_sustentada",
+      "nome": "Em remissão sustentada",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "≥12 meses sem critérios (exceto fissura) para opioides.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "ambiente_protegido",
+      "nome": "Em ambiente protegido",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "terapia_manutencao",
+      "nome": "Em terapia de manutenção",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno por Uso de Tabaco
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Critérios de Uso Problemático de tabaco",
+      "tipo": "polythetic_com_limiar",
+      "limiar": {
+        "adulto": 2,
+        "pediatria": 2
+      },
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Quantidades/periodo maiores que pretendido",
+          "desc": "tabaco consumido em maiores quantidades ou por período mais longo do que pretendido.",
+          "pergunta": "Você já usou tabaco em quantidades maiores ou por mais tempo do que pretendia?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+          "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de tabaco.",
+          "pergunta": "Você já tentou reduzir ou parar de usar tabaco sem sucesso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+          "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de tabaco.",
+          "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de tabaco?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Fissura ou forte desejo de usar",
+          "desc": "Fissura ou forte desejo ou necessidade de usar tabaco.",
+          "pergunta": "Você sente forte desejo ou necessidade de usar tabaco?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A5",
+          "rotulo": "Fracasso em papéis por uso recorrente",
+          "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+          "pergunta": "O uso de tabaco já causou problemas no trabalho, na escola ou em casa?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A6",
+          "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+          "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+          "pergunta": "Você continua usando tabaco mesmo tendo problemas com outras pessoas por causa disso?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A7",
+          "rotulo": "Abandono de atividades importantes",
+          "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+          "pergunta": "Você deixou de fazer atividades importantes por causa do uso de tabaco?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A8",
+          "rotulo": "Uso recorrente em situações perigosas",
+          "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+          "pergunta": "Você já usou tabaco em situações que poderiam ser perigosas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A9",
+          "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+          "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+          "pergunta": "Você continua usando tabaco mesmo sabendo que isso agrava problemas de saúde?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A10",
+          "rotulo": "Tolerância",
+          "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+          "pergunta": "Você precisa de quantidades maiores de tabaco para sentir o mesmo efeito?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A11",
+          "rotulo": "Abstinência",
+          "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+          "pergunta": "Você sente sintomas desagradáveis quando para de usar tabaco, ou o usa para evitar esses sintomas?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "periodo_12meses",
+      "letra": "A",
+      "rotulo": "Padrão problemático em 12 meses",
+      "tipo": "temporal_duracao_minima",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": true,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Um padrão problemático de uso de tabaco, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_substancia_medica",
+      "letra": "D",
+      "rotulo": "Não atribuível a outra condição médica ou substância",
+      "tipo": "exclusao_substancia_medica",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "remissao_inicial",
+      "nome": "Em remissão inicial",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "3-12 meses sem critérios (exceto fissura) para tabaco.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "remissao_sustentada",
+      "nome": "Em remissão sustentada",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "≥12 meses sem critérios (exceto fissura) para tabaco.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "ambiente_protegido",
+      "nome": "Em ambiente protegido",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "terapia_manutencao",
+      "nome": "Em terapia de manutenção",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtorno Psicótico Breve
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas Psicóticos Ativos",
+      "tipo": "polythetic_com_ancora",
+      "limiar": {
+        "adulto": 1,
+        "pediatria": null
+      },
+      "ancora_obrigatoria": {
+        "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
+        "ids_obrigatorios": [
+          "A1",
+          "A2",
+          "A3"
+        ],
+        "n_minimo": 1
+      },
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Delírios",
+          "desc": "Crenças fixas que não são passíveis de mudança à luz de evidências conflitantes.",
+          "pergunta": "Você vivenciou ideias ou crenças intensas e irreais que surgiram de forma repentina?",
+          "exemplos_clinicos": [
+            "Crenças persecutórias de que está sendo observado ou perseguido repentinamente"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A2",
+          "rotulo": "Alucinações",
+          "desc": "Experiências semelhantes a percepções que ocorrem sem um estímulo externo.",
+          "pergunta": "Você ouviu vozes ou viu coisas que outras pessoas ao seu redor disseram não ouvir ou ver?",
+          "exemplos_clinicos": [
+            "Ouvir vozes comentando sobre as ações do paciente de forma nítida"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A3",
+          "rotulo": "Discurso desorganizado",
+          "desc": "Desorganização do pensamento expressa pela fala de forma incompreensível ou descarrilada.",
+          "pergunta": "As pessoas disseram que sua conversa estava confusa, sem nexo ou difícil de acompanhar?",
+          "exemplos_clinicos": [
+            "Descarrilamento frequente da conversa ou incoerência marcante"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "A4",
+          "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
+          "desc": "Inquietação física extrema, comportamento tolo e infantil, ou rigidez e estupor catatônico.",
+          "pergunta": "Você ou terceiros perceberam uma agitação incomum ou atitudes bizarras inexplicáveis?",
+          "exemplos_clinicos": [
+            "Agitação sem finalidade ou adoção de posturas corporais rígidas e estranhas"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": "Presença de pelo menos um dos sintomas, com pelo menos um sendo obrigatoriamente A1, A2 ou A3.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "duracao_breve",
+      "letra": "B",
+      "rotulo": "Duração entre 1 dia e 1 mês",
+      "tipo": "temporal_duracao_janela",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "CalendarDays",
+      "ddx_sugeridos": [],
+      "descricao_completa": "A duração de um episódio da perturbação é de pelo menos um dia, mas menos de um mês, com retorno completo ao nível de funcionamento pré-mórbido.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outros_transtornos",
+      "letra": "C",
+      "rotulo": "Não explicado por humor com psicose ou esquizofrenia",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "select_multiplos_ddx",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "esquizofrenia",
+        "transtorno_esquizoafetivo",
+        "transtorno_bipolar",
+        "transtorno_depressivo_maior"
+      ],
+      "descricao_completa": "A perturbação não é mais bem explicada por transtorno depressivo ou bipolar com características psicóticas, por esquizofrenia ou catatonia, nem é atribuível a substância ou condição médica.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "com_estressores_evidentes",
+      "nome": "Com estressor(es) evidente(s) (psicose reativa breve)",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Sintomas ocorrem em resposta a eventos que causariam estresse acentuado em qualquer pessoa.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "sem_estressores_evidentes",
+      "nome": "Sem estressor(es) evidente(s)",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_inicio_no_pos_parto",
+      "nome": "Com início no pós-parto",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Sintomas iniciam-se durante a gestação ou em até 4 semanas após o parto.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "com_catatonia",
+      "nome": "Com catatonia",
+      "tipo": "booleano",
+      "ortogonal": true,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Transtornos de Adaptação
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A",
+      "nome": "Sintomas Emocionais/Comportamentais em Resposta a Estressor",
+      "tipo": "unico_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Sintomas emocionais/comportamentais em resposta a estress...",
+          "desc": "Sintomas emocionais ou comportamentais em resposta a um estressor identificável, com início em até 3 meses após o início do estressor.",
+          "pergunta": "Você começou a ter sintomas emocionais ou comportamentais logo após um evento estressante específico?",
+          "exemplos_clinicos": [
+            "Depressão após demissão",
+            "Ansiedade após separação conjugal"
+          ],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_desproporcional_ou_funcional",
+      "letra": "B",
+      "rotulo": "Sofrimento acentuado e desproporcional ao estressor ou pr...",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Clinicamente significativo como evidenciado por: (1) sofrimento acentuado desproporcional ao estressor; (2) prejuízo significativo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_outro_transtorno",
+      "letra": "C",
+      "rotulo": "Não satisfaz critérios de outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "tept",
+        "tdm",
+        "tag"
+      ],
+      "descricao_completa": "Não satisfaz critérios de outro transtorno mental específico e não é exacerbação de transtorno pré-existente.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_luto_normal",
+      "letra": "D",
+      "rotulo": "Não representa luto normal",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Não representa luto normal.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "remissao_6meses",
+      "letra": "E",
+      "rotulo": "Remite em ≤6 meses após cessação do estressor",
+      "tipo": "qualitativo_descritivo",
+      "ui_widget": "campo_duracao_meses",
+      "obrigatorio": false,
+      "icone": "Calendar",
+      "ddx_sugeridos": [],
+      "descricao_completa": "Uma vez cessado o estressor (ou suas consequências), os sintomas não persistem por mais de 6 meses adicionais.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": [
+    {
+      "id": "agudo",
+      "nome": "Agudo",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Duração <6 meses.",
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "persistente",
+      "nome": "Persistente/crônico",
+      "tipo": "booleano",
+      "ortogonal": false,
+      "opcoes": [],
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": "Duração ≥6 meses por causa do estressor crônico.",
+        "fonte_passada_1": true
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Tricotilomania (Transtorno de Arrancar o Cabelo)
+
+```json
+{
+  "clusters_sintomas": [
+    {
+      "id": "A_B",
+      "nome": "Arrancar Cabelos Recorrente com Tentativas Fracassadas de Parar",
+      "tipo": "monothetic_obrigatorio",
+      "limiar": null,
+      "ancora_obrigatoria": null,
+      "sintomas": [
+        {
+          "id": "A1",
+          "rotulo": "Arrancar cabelos recorrente resultando em perda",
+          "desc": "Arrancar cabelos recorrente resultando em perda de cabelo.",
+          "pergunta": "Você arranca repetidamente cabelos (do couro cabeludo, sobrancelhas, cílios ou outras áreas) causando queda visível?",
+          "exemplos_clinicos": [
+            "Áreas de alopecia no couro cabeludo",
+            "Cílios ausentes"
+          ],
+          "faixa_aplicavel": null
+        },
+        {
+          "id": "B1",
+          "rotulo": "Tentativas repetidas de parar ou diminuir o comportamento",
+          "desc": "O indivíduo fez tentativas repetidas de diminuir ou parar de arrancar cabelos.",
+          "pergunta": "Você já tentou parar de arrancar o cabelo sem conseguir?",
+          "exemplos_clinicos": [],
+          "faixa_aplicavel": null
+        }
+      ],
+      "descricao_qualitativa": null,
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "criterios_condicionais": [
+    {
+      "id": "sofrimento_funcional",
+      "letra": "C",
+      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+      "tipo": "prejuizo_funcional",
+      "ui_widget": "toggle_com_justificativa_obrigatoria",
+      "obrigatorio": true,
+      "icone": "Frown",
+      "ddx_sugeridos": [],
+      "descricao_completa": "O arrancar cabelos causa sofrimento clinicamente significativo ou prejuízo no funcionamento.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    },
+    {
+      "id": "exclusao_medica_outros",
+      "letra": "D",
+      "rotulo": "Não atribuível a condição médica ou outro transtorno mental",
+      "tipo": "exclusao_diagnostica",
+      "ui_widget": "toggle_simples",
+      "obrigatorio": true,
+      "icone": "Ban",
+      "ddx_sugeridos": [
+        "dermatite",
+        "toc",
+        "transtorno_psicose"
+      ],
+      "descricao_completa": "Não atribuível a condição dermatológica nem mais bem explicado por outro transtorno mental.",
+      "metadados": {
+        "completo": true,
+        "lacunas": [],
+        "notas_agente": null,
+        "fonte_passada_1": true
+      }
+    }
+  ],
+  "especificadores": []
+}
+```
+
+---

@@ -1,7 +1,7 @@
 import { DeficienciaIntelectualSchema } from "./schema";
 
 export const data = DeficienciaIntelectualSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "deficiencia_intelectual",
     "nome_completo": "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)",
@@ -24,113 +24,73 @@ export const data = DeficienciaIntelectualSchema.parse({
   "estrutura_geral": "tripartite_funcional",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Déficits nas Funções Intelectuais",
-      "tipo": "qualitativo_sem_lista",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Déficits no raciocínio e solução de problemas",
-          "desc": "Comprometimento no raciocínio, resolução de problemas, planejamento, pensamento abstrato, juízo, aprendizagem acadêmica e aprendizagem pela experiência.",
-          "pergunta": "O paciente demonstra dificuldades acentuadas em planejar atividades diárias, compreender conceitos abstratos ou aprender com erros do passado?",
-          "exemplos_clinicos": [
-            "Dificuldade em gerenciar finanças",
-            "Dificuldade na tomada de decisões lógicas diárias"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": "Confirmados por avaliação clínica e testes de inteligência padronizados individualizados (geralmente QI ≥ 2 desvios-padrão abaixo da média, ou seja, ~70 ou menos).",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "A",
+        "nome": "Déficits nas Funções Intelectuais",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Déficits no raciocínio e solução de problemas",
+                "desc": "Comprometimento no raciocínio, resolução de problemas, planejamento, pensamento abstrato, juízo, aprendizagem acadêmica e aprendizagem pela experiência.",
+                "pergunta": "A pessoa demonstra dificuldades acentuadas em planejar atividades diárias, compreender conceitos abstratos ou aprender com erros do passado?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Dificuldade em gerenciar finanças",
+                    "Dificuldade na tomada de decisões lógicas diárias"
+                ]
+            }
+        ],
+        "descricao_qualitativa": "Confirmados por avaliação clínica e testes de inteligência padronizados individualizados (geralmente QI ≥ 2 desvios-padrão abaixo da média, ou seja, ~70 ou menos).",
+        "nota": null,
+        "regra_temporal": null
     },
     {
-      "id": "B",
-      "nome": "Déficits no Funcionamento Adaptativo",
-      "tipo": "qualitativo_sem_lista",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "B1",
-          "rotulo": "Limitação no domínio conceitual",
-          "desc": "Dificuldades em habilidades acadêmicas, linguagem, leitura, escrita, raciocínio, memória e conhecimento prático.",
-          "pergunta": "Há necessidade de suporte para tarefas acadêmicas, leitura, escrita ou controle de tempo?",
-          "exemplos_clinicos": [
-            "Necessita de ajuda para preencher formulários",
-            "Dificuldade no uso de dinheiro"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "B2",
-          "rotulo": "Limitação no domínio social",
-          "desc": "Alterações na percepção de pistas sociais, comunicação, julgamento interpessoal e empatia.",
-          "pergunta": "A pessoa tem dificuldades em interpretar pistas sociais ou manter relacionamentos adequados à idade?",
-          "exemplos_clinicos": [
-            "Comportamento ingênuo",
-            "Ser facilmente enganado por outros"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "B3",
-          "rotulo": "Limitação no domínio prático",
-          "desc": "Dificuldades no autocuidado, responsabilidades profissionais, organização de tarefas e lazer.",
-          "pergunta": "O indivíduo necessita de auxílio para banho, alimentação, uso de transporte público ou tarefas domésticas?",
-          "exemplos_clinicos": [
-            "Necessita de supervisão para morar sozinho",
-            "Dificuldade na organização do lar"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": "Resultam em fracasso para atingir padrões de desenvolvimento e socioculturais de independência e responsabilidade social. Sem suporte, os déficits limitam o funcionamento em uma ou mais atividades diárias.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "B",
+        "nome": "Déficits no Funcionamento Adaptativo",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "B1",
+                "rotulo": "Déficits no funcionamento adaptativo",
+                "desc": "Déficits no funcionamento adaptativo resultam em fracasso para atingir padrões de desenvolvimento e socioculturais de independência pessoal e responsabilidade social; sem apoio continuado, limitam uma ou mais atividades da vida diária em múltiplos ambientes.",
+                "pergunta": "A pessoa apresenta déficits adaptativos que limitam uma ou mais atividades da vida diária em múltiplos ambientes?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Necessita de ajuda para preencher formulários",
+                    "Dificuldade no uso de dinheiro"
+                ]
+            }
+        ],
+        "descricao_qualitativa": "Resultam em fracasso para atingir padrões de desenvolvimento e socioculturais de independência e responsabilidade social. Sem suporte, os déficits limitam o funcionamento em uma ou mais atividades diárias.",
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "inicio_desenvolvimento",
-      "letra": "C",
-      "rotulo": "Início durante o período do desenvolvimento",
-      "tipo": "temporal_idade_inicio",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Clock",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Início dos déficits intelectuais e adaptativos durante o período do desenvolvimento (infância ou adolescência).",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "inicio_desenvolvimento",
+        "letra": "C",
+        "rotulo": "Início durante o período do desenvolvimento",
+        "tipo": "condicional_etario",
+        "ui_widget": "campo_idade",
+        "obrigatorio": true,
+        "icone": "Clock",
+        "descricao_completa": "Início dos déficits intelectuais e adaptativos durante o período do desenvolvimento (infância ou adolescência).",
+        "nota": null
     }
-  ],
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": false,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [],
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
@@ -180,13 +140,7 @@ export const data = DeficienciaIntelectualSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "academico",
@@ -240,27 +194,74 @@ export const data = DeficienciaIntelectualSchema.parse({
     "proporcao_sexo": "Razão de prevalência mais alta em indivíduos do sexo masculino.",
     "variacoes_culturais": null,
     "notas": "Prevalência para deficiência intelectual grave é de aproximadamente 6 por 1.000.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [
-        "prevalencia.variacoes_culturais"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Período do desenvolvimento",
     "trajetoria": "Geralmente crônico e estável, embora intervenções e suporte adequado possam melhorar o funcionamento adaptativo ao longo da vida.",
     "prognostico": "Depende da severidade e da presença de outras comorbidades neurológicas/psiquiátricas.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "monothetic_tripartite",
+        "criteria": [
+          "A. Deficits em funcoes intelectuais (raciocinio, solucao de problemas, planejamento, pensamento abstrato, juizo, aprendizagem academica, aprendizagem pela experiencia) confirmados por avaliacao clinica e testes de inteligencia padronizados individualizados.",
+          "B. Deficits em funcoes adaptativas que resultam em fracasso para atingir padroes de desenvolvimento e socioculturais em relacao a independencia pessoal e responsabilidade social. Sem apoio continuado, os deficits limitam o funcionome_completonto em uma ou mais atividades diarias (comunicacao, participacao social, vida independente) em multiplos ambientes (casa, escola, trabalho, comunidade).",
+          "C. Inicio dos deficits intelectuais e adaptativos durante o periodo do desenvolvimento."
+        ],
+        "diagnostic_rule": "Todos os criterios A, B e C sao obrigatorios (estrutura monotetica tripartite). O diagnostico e clinico, baseado em sintese de avaliacao clinica e testes padronizados. O funcionome_completonto intelectual e tipicamente ~2DP abaixo da media (QI ~65-75 em testes com DP=15, media=100, com margem de erro de medida).",
+        "clusters": [],
+        "duration": null,
+        "age_onset": "** Durante a infancia ou adolescencia; formas graves identificaveis nos primeiros 2 anos; formas leves podem passar despercebidas ate a idade escolar",
+        "functional_impairment": "- Funcionome_completonto adaptativo prejudicado em pelo menos 1 dos 3 dominios (conceitual, social, pratico) - Necessidade de apoio continuado para desempenho adequado em 1+ locais (escola, trabalho, casa, comunidade) - Deficits adaptativos devem estar diretamente relacionados aos prejuizos intelectuais do Criterio A",
+        "exclusions": [
+          "Transtornos neurocognitivos (inicio tardio/perda de funcao)",
+          "Transtornos da comunicacao e aprendizagem (sem deficits globais intelectual/adaptativo)",
+          "Transtorno do espectro autista (avaliar discrepancia entre habilidades sociais e nao-verbais)"
+        ],
+        "specifiers": [
+          "Com comprometimento intelectual / sem comprometimento intelectual concomitante",
+          "Com comprometimento da linguagem / sem comprometimento da linguagem concomitante",
+          "Associado a condicao medica ou genetica conhecida ou fator ambiental",
+          "Associado a outro transtorno do neurodesenvolvimento, mental ou comportamental",
+          "Com catatonia"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "A crianca atingiu os marcos do desenvolvimento (motor, linguistico, social) na epoca esperada?",
+          "Ha dificuldades de aprendizagem academica que exigem apoio especial?",
+          "A pessoa consegue realizar atividades de autocuidado adequadas a idade?",
+          "Ha independencia na comunicacao, participacao social e vida diaria?",
+          "Os deficits estao presentes desde a infancia/periodo do desenvolvimento?",
+          "Ha historia de QI testado abaixo de 70-75?",
+          "Ha necessidade de apoio continuado em casa, escola, trabalho ou comunidade?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Deficiencia Intelectual",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
     "fonte_inventario_md": "inventario/01_inventario.md",
@@ -271,77 +272,14 @@ export const data = DeficienciaIntelectualSchema.parse({
     "revisao_humana_necessaria": false,
     "notas_agente_globais": null
   },
-  "id": "deficiencia_intelectual",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "monothetic_tripartite",
-    "criteria": [
-      "A. Deficits em funcoes intelectuais (raciocinio, solucao de problemas, planejamento, pensamento abstrato, juizo, aprendizagem academica, aprendizagem pela experiencia) confirmados por avaliacao clinica e testes de inteligencia padronizados individualizados.",
-      "B. Deficits em funcoes adaptativas que resultam em fracasso para atingir padroes de desenvolvimento e socioculturais em relacao a independencia pessoal e responsabilidade social. Sem apoio continuado, os deficits limitam o funcionome_completonto em uma ou mais atividades diarias (comunicacao, participacao social, vida independente) em multiplos ambientes (casa, escola, trabalho, comunidade).",
-      "C. Inicio dos deficits intelectuais e adaptativos durante o periodo do desenvolvimento."
-    ],
-    "diagnostic_rule": "Todos os criterios A, B e C sao obrigatorios (estrutura monotetica tripartite). O diagnostico e clinico, baseado em sintese de avaliacao clinica e testes padronizados. O funcionome_completonto intelectual e tipicamente ~2DP abaixo da media (QI ~65-75 em testes com DP=15, media=100, com margem de erro de medida).",
-    "clusters": [],
-    "duration": null,
-    "age_onset": "** Durante a infancia ou adolescencia; formas graves identificaveis nos primeiros 2 anos; formas leves podem passar despercebidas ate a idade escolar",
-    "functional_impairment": "- Funcionome_completonto adaptativo prejudicado em pelo menos 1 dos 3 dominios (conceitual, social, pratico) - Necessidade de apoio continuado para desempenho adequado em 1+ locais (escola, trabalho, casa, comunidade) - Deficits adaptativos devem estar diretamente relacionados aos prejuizos intelectuais do Criterio A",
-    "exclusions": [
-      "Transtornos neurocognitivos (inicio tardio/perda de funcao)",
-      "Transtornos da comunicacao e aprendizagem (sem deficits globais intelectual/adaptativo)",
-      "Transtorno do espectro autista (avaliar discrepancia entre habilidades sociais e nao-verbais)"
-    ],
-    "specifiers": [
-      "Com comprometimento intelectual / sem comprometimento intelectual concomitante",
-      "Com comprometimento da linguagem / sem comprometimento da linguagem concomitante",
-      "Associado a condicao medica ou genetica conhecida ou fator ambiental",
-      "Associado a outro transtorno do neurodesenvolvimento, mental ou comportamental",
-      "Com catatonia"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "A crianca atingiu os marcos do desenvolvimento (motor, linguistico, social) na epoca esperada?",
-      "Ha dificuldades de aprendizagem academica que exigem apoio especial?",
-      "A pessoa consegue realizar atividades de autocuidado adequadas a idade?",
-      "Ha independencia na comunicacao, participacao social e vida diaria?",
-      "Os deficits estao presentes desde a infancia/periodo do desenvolvimento?",
-      "Ha historia de QI testado abaixo de 70-75?",
-      "Ha necessidade de apoio continuado em casa, escola, trabalho ou comunidade?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### Deficiencia Intelectual",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "sigla": "DI",
   "grupo": "Deficiência Intelectual",
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Código DSM-5 / CID-10:** 317 (F70) Leve / 318.0 (F71) Moderada / 318.1 (F72) Grave / 318.2 (F73) Profunda",
     "estrutura_efetiva": "- **Estrutura efetiva:** Tripartite — **A** déficit intelectual (QI ~70±5) + **B** déficit adaptativo em 3 domínios (conceitual, social, prático) + **C** início no período do desenvolvimento. Gravidade definida por tabela 4×3 (leve/moderada/grave/profunda × conceitual/social/prático), não por QI isoladamente.",
     "notas_clinicas": "- **Notas:** Sem limiar polietético contável. Avaliação adaptativa é o diferenciador principal. Severidade classificada pelo funcionamento adaptativo."
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

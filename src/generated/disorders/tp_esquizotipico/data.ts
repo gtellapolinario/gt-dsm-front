@@ -1,7 +1,7 @@
 import { TpEsquizotipicoSchema } from "./schema";
 
 export const data = TpEsquizotipicoSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "tp_esquizotipico",
     "nome_completo": "Transtorno da Personalidade Esquizotípica",
@@ -21,150 +21,143 @@ export const data = TpEsquizotipicoSchema.parse({
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Déficits Sociais, Distorções Cognitivas e Excentricidade",
-      "tipo": "polythetic_com_limiar",
-      "limiar": {
-        "adulto": 5,
-        "pediatria": null
-      },
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Ideias de referência",
-          "desc": "Ideias de referência (excluindo delírios de referência).",
-          "pergunta": "Você frequentemente sente que eventos casuais ou comentários de outras pessoas têm um significado especial e particular para você?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
+        "id": "A",
+        "nome": "Déficits Sociais, Distorções Cognitivas e Excentricidade",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 5,
+            "pediatria": 5
         },
-        {
-          "id": "A2",
-          "rotulo": "Crenças estranhas ou pensamento mágico",
-          "desc": "Crenças estranhas ou pensamento mágico que influenciam o comportamento e são inconsistentes com as normas subculturais.",
-          "pergunta": "Você tem crenças incomuns ou pensamento mágico que influenciam seu comportamento (superstições, clarividência, telepatia)?",
-          "exemplos_clinicos": [
-            "Crença de controlar outros por pensamento",
-            "Rituais mágicos"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Experiências perceptivas incomuns",
-          "desc": "Experiências perceptivas incomuns, incluindo ilusões corporais.",
-          "pergunta": "Você tem experiências perceptivas incomuns, como sentir a presença de alguém ou ouvir vozes murmurando seu nome?",
-          "exemplos_clinicos": [
-            "Sentir outra pessoa presente",
-            "Ouvir nome murmurado"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A4",
-          "rotulo": "Pensamento e discurso estranhos",
-          "desc": "Pensamento e discurso estranhos (p. ex., vago, circunstancial, metafórico, excessivamente elaborado ou estereotipado).",
-          "pergunta": "Seu modo de pensar ou falar é frequentemente vago, circunstancial, metafórico ou de difícil compreensão para os outros?",
-          "exemplos_clinicos": [
-            "Respostas excessivamente concretas ou abstratas",
-            "Uso idiossincrásico de palavras"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A5",
-          "rotulo": "Desconfiança ou ideação paranoide",
-          "desc": "Desconfiança ou ideação paranoide.",
-          "pergunta": "Você é frequentemente desconfiado ou tem ideias paranoides sobre as intenções dos outros?",
-          "exemplos_clinicos": [
-            "Crer que colegas tramam contra si"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A6",
-          "rotulo": "Afeto inadequado ou constrito",
-          "desc": "Afeto inadequado ou constrito.",
-          "pergunta": "Você demonstra afeto que parece inadequado à situação ou muito constrito nas interações sociais?",
-          "exemplos_clinicos": [
-            "Interação formal ou excessivamente contida"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A7",
-          "rotulo": "Comportamento ou aparência estranha, excêntrica ou peculiar",
-          "desc": "Comportamento ou aparência estranha, excêntrica ou peculiar.",
-          "pergunta": "Você tem maneirismos incomuns, forma desleixada de vestir-se ou aparência que os outros consideram estranha ou excêntrica?",
-          "exemplos_clinicos": [
-            "Evitar contato visual",
-            "Roupas manchadas ou inadequadas"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A8",
-          "rotulo": "Ausência de amigos próximos fora parentes de primeiro grau",
-          "desc": "Ausência de amigos próximos ou confidentes que não sejam parentes de primeiro grau.",
-          "pergunta": "Você tem poucos ou nenhum amigo próximo ou confidente fora um possível parente de primeiro grau?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A9",
-          "rotulo": "Ansiedade social excessiva associada a temores paranoides",
-          "desc": "Ansiedade social excessiva que não diminui com o convívio e que tende a estar associada mais a temores paranoides do que a julgamentos negativos sobre si mesmo.",
-          "pergunta": "Você sente ansiedade social intensa que não diminui mesmo com o tempo, mais ligada a desconfiança das intenções dos outros do que a julgamentos sobre si?",
-          "exemplos_clinicos": [
-            "Ficar mais tenso durante jantar em vez de relaxar"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Ideias de referência",
+                "desc": "Ideias de referência (excluindo delírios de referência).",
+                "pergunta": "A pessoa frequentemente sente que eventos casuais ou comentários de outras pessoas têm um significado especial e particular para a pessoa?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A2",
+                "rotulo": "Crenças estranhas ou pensamento mágico",
+                "desc": "Crenças estranhas ou pensamento mágico que influenciam o comportamento e são inconsistentes com as normas subculturais.",
+                "pergunta": "A pessoa tem crenças incomuns ou pensamento mágico que influenciam seu comportamento (superstições, clarividência, telepatia)?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Crença de controlar outros por pensamento",
+                    "Rituais mágicos"
+                ]
+            },
+            {
+                "id": "A3",
+                "rotulo": "Experiências perceptivas incomuns",
+                "desc": "Experiências perceptivas incomuns, incluindo ilusões corporais.",
+                "pergunta": "A pessoa tem experiências perceptivas incomuns, como sentir a presença de alguém ou ouvir vozes murmurando seu nome?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Sentir outra pessoa presente",
+                    "Ouvir nome murmurado"
+                ]
+            },
+            {
+                "id": "A4",
+                "rotulo": "Pensamento e discurso estranhos",
+                "desc": "Pensamento e discurso estranhos (p. ex. , vago, circunstancial, metafórico, excessivamente elaborado ou estereotipado).",
+                "pergunta": "Seu modo de pensar ou falar é frequentemente vago, circunstancial, metafórico ou de difícil compreensão para os outros?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Respostas excessivamente concretas ou abstratas",
+                    "Uso idiossincrásico de palavras"
+                ]
+            },
+            {
+                "id": "A5",
+                "rotulo": "Desconfiança ou ideação paranoide",
+                "desc": "Desconfiança ou ideação paranoide.",
+                "pergunta": "A pessoa é frequentemente desconfiado ou tem ideias paranoides sobre as intenções dos outros?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Crer que colegas tramam contra si"
+                ]
+            },
+            {
+                "id": "A6",
+                "rotulo": "Afeto inadequado ou constrito",
+                "desc": "Afeto inadequado ou constrito.",
+                "pergunta": "A pessoa demonstra afeto que parece inadequado à situação ou muito constrito nas interações sociais?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Interação formal ou excessivamente contida"
+                ]
+            },
+            {
+                "id": "A7",
+                "rotulo": "Comportamento ou aparência estranha, excêntrica ou peculiar",
+                "desc": "Comportamento ou aparência estranha, excêntrica ou peculiar.",
+                "pergunta": "A pessoa tem maneirismos incomuns, forma desleixada de vestir-se ou aparência que os outros consideram estranha ou excêntrica?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Evitar contato visual",
+                    "Roupas manchadas ou inadequadas"
+                ]
+            },
+            {
+                "id": "A8",
+                "rotulo": "Ausência de amigos próximos fora parentes de primeiro grau",
+                "desc": "Ausência de amigos próximos ou confidentes que não sejam parentes de primeiro grau.",
+                "pergunta": "A pessoa tem poucos ou nenhum amigo próximo ou confidente fora um possível parente de primeiro grau?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A9",
+                "rotulo": "Ansiedade social excessiva associada a temores paranoides",
+                "desc": "Ansiedade social excessiva que não diminui com o convívio e que tende a estar associada mais a temores paranoides do que a julgamentos negativos sobre si mesmo.",
+                "pergunta": "A pessoa sente ansiedade social intensa que não diminui mesmo com o tempo, mais ligada a desconfiança das intenções dos outros do que a julgamentos sobre si?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Ficar mais tenso durante jantar em vez de relaxar"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "exclusao_psicotico_autista",
-      "letra": "B",
-      "rotulo": "Não ocorre exclusivamente durante curso de transtorno psicótico ou TEA",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "esquizofrenia",
-        "transtorno_bipolar",
-        "tea"
-      ],
-      "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos, outro transtorno psicótico ou transtorno do espectro autista.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_psicotico_autista",
+        "letra": "B",
+        "rotulo": "Não ocorre exclusivamente durante curso de transtorno psicótico ou TEA",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Não ocorre exclusivamente durante o curso de esquizofrenia, transtorno bipolar ou depressivo com sintomas psicóticos, outro transtorno psicótico ou transtorno do espectro autista.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "esquizofrenia",
+            "transtorno_bipolar",
+            "transtorno_espectro_autista",
+            "transtorno_bipolar_tipo_i"
+        ]
     }
-  ],
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
@@ -176,13 +169,7 @@ export const data = TpEsquizotipicoSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -232,25 +219,84 @@ export const data = TpEsquizotipicoSchema.parse({
     "proporcao_sexo": "Pouco mais comum no sexo masculino",
     "variacoes_culturais": "Crenças religiosas culturalmente aceitas não devem ser consideradas esquizotípicas.",
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Infância e adolescência",
     "trajetoria": "Relativamente estável; pequena parcela desenvolve esquizofrenia.",
     "prognostico": "Episódios psicóticos breves sob estresse.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "A1. Ideias de referencia (excluindo delirios)",
+          "A2. Crencas estranhas ou pensamento magico",
+          "A3. Experiencias perceptivas incomuns (ilusoes corporais)",
+          "A4. Pensamento/discurso estranho (vago, circunstancial)",
+          "A5. Desconfianca ou ideacao paranoide",
+          "A6. Afeto inadequado ou constrito",
+          "A7. Comportamento/aparencia estranha, excentrica",
+          "A8. Ausencia de amigos proximos (exceto parentes 1o grau)",
+          "A9. Ansiedade social excessiva que NAO diminui com convivio"
+        ],
+        "diagnostic_rule": "Criterios gerais de TP (A-F) + >=5 de 9 criterios + exclusao",
+        "clusters": [
+          "Deficits Sociais",
+          "Distorcoes Cognitivo-Perceptivas",
+          "Comportamento Excentrico"
+        ],
+        "duration": "padrao relativamente estavel",
+        "age_onset": "inicio vida adulta",
+        "functional_impairment": "deficits interpessoais marcados; isolamento social; ansiedade social persistente",
+        "exclusions": [
+          "esquizofrenia",
+          "transtorno bipolar/depressivo com psicotico",
+          "TEA"
+        ],
+        "specifiers": [],
+        "operational_profiles": [],
+        "critical_differentials": [
+          "paranoide",
+          "esquizoide",
+          "evitativa",
+          "borderline",
+          "narcisista"
+        ],
+        "key_questions": [
+          "Eventos cotidianos tem significado especial so para voce?",
+          "Crencas que outros consideram estranhas?",
+          "Experiencias incomuns (presenca, ouvir nome)?",
+          "Jeito de falar ou se vestir e estranho/excentrico?",
+          "Desconforto social diminui quando conhece melhor as pessoas? [nao = favorece TPET]"
+        ],
+        "alerts": [
+          "Pequena proporcao pode evoluir para esquizofrenia; avaliar contexto cultural para pensamento magico"
+        ],
+        "source_trace": {
+          "markdown_section": "## 3. Transtorno da Personalidade Esquizotipica (TPET)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": false,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "missing",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "18_transtornos_personalidade.md",
     "fonte_inventario_md": null,
@@ -261,84 +307,13 @@ export const data = TpEsquizotipicoSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "tp_esquizotipico",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_monocluster",
-    "criteria": [
-      "A1. Ideias de referencia (excluindo delirios)",
-      "A2. Crencas estranhas ou pensamento magico",
-      "A3. Experiencias perceptivas incomuns (ilusoes corporais)",
-      "A4. Pensamento/discurso estranho (vago, circunstancial)",
-      "A5. Desconfianca ou ideacao paranoide",
-      "A6. Afeto inadequado ou constrito",
-      "A7. Comportamento/aparencia estranha, excentrica",
-      "A8. Ausencia de amigos proximos (exceto parentes 1o grau)",
-      "A9. Ansiedade social excessiva que NAO diminui com convivio"
-    ],
-    "diagnostic_rule": "Criterios gerais de TP (A-F) + >=5 de 9 criterios + exclusao",
-    "clusters": [
-      "Deficits Sociais",
-      "Distorcoes Cognitivo-Perceptivas",
-      "Comportamento Excentrico"
-    ],
-    "duration": "padrao relativamente estavel",
-    "age_onset": "inicio vida adulta",
-    "functional_impairment": "deficits interpessoais marcados; isolamento social; ansiedade social persistente",
-    "exclusions": [
-      "esquizofrenia",
-      "transtorno bipolar/depressivo com psicotico",
-      "TEA"
-    ],
-    "specifiers": [],
-    "operational_profiles": [],
-    "critical_differentials": [
-      "paranoide",
-      "esquizoide",
-      "evitativa",
-      "borderline",
-      "narcisista"
-    ],
-    "key_questions": [
-      "Eventos cotidianos tem significado especial so para voce?",
-      "Crencas que outros consideram estranhas?",
-      "Experiencias incomuns (presenca, ouvir nome)?",
-      "Jeito de falar ou se vestir e estranho/excentrico?",
-      "Desconforto social diminui quando conhece melhor as pessoas? [nao = favorece TPET]"
-    ],
-    "alerts": [
-      "Pequena proporcao pode evoluir para esquizofrenia; avaliar contexto cultural para pensamento magico"
-    ],
-    "source_trace": {
-      "markdown_section": "## 3. Transtorno da Personalidade Esquizotipica (TPET)",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 301.22 / F21",
     "estrutura_efetiva": "- **Estrutura efetiva:** Padrao difuso de deficits sociais/interpessoais com desconforto agudo e capacidade reduzida para intimidade, alem de distorcoes cognitivas/perceptivas e comportamento eccentrico. Exige 5+ de 9 criterios: (1) ideias de referencia (nao delirios), (2) crencas estranhas/pensamento magico, (3) experiencias perceptivas incomuns, (4) pensamento e discurso estranhos, (5) desconfianca/ideacao paranoide, (6) afeto inadequado ou constrito, (7) comportamento/aparencia eccentrica, (8) ausencia de amigos proximos (exceto familiares 1o grau), (9) ansiedade social excessiva que nao diminui com convivio (associada a temores paranoides). Exclusao: nao ocorre exclusivamente durante esquizofrenia, TB/depressivo com psicose, outro psicotico ou TEA.",
     "notas_clinicas": "- **Notas:** Prevalencia: 0,6%-4,6% em comunidades; 3,9% (NESARC). Baixa em populacoes clinicas (0-1,9%). Levemente mais comum em homens. Pequena parte evolui para esquizofrenia. 30-50% com TP depressivo maior simultaneo; mais de 50% com historia de episodio depressivo maior. Comorbidade: TP esquizoide, paranoide, evitativa, borderline. Especificador \"pre-morbido\". Agregacao familiar com esquizofrenia."
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": false,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "missing",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

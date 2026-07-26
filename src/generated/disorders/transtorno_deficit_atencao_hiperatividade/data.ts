@@ -1,7 +1,7 @@
 import { TranstornoDeficitAtencaoHiperatividadeSchema } from "./schema";
 
 export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_deficit_atencao_hiperatividade",
     "nome_completo": "Transtorno de Déficit de Atenção/Hiperatividade",
@@ -24,315 +24,291 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
   "estrutura_geral": "polythetic_clusters_simetricos",
   "clusters_sintomas": [
     {
-      "id": "A1",
-      "nome": "Sintomas de Desatenção",
-      "tipo": "polythetic_com_limiar",
-      "limiar": {
-        "adulto": 5,
-        "pediatria": 6
-      },
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1a",
-          "rotulo": "Erros por descuido ou falta de atenção a detalhes",
-          "desc": "Frequentemente deixa de prestar atenção a detalhes ou comete erros por descuido em atividades escolares, no trabalho ou durante outras atividades.",
-          "pergunta": "Você costuma cometer erros bobos por distração no trabalho ou estudos, ou deixar passar detalhes importantes em tarefas longas?",
-          "exemplos_clinicos": [
-            "Ignorar instruções em testes e errar perguntas fáceis",
-            "Trabalho impreciso com dados incorretos por pura distração"
-          ],
-          "faixa_aplicavel": null
+        "id": "A",
+        "nome": "Desatenção e hiperatividade ou impulsividade",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 5,
+            "pediatria": 6
         },
-        {
-          "id": "A1b",
-          "rotulo": "Dificuldade em manter a atenção",
-          "desc": "Frequentemente tem dificuldade em manter a atenção em tarefas ou atividades lúdicas (ex: palestras, conversas, leituras longas).",
-          "pergunta": "Fica muito difícil se concentrar em conversas demoradas, aulas ou leituras de textos extensos sem que sua mente divague?",
-          "exemplos_clinicos": [
-            "Perder o foco rapidamente durante reuniões de 30 minutos",
-            "Não conseguir concluir um livro simples por dispersão"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1c",
-          "rotulo": "Parece não escutar quando se fala diretamente",
-          "desc": "Frequentemente parece não escutar quando alguém lhe dirige a palavra diretamente, com a mente parecendo estar em outro lugar.",
-          "pergunta": "As pessoas costumam reclamar que chamam você ou falam diretamente com você e você parece estar 'no mundo da lua'?",
-          "exemplos_clinicos": [
-            "Não ouvir quando o cônjuge fala na mesma sala",
-            "Necessitar que repitam instruções dadas individualmente"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1d",
-          "rotulo": "Não segue instruções e não termina tarefas",
-          "desc": "Frequentemente não segue instruções até o fim e deixa de concluir tarefas escolares, tarefas domésticas ou deveres no trabalho.",
-          "pergunta": "Você costuma iniciar projetos ou tarefas com muito entusiasmo, mas acaba deixando-os pela metade por cansaço ou perda de interesse?",
-          "exemplos_clinicos": [
-            "Deixar relatórios profissionais sem a conclusão",
-            "Não seguir receitas de cozinha até o fim, pulando etapas"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1e",
-          "rotulo": "Dificuldade para organizar tarefas e atividades",
-          "desc": "Frequentemente tem dificuldade para organizar tarefas e atividades (ex: gerenciar materiais, organizar tempo, cumprir prazos).",
-          "pergunta": "Como é a sua capacidade de organizar sua rotina, gerenciar o tempo, prazos e manter seu espaço de trabalho arrumado?",
-          "exemplos_clinicos": [
-            "Perder prazos profissionais frequentemente por desorganização",
-            "Mesa de trabalho extremamente bagunçada de forma crônica"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1f",
-          "rotulo": "Evita tarefas que exigem esforço mental prolongado",
-          "desc": "Frequentemente evita, antipatiza ou reluta em envolver-se em tarefas que exijam esforço mental prolongado.",
-          "pergunta": "Você costuma procrastinar ou adiar tarefas longas que exigem muito raciocínio e atenção, como relatórios ou burocracias?",
-          "exemplos_clinicos": [
-            "Adiar o preenchimento de impostos até o último dia",
-            "Crianças que se recusam enfaticamente a fazer a lição de casa"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1g",
-          "rotulo": "Perde coisas necessárias para tarefas ou atividades",
-          "desc": "Frequentemente perde objetos necessários para tarefas ou atividades (ex: materiais escolares, carteira, chaves, óculos, celulares).",
-          "pergunta": "Você perde chaves, celular, documentos ou ferramentas de trabalho com uma frequência muito maior do que as outras pessoas?",
-          "exemplos_clinicos": [
-            "Passar horas procurando chaves ou celular perdidos pela casa",
-            "Esquecer objetos pessoais em táxis ou restaurantes"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1h",
-          "rotulo": "Facilmente distraído por estímulos externos",
-          "desc": "Frequentemente é facilmente distraído por estímulos externos (inclusive pensamentos não relacionados em adultos).",
-          "pergunta": "Qualquer barulho na rua ou passagem de uma pessoa na sala de trabalho faz você perder a concentração no que estava fazendo?",
-          "exemplos_clinicos": [
-            "Olhar pela janela a cada ruído",
-            "Dispersar o raciocínio no meio de um relatório por causa de um email que chegou"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A1i",
-          "rotulo": "Esquecido em atividades diárias",
-          "desc": "Frequentemente é esquecido em atividades diárias (ex: tarefas domésticas, pagar contas, manter compromissos).",
-          "pergunta": "Você costuma esquecer compromissos marcados, aniversários importantes ou o pagamento de contas recorrentes no dia a dia?",
-          "exemplos_clinicos": [
-            "Pagar juros de contas por esquecimento",
-            "Esquecer de levar o almoço para o trabalho"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": "Os sintomas devem persistir por pelo menos 6 meses, em um grau inconsistente com o nível do desenvolvimento e que causa impacto negativo nas atividades sociais e acadêmicas/profissionais.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "A2",
-      "nome": "Sintomas de Hiperatividade e Impulsividade",
-      "tipo": "polythetic_com_limiar",
-      "limiar": {
-        "adulto": 5,
-        "pediatria": 6
-      },
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A2a",
-          "rotulo": "Remexer-se na cadeira ou batucar mãos/pés",
-          "desc": "Frequentemente remexe as mãos ou os pés ou se contorce na cadeira.",
-          "pergunta": "Você tem dificuldade em ficar sentado imóvel, movimentando constantemente as pernas ou batucando os dedos na mesa?",
-          "exemplos_clinicos": [
-            "Balançar as pernas sem parar enquanto trabalha",
-            "Batucar caneta na mesa de reuniões de forma irritante"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2b",
-          "rotulo": "Levantar-se quando deveria permanecer sentado",
-          "desc": "Frequentemente levanta-se da cadeira em sala de aula ou em outras situações nas quais se espera que permaneça sentado.",
-          "pergunta": "Você sente necessidade de se levantar ou caminhar em situações em que deveria ficar sentado, como em reuniões ou cinema?",
-          "exemplos_clinicos": [
-            "Levantar da mesa de jantar antes de terminar a refeição",
-            "Criança que circula pela sala de aula enquanto o professor explica"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2c",
-          "rotulo": "Correr ou subir nas coisas em situações inapropriadas",
-          "desc": "Frequentemente corre ou sobe nas coisas em situações em que isso é inapropriado (em adolescentes/adultos pode se limitar a sensações subjetivas de inquietude).",
-          "pergunta": "Você sente uma inquietude física interna constante, como se estivesse ligado na tomada, mesmo em momentos de descanso?",
-          "exemplos_clinicos": [
-            "Criança subindo em estantes de lojas",
-            "Adulto com sensação de agitação motora interna insuportável ao tentar relaxar"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2d",
-          "rotulo": "Dificuldade em brincar ou fazer lazer em silêncio",
-          "desc": "Frequentemente tem dificuldade para brincar ou envolver-se em atividades de lazer de forma silenciosa.",
-          "pergunta": "Acha difícil aproveitar momentos de lazer de forma silenciosa e calma, preferindo atividades mais barulhentas ou ativas?",
-          "exemplos_clinicos": [
-            "Falar alto demais em ambientes calmos",
-            "Crianças que sempre brincam de forma muito barulhenta"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2e",
-          "rotulo": "Inquietude motora extrema e sensação de 'motor ligado'",
-          "desc": "Frequentemente está 'a mil' ou age como se estivesse 'ligado por um motor' (incapaz de ficar parado ou desconfortável em jantares/reuniões).",
-          "pergunta": "As pessoas já disseram que você parece estar sempre acelerado, ativo demais ou inquieto como se estivesse 'ligado na tomada'?",
-          "exemplos_clinicos": [
-            "Não conseguir participar de longos jantares de negócios sem inquietude óbvia",
-            "Falar rápido demais de forma impaciente"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2f",
-          "rotulo": "Falar em excesso",
-          "desc": "Frequentemente fala em excesso.",
-          "pergunta": "Você percebe que costuma falar muito mais que as outras pessoas em interações sociais, monopolizando conversas?",
-          "exemplos_clinicos": [
-            "Dominar as conversas em grupos sociais",
-            "Monólogos frequentes sem pausa para ouvir o outro"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2g",
-          "rotulo": "Responder a perguntas antes que sejam concluídas",
-          "desc": "Frequentemente deixa escapar uma resposta antes que a pergunta tenha sido concluída ou completa frases dos outros.",
-          "pergunta": "Costuma responder às pessoas ou completar as frases delas antes mesmo que elas terminem de fazer a pergunta?",
-          "exemplos_clinicos": [
-            "Completar de forma impaciente as frases de interlocutores lentos",
-            "Responder antes do término da pergunta de um entrevistador"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2h",
-          "rotulo": "Dificuldade em esperar a sua vez",
-          "desc": "Frequentemente tem dificuldade para esperar a sua vez (ex: em filas, conversas).",
-          "pergunta": "Ficar em filas longas ou esperar sua vez no trânsito ou jogos causa um sofrimento ou impaciência extrema em você?",
-          "exemplos_clinicos": [
-            "Demonstrar irritação visível em filas de supermercado",
-            "Furar a vez em jogos infantis"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2i",
-          "rotulo": "Interromper ou intrometer-se nas atividades alheias",
-          "desc": "Frequentemente interrompe ou se intromete em conversas, jogos ou atividades de outros, podendo usar coisas dos outros sem pedir.",
-          "pergunta": "Você costuma se meter em conversas de colegas de trabalho ou jogos alheios de forma intrusiva?",
-          "exemplos_clinicos": [
-            "Criança que invade a brincadeira de outras sem ser convidada",
-            "Interromper a fala de colegas de escritório para colocar sua opinião"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": "Os sintomas devem persistir por pelo menos 6 meses de forma desadaptativa.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Erros por descuido ou falta de atenção a detalhes",
+                "desc": "Frequentemente deixa de prestar atenção a detalhes ou comete erros por descuido em atividades escolares, no trabalho ou durante outras atividades.",
+                "pergunta": "A pessoa costuma cometer erros bobos por distração no trabalho ou estudos, ou deixar passar detalhes importantes em tarefas longas?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Ignorar instruções em testes e errar perguntas fáceis",
+                    "Trabalho impreciso com dados incorretos por pura distração"
+                ]
+            },
+            {
+                "id": "A2",
+                "rotulo": "Dificuldade em manter a atenção",
+                "desc": "Frequentemente tem dificuldade em manter a atenção em tarefas ou atividades lúdicas (ex: palestras, conversas, leituras longas).",
+                "pergunta": "Fica muito difícil se concentrar em conversas demoradas, aulas ou leituras de textos extensos sem que sua mente divague?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Perder o foco rapidamente durante reuniões de 30 minutos",
+                    "Não conseguir concluir um livro simples por dispersão"
+                ]
+            },
+            {
+                "id": "A3",
+                "rotulo": "Parece não escutar quando se fala diretamente",
+                "desc": "Frequentemente parece não escutar quando alguém lhe dirige a palavra diretamente, com a mente parecendo estar em outro lugar.",
+                "pergunta": "As pessoas costumam reclamar que chamam a pessoa ou falam diretamente com a pessoa e a pessoa parece estar 'no mundo da lua'?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Não ouvir quando o cônjuge fala na mesma sala",
+                    "Necessitar que repitam instruções dadas individualmente"
+                ]
+            },
+            {
+                "id": "A4",
+                "rotulo": "Não segue instruções e não termina tarefas",
+                "desc": "Frequentemente não segue instruções até o fim e deixa de concluir tarefas escolares, tarefas domésticas ou deveres no trabalho.",
+                "pergunta": "A pessoa costuma iniciar projetos ou tarefas com muito entusiasmo, mas acaba deixando-os pela metade por cansaço ou perda de interesse?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Deixar relatórios profissionais sem a conclusão",
+                    "Não seguir receitas de cozinha até o fim, pulando etapas"
+                ]
+            },
+            {
+                "id": "A5",
+                "rotulo": "Dificuldade para organizar tarefas e atividades",
+                "desc": "Frequentemente tem dificuldade para organizar tarefas e atividades (ex: gerenciar materiais, organizar tempo, cumprir prazos).",
+                "pergunta": "Como é a sua capacidade de organizar sua rotina, gerenciar o tempo, prazos e manter seu espaço de trabalho arrumado?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Perder prazos profissionais frequentemente por desorganização",
+                    "Mesa de trabalho extremamente bagunçada de forma crônica"
+                ]
+            },
+            {
+                "id": "A6",
+                "rotulo": "Evita tarefas que exigem esforço mental prolongado",
+                "desc": "Frequentemente evita, antipatiza ou reluta em envolver-se em tarefas que exijam esforço mental prolongado.",
+                "pergunta": "A pessoa costuma procrastinar ou adiar tarefas longas que exigem muito raciocínio e atenção, como relatórios ou burocracias?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Adiar o preenchimento de impostos até o último dia",
+                    "Crianças que se recusam enfaticamente a fazer a lição de casa"
+                ]
+            },
+            {
+                "id": "A7",
+                "rotulo": "Perde coisas necessárias para tarefas ou atividades",
+                "desc": "Frequentemente perde objetos necessários para tarefas ou atividades (ex: materiais escolares, carteira, chaves, óculos, celulares).",
+                "pergunta": "A pessoa perde chaves, celular, documentos ou ferramentas de trabalho com uma frequência muito maior do que as outras pessoas?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Passar horas procurando chaves ou celular perdidos pela casa",
+                    "Esquecer objetos pessoais em táxis ou restaurantes"
+                ]
+            },
+            {
+                "id": "A8",
+                "rotulo": "Facilmente distraído por estímulos externos",
+                "desc": "Frequentemente é facilmente distraído por estímulos externos (inclusive pensamentos não relacionados em adultos).",
+                "pergunta": "Qualquer barulho na rua ou passagem de uma pessoa na sala de trabalho faz a pessoa perder a concentração no que estava fazendo?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Olhar pela janela a cada ruído",
+                    "Dispersar o raciocínio no meio de um relatório por causa de um email que chegou"
+                ]
+            },
+            {
+                "id": "A9",
+                "rotulo": "Esquecido em atividades diárias",
+                "desc": "Frequentemente é esquecido em atividades diárias (ex: tarefas domésticas, pagar contas, manter compromissos).",
+                "pergunta": "A pessoa costuma esquecer compromissos marcados, aniversários importantes ou o pagamento de contas recorrentes no dia a dia?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Pagar juros de contas por esquecimento",
+                    "Esquecer de levar o almoço para o trabalho"
+                ]
+            },
+            {
+                "id": "A10",
+                "rotulo": "Remexer-se na cadeira ou batucar mãos/pés",
+                "desc": "Frequentemente remexe as mãos ou os pés ou se contorce na cadeira.",
+                "pergunta": "A pessoa tem dificuldade em ficar sentado imóvel, movimentando constantemente as pernas ou batucando os dedos na mesa?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Balançar as pernas sem parar enquanto trabalha",
+                    "Batucar caneta na mesa de reuniões de forma irritante"
+                ]
+            },
+            {
+                "id": "A11",
+                "rotulo": "Levantar-se quando deveria permanecer sentado",
+                "desc": "Frequentemente levanta-se da cadeira em sala de aula ou em outras situações nas quais se espera que permaneça sentado.",
+                "pergunta": "A pessoa sente necessidade de se levantar ou caminhar em situações em que deveria ficar sentado, como em reuniões ou cinema?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Levantar da mesa de jantar antes de terminar a refeição",
+                    "Criança que circula pela sala de aula enquanto o professor explica"
+                ]
+            },
+            {
+                "id": "A12",
+                "rotulo": "Correr ou subir nas coisas em situações inapropriadas",
+                "desc": "Frequentemente corre ou sobe nas coisas em situações em que isso é inapropriado (em adolescentes/adultos pode se limitar a sensações subjetivas de inquietude).",
+                "pergunta": "A pessoa sente uma inquietude física interna constante, como se estivesse ligado na tomada, mesmo em momentos de descanso?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Criança subindo em estantes de lojas",
+                    "Adulto com sensação de agitação motora interna insuportável ao tentar relaxar"
+                ]
+            },
+            {
+                "id": "A13",
+                "rotulo": "Dificuldade em brincar ou fazer lazer em silêncio",
+                "desc": "Frequentemente tem dificuldade para brincar ou envolver-se em atividades de lazer de forma silenciosa.",
+                "pergunta": "Acha difícil aproveitar momentos de lazer de forma silenciosa e calma, preferindo atividades mais barulhentas ou ativas?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Falar alto demais em ambientes calmos",
+                    "Crianças que sempre brincam de forma muito barulhenta"
+                ]
+            },
+            {
+                "id": "A14",
+                "rotulo": "Inquietude motora extrema e sensação de 'motor ligado'",
+                "desc": "Frequentemente está 'a mil' ou age como se estivesse 'ligado por um motor' (incapaz de ficar parado ou desconfortável em jantares/reuniões).",
+                "pergunta": "As pessoas já disseram que a pessoa parece estar sempre acelerado, ativo demais ou inquieto como se estivesse 'ligado na tomada'?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Não conseguir participar de longos jantares de negócios sem inquietude óbvia",
+                    "Falar rápido demais de forma impaciente"
+                ]
+            },
+            {
+                "id": "A15",
+                "rotulo": "Falar em excesso",
+                "desc": "Frequentemente fala em excesso.",
+                "pergunta": "A pessoa percebe que costuma falar muito mais que as outras pessoas em interações sociais, monopolizando conversas?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Dominar as conversas em grupos sociais",
+                    "Monólogos frequentes sem pausa para ouvir o outro"
+                ]
+            },
+            {
+                "id": "A16",
+                "rotulo": "Responder a perguntas antes que sejam concluídas",
+                "desc": "Frequentemente deixa escapar uma resposta antes que a pergunta tenha sido concluída ou completa frases dos outros.",
+                "pergunta": "Costuma responder às pessoas ou completar as frases delas antes mesmo que elas terminem de fazer a pergunta?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Completar de forma impaciente as frases de interlocutores lentos",
+                    "Responder antes do término da pergunta de um entrevistador"
+                ]
+            },
+            {
+                "id": "A17",
+                "rotulo": "Dificuldade em esperar a sua vez",
+                "desc": "Frequentemente tem dificuldade para esperar a sua vez (ex: em filas, conversas).",
+                "pergunta": "Ficar em filas longas ou esperar sua vez no trânsito ou jogos causa um sofrimento ou impaciência extrema em a pessoa?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Demonstrar irritação visível em filas de supermercado",
+                    "Furar a vez em jogos infantis"
+                ]
+            },
+            {
+                "id": "A18",
+                "rotulo": "Interromper ou intrometer-se nas atividades alheias",
+                "desc": "Frequentemente interrompe ou se intromete em conversas, jogos ou atividades de outros, podendo usar coisas dos outros sem pedir.",
+                "pergunta": "A pessoa costuma se meter em conversas de colegas de trabalho ou jogos alheios de forma intrusiva?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Criança que invade a brincadeira de outras sem ser convidada",
+                    "Interromper a fala de colegas de escritório para colocar sua opinião"
+                ]
+            }
+        ],
+        "descricao_qualitativa": "A entrada contém dois grupos independentes de nove sintomas, cada um com limiar próprio.",
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "inicio_antes_12",
-      "letra": "B",
-      "rotulo": "Sintomas presentes antes dos 12 anos",
-      "tipo": "temporal_idade_inicio",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Baby",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Vários sintomas de desatenção ou hiperatividade-impulsividade estavam presentes antes dos 12 anos de idade.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "inicio_antes_12",
+        "letra": "B",
+        "rotulo": "Sintomas presentes antes dos 12 anos",
+        "tipo": "condicional_etario",
+        "ui_widget": "campo_idade",
+        "obrigatorio": true,
+        "icone": "Baby",
+        "descricao_completa": "Vários sintomas de desatenção ou hiperatividade-impulsividade estavam presentes antes dos 12 anos de idade.",
+        "nota": null
     },
     {
-      "id": "dois_ou_mais_ambientes",
-      "letra": "C",
-      "rotulo": "Sintomas em dois ou mais ambientes",
-      "tipo": "temporal_idade_inicio",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "MapPin",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Vários sintomas de desatenção ou hiperatividade-impulsividade estão presentes em dois ou mais ambientes (ex: em casa, na escola, no trabalho; com amigos ou parentes).",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "dois_ou_mais_ambientes",
+        "letra": "C",
+        "rotulo": "Sintomas em dois ou mais ambientes",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "ClipboardCheck",
+        "descricao_completa": "Vários sintomas de desatenção ou hiperatividade-impulsividade estão presentes em dois ou mais ambientes (ex: em casa, na escola, no trabalho; com amigos ou parentes).",
+        "nota": null
     },
     {
-      "id": "prejuizo_social_tdah",
-      "letra": "D",
-      "rotulo": "Interferência ou redução da qualidade do funcionamento",
-      "tipo": "temporal_idade_inicio",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "TrendingDown",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Há evidências claras de que os sintomas interferem no funcionamento social, acadêmico ou profissional ou reduzem sua qualidade.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "prejuizo_social_tdah",
+        "letra": "D",
+        "rotulo": "Interferência ou redução da qualidade do funcionamento",
+        "tipo": "prejuizo_funcional",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "TrendingDown",
+        "descricao_completa": "Há evidências claras de que os sintomas interferem no funcionamento social, acadêmico ou profissional ou reduzem sua qualidade.",
+        "nota": null
     },
     {
-      "id": "exclusao_psicotico",
-      "letra": "E",
-      "rotulo": "Sintomas não explicados por outro transtorno",
-      "tipo": "temporal_idade_inicio",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "esquizofrenia",
-        "transtorno_bipolar_tipo_1"
-      ],
-      "descricao_completa": "Os sintomas não ocorrem exclusivamente durante o curso de esquizofrenia ou outro transtorno psicótico e não são mais bem explicados por outro transtorno mental.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_psicotico",
+        "letra": "E",
+        "rotulo": "Sintomas não explicados por outro transtorno",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "Os sintomas não ocorrem exclusivamente durante o curso de esquizofrenia ou outro transtorno psicótico e não são mais bem explicados por outro transtorno mental.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "esquizofrenia",
+            "transtorno_ansiedade",
+            "transtorno_dissociativo",
+            "transtorno_personalidade",
+            "transtorno_intoxicacao_substancia",
+            "transtorno_abstinencia_substancia"
+        ]
     }
-  ],
+],
   "subtipos": {
     "presente": true,
     "nome": "Apresentação Clínica",
@@ -372,28 +348,16 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
         "sintomas_caracteristicos": []
       }
     ],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "em_remissao_parcial",
-      "nome": "Em remissão parcial",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "em_remissao_parcial",
+        "nome": "Em remissão parcial",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -423,13 +387,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "academico",
@@ -495,27 +453,71 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
     "proporcao_sexo": "Mais comum em indivíduos do sexo masculino, com uma proporção de cerca de 2:1 em crianças e 1,6:1 em adultos.",
     "variacoes_culturais": null,
     "notas": "Prevalência constante entre diferentes países e culturas se aplicados os mesmos critérios diagnósticos estritos.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [
-        "prevalencia.variacoes_culturais"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Infância (antes dos 12 anos)",
     "trajetoria": "A hiperatividade física costuma declinar com a idade cronológica, transformando-se em inquietude subjetiva interna na adolescência e idade adulta, enquanto os sintomas de desatenção costumam persistir de forma crônica.",
     "prognostico": "Elevado risco de abandono acadêmico, instabilidade profissional e dificuldades de relacionamento se não tratado precocemente.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_clusters_simetricos",
+        "criteria": [
+          "A. Padrao persistente de desatencao e/ou hiperatividade-impulsividade que interfere no funcionome_completonto e desenvolvimento:",
+          "B. Varios sintomas de desatencao ou hiperatividade-impulsividade presentes antes dos 12 anos de idade.",
+          "C. Varios sintomas presentes em DOIS ou mais ambientes (casa, escola, trabalho, com amigos/parentes).",
+          "D. Evidencias claras de que os sintomas interferem no funcionome_completonto social, academico ou profissional, ou reduzem qualidade de vida.",
+          "E. Sintomas nao ocorrem exclusivamente durante esquizofrenia ou outro transtorno psicotico, e nao sao melhor explicados por outro transtorno mental."
+        ],
+        "diagnostic_rule": "(A1 com >=6 sintomas [>=5 para 17+ anos] OU A2 com >=6 sintomas [>=5 para 17+ anos]) + B + C + D + E. Para apresentacao combinada, A1 E A2 ambos preenchidos. Sintomas em mais de 1 ambiente.",
+        "clusters": [],
+        "duration": null,
+        "age_onset": "** Varios sintomas antes dos 12 anos",
+        "functional_impairment": "- Interferencia no funcionome_completonto social, academico ou profissional, ou reducao da qualidade de vida",
+        "exclusions": [],
+        "specifiers": [
+          "**Em remissao parcial:** Critérios preenchidos no passado, nem todos nos ultimos 6 meses, sintomas ainda causam prejuizo"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "Ha dificuldade em manter atencao em tarefas? Comete erros por descuido?",
+          "Esquece de fazer tarefas, perde objetos, e distraido facilmente?",
+          "Tem dificuldade para organizar tarefas e atividades?",
+          "Evita tarefas que exigem esforco mental prolongado?",
+          "E inquieto, nao consegue ficar parado, remexe maos/pes?",
+          "Fala demais, interrompe, tem dificuldade para esperar a vez?",
+          "Age impulsivamente (intromete-se, responde antes da pergunta acabar)?",
+          "Esses sintomas comecaram antes dos 12 anos?",
+          "Estao presentes em pelo menos 2 ambientes (casa, escola, trabalho)?",
+          "Causam prejuizo no funcionome_completonto atual?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### Transtorno de Deficit de Atencao/Hiperatividade",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "01_transtornos_neurodesenvolvimento.md",
     "fonte_inventario_md": "inventario/01_inventario.md",
@@ -526,74 +528,14 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
     "revisao_humana_necessaria": false,
     "notas_agente_globais": null
   },
-  "id": "transtorno_deficit_atencao_hiperatividade",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_clusters_simetricos",
-    "criteria": [
-      "A. Padrao persistente de desatencao e/ou hiperatividade-impulsividade que interfere no funcionome_completonto e desenvolvimento:",
-      "B. Varios sintomas de desatencao ou hiperatividade-impulsividade presentes antes dos 12 anos de idade.",
-      "C. Varios sintomas presentes em DOIS ou mais ambientes (casa, escola, trabalho, com amigos/parentes).",
-      "D. Evidencias claras de que os sintomas interferem no funcionome_completonto social, academico ou profissional, ou reduzem qualidade de vida.",
-      "E. Sintomas nao ocorrem exclusivamente durante esquizofrenia ou outro transtorno psicotico, e nao sao melhor explicados por outro transtorno mental."
-    ],
-    "diagnostic_rule": "(A1 com >=6 sintomas [>=5 para 17+ anos] OU A2 com >=6 sintomas [>=5 para 17+ anos]) + B + C + D + E. Para apresentacao combinada, A1 E A2 ambos preenchidos. Sintomas em mais de 1 ambiente.",
-    "clusters": [],
-    "duration": null,
-    "age_onset": "** Varios sintomas antes dos 12 anos",
-    "functional_impairment": "- Interferencia no funcionome_completonto social, academico ou profissional, ou reducao da qualidade de vida",
-    "exclusions": [],
-    "specifiers": [
-      "**Em remissao parcial:** Critérios preenchidos no passado, nem todos nos ultimos 6 meses, sintomas ainda causam prejuizo"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "Ha dificuldade em manter atencao em tarefas? Comete erros por descuido?",
-      "Esquece de fazer tarefas, perde objetos, e distraido facilmente?",
-      "Tem dificuldade para organizar tarefas e atividades?",
-      "Evita tarefas que exigem esforco mental prolongado?",
-      "E inquieto, nao consegue ficar parado, remexe maos/pes?",
-      "Fala demais, interrompe, tem dificuldade para esperar a vez?",
-      "Age impulsivamente (intromete-se, responde antes da pergunta acabar)?",
-      "Esses sintomas comecaram antes dos 12 anos?",
-      "Estao presentes em pelo menos 2 ambientes (casa, escola, trabalho)?",
-      "Causam prejuizo no funcionome_completonto atual?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### Transtorno de Deficit de Atencao/Hiperatividade",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "sigla": "TDAH",
   "grupo": "Transtorno de Déficit de Atenção/Hiperatividade",
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Código DSM-5 / CID-10:** 314.01 (F90.2) Combinado / 314.00 (F90.0) Pred. desatento / 314.01 (F90.1) Pred. hiperativo-impulsivo",
     "estrutura_efetiva": "- **Estrutura efetiva:** **A1** polietético (limiar: 6/9 para crianças até 16a, 5/9 para adultos ≥17a em desatenção) + **A2** polietético (mesmo limiar etário para hiperatividade/impulsividade) + **B** início <12 anos + **C** presente em ≥2 contextos + **D** prejuízo funcional + **E** exclusão de outras causas.",
     "notas_clinicas": "- **Notas:** 18 sintomas totais (9+9). Remissão parcial possível. Prevalência ~5% crianças, ~2,5% adultos."
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

@@ -55,10 +55,13 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
   `ancora_obrigatoria` é `{descricao, ids_obrigatorios, n_minimo}` ou `null`.
 - Critério condicional: shape uniforme `{id, letra, rotulo, tipo, ui_widget,
   obrigatorio, icone, ddx_sugeridos, descricao_completa, metadados}`.
-- **Sanitização 2026-07:** códigos só em `meta.codigo` (as chaves raiz
-  `codigo_*`/`faixa_etaria_alvo` foram apagadas); `rendering.severity` e
-  `rendering.subtypes_presentations` aposentados; subtipos canônicos em
-  `subtipos.subtipos[]`.
+- **Sanitização 2026-07 (2 ondas):** raiz limpa — códigos só em `meta.codigo`;
+  identificação só em `meta`; sem `metadados` de pipeline aninhados (573
+  blocos removidos, conteúdo vivo resgatado em `RESCUE_METADADOS.md`);
+  `rendering.severity`/`subtypes_presentations` e `hierarquia_exclusao`
+  (fundida na `hierarquia` canônica) aposentados; proveniência consolidada em
+  `_pipeline` (rendering + enrichment_status) e `metadados_globais`.
+  Hierarquia diagnóstica exibida no Guia Clínico quando tem conteúdo.
 - **Gravidade — fonte da verdade: `gravidade_dsm5tr_58_transtornos.md`.**
   O campo `gravidade.classificacao_dsm` discrimina 5 classes
   (`formal_categorica`, `formal_dimensional`, `formal_contextual`,

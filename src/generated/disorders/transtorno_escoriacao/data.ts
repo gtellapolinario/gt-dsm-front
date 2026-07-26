@@ -1,7 +1,7 @@
 import { TranstornoEscoriacaoSchema } from "./schema";
 
 export const data = TranstornoEscoriacaoSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_escoriacao",
     "nome_completo": "Transtorno de Escoriação (Skin-Picking)",
@@ -24,93 +24,94 @@ export const data = TranstornoEscoriacaoSchema.parse({
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
-      "id": "A_B",
-      "nome": "Beliscar Pele Recorrente com Lesões e Tentativas Fracassadas",
-      "tipo": "monothetic_obrigatorio",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Beliscar a pele de forma recorrente causando lesões",
-          "desc": "Beliscar ou escoriar a pele de forma recorrente, resultando em lesões cutâneas.",
-          "pergunta": "Você belisca repetidamente a pele (rosto, mãos, braços) causando feridas ou cicatrizes?",
-          "exemplos_clinicos": [
-            "Feridas abertas no rosto",
-            "Cicatrizes nos braços"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "B1",
-          "rotulo": "Tentativas repetidas de parar o comportamento",
-          "desc": "Tentativas repetidas de parar ou diminuir o comportamento de beliscar a pele.",
-          "pergunta": "Você já tentou parar de beliscar a pele sem conseguir?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    }
-  ],
-  "criterios_condicionais": [
-    {
-      "id": "sofrimento_funcional",
-      "letra": "C",
-      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
-      "tipo": "prejuizo_funcional",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Frown",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo funcional.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "A",
+        "nome": "Beliscar a pele de forma recorrente",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Beliscar a pele de forma recorrente causando lesões",
+                "desc": "Beliscar ou escoriar a pele de forma recorrente, resultando em lesões cutâneas.",
+                "pergunta": "A pessoa belisca repetidamente a pele (rosto, mãos, braços) causando feridas ou cicatrizes?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Feridas abertas no rosto",
+                    "Cicatrizes nos braços"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     },
     {
-      "id": "exclusao_medica_outros",
-      "letra": "D",
-      "rotulo": "Não atribuível a substância, CMG ou outro transtorno",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "scabiose",
-        "psoriase",
-        "toc"
-      ],
-      "descricao_completa": "Não atribuível a efeitos de substância ou condição médica dermatológica; não mais bem explicado por outro transtorno mental.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "B",
+        "nome": "Tentativas repetidas de reduzir ou parar",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "B1",
+                "rotulo": "Tentativas repetidas de parar o comportamento",
+                "desc": "Tentativas repetidas de parar ou diminuir o comportamento de beliscar a pele.",
+                "pergunta": "A pessoa já tentou parar de beliscar a pele sem conseguir?",
+                "faixa_aplicavel": null,
+                "nota": null
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
+  "criterios_condicionais": [
+    {
+        "id": "sofrimento_funcional",
+        "letra": "C",
+        "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+        "tipo": "prejuizo_funcional",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Frown",
+        "descricao_completa": "Causa sofrimento clinicamente significativo ou prejuízo funcional.",
+        "nota": null
+    },
+    {
+        "id": "exclusao_medica_outros",
+        "letra": "D",
+        "rotulo": "Não atribuível a substância, CMG ou outro transtorno",
+        "tipo": "exclusao_substancia_medica",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "A condição não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica.",
+        "nota": null
+    },
+    {
+        "id": "exclusao_outro_transtorno_mental",
+        "letra": "E",
+        "rotulo": "Não é mais bem explicada por outro transtorno mental",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "ddx_sugeridos": [
+            "transtorno_dismorfico_corporal"
+        ],
+        "descricao_completa": "A condição não é mais bem explicada pelos sintomas de outro transtorno mental.",
+        "nota": null
+    }
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
@@ -122,13 +123,7 @@ export const data = TranstornoEscoriacaoSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -168,27 +163,59 @@ export const data = TranstornoEscoriacaoSchema.parse({
     "proporcao_sexo": "Mais comum em mulheres (~75%)",
     "variacoes_culturais": null,
     "notas": null,
-    "metadados": {
-      "completo": false,
-      "lacunas": [
-        "variacao_cultural"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Bimodal: ~10 anos e início na adolescência/adulto jovem",
     "trajetoria": "Crônico; pode flutuar com estresse.",
     "prognostico": "Habit Reversal Training eficaz; N-acetilcisteína como adjuvante.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [],
+        "diagnostic_rule": "Criterios descritivos para TRANSTORNO DE ESCORIACAO / SKIN-PICKING conforme DSM-5",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "Voce belisca sua pele de forma recorrente, deixando marcas ou lesoes?",
+          "Quais areas do corpo voce belisca mais?",
+          "Voce ja tentou parar ou reduzir e nao conseguiu?",
+          "Voce belisca por ansiedade, tedio, ou sem perceber?",
+          "Voce belisca para melhorar algum defeito da pele?",
+          "Ja teve infeccoes ou cicatrizes por causa do beliscar?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO DE ESCORIACAO / SKIN-PICKING",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "06_transtorno_obsessivo_compulsivo_transtornos_relacionados.md",
     "fonte_inventario_md": null,
@@ -201,60 +228,13 @@ export const data = TranstornoEscoriacaoSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_escoriacao",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_monocluster",
-    "criteria": [],
-    "diagnostic_rule": "Criterios descritivos para TRANSTORNO DE ESCORIACAO / SKIN-PICKING conforme DSM-5",
-    "clusters": [],
-    "duration": null,
-    "age_onset": null,
-    "functional_impairment": null,
-    "exclusions": [],
-    "specifiers": [],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "Voce belisca sua pele de forma recorrente, deixando marcas ou lesoes?",
-      "Quais areas do corpo voce belisca mais?",
-      "Voce ja tentou parar ou reduzir e nao conseguiu?",
-      "Voce belisca por ansiedade, tedio, ou sem perceber?",
-      "Voce belisca para melhorar algum defeito da pele?",
-      "Ja teve infeccoes ou cicatrizes por causa do beliscar?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### TRANSTORNO DE ESCORIACAO / SKIN-PICKING",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 698.4 (L98.1)",
     "estrutura_efetiva": "- **Estrutura efetiva:**",
     "notas_clinicas": "- **Notas:**"
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

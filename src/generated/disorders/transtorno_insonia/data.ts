@@ -1,7 +1,7 @@
 import { TranstornoInsoniaSchema } from "./schema";
 
 export const data = TranstornoInsoniaSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_insonia",
     "nome_completo": "Transtorno de Insônia",
@@ -21,273 +21,180 @@ export const data = TranstornoInsoniaSchema.parse({
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Queixas de Insatisfação com Quantidade ou Qualidade do Sono",
-      "tipo": "polythetic_com_limiar",
-      "limiar": {
-        "adulto": 1,
-        "pediatria": 1
-      },
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Dificuldade para iniciar o sono",
-          "desc": "Dificuldade predominante para conciliar o sono na hora de deitar. Em crianças, pode manifestar-se como dificuldade para iniciar o sono sem intervenção de cuidadores.",
-          "pergunta": "Você tem dificuldade para pegar no sono quando vai deitar?",
-          "exemplos_clinicos": [
-            "Latência do sono superior a 20–30 minutos"
-          ],
-          "faixa_aplicavel": null
+        "id": "A",
+        "nome": "Queixas de Insatisfação com Quantidade ou Qualidade do Sono",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 1,
+            "pediatria": 1
         },
-        {
-          "id": "A2",
-          "rotulo": "Dificuldade para manter o sono",
-          "desc": "Dificuldade para manter o sono, com despertares frequentes ou problemas para retornar ao sono após cada despertar. Em crianças, pode manifestar-se como dificuldade para retornar ao sono sem intervenção de cuidadores.",
-          "pergunta": "Você acorda várias vezes durante a noite ou tem dificuldade de voltar a dormir?",
-          "exemplos_clinicos": [
-            "Permanecer desperto mais de 20–30 minutos após despertar"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Despertar antes do horário habitual",
-          "desc": "Despertar antes do horário habitual com incapacidade de retornar ao sono.",
-          "pergunta": "Você acorda muito mais cedo do que gostaria e não consegue voltar a dormir?",
-          "exemplos_clinicos": [
-            "Despertar pelo menos 30 minutos antes do programado"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Dificuldade para iniciar o sono",
+                "desc": "Dificuldade predominante para conciliar o sono na hora de deitar. Em crianças, pode manifestar-se como dificuldade para iniciar o sono sem intervenção de cuidadores.",
+                "pergunta": "A pessoa tem dificuldade para pegar no sono quando vai deitar?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Latência do sono superior a 20–30 minutos"
+                ]
+            },
+            {
+                "id": "A2",
+                "rotulo": "Dificuldade para manter o sono",
+                "desc": "Dificuldade para manter o sono, com despertares frequentes ou problemas para retornar ao sono após cada despertar. Em crianças, pode manifestar-se como dificuldade para retornar ao sono sem intervenção de cuidadores.",
+                "pergunta": "A pessoa acorda várias vezes durante a noite ou tem dificuldade de voltar a dormir?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Permanecer desperto mais de 20–30 minutos após despertar"
+                ]
+            },
+            {
+                "id": "A3",
+                "rotulo": "Despertar antes do horário habitual",
+                "desc": "Despertar antes do horário habitual com incapacidade de retornar ao sono.",
+                "pergunta": "A pessoa acorda muito mais cedo do que gostaria e não consegue voltar a dormir?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Despertar pelo menos 30 minutos antes do programado"
+                ]
+            }
+        ],
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "prejuizo_funcional",
-      "letra": "B",
-      "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
-      "tipo": "prejuizo_funcional",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Frown",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A perturbação do sono causa sofrimento clinicamente significativo e prejuízo no funcionamento social, profissional, educacional, acadêmico, comportamental ou em outras áreas importantes.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "prejuizo_funcional",
+        "letra": "B",
+        "rotulo": "Sofrimento ou prejuízo funcional clinicamente significativo",
+        "tipo": "prejuizo_funcional",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Frown",
+        "descricao_completa": "A perturbação do sono causa sofrimento clinicamente significativo e prejuízo no funcionamento social, profissional, educacional, acadêmico, comportamental ou em outras áreas importantes.",
+        "nota": null
     },
     {
-      "id": "frequencia_3x_semana",
-      "letra": "C",
-      "rotulo": "Dificuldades pelo menos três noites por semana",
-      "tipo": "temporal_duracao_minima",
-      "ui_widget": "campo_duracao_meses",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "As dificuldades relacionadas ao sono ocorrem pelo menos três noites por semana.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "frequencia_3x_semana",
+        "letra": "C",
+        "rotulo": "Dificuldades pelo menos três noites por semana",
+        "tipo": "temporal_frequencia",
+        "ui_widget": "campo_frequencia_semanal",
+        "obrigatorio": true,
+        "icone": "Repeat",
+        "descricao_completa": "As dificuldades relacionadas ao sono ocorrem pelo menos três noites por semana.",
+        "nota": null
     },
     {
-      "id": "duracao_3meses",
-      "letra": "D",
-      "rotulo": "Duração mínima de três meses",
-      "tipo": "temporal_duracao_minima",
-      "ui_widget": "campo_duracao_meses",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "As dificuldades relacionadas ao sono permanecem durante pelo menos três meses.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "duracao_3meses",
+        "letra": "D",
+        "rotulo": "Duração mínima de três meses",
+        "tipo": "temporal_duracao_minima",
+        "ui_widget": "campo_duracao_meses",
+        "obrigatorio": true,
+        "icone": "Calendar",
+        "descricao_completa": "As dificuldades relacionadas ao sono permanecem durante pelo menos três meses.",
+        "nota": null
     },
     {
-      "id": "oportunidades_adequadas",
-      "letra": "E",
-      "rotulo": "Ocorrem a despeito de oportunidades adequadas para dormir",
-      "tipo": "qualitativo_descritivo",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "As dificuldades relacionadas ao sono ocorrem a despeito de oportunidades adequadas para dormir.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "oportunidades_adequadas",
+        "letra": "E",
+        "rotulo": "Ocorrem a despeito de oportunidades adequadas para dormir",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "ClipboardCheck",
+        "descricao_completa": "As dificuldades relacionadas ao sono ocorrem a despeito de oportunidades adequadas para dormir.",
+        "nota": null
     },
     {
-      "id": "exclusao_outro_sono",
-      "letra": "F",
-      "rotulo": "Não explicada por outro transtorno do sono-vigília",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "select_multiplos_ddx",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [
-        "narcolepsia",
-        "apneia_sono",
-        "ritmo_circadiano",
-        "parassonia"
-      ],
-      "descricao_completa": "A insônia não é mais bem explicada ou não ocorre exclusivamente durante o curso de outro transtorno do sono-vigília (narcolepsia, transtorno do sono relacionado à respiração, transtorno do sono-vigília do ritmo circadiano, parassonia).",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_outro_sono",
+        "letra": "F",
+        "rotulo": "Não explicada por outro transtorno do sono-vigília",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "A insônia não é mais bem explicada ou não ocorre exclusivamente durante o curso de outro transtorno do sono-vigília (narcolepsia, transtorno do sono relacionado à respiração, transtorno do sono-vigília do ritmo circadiano, parassonia).",
+        "nota": null,
+        "ddx_sugeridos": [
+            "narcolepsia",
+            "apneia_sono",
+            "ritmo_circadiano",
+            "parassonia"
+        ]
     },
     {
-      "id": "exclusao_substancia",
-      "letra": "G",
-      "rotulo": "Não atribuível aos efeitos fisiológicos de substância",
-      "tipo": "exclusao_substancia_medica",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A insônia não é atribuída aos efeitos fisiológicos de alguma substância (drogas ilícitas, medicamentos).",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_substancia",
+        "letra": "G",
+        "rotulo": "Não atribuível aos efeitos fisiológicos de substância",
+        "tipo": "exclusao_substancia_medica",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "A insônia não é atribuída aos efeitos fisiológicos de alguma substância (drogas ilícitas, medicamentos).",
+        "nota": null
     },
     {
-      "id": "exclusao_comorbidade",
-      "letra": "H",
-      "rotulo": "Coexistência de transtornos mentais ou médicos não explica a queixa predominante",
-      "tipo": "qualitativo_descritivo",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Check",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A coexistência de transtornos mentais e de condições médicas não explica adequadamente a queixa predominante de insônia.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_comorbidade",
+        "letra": "H",
+        "rotulo": "Condições coexistentes não explicam a queixa predominante",
+        "tipo": "condicional_comorbidade",
+        "ui_widget": "toggle_condicional",
+        "obrigatorio": true,
+        "icone": "GitBranch",
+        "descricao_completa": "A coexistência de transtornos mentais e de condições médicas não explica adequadamente a queixa predominante de insônia.",
+        "nota": null
     }
-  ],
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "com_comorbidade_mental",
-      "nome": "Com comorbidade mental",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "com_comorbidade_mental",
+        "nome": "Com comorbidade mental",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     },
     {
-      "id": "com_comorbidade_medica",
-      "nome": "Com outra comorbidade médica",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "com_comorbidade_medica",
+        "nome": "Com outra comorbidade médica",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     },
     {
-      "id": "com_outro_transtorno_sono",
-      "nome": "Com outro transtorno do sono",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "com_outro_transtorno_sono",
+        "nome": "Com outro transtorno do sono",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     },
     {
-      "id": "curso_episodico",
-      "nome": "Episódico",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Sintomas duram pelo menos um mês, porém menos que três meses.",
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "curso_persistente",
-      "nome": "Persistente",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Sintomas duram três meses ou mais.",
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "curso_recorrente",
-      "nome": "Recorrente",
-      "tipo": "booleano",
-      "ortogonal": false,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Dois ou mais episódios dentro do espaço de um ano.",
-        "fonte_passada_1": true
-      }
+        "id": "curso",
+        "nome": "Curso",
+        "tipo": "enum",
+        "ortogonal": false,
+        "opcoes": [
+            "Episódico",
+            "Persistente",
+            "Recorrente"
+        ],
+        "regra_criterial": "Episódico: Sintomas duram pelo menos um mês, porém menos que três meses.; Persistente: Sintomas duram três meses ou mais.; Recorrente: Dois ou mais episódios dentro do espaço de um ano."
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -298,13 +205,7 @@ export const data = TranstornoInsoniaSchema.parse({
     "exclui_se_diagnosticado": [],
     "exclui_diagnostico_de": [],
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "sono",
@@ -408,27 +309,85 @@ export const data = TranstornoInsoniaSchema.parse({
     "proporcao_sexo": "1,44:1 F:M",
     "variacoes_culturais": null,
     "notas": "Mais prevalente em mulheres e idosos.",
-    "metadados": {
-      "completo": false,
-      "lacunas": [
-        "variacao_cultural"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Adultos jovens; também menopausa e idade avançada",
     "trajetoria": "Pode ser ocasional, persistente ou recorrente. Taxas de cronicidade 45–75% em 1–7 anos.",
     "prognostico": "Melhor com terapia cognitivo-comportamental do sono (TCC-I).",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "monothetic_tripartite",
+        "criteria": [
+          "A. Queixa de insatisfacao com quantidade ou qualidade do sono (pelo menos 1: dificuldade iniciar sono, manter sono, ou despertar precoce)",
+          "B. Sofrimento clinicamente significativo ou prejuizo funcional",
+          "C. Ocorre pelo menos 3 noites por semana",
+          "D. Persiste durante pelo menos 3 meses",
+          "E. Ocorre a despeito de oportunidades adequadas para dormir",
+          "F. NAO e melhor explicada por narcolepsia, transtorno do sono relacionado a respiracao, transtorno do ritmo circadiano ou parassonia",
+          "G. NAO e atribuida a substancia",
+          "H. Coexistencia de transtornos mentais/condicoes medicas NAO explica adequadamente a queixa predominante"
+        ],
+        "diagnostic_rule": "A AND B AND C(≥3noites/semana) AND D(≥3meses) AND E AND F AND G AND H",
+        "clusters": [],
+        "duration": "≥3 meses",
+        "age_onset": "Qualquer idade; mais comum em adultos jovens",
+        "functional_impairment": "Fadiga diurna, prejuizos cognitivos, perturbacoes de humor, risco de acidentes",
+        "exclusions": [
+          "Narcolepsia",
+          "Apneia do sono",
+          "Ritmo circadiano",
+          "Parassonias",
+          "Substancia"
+        ],
+        "specifiers": [
+          "Com comorbidade mental",
+          "Com comorbidade medica",
+          "Com outro transtorno do sono",
+          "Episodico",
+          "Persistente",
+          "Recorrente"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [
+          "Variacao normal de sono",
+          "Privacao de sono",
+          "Ritmo circadiano",
+          "SPI",
+          "Apneia",
+          "Narcolepsia"
+        ],
+        "key_questions": [
+          "Com que frequencia tem dificuldade para pegar no sono?",
+          "Acorda varias vezes?",
+          "Ha quanto tempo?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "1. TRANSTORNO DE INSONIA",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "12_transtornos_sono_vigilia.md",
     "fonte_inventario_md": null,
@@ -441,86 +400,13 @@ export const data = TranstornoInsoniaSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_insonia",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "monothetic_tripartite",
-    "criteria": [
-      "A. Queixa de insatisfacao com quantidade ou qualidade do sono (pelo menos 1: dificuldade iniciar sono, manter sono, ou despertar precoce)",
-      "B. Sofrimento clinicamente significativo ou prejuizo funcional",
-      "C. Ocorre pelo menos 3 noites por semana",
-      "D. Persiste durante pelo menos 3 meses",
-      "E. Ocorre a despeito de oportunidades adequadas para dormir",
-      "F. NAO e melhor explicada por narcolepsia, transtorno do sono relacionado a respiracao, transtorno do ritmo circadiano ou parassonia",
-      "G. NAO e atribuida a substancia",
-      "H. Coexistencia de transtornos mentais/condicoes medicas NAO explica adequadamente a queixa predominante"
-    ],
-    "diagnostic_rule": "A AND B AND C(≥3noites/semana) AND D(≥3meses) AND E AND F AND G AND H",
-    "clusters": [],
-    "duration": "≥3 meses",
-    "age_onset": "Qualquer idade; mais comum em adultos jovens",
-    "functional_impairment": "Fadiga diurna, prejuizos cognitivos, perturbacoes de humor, risco de acidentes",
-    "exclusions": [
-      "Narcolepsia",
-      "Apneia do sono",
-      "Ritmo circadiano",
-      "Parassonias",
-      "Substancia"
-    ],
-    "specifiers": [
-      "Com comorbidade mental",
-      "Com comorbidade medica",
-      "Com outro transtorno do sono",
-      "Episodico",
-      "Persistente",
-      "Recorrente"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [
-      "Variacao normal de sono",
-      "Privacao de sono",
-      "Ritmo circadiano",
-      "SPI",
-      "Apneia",
-      "Narcolepsia"
-    ],
-    "key_questions": [
-      "Com que frequencia tem dificuldade para pegar no sono?",
-      "Acorda varias vezes?",
-      "Ha quanto tempo?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "1. TRANSTORNO DE INSONIA",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 307.42 (F51.01)",
     "estrutura_efetiva": "- **Estrutura efetiva:**",
     "notas_clinicas": "- **Notas:**"
   },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": false,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "missing",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

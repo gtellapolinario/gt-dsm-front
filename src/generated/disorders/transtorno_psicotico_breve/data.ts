@@ -1,7 +1,7 @@
 import { TranstornoPsicoticoBreveSchema } from "./schema";
 
 export const data = TranstornoPsicoticoBreveSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_psicotico_breve",
     "nome_completo": "Transtorno Psicótico Breve",
@@ -21,180 +21,136 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Sintomas Psicóticos Ativos",
-      "tipo": "polythetic_com_ancora",
-      "limiar": {
-        "adulto": 1,
-        "pediatria": null
-      },
-      "ancora_obrigatoria": {
-        "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
-        "ids_obrigatorios": [
-          "A1",
-          "A2",
-          "A3"
+        "id": "A",
+        "nome": "Sintomas Psicóticos Ativos",
+        "tipo": "polythetic_com_ancora",
+        "limiar": {
+            "adulto": 1,
+            "pediatria": 1
+        },
+        "ancora_obrigatoria": {
+            "descricao": "Pelo menos um dos sintomas no cluster deve ser Delírios (A1), Alucinações (A2) ou Discurso Desorganizado (A3).",
+            "ids_obrigatorios": [
+                "A1",
+                "A2",
+                "A3"
+            ],
+            "n_minimo": 1
+        },
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Delírios",
+                "desc": "Crenças fixas que não são passíveis de mudança à luz de evidências conflitantes.",
+                "pergunta": "A pessoa vivenciou ideias ou crenças intensas e irreais que surgiram de forma repentina?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Crenças persecutórias de que está sendo observado ou perseguido repentinamente"
+                ]
+            },
+            {
+                "id": "A2",
+                "rotulo": "Alucinações",
+                "desc": "Experiências semelhantes a percepções que ocorrem sem um estímulo externo.",
+                "pergunta": "A pessoa ouviu vozes ou viu coisas que outras pessoas ao seu redor disseram não ouvir ou ver?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Ouvir vozes comentando sobre as ações do paciente de forma nítida"
+                ]
+            },
+            {
+                "id": "A3",
+                "rotulo": "Discurso desorganizado",
+                "desc": "Desorganização do pensamento expressa pela fala de forma incompreensível ou descarrilada.",
+                "pergunta": "As pessoas disseram que sua conversa estava confusa, sem nexo ou difícil de acompanhar?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Descarrilamento frequente da conversa ou incoerência marcante"
+                ]
+            },
+            {
+                "id": "A4",
+                "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
+                "desc": "Inquietação física extrema, comportamento tolo e infantil, ou rigidez e estupor catatônico.",
+                "pergunta": "A pessoa ou terceiros perceberam uma agitação incomum ou atitudes bizarras inexplicáveis?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Agitação sem finalidade ou adoção de posturas corporais rígidas e estranhas"
+                ]
+            }
         ],
-        "n_minimo": 1
-      },
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Delírios",
-          "desc": "Crenças fixas que não são passíveis de mudança à luz de evidências conflitantes.",
-          "pergunta": "Você vivenciou ideias ou crenças intensas e irreais que surgiram de forma repentina?",
-          "exemplos_clinicos": [
-            "Crenças persecutórias de que está sendo observado ou perseguido repentinamente"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2",
-          "rotulo": "Alucinações",
-          "desc": "Experiências semelhantes a percepções que ocorrem sem um estímulo externo.",
-          "pergunta": "Você ouviu vozes ou viu coisas que outras pessoas ao seu redor disseram não ouvir ou ver?",
-          "exemplos_clinicos": [
-            "Ouvir vozes comentando sobre as ações do paciente de forma nítida"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Discurso desorganizado",
-          "desc": "Desorganização do pensamento expressa pela fala de forma incompreensível ou descarrilada.",
-          "pergunta": "As pessoas disseram que sua conversa estava confusa, sem nexo ou difícil de acompanhar?",
-          "exemplos_clinicos": [
-            "Descarrilamento frequente da conversa ou incoerência marcante"
-          ],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A4",
-          "rotulo": "Comportamento grosseiramente desorganizado ou catatônico",
-          "desc": "Inquietação física extrema, comportamento tolo e infantil, ou rigidez e estupor catatônico.",
-          "pergunta": "Você ou terceiros perceberam uma agitação incomum ou atitudes bizarras inexplicáveis?",
-          "exemplos_clinicos": [
-            "Agitação sem finalidade ou adoção de posturas corporais rígidas e estranhas"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": "Presença de pelo menos um dos sintomas, com pelo menos um sendo obrigatoriamente A1, A2 ou A3.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "descricao_qualitativa": "Presença de pelo menos um dos sintomas, com pelo menos um sendo obrigatoriamente A1, A2 ou A3.",
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "duracao_breve",
-      "letra": "B",
-      "rotulo": "Duração entre 1 dia e 1 mês",
-      "tipo": "temporal_duracao_janela",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "CalendarDays",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A duração de um episódio da perturbação é de pelo menos um dia, mas menos de um mês, com retorno completo ao nível de funcionamento pré-mórbido.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "duracao_breve",
+        "letra": "B",
+        "rotulo": "Duração entre 1 dia e 1 mês",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "ClipboardCheck",
+        "descricao_completa": "A duração de um episódio da perturbação é de pelo menos um dia, mas menos de um mês, com retorno completo ao nível de funcionamento pré-mórbido.",
+        "nota": null
     },
     {
-      "id": "exclusao_outros_transtornos",
-      "letra": "C",
-      "rotulo": "Não explicado por humor com psicose ou esquizofrenia",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "select_multiplos_ddx",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "esquizofrenia",
-        "transtorno_esquizoafetivo",
-        "transtorno_bipolar",
-        "transtorno_depressivo_maior"
-      ],
-      "descricao_completa": "A perturbação não é mais bem explicada por transtorno depressivo ou bipolar com características psicóticas, por esquizofrenia ou catatonia, nem é atribuível a substância ou condição médica.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_outros_transtornos",
+        "letra": "C",
+        "rotulo": "Não explicado por humor com psicose ou esquizofrenia",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "A perturbação não é mais bem explicada por transtorno depressivo ou bipolar com características psicóticas, por esquizofrenia ou catatonia, nem é atribuível a substância ou condição médica.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "esquizofrenia",
+            "transtorno_esquizoafetivo",
+            "transtorno_bipolar",
+            "transtorno_depressivo_maior"
+        ]
     }
-  ],
+],
   "subtipos": {
     "presente": false,
     "nome": null,
     "mutuamente_exclusivos": true,
     "subtipos": [],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "com_estressores_evidentes",
-      "nome": "Com estressor(es) evidente(s) (psicose reativa breve)",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Sintomas ocorrem em resposta a eventos que causariam estresse acentuado em qualquer pessoa.",
-        "fonte_passada_1": true
-      }
+        "id": "relacao_estressor",
+        "nome": "Relação com estressor",
+        "tipo": "enum",
+        "ortogonal": false,
+        "opcoes": [
+            "Com estressor(es) evidente(s) (psicose reativa breve)",
+            "Sem estressor(es) evidente(s)"
+        ],
+        "regra_criterial": "Com estressor(es) evidente(s) (psicose reativa breve): Sintomas ocorrem em resposta a eventos que causariam estresse acentuado em qualquer pessoa."
     },
     {
-      "id": "sem_estressores_evidentes",
-      "nome": "Sem estressor(es) evidente(s)",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "com_inicio_no_pos_parto",
+        "nome": "Com início no pós-parto",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": "Sintomas iniciam-se durante a gestação ou em até 4 semanas após o parto."
     },
     {
-      "id": "com_inicio_no_pos_parto",
-      "nome": "Com início no pós-parto",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Sintomas iniciam-se durante a gestação ou em até 4 semanas após o parto.",
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "com_catatonia",
-      "nome": "Com catatonia",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Exige o uso do código adicional 293.89 (F06.1).",
-        "fonte_passada_1": true
-      }
+        "id": "com_catatonia",
+        "nome": "Com catatonia",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": "Exige o uso do código adicional 293.89 (F06.1)."
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -261,13 +217,7 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
     ],
     "exclui_diagnostico_de": [],
     "notas": "Diagnósticos de esquizofrenia, transtorno esquizoafetivo ou esquizofreniforme têm precedência diagnóstica e excluem o diagnóstico de transtorno psicótico breve caso preencham critérios temporais.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -306,27 +256,61 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
     "proporcao_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",
     "variacoes_culturais": null,
     "notas": "A idade média de início é de cerca de 30 anos.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [
-        "prevalencia.variacoes_culturais"
-      ],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Cerca de 30 anos",
     "trajetoria": "O início dos sintomas é tipicamente súbito, ocorrendo uma mudança de um estado não psicótico para psicótico dentro do intervalo de duas semanas. O retorno ao nível funcional anterior é completo.",
     "prognostico": "Excelente prognóstico em termos de recuperação total, embora haja risco significativo de comportamento autolesivo e suicídio durante o período agudo.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "temporal_topografico",
+        "criteria": [],
+        "diagnostic_rule": "- Sintomas psicóticos + duração 1 dia a 1 mês + retorno completo ao funcionome_completonto + exclusões",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "specifiers": [
+          "Com estressor(es) evidente(s) (psicose reativa breve)",
+          "Sem estressor(es) evidente(s)",
+          "Com início no pós-parto (gestação ou até 4 semanas após parto)",
+          "Com catatonia (código adicional 293.89 F06.1)"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "Quando esses sintomas começaram?",
+          "Já passaram? Voltou ao normal?",
+          "Houve algum evento estressante que precedeu o início?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO PSICÓTICO BREVE",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",
@@ -337,72 +321,13 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_psicotico_breve",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "temporal_topografico",
-    "criteria": [],
-    "diagnostic_rule": "- Sintomas psicóticos + duração 1 dia a 1 mês + retorno completo ao funcionome_completonto + exclusões",
-    "clusters": [],
-    "duration": null,
-    "age_onset": null,
-    "functional_impairment": null,
-    "exclusions": [],
-    "specifiers": [
-      "Com estressor(es) evidente(s) (psicose reativa breve)",
-      "Sem estressor(es) evidente(s)",
-      "Com início no pós-parto (gestação ou até 4 semanas após parto)",
-      "Com catatonia (código adicional 293.89 F06.1)"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "Quando esses sintomas começaram?",
-      "Já passaram? Voltou ao normal?",
-      "Houve algum evento estressante que precedeu o início?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### TRANSTORNO PSICÓTICO BREVE",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "sigla": "TPB",
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Código DSM-5 / CID-10:** 298.8 (F23)",
     "estrutura_efetiva": "- **Estrutura efetiva:** Polythetic (>=1 de 4 sintomas; pelo menos 1 dentre delírios, alucinações ou discurso desorganizado) + B (duração >=1 dia e <1 mês, com retorno completo ao funcionamento pré-mórbido) + C (exclusão: transtorno de humor com psicose, esquizofrenia, catatonia, substância, condição médica)",
     "notas_clinicas": "- **Notas:**"
   },
-  "hierarquia_exclusao": {
-    "exclui": [
-      "esquizofrenia",
-      "transtorno_esquizoafetivo",
-      "transtorno_esquizofreniforme"
-    ],
-    "exclui_de": [],
-    "notas_hierarquia": "Diagnósticos de esquizofrenia, transtorno esquizoafetivo ou esquizofreniforme têm precedência diagnóstica e excluem o diagnóstico de transtorno psicótico breve caso preencham critérios temporais."
-  },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": true,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "id",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

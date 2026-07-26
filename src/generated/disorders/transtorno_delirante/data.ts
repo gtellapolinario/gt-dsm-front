@@ -1,7 +1,7 @@
 import { TranstornoDeliranteSchema } from "./schema";
 
 export const data = TranstornoDeliranteSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "transtorno_delirante",
     "nome_completo": "Transtorno Delirante",
@@ -21,107 +21,82 @@ export const data = TranstornoDeliranteSchema.parse({
   "estrutura_geral": "categorico_por_subtipo",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Sintomas Delirantes",
-      "tipo": "unico_obrigatorio",
-      "limiar": null,
-      "ancora_obrigatoria": null,
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Presença de um ou mais delírios",
-          "desc": "Presença de um ou mais delírios com duração de um mês ou mais.",
-          "pergunta": "Você tem tido ideias ou crenças muito fortes que as outras pessoas dizem não ser reais, durando pelo menos um mês?",
-          "exemplos_clinicos": [
-            "Acreditar estar sendo seguido, envenenado, amado à distância ou traído pelo parceiro"
-          ],
-          "faixa_aplicavel": null
-        }
-      ],
-      "descricao_qualitativa": "Presença de um ou mais delírios com duração de um mês ou mais. Alucinações, se presentes, não são proeminentes e relacionam-se ao tema delirante.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "A",
+        "nome": "Sintomas Delirantes",
+        "tipo": "monothetic_obrigatorio",
+        "limiar": null,
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Presença de um ou mais delírios",
+                "desc": "Presença de um ou mais delírios com duração de um mês ou mais.",
+                "pergunta": "A pessoa tem tido ideias ou crenças muito fortes que as outras pessoas dizem não ser reais, durando pelo menos um mês?",
+                "faixa_aplicavel": null,
+                "nota": null,
+                "exemplos_clinicos": [
+                    "Acreditar estar sendo seguido, envenenado, amado à distância ou traído pelo parceiro"
+                ]
+            }
+        ],
+        "descricao_qualitativa": "Presença de um ou mais delírios com duração de um mês ou mais. Alucinações, se presentes, não são proeminentes e relacionam-se ao tema delirante.",
+        "nota": null,
+        "regra_temporal": null
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "esquizofrenia_nunca_atendida",
-      "letra": "B",
-      "rotulo": "Critério A de esquizofrenia jamais atendido",
-      "tipo": "exclusao_outro_transtorno_da_classe",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "esquizofrenia"
-      ],
-      "descricao_completa": "O Critério A para esquizofrenia nunca foi atendido. Se alucinações estiverem presentes, não são proeminentes e têm relação com o tema delirante.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "esquizofrenia_nunca_atendida",
+        "letra": "B",
+        "rotulo": "Critério A de esquizofrenia jamais atendido",
+        "tipo": "exclusao_diagnostica",
+        "ui_widget": "select_multiplos_ddx",
+        "obrigatorio": true,
+        "icone": "Ban",
+        "descricao_completa": "O Critério A para esquizofrenia nunca foi atendido. Se alucinações estiverem presentes, não são proeminentes e têm relação com o tema delirante.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "esquizofrenia"
+        ]
     },
     {
-      "id": "funcionamento_preservado",
-      "letra": "C",
-      "rotulo": "Funcionamento preservado fora do delírio",
-      "tipo": "qualitativo_descritivo",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "UserCheck",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Exceto pelo impacto direto dos delírios ou de suas ramificações, o funcionamento não está acentuadamente prejudicado e o comportamento não é claramente bizarro ou esquisito.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "funcionamento_preservado",
+        "letra": "C",
+        "rotulo": "Funcionamento preservado fora do delírio",
+        "tipo": "qualitativo_descritivo",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "UserCheck",
+        "descricao_completa": "Exceto pelo impacto direto dos delírios ou de suas ramificações, o funcionamento não está acentuadamente prejudicado e o comportamento não é claramente bizarro ou esquisito.",
+        "nota": null
     },
     {
-      "id": "duracao_episodios_humor",
-      "letra": "D",
-      "rotulo": "Humor breve em relação aos delírios",
-      "tipo": "temporal_proporcao",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Hourglass",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Se episódios maníacos ou depressivos maiores ocorreram, sua duração total foi breve em relação à duração dos períodos delirantes ativos.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "duracao_episodios_humor",
+        "letra": "D",
+        "rotulo": "Humor breve em relação aos delírios",
+        "tipo": "temporal_proporcao",
+        "ui_widget": "toggle_simples",
+        "obrigatorio": true,
+        "icone": "Hourglass",
+        "descricao_completa": "Se episódios maníacos ou depressivos maiores ocorreram, sua duração total foi breve em relação à duração dos períodos delirantes ativos.",
+        "nota": null
     },
     {
-      "id": "exclusao_substancias_outros",
-      "letra": "E",
-      "rotulo": "Não atribuível a substância ou outra condição",
-      "tipo": "exclusao_substancia_medica",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Shield",
-      "ddx_sugeridos": [
-        "transtorno_obsessivo_compulsivo",
-        "transtorno_dismorfico_corporal"
-      ],
-      "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica, nem é mais bem explicada por outro transtorno mental.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_substancias_outros",
+        "letra": "E",
+        "rotulo": "Não atribuível a substância ou outra condição",
+        "tipo": "exclusao_substancia_medica",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Shield",
+        "descricao_completa": "A perturbação não é atribuível aos efeitos fisiológicos de uma substância ou a outra condição médica, nem é mais bem explicada por outro transtorno mental.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "transtorno_obsessivo_compulsivo",
+            "transtorno_dismorfico_corporal"
+        ]
     }
-  ],
+],
   "subtipos": {
     "presente": true,
     "nome": "Subtipo de delírio predominante",
@@ -205,82 +180,33 @@ export const data = TranstornoDeliranteSchema.parse({
         "sintomas_caracteristicos": []
       }
     ],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "com_conteudo_bizarro",
-      "nome": "Com conteúdo bizarro",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "com_conteudo_bizarro",
+        "nome": "Com conteúdo bizarro",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": null
     },
     {
-      "id": "curso_apos_um_ano",
-      "nome": "Especificador de Curso (após 1 ano de duração)",
-      "tipo": "curso_temporal",
-      "ortogonal": true,
-      "opcoes": [
-        {
-          "id": "primeiro_episodio_agudo",
-          "label": "Primeiro episódio, atualmente em episódio agudo",
-          "codigo_adicional": null
-        },
-        {
-          "id": "primeiro_episodio_remissao_parcial",
-          "label": "Primeiro episódio, atualmente em remissão parcial",
-          "codigo_adicional": null
-        },
-        {
-          "id": "primeiro_episodio_remissao_completa",
-          "label": "Primeiro episódio, atualmente em remissão completa",
-          "codigo_adicional": null
-        },
-        {
-          "id": "episodios_multiplos_agudo",
-          "label": "Episódios múltiplos, atualmente em episódio agudo",
-          "codigo_adicional": null
-        },
-        {
-          "id": "episodios_multiplos_remissao_parcial",
-          "label": "Episódios múltiplos, atualmente em remissão parcial",
-          "codigo_adicional": null
-        },
-        {
-          "id": "episodios_multiplos_remissao_completa",
-          "label": "Episódios múltiplos, atualmente em remissão completa",
-          "codigo_adicional": null
-        },
-        {
-          "id": "continuo",
-          "label": "Contínuo",
-          "codigo_adicional": null
-        },
-        {
-          "id": "nao_especificado",
-          "label": "Não especificado",
-          "codigo_adicional": null
-        }
-      ],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "curso_apos_um_ano",
+        "nome": "Especificador de Curso (após 1 ano de duração)",
+        "tipo": "enum",
+        "ortogonal": true,
+        "regra_criterial": null,
+        "opcoes": [
+            "Primeiro episódio, atualmente em episódio agudo",
+            "Primeiro episódio, atualmente em remissão parcial",
+            "Primeiro episódio, atualmente em remissão completa",
+            "Episódios múltiplos, atualmente em episódio agudo",
+            "Episódios múltiplos, atualmente em remissão parcial",
+            "Episódios múltiplos, atualmente em remissão completa",
+            "Contínuo",
+            "Não especificado"
+        ]
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -346,13 +272,7 @@ export const data = TranstornoDeliranteSchema.parse({
     ],
     "exclui_diagnostico_de": [],
     "notas": "A esquizofrenia e o transtorno esquizoafetivo excluem o diagnóstico de transtorno delirante.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -396,25 +316,64 @@ export const data = TranstornoDeliranteSchema.parse({
     "proporcao_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",
     "variacoes_culturais": "Antecedentes culturais e religiosos individuais devem ser levados em conta na avaliação; o conteúdo dos delírios varia conforme os contextos culturais.",
     "notas": "O subtipo mais frequente é o persecutório. A condição pode ser mais prevalente em indivíduos mais velhos.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Idade adulta ou mais tardia",
     "trajetoria": "O diagnóstico costuma ser estável, embora uma parte dos indivíduos possa evoluir no sentido de desenvolver esquizofrenia. A função global é geralmente melhor que a observada na esquizofrenia.",
     "prognostico": "Costuma apresentar prejuízo funcional mais circunscrito do que outros transtornos psicóticos, permitindo funcionamento social e profissional aceitável fora das discussões delirantes.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "monothetic_puro",
+        "criteria": [],
+        "diagnostic_rule": "- Delírios persistentes ≥1 mês **E** nunca teve critério A de esquizofrenia **E** funcionome_completonto relativamente preservado **E** exclusões.",
+        "clusters": [],
+        "duration": null,
+        "age_onset": null,
+        "functional_impairment": null,
+        "exclusions": [],
+        "specifiers": [
+          "**Com conteúdo bizarro**: Delírios claramente implausíveis, incompreensíveis, não originados de experiências comuns da vida.",
+          "**Especificadores de curso** (usar SOMENTE após 1 ano):",
+          "Primeiro episódio: agudo / remissão parcial / remissão completa",
+          "Episódios múltiplos: agudo / remissão parcial / remissão completa",
+          "Contínuo"
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [],
+        "key_questions": [
+          "Você tem alguma crença forte que outras pessoas não compartilham ou consideram estranha?",
+          "Há quanto tempo você mantém essa crença?",
+          "Essa crença interfere em alguma área da sua vida?",
+          "Você já ouviu vozes ou teve outras experiências incomuns?",
+          "Já teve períodos de humor muito elevado ou muito deprimido?"
+        ],
+        "alerts": [],
+        "source_trace": {
+          "markdown_section": "### TRANSTORNO DELIRANTE",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "02_espectro_esquizofrenia_outros_transtornos_psicoticos.md",
     "fonte_inventario_md": "inventario/02_inventario.md",
@@ -425,73 +384,13 @@ export const data = TranstornoDeliranteSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "transtorno_delirante",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "monothetic_puro",
-    "criteria": [],
-    "diagnostic_rule": "- Delírios persistentes ≥1 mês **E** nunca teve critério A de esquizofrenia **E** funcionome_completonto relativamente preservado **E** exclusões.",
-    "clusters": [],
-    "duration": null,
-    "age_onset": null,
-    "functional_impairment": null,
-    "exclusions": [],
-    "specifiers": [
-      "**Com conteúdo bizarro**: Delírios claramente implausíveis, incompreensíveis, não originados de experiências comuns da vida.",
-      "**Especificadores de curso** (usar SOMENTE após 1 ano):",
-      "Primeiro episódio: agudo / remissão parcial / remissão completa",
-      "Episódios múltiplos: agudo / remissão parcial / remissão completa",
-      "Contínuo"
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [],
-    "key_questions": [
-      "Você tem alguma crença forte que outras pessoas não compartilham ou consideram estranha?",
-      "Há quanto tempo você mantém essa crença?",
-      "Essa crença interfere em alguma área da sua vida?",
-      "Você já ouviu vozes ou teve outras experiências incomuns?",
-      "Já teve períodos de humor muito elevado ou muito deprimido?"
-    ],
-    "alerts": [],
-    "source_trace": {
-      "markdown_section": "### TRANSTORNO DELIRANTE",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Código DSM-5 / CID-10:** 297.1 (F22)",
     "estrutura_efetiva": "- **Estrutura efetiva:** Ancora em A (>=1 delírio por >=1 mês) + B (Critério A da esquizofrenia jamais atendido) + C (funcionamento não acentuadamente prejudicado fora dos delírios; comportamento não bizarro) + D (episódios de humor, se presentes, breves vs. duração delirante) + E (exclusão: substância, condição médica, TOC, dismorfismo corporal)",
     "notas_clinicas": "- **Notas:**"
   },
-  "hierarquia_exclusao": {
-    "exclui": [
-      "esquizofrenia",
-      "transtorno_esquizoafetivo"
-    ],
-    "exclui_de": [],
-    "notas_hierarquia": "A esquizofrenia e o transtorno esquizoafetivo excluem o diagnóstico de transtorno delirante."
-  },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": true,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "id",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;

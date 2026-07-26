@@ -1,7 +1,7 @@
 import { CondutaSchema } from "./schema";
 
 export const data = CondutaSchema.parse({
-  "$schema_version": "1.0.0",
+  "$schema_version": "2.1.0",
   "meta": {
     "id": "conduta",
     "nome_completo": "Transtorno da Conduta",
@@ -21,220 +21,168 @@ export const data = CondutaSchema.parse({
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
-      "id": "A",
-      "nome": "Comportamentos de violação de direitos ou normas",
-      "tipo": "polythetic_com_ancora",
-      "limiar": {
-        "adulto": 3,
-        "pediatria": 3
-      },
-      "ancora_obrigatoria": {
-        "descricao": "Pelo menos um dos sintomas do cluster A deve estar presente nos últimos seis meses.",
-        "ids_obrigatorios": [
-          "A1",
-          "A2",
-          "A3",
-          "A4",
-          "A5",
-          "A6",
-          "A7",
-          "A8",
-          "A9",
-          "A10",
-          "A11",
-          "A12",
-          "A13",
-          "A14",
-          "A15"
+        "id": "A",
+        "nome": "Comportamentos de violação de direitos ou normas",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 3,
+            "pediatria": 3
+        },
+        "ancora_obrigatoria": null,
+        "sintomas": [
+            {
+                "id": "A1",
+                "rotulo": "Provoca, ameaça ou intimida outros",
+                "desc": "Frequentemente provoca, ameaça ou intimida outros.",
+                "pergunta": "A pessoa provoca, ameaça ou intimida outras pessoas com frequência?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A2",
+                "rotulo": "Inicia brigas físicas",
+                "desc": "Frequentemente inicia brigas físicas.",
+                "pergunta": "A pessoa começa brigas físicas com frequência?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A3",
+                "rotulo": "Usou arma capaz de causar danos graves",
+                "desc": "Usou alguma arma que pode causar danos físicos graves a outros (p. ex. , bastão, tijolo, garrafa quebrada, faca, arma de fogo).",
+                "pergunta": "A pessoa já usou alguma arma ou objeto que poderia causar ferimentos graves em outra pessoa?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A4",
+                "rotulo": "Fisicamente cruel com pessoas",
+                "desc": "Foi fisicamente cruel com pessoas.",
+                "pergunta": "A pessoa foi fisicamente cruel ou violentou outras pessoas?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A5",
+                "rotulo": "Fisicamente cruel com animais",
+                "desc": "Foi fisicamente cruel com animais.",
+                "pergunta": "A pessoa foi fisicamente cruel com animais?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A6",
+                "rotulo": "Roubou durante confronto com vítima",
+                "desc": "Roubou durante o confronto com uma vítima (p. ex. , assalto, roubo de bolsa, extorsão, roubo à mão armada).",
+                "pergunta": "A pessoa já roubou algo usando força, ameaça ou confrontando a vítima?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A7",
+                "rotulo": "Forçou alguém a atividade sexual",
+                "desc": "Forçou alguém a atividade sexual.",
+                "pergunta": "A pessoa já forçou ou coagiu alguém a praticar atos sexuais?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A8",
+                "rotulo": "Provocou incêndios deliberadamente",
+                "desc": "Envolveu-se deliberadamente na provocação de incêndios com a intenção de causar danos graves.",
+                "pergunta": "A pessoa já provocou incêndios de forma deliberada para causar danos?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A9",
+                "rotulo": "Destruiu deliberadamente propriedade alheia",
+                "desc": "Destruiu deliberadamente propriedade de outras pessoas (excluindo provocação de incêndios).",
+                "pergunta": "A pessoa já destruiu de propósito propriedade ou bens de outras pessoas?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A10",
+                "rotulo": "Invadiu casa, edifício ou carro",
+                "desc": "Invadiu a casa, o edifício ou o carro de outra pessoa.",
+                "pergunta": "A pessoa já invadiu a casa, um prédio ou o carro de outra pessoa?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A11",
+                "rotulo": "Mente para obter bens ou favores (trapaceia)",
+                "desc": "Frequentemente mente para obter bens materiais ou favores ou para evitar obrigações (i.e., “trapaceia”).",
+                "pergunta": "A pessoa mente frequentemente para conseguir coisas, favores ou para escapar de obrigações?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A12",
+                "rotulo": "Furtou itens de valor sem confrontar vítima",
+                "desc": "Furtou itens de valores consideráveis sem confrontar a vítima (p. ex. , furto em lojas, mas sem invadir ou forçar a entrada; falsificação).",
+                "pergunta": "A pessoa já furtou itens de valor sem confrontar a vítima (furto em lojas, falsificação)?",
+                "faixa_aplicavel": null,
+                "nota": null
+            },
+            {
+                "id": "A13",
+                "rotulo": "Fica fora de casa à noite apesar de proibição (<13a)",
+                "desc": "Frequentemente fica fora de casa à noite, apesar da proibição dos pais, com início antes dos 13 anos de idade.",
+                "pergunta": "Antes dos 13 anos, a pessoa ficava fora de casa à noite contra a vontade dos pais?",
+                "faixa_aplicavel": "pediatria",
+                "nota": null
+            },
+            {
+                "id": "A14",
+                "rotulo": "Fugiu de casa pelo menos duas vezes",
+                "desc": "Fugiu de casa, passando a noite fora, pelo menos duas vezes enquanto morando com os pais ou em lar substituto, ou uma vez sem retornar por um longo período.",
+                "pergunta": "A pessoa já fugiu de casa e passou a noite fora pelo menos duas vezes?",
+                "faixa_aplicavel": "pediatria",
+                "nota": null
+            },
+            {
+                "id": "A15",
+                "rotulo": "Falta às aulas com frequência (<13a)",
+                "desc": "Com frequência falta às aulas, com início antes dos 13 anos de idade.",
+                "pergunta": "Antes dos 13 anos, a pessoa faltava às aulas com frequência?",
+                "faixa_aplicavel": "pediatria",
+                "nota": null
+            }
         ],
-        "n_minimo": 1
-      },
-      "sintomas": [
-        {
-          "id": "A1",
-          "rotulo": "Provoca, ameaça ou intimida outros",
-          "desc": "Frequentemente provoca, ameaça ou intimida outros.",
-          "pergunta": "Você provoca, ameaça ou intimida outras pessoas com frequência?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A2",
-          "rotulo": "Inicia brigas físicas",
-          "desc": "Frequentemente inicia brigas físicas.",
-          "pergunta": "Você começa brigas físicas com frequência?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A3",
-          "rotulo": "Usou arma capaz de causar danos graves",
-          "desc": "Usou alguma arma que pode causar danos físicos graves a outros (p. ex., bastão, tijolo, garrafa quebrada, faca, arma de fogo).",
-          "pergunta": "Você já usou alguma arma ou objeto que poderia causar ferimentos graves em outra pessoa?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A4",
-          "rotulo": "Fisicamente cruel com pessoas",
-          "desc": "Foi fisicamente cruel com pessoas.",
-          "pergunta": "Você foi fisicamente cruel ou violentou outras pessoas?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A5",
-          "rotulo": "Fisicamente cruel com animais",
-          "desc": "Foi fisicamente cruel com animais.",
-          "pergunta": "Você foi fisicamente cruel com animais?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A6",
-          "rotulo": "Roubou durante confronto com vítima",
-          "desc": "Roubou durante o confronto com uma vítima (p. ex., assalto, roubo de bolsa, extorsão, roubo à mão armada).",
-          "pergunta": "Você já roubou algo usando força, ameaça ou confrontando a vítima?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A7",
-          "rotulo": "Forçou alguém a atividade sexual",
-          "desc": "Forçou alguém a atividade sexual.",
-          "pergunta": "Você já forçou ou coagiu alguém a praticar atos sexuais?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A8",
-          "rotulo": "Provocou incêndios deliberadamente",
-          "desc": "Envolveu-se deliberadamente na provocação de incêndios com a intenção de causar danos graves.",
-          "pergunta": "Você já provocou incêndios de forma deliberada para causar danos?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A9",
-          "rotulo": "Destruiu deliberadamente propriedade alheia",
-          "desc": "Destruiu deliberadamente propriedade de outras pessoas (excluindo provocação de incêndios).",
-          "pergunta": "Você já destruiu de propósito propriedade ou bens de outras pessoas?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A10",
-          "rotulo": "Invadiu casa, edifício ou carro",
-          "desc": "Invadiu a casa, o edifício ou o carro de outra pessoa.",
-          "pergunta": "Você já invadiu a casa, um prédio ou o carro de outra pessoa?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A11",
-          "rotulo": "Mente para obter bens ou favores (trapaceia)",
-          "desc": "Frequentemente mente para obter bens materiais ou favores ou para evitar obrigações (i.e., 'trapaceia').",
-          "pergunta": "Você mente frequentemente para conseguir coisas, favores ou para escapar de obrigações?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A12",
-          "rotulo": "Furtou itens de valor sem confrontar vítima",
-          "desc": "Furtou itens de valores consideráveis sem confrontar a vítima (p. ex., furto em lojas, mas sem invadir ou forçar a entrada; falsificação).",
-          "pergunta": "Você já furtou itens de valor sem confrontar a vítima (furto em lojas, falsificação)?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": null
-        },
-        {
-          "id": "A13",
-          "rotulo": "Fica fora de casa à noite apesar de proibição (<13a)",
-          "desc": "Frequentemente fica fora de casa à noite, apesar da proibição dos pais, com início antes dos 13 anos de idade.",
-          "pergunta": "Antes dos 13 anos, você ficava fora de casa à noite contra a vontade dos pais?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": "pediatria"
-        },
-        {
-          "id": "A14",
-          "rotulo": "Fugiu de casa pelo menos duas vezes",
-          "desc": "Fugiu de casa, passando a noite fora, pelo menos duas vezes enquanto morando com os pais ou em lar substituto, ou uma vez sem retornar por um longo período.",
-          "pergunta": "Você já fugiu de casa e passou a noite fora pelo menos duas vezes?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": "pediatria"
-        },
-        {
-          "id": "A15",
-          "rotulo": "Falta às aulas com frequência (<13a)",
-          "desc": "Com frequência falta às aulas, com início antes dos 13 anos de idade.",
-          "pergunta": "Antes dos 13 anos, você faltava às aulas com frequência?",
-          "exemplos_clinicos": [],
-          "faixa_aplicavel": "pediatria"
-        }
-      ],
-      "descricao_qualitativa": null,
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "descricao_qualitativa": null,
+        "nota": null,
+        "regra_temporal": "Pelo menos três dos 15 comportamentos devem estar presentes nos últimos 12 meses, com pelo menos um comportamento presente nos últimos seis meses."
     }
-  ],
+],
   "criterios_condicionais": [
     {
-      "id": "janela_12meses",
-      "letra": "A_cont",
-      "rotulo": "Pelo menos 3 comportamentos nos últimos 12 meses",
-      "tipo": "temporal_duracao_janela",
-      "ui_widget": "campo_duracao_meses",
-      "obrigatorio": true,
-      "icone": "Calendar",
-      "ddx_sugeridos": [],
-      "descricao_completa": "Pelo menos três dos 15 comportamentos devem estar presentes nos últimos 12 meses, com pelo menos um comportamento presente nos últimos seis meses.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "prejuizo_funcional",
+        "letra": "B",
+        "rotulo": "Prejuízo clinicamente significativo",
+        "tipo": "prejuizo_funcional",
+        "ui_widget": "toggle_com_justificativa_obrigatoria",
+        "obrigatorio": true,
+        "icone": "Frown",
+        "descricao_completa": "A perturbação comportamental causa prejuízos clinicamente significativos no funcionamento social, acadêmico ou profissional.",
+        "nota": null
     },
     {
-      "id": "prejuizo_funcional",
-      "letra": "B",
-      "rotulo": "Prejuízo clinicamente significativo",
-      "tipo": "prejuizo_funcional",
-      "ui_widget": "toggle_com_justificativa_obrigatoria",
-      "obrigatorio": true,
-      "icone": "Frown",
-      "ddx_sugeridos": [],
-      "descricao_completa": "A perturbação comportamental causa prejuízos clinicamente significativos no funcionamento social, acadêmico ou profissional.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
-    },
-    {
-      "id": "exclusao_tpa",
-      "letra": "C",
-      "rotulo": "Não preenche critérios para TPA (se ≥18 anos)",
-      "tipo": "exclusao_diagnostica",
-      "ui_widget": "toggle_simples",
-      "obrigatorio": true,
-      "icone": "Ban",
-      "ddx_sugeridos": [
-        "transtorno_personalidade_antissocial"
-      ],
-      "descricao_completa": "Se o indivíduo tem 18 anos ou mais, os critérios para transtorno da personalidade antissocial não são preenchidos.",
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": null,
-        "fonte_passada_1": true
-      }
+        "id": "exclusao_tpa",
+        "letra": "C",
+        "rotulo": "Não preenche critérios para TPA (se ≥18 anos)",
+        "tipo": "condicional_etario",
+        "ui_widget": "campo_idade",
+        "obrigatorio": true,
+        "icone": "UserRound",
+        "descricao_completa": "Se o indivíduo tem 18 anos ou mais, os critérios para transtorno da personalidade antissocial não são preenchidos.",
+        "nota": null,
+        "ddx_sugeridos": [
+            "transtorno_personalidade_antissocial"
+        ]
     }
-  ],
+],
   "subtipos": {
     "presente": true,
     "nome": "Tipo de início",
@@ -274,28 +222,16 @@ export const data = CondutaSchema.parse({
         "sintomas_caracteristicos": []
       }
     ],
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "especificadores": [
     {
-      "id": "emocoes_prosociais_limitadas",
-      "nome": "Com emoções pró-sociais limitadas",
-      "tipo": "booleano",
-      "ortogonal": true,
-      "opcoes": [],
-      "metadados": {
-        "completo": true,
-        "lacunas": [],
-        "notas_agente": "Especificador aplicado quando pelo menos duas das quatro características (ausência de remorso, insensível/falta de empatia, despreocupado com desempenho, afeto superficial) estão presentes de forma persistente durante ≥12 meses e em múltiplos contextos.",
-        "fonte_passada_1": true
-      }
+        "id": "emocoes_prosociais_limitadas",
+        "nome": "Com emoções pró-sociais limitadas",
+        "tipo": "booleano",
+        "ortogonal": true,
+        "regra_criterial": "Especificador aplicado quando pelo menos duas das quatro características (ausência de remorso, insensível/falta de empatia, despreocupado com desempenho, afeto superficial) estão presentes de forma persistente durante ≥12 meses e em múltiplos contextos."
     }
-  ],
+],
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -327,13 +263,7 @@ export const data = CondutaSchema.parse({
     ],
     "exclui_diagnostico_de": [],
     "notas": "Apenas para indivíduos com 18 anos ou mais: TPA exclui o diagnóstico de transtorno da conduta.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "dominios_impacto": [
     {
       "id": "social",
@@ -415,25 +345,91 @@ export const data = CondutaSchema.parse({
     "proporcao_sexo": "Mais elevado no sexo masculino",
     "variacoes_culturais": "Contexto ambiental (áreas de alto crime, zonas de guerra) pode levar a aplicação incorreta do diagnóstico.",
     "notas": null,
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   "curso_desenvolvimento": {
     "idade_inicio_tipica": "Começo dos anos pré-escolares até adolescência intermediária",
     "trajetoria": "Tipo infância: pior prognóstico, mais agressão física, TDAH comórbido. Tipo adolescência: menos agressão, melhor prognóstico. Remissão na vida adulta é comum.",
     "prognostico": "Persistência mais provável em subtipo infância + emoções pró-sociais limitadas + comorbidade com TDAH e substâncias.",
-    "metadados": {
-      "completo": true,
-      "lacunas": [],
-      "notas_agente": null,
-      "fonte_passada_1": true
-    }
-  },
+      },
   
+  "_pipeline": {
+    "rendering": {
+        "estrutura_diagnostica": "polythetic_clusters_assimetricos",
+        "criteria": [
+          "A1-A7. Agressao a Pessoas e Animais (7 criterios)",
+          "A8-A9. Destruicao de Propriedade (2 criterios)",
+          "A10-A12. Falsidade ou Furto (3 criterios)",
+          "A13-A15. Violacoes Graves de Regras (3 criterios)",
+          "B. Perturbacao comportamental causa prejuizos clinicamente significativos",
+          "C. Se >=18 anos, criterios para TPA NAO preenchidos"
+        ],
+        "diagnostic_rule": "A (>=3 de 15, sendo >=1 nos ultimos 6 meses) + B(prejuizo) + C(idade>=18 -> nao TAS)",
+        "clusters": [
+          "Agressao a Pessoas e Animais",
+          "Destruicao de Propriedade",
+          "Falsidade ou Furto",
+          "Violacoes Graves de Regras"
+        ],
+        "duration": "12 meses (janela de avaliacao); >=1 sintoma nos ultimos 6 meses",
+        "age_onset": "subtipo inicio infancia: >=1 sintoma antes dos 10 anos; subtipo inicio adolescencia: nenhum antes dos 10",
+        "functional_impairment": "prejuizos clinicamente significativos no funcionome_completonto social, academico ou profissional",
+        "exclusions": [
+          "transtorno da personalidade antissocial (se >=18 anos)"
+        ],
+        "specifiers": [
+          {
+            "id": "emocoes_pro_sociais_limitadas",
+            "nome_completo": "Com Emocoes Pro-Sociais Limitadas",
+            "criterion": ">=2 caracteristicas persistentes por >=12 meses: ausencia de remorso, insensivel/falta de empata, despreocupado com desempenho, afeto superficial"
+          }
+        ],
+        "operational_profiles": [],
+        "critical_differentials": [
+          "TOD",
+          "TDAH",
+          "TDM/Bipolar",
+          "transtorno de adaptacao",
+          "TEI"
+        ],
+        "key_questions": [
+          "Ja iniciou brigas fisicas? Com que frequencia?",
+          "Ja usou arma, foi cruel com animais ou pessoas?",
+          "Ja roubou confrontando vitima? Forcou alguem a atividade sexual?",
+          "Ja destruiu propriedade ou provocou incendios?",
+          "Ja invadiu casa/carro? Trapaceou ou furtou?",
+          "Fica fora a noite sem permissao? Faltou as aulas? Fugiu de casa?",
+          "Quando esses comportamentos comecaram? (subtipo)",
+          "Ha prejuizo significativo na escola, familia ou comunidade?",
+          "Demonstra remorso? Preocupa-se com sentimentos dos outros? (especificador pro-social)"
+        ],
+        "alerts": [
+          "Pior prognostico associado ao subtipo de inicio na infancia",
+          "Requer multiplas fontes de informacao; nao se basear apenas em autorrelato para especificador pro-social"
+        ],
+        "source_trace": {
+          "markdown_section": "## 3. TRANSTORNO DA CONDUTA (TC) - FICHA FULL",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+    "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+            "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+  },
   "metadados_globais": {
     "fonte_capitulo_md": "15_transtornos_disruptivos,_controle_impulsos_da_conduta.md",
     "fonte_inventario_md": null,
@@ -444,99 +440,13 @@ export const data = CondutaSchema.parse({
     "notas_agente_globais": null,
     "revisao_humana_necessaria": false
   },
-  "id": "conduta",
   "category": "FULL",
   "ui_mode": "structured_full",
   "render_structured_interview": true,
-  "rendering": {
-    "estrutura_diagnostica": "polythetic_clusters_assimetricos",
-    "criteria": [
-      "A1-A7. Agressao a Pessoas e Animais (7 criterios)",
-      "A8-A9. Destruicao de Propriedade (2 criterios)",
-      "A10-A12. Falsidade ou Furto (3 criterios)",
-      "A13-A15. Violacoes Graves de Regras (3 criterios)",
-      "B. Perturbacao comportamental causa prejuizos clinicamente significativos",
-      "C. Se >=18 anos, criterios para TPA NAO preenchidos"
-    ],
-    "diagnostic_rule": "A (>=3 de 15, sendo >=1 nos ultimos 6 meses) + B(prejuizo) + C(idade>=18 -> nao TAS)",
-    "clusters": [
-      "Agressao a Pessoas e Animais",
-      "Destruicao de Propriedade",
-      "Falsidade ou Furto",
-      "Violacoes Graves de Regras"
-    ],
-    "duration": "12 meses (janela de avaliacao); >=1 sintoma nos ultimos 6 meses",
-    "age_onset": "subtipo inicio infancia: >=1 sintoma antes dos 10 anos; subtipo inicio adolescencia: nenhum antes dos 10",
-    "functional_impairment": "prejuizos clinicamente significativos no funcionome_completonto social, academico ou profissional",
-    "exclusions": [
-      "transtorno da personalidade antissocial (se >=18 anos)"
-    ],
-    "specifiers": [
-      {
-        "id": "emocoes_pro_sociais_limitadas",
-        "nome_completo": "Com Emocoes Pro-Sociais Limitadas",
-        "criterion": ">=2 caracteristicas persistentes por >=12 meses: ausencia de remorso, insensivel/falta de empata, despreocupado com desempenho, afeto superficial"
-      }
-    ],
-    "operational_profiles": [],
-    "critical_differentials": [
-      "TOD",
-      "TDAH",
-      "TDM/Bipolar",
-      "transtorno de adaptacao",
-      "TEI"
-    ],
-    "key_questions": [
-      "Ja iniciou brigas fisicas? Com que frequencia?",
-      "Ja usou arma, foi cruel com animais ou pessoas?",
-      "Ja roubou confrontando vitima? Forcou alguem a atividade sexual?",
-      "Ja destruiu propriedade ou provocou incendios?",
-      "Ja invadiu casa/carro? Trapaceou ou furtou?",
-      "Fica fora a noite sem permissao? Faltou as aulas? Fugiu de casa?",
-      "Quando esses comportamentos comecaram? (subtipo)",
-      "Ha prejuizo significativo na escola, familia ou comunidade?",
-      "Demonstra remorso? Preocupa-se com sentimentos dos outros? (especificador pro-social)"
-    ],
-    "alerts": [
-      "Pior prognostico associado ao subtipo de inicio na infancia",
-      "Requer multiplas fontes de informacao; nao se basear apenas em autorrelato para especificador pro-social"
-    ],
-    "source_trace": {
-      "markdown_section": "## 3. TRANSTORNO DA CONDUTA (TC) - FICHA FULL",
-      "patches_applied": []
-    },
-    "category": "FULL",
-    "ui_mode": "structured_full",
-    "render_structured_interview": true
-  },
-  "versao_complementar_existe": false,
   "inventario_clinico": {
-    "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 312.9 / F91.9",
     "estrutura_efetiva": "- **Estrutura efetiva:** Categoria residual para apresentacoes em que sintomas caracteristicos de transtorno disruptivo/controle de impulsos/conduta causam sofrimento clinicamente significativo ou prejuizo funcional mas nao satisfazem todos os criterios para qualquer transtorno especifico da classe. O clinico opta por NAO especificar a razao pela qual os criterios nao sao satisfeitos. Inclui apresentacoes com informacoes insuficientes para diagnostico mais especifico (ex.: salas de emergencia).",
     "notas_clinicas": "- **Notas:**"
   },
-  "hierarquia_exclusao": {
-    "exclui": [
-      "tp_antissocial"
-    ],
-    "exclui_de": [],
-    "notas_hierarquia": "Apenas para indivíduos com 18 anos ou mais: TPA exclui o diagnóstico de transtorno da conduta."
-  },
   
-    "enrichment_status": {
-    "has_poor": true,
-    "has_master": true,
-    "has_inventory": true,
-    "has_hierarchy": true,
-    "has_cid11": true,
-        "match_notes": {
-      "poor": "id",
-      "master": "id",
-      "inventario": "id",
-      "hierarquia": "id",
-      "cid11": "id",
-      "super": "id"
-    }
-  }
 });
 export type DisorderData = typeof data;
