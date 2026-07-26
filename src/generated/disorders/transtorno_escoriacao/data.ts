@@ -1,7 +1,7 @@
 import { TranstornoEscoriacaoSchema } from "./schema";
 
 export const data = TranstornoEscoriacaoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_escoriacao",
     "nome_completo": "Transtorno de Escoriação (Skin-Picking)",
@@ -109,10 +109,21 @@ export const data = TranstornoEscoriacaoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B25.1",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -126,25 +137,34 @@ export const data = TranstornoEscoriacaoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social (vergonha)",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "saude",
-      "label": "Saúde Dermatológica",
-      "icone": "Hospital",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TOC",
-      "ponto_distincao": "TOC: beliscar em resposta a obsessões específicas; escoriação: comportamento sem obsessão subjacente típica.",
-      "pertence_a_classe": true
+        "id": "transtorno_obsessivo_compulsivo",
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Obsessivo-Compulsivo: beliscar em resposta a obsessões específicas; escoriação: comportamento sem obsessão subjacente típica.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "condicao_dermatologica",
+        "condicao": "Condição dermatológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Lesões causadas primariamente por dermatose, sem manipulação recorrente, não configuram escoriação.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Tricotilomania",
@@ -157,7 +177,18 @@ export const data = TranstornoEscoriacaoSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "sps_r",
+        "nome": "Escala de Escoriação – Revisada",
+        "sigla": "SPS-R",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "1,4% (estimativa adultos)",
     "proporcao_sexo": "Mais comum em mulheres (~75%)",

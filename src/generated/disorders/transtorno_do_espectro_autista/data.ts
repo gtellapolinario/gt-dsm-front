@@ -1,7 +1,7 @@
 import { TranstornoDoEspectroAutistaSchema } from "./schema";
 
 export const data = TranstornoDoEspectroAutistaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_do_espectro_autista",
     "nome_completo": "Transtorno do Espectro Autista",
@@ -180,9 +180,12 @@ export const data = TranstornoDoEspectroAutistaSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": false,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "com_comprometimento_intelectual",
@@ -206,6 +209,14 @@ export const data = TranstornoDoEspectroAutistaSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A02",
+        "equivalencia": "contextual",
+        "regra": "Selecionar a subcategoria conforme transtorno do desenvolvimento intelectual e comprometimento da linguagem funcional.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "necessidade_de_suporte_por_dominio",
@@ -257,30 +268,34 @@ export const data = TranstornoDoEspectroAutistaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "comunicacao_social",
-      "label": "Comunicação e Interação Social",
-      "icone": "MessageCircle",
-      "relevante_para": "ambos"
+        "id": "comunicacao_social",
+        "label": "Comunicação e Interação Social",
+        "icone": "MessageCircle",
+        "relevante_para": "transversal"
     },
     {
-      "id": "rotinas",
-      "label": "Adaptação a Rotinas e Mudanças",
-      "icone": "RefreshCw",
-      "relevante_para": "ambos"
+        "id": "flexibilidade_rotinas",
+        "label": "Flexibilidade e rotinas",
+        "icone": "RefreshCw",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TDAH",
-      "ponto_distincao": "Dificuldades de atenção e hiperatividade no TDAH não incluem necessariamente déficits qualitativos intrínsecos na comunicação recíproca ou comportamentos restritivos.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_deficit_de_atencao_hiperatividade",
+        "condicao": "Transtorno de Déficit de Atenção/Hiperatividade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Dificuldades de atenção e hiperatividade no Transtorno de Déficit de Atenção/Hiperatividade não incluem necessariamente déficits qualitativos intrínsecos na comunicação recíproca ou comportamentos restritivos.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno da Comunicação Social",
-      "ponto_distincao": "TCSP não apresenta padrões de comportamento repetitivos ou interesses restritos (Critério B do TEA).",
-      "pertence_a_classe": true
+        "id": "transtorno_da_comunicacao_social",
+        "condicao": "Transtorno da Comunicação Social",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno da Comunicação Social (Pragmática) não apresenta padrões de comportamento repetitivos ou interesses restritos (Critério B do Transtorno do Espectro Autista).",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TDAH",
@@ -295,20 +310,26 @@ export const data = TranstornoDoEspectroAutistaSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Escala de Observação para o Diagnóstico do Autismo",
-      "sigla": "ADOS-2",
-      "uso": "diagnostico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "ados_2",
+        "nome": "Escala de Observação para Diagnóstico de Autismo – segunda edição",
+        "sigla": "ADOS-2",
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Entrevista de Diagnóstico de Autismo Revisada",
-      "sigla": "ADI-R",
-      "uso": "informante",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "adi_r",
+        "nome": "Entrevista Diagnóstica de Autismo – Revisada",
+        "sigla": "ADI-R",
+        "uso": "apoio_informante",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "Estima-se em cerca de 1% a 2% da população, com taxas de diagnóstico crescentes nas últimas décadas devido a maior conscientização e mudanças de critérios.",
     "proporcao_sexo": "Razão de aproximadamente 4:1 a favor do sexo masculino.",

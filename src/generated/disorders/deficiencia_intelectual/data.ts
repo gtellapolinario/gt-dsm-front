@@ -1,7 +1,7 @@
 import { DeficienciaIntelectualSchema } from "./schema";
 
 export const data = DeficienciaIntelectualSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "deficiencia_intelectual",
     "nome_completo": "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)",
@@ -88,10 +88,21 @@ export const data = DeficienciaIntelectualSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": false,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A00",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6A00.0–6A00.4 ou 6A00.Z conforme gravidade e possibilidade de avaliação válida.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "funcionamento_adaptativo",
@@ -143,31 +154,33 @@ export const data = DeficienciaIntelectualSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "academico",
-      "label": "Funcionamento Acadêmico",
-      "icone": "GraduationCap",
-      "relevante_para": "ambos"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "ambos"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "autocuidado",
-      "label": "Autocuidado e Vida Prática",
-      "icone": "House",
-      "relevante_para": "ambos"
+        "id": "autonomia_autocuidado",
+        "label": "Autonomia e autocuidado",
+        "icone": "House",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtornos da Comunicação",
-      "ponto_distincao": "Pacientes mantêm funcionamento intelectual e adaptativo geral preservado fora da comunicação.",
-      "pertence_a_classe": true
+        "id": "transtornos_da_comunicacao",
+        "condicao": "Transtornos da Comunicação",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Pacientes mantêm funcionamento intelectual e adaptativo geral preservado fora da comunicação.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TDAH",
@@ -182,13 +195,26 @@ export const data = DeficienciaIntelectualSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Escala Vineland de Comportamento Adaptativo",
-      "sigla": "Vineland",
-      "uso": "diagnostico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "vineland_3",
+        "nome": "Escalas de Comportamento Adaptativo de Vineland",
+        "sigla": "Vineland-3",
+        "uso": "avaliacao_funcional",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "teste_inteligencia",
+        "nome": "Teste individual padronizado de inteligência",
+        "sigla": null,
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "Aproximadamente 1% na população geral.",
     "proporcao_sexo": "Razão de prevalência mais alta em indivíduos do sexo masculino.",

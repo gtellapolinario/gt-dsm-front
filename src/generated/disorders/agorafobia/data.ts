@@ -1,7 +1,7 @@
 import { AgorafobiaSchema } from "./schema";
 
 export const data = AgorafobiaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "agorafobia",
     "nome_completo": "Agorafobia",
@@ -176,10 +176,21 @@ export const data = AgorafobiaSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B02",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -193,35 +204,48 @@ export const data = AgorafobiaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social e Autonomia",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social e autonomia",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno de Pânico",
-      "ponto_distincao": "TP sem agorafobia: ataques inesperados mas sem evitação de situações agorafóbicas; ambos podem coexistir.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_panico",
+        "condicao": "Transtorno de Pânico",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Pânico sem agorafobia: ataques inesperados mas sem evitação de situações agorafóbicas; ambos podem coexistir.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Fobia Específica situacional",
-      "ponto_distincao": "Fobia específica: limitada a um tipo de situação; agorafobia: múltiplas situações pela razão comum (incapacidade de escape).",
-      "pertence_a_classe": true
+        "id": "fobia_especifica_situacional",
+        "condicao": "Fobia Específica situacional",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Fobia específica: limitada a um tipo de situação; agorafobia: múltiplas situações pela razão comum (incapacidade de escape).",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TEPT",
-      "ponto_distincao": "TEPT: evitação relacionada a lembrança do trauma; agorafobia: evitação por medo de sintomas incapacitantes.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_estresse_pos_traumatico",
+        "condicao": "Transtorno de Estresse Pós-Traumático",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Estresse Pós-Traumático: evitação relacionada a lembrança do trauma; agorafobia: evitação por medo de sintomas incapacitantes.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "condicoes_cardiopulmonares_vestibulares_ou_neurologicas",
+        "condicao": "Condições cardiopulmonares, vestibulares ou neurológicas",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Sintomas situacionais devem acompanhar a condição médica, sem padrão agorafóbico autônomo.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno de Pânico",
@@ -239,7 +263,18 @@ export const data = AgorafobiaSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "mia",
+        "nome": "Inventário de Mobilidade para Agorafobia",
+        "sigla": "MIA",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "1,7% (prevalência de 12 meses em adolescentes e adultos)",
     "proporcao_sexo": "2:1 mulheres:homens",

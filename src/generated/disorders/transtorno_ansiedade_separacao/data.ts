@@ -1,7 +1,7 @@
 import { TranstornoAnsiedadeSeparacaoSchema } from "./schema";
 
 export const data = TranstornoAnsiedadeSeparacaoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_ansiedade_separacao",
     "nome_completo": "Transtorno de Ansiedade de Separação",
@@ -170,10 +170,21 @@ export const data = TranstornoAnsiedadeSeparacaoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B05",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -187,35 +198,48 @@ export const data = TranstornoAnsiedadeSeparacaoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "academico",
-      "label": "Frequência Escolar",
-      "icone": "School",
-      "relevante_para": "pediatria"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "ambos"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno de Ansiedade Generalizada",
-      "ponto_distincao": "TAG: preocupações múltiplas não focadas em separação; TAS: medo central é a separação das figuras de apego.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_ansiedade_generalizada",
+        "condicao": "Transtorno de Ansiedade Generalizada",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Ansiedade Generalizada: preocupações múltiplas não focadas em separação; Transtorno de Ansiedade de Separação: medo central é a separação das figuras de apego.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Agorafobia",
-      "ponto_distincao": "Agorafobia: evitação de situações por medo de não conseguir escapar; TAS: evitação por medo de separação.",
-      "pertence_a_classe": true
+        "id": "agorafobia",
+        "condicao": "Agorafobia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Agorafobia: evitação de situações por medo de não conseguir escapar; Transtorno de Ansiedade de Separação: evitação por medo de separação.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno do Espectro Autista",
-      "ponto_distincao": "TEA: resistência a mudanças de rotina; TAS: o medo central é a separação, não a perturbação da rotina.",
-      "pertence_a_classe": false
+        "id": "transtorno_do_espectro_autista",
+        "condicao": "Transtorno do Espectro Autista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno do Espectro Autista: resistência a mudanças de rotina; Transtorno de Ansiedade de Separação: o medo central é a separação, não a perturbação da rotina.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "condicao_medica_do_paciente_ou_da_figura_de_apego",
+        "condicao": "Condição médica do paciente ou da figura de apego",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Distinguir ansiedade desproporcional de preocupação compatível com risco médico real.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno de Ansiedade Generalizada",
@@ -233,7 +257,18 @@ export const data = TranstornoAnsiedadeSeparacaoSchema.parse({
       "nota": "Especialmente em adultos."
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "scas_separacao",
+        "nome": "Subescala de Ansiedade de Separação da Escala Spence",
+        "sigla": "SCAS",
+        "uso": "triagem_monitoramento",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "4% em crianças, 1,6% em adolescentes, 0,9–1,9% em adultos (prevalência de 12 meses)",
     "proporcao_sexo": "Mais comum em mulheres na população geral",

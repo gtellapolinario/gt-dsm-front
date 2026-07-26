@@ -1,7 +1,7 @@
 import { TranstornoPsicoticoBreveSchema } from "./schema";
 
 export const data = TranstornoPsicoticoBreveSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_psicotico_breve",
     "nome_completo": "Transtorno Psicótico Breve",
@@ -121,9 +121,12 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "relacao_estressor",
@@ -151,6 +154,14 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
         "regra_criterial": "Exige o uso do código adicional 293.89 (F06.1)."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A23",
+        "equivalencia": "aproximada",
+        "regra": "A CID-11 usa transtorno psicótico agudo e transitório e codifica curso/remissão; confirmar compatibilidade temporal antes da conversão.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -220,37 +231,61 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Relacionamentos Interpessoais",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "autocuidado",
-      "label": "Autocuidado e Independência",
-      "icone": "House",
-      "relevante_para": "transversal"
+        "id": "autonomia_autocuidado",
+        "label": "Autonomia e autocuidado",
+        "icone": "House",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Esquizofrenia ou Transtorno Esquizofreniforme",
-      "ponto_distincao": "Se os sintomas persistirem por 1 mês ou mais, o diagnóstico deve ser alterado para transtorno esquizofreniforme (até 6 meses) ou esquizofrenia (mais de 6 meses).",
-      "pertence_a_classe": true
+        "id": "esquizofrenia_ou_transtorno_esquizofreniforme",
+        "condicao": "Esquizofrenia ou Transtorno Esquizofreniforme",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Se os sintomas persistirem por 1 mês ou mais, o diagnóstico deve ser alterado para transtorno esquizofreniforme (até 6 meses) ou esquizofrenia (mais de 6 meses).",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Psicótico Induzido por Substância",
-      "ponto_distincao": "Diferencia-se pela relação cronológica do uso da substância com o aparecimento e a remissão das crenças e sintomas psicóticos.",
-      "pertence_a_classe": true
+        "id": "transtorno_psicotico_induzido_por_substancia",
+        "condicao": "Transtorno Psicótico Induzido por Substância",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Diferencia-se pela relação cronológica do uso da substância com o aparecimento e a remissão das crenças e sintomas psicóticos.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtornos de Humor com Psicose",
-      "ponto_distincao": "Nos transtornos de humor, os sintomas psicóticos ocorrem apenas concomitantemente a episódios graves de humor deprimido ou maníaco.",
-      "pertence_a_classe": false
+        "id": "transtornos_de_humor_com_psicose",
+        "condicao": "Transtornos de Humor com Psicose",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Nos transtornos de humor, os sintomas psicóticos ocorrem apenas concomitantemente a episódios graves de humor deprimido ou maníaco.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "delirium_ou_condicao_neurologica",
+        "condicao": "Delirium ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Alteração da atenção, flutuação ou sinais neurológicos favorecem causa orgânica.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "bprs",
+        "nome": "Escala Breve de Avaliação Psiquiátrica",
+        "sigla": "BPRS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "Pode responder por 9% dos casos de primeiro surto psicótico nos EUA.",
     "proporcao_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",

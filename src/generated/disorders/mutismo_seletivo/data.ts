@@ -1,7 +1,7 @@
 import { MutismoSeletivoSchema } from "./schema";
 
 export const data = MutismoSeletivoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "mutismo_seletivo",
     "nome_completo": "Mutismo Seletivo",
@@ -103,10 +103,21 @@ export const data = MutismoSeletivoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B06",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -120,30 +131,41 @@ export const data = MutismoSeletivoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "academico",
-      "label": "Desempenho Escolar",
-      "icone": "GraduationCap",
-      "relevante_para": "pediatria"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Comunicação Social",
-      "icone": "Users",
-      "relevante_para": "pediatria"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "pediatria"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtornos da comunicação",
-      "ponto_distincao": "Mutismo Seletivo: perturbação restrita a situação social específica; transtornos de comunicação: presentes em todos os contextos.",
-      "pertence_a_classe": false
+        "id": "transtornos_da_comunicacao",
+        "condicao": "Transtornos da comunicação",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Mutismo Seletivo: perturbação restrita a situação social específica; transtornos de comunicação: presentes em todos os contextos.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de Ansiedade Social",
-      "ponto_distincao": "Ambos coexistem frequentemente; se satisfeitos os critérios de ambos, ambos os diagnósticos devem ser dados.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_ansiedade_social",
+        "condicao": "Transtorno de Ansiedade Social",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Ambos coexistem frequentemente; se satisfeitos os critérios de ambos, ambos os diagnósticos devem ser dados.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "perda_auditiva_ou_alteracao_estrutural_da_fala",
+        "condicao": "Perda auditiva ou alteração estrutural da fala",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "A incapacidade comunicativa persiste entre contextos quando decorre de limitação sensorial ou estrutural.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno de Ansiedade Social",
@@ -161,7 +183,18 @@ export const data = MutismoSeletivoSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "smq",
+        "nome": "Questionário de Mutismo Seletivo",
+        "sigla": "SMQ",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "0,03–1% (estimativa variável por contexto clínico vs. escolar vs. comunitário)",
     "proporcao_sexo": "Sem variação significativa por sexo ou raça/etnia documentada",

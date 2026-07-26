@@ -1,7 +1,7 @@
 import { TranstornoInsoniaSchema } from "./schema";
 
 export const data = TranstornoInsoniaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_insonia",
     "nome_completo": "Transtorno de Insônia",
@@ -157,9 +157,12 @@ export const data = TranstornoInsoniaSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "com_comorbidade_mental",
@@ -195,6 +198,14 @@ export const data = TranstornoInsoniaSchema.parse({
         "regra_criterial": "Episódico: Sintomas duram pelo menos um mês, porém menos que três meses.; Persistente: Sintomas duram três meses ou mais.; Recorrente: Dois ou mais episódios dentro do espaço de um ano."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "7A00",
+        "equivalencia": "aproximada",
+        "regra": "7A00 corresponde a insônia crônica; curso curto ou não especificado requer 7A01 ou 7A0Z conforme o caso.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -208,57 +219,81 @@ export const data = TranstornoInsoniaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "sono",
-      "label": "Qualidade do Sono",
-      "icone": "Bed",
-      "relevante_para": "transversal"
+        "id": "sono",
+        "label": "Qualidade do Sono",
+        "icone": "Bed",
+        "relevante_para": "transversal"
     },
     {
-      "id": "cognitivo",
-      "label": "Desempenho Cognitivo Diurno",
-      "icone": "Brain",
-      "relevante_para": "transversal"
+        "id": "cognitivo",
+        "label": "Desempenho Cognitivo Diurno",
+        "icone": "Brain",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional/Escolar",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Variações normais do sono",
-      "ponto_distincao": "Pessoas com sono curto não apresentam dificuldade para conciliar ou manter o sono nem sintomas diurnos típicos.",
-      "pertence_a_classe": false
+        "id": "variacoes_normais_do_sono",
+        "condicao": "Variações normais do sono",
+        "natureza": "variacao_normativa",
+        "ponto_distincao": "Pessoas com sono curto não apresentam dificuldade para conciliar ou manter o sono nem sintomas diurnos típicos.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno do sono-vigília do ritmo circadiano",
-      "ponto_distincao": "Ritmo circadiano: insônia apenas quando há descompasso entre horário de dormir e ritmo endógeno.",
-      "pertence_a_classe": true
+        "id": "transtorno_do_sono_vigilia_do_ritmo_circadiano",
+        "condicao": "Transtorno do sono-vigília do ritmo circadiano",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Ritmo circadiano: insônia apenas quando há descompasso entre horário de dormir e ritmo endógeno.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Síndrome das pernas inquietas",
-      "ponto_distincao": "SPI distingue-se pela necessidade de movimentar as pernas acompanhada de sensações desconfortáveis.",
-      "pertence_a_classe": true
+        "id": "sindrome_das_pernas_inquietas",
+        "condicao": "Síndrome das pernas inquietas",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "SPI distingue-se pela necessidade de movimentar as pernas acompanhada de sensações desconfortáveis.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtornos do sono relacionados à respiração",
-      "ponto_distincao": "Apneia do sono: história de roncos altos, pausas respiratórias e sonolência diurna excessiva.",
-      "pertence_a_classe": true
+        "id": "transtornos_do_sono_relacionados_a_respiracao",
+        "condicao": "Transtornos do sono relacionados à respiração",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Apneia do sono: história de roncos altos, pausas respiratórias e sonolência diurna excessiva.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Narcolepsia",
-      "ponto_distincao": "Narcolepsia distingue-se pela predominância de sonolência diurna excessiva, cataplexia, paralisia do sono e alucinações.",
-      "pertence_a_classe": true
+        "id": "narcolepsia",
+        "condicao": "Narcolepsia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Narcolepsia distingue-se pela predominância de sonolência diurna excessiva, cataplexia, paralisia do sono e alucinações.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "condicao_dolorosa_ou_outra_doenca_medica_que_perturba_o_sono",
+        "condicao": "Condição dolorosa ou outra doença médica que perturba o sono",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "A condição pode explicar a queixa; insônia pode coexistir quando mantém curso e prejuízo próprios.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "insonia_induzida_por_substancia_ou_medicamento",
+        "condicao": "Insônia induzida por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Cafeína, estimulantes, álcool, nicotina e medicamentos podem explicar o curso temporal da insônia.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Depressivo Maior",
@@ -283,27 +318,36 @@ export const data = TranstornoInsoniaSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Polissonografia",
-      "sigla": "PSG",
-      "uso": "diagnostico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "isi",
+        "nome": "Índice de Gravidade da Insônia",
+        "sigla": "ISI",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Diário do Sono",
-      "sigla": null,
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "diario_sono",
+        "nome": "Diário de sono",
+        "sigla": null,
+        "uso": "monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Actigrafia",
-      "sigla": null,
-      "uso": "monitoramento",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "polissonografia",
+        "nome": "Polissonografia",
+        "sigla": "PSG",
+        "uso": "investigacao_diferencial",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Não é necessária para diagnosticar insônia; usar quando houver suspeita de outro transtorno do sono."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "6–10% atendem critérios do transtorno; 10–15% com prejuízos diurnos; ~1/3 com sintomas.",
     "proporcao_sexo": "1,44:1 F:M",

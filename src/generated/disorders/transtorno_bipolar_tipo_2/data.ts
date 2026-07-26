@@ -1,7 +1,7 @@
 import { TranstornoBipolarTipo2Schema } from "./schema";
 
 export const data = TranstornoBipolarTipo2Schema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_bipolar_tipo_2",
     "nome_completo": "Transtorno Bipolar Tipo II",
@@ -92,9 +92,12 @@ export const data = TranstornoBipolarTipo2Schema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "com_sintomas_ansiosos",
@@ -150,6 +153,14 @@ export const data = TranstornoBipolarTipo2Schema.parse({
         "regra_criterial": "Aplica-se apenas ao padrão de episódios depressivos maiores."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A61",
+        "equivalencia": "contextual",
+        "regra": "Selecionar a subcategoria conforme episódio atual ou mais recente, sintomas psicóticos e remissão.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_contextual",
     "escopo": "episodio_depressivo_maior_atual",
@@ -183,40 +194,62 @@ export const data = TranstornoBipolarTipo2Schema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social e Familiar",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Depressivo Maior",
-      "ponto_distincao": "Indivíduos com Bipolar II vivenciam episódios hipomaníacos explícitos adicionais na história, necessitando de atenta investigação retrospectiva.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno Depressivo Maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Indivíduos com Bipolar II vivenciam episódios hipomaníacos explícitos adicionais na história, necessitando de atenta investigação retrospectiva.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno Ciclotímico",
-      "ponto_distincao": "Ciclotimia apresenta apenas períodos com sintomas sublimiares de depressão e hipomania, sem atingir a totalidade de critérios completos.",
-      "pertence_a_classe": true
+        "id": "transtorno_ciclotimico",
+        "condicao": "Transtorno Ciclotímico",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Ciclotimia apresenta apenas períodos com sintomas sublimiares de depressão e hipomania, sem atingir a totalidade de critérios completos.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Bipolar Tipo I",
-      "ponto_distincao": "Bipolar I requer pelo menos um episódio maníaco na vida; se houver histórico de mania, o diagnóstico é Bipolar I.",
-      "pertence_a_classe": true
+        "id": "transtorno_bipolar_tipo_i",
+        "condicao": "Transtorno Bipolar Tipo I",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Bipolar I requer pelo menos um episódio maníaco na vida; se houver histórico de mania, o diagnóstico é Bipolar I.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TDAH",
-      "ponto_distincao": "TDAH compartilha sintomas de impulsividade e distratibilidade, mas seu curso é contínuo e não fásico/episódico como na hipomania.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_deficit_de_atencao_hiperatividade",
+        "condicao": "Transtorno de Déficit de Atenção/Hiperatividade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Déficit de Atenção/Hiperatividade compartilha sintomas de impulsividade e distratibilidade, mas seu curso é contínuo e não fásico/episódico como na hipomania.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "hipertireoidismo_ou_condicao_neurologica",
+        "condicao": "Hipertireoidismo ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Sinais sistêmicos, neurológicos ou curso temporal incompatível com hipomania/depressão favorecem causa médica.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_do_humor_induzido_por_substancia_ou_medicamento",
+        "condicao": "Transtorno do humor induzido por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Início e remissão temporalmente ligados a estimulantes, corticosteroides ou outro agente favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos de ansiedade",
@@ -236,13 +269,26 @@ export const data = TranstornoBipolarTipo2Schema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Questionário de Transtornos do Humor",
-      "sigla": "MDQ",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "mdq",
+        "nome": "Questionário de Transtornos do Humor",
+        "sigla": "MDQ",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "hcl_32",
+        "nome": "Lista de Verificação de Hipomania – 32 itens",
+        "sigla": "HCL-32",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "0,3% internacionalmente; 0,8% nas estimativas do DSM-5 nos EUA.",
     "proporcao_sexo": "Tendência de maior prevalência de estados depressivos e ciclagens rápidas em mulheres.",

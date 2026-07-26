@@ -1,7 +1,7 @@
 import { TranstornoConversaoSchema } from "./schema";
 
 export const data = TranstornoConversaoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_conversao",
     "nome_completo": "Transtorno de Conversão (Transtorno de Sintomas Neurológicos Funcionais)",
@@ -100,76 +100,106 @@ export const data = TranstornoConversaoSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Tipo de sintoma",
+    "natureza": "tipo_de_sintoma",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "fraqueza_paralisia",
-        "codigo": {
-          "dsm5": "300.11",
-          "cid10": "F44.4",
-          "cid11": null
+        {
+            "id": "fraqueza_paralisia",
+            "label": "Com fraqueza ou paralisia",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.4",
+                "cid11_mms": "6B60.6",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com fraqueza ou paralisia",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "movimento_anormal",
-        "codigo": {
-          "dsm5": "300.11",
-          "cid10": "F44.4",
-          "cid11": null
+        {
+            "id": "movimento_anormal",
+            "label": "Com movimento anormal",
+            "descricao": "Tremor, mioclonia, discinesia, gait disorder.",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.4",
+                "cid11_mms": "6B60.8",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com movimento anormal",
-        "descricao": "Tremor, mioclonia, discinesia, gait disorder.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "crises_nao_epilepticas",
-        "codigo": {
-          "dsm5": "300.11",
-          "cid10": "F44.5",
-          "cid11": null
+        {
+            "id": "degluticao",
+            "label": "Com sintoma de deglutição",
+            "descricao": "Predominam dificuldades funcionais de deglutição.",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.4",
+                "cid11_mms": "6B60.Y",
+                "regra": "Confirmar o código final conforme o sistema adotado. A CID-11 MMS não oferece subcategoria própria para deglutição; usar outro sintoma especificado quando cabível."
+            }
         },
-        "label": "Com crises ou convulsões",
-        "descricao": "Crises não epilépticas funcionais.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "anestesia_sensorial",
-        "codigo": {
-          "dsm5": "300.11",
-          "cid10": "F44.6",
-          "cid11": null
+        {
+            "id": "fala",
+            "label": "Com sintoma de fala",
+            "descricao": "Predominam disfonia, fala arrastada ou outro sintoma funcional da fala.",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.4",
+                "cid11_mms": "6B60.5",
+                "regra": "Confirmar o código final conforme o sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com anestesia ou perda sensorial",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "sintomas_sensoriais_especiais",
-        "codigo": {
-          "dsm5": "300.11",
-          "cid10": "F44.6",
-          "cid11": null
+        {
+            "id": "crises_nao_epilepticas",
+            "label": "Com crises ou convulsões",
+            "descricao": "Crises não epilépticas funcionais.",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.5",
+                "cid11_mms": "6B60.4",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com sintoma sensorial especial",
-        "descricao": "Visual, olfatório, auditivo.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "sintomas_mistos",
-        "codigo": {
-          "dsm5": "300.11",
-          "cid10": "F44.7",
-          "cid11": null
+        {
+            "id": "anestesia_sensorial",
+            "label": "Com anestesia ou perda sensorial",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.6",
+                "cid11_mms": "6B60.3",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com sintomas mistos",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "sintomas_sensoriais_especiais",
+            "label": "Com sintoma sensorial especial",
+            "descricao": "Visual, olfatório, auditivo.",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.6",
+                "cid11_mms": [
+                    "6B60.0",
+                    "6B60.1",
+                    "6B60.2",
+                    "6B60.3"
+                ],
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Selecionar visual, auditivo, vertigem/tontura ou outro sintoma sensorial conforme a manifestação predominante."
+            }
+        },
+        {
+            "id": "sintomas_mistos",
+            "label": "Com sintomas mistos",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": "300.11",
+                "cid10_cm": "F44.7",
+                "cid11_mms": "6B60.Y",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. A CID-11 MMS não possui subcategoria única de sintomas mistos; confirmar a melhor categoria especificada."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "curso",
@@ -194,6 +224,14 @@ export const data = TranstornoConversaoSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B60",
+        "equivalencia": "contextual",
+        "regra": "A CID-11 denomina o quadro transtorno dissociativo de sintomas neurológicos e codifica vários tipos pelo sintoma predominante.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -207,25 +245,27 @@ export const data = TranstornoConversaoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "mobilidade",
-      "label": "Mobilidade e Independência",
-      "icone": "Footprints",
-      "relevante_para": "transversal"
+        "id": "mobilidade",
+        "label": "Mobilidade e Independência",
+        "icone": "Footprints",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Doença neurológica",
-      "ponto_distincao": "Conversão: sinais clínicos incompatíveis com doença neurológica reconhecida (sinal de Hoover, etc.).",
-      "pertence_a_classe": false
+        "id": "doenca_neurologica",
+        "condicao": "Doença neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Conversão: sinais clínicos incompatíveis com doença neurológica reconhecida (sinal de Hoover, etc.).",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno de ansiedade",

@@ -1,7 +1,7 @@
 import { TranstornoDeliranteSchema } from "./schema";
 
 export const data = TranstornoDeliranteSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_delirante",
     "nome_completo": "Transtorno Delirante",
@@ -100,87 +100,90 @@ export const data = TranstornoDeliranteSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Subtipo de delírio predominante",
+    "natureza": "tipo_de_delirio",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "erotomanico",
-        "codigo": {
-          "dsm5": "297.1",
-          "cid10": "F22",
-          "cid11": null
+        {
+            "id": "erotomanico",
+            "label": "Tipo Erotomaníaco",
+            "descricao": "Aplica-se quando o tema central do delírio é que outra pessoa está apaixonada pelo indivíduo.",
+            "codigo": {
+                "dsm5_legacy": "297.1",
+                "cid10_cm": "F22",
+                "cid11_mms": "6A24",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo Erotomaníaco",
-        "descricao": "Aplica-se quando o tema central do delírio é que outra pessoa está apaixonada pelo indivíduo.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "grandioso",
-        "codigo": {
-          "dsm5": "297.1",
-          "cid10": "F22",
-          "cid11": null
+        {
+            "id": "grandioso",
+            "label": "Tipo Grandioso",
+            "descricao": "Aplica-se quando o tema central do delírio é a convicção de ter algum grande talento ou insight (embora não reconhecido) ou de ter feito alguma descoberta importante.",
+            "codigo": {
+                "dsm5_legacy": "297.1",
+                "cid10_cm": "F22",
+                "cid11_mms": "6A24",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo Grandioso",
-        "descricao": "Aplica-se quando o tema central do delírio é a convicção de ter algum grande talento ou insight (embora não reconhecido) ou de ter feito alguma descoberta importante.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "ciumento",
-        "codigo": {
-          "dsm5": "297.1",
-          "cid10": "F22",
-          "cid11": null
+        {
+            "id": "ciumento",
+            "label": "Tipo Ciumento",
+            "descricao": "Aplica-se quando o tema central do delírio do indivíduo é de que seu cônjuge ou parceiro é infiel.",
+            "codigo": {
+                "dsm5_legacy": "297.1",
+                "cid10_cm": "F22",
+                "cid11_mms": "6A24",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo Ciumento",
-        "descricao": "Aplica-se quando o tema central do delírio do indivíduo é de que seu cônjuge ou parceiro é infiel.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "persecutorio",
-        "codigo": {
-          "dsm5": "297.1",
-          "cid10": "F22",
-          "cid11": null
+        {
+            "id": "persecutorio",
+            "label": "Tipo Persecutório",
+            "descricao": "Aplica-se quando o tema central do delírio envolve a crença do indivíduo de que está sendo alvo de conspiração, enganado, espiado, seguido, envenenado ou drogado, difamado de forma maliciosa, assediado ou obstruído na busca de metas de longo prazo.",
+            "codigo": {
+                "dsm5_legacy": "297.1",
+                "cid10_cm": "F22",
+                "cid11_mms": "6A24",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo Persecutório",
-        "descricao": "Aplica-se quando o tema central do delírio envolve a crença do indivíduo de que está sendo alvo de conspiração, enganado, espiado, seguido, envenenado ou drogado, difamado de forma maliciosa, assediado ou obstruído na busca de metas de longo prazo.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "somatico",
-        "codigo": {
-          "dsm5": "297.1",
-          "cid10": "F22",
-          "cid11": null
+        {
+            "id": "somatico",
+            "label": "Tipo Somático",
+            "descricao": "Aplica-se quando o tema central do delírio envolve funções ou sensações corporais.",
+            "codigo": {
+                "dsm5_legacy": "297.1",
+                "cid10_cm": "F22",
+                "cid11_mms": "6A24",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo Somático",
-        "descricao": "Aplica-se quando o tema central do delírio envolve funções ou sensações corporais.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "misto",
-        "codigo": {
-          "dsm5": "297.1",
-          "cid10": "F22",
-          "cid11": null
+        {
+            "id": "misto",
+            "label": "Tipo Misto",
+            "descricao": "Aplica-se quando nenhum tema delirante predomina.",
+            "codigo": {
+                "dsm5_legacy": "297.1",
+                "cid10_cm": "F22",
+                "cid11_mms": "6A24",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo Misto",
-        "descricao": "Aplica-se quando nenhum tema delirante predomina.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "nao_especificado",
-        "codigo": {
-          "dsm5": "297.1",
-          "cid10": "F22",
-          "cid11": null
-        },
-        "label": "Tipo Não Especificado",
-        "descricao": "Aplica-se quando a crença delirante dominante não pode ser determinada com clareza ou não é descrita nos tipos específicos.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "nao_especificado",
+            "label": "Tipo Não Especificado",
+            "descricao": "Aplica-se quando a crença delirante dominante não pode ser determinada com clareza ou não é descrita nos tipos específicos.",
+            "codigo": {
+                "dsm5_legacy": "297.1",
+                "cid10_cm": "F22",
+                "cid11_mms": "6A24.Z",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "com_conteudo_bizarro",
@@ -207,6 +210,14 @@ export const data = TranstornoDeliranteSchema.parse({
         ]
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A24",
+        "equivalencia": "contextual",
+        "regra": "A CID-11 codifica curso e remissão, não o conteúdo predominante do delírio.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -275,42 +286,75 @@ export const data = TranstornoDeliranteSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Relacionamento Social e Familiar",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "transversal"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Obsessivo-Compulsivo",
-      "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TOC, deve ser diagnosticado TOC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
-      "pertence_a_classe": false
+        "id": "transtorno_obsessivo_compulsivo",
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu Transtorno Obsessivo-Compulsivo, deve ser diagnosticado Transtorno Obsessivo-Compulsivo com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno Dismórfico Corporal",
-      "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu TDC, deve ser diagnosticado TDC com insight ausente/crenças delirantes, em vez de transtorno delirante.",
-      "pertence_a_classe": false
+        "id": "transtorno_dismorfico_corporal",
+        "condicao": "Transtorno Dismórfico Corporal",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Se o indivíduo está totalmente convencido da veracidade das crenças de seu Transtorno Dismórfico Corporal, deve ser diagnosticado Transtorno Dismórfico Corporal com insight ausente/crenças delirantes, em vez de transtorno delirante.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Esquizofrenia",
-      "ponto_distincao": "Diferencia-se pela ausência de outros sintomas característicos da fase ativa da esquizofrenia (ex: discurso desorganizado, sintomas negativos, alucinações auditivas proeminentes).",
-      "pertence_a_classe": true
+        "id": "esquizofrenia",
+        "condicao": "Esquizofrenia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Diferencia-se pela ausência de outros sintomas característicos da fase ativa da esquizofrenia (ex: discurso desorganizado, sintomas negativos, alucinações auditivas proeminentes).",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtornos de Humor com Características Psicóticas",
-      "ponto_distincao": "No transtorno delirante, os delírios persistem na ausência de episódios de humor, ou os episódios de humor têm duração total breve em relação à perturbação delirante.",
-      "pertence_a_classe": false
+        "id": "transtornos_de_humor_com_caracteristicas_psicoticas",
+        "condicao": "Transtornos de Humor com Características Psicóticas",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "No transtorno delirante, os delírios persistem na ausência de episódios de humor, ou os episódios de humor têm duração total breve em relação à perturbação delirante.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "delirium_ou_condicao_neurologica",
+        "condicao": "Delirium ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Alteração da atenção, flutuação, declínio cognitivo ou sinais neurológicos favorecem causa orgânica.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_psicotico_induzido_por_substancia_ou_medicamento",
+        "condicao": "Transtorno psicótico induzido por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Relação temporal com intoxicação, abstinência ou medicamento e remissão compatível favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "bprs",
+        "nome": "Escala Breve de Avaliação Psiquiátrica",
+        "sigla": "BPRS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "Aproximadamente 0,2% ao longo da vida.",
     "proporcao_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",

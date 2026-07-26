@@ -1,7 +1,7 @@
 import { FobiaEspecificaSchema } from "./schema";
 
 export const data = FobiaEspecificaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "fobia_especifica",
     "nome_completo": "Fobia Específica",
@@ -147,68 +147,77 @@ export const data = FobiaEspecificaSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Tipo de estímulo",
+    "natureza": "tipo_de_estimulo",
+    "formal_dsm": true,
     "mutuamente_exclusivos": false,
     "subtipos": [
-      {
-        "id": "animal",
-        "codigo": {
-          "dsm5": "300.29",
-          "cid10": "F40.218",
-          "cid11": null
+        {
+            "id": "animal",
+            "label": "Tipo animal",
+            "descricao": "Medo de animais ou insetos.",
+            "codigo": {
+                "dsm5_legacy": "300.29",
+                "cid10_cm": "F40.218",
+                "cid11_mms": "6B03",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo animal",
-        "descricao": "Medo de animais ou insetos.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "ambiente_natural",
-        "codigo": {
-          "dsm5": "300.29",
-          "cid10": "F40.228",
-          "cid11": null
+        {
+            "id": "ambiente_natural",
+            "label": "Tipo ambiente natural",
+            "descricao": "Medo de alturas, tempestades, água.",
+            "codigo": {
+                "dsm5_legacy": "300.29",
+                "cid10_cm": "F40.228",
+                "cid11_mms": "6B03",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo ambiente natural",
-        "descricao": "Medo de alturas, tempestades, água.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "sangue_injecao_ferimento",
-        "codigo": {
-          "dsm5": "300.29",
-          "cid10": "F40.23x",
-          "cid11": null
+        {
+            "id": "sangue_injecao_ferimento",
+            "label": "Tipo sangue-injeção-ferimento",
+            "descricao": "Medo de sangue, ferimentos, agulhas, procedimentos médicos.",
+            "codigo": {
+                "dsm5_legacy": "300.29",
+                "cid10_cm": null,
+                "cid11_mms": "6B03",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo sangue-injeção-ferimento",
-        "descricao": "Medo de sangue, ferimentos, agulhas, procedimentos médicos.",
-        "sintomas_caracteristicos": [
-          "Resposta vasovagal — desmaio"
-        ]
-      },
-      {
-        "id": "situacional",
-        "codigo": {
-          "dsm5": "300.29",
-          "cid10": "F40.248",
-          "cid11": null
+        {
+            "id": "situacional",
+            "label": "Tipo situacional",
+            "descricao": "Medo de aviões, elevadores, espaços fechados.",
+            "codigo": {
+                "dsm5_legacy": "300.29",
+                "cid10_cm": "F40.248",
+                "cid11_mms": "6B03",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo situacional",
-        "descricao": "Medo de aviões, elevadores, espaços fechados.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "outro",
-        "codigo": {
-          "dsm5": "300.29",
-          "cid10": "F40.298",
-          "cid11": null
-        },
-        "label": "Tipo outro",
-        "descricao": "Outros estímulos (engasgar, vomitar, contrair doença, palhaços etc.).",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "outro",
+            "label": "Tipo outro",
+            "descricao": "Outros estímulos (engasgar, vomitar, contrair doença, palhaços etc.).",
+            "codigo": {
+                "dsm5_legacy": "300.29",
+                "cid10_cm": "F40.298",
+                "cid11_mms": "6B03",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Os tipos podem coexistir. O tipo sangue-injeção-ferimento não admite um único código curinga como valor final."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B03",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -222,35 +231,48 @@ export const data = FobiaEspecificaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "ambos"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Agorafobia",
-      "ponto_distincao": "Agorafobia: medo de situações múltiplas por impossibilidade de escapar; fobia específica: objeto/situação único.",
-      "pertence_a_classe": true
+        "id": "agorafobia",
+        "condicao": "Agorafobia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Agorafobia: medo de situações múltiplas por impossibilidade de escapar; fobia específica: objeto/situação único.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno de Ansiedade Social",
-      "ponto_distincao": "TAS: situações de avaliação social; fobia específica: objeto/situação específico não vinculado à avaliação.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_ansiedade_social",
+        "condicao": "Transtorno de Ansiedade Social",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Ansiedade Social: situações de avaliação social; fobia específica: objeto/situação específico não vinculado à avaliação.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno de Estresse Pós-Traumático",
-      "ponto_distincao": "TEPT: medo surge após trauma; fobia específica: estímulo fóbico não necessariamente relacionado a trauma.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_estresse_pos_traumatico",
+        "condicao": "Transtorno de Estresse Pós-Traumático",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Estresse Pós-Traumático: medo surge após trauma; fobia específica: estímulo fóbico não necessariamente relacionado a trauma.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "condicao_medica_associada_ao_estimulo_temido",
+        "condicao": "Condição médica associada ao estímulo temido",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Distinguir medo desproporcional de precaução compatível com risco médico real.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Outros transtornos de ansiedade",
@@ -268,7 +290,18 @@ export const data = FobiaEspecificaSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "fear_survey",
+        "nome": "Inventário de Medos",
+        "sigla": "FSS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "7–9% (prevalência de 12 meses); 13,2% (prevalência na vida)",
     "proporcao_sexo": "2:1 mulheres:homens; tipo sangue-injeção-ferimento: razão menor",

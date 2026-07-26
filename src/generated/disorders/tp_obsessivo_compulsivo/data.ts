@@ -1,7 +1,7 @@
 import { TpObsessivoCompulsivoSchema } from "./schema";
 
 export const data = TpObsessivoCompulsivoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tp_obsessivo_compulsivo",
     "nome_completo": "Transtorno da Personalidade Obsessivo-Compulsiva",
@@ -129,10 +129,24 @@ export const data = TpObsessivoCompulsivoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": [
+            "6D10",
+            "6D11.4"
+        ],
+        "equivalencia": "aproximada_com_qualificador",
+        "regra": "Codificar primeiro a gravidade em 6D10.0–6D10.2 ou 6D10.Z; 6D11.4 qualifica anancastia quando sustentada.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "modelo_categorial_sem_graduacao",
@@ -146,46 +160,54 @@ export const data = TpObsessivoCompulsivoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "relacoes",
-      "label": "Relações Íntimas",
-      "icone": "Heart",
-      "relevante_para": "transversal"
+        "id": "relacoes_interpessoais",
+        "label": "Relações interpessoais e familiares",
+        "icone": "Heart",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Obsessivo-Compulsivo (TOC)",
-      "ponto_distincao": "TOC: obsessões e compulsões verdadeiras; TPOC: padrão de personalidade de ordem e controle.",
-      "pertence_a_classe": false
+        "id": "transtorno_obsessivo_compulsivo_transtorno_obsessivo_compulsivo",
+        "condicao": "Transtorno Obsessivo-Compulsivo (Transtorno Obsessivo-Compulsivo)",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Obsessivo-Compulsivo: obsessões e compulsões verdadeiras; Transtorno da Personalidade Obsessivo-Compulsiva: padrão de personalidade de ordem e controle.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de Acumulação",
-      "ponto_distincao": "Acumulação: acúmulo extremo representando perigo; TPOC: dificuldade em descartar sem sentimentalismo.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_acumulacao",
+        "condicao": "Transtorno de Acumulação",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Acumulação: acúmulo extremo representando perigo; Transtorno da Personalidade Obsessivo-Compulsiva: dificuldade em descartar sem sentimentalismo.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno da Personalidade Narcisista",
-      "ponto_distincao": "Narcisista: acredita ter atingido perfeição; TPOC: autocrítico e perfeccionista.",
-      "pertence_a_classe": true
+        "id": "transtorno_da_personalidade_narcisista",
+        "condicao": "Transtorno da Personalidade Narcisista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Narcisista: acredita ter atingido perfeição; Transtorno da Personalidade Obsessivo-Compulsiva: autocrítico e perfeccionista.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno da Personalidade Esquizoide",
-      "ponto_distincao": "Esquizoide: ausência fundamental de intimidade; TPOC: distanciamento por dedicação ao trabalho.",
-      "pertence_a_classe": true
+        "id": "transtorno_da_personalidade_esquizoide",
+        "condicao": "Transtorno da Personalidade Esquizoide",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Esquizoide: ausência fundamental de intimidade; Transtorno da Personalidade Obsessivo-Compulsiva: distanciamento por dedicação ao trabalho.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos de ansiedade",
@@ -208,7 +230,28 @@ export const data = TpObsessivoCompulsivoSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "scid_5_pd",
+        "nome": "Entrevista Clínica Estruturada para os Transtornos da Personalidade do DSM-5",
+        "sigla": "SCID-5-PD",
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "pid_5",
+        "nome": "Inventário de Personalidade para o DSM-5",
+        "sigla": "PID-5",
+        "uso": "formulacao_dimensional",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Avalia traços dimensionais; não confirma isoladamente um transtorno categórico da personalidade."
+    }
+],
   "prevalencia": {
     "populacao_geral": "2,1% a 7,9%",
     "proporcao_sexo": "Cerca de duas vezes mais em homens",

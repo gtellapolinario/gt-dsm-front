@@ -1,7 +1,7 @@
 import { TranstornoAnsiedadeDoencaSchema } from "./schema";
 
 export const data = TranstornoAnsiedadeDoencaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_ansiedade_doenca",
     "nome_completo": "Transtorno de Ansiedade de Doença",
@@ -122,19 +122,36 @@ export const data = TranstornoAnsiedadeDoencaSchema.parse({
 ],
   "subtipos": {
     "presente": true,
-    "nome": null,
+    "nome": "Subtipo",
+    "natureza": "tipo_de_cuidado",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-    {
-      "id": "tipo_busca_cuidado",
-      "label": "Tipo busca de cuidado"
-    },
-    {
-      "id": "tipo_evitacao_cuidado",
-      "label": "Tipo evitação de cuidado"
-    }
-  ],
-      },
+        {
+            "id": "tipo_busca_cuidado",
+            "label": "Tipo busca de cuidado",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "A CID-11 não diferencia busca e evitação de cuidado; selecionar subcategoria por insight quando aplicável.",
+                "cid11_mms": "6B23"
+            }
+        },
+        {
+            "id": "tipo_evitacao_cuidado",
+            "label": "Tipo evitação de cuidado",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "A CID-11 não diferencia busca e evitação de cuidado; selecionar subcategoria por insight quando aplicável.",
+                "cid11_mms": "6B23"
+            }
+        }
+    ],
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "tipo_cuidado",
@@ -148,6 +165,14 @@ export const data = TranstornoAnsiedadeDoencaSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B23",
+        "equivalencia": "aproximada",
+        "regra": "A CID-11 usa a denominação hypochondriasis e subcategorias por insight; os tipos busca/evitação de cuidado do DSM não geram códigos próprios.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -161,19 +186,28 @@ export const data = TranstornoAnsiedadeDoencaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "saude",
-      "label": "Uso de Serviços de Saúde",
-      "icone": "Hospital",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TSS",
-      "ponto_distincao": "TSS: foco nos sintomas físicos; TAD: foco na doença subjacente presumida.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_sintomas_somaticos",
+        "condicao": "Transtorno de Sintomas Somáticos",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Sintomas Somáticos: foco nos sintomas físicos; TAD: foco na doença subjacente presumida.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "condicao_medica_com_sintomas_atuais",
+        "condicao": "Condição médica com sintomas atuais",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "A presença de doença não exclui o diagnóstico; avaliar se a preocupação é claramente excessiva ao risco e ao quadro clínico.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TAG",
@@ -186,7 +220,18 @@ export const data = TranstornoAnsiedadeDoencaSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "shai",
+        "nome": "Inventário Breve de Ansiedade de Saúde",
+        "sigla": "SHAI",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "1,3–10% (estimativa em serviços de atenção primária)",
     "proporcao_sexo": "Igual entre sexos",

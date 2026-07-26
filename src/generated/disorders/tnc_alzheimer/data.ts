@@ -1,7 +1,7 @@
 import { TncAlzheimerSchema } from "./schema";
 
 export const data = TncAlzheimerSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tnc_alzheimer",
     "nome_completo": "Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer",
@@ -75,45 +75,70 @@ export const data = TncAlzheimerSchema.parse({
 ],
   "subtipos": {
     "presente": true,
-    "nome": "Certeza diagnóstica e gravidade",
+    "nome": "Nível neurocognitivo e certeza etiológica",
+    "natureza": "nivel_e_certeza",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "provavel_maior",
-        "codigo": {
-          "dsm5": "294.1x",
-          "cid10": "F02.8x",
-          "cid11": null
+        {
+            "id": "maior_provavel",
+            "label": "TNC maior provável",
+            "descricao": "Atende às condições de maior certeza etiológica para doença de Alzheimer.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D80",
+                "regra": "O código final depende do nível, da etiologia documentada e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Provável TNC maior",
-        "descricao": "Com evidência de mutação genética ou quadro clássico progressivo.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "possivel_maior",
-        "codigo": {
-          "dsm5": "331.9",
-          "cid10": "G31.9",
-          "cid11": null
+        {
+            "id": "maior_possivel",
+            "label": "TNC maior possível",
+            "descricao": "A etiologia por doença de Alzheimer é sustentada, mas não atinge o nível de provável.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D80",
+                "regra": "O código final depende do nível, da etiologia documentada e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Possível TNC maior",
-        "descricao": "Sem evidência de mutação genética ou com atípico.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "leve",
-        "codigo": {
-          "dsm5": "331.83",
-          "cid10": "G31.84",
-          "cid11": null
+        {
+            "id": "leve_provavel",
+            "label": "TNC leve provável",
+            "descricao": "TNC leve com evidência genética causal ou critérios de maior certeza etiológica.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D71",
+                "regra": "O código final depende do nível, da etiologia documentada e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "TNC leve",
-        "descricao": "Prejuízo cognitivo leve com critérios de Alzheimer.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "leve_possivel",
+            "label": "TNC leve possível",
+            "descricao": "TNC leve compatível com doença de Alzheimer, sem evidência suficiente para provável.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D71",
+                "regra": "O código final depende do nível, da etiologia documentada e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Escolha uma combinação de nível e certeza; não trate “leve” como terceira categoria paralela a provável/possível."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": [
+            "6D80",
+            "6D71"
+        ],
+        "equivalencia": "contextual",
+        "regra": "Usar 6D80 para demência por doença de Alzheimer e 6D71 para transtorno neurocognitivo leve; a certeza provável/possível não cria código CID-11 próprio.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_condicional",
     "escopo": "apenas_tnc_maior",
@@ -147,46 +172,54 @@ export const data = TncAlzheimerSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "memoria",
-      "label": "Memória e Aprendizagem",
-      "icone": "Brain",
-      "relevante_para": "transversal"
+        "id": "memoria",
+        "label": "Memória e Aprendizagem",
+        "icone": "Brain",
+        "relevante_para": "transversal"
     },
     {
-      "id": "avd",
-      "label": "Atividades da Vida Diária",
-      "icone": "House",
-      "relevante_para": "transversal"
+        "id": "autonomia_autocuidado",
+        "label": "Autonomia e autocuidado",
+        "icone": "House",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TNC vascular",
-      "ponto_distincao": "TNC vascular: relação temporal com AVC, infartos em neuroimagem; Alzheimer: início insidioso, declínio gradual da memória.",
-      "pertence_a_classe": true
+        "id": "transtorno_neurocognitivo_vascular",
+        "condicao": "Transtorno Neurocognitivo vascular",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Neurocognitivo vascular: relação temporal com AVC, infartos em neuroimagem; Alzheimer: início insidioso, declínio gradual da memória.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TNC com corpos de Lewy",
-      "ponto_distincao": "Lewy: cognição oscilante, alucinações visuais, parkinsonismo; Alzheimer: memória precoce, sem oscilação.",
-      "pertence_a_classe": true
+        "id": "transtorno_neurocognitivo_com_corpos_de_lewy",
+        "condicao": "Transtorno Neurocognitivo com corpos de Lewy",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Lewy: cognição oscilante, alucinações visuais, parkinsonismo; Alzheimer: memória precoce, sem oscilação.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TNC frontotemporal",
-      "ponto_distincao": "FTD: mudanças comportamentais/linguísticas precoces, memória preservada inicialmente.",
-      "pertence_a_classe": true
+        "id": "transtorno_neurocognitivo_frontotemporal",
+        "condicao": "Transtorno Neurocognitivo frontotemporal",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "FTD: mudanças comportamentais/linguísticas precoces, memória preservada inicialmente.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno depressivo maior",
-      "ponto_distincao": "Depressão: pseudodemência, melhora com tratamento antidepressivo.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno depressivo maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Depressão: pseudodemência, melhora com tratamento antidepressivo.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TNC vascular",
@@ -201,13 +234,26 @@ export const data = TncAlzheimerSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Avaliação neuropsicológica formal",
-      "sigla": null,
-      "uso": "neuropsicologico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "moca",
+        "nome": "Avaliação Cognitiva de Montreal",
+        "sigla": "MoCA",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "avaliacao_neuropsicologica",
+        "nome": "Avaliação neuropsicológica padronizada",
+        "sigla": null,
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Documenta domínios cognitivos e funcionamento; interpretar com escolaridade, cultura e condição sensorial."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "Cerca de 60–90% das demências em idosos",
     "proporcao_sexo": "Mais frequente em mulheres (devido à maior longevidade)",

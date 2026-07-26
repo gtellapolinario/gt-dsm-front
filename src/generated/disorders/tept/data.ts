@@ -1,7 +1,7 @@
 import { TeptSchema } from "./schema";
 
 export const data = TeptSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tept",
     "nome_completo": "Transtorno de Estresse Pós-Traumático",
@@ -327,9 +327,12 @@ export const data = TeptSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "com_sintomas_dissociativos",
@@ -350,6 +353,14 @@ export const data = TeptSchema.parse({
         "regra_criterial": "Início ≥6 meses após o evento."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B40",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -363,41 +374,47 @@ export const data = TeptSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "familiar",
-      "label": "Funcionamento Familiar",
-      "icone": "House",
-      "relevante_para": "transversal"
+        "id": "relacoes_interpessoais",
+        "label": "Relações interpessoais e familiares",
+        "icone": "Heart",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno de Estresse Agudo",
-      "ponto_distincao": "TEA: duração ≤1 mês após trauma; TEPT: >1 mês.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_estresse_agudo",
+        "condicao": "Transtorno de Estresse Agudo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Estresse Agudo: duração ≤1 mês após trauma; Transtorno de Estresse Pós-Traumático: >1 mês.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Depressivo Maior",
-      "ponto_distincao": "TDM: não exige trauma específico; TEPT: trauma é critério diagnóstico central.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno Depressivo Maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Depressivo Maior: não exige trauma específico; Transtorno de Estresse Pós-Traumático: trauma é critério diagnóstico central.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtornos Dissociativos",
-      "ponto_distincao": "Podem coexistir; TEPT especificador com sintomas dissociativos quando presentes.",
-      "pertence_a_classe": false
+        "id": "transtornos_dissociativos",
+        "condicao": "Transtornos Dissociativos",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Podem coexistir; Transtorno de Estresse Pós-Traumático especificador com sintomas dissociativos quando presentes.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Depressivo Maior",
@@ -417,20 +434,26 @@ export const data = TeptSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "PTSD Checklist for DSM-5",
-      "sigla": "PCL-5",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "pcl_5",
+        "nome": "Lista de Verificação de TEPT para o DSM-5",
+        "sigla": "PCL-5",
+        "uso": "triagem_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Clinician-Administered PTSD Scale",
-      "sigla": "CAPS-5",
-      "uso": "diagnostico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "caps_5",
+        "nome": "Escala de TEPT Administrada pelo Clínico para o DSM-5",
+        "sigla": "CAPS-5",
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "3,5% (prevalência de 12 meses nos EUA); 0,5–1% internacionalmente",
     "proporcao_sexo": "2:1 mulheres:homens",

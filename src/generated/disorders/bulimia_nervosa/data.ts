@@ -1,7 +1,7 @@
 import { BulimiaNervosaSchema } from "./schema";
 
 export const data = BulimiaNervosaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "bulimia_nervosa",
     "nome_completo": "Bulimia Nervosa",
@@ -123,9 +123,12 @@ export const data = BulimiaNervosaSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "estado_remissao",
@@ -139,6 +142,14 @@ export const data = BulimiaNervosaSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B81",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "gravidade_atual",
@@ -179,46 +190,54 @@ export const data = BulimiaNervosaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "saude",
-      "label": "Saúde Física e Dental",
-      "icone": "HeartPulse",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde Física e Dental",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional/Acadêmico",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional_academico",
+        "label": "Desempenho ocupacional ou acadêmico",
+        "icone": "Briefcase",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Anorexia nervosa, tipo compulsão alimentar purgativa",
-      "ponto_distincao": "Anorexia tipo purgativa: peso significativamente baixo. Bulimia: peso igual ou acima da faixa mínima normal.",
-      "pertence_a_classe": true
+        "id": "anorexia_nervosa_tipo_compulsao_alimentar_purgativo",
+        "condicao": "Anorexia nervosa, tipo compulsão alimentar/purgativo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Anorexia tipo purgativa: peso significativamente baixo. Bulimia: peso igual ou acima da faixa mínima normal.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno de compulsão alimentar",
-      "ponto_distincao": "TCA: compulsão alimentar sem comportamentos compensatórios inapropriados recorrentes.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_compulsao_alimentar",
+        "condicao": "Transtorno de compulsão alimentar",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Compulsão Alimentar: compulsão alimentar sem comportamentos compensatórios inapropriados recorrentes.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Síndrome de Kleine-Levin",
-      "ponto_distincao": "Kleine-Levin: comportamento alimentar perturbado sem a preocupação excessiva com forma e peso corporais característica da bulimia.",
-      "pertence_a_classe": false
+        "id": "sindrome_de_kleine_levin",
+        "condicao": "Síndrome de Kleine-Levin",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Kleine-Levin: comportamento alimentar perturbado sem a preocupação excessiva com forma e peso corporais característica da bulimia.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno depressivo maior, com aspectos atípicos",
-      "ponto_distincao": "TDM com aspectos atípicos: hiperfagia sem comportamentos compensatórios indevidos e sem preocupação excessiva com forma/peso.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior_com_aspectos_atipicos",
+        "condicao": "Transtorno depressivo maior, com aspectos atípicos",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Depressivo Maior com aspectos atípicos: hiperfagia sem comportamentos compensatórios indevidos e sem preocupação excessiva com forma/peso.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno depressivo maior",
@@ -246,7 +265,28 @@ export const data = BulimiaNervosaSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "ede_q",
+        "nome": "Questionário de Exame dos Transtornos Alimentares",
+        "sigla": "EDE-Q",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "scoff",
+        "nome": "Questionário de triagem para transtornos alimentares",
+        "sigla": "SCOFF",
+        "uso": "triagem",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "1 a 1,5% (prevalência de 12 meses entre jovens do sexo feminino).",
     "proporcao_sexo": "Aproximadamente 10:1 feminino:masculino.",

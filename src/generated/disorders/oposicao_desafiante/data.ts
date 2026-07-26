@@ -1,7 +1,7 @@
 import { OposicaoDesafianteSchema } from "./schema";
 
 export const data = OposicaoDesafianteSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "oposicao_desafiante",
     "nome_completo": "Transtorno de Oposição Desafiante",
@@ -134,10 +134,21 @@ export const data = OposicaoDesafianteSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6C90",
+        "equivalencia": "contextual",
+        "regra": "Selecionar a subcategoria conforme irritabilidade-raiva crônica e emoções pró-sociais.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -170,57 +181,74 @@ export const data = OposicaoDesafianteSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": null
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "academico",
-      "label": "Desempenho Acadêmico/Escolar",
-      "icone": "GraduationCap",
-      "relevante_para": "pediatria"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "familiar",
-      "label": "Relações Familiares",
-      "icone": "House",
-      "relevante_para": null
+        "id": "relacoes_interpessoais",
+        "label": "Relações interpessoais e familiares",
+        "icone": "Heart",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno da conduta",
-      "ponto_distincao": "TOD não inclui agressão a pessoas/animais, destruição de propriedade ou padrão de roubo/falsidade; inclui desregulação emocional não presente na conduta.",
-      "pertence_a_classe": true
+        "id": "transtorno_da_conduta",
+        "condicao": "Transtorno da conduta",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Oposição Desafiante não inclui agressão a pessoas/animais, destruição de propriedade ou padrão de roubo/falsidade; inclui desregulação emocional não presente na conduta.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TDAH",
-      "ponto_distincao": "A desobediência no TDAH ocorre em situações que demandam esforço sustentado; no TOD é mais generalizada.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_deficit_de_atencao_hiperatividade",
+        "condicao": "Transtorno de Déficit de Atenção/Hiperatividade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "A desobediência no Transtorno de Déficit de Atenção/Hiperatividade ocorre em situações que demandam esforço sustentado; no Transtorno de Oposição Desafiante é mais generalizada.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtornos depressivo e bipolar",
-      "ponto_distincao": "O TOD não deve ser diagnosticado se os sintomas ocorrerem exclusivamente durante o curso de um transtorno do humor.",
-      "pertence_a_classe": false
+        "id": "transtornos_depressivo_e_bipolar",
+        "condicao": "Transtornos depressivo e bipolar",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "O Transtorno de Oposição Desafiante não deve ser diagnosticado se os sintomas ocorrerem exclusivamente durante o curso de um transtorno do humor.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno explosivo intermitente",
-      "ponto_distincao": "TEI envolve agressão grave dirigida a outros; TOD não inclui agressão física grave.",
-      "pertence_a_classe": true
+        "id": "transtorno_explosivo_intermitente",
+        "condicao": "Transtorno explosivo intermitente",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "TEI envolve agressão grave dirigida a outros; Transtorno de Oposição Desafiante não inclui agressão física grave.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Deficiência intelectual",
-      "ponto_distincao": "O comportamento opositor deve ser acentuadamente maior do que o observado em indivíduos com idade mental comparável.",
-      "pertence_a_classe": false
+        "id": "deficiencia_intelectual",
+        "condicao": "Deficiência intelectual",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "O comportamento opositor deve ser acentuadamente maior do que o observado em indivíduos com idade mental comparável.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "condicao_neurologica_ou_alteracao_cognitiva",
+        "condicao": "Condição neurológica ou alteração cognitiva",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Mudança comportamental adquirida, regressão ou sinais neurológicos pedem investigação médica.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TDAH",
@@ -243,7 +271,28 @@ export const data = OposicaoDesafianteSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "snap_iv",
+        "nome": "Escala Swanson, Nolan e Pelham – versão IV",
+        "sigla": "SNAP-IV",
+        "uso": "triagem_informante",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "cbcl",
+        "nome": "Inventário de Comportamentos para Crianças e Adolescentes",
+        "sigla": "CBCL",
+        "uso": "triagem_informante",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "1–11%, média estimada de 3,3%",
     "proporcao_sexo": "1,4:1 M:F antes da adolescência",

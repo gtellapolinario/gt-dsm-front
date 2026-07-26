@@ -1,7 +1,7 @@
 import { TranstornoAnsiedadeSocialSchema } from "./schema";
 
 export const data = TranstornoAnsiedadeSocialSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_ansiedade_social",
     "nome_completo": "Transtorno de Ansiedade Social (Fobia Social)",
@@ -157,9 +157,12 @@ export const data = TranstornoAnsiedadeSocialSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "apenas_desempenho",
@@ -169,6 +172,14 @@ export const data = TranstornoAnsiedadeSocialSchema.parse({
         "regra_criterial": "Para quando o medo é limitado a falar ou realizar em público."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B04",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -182,41 +193,54 @@ export const data = TranstornoAnsiedadeSocialSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "academico",
-      "label": "Desempenho Acadêmico",
-      "icone": "GraduationCap",
-      "relevante_para": "ambos"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Timidez/ansiedade social normativa",
-      "ponto_distincao": "Timidez normal: não causa prejuízo funcional significativo; TAS: prejuízo clinicamente significativo.",
-      "pertence_a_classe": false
+        "id": "timidez_ansiedade_social_normativa",
+        "condicao": "Timidez/ansiedade social normativa",
+        "natureza": "variacao_normativa",
+        "ponto_distincao": "Timidez normal: não causa prejuízo funcional significativo; Transtorno de Ansiedade Social: prejuízo clinicamente significativo.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Agorafobia",
-      "ponto_distincao": "Agorafobia: medo de situações por impossibilidade de escape; TAS: medo de avaliação social.",
-      "pertence_a_classe": true
+        "id": "agorafobia",
+        "condicao": "Agorafobia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Agorafobia: medo de situações por impossibilidade de escape; Transtorno de Ansiedade Social: medo de avaliação social.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno de Pânico",
-      "ponto_distincao": "Pânico: medo de ataques de pânico futuros; TAS: medo de situações sociais especificamente.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_panico",
+        "condicao": "Transtorno de Pânico",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Pânico: medo de ataques de pânico futuros; Transtorno de Ansiedade Social: medo de situações sociais especificamente.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "condicao_medica_que_altera_fala_movimento_ou_aparencia",
+        "condicao": "Condição médica que altera fala, movimento ou aparência",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "O medo pode ser secundário à condição; diagnosticar ansiedade social apenas quando exceder o impacto esperado.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Outros transtornos de ansiedade",
@@ -234,7 +258,28 @@ export const data = TranstornoAnsiedadeSocialSchema.parse({
       "nota": "Álcool como automedicação."
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "spin",
+        "nome": "Inventário de Fobia Social",
+        "sigla": "SPIN",
+        "uso": "triagem_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "lsas",
+        "nome": "Escala de Ansiedade Social de Liebowitz",
+        "sigla": "LSAS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "7% (prevalência de 12 meses nos EUA); 2–3% em outros países",
     "proporcao_sexo": "1,5–2:1 mulheres:homens na população geral; sem diferença em amostras clínicas",

@@ -1,7 +1,7 @@
 import { ExplosivoIntermittenteSchema } from "./schema";
 
 export const data = ExplosivoIntermittenteSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "explosivo_intermittente",
     "nome_completo": "Transtorno Explosivo Intermitente",
@@ -125,10 +125,21 @@ export const data = ExplosivoIntermittenteSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6C73",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -142,51 +153,89 @@ export const data = ExplosivoIntermittenteSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": null
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "profissional",
-      "label": "Funcionamento Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "legal",
-      "label": "Consequências Legais",
-      "icone": "Gavel",
-      "relevante_para": null
+        "id": "seguranca_legal",
+        "label": "Segurança e repercussões legais",
+        "icone": "Scale",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno disruptivo da desregulação do humor",
-      "ponto_distincao": "TDDH: humor negativo persistente quase todos os dias; TEI: explosões isoladas sem humor crônico. São mutuamente exclusivos.",
-      "pertence_a_classe": false
+        "id": "transtorno_disruptivo_da_desregulacao_do_humor",
+        "condicao": "Transtorno disruptivo da desregulação do humor",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Disruptivo da Desregulação do Humor: humor negativo persistente quase todos os dias; TEI: explosões isoladas sem humor crônico. São mutuamente exclusivos.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno da personalidade antissocial ou borderline",
-      "ponto_distincao": "Nesses transtornos, os níveis de agressividade impulsiva são inferiores aos do TEI.",
-      "pertence_a_classe": false
+        "id": "transtorno_da_personalidade_antissocial_ou_borderline",
+        "condicao": "Transtorno da personalidade antissocial ou borderline",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Nesses transtornos, os níveis de agressividade impulsiva são inferiores aos do TEI.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de adaptação",
-      "ponto_distincao": "Em crianças de 6–18 anos, explosões no contexto de adaptação não contam para TEI.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_adaptacao",
+        "condicao": "Transtorno de adaptação",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Em crianças de 6–18 anos, explosões no contexto de adaptação não contam para TEI.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Intoxicação ou abstinência de substâncias",
-      "ponto_distincao": "Se as explosões estiverem quase sempre associadas a intoxicação/abstinência, não se faz diagnóstico de TEI.",
-      "pertence_a_classe": false
+        "id": "intoxicacao_ou_abstinencia_de_substancias",
+        "condicao": "Intoxicação ou abstinência de substâncias",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Se as explosões estiverem quase sempre associadas a intoxicação/abstinência, não se faz diagnóstico de TEI.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "TDAH, transtorno da conduta, TOD, TEA",
-      "ponto_distincao": "TEI pode ser comórbido se as explosões justificarem atenção clínica independente.",
-      "pertence_a_classe": false
+        "id": "transtorno_deficit_atencao_hiperatividade",
+        "condicao": "Transtorno de Déficit de Atenção/Hiperatividade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Impulsividade pode favorecer reações, mas não explica por si episódios agressivos desproporcionais e recorrentes.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_conduta",
+        "condicao": "Transtorno da Conduta",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "A agressão integra padrão mais amplo de violação de direitos e normas; no explosivo intermitente, os episódios são impulsivos e não instrumentais.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "transtorno_oposicao_desafiante",
+        "condicao": "Transtorno de Oposição Desafiante",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Predominam irritabilidade, discussão e desafio; agressões graves recorrentes favorecem avaliação adicional de explosivo intermitente.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "transtorno_espectro_autista",
+        "condicao": "Transtorno do Espectro Autista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Explosões podem decorrer de rigidez, sobrecarga sensorial ou mudança de rotina; avaliar se há síndrome agressiva independente.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "lesao_cerebral_epilepsia_ou_delirium",
+        "condicao": "Lesão cerebral, epilepsia ou delirium",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Explosões de início atípico ou com alteração neurológica/consciência exigem investigação médica.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos depressivos",
@@ -209,7 +258,18 @@ export const data = ExplosivoIntermittenteSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "oas_m",
+        "nome": "Escala de Agressão Manifesta Modificada",
+        "sigla": "OAS-M",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "2,7% em um ano (definição estrita, EUA)",
     "proporcao_sexo": "1,4–2,3:1 M:F em alguns estudos",

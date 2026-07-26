@@ -1,7 +1,7 @@
 import { TpEsquizotipicoSchema } from "./schema";
 
 export const data = TpEsquizotipicoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tp_esquizotipico",
     "nome_completo": "Transtorno da Personalidade Esquizotípica",
@@ -155,10 +155,21 @@ export const data = TpEsquizotipicoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A22",
+        "equivalencia": "aproximada",
+        "regra": "A CID-11 classifica o transtorno esquizotípico entre os transtornos psicóticos primários, não como transtorno da personalidade.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "modelo_categorial_sem_graduacao",
@@ -172,35 +183,41 @@ export const data = TpEsquizotipicoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Esquizofrenia",
-      "ponto_distincao": "Esquizofrenia: sintomas psicóticos persistentes; esquizotípica: ideias de referência, não delírios firmes.",
-      "pertence_a_classe": false
+        "id": "esquizofrenia",
+        "condicao": "Esquizofrenia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Esquizofrenia: sintomas psicóticos persistentes; esquizotípica: ideias de referência, não delírios firmes.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno do Espectro Autista",
-      "ponto_distincao": "TEA: maior comprometimento da reciprocidade social, comportamentos estereotipados.",
-      "pertence_a_classe": false
+        "id": "transtorno_do_espectro_autista",
+        "condicao": "Transtorno do Espectro Autista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno do Espectro Autista: maior comprometimento da reciprocidade social, comportamentos estereotipados.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno da Personalidade Evitativa",
-      "ponto_distincao": "Evitativa: deseja relacionamentos mas teme rejeição; esquizotípica: falta de desejo de contatos íntimos.",
-      "pertence_a_classe": true
+        "id": "transtorno_da_personalidade_evitativa",
+        "condicao": "Transtorno da Personalidade Evitativa",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Evitativa: deseja relacionamentos mas teme rejeição; esquizotípica: falta de desejo de contatos íntimos.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Depressivo Maior",
@@ -213,7 +230,28 @@ export const data = TpEsquizotipicoSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "scid_5_pd",
+        "nome": "Entrevista Clínica Estruturada para os Transtornos da Personalidade do DSM-5",
+        "sigla": "SCID-5-PD",
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "pid_5",
+        "nome": "Inventário de Personalidade para o DSM-5",
+        "sigla": "PID-5",
+        "uso": "formulacao_dimensional",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Avalia traços dimensionais; não confirma isoladamente um transtorno categórico da personalidade."
+    }
+],
   "prevalencia": {
     "populacao_geral": "0,6% a 3,9%",
     "proporcao_sexo": "Pouco mais comum no sexo masculino",

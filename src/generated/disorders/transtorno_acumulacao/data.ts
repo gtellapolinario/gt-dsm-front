@@ -1,7 +1,7 @@
 import { TranstornoAcumulacaoSchema } from "./schema";
 
 export const data = TranstornoAcumulacaoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_acumulacao",
     "nome_completo": "Transtorno de Acumulação",
@@ -135,9 +135,12 @@ export const data = TranstornoAcumulacaoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "aquisicao_excessiva",
@@ -159,6 +162,14 @@ export const data = TranstornoAcumulacaoSchema.parse({
         ]
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B24",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6B24.0, 6B24.1 ou 6B24.Z conforme o grau de insight.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -172,25 +183,27 @@ export const data = TranstornoAcumulacaoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "habitacao",
-      "label": "Habitabilidade do Domicílio",
-      "icone": "House",
-      "relevante_para": "transversal"
+        "id": "moradia",
+        "label": "Moradia",
+        "icone": "House",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Relações Sociais e Familiares",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TOC",
-      "ponto_distincao": "No TOC, o acúmulo é secundário a obsessões; no acumulação primário, os itens são guardados por valor percebido.",
-      "pertence_a_classe": true
+        "id": "transtorno_obsessivo_compulsivo",
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "No Transtorno Obsessivo-Compulsivo, o acúmulo é secundário a obsessões; no acumulação primário, os itens são guardados por valor percebido.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Depressivo Maior",
@@ -208,7 +221,28 @@ export const data = TranstornoAcumulacaoSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "hrs_i",
+        "nome": "Entrevista de Avaliação de Acumulação",
+        "sigla": "HRS-I",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "sir",
+        "nome": "Inventário de Acumulação – Revisado",
+        "sigla": "SI-R",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "2–6% (estimativa populacao geral)",
     "proporcao_sexo": "Levemente mais frequente em homens; mulheres mais frequentemente tratam",

@@ -77,6 +77,14 @@ import {
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { toast } from "sonner";
 import { Toggle } from "@/components/ui/toggle";
 import {
   Card,
@@ -132,15 +140,13 @@ function CountBadge({
   readonly met?: boolean;
 }) {
   return (
-    <span
-      className={cn(
-        "text-sm font-semibold px-2.5 py-0.5 rounded-full transition-colors",
-        met ? "bg-green-100 text-green-700" : "bg-surface-2 text-text-3",
-      )}
+    <Badge
+      variant={met ? "default" : "secondary"}
+      className="h-auto px-2.5 py-0.5 text-sm font-semibold"
     >
       {n}
       {total !== undefined ? `/${total}` : ""}
-    </span>
+    </Badge>
   );
 }
 
@@ -855,7 +861,7 @@ function CriteriaPanel({
                   className={cn(
                     "rounded-lg border p-3 text-center transition-colors",
                     counter.met
-                      ? "border-green-300 bg-green-50"
+                      ? "border-primary bg-accent/60"
                       : "border-border bg-surface",
                   )}
                 >
@@ -1040,12 +1046,9 @@ function SeverityBlock({ data }: { readonly data: ClinicalDisorder }) {
         {Array.isArray(g.dominios) && g.dominios.length > 0 ? (
           <div className="mt-2 flex flex-wrap gap-1.5">
             {g.dominios.map((d: any) => (
-              <span
-                key={String(d.id)}
-                className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs font-medium text-text-2"
-              >
+              <Badge key={String(d.id)} variant="outline">
                 {String(d.label ?? d.id)}
-              </span>
+              </Badge>
             ))}
           </div>
         ) : null}
@@ -1256,12 +1259,9 @@ function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
               </GuideCardHeader>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {subtipos.map((sub, i) => (
-                  <span
-                    key={i}
-                    className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs font-medium text-text-2"
-                  >
+                  <Badge key={i} variant="outline">
                     {String(sub)}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -1311,13 +1311,16 @@ function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
               </GuideCardHeader>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {instrumentos.map((inst, idx) => (
-                  <span
-                    key={idx}
-                    title={[inst.nome, inst.uso].filter(Boolean).join(" — ")}
-                    className="rounded-md border border-emerald-200 bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
-                  >
-                    {inst.sigla || inst.nome}
-                  </span>
+                  <Tooltip key={idx}>
+                    <TooltipTrigger asChild>
+                      <Badge variant="secondary" className="h-auto">
+                        {inst.sigla || inst.nome}
+                      </Badge>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      {[inst.nome, inst.uso].filter(Boolean).join(" — ")}
+                    </TooltipContent>
+                  </Tooltip>
                 ))}
               </div>
             </div>
@@ -1367,7 +1370,6 @@ export function DisorderRenderer({
   readonly data: ClinicalDisorder;
 }) {
   const assessment = useDisorderAssessment(data);
-  const [copyFeedback, setCopyFeedback] = useState("Copiar Markdown");
 
   const metaName = data.meta.nome_completo ?? data.meta.nome;
   const sigla = data.meta.sigla;
@@ -1431,11 +1433,10 @@ export function DisorderRenderer({
   const handleCopy = async () => {
     try {
       await copyText(liveMarkdown);
-      setCopyFeedback("Copiado!");
+      toast.success("Markdown copiado para a área de transferência.");
     } catch {
-      setCopyFeedback("Falha ao copiar");
+      toast.error("Falha ao copiar o Markdown.");
     }
-    window.setTimeout(() => setCopyFeedback("Copiar Markdown"), 1800);
   };
 
   const handleReset = () => {
@@ -1472,32 +1473,69 @@ export function DisorderRenderer({
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 shrink-0">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setOpenSections(allSectionIds)}
-            >
-              <ChevronsDown data-icon="inline-start" />
-              Expandir
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setOpenSections([])}
-            >
-              <ChevronsUp data-icon="inline-start" />
-              Recolher
-            </Button>
-            <Button size="sm" onClick={() => window.print()}>
-              <Printer data-icon="inline-start" />
-              Imprimir
-            </Button>
-            <Button variant="destructive" size="sm" onClick={handleReset}>
-              <RotateCcw data-icon="inline-start" />
-              Limpar
-            </Button>
-          </div>
+          <TooltipProvider>
+            <div className="flex items-center gap-2 shrink-0">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-9 w-9 rounded-full"
+                    onClick={() => setOpenSections(allSectionIds)}
+                    aria-label="Expandir todas as seções"
+                  >
+                    <ChevronsDown className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">Expandir todas as seções</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-9 w-9 rounded-full"
+                    onClick={() => setOpenSections([])}
+                    aria-label="Recolher todas as seções"
+                  >
+                    <ChevronsUp className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">Recolher todas as seções</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-9 w-9 rounded-full"
+                    onClick={() => window.print()}
+                    aria-label="Imprimir relatório clínico"
+                  >
+                    <Printer className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">Imprimir relatório clínico</TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="destructive"
+                    size="icon"
+                    className="h-9 w-9 rounded-full"
+                    onClick={handleReset}
+                    aria-label="Limpar respostas da avaliação"
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">Limpar respostas da avaliação</TooltipContent>
+              </Tooltip>
+            </div>
+          </TooltipProvider>
         </div>
       </header>
 
@@ -1683,7 +1721,7 @@ export function DisorderRenderer({
               <RotateCcw data-icon="inline-start" /> Atualizar síntese
             </Button>
             <Button onClick={handleCopy}>
-              <Copy data-icon="inline-start" /> {copyFeedback}
+              <Copy data-icon="inline-start" /> Copiar Markdown
             </Button>
             <span className="text-sm text-text-3">
               Formato pronto para prontuário eletrônico ou Obsidian.

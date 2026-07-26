@@ -1,7 +1,7 @@
 import { DeliriumSchema } from "./schema";
 
 export const data = DeliriumSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "delirium",
     "nome_completo": "Delirium",
@@ -110,65 +110,68 @@ export const data = DeliriumSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Subtipo etiológico",
+    "natureza": "etiologia",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "intoxicacao_substancia",
-        "codigo": {
-          "dsm5": "292.81",
-          "cid10": "F19.921",
-          "cid11": null
+        {
+            "id": "intoxicacao_substancia",
+            "label": "Delirium por intoxicação por substância",
+            "descricao": "Predominam sintomas de delirium no quadro de intoxicação por substância.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D70.1",
+                "regra": "Selecionar o código conforme a substância ou medicamento e o contexto de intoxicação/abstinência. A substância pode exigir código específico do bloco 6C4; 6D70.1 é a categoria etiológica geral."
+            }
         },
-        "label": "Delirium por intoxicação por substância",
-        "descricao": "Predominam sintomas de delirium no quadro de intoxicação por substância.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "abstinencia_substancia",
-        "codigo": {
-          "dsm5": "291.0",
-          "cid10": "F10.231",
-          "cid11": null
+        {
+            "id": "abstinencia_substancia",
+            "label": "Delirium por abstinência de substância",
+            "descricao": "Predominam sintomas de delirium no quadro de abstinência de substância.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D70.1",
+                "regra": "Selecionar o código conforme a substância ou medicamento e o contexto de intoxicação/abstinência. A substância pode exigir código específico do bloco 6C4; 6D70.1 é a categoria etiológica geral."
+            }
         },
-        "label": "Delirium por abstinência de substância",
-        "descricao": "Predominam sintomas de delirium no quadro de abstinência de substância.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "induzido_medicamento",
-        "codigo": {
-          "dsm5": "292.81",
-          "cid10": "F19.921",
-          "cid11": null
+        {
+            "id": "induzido_medicamento",
+            "label": "Delirium induzido por medicamento",
+            "descricao": "Sintomas aparecem como efeito colateral de medicamento tomado conforme prescrição.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D70.1",
+                "regra": "Selecionar o código conforme a substância ou medicamento e o contexto de intoxicação/abstinência. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Delirium induzido por medicamento",
-        "descricao": "Sintomas aparecem como efeito colateral de medicamento tomado conforme prescrição.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "outra_condicao_medica",
-        "codigo": {
-          "dsm5": "293.0",
-          "cid10": "F05",
-          "cid11": null
+        {
+            "id": "outra_condicao_medica",
+            "label": "Delirium devido a outra condição médica",
+            "descricao": "Perturbação atribuível às consequências fisiológicas de outra condição médica.",
+            "codigo": {
+                "dsm5_legacy": "293.0",
+                "cid10_cm": "F05",
+                "cid11_mms": "6D70.0",
+                "regra": "Em delirium por substância, medicamento ou abstinência, o código depende do agente e do contexto; não reutilizar um código genérico fixo. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Delirium devido a outra condição médica",
-        "descricao": "Perturbação atribuível às consequências fisiológicas de outra condição médica.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "multiplas_etiologias",
-        "codigo": {
-          "dsm5": "293.0",
-          "cid10": "F05",
-          "cid11": null
-        },
-        "label": "Delirium devido a múltiplas etiologias",
-        "descricao": "Delirium com mais de uma etiologia identificada.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "multiplas_etiologias",
+            "label": "Delirium devido a múltiplas etiologias",
+            "descricao": "Delirium com mais de uma etiologia identificada.",
+            "codigo": {
+                "dsm5_legacy": "293.0",
+                "cid10_cm": "F05",
+                "cid11_mms": "6D70.2",
+                "regra": "Em delirium por substância, medicamento ou abstinência, o código depende do agente e do contexto; não reutilizar um código genérico fixo. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "curso",
@@ -194,6 +197,14 @@ export const data = DeliriumSchema.parse({
         ]
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6D70",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6D70.0–6D70.2, 6D70.Y ou 6D70.Z conforme a etiologia; delirium induzido por substância também admite códigos específicos do bloco 6C4.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -207,35 +218,41 @@ export const data = DeliriumSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "saude",
-      "label": "Cuidados de Saúde",
-      "icone": "Hospital",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtornos psicóticos",
-      "ponto_distincao": "Delirium: curso agudo, perturbação da atenção/consciência, evidência de etiologia médica; psicoses: sem perturbação da consciência.",
-      "pertence_a_classe": false
+        "id": "transtornos_psicoticos",
+        "condicao": "Transtornos psicóticos",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Delirium: curso agudo, perturbação da atenção/consciência, evidência de etiologia médica; psicoses: sem perturbação da consciência.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de estresse agudo",
-      "ponto_distincao": "Delirium: etiologia fisiológica identificável; TEA: precipitado por evento traumático.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_estresse_agudo",
+        "condicao": "Transtorno de estresse agudo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Delirium: etiologia fisiológica identificável; Transtorno de Estresse Agudo: precipitado por evento traumático.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtornos neurocognitivos maiores/leves",
-      "ponto_distincao": "Delirium: curso agudo e flutuante; TNC: curso mais gradual, sem perturbação da consciência.",
-      "pertence_a_classe": true
+        "id": "transtornos_neurocognitivos_maiores_leves",
+        "condicao": "Transtornos neurocognitivos maiores/leves",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Delirium: curso agudo e flutuante; Transtorno Neurocognitivo: curso mais gradual, sem perturbação da consciência.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno neurocognitivo maior ou leve",
@@ -245,20 +262,26 @@ export const data = DeliriumSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Escala de Confusão do Camargo",
-      "sigla": "ECC",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "cam",
+        "nome": "Método de Avaliação da Confusão",
+        "sigla": "CAM",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Mini-Mental State Examination",
-      "sigla": "MMSE",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "four_at",
+        "nome": "Teste de avaliação rápida para delirium e comprometimento cognitivo",
+        "sigla": "4AT",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "1–2% na comunidade; 14–24% em admissões hospitalares; 70–87% em UTI",
     "proporcao_sexo": null,

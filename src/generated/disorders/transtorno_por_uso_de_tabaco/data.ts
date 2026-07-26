@@ -1,7 +1,7 @@
 import { TranstornoPorUsoDeTabacoSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeTabacoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_por_uso_de_tabaco",
     "nome_completo": "Transtorno por Uso de Tabaco",
@@ -130,9 +130,12 @@ export const data = TranstornoPorUsoDeTabacoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "estado_remissao",
@@ -160,6 +163,14 @@ export const data = TranstornoPorUsoDeTabacoSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6C4A",
+        "equivalencia": "contextual",
+        "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -192,25 +203,27 @@ export const data = TranstornoPorUsoDeTabacoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "saude",
-      "label": "Saúde Física",
-      "icone": "HeartPulse",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde Física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Uso não diário de tabaco",
-      "ponto_distincao": "~20% dos fumantes atuais não fumam diariamente; critérios podem não ser preenchidos.",
-      "pertence_a_classe": false
+        "id": "uso_de_tabaco_sem_criterios_para_transtorno",
+        "condicao": "Uso de tabaco sem critérios para transtorno",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Uso não diário pode ou não preencher critérios; a frequência isolada não define o diagnóstico. Confirmar perda de controle, prejuízo e demais critérios.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno por uso de álcool",
@@ -230,20 +243,26 @@ export const data = TranstornoPorUsoDeTabacoSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Monóxido de carbono no ar expirado",
-      "sigla": null,
-      "uso": "monitoramento",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "ftnd",
+        "nome": "Teste de Fagerström para Dependência de Nicotina",
+        "sigla": "FTND",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Cotinina no sangue/saliva/urina",
-      "sigla": null,
-      "uso": "monitoramento",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "co_exalado",
+        "nome": "Monóxido de carbono no ar exalado",
+        "sigla": "CO",
+        "uso": "monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "~13% adultos ≥18a (dependência de nicotina DSM-IV); ~21% fumantes atuais.",
     "proporcao_sexo": "14% homens vs 12% mulheres adultos.",

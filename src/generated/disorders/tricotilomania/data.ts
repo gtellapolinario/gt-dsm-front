@@ -1,7 +1,7 @@
 import { TricotilomaniaSchema } from "./schema";
 
 export const data = TricotilomaniaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tricotilomania",
     "nome_completo": "Tricotilomania (Transtorno de Arrancar o Cabelo)",
@@ -108,10 +108,21 @@ export const data = TricotilomaniaSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B25.0",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -125,25 +136,34 @@ export const data = TricotilomaniaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social (vergonha)",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "saude",
-      "label": "Saúde Dermatológica/Capilar",
-      "icone": "Hospital",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TOC",
-      "ponto_distincao": "TOC: compulsões em resposta a obsessões específicas; tricotilomania: comportamento sem pensamento obsessivo subjacente.",
-      "pertence_a_classe": true
+        "id": "transtorno_obsessivo_compulsivo",
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Obsessivo-Compulsivo: compulsões em resposta a obsessões específicas; tricotilomania: comportamento sem pensamento obsessivo subjacente.",
+        "pertence_a_mesma_classe_dsm": true
+    },
+    {
+        "id": "condicao_dermatologica_com_alopecia",
+        "condicao": "Condição dermatológica com alopecia",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "A perda capilar decorre primariamente da condição médica quando não há arrancamento recorrente.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno de Escoriação",
@@ -156,7 +176,18 @@ export const data = TricotilomaniaSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "mgh_hps",
+        "nome": "Escala de Arrancamento de Cabelo do Massachusetts General Hospital",
+        "sigla": "MGH-HPS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "1–2% (prevalência de 12 meses)",
     "proporcao_sexo": "10:1 mulheres:homens em amostras clínicas; mais equilibrado na infância",

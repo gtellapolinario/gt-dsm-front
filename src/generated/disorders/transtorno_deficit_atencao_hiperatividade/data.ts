@@ -1,7 +1,7 @@
 import { TranstornoDeficitAtencaoHiperatividadeSchema } from "./schema";
 
 export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_deficit_atencao_hiperatividade",
     "nome_completo": "Transtorno de Déficit de Atenção/Hiperatividade",
@@ -312,43 +312,46 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Apresentação Clínica",
+    "natureza": "apresentacao",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "apresentacao_combinada",
-        "codigo": {
-          "dsm5": "314.01",
-          "cid10": "F90.2",
-          "cid11": null
+        {
+            "id": "apresentacao_combinada",
+            "label": "Apresentação combinada",
+            "descricao": "Se tanto o Critério A1 (desatenção) quanto o Critério A2 (hiperatividade-impulsividade) forem preenchidos nos últimos 6 meses.",
+            "codigo": {
+                "dsm5_legacy": "314.01",
+                "cid10_cm": "F90.2",
+                "cid11_mms": "6A05.2",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Apresentação combinada",
-        "descricao": "Se tanto o Critério A1 (desatenção) quanto o Critério A2 (hiperatividade-impulsividade) forem preenchidos nos últimos 6 meses.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "apresentacao_predominantemente_desatenta",
-        "codigo": {
-          "dsm5": "314.00",
-          "cid10": "F90.0",
-          "cid11": null
+        {
+            "id": "apresentacao_predominantemente_desatenta",
+            "label": "Apresentação predominantemente desatenta",
+            "descricao": "Se o Critério A1 (desatenção) for preenchido, mas o Critério A2 (hiperatividade-impulsividade) não for preenchido nos últimos 6 meses.",
+            "codigo": {
+                "dsm5_legacy": "314.00",
+                "cid10_cm": "F90.0",
+                "cid11_mms": "6A05.0",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Apresentação predominantemente desatenta",
-        "descricao": "Se o Critério A1 (desatenção) for preenchido, mas o Critério A2 (hiperatividade-impulsividade) não for preenchido nos últimos 6 meses.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "apresentacao_predominantemente_hiperativa_impulsiva",
-        "codigo": {
-          "dsm5": "314.01",
-          "cid10": "F90.1",
-          "cid11": null
-        },
-        "label": "Apresentação predominantemente hiperativa/impulsiva",
-        "descricao": "Se o Critério A2 (hiperatividade-impulsividade) for preenchido, mas o Critério A1 (desatenção) não for preenchido nos últimos 6 meses.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "apresentacao_predominantemente_hiperativa_impulsiva",
+            "label": "Apresentação predominantemente hiperativa/impulsiva",
+            "descricao": "Se o Critério A2 (hiperatividade-impulsividade) for preenchido, mas o Critério A1 (desatenção) não for preenchido nos últimos 6 meses.",
+            "codigo": {
+                "dsm5_legacy": "314.01",
+                "cid10_cm": "F90.1",
+                "cid11_mms": "6A05.1",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "em_remissao_parcial",
@@ -358,6 +361,14 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A05",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6A05.0–6A05.2, 6A05.Y ou 6A05.Z conforme a apresentação.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -390,36 +401,54 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "academico",
-      "label": "Funcionamento Acadêmico/Aprendizado",
-      "icone": "School",
-      "relevante_para": "ambos"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "laboral",
-      "label": "Funcionamento Profissional",
-      "icone": "Laptop",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Relações Interpessoais e Familiares",
-      "icone": "Heart",
-      "relevante_para": "ambos"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Opositor Desafiante",
-      "ponto_distincao": "A aversão a tarefas no TDAH é motivada por cansaço mental e distração, enquanto no TOD é por hostilidade atitude opositora direta.",
-      "pertence_a_classe": false
+        "id": "transtorno_opositor_desafiante",
+        "condicao": "Transtorno Opositor Desafiante",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "A aversão a tarefas no Transtorno de Déficit de Atenção/Hiperatividade é motivada por cansaço mental e distração, enquanto no Transtorno de Oposição Desafiante é por hostilidade atitude opositora direta.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtornos de Ansiedade",
-      "ponto_distincao": "A desatenção na ansiedade decorre de preocupações e medos, não de déficits atencionais primários permanentes.",
-      "pertence_a_classe": false
+        "id": "transtornos_de_ansiedade",
+        "condicao": "Transtornos de Ansiedade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "A desatenção na ansiedade decorre de preocupações e medos, não de déficits atencionais primários permanentes.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "disturbio_do_sono_epilepsia_ou_disfuncao_tireoidiana",
+        "condicao": "Distúrbio do sono, epilepsia ou disfunção tireoidiana",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Sintomas adquiridos, flutuantes ou ligados ao sono/condição médica não sustentam o padrão neurodesenvolvimental.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "efeito_de_substancia_ou_medicamento",
+        "condicao": "Efeito de substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Sintomas adquiridos e temporalmente ligados a exposição ou abstinência não sustentam o curso neurodesenvolvimental.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Opositor Desafiante",
@@ -434,20 +463,26 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Questionário de Sintomas de TDAH SNAP-IV",
-      "sigla": "SNAP-IV",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "snap_iv",
+        "nome": "Escala Swanson, Nolan e Pelham – versão IV",
+        "sigla": "SNAP-IV",
+        "uso": "triagem_informante",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Escala de TDAH para Adultos ASRS-v1.1",
-      "sigla": "ASRS-v1.1",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "asrs_v1_1",
+        "nome": "Escala de Autorrelato de TDAH em Adultos",
+        "sigla": "ASRS-v1.1",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "Aproximadamente 5% das crianças e 2,5% dos adultos na maioria das culturas.",
     "proporcao_sexo": "Mais comum em indivíduos do sexo masculino, com uma proporção de cerca de 2:1 em crianças e 1,6:1 em adultos.",

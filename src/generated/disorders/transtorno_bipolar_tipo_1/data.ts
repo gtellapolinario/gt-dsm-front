@@ -1,7 +1,7 @@
 import { TranstornoBipolarTipo1Schema } from "./schema";
 
 export const data = TranstornoBipolarTipo1Schema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_bipolar_tipo_1",
     "nome_completo": "Transtorno Bipolar Tipo I",
@@ -182,9 +182,12 @@ export const data = TranstornoBipolarTipo1Schema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "com_sintomas_ansiosos",
@@ -254,6 +257,14 @@ export const data = TranstornoBipolarTipo1Schema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A60",
+        "equivalencia": "contextual",
+        "regra": "Selecionar a subcategoria conforme episódio atual ou mais recente, sintomas psicóticos e remissão.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_contextual",
     "escopo": "episodio_atual",
@@ -313,51 +324,75 @@ export const data = TranstornoBipolarTipo1Schema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "academico",
-      "label": "Desempenho Acadêmico",
-      "icone": "GraduationCap",
-      "relevante_para": "ambos"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social e Interpessoal",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Depressivo Maior",
-      "ponto_distincao": "Pode apresentar sintomas maníacos ou hipomaníacos sublimiares, mas no Bipolar I há presença documentada de pelo menos um episódio maníaco completo na vida.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno Depressivo Maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Pode apresentar sintomas maníacos ou hipomaníacos sublimiares, mas no Bipolar I há presença documentada de pelo menos um episódio maníaco completo na vida.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno Bipolar Tipo II",
-      "ponto_distincao": "Diferencia-se pela ausência de qualquer episódio maníaco anterior na história de vida.",
-      "pertence_a_classe": true
+        "id": "transtorno_bipolar_tipo_ii",
+        "condicao": "Transtorno Bipolar Tipo II",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Diferencia-se pela ausência de qualquer episódio maníaco anterior na história de vida.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtornos de ansiedade",
-      "ponto_distincao": "As ruminações ansiosas podem se assemelhar a pensamentos acelerados, mas a ansiedade não apresenta a natureza episódica clara de mania nem aumento de energia autodirecionada.",
-      "pertence_a_classe": false
+        "id": "transtornos_de_ansiedade",
+        "condicao": "Transtornos de ansiedade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "As ruminações ansiosas podem se assemelhar a pensamentos acelerados, mas a ansiedade não apresenta a natureza episódica clara de mania nem aumento de energia autodirecionada.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "TDAH",
-      "ponto_distincao": "Apresenta início precoce e curso contínuo, sem a ciclicidade típica de episódios delimitados do transtorno bipolar.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_deficit_de_atencao_hiperatividade",
+        "condicao": "Transtorno de Déficit de Atenção/Hiperatividade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Apresenta início precoce e curso contínuo, sem a ciclicidade típica de episódios delimitados do transtorno bipolar.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno da Personalidade Borderline",
-      "ponto_distincao": "A labilidade do humor é crônica e reativa a eventos interpessoais, enquanto a mania exige episódios delimitados com mudança inequívoca no comportamento basal.",
-      "pertence_a_classe": false
+        "id": "transtorno_da_personalidade_borderline",
+        "condicao": "Transtorno da Personalidade Borderline",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "A labilidade do humor é crônica e reativa a eventos interpessoais, enquanto a mania exige episódios delimitados com mudança inequívoca no comportamento basal.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "hipertireoidismo_ou_condicao_neurologica",
+        "condicao": "Hipertireoidismo ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Sinais sistêmicos, neurológicos ou curso temporal incompatível com episódio de mania favorecem causa médica.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_do_humor_induzido_por_substancia_ou_medicamento",
+        "condicao": "Transtorno do humor induzido por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Início e remissão temporalmente ligados a estimulantes, corticosteroides ou outro agente favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos de ansiedade (pânico, fobia social)",
@@ -382,20 +417,36 @@ export const data = TranstornoBipolarTipo1Schema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Escala de Mania de Young",
-      "sigla": "YMRS",
-      "uso": "monitoramento",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "ymrs",
+        "nome": "Escala de Avaliação de Mania de Young",
+        "sigla": "YMRS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Questionário de Transtornos do Humor",
-      "sigla": "MDQ",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "mdq",
+        "nome": "Questionário de Transtornos do Humor",
+        "sigla": "MDQ",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "asrm",
+        "nome": "Escala de Autoavaliação de Mania de Altman",
+        "sigla": "ASRM",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "0,6% nos EUA (estimativa de 12 meses); variando de 0,0% a 0,6% internacionalmente.",
     "proporcao_sexo": "Razão de aproximadamente 1,1:1 (sexo masculino para sexo feminino).",

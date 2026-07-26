@@ -1,7 +1,7 @@
 import { TranstornosAdaptacaoSchema } from "./schema";
 
 export const data = TranstornosAdaptacaoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtornos_adaptacao",
     "nome_completo": "Transtornos de Adaptação",
@@ -99,76 +99,79 @@ export const data = TranstornosAdaptacaoSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Subtipo clínico",
+    "natureza": "subtipo",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "humor_deprimido",
-        "codigo": {
-          "dsm5": "309.0",
-          "cid10": "F43.21",
-          "cid11": null
+        {
+            "id": "humor_deprimido",
+            "label": "Com humor deprimido",
+            "descricao": "Baixo astral, choro e sentimentos de desesperança predominam.",
+            "codigo": {
+                "dsm5_legacy": "309.0",
+                "cid10_cm": "F43.21",
+                "cid11_mms": "6B43",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com humor deprimido",
-        "descricao": "Baixo astral, choro e sentimentos de desesperança predominam.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "ansiedade",
-        "codigo": {
-          "dsm5": "309.24",
-          "cid10": "F43.22",
-          "cid11": null
+        {
+            "id": "ansiedade",
+            "label": "Com ansiedade",
+            "descricao": "Nervosismo, preocupação, agitação ou ansiedade de separação predominam.",
+            "codigo": {
+                "dsm5_legacy": "309.24",
+                "cid10_cm": "F43.22",
+                "cid11_mms": "6B43",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com ansiedade",
-        "descricao": "Nervosismo, preocupação, agitação ou ansiedade de separação predominam.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "misto_depressivo_ansioso",
-        "codigo": {
-          "dsm5": "309.28",
-          "cid10": "F43.23",
-          "cid11": null
+        {
+            "id": "misto_depressivo_ansioso",
+            "label": "Com humor deprimido e ansiedade mistos",
+            "descricao": "Combinação de depressão e ansiedade predomina.",
+            "codigo": {
+                "dsm5_legacy": "309.28",
+                "cid10_cm": "F43.23",
+                "cid11_mms": "6B43",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com humor deprimido e ansiedade mistos",
-        "descricao": "Combinação de depressão e ansiedade predomina.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "perturbacao_conduta",
-        "codigo": {
-          "dsm5": "309.3",
-          "cid10": "F43.24",
-          "cid11": null
+        {
+            "id": "perturbacao_conduta",
+            "label": "Com perturbação de conduta",
+            "descricao": "Perturbação de conduta predomina.",
+            "codigo": {
+                "dsm5_legacy": "309.3",
+                "cid10_cm": "F43.24",
+                "cid11_mms": "6B43",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com perturbação de conduta",
-        "descricao": "Perturbação de conduta predomina.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "misto_emocoes_conduta",
-        "codigo": {
-          "dsm5": "309.4",
-          "cid10": "F43.25",
-          "cid11": null
+        {
+            "id": "misto_emocoes_conduta",
+            "label": "Com perturbação mista de emoções e conduta",
+            "descricao": "Sintomas emocionais e de conduta.",
+            "codigo": {
+                "dsm5_legacy": "309.4",
+                "cid10_cm": "F43.25",
+                "cid11_mms": "6B43",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com perturbação mista de emoções e conduta",
-        "descricao": "Sintomas emocionais e de conduta.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "nao_especificado",
-        "codigo": {
-          "dsm5": "309.9",
-          "cid10": "F43.20",
-          "cid11": null
-        },
-        "label": "Não especificado",
-        "descricao": "Reações mal adaptativas não classificáveis em outros subtipos.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "nao_especificado",
+            "label": "Não especificado",
+            "descricao": "Reações mal adaptativas não classificáveis em outros subtipos.",
+            "codigo": {
+                "dsm5_legacy": "309.9",
+                "cid10_cm": "F43.20",
+                "cid11_mms": "6B43",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "curso",
@@ -182,6 +185,14 @@ export const data = TranstornosAdaptacaoSchema.parse({
         "regra_criterial": "Agudo: Duração <6 meses.; Persistente/crônico: Duração ≥6 meses por causa do estressor crônico."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B43",
+        "equivalencia": "direta_sem_subcodigos_dsm",
+        "regra": "Os subtipos do DSM-5-TR não recebem códigos CID-11 MMS distintos.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -195,30 +206,34 @@ export const data = TranstornosAdaptacaoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TEPT / TEA",
-      "ponto_distincao": "TEPT/TEA: exigem trauma com risco de vida; transtorno de adaptação: qualquer estressor.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_estresse_pos_traumatico_transtorno_de_estresse_agudo",
+        "condicao": "Transtorno de Estresse Pós-Traumático / Transtorno de Estresse Agudo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Estresse Pós-Traumático/Transtorno de Estresse Agudo: exigem trauma com risco de vida; transtorno de adaptação: qualquer estressor.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Depressivo Maior",
-      "ponto_distincao": "TDM: pode ser diagnosticado mesmo sem estressor identificável; satisfeitos critérios formais A-E do TDM.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno Depressivo Maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Depressivo Maior: pode ser diagnosticado mesmo sem estressor identificável; satisfeitos critérios formais A-E do Transtorno Depressivo Maior.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Condições médicas gerais",

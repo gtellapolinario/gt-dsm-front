@@ -1,7 +1,7 @@
 import { TpAntissocialSchema } from "./schema";
 
 export const data = TpAntissocialSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tp_antissocial",
     "nome_completo": "Transtorno da Personalidade Antissocial",
@@ -164,10 +164,21 @@ export const data = TpAntissocialSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6D10",
+        "equivalencia": "sem_correspondencia_categorial_direta",
+        "regra": "A CID-11 não conserva os tipos categóricos do DSM-5-TR. Codificar a gravidade em 6D10.0–6D10.2 ou 6D10.Z e acrescentar qualificadores de traço quando sustentados.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "modelo_categorial_sem_graduacao",
@@ -181,41 +192,47 @@ export const data = TpAntissocialSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "legal",
-      "label": "Situação Legal",
-      "icone": "Scale",
-      "relevante_para": "transversal"
+        "id": "seguranca_legal",
+        "label": "Segurança e repercussões legais",
+        "icone": "Scale",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno da Conduta",
-      "ponto_distincao": "TDAH/conduta: <18a; antissocial: ≥18a com histórico de conduta.",
-      "pertence_a_classe": false
+        "id": "transtorno_da_conduta",
+        "condicao": "Transtorno da Conduta",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Déficit de Atenção/Hiperatividade/conduta: <18a; antissocial: ≥18a com histórico de conduta.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno da Personalidade Narcisista",
-      "ponto_distincao": "Narcisista: busca admiração, sem histórico criminoso típico.",
-      "pertence_a_classe": true
+        "id": "transtorno_da_personalidade_narcisista",
+        "condicao": "Transtorno da Personalidade Narcisista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Narcisista: busca admiração, sem histórico criminoso típico.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno por Uso de Substância",
-      "ponto_distincao": "Comportamento antissocial exclusivo ao contexto de uso de substância não qualifica.",
-      "pertence_a_classe": false
+        "id": "transtorno_por_uso_de_substancia",
+        "condicao": "Transtorno por Uso de Substância",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Comportamento antissocial exclusivo ao contexto de uso de substância não qualifica.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos por uso de substância",
@@ -238,7 +255,28 @@ export const data = TpAntissocialSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "scid_5_pd",
+        "nome": "Entrevista Clínica Estruturada para os Transtornos da Personalidade do DSM-5",
+        "sigla": "SCID-5-PD",
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "pid_5",
+        "nome": "Inventário de Personalidade para o DSM-5",
+        "sigla": "PID-5",
+        "uso": "formulacao_dimensional",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Avalia traços dimensionais; não confirma isoladamente um transtorno categórico da personalidade."
+    }
+],
   "prevalencia": {
     "populacao_geral": "0,2% a 3,3%",
     "proporcao_sexo": "Muito mais comum no sexo masculino",

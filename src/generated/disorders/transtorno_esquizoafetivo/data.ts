@@ -1,7 +1,7 @@
 import { TranstornoEsquizoafetivoSchema } from "./schema";
 
 export const data = TranstornoEsquizoafetivoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_esquizoafetivo",
     "nome_completo": "Transtorno Esquizoafetivo",
@@ -137,32 +137,35 @@ export const data = TranstornoEsquizoafetivoSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Subtipo baseado no episódio de humor",
+    "natureza": "tipo",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "tipo_bipolar",
-        "codigo": {
-          "dsm5": "295.70",
-          "cid10": "F25.0",
-          "cid11": null
+        {
+            "id": "tipo_bipolar",
+            "label": "Tipo Bipolar",
+            "descricao": "Aplica-se se um episódio maníaco faz parte da apresentação. Episódios depressivos maiores também podem ocorrer.",
+            "codigo": {
+                "dsm5_legacy": "295.70",
+                "cid10_cm": "F25.0",
+                "cid11_mms": "6A21",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. A CID-11 codifica curso/remissão, não o tipo bipolar do DSM-5-TR."
+            }
         },
-        "label": "Tipo Bipolar",
-        "descricao": "Aplica-se se um episódio maníaco faz parte da apresentação. Episódios depressivos maiores também podem ocorrer.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "tipo_depressivo",
-        "codigo": {
-          "dsm5": "295.70",
-          "cid10": "F25.1",
-          "cid11": null
-        },
-        "label": "Tipo Depressivo",
-        "descricao": "Aplica-se se apenas episódios depressivos maiores fazem parte da apresentação.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "tipo_depressivo",
+            "label": "Tipo Depressivo",
+            "descricao": "Aplica-se se apenas episódios depressivos maiores fazem parte da apresentação.",
+            "codigo": {
+                "dsm5_legacy": "295.70",
+                "cid10_cm": "F25.1",
+                "cid11_mms": "6A21",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. A CID-11 codifica curso/remissão, não o tipo depressivo do DSM-5-TR."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "curso_apos_um_ano",
@@ -189,6 +192,14 @@ export const data = TranstornoEsquizoafetivoSchema.parse({
         "regra_criterial": "Exige o uso do código adicional 293.89 (F06.1)."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A21",
+        "equivalencia": "contextual",
+        "regra": "A CID-11 codifica curso e remissão; os tipos bipolar/depressivo do DSM-5-TR não geram subcódigos correspondentes.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -254,32 +265,61 @@ export const data = TranstornoEsquizoafetivoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social e Interpessoal",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Ocupacional",
-      "icone": "Briefcase",
-      "relevante_para": "transversal"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Esquizofrenia",
-      "ponto_distincao": "Na esquizofrenia, os sintomas de humor não estão presentes na maior parte da duração total da doença ou a psicose sem humor dura menos de 2 semanas.",
-      "pertence_a_classe": true
+        "id": "esquizofrenia",
+        "condicao": "Esquizofrenia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Na esquizofrenia, os sintomas de humor não estão presentes na maior parte da duração total da doença ou a psicose sem humor dura menos de 2 semanas.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Depressivo ou Bipolar com Características Psicóticas",
-      "ponto_distincao": "Diferencia-se pela ausência de delírios ou alucinações na ausência de episódios de humor por pelo menos duas semanas.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_ou_bipolar_com_caracteristicas_psicoticas",
+        "condicao": "Transtorno Depressivo ou Bipolar com Características Psicóticas",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Diferencia-se pela ausência de delírios ou alucinações na ausência de episódios de humor por pelo menos duas semanas.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "delirium_ou_condicao_neurologica",
+        "condicao": "Delirium ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Flutuação de atenção, declínio cognitivo ou sinais neurológicos favorecem causa orgânica.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_psicotico_ou_do_humor_induzido_por_substancia_ou_medicamento",
+        "condicao": "Transtorno psicótico ou do humor induzido por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Relação temporal consistente com o agente e remissão compatível favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "panss",
+        "nome": "Escala das Síndromes Positiva e Negativa",
+        "sigla": "PANSS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "Aproximadamente 0,3% ao longo da vida.",
     "proporcao_sexo": "Mais comum em indivíduos do sexo feminino, impulsionado pelo tipo depressivo.",

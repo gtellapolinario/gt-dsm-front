@@ -1,7 +1,7 @@
 import { TranstornoDepressivoMaiorSchema } from "./schema";
 
 export const data = TranstornoDepressivoMaiorSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_depressivo_maior",
     "nome_completo": "Transtorno Depressivo Maior",
@@ -218,32 +218,35 @@ export const data = TranstornoDepressivoMaiorSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Episodicidade",
+    "natureza": "curso",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "episodio_unico",
-        "codigo": {
-          "dsm5": "296.2x",
-          "cid10": "F32.x",
-          "cid11": null
+        {
+            "id": "episodio_unico",
+            "label": "Episódio único",
+            "descricao": "Primeiro episódio depressivo maior na vida do indivíduo.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6A70",
+                "regra": "O código depende de gravidade, curso, etiologia ou outra especificação; não usar curingas como código final. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Episódio único",
-        "descricao": "Primeiro episódio depressivo maior na vida do indivíduo.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "episodio_recorrente",
-        "codigo": {
-          "dsm5": "296.3x",
-          "cid10": "F33.x",
-          "cid11": null
-        },
-        "label": "Episódio recorrente",
-        "descricao": "Dois ou mais episódios com intervalo de pelo menos 2 meses entre eles sem critérios para EDM.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "episodio_recorrente",
+            "label": "Episódio recorrente",
+            "descricao": "Dois ou mais episódios com intervalo de pelo menos 2 meses entre eles sem critérios para episódio depressivo maior.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6A71",
+                "regra": "O código depende de gravidade, curso, etiologia ou outra especificação; não usar curingas como código final. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "com_sintomas_ansiosos",
@@ -306,6 +309,17 @@ export const data = TranstornoDepressivoMaiorSchema.parse({
         "regra_criterial": "Aplica-se somente ao episódio recorrente."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": [
+            "6A70",
+            "6A71"
+        ],
+        "equivalencia": "contextual",
+        "regra": "Usar 6A70 para episódio único e 6A71 para transtorno depressivo recorrente; selecionar gravidade, psicose e remissão.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_contextual",
     "escopo": "episodio_depressivo_maior_atual",
@@ -341,62 +355,74 @@ export const data = TranstornoDepressivoMaiorSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "academico",
-      "label": "Desempenho Acadêmico",
-      "icone": "GraduationCap",
-      "relevante_para": "ambos"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "autocuidado",
-      "label": "Autocuidado Básico",
-      "icone": "Bath",
-      "relevante_para": "transversal"
+        "id": "autonomia_autocuidado",
+        "label": "Autonomia e autocuidado",
+        "icone": "House",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Episódio maníaco com humor irritável ou misto",
-      "ponto_distincao": "Distinguir por presença de sintomas maníacos concomitantes; exige avaliação clínica criteriosa.",
-      "pertence_a_classe": false
+        "id": "episodio_maniaco_com_humor_irritavel_ou_misto",
+        "condicao": "Episódio maníaco com humor irritável ou misto",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Distinguir por presença de sintomas maníacos concomitantes; exige avaliação clínica criteriosa.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno do humor devido a condição médica",
-      "ponto_distincao": "EDM é diagnóstico correto se a perturbação não for consequência fisiopatológica direta de condição médica específica.",
-      "pertence_a_classe": false
+        "id": "transtorno_do_humor_devido_a_condicao_medica",
+        "condicao": "Transtorno do humor devido a condição médica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "episódio depressivo maior é diagnóstico correto se a perturbação não for consequência fisiopatológica direta de condição médica específica.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno depressivo/bipolar induzido por substância",
-      "ponto_distincao": "Distingue-se por substância etiologicamente relacionada à perturbação de humor.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_bipolar_induzido_por_substancia",
+        "condicao": "Transtorno depressivo/bipolar induzido por substância",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Distingue-se por substância etiologicamente relacionada à perturbação de humor.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "TDAH",
-      "ponto_distincao": "Distratibilidade e baixa tolerância à frustração ocorrem em ambos; se critérios satisfeitos, TDAH pode ser diagnosticado conjuntamente.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_deficit_de_atencao_hiperatividade",
+        "condicao": "Transtorno de Déficit de Atenção/Hiperatividade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Distratibilidade e baixa tolerância à frustração ocorrem em ambos; se critérios satisfeitos, Transtorno de Déficit de Atenção/Hiperatividade pode ser diagnosticado conjuntamente.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de adaptação com humor deprimido",
-      "ponto_distincao": "No transtorno de adaptação não são satisfeitos todos os critérios para EDM.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_adaptacao_com_humor_deprimido",
+        "condicao": "Transtorno de adaptação com humor deprimido",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "No transtorno de adaptação não são satisfeitos todos os critérios para episódio depressivo maior.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Tristeza/luto normal",
-      "ponto_distincao": "Luto não costuma provocar EDM; quando ocorrem juntos, prognóstico é pior; exige julgamento clínico.",
-      "pertence_a_classe": false
+        "id": "tristeza_luto_normal",
+        "condicao": "Tristeza/luto normal",
+        "natureza": "variacao_normativa",
+        "ponto_distincao": "Luto não costuma provocar episódio depressivo maior; quando ocorrem juntos, prognóstico é pior; exige julgamento clínico.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos relacionados a substâncias",
@@ -424,7 +450,28 @@ export const data = TranstornoDepressivoMaiorSchema.parse({
       "nota": "Aumenta sensivelmente o risco de tentativas de suicídio."
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "phq_9",
+        "nome": "Questionário de Saúde do Paciente – 9 itens",
+        "sigla": "PHQ-9",
+        "uso": "triagem_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "promis_depressao",
+        "nome": "PROMIS – Depressão, forma breve",
+        "sigla": "PROMIS-Depressão",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "Aproximadamente 7% (prevalência de 12 meses nos EUA); prevalência em 18-29 anos é 3x maior que em indivíduos acima de 60 anos",
     "proporcao_sexo": "1,5 a 3x mais em mulheres que em homens; disparidade inicia na adolescência",

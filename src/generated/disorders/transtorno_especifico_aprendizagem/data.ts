@@ -1,7 +1,7 @@
 import { TranstornoEspecificoAprendizagemSchema } from "./schema";
 
 export const data = TranstornoEspecificoAprendizagemSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_especifico_aprendizagem",
     "nome_completo": "Transtorno Específico da Aprendizagem",
@@ -156,11 +156,48 @@ export const data = TranstornoEspecificoAprendizagemSchema.parse({
     }
 ],
   "subtipos": {
-    "presente": false,
-    "nome": null,
+    "presente": true,
+    "nome": "Domínio acadêmico prejudicado",
+    "natureza": "dominio_prejudicado",
+    "formal_dsm": true,
     "mutuamente_exclusivos": false,
-    "subtipos": [],
-      },
+    "subtipos": [
+        {
+            "id": "prejuizo_leitura",
+            "label": "Com prejuízo na leitura",
+            "descricao": "Registrar habilidades afetadas, como precisão, fluência e compreensão.",
+            "codigo": {
+                "dsm5_legacy": "315.00",
+                "cid10_cm": "F81.0",
+                "cid11_mms": "6A03.0",
+                "regra": "Os domínios não são mutuamente exclusivos; codificar cada prejuízo documentado conforme o sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        },
+        {
+            "id": "prejuizo_expressao_escrita",
+            "label": "Com prejuízo na expressão escrita",
+            "descricao": "Registrar habilidades afetadas, como ortografia, gramática, pontuação, clareza e organização.",
+            "codigo": {
+                "dsm5_legacy": "315.2",
+                "cid10_cm": "F81.81",
+                "cid11_mms": "6A03.1",
+                "regra": "Os domínios não são mutuamente exclusivos; codificar cada prejuízo documentado conforme o sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        },
+        {
+            "id": "prejuizo_matematica",
+            "label": "Com prejuízo na matemática",
+            "descricao": "Registrar habilidades afetadas, como senso numérico, memorização de fatos, cálculo e raciocínio.",
+            "codigo": {
+                "dsm5_legacy": "315.1",
+                "cid10_cm": "F81.2",
+                "cid11_mms": "6A03.2",
+                "regra": "Os domínios não são mutuamente exclusivos; codificar cada prejuízo documentado conforme o sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
+    ],
+    "nota_aplicador": "Marque todos os domínios acadêmicos com prejuízo confirmado."
+},
   "especificadores": [
     {
         "id": "com_prejuizo_leitura",
@@ -184,6 +221,14 @@ export const data = TranstornoEspecificoAprendizagemSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A03",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6A03.0–6A03.2 para leitura, expressão escrita ou matemática; codificar cada domínio documentado.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -216,31 +261,33 @@ export const data = TranstornoEspecificoAprendizagemSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "leitura",
-      "label": "Habilidade de Leitura",
-      "icone": "BookOpen",
-      "relevante_para": "ambos"
+        "id": "leitura",
+        "label": "Habilidade de Leitura",
+        "icone": "BookOpen",
+        "relevante_para": "transversal"
     },
     {
-      "id": "escrita",
-      "label": "Habilidade de Escrita",
-      "icone": "PenTool",
-      "relevante_para": "ambos"
+        "id": "escrita",
+        "label": "Habilidade de Escrita",
+        "icone": "PenTool",
+        "relevante_para": "transversal"
     },
     {
-      "id": "calculo",
-      "label": "Cálculo e Matemática",
-      "icone": "Calculator",
-      "relevante_para": "ambos"
+        "id": "matematica",
+        "label": "Matemática",
+        "icone": "Calculator",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Deficiência Intelectual",
-      "ponto_distincao": "Na DI, as dificuldades são globais e proporcionais ao QI baixo, enquanto no Transtorno da Aprendizagem as dificuldades ocorrem em áreas acadêmicas específicas, estando o QI geral preservado.",
-      "pertence_a_classe": true
+        "id": "deficiencia_intelectual",
+        "condicao": "Deficiência Intelectual",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Na DI, as dificuldades são globais e proporcionais ao QI baixo, enquanto no Transtorno da Aprendizagem as dificuldades ocorrem em áreas acadêmicas específicas, estando o QI geral preservado.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TDAH",
@@ -248,7 +295,28 @@ export const data = TranstornoEspecificoAprendizagemSchema.parse({
       "nota": "Frequente em crianças que demonstram tanto impulsividade escolar quanto atrasos específicos."
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "desempenho_academico",
+        "nome": "Teste padronizado de desempenho acadêmico",
+        "sigla": null,
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "avaliacao_neuropsicologica",
+        "nome": "Avaliação neuropsicológica padronizada",
+        "sigla": null,
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Documenta domínios cognitivos e funcionamento; interpretar com escolaridade, cultura e condição sensorial."
+    }
+],
   "prevalencia": {
     "populacao_geral": "5% a 15% entre crianças em idade escolar e aproximadamente 4% em adultos.",
     "proporcao_sexo": "Mais comum em indivíduos do sexo masculino.",

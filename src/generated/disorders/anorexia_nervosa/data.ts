@@ -1,7 +1,7 @@
 import { AnorexiaNervosaSchema } from "./schema";
 
 export const data = AnorexiaNervosaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   meta: {
     id: "anorexia_nervosa",
     nome_completo: "Anorexia Nervosa",
@@ -68,32 +68,60 @@ export const data = AnorexiaNervosaSchema.parse({
         "nota": null
     }
 ],
-  subtipos: {
-    presente: true,
-    nome: "Subtipo",
-    mutuamente_exclusivos: true,
-    subtipos: [
-      {
-        id: "tipo_restritivo",
-        codigo: {
-          dsm5: "307.1",
-          cid10: "F50.01",
-          cid11: null},
-        label: "Tipo restritivo",
-        descricao:
-          "Nos últimos três meses, o indivíduo não se envolveu em episódios recorrentes de compulsão alimentar ou comportamento purgativo. A perda de peso é conseguida essencialmente por dieta, jejum e/ou exercício excessivo.",
-        sintomas_caracteristicos: []},
-      {
-        id: "tipo_compulsao_alimentar_purgativa",
-        codigo: {
-          dsm5: "307.1",
-          cid10: "F50.02",
-          cid11: null},
-        label: "Tipo compulsão alimentar purgativa",
-        descricao:
-          "Nos últimos três meses, o indivíduo se envolveu em episódios recorrentes de compulsão alimentar purgativa (vômitos autoinduzidos ou uso indevido de laxantes, diuréticos ou enemas).",
-        sintomas_caracteristicos: []}],
-    },
+  "subtipos": {
+    "presente": true,
+    "nome": "Subtipo",
+    "natureza": "subtipo",
+    "formal_dsm": true,
+    "mutuamente_exclusivos": true,
+    "subtipos": [
+        {
+            "id": "tipo_restritivo",
+            "label": "Tipo restritivo",
+            "descricao": "Nos últimos três meses, o indivíduo não se envolveu em episódios recorrentes de compulsão alimentar ou comportamento purgativo. A perda de peso é conseguida essencialmente por dieta, jejum e/ou exercício excessivo.",
+            "codigo": {
+                "dsm5_legacy": "307.1",
+                "cid10_cm": [
+                    "F50.010",
+                    "F50.011",
+                    "F50.012",
+                    "F50.013",
+                    "F50.014",
+                    "F50.019"
+                ],
+                "cid11_mms": [
+                    "6B80.00",
+                    "6B80.10",
+                    "6B80.2"
+                ],
+                "regra": "Selecionar o código CID-10-CM conforme gravidade ou remissão; F50.01 deixou de ser válido em 01/10/2024. Usar 6B80.00 ou 6B80.10 conforme o nível ponderal; 6B80.2 é usado na fase de recuperação com peso normal."
+            }
+        },
+        {
+            "id": "tipo_compulsao_alimentar_purgativa",
+            "label": "Tipo compulsão alimentar/purgativo",
+            "descricao": "Nos últimos três meses, houve episódios recorrentes de compulsão alimentar ou comportamento purgativo, como vômitos autoinduzidos ou uso indevido de laxantes, diuréticos ou enemas.",
+            "codigo": {
+                "dsm5_legacy": "307.1",
+                "cid10_cm": [
+                    "F50.020",
+                    "F50.021",
+                    "F50.022",
+                    "F50.023",
+                    "F50.024",
+                    "F50.029"
+                ],
+                "cid11_mms": [
+                    "6B80.01",
+                    "6B80.11",
+                    "6B80.2"
+                ],
+                "regra": "Selecionar o código CID-10-CM conforme gravidade ou remissão; F50.02 deixou de ser válido em 01/10/2024. Usar 6B80.01 ou 6B80.11 conforme o nível ponderal; 6B80.2 é usado na fase de recuperação com peso normal."
+            }
+        }
+    ],
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "estado_remissao",
@@ -107,6 +135,14 @@ export const data = AnorexiaNervosaSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B80",
+        "equivalencia": "contextual",
+        "regra": "Selecionar a subcategoria conforme o nível ponderal, o padrão alimentar e a fase de recuperação.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "gravidade_atual",
@@ -144,43 +180,56 @@ export const data = AnorexiaNervosaSchema.parse({
     notas:
       "Bulimia nervosa não deve ser diagnosticada durante episódios de anorexia nervosa. A alternância entre subtipos ao longo do curso não é incomum.",
     },
-  dominios_impacto: [
+  "dominios_impacto": [
     {
-      id: "saude",
-      label: "Saúde Física e Nutricional",
-      icone: "HeartPulse",
-      relevante_para: "transversal"},
+        "id": "saude_fisica",
+        "label": "Saúde Física e Nutricional",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
+    },
     {
-      id: "social",
-      label: "Funcionamento Social",
-      icone: "Users",
-      relevante_para: "transversal"},
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
+    },
     {
-      id: "trabalho",
-      label: "Desempenho Profissional/Acadêmico",
-      icone: "Briefcase",
-      relevante_para: "adulto"}],
-  diagnostico_diferencial: [
+        "id": "ocupacional_academico",
+        "label": "Desempenho ocupacional ou acadêmico",
+        "icone": "Briefcase",
+        "relevante_para": "transversal"
+    }
+],
+  "diagnostico_diferencial": [
     {
-      condicao: "Bulimia nervosa",
-      ponto_distincao:
-        "Bulimia: peso corporal igual ou acima da faixa mínima normal, com episódios recorrentes de compulsão alimentar e compensação; anorexia: peso significativamente baixo.",
-      pertence_a_classe: true},
+        "id": "bulimia_nervosa",
+        "condicao": "Bulimia nervosa",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Bulimia: peso corporal igual ou acima da faixa mínima normal, com episódios recorrentes de compulsão alimentar e compensação; anorexia: peso significativamente baixo.",
+        "pertence_a_mesma_classe_dsm": true
+    },
     {
-      condicao: "Transtorno alimentar restritivo/evitativo",
-      ponto_distincao:
-        "TARE: pode haver perda de peso, mas sem medo de ganhar peso ou perturbação na vivência da forma/peso corporal.",
-      pertence_a_classe: true},
+        "id": "transtorno_alimentar_restritivo_evitativo",
+        "condicao": "Transtorno alimentar restritivo/evitativo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Alimentar Restritivo/Evitativo: pode haver perda de peso, mas sem medo de ganhar peso ou perturbação na vivência da forma/peso corporal.",
+        "pertence_a_mesma_classe_dsm": true
+    },
     {
-      condicao: "Condições médicas (hipertireoidismo, malignidades, SIDA)",
-      ponto_distincao:
-        "Condições médicas: geralmente sem medo intenso de ganhar peso nem perturbação na vivência da forma/peso corporal.",
-      pertence_a_classe: false},
+        "id": "condicoes_medicas_hipertireoidismo_malignidades_hiv_aids",
+        "condicao": "Condições médicas (hipertireoidismo, malignidades, HIV/aids)",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Condições médicas: geralmente sem medo intenso de ganhar peso nem perturbação na vivência da forma/peso corporal.",
+        "pertence_a_mesma_classe_dsm": false
+    },
     {
-      condicao: "Transtorno depressivo maior",
-      ponto_distincao:
-        "TDM: pode haver perda de peso grave, mas geralmente sem desejo de perda excessiva nem medo intenso de ganhar peso.",
-      pertence_a_classe: false}],
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno depressivo maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Depressivo Maior: pode haver perda de peso grave, mas geralmente sem desejo de perda excessiva nem medo intenso de ganhar peso.",
+        "pertence_a_mesma_classe_dsm": false
+    }
+],
   comorbidades_frequentes: [
     {
       condicao: "Transtornos de ansiedade",
@@ -202,7 +251,28 @@ export const data = AnorexiaNervosaSchema.parse({
       condicao: "Transtorno por uso de álcool ou outras substâncias",
       frequencia: "moderada",
       nota: "Mais frequente no tipo compulsão alimentar purgativa."}],
-  instrumentos_complementares: [],
+  "instrumentos_complementares": [
+    {
+        "id": "ede_q",
+        "nome": "Questionário de Exame dos Transtornos Alimentares",
+        "sigla": "EDE-Q",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "scoff",
+        "nome": "Questionário de triagem para transtornos alimentares",
+        "sigla": "SCOFF",
+        "uso": "triagem",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   prevalencia: {
     populacao_geral:
       "0,4% (prevalência de 12 meses entre jovens do sexo feminino).",

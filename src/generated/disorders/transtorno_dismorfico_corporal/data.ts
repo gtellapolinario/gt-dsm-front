@@ -1,7 +1,7 @@
 import { TranstornoDismorficoCorporalSchema } from "./schema";
 
 export const data = TranstornoDismorficoCorporalSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_dismorfico_corporal",
     "nome_completo": "Transtorno Dismórfico Corporal",
@@ -103,9 +103,12 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "com_dismorfia_muscular",
@@ -127,6 +130,14 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
         ]
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B21",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6B21.0, 6B21.1 ou 6B21.Z conforme o grau de insight.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -140,30 +151,41 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TOC",
-      "ponto_distincao": "TOC: obsessões não focadas em aparência; TDC: preocupação exclusiva com aparência física.",
-      "pertence_a_classe": true
+        "id": "transtorno_obsessivo_compulsivo",
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Obsessivo-Compulsivo: obsessões não focadas em aparência; Transtorno Dismórfico Corporal: preocupação exclusiva com aparência física.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Alimentar",
-      "ponto_distincao": "Anorexia: preocupação com gordura/peso; TDC: outras características físicas.",
-      "pertence_a_classe": false
+        "id": "transtorno_alimentar",
+        "condicao": "Transtorno Alimentar",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Anorexia: preocupação com gordura/peso; Transtorno Dismórfico Corporal: outras características físicas.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "condicao_dermatologica_ou_alteracao_corporal_objetiva",
+        "condicao": "Condição dermatológica ou alteração corporal objetiva",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Avaliar se a preocupação e os comportamentos são desproporcionais à alteração observável.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Depressivo Maior",
@@ -176,7 +198,18 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "bdd_ybocs",
+        "nome": "Escala Yale-Brown para Transtorno Dismórfico Corporal",
+        "sigla": "BDD-YBOCS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "2,4% em adultos (EUA); maior em pacientes de dermatologia e cirurgia estética",
     "proporcao_sexo": "Levemente mais comum em mulheres na população geral",

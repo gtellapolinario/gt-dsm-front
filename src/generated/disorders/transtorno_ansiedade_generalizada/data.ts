@@ -1,7 +1,7 @@
 import { TranstornoAnsiedadeGeneralizadaSchema } from "./schema";
 
 export const data = TranstornoAnsiedadeGeneralizadaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_ansiedade_generalizada",
     "nome_completo": "Transtorno de Ansiedade Generalizada",
@@ -175,10 +175,21 @@ export const data = TranstornoAnsiedadeGeneralizadaSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B00",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -192,41 +203,61 @@ export const data = TranstornoAnsiedadeGeneralizadaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "saude",
-      "label": "Uso de Serviços de Saúde",
-      "icone": "Hospital",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Ansiedade situacional normativa",
-      "ponto_distincao": "TAG: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
-      "pertence_a_classe": false
+        "id": "ansiedade_situacional_normativa",
+        "condicao": "Ansiedade situacional normativa",
+        "natureza": "variacao_normativa",
+        "ponto_distincao": "Transtorno de Ansiedade Generalizada: preocupações excessivas, incontroláveis, em múltiplos domínios por ≥6 meses com sintomas físicos.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de Pânico",
-      "ponto_distincao": "TP: ansiedade focalizada em ataques de pânico; TAG: preocupações difusas e múltiplas.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_panico",
+        "condicao": "Transtorno de Pânico",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Pânico: ansiedade focalizada em ataques de pânico; Transtorno de Ansiedade Generalizada: preocupações difusas e múltiplas.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TOC",
-      "ponto_distincao": "TOC: pensamentos intrusivos indesejados e egodistônicos; TAG: preocupações sobre problemas reais da vida, mais egossintônicas.",
-      "pertence_a_classe": false
+        "id": "transtorno_obsessivo_compulsivo",
+        "condicao": "Transtorno Obsessivo-Compulsivo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Obsessivo-Compulsivo: pensamentos intrusivos indesejados e egodistônicos; Transtorno de Ansiedade Generalizada: preocupações sobre problemas reais da vida, mais egossintônicas.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "hipertireoidismo_arritmia_ou_condicao_cardiopulmonar",
+        "condicao": "Hipertireoidismo, arritmia ou condição cardiopulmonar",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Sintomas autonômicos acompanhados de sinais físicos específicos ou curso atípico exigem investigação clínica.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "ansiedade_induzida_por_substancia_ou_medicamento",
+        "condicao": "Ansiedade induzida por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Cafeína, estimulantes, descongestionantes, corticosteroides e abstinência podem produzir ansiedade com curso ligado à exposição.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Depressivo Maior",
@@ -246,13 +277,16 @@ export const data = TranstornoAnsiedadeGeneralizadaSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Generalized Anxiety Disorder 7-item Scale",
-      "sigla": "GAD-7",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "gad_7",
+        "nome": "Questionário de Ansiedade Generalizada – 7 itens",
+        "sigla": "GAD-7",
+        "uso": "triagem_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "0,9% em adolescentes; 2,9% em adultos (prevalência de 12 meses nos EUA); 0,4–3,6% internacionalmente",
     "proporcao_sexo": "2:1 mulheres:homens",

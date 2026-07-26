@@ -1,7 +1,7 @@
 import { TranstornoObsessivoCompulsivoSchema } from "./schema";
 
 export const data = TranstornoObsessivoCompulsivoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_obsessivo_compulsivo",
     "nome_completo": "Transtorno Obsessivo-Compulsivo",
@@ -128,9 +128,12 @@ export const data = TranstornoObsessivoCompulsivoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "insight_bom",
@@ -152,6 +155,14 @@ export const data = TranstornoObsessivoCompulsivoSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B20",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6B20.0, 6B20.1 ou 6B20.Z conforme o grau de insight.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -165,41 +176,61 @@ export const data = TranstornoObsessivoCompulsivoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "tempo",
-      "label": "Uso do Tempo",
-      "icone": "Clock",
-      "relevante_para": "transversal"
+        "id": "gestao_tempo",
+        "label": "Gestão do tempo",
+        "icone": "Clock",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno de Ansiedade Generalizada",
-      "ponto_distincao": "TAG: preocupações sobre problemas da vida real; TOC: obsessões são intrusivas/egodistônicas, frequentemente sem base realista.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_ansiedade_generalizada",
+        "condicao": "Transtorno de Ansiedade Generalizada",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Ansiedade Generalizada: preocupações sobre problemas da vida real; Transtorno Obsessivo-Compulsivo: obsessões são intrusivas/egodistônicas, frequentemente sem base realista.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno Dismórfico Corporal",
-      "ponto_distincao": "TDC: obsessões limitadas à aparência física; TOC: obsessões variadas; se preocupações com aparência satisfazem TDC, diagnosticar TDC.",
-      "pertence_a_classe": true
+        "id": "transtorno_dismorfico_corporal",
+        "condicao": "Transtorno Dismórfico Corporal",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Dismórfico Corporal: obsessões limitadas à aparência física; Transtorno Obsessivo-Compulsivo: obsessões variadas; se preocupações com aparência satisfazem Transtorno Dismórfico Corporal, diagnosticar Transtorno Dismórfico Corporal.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno do Espectro Autista",
-      "ponto_distincao": "TEA: comportamentos repetitivos egossintônicos visando regulação sensorial; TOC: compulsões são egodistônicas e visam reduzir ansiedade.",
-      "pertence_a_classe": false
+        "id": "transtorno_do_espectro_autista",
+        "condicao": "Transtorno do Espectro Autista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno do Espectro Autista: comportamentos repetitivos egossintônicos visando regulação sensorial; Transtorno Obsessivo-Compulsivo: compulsões são egodistônicas e visam reduzir ansiedade.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "condicao_neurologica_de_inicio_agudo",
+        "condicao": "Condição neurológica de início agudo",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Início abrupto, sinais neurológicos ou alteração cognitiva pedem investigação etiológica.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "sintomas_obsessivo_compulsivos_induzidos_por_substancia_ou_medicamento",
+        "condicao": "Sintomas obsessivo-compulsivos induzidos por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Início temporalmente ligado ao agente, curso atípico ou sinais neurológicos favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno de ansiedade",
@@ -219,13 +250,26 @@ export const data = TranstornoObsessivoCompulsivoSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Yale-Brown Obsessive Compulsive Scale",
-      "sigla": "Y-BOCS",
-      "uso": "diagnostico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "y_bocs",
+        "nome": "Escala Yale-Brown de Sintomas Obsessivo-Compulsivos",
+        "sigla": "Y-BOCS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "foci",
+        "nome": "Inventário Obsessivo-Compulsivo da Flórida",
+        "sigla": "FOCI",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "1,2% (prevalência de 12 meses)",
     "proporcao_sexo": "Levemente mais comum em mulheres adultas; mais em meninos na infância",

@@ -62,6 +62,20 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
   (fundida na `hierarquia` canônica) aposentados; proveniência consolidada em
   `_pipeline` (rendering + enrichment_status) e `metadados_globais`.
   Hierarquia diagnóstica exibida no Guia Clínico quando tem conteúdo.
+- **v2.2.0 (campos complementares, fonte:
+  `campos_complementares_dsm5tr_revisados_58.md` + `.json`):**
+  `$schema_version: "2.2.0"` nos 58. Novos/blocos revistos:
+  `codificacao.cid11_mms` (CID-11 MMS 2026-01: codigo_base, equivalencia,
+  regra, versao — ainda não exibido na UI; o card nosológico segue em
+  `meta.codigo`); `subtipos` com `formal_dsm` + `nota_aplicador` (18 formais,
+  40 com nota de ausência — a nota ainda não é exibida; chips leem
+  `subtipos.subtipos[].label`); `instrumentos_complementares` (99, com
+  sigla/uso/faixa/nota APA — nunca diagnóstico isolado);
+  `diagnostico_diferencial` categorizado `{id, condicao, natureza,
+  ponto_distincao, pertence_a_mesma_classe_dsm}` (209; `labelKeys` inclui
+  `condicao` e `descriptionKeys` inclui `ponto_distincao`, então o renderer já
+  resolve rótulo/descrição); `dominios_impacto` (154, com `icone` Lucide —
+  todo nome novo DEVE existir em `mapear-icones.ts`).
 - **Gravidade — fonte da verdade: `gravidade_dsm5tr_58_transtornos.md`.**
   O campo `gravidade.classificacao_dsm` discrimina 5 classes
   (`formal_categorica`, `formal_dimensional`, `formal_contextual`,
@@ -102,9 +116,12 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
 - Anomalias de dado registradas no MD de análise: `tnc_alzheimer`/
   `tnc_vascular` sem clusters; TDDH com tipo/limiar inconsistentes;
   esquizoafetivo com `pediatria: null`.
-- `src/components/ui/dsm-components.tsx`, `nivel-impacto.tsx`,
-  `accordion-section.tsx`, `toggle-chip.tsx` — código morto (sem consumidores),
-  mantido compilando; candidato a remoção.
+- `src/components/ui/` contém apenas componentes vivos (21 arquivos). Os
+  componentes mortos (`dsm-components`, `nivel-impacto`, `accordion-section`,
+  `toggle-chip`, `count-badge`, `dialog`, `drawer`, `dropdown-menu`, `alert*`,
+  `calendar`, `empty`, `item`, `input-group`, `button-group`, `SquircleButton`,
+  `LazyBackground`, `ProgressBar`, `symptom-item`) foram removidos na faxina de
+  2026-07 — não recriar sem consumidor real.
 - Critério A: nos 51 transtornos em que é cluster, o renderer sintetiza um
   card "A" em Critérios Condicionais (`conditionalCriteriaItems` no
   `DisorderRenderer.tsx`), marcado com `derivado_do_cluster` — duplicação

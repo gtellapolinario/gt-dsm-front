@@ -14,6 +14,7 @@ import { useThemeSync } from "@/stores/theme-store";
 import { useCommandStore } from "@/stores/command-store";
 import { CommandPalette } from "@/components/command-palette/CommandPalette";
 import { GTMedicsLoadingModal } from "@/components/workspace/GTMedicsLoadingModal";
+import { Toaster } from "@/components/ui/sonner";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ function RootLayout() {
 
       <GTMedicsLoadingModal open={isLoading} message="Carregando..." />
       <CommandPalette open={open} onOpenChange={setOpen} />
+      <Toaster richColors position="bottom-right" />
     </QueryClientProvider>
   );
 }

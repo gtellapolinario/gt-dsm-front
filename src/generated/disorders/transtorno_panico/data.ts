@@ -1,7 +1,7 @@
 import { TranstornoPanicoSchema } from "./schema";
 
 export const data = TranstornoPanicoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_panico",
     "nome_completo": "Transtorno de Pânico",
@@ -195,10 +195,21 @@ export const data = TranstornoPanicoSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B01",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -212,41 +223,61 @@ export const data = TranstornoPanicoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "saude",
-      "label": "Uso de Serviços de Saúde",
-      "icone": "Hospital",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Outros transtornos de ansiedade",
-      "ponto_distincao": "Pânico: ataques inesperados; em outros transtornos, a ansiedade é situacional e previsível.",
-      "pertence_a_classe": true
+        "id": "outros_transtornos_de_ansiedade",
+        "condicao": "Outros transtornos de ansiedade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Pânico: ataques inesperados; em outros transtornos, a ansiedade é situacional e previsível.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Outras condições médicas",
-      "ponto_distincao": "Exames laboratoriais para excluir causas orgânicas (tireoide, coração, sistema nervoso).",
-      "pertence_a_classe": false
+        "id": "outras_condicoes_medicas",
+        "condicao": "Outras condições médicas",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Exames laboratoriais para excluir causas orgânicas (tireoide, coração, sistema nervoso).",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de depressão maior",
-      "ponto_distincao": "Ataques de pânico ocorrem frequentemente no TDM; o diagnóstico de TP pode ser dado se satisfeitos todos os critérios.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno Depressivo Maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Ataques de pânico ocorrem frequentemente no Transtorno Depressivo Maior; o diagnóstico de Transtorno de Pânico pode ser dado se satisfeitos todos os critérios.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "arritmia_hipertireoidismo_asma_ou_epilepsia",
+        "condicao": "Arritmia, hipertireoidismo, asma ou epilepsia",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Sintomas ligados à fisiopatologia, esforço ou achados clínicos favorecem causa médica; ataques de pânico ainda podem coexistir.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "ataques_de_panico_induzidos_por_substancia_ou_medicamento",
+        "condicao": "Ataques de pânico induzidos por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Estimulantes, cafeína, cannabis e abstinência podem provocar ataques ligados temporalmente à exposição.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Outros transtornos de ansiedade",
@@ -269,7 +300,18 @@ export const data = TranstornoPanicoSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "pdss",
+        "nome": "Escala de Gravidade do Transtorno de Pânico",
+        "sigla": "PDSS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "2–3% (prevalência de 12 meses em adultos e adolescentes nos EUA e Europa)",
     "proporcao_sexo": "2:1 mulheres:homens",

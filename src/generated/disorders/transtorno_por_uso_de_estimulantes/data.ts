@@ -1,7 +1,7 @@
 import { TranstornoPorUsoDeEstimulantesSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_por_uso_de_estimulantes",
     "nome_completo": "Transtorno por Uso de Estimulantes",
@@ -131,23 +131,50 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
   "criterios_condicionais": [],
   "subtipos": {
     "presente": true,
-    "nome": null,
+    "nome": "Classe de estimulante",
+    "natureza": "classe_de_estimulante",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-    {
-      "id": "anfetamina",
-      "label": "Substância tipo anfetamina (incl. metanfetamina)"
-    },
-    {
-      "id": "cocaina",
-      "label": "Cocaína"
-    },
-    {
-      "id": "outro_estimulante",
-      "label": "Outro estimulante"
-    }
-  ],
-      },
+        {
+            "id": "anfetamina",
+            "label": "Substância tipo anfetamina (incl. metanfetamina)",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6C46"
+            }
+        },
+        {
+            "id": "cocaina",
+            "label": "Cocaína",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6C45"
+            }
+        },
+        {
+            "id": "outro_estimulante",
+            "label": "Outro estimulante",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Escolher a família da substância antes de selecionar episódio nocivo, padrão nocivo ou dependência.",
+                "cid11_mms": [
+                    "6C46",
+                    "6C47"
+                ]
+            }
+        }
+    ],
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "estado_remissao",
@@ -168,6 +195,18 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": [
+            "6C45",
+            "6C46",
+            "6C47"
+        ],
+        "equivalencia": "contextual",
+        "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática. Escolher primeiro cocaína, estimulantes anfetamínicos ou catinonas sintéticas.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -200,31 +239,33 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "saude",
-      "label": "Saúde Cardiopulmonar",
-      "icone": "HeartPulse",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtornos mentais primários",
-      "ponto_distincao": "Efeitos de estimulantes devem ser distinguidos de esquizofrenia, transtornos bipolares/depressivos, TAG e TP.",
-      "pertence_a_classe": false
+        "id": "transtornos_mentais_primarios",
+        "condicao": "Transtornos mentais primários",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Efeitos de estimulantes devem ser distinguidos de esquizofrenia, transtornos bipolares/depressivos, Transtorno de Ansiedade Generalizada e Transtorno de Pânico.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno por uso de álcool",
@@ -242,7 +283,28 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "assist",
+        "nome": "Teste de Triagem do Envolvimento com Álcool, Tabaco e Outras Substâncias",
+        "sigla": "ASSIST",
+        "uso": "triagem",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "dast_10",
+        "nome": "Teste de Triagem para Abuso de Drogas – 10 itens",
+        "sigla": "DAST-10",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "Anfetamina: 0,2% (12-17a e adultos); Cocaína: 0,2% (12-17a), 0,3% adultos.",
     "proporcao_sexo": "Cocaína: mais em homens (0,4% vs 0,1% adultos).",

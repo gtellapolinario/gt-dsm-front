@@ -1,7 +1,7 @@
 import { EsquizofreniaSchema } from "./schema";
 
 export const data = EsquizofreniaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "esquizofrenia",
     "nome_completo": "Esquizofrenia",
@@ -166,9 +166,12 @@ export const data = EsquizofreniaSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "curso_apos_um_ano",
@@ -195,6 +198,14 @@ export const data = EsquizofreniaSchema.parse({
         "regra_criterial": "Exige o uso do código adicional 293.89 (F06.1)."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A20",
+        "equivalencia": "contextual",
+        "regra": "Selecionar a subcategoria conforme curso episódico/contínuo e estado sintomático ou de remissão.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -260,41 +271,61 @@ export const data = EsquizofreniaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Funcionamento Ocupacional",
-      "icone": "Briefcase",
-      "relevante_para": "transversal"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Relações Interpessoais e Sociais",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "autocuidado",
-      "label": "Autocuidado e Vida Independente",
-      "icone": "House",
-      "relevante_para": "transversal"
+        "id": "autonomia_autocuidado",
+        "label": "Autonomia e autocuidado",
+        "icone": "House",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Esquizoafetivo",
-      "ponto_distincao": "Exige que um episódio de humor maior ocorra simultaneamente com sintomas da fase ativa e que os sintomas de humor estejam presentes na maior parte da duração total das fases ativa e residual.",
-      "pertence_a_classe": true
+        "id": "transtorno_esquizoafetivo",
+        "condicao": "Transtorno Esquizoafetivo",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Exige que um episódio de humor maior ocorra simultaneamente com sintomas da fase ativa e que os sintomas de humor estejam presentes na maior parte da duração total das fases ativa e residual.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Delirante",
-      "ponto_distincao": "Diferencia-se pela ausência de outros sintomas da esquizofrenia (alucinações severas, discurso desorganizado, sintomas negativos marcantes).",
-      "pertence_a_classe": true
+        "id": "transtorno_delirante",
+        "condicao": "Transtorno Delirante",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Diferencia-se pela ausência de outros sintomas da esquizofrenia (alucinações severas, discurso desorganizado, sintomas negativos marcantes).",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TEA ou Transtornos da Comunicação",
-      "ponto_distincao": "Apenas se diagnostica esquizofrenia comorbida se delírios ou alucinações proeminentes durarem pelo menos um mês.",
-      "pertence_a_classe": false
+        "id": "transtorno_do_espectro_autista_ou_transtornos_da_comunicacao",
+        "condicao": "Transtorno do Espectro Autista ou Transtornos da Comunicação",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Apenas se diagnostica esquizofrenia comorbida se delírios ou alucinações proeminentes durarem pelo menos um mês.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "delirium_ou_condicao_neurologica",
+        "condicao": "Delirium ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Alteração aguda da atenção ou sinais neurológicos exigem investigação etiológica antes de atribuir psicose primária.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_psicotico_induzido_por_substancia_ou_medicamento",
+        "condicao": "Transtorno psicótico induzido por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Relação temporal com intoxicação, abstinência ou exposição medicamentosa e remissão compatível favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos por uso de substâncias",
@@ -307,7 +338,18 @@ export const data = EsquizofreniaSchema.parse({
       "nota": "Coocorrência frequente de pânico e transtorno obsessivo-compulsivo."
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "panss",
+        "nome": "Escala das Síndromes Positiva e Negativa",
+        "sigla": "PANSS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "Entre 0,3% e 0,7% ao longo da vida.",
     "proporcao_sexo": "Similar entre os sexos, embora com início ligeiramente mais precoce e prognóstico mais grave no sexo masculino.",

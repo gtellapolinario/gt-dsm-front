@@ -1,7 +1,7 @@
 import { TranstornoLinguagemSchema } from "./schema";
 
 export const data = TranstornoLinguagemSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_linguagem",
     "nome_completo": "Transtorno da Linguagem",
@@ -116,10 +116,21 @@ export const data = TranstornoLinguagemSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": false,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A01.2",
+        "equivalencia": "contextual",
+        "regra": "Selecionar 6A01.20–6A01.23 conforme o perfil receptivo, expressivo, pragmático ou outro prejuízo especificado.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -133,31 +144,33 @@ export const data = TranstornoLinguagemSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "comunicacao",
-      "label": "Comunicação Efetiva",
-      "icone": "Megaphone",
-      "relevante_para": "ambos"
+        "id": "comunicacao",
+        "label": "Comunicação Efetiva",
+        "icone": "Megaphone",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Socialização",
-      "icone": "Users",
-      "relevante_para": "ambos"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "academico",
-      "label": "Participação Acadêmica/Profissional",
-      "icone": "BookOpen",
-      "relevante_para": "ambos"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno do Espectro Autista",
-      "ponto_distincao": "TEA inclui necessariamente padrões repetitivos e restritivos de comportamento, os quais estão ausentes no Transtorno da Linguagem.",
-      "pertence_a_classe": true
+        "id": "transtorno_do_espectro_autista",
+        "condicao": "Transtorno do Espectro Autista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno do Espectro Autista inclui necessariamente padrões repetitivos e restritivos de comportamento, os quais estão ausentes no Transtorno da Linguagem.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno Específico da Aprendizagem",
@@ -165,7 +178,28 @@ export const data = TranstornoLinguagemSchema.parse({
       "nota": "Forte associação com dificuldades de leitura e escrita futuras."
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "avaliacao_linguagem",
+        "nome": "Avaliação padronizada de linguagem",
+        "sigla": null,
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "avaliacao_audiologica",
+        "nome": "Avaliação audiológica",
+        "sigla": null,
+        "uso": "investigacao_diferencial",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "Ocorre em aproximadamente 7% a 8% das crianças em idade escolar.",
     "proporcao_sexo": "Mais frequente em meninos.",

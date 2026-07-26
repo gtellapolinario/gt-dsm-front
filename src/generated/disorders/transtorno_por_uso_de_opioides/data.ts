@@ -1,7 +1,7 @@
 import { TranstornoPorUsoDeOpioidesSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeOpioidesSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_por_uso_de_opioides",
     "nome_completo": "Transtorno por Uso de Opioides",
@@ -131,9 +131,12 @@ export const data = TranstornoPorUsoDeOpioidesSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "estado_remissao",
@@ -161,6 +164,14 @@ export const data = TranstornoPorUsoDeOpioidesSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6C43",
+        "equivalencia": "contextual",
+        "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -193,31 +204,33 @@ export const data = TranstornoPorUsoDeOpioidesSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "saude",
-      "label": "Saúde Física",
-      "icone": "HeartPulse",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde Física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtornos mentais induzidos por opioides",
-      "ponto_distincao": "Sintomas específicos de outro transtorno predominam e justificam atenção clínica independente.",
-      "pertence_a_classe": true
+        "id": "transtornos_mentais_induzidos_por_opioides",
+        "condicao": "Transtornos mentais induzidos por opioides",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Sintomas específicos de outro transtorno predominam e justificam atenção clínica independente.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Hepatite C",
@@ -242,13 +255,36 @@ export const data = TranstornoPorUsoDeOpioidesSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Exame toxicológico de urina",
-      "sigla": null,
-      "uso": "diagnostico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "assist",
+        "nome": "Teste de Triagem do Envolvimento com Álcool, Tabaco e Outras Substâncias",
+        "sigla": "ASSIST",
+        "uso": "triagem",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "cows",
+        "nome": "Escala Clínica de Abstinência de Opioides",
+        "sigla": "COWS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "toxicologia_urina",
+        "nome": "Exame toxicológico de urina",
+        "sigla": null,
+        "uso": "investigacao_complementar",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Pode corroborar exposição recente; resultado isolado não confirma nem exclui o transtorno."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "0,37% adultos ≥18a; ~1% (12-17a) para analgésicos.",
     "proporcao_sexo": "1,5:1 homens:mulheres (analgesicos); 3:1 com heroína.",

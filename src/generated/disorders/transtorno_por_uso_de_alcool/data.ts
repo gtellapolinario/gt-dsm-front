@@ -1,7 +1,7 @@
 import { TranstornoPorUsoDeAlcoolSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeAlcoolSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_por_uso_de_alcool",
     "nome_completo": "Transtorno por Uso de Álcool",
@@ -131,9 +131,12 @@ export const data = TranstornoPorUsoDeAlcoolSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "estado_remissao",
@@ -154,6 +157,14 @@ export const data = TranstornoPorUsoDeAlcoolSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6C40",
+        "equivalencia": "contextual",
+        "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -186,36 +197,40 @@ export const data = TranstornoPorUsoDeAlcoolSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "saude",
-      "label": "Saúde Física",
-      "icone": "HeartPulse",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde Física",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Uso não patológico de álcool",
-      "ponto_distincao": "Ingestão ocasional ou diária em pequenas doses sem sofrimento/significativo prejuízo funcional.",
-      "pertence_a_classe": false
+        "id": "uso_nao_patologico_de_alcool",
+        "condicao": "Uso não patológico de álcool",
+        "natureza": "variacao_normativa",
+        "ponto_distincao": "Ingestão ocasional ou diária em pequenas doses sem sofrimento/significativo prejuízo funcional.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno por uso de sedativos, hipnóticos ou ansiolíticos",
-      "ponto_distincao": "Sintomas semelhantes, mas curso pode ser diferente, especialmente quanto a problemas médicos.",
-      "pertence_a_classe": true
+        "id": "transtorno_por_uso_de_sedativos_hipnoticos_ou_ansioliticos",
+        "condicao": "Transtorno por uso de sedativos, hipnóticos ou ansiolíticos",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Sintomas semelhantes, mas curso pode ser diferente, especialmente quanto a problemas médicos.",
+        "pertence_a_mesma_classe_dsm": true
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtorno bipolar",
@@ -235,13 +250,26 @@ export const data = TranstornoPorUsoDeAlcoolSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "AUDIT",
-      "sigla": "AUDIT",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "audit",
+        "nome": "Teste para Identificação de Problemas Relacionados ao Uso de Álcool",
+        "sigla": "AUDIT",
+        "uso": "triagem",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "assist",
+        "nome": "Teste de Triagem do Envolvimento com Álcool, Tabaco e Outras Substâncias",
+        "sigla": "ASSIST",
+        "uso": "triagem",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "4,6% (12-17a); 8,5% adultos ≥18a",
     "proporcao_sexo": "12,4% homens vs 4,9% mulheres adultos",

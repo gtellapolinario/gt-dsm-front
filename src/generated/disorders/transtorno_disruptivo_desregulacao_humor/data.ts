@@ -1,7 +1,7 @@
 import { TranstornoDisruptivoDesregulacaoHumorSchema } from "./schema";
 
 export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_disruptivo_desregulacao_humor",
     "nome_completo": "Transtorno Disruptivo da Desregulação do Humor",
@@ -208,10 +208,21 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A8Y",
+        "equivalencia": "sem_correspondencia_direta",
+        "regra": "A CID-11 MMS não possui categoria equivalente direta; 6A8Y é a categoria residual de outros transtornos do humor e exige julgamento clínico/codificador.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -231,46 +242,55 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "academico",
-      "label": "Desempenho Escolar",
-      "icone": "GraduationCap",
-      "relevante_para": "pediatria"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "familiar",
-      "label": "Funcionamento Familiar",
-      "icone": "House",
-      "relevante_para": "pediatria"
-    },
-    {
-      "id": "pares",
-      "label": "Relações com Pares",
-      "icone": "Users",
-      "relevante_para": "pediatria"
+        "id": "relacoes_interpessoais",
+        "label": "Relações interpessoais e familiares",
+        "icone": "Heart",
+        "relevante_para": "pediatria"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Bipolar",
-      "ponto_distincao": "TB é episódico com humor elevado/expansivo; TDDH é persistente e não episódico, sem humor elevado.",
-      "pertence_a_classe": false
+        "id": "transtorno_bipolar",
+        "condicao": "Transtorno Bipolar",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "transtorno bipolar é episódico com humor elevado/expansivo; Transtorno Disruptivo da Desregulação do Humor é persistente e não episódico, sem humor elevado.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno de Oposição Desafiante",
-      "ponto_distincao": "TDDH requer explosões graves/frequentes E humor persistente entre as explosões; TOD raramente tem o componente de humor entre explosões.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_oposicao_desafiante",
+        "condicao": "Transtorno de Oposição Desafiante",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Disruptivo da Desregulação do Humor requer explosões graves/frequentes E humor persistente entre as explosões; Transtorno de Oposição Desafiante raramente tem o componente de humor entre explosões.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno Explosivo Intermitente",
-      "ponto_distincao": "TEI não requer perturbação persistente do humor entre explosões e requer apenas 3 meses (vs. 12 no TDDH).",
-      "pertence_a_classe": false
+        "id": "transtorno_explosivo_intermitente",
+        "condicao": "Transtorno Explosivo Intermitente",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "TEI não requer perturbação persistente do humor entre explosões e requer apenas 3 meses (vs. 12 no Transtorno Disruptivo da Desregulação do Humor).",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno do Espectro Autista",
-      "ponto_distincao": "No TEA, explosões são secundárias à perturbação de rotina; TDDH não deve ser adicionado nesse contexto.",
-      "pertence_a_classe": false
+        "id": "transtorno_do_espectro_autista",
+        "condicao": "Transtorno do Espectro Autista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "No Transtorno do Espectro Autista, explosões são secundárias à perturbação de rotina; Transtorno Disruptivo da Desregulação do Humor não deve ser adicionado nesse contexto.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "condicao_neurologica_endocrina_ou_disturbio_do_sono",
+        "condicao": "Condição neurológica, endócrina ou distúrbio do sono",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Irritabilidade adquirida, episódica ou associada a sinais físicos pede investigação médica.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TDAH",
@@ -288,7 +308,18 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "ari",
+        "nome": "Inventário de Reatividade Afetiva",
+        "sigla": "ARI",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "apa_dsm5_secao_iii",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "2 a 5% entre crianças e adolescentes na comunidade (estimativa de 6 meses a 1 ano)",
     "proporcao_sexo": "Predominantemente masculino em amostras clínicas e comunitárias",

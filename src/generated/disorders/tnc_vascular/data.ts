@@ -1,7 +1,7 @@
 import { TncVascularSchema } from "./schema";
 
 export const data = TncVascularSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tnc_vascular",
     "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
@@ -75,34 +75,70 @@ export const data = TncVascularSchema.parse({
 ],
   "subtipos": {
     "presente": true,
-    "nome": "Certeza diagnóstica",
+    "nome": "Nível neurocognitivo e certeza etiológica",
+    "natureza": "nivel_e_certeza",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "provavel",
-        "codigo": {
-          "dsm5": "290.40",
-          "cid10": "F01.5x",
-          "cid11": null
+        {
+            "id": "maior_provavel",
+            "label": "TNC vascular maior provável",
+            "descricao": "TNC maior com evidência clínica ou genética suficiente para etiologia vascular provável.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D81",
+                "regra": "O código final depende do nível, da etiologia e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Provável",
-        "descricao": "Com neuroimagem de lesão parenquimal significativa, relação temporal com AVC documentado, ou evidências clínicas/genéticas de doença cerebrovascular.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "possivel",
-        "codigo": {
-          "dsm5": "331.9",
-          "cid10": "G31.9",
-          "cid11": null
+        {
+            "id": "maior_possivel",
+            "label": "TNC vascular maior possível",
+            "descricao": "TNC maior com vínculo vascular plausível, sem evidência suficiente para provável.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D81",
+                "regra": "O código final depende do nível, da etiologia e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Possível",
-        "descricao": "Critérios clínicos atendidos sem neuroimagem disponível ou relação temporal não estabelecida.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "leve_provavel",
+            "label": "TNC vascular leve provável",
+            "descricao": "TNC leve com evidência clínica ou genética suficiente para etiologia vascular provável.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D71",
+                "regra": "O código final depende do nível, da etiologia e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        },
+        {
+            "id": "leve_possivel",
+            "label": "TNC vascular leve possível",
+            "descricao": "TNC leve com vínculo vascular plausível, sem evidência suficiente para provável.",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "cid11_mms": "6D71",
+                "regra": "O código final depende do nível, da etiologia e de especificações clínicas; confirmar no sistema de codificação adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Registre conjuntamente o nível neurocognitivo e a certeza etiológica."
+},
   "especificadores": [],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": [
+            "6D81",
+            "6D71"
+        ],
+        "equivalencia": "contextual",
+        "regra": "Usar 6D81 para demência por doença cerebrovascular e 6D71 para transtorno neurocognitivo leve; provável/possível não cria código próprio.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_condicional",
     "escopo": "apenas_tnc_maior",
@@ -136,41 +172,47 @@ export const data = TncVascularSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "executiva",
-      "label": "Função Executiva e Atenção",
-      "icone": "Brain",
-      "relevante_para": "transversal"
+        "id": "funcoes_executivas",
+        "label": "Funções executivas",
+        "icone": "Brain",
+        "relevante_para": "transversal"
     },
     {
-      "id": "motor",
-      "label": "Funcionamento Motor",
-      "icone": "Footprints",
-      "relevante_para": "transversal"
+        "id": "funcionamento_motor",
+        "label": "Funcionamento motor",
+        "icone": "Footprints",
+        "relevante_para": "transversal"
     },
     {
-      "id": "avd",
-      "label": "Atividades da Vida Diária",
-      "icone": "House",
-      "relevante_para": "transversal"
+        "id": "autonomia_autocuidado",
+        "label": "Autonomia e autocuidado",
+        "icone": "House",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TNC Alzheimer",
-      "ponto_distincao": "Alzheimer: início insidioso, memória precoce; Vascular: relação com AVC, déficits executivos/atenção.",
-      "pertence_a_classe": true
+        "id": "transtorno_neurocognitivo_alzheimer",
+        "condicao": "Transtorno Neurocognitivo Alzheimer",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Alzheimer: início insidioso, memória precoce; Vascular: relação com AVC, déficits executivos/atenção.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TNC com corpos de Lewy",
-      "ponto_distincao": "Lewy: oscilação, alucinações visuais; Vascular: história de AVC, infartos em imagem.",
-      "pertence_a_classe": true
+        "id": "transtorno_neurocognitivo_com_corpos_de_lewy",
+        "condicao": "Transtorno Neurocognitivo com corpos de Lewy",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Lewy: oscilação, alucinações visuais; Vascular: história de AVC, infartos em imagem.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Depressão vascular",
-      "ponto_distincao": "Depressão de início tardio com desaceleração psicomotora pode simular TNC vascular; melhora com tratamento antidepressivo.",
-      "pertence_a_classe": false
+        "id": "depressao_vascular",
+        "condicao": "Depressão vascular",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Depressão de início tardio com desaceleração psicomotora pode simular Transtorno Neurocognitivo vascular; melhora com tratamento antidepressivo.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TNC Alzheimer",
@@ -185,13 +227,26 @@ export const data = TncVascularSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Neuroimagem (TC/RM)",
-      "sigla": null,
-      "uso": "diagnostico",
-      "obrigatorio_para_diagnostico": true,
-      "fonte": "mencionado_no_dsm"
+        "id": "avaliacao_neuropsicologica",
+        "nome": "Avaliação neuropsicológica padronizada",
+        "sigla": null,
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Documenta domínios cognitivos e funcionamento; interpretar com escolaridade, cultura e condição sensorial."
+    },
+    {
+        "id": "neuroimagem",
+        "nome": "Neuroimagem estrutural",
+        "sigla": "TC/RM",
+        "uso": "investigacao_etiologica",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Pode apoiar a etiologia vascular; não é obrigatória em todos os casos e não substitui a avaliação clínica."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "0,2% (65–70a) até 16% (≥80a); 20–30% pós-AVC",
     "proporcao_sexo": "Mais em homens",

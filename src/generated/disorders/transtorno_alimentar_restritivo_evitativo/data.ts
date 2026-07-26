@@ -1,7 +1,7 @@
 import { TranstornoAlimentarRestritivoEvitativoSchema } from "./schema";
 
 export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_alimentar_restritivo_evitativo",
     "nome_completo": "Transtorno Alimentar Restritivo/Evitativo",
@@ -121,24 +121,14 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
     }
 ],
   "subtipos": {
-    "presente": true,
+    "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
-    "subtipos": [
-    {
-      "id": "evitacao_sensorial",
-      "label": "Evitação baseada em sensorial"
-    },
-    {
-      "id": "falta_interesse",
-      "label": "Falta de interesse"
-    },
-    {
-      "id": "preocupacao_consequencias_aversivas",
-      "label": "Preocupação com consequências aversivas"
-    }
-  ],
-      },
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
+    "subtipos": [],
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais. Sensibilidade sensorial, baixo interesse e medo de consequências são vias de apresentação e podem coexistir."
+},
   "especificadores": [
     {
         "id": "em_remissao",
@@ -148,6 +138,14 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B83",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "sem_niveis_formais",
     "tipo": "sem_especificador_de_gravidade",
@@ -161,46 +159,54 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "nutricao",
-      "label": "Estado Nutricional",
-      "icone": "HeartPulse",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Estado Nutricional",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social e Familiar",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "desenvolvimento",
-      "label": "Desenvolvimento e Crescimento",
-      "icone": "Baby",
-      "relevante_para": "pediatria"
+        "id": "desenvolvimento",
+        "label": "Desenvolvimento e Crescimento",
+        "icone": "Baby",
+        "relevante_para": "pediatria"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Anorexia nervosa",
-      "ponto_distincao": "Anorexia: medo de ganhar peso e perturbação na vivência do peso/forma corporal; TARE: ausência dessas características. Os dois não devem ser diagnosticados concomitantemente.",
-      "pertence_a_classe": true
+        "id": "anorexia_nervosa",
+        "condicao": "Anorexia nervosa",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Anorexia: medo de ganhar peso e perturbação na vivência do peso/forma corporal; Transtorno Alimentar Restritivo/Evitativo: ausência dessas características. Os dois não devem ser diagnosticados concomitantemente.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Condições médicas (GI, alergias, malignidades)",
-      "ponto_distincao": "TARE requer que a perturbação da ingesta esteja além daquela diretamente explicada pelos sintomas físicos de uma condição médica e persista após sua resolução.",
-      "pertence_a_classe": false
+        "id": "condicoes_medicas_gi_alergias_malignidades",
+        "condicao": "Condições médicas (GI, alergias, malignidades)",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Transtorno Alimentar Restritivo/Evitativo requer que a perturbação da ingesta esteja além daquela diretamente explicada pelos sintomas físicos de uma condição médica e persista após sua resolução.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno do espectro autista",
-      "ponto_distincao": "TEA: comportamentos alimentares rígidos e sensibilidades sensoriais, mas nem sempre com o nível de comprometimento necessário para TARE. Diagnosticar concomitantemente apenas se todos os critérios forem satisfeitos e a alimentação demandar tratamento específico.",
-      "pertence_a_classe": false
+        "id": "transtorno_do_espectro_autista",
+        "condicao": "Transtorno do espectro autista",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno do Espectro Autista: comportamentos alimentares rígidos e sensibilidades sensoriais, mas nem sempre com o nível de comprometimento necessário para Transtorno Alimentar Restritivo/Evitativo. Diagnosticar concomitantemente apenas se todos os critérios forem satisfeitos e a alimentação demandar tratamento específico.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Fobia específica e transtorno de ansiedade social",
-      "ponto_distincao": "Quando o medo de asfixia ou vômito leva a esquiva alimentar, a distinção pode ser difícil. Se o problema alimentar for o foco primário de atenção clínica, TARE é o diagnóstico apropriado.",
-      "pertence_a_classe": false
+        "id": "fobia_especifica_e_transtorno_de_ansiedade_social",
+        "condicao": "Fobia específica e transtorno de ansiedade social",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Quando o medo de asfixia ou vômito leva a esquiva alimentar, a distinção pode ser difícil. Se o problema alimentar for o foco primário de atenção clínica, Transtorno Alimentar Restritivo/Evitativo é o diagnóstico apropriado.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos de ansiedade",
@@ -228,7 +234,28 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "pardi",
+        "nome": "Entrevista Pica, TARE e Transtorno de Ruminação",
+        "sigla": "PARDI",
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "nias",
+        "nome": "Escala de Alimentação Seletiva de Nove Itens",
+        "sigla": "NIAS",
+        "uso": "triagem",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": null,
     "proporcao_sexo": "Igualmente comum em ambos os sexos na lactência e primeira infância; comórbido com TEA, é mais comum no sexo masculino.",

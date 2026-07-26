@@ -1,7 +1,7 @@
 import { TranstornoDepressivoPersistenteSchema } from "./schema";
 
 export const data = TranstornoDepressivoPersistenteSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_depressivo_persistente",
     "nome_completo": "Transtorno Depressivo Persistente (Distimia)",
@@ -218,54 +218,57 @@ export const data = TranstornoDepressivoPersistenteSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Padrão nos últimos 2 anos",
+    "natureza": "padrao_de_curso",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "tdp_sindrome_distimica_pura",
-        "codigo": {
-          "dsm5": "300.4",
-          "cid10": "F34.1",
-          "cid11": null
+        {
+            "id": "tdp_sindrome_distimica_pura",
+            "label": "Com síndrome distímica pura",
+            "descricao": "Não satisfeitos critérios para episódio depressivo maior pelos últimos 2 anos.",
+            "codigo": {
+                "dsm5_legacy": "300.4",
+                "cid10_cm": "F34.1",
+                "cid11_mms": "6A72",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com síndrome distímica pura",
-        "descricao": "Não satisfeitos critérios para EDM pelos últimos 2 anos.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "tdp_edm_persistente",
-        "codigo": {
-          "dsm5": "300.4",
-          "cid10": "F34.1",
-          "cid11": null
+        {
+            "id": "tdp_edm_persistente",
+            "label": "Com episódio depressivo maior persistente",
+            "descricao": "Critérios para episódio depressivo maior satisfeitos durante todo o período dos últimos 2 anos.",
+            "codigo": {
+                "dsm5_legacy": "300.4",
+                "cid10_cm": "F34.1",
+                "cid11_mms": "6A72",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com episódio depressivo maior persistente",
-        "descricao": "Critérios para EDM satisfeitos durante todo o período dos últimos 2 anos.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "tdp_edm_intermitente_com_atual",
-        "codigo": {
-          "dsm5": "300.4",
-          "cid10": "F34.1",
-          "cid11": null
+        {
+            "id": "tdp_edm_intermitente_com_atual",
+            "label": "Com episódio depressivo maior intermitentes, com episódio atual",
+            "descricao": "Critérios atuais para episódio depressivo maior satisfeitos; houve períodos pelo menos oito semanas abaixo do limiar nos 2 anos anteriores.",
+            "codigo": {
+                "dsm5_legacy": "300.4",
+                "cid10_cm": "F34.1",
+                "cid11_mms": "6A72",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Com EDM intermitentes, com episódio atual",
-        "descricao": "Critérios atuais para EDM satisfeitos; houve períodos ≥8 sem. abaixo do limiar nos 2 anos anteriores.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "tdp_edm_intermitente_sem_atual",
-        "codigo": {
-          "dsm5": "300.4",
-          "cid10": "F34.1",
-          "cid11": null
-        },
-        "label": "Com EDM intermitentes, sem episódio atual",
-        "descricao": "Critérios atuais para EDM não satisfeitos; houve ≥1 EDM nos 2 anos anteriores.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "tdp_edm_intermitente_sem_atual",
+            "label": "Com episódio depressivo maior intermitentes, sem episódio atual",
+            "descricao": "Critérios atuais para episódio depressivo maior não satisfeitos; houve ≥1 episódio depressivo maior nos 2 anos anteriores.",
+            "codigo": {
+                "dsm5_legacy": "300.4",
+                "cid10_cm": "F34.1",
+                "cid11_mms": "6A72",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "inicio",
@@ -293,6 +296,14 @@ export const data = TranstornoDepressivoPersistenteSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A72",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "gravidade_atual",
@@ -329,40 +340,62 @@ export const data = TranstornoDepressivoPersistenteSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno Depressivo Maior",
-      "ponto_distincao": "TDP requer 2 anos de humor deprimido; se EDM satisfeito, é especificador — não diagnóstico separado.",
-      "pertence_a_classe": true
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno Depressivo Maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Depressivo Persistente requer 2 anos de humor deprimido; se episódio depressivo maior satisfeito, é especificador — não diagnóstico separado.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtornos psicóticos",
-      "ponto_distincao": "TDP não diagnosticado se sintomas ocorrem somente durante transtorno psicótico.",
-      "pertence_a_classe": false
+        "id": "transtornos_psicoticos",
+        "condicao": "Transtornos psicóticos",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Depressivo Persistente não diagnosticado se sintomas ocorrem somente durante transtorno psicótico.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno depressivo/bipolar devido a condição médica",
-      "ponto_distincao": "Se condição médica crônica é causa fisiopatológica direta, usar diagnóstico específico.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_bipolar_devido_a_condicao_medica",
+        "condicao": "Transtorno depressivo/bipolar devido a condição médica",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Se condição médica crônica é causa fisiopatológica direta, usar diagnóstico específico.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno da personalidade",
-      "ponto_distincao": "Podem coexistir; se critérios de ambos satisfeitos, ambos os diagnósticos são dados.",
-      "pertence_a_classe": false
+        "id": "transtorno_da_personalidade",
+        "condicao": "Transtorno da personalidade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Podem coexistir; se critérios de ambos satisfeitos, ambos os diagnósticos são dados.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "hipotireoidismo_anemia_ou_condicao_neurologica",
+        "condicao": "Hipotireoidismo, anemia ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Sintomas somáticos e curso vinculados à condição médica favorecem etiologia orgânica, sem excluir comorbidade.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_depressivo_induzido_por_substancia_ou_medicamento",
+        "condicao": "Transtorno depressivo induzido por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Curso temporalmente ligado ao agente e melhora após sua retirada favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos de ansiedade",
@@ -380,7 +413,18 @@ export const data = TranstornoDepressivoPersistenteSchema.parse({
       "nota": "Especialmente em início precoce."
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "phq_9",
+        "nome": "Questionário de Saúde do Paciente – 9 itens",
+        "sigla": "PHQ-9",
+        "uso": "triagem_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "0,5% para TDP e 1,5% para TDM crônico (prevalência de 12 meses nos EUA)",
     "proporcao_sexo": null,

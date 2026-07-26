@@ -1,7 +1,7 @@
 import { TranstornoEsquizofreniformeSchema } from "./schema";
 
 export const data = TranstornoEsquizofreniformeSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_esquizofreniforme",
     "nome_completo": "Transtorno Esquizofreniforme",
@@ -142,9 +142,12 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "prognostico",
@@ -165,6 +168,14 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
         "regra_criterial": "Exige o uso do código adicional 293.89 (F06.1)."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6A2Y",
+        "equivalencia": "sem_correspondencia_direta",
+        "regra": "A CID-11 não possui categoria equivalente direta ao transtorno esquizofreniforme; 6A2Y é residual e a escolha final depende do curso e da formulação diagnóstica.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_dimensional",
     "escopo": "gravidade_atual_por_dominio",
@@ -230,37 +241,68 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Relacionamento Interpessoal",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Ocupacional",
-      "icone": "Briefcase",
-      "relevante_para": "transversal"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Esquizofrenia",
-      "ponto_distincao": "A esquizofrenia exige perturbação contínua por pelo menos 6 meses e declínio funcional claro; o esquizofreniforme dura menos de 6 meses e não exige declínio funcional.",
-      "pertence_a_classe": true
+        "id": "esquizofrenia",
+        "condicao": "Esquizofrenia",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "A esquizofrenia exige perturbação contínua por pelo menos 6 meses e declínio funcional claro; o esquizofreniforme dura menos de 6 meses e não exige declínio funcional.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno Psicótico Breve",
-      "ponto_distincao": "O transtorno psicótico breve dura menos de 1 mês e requer apenas 1 sintoma em vez de 2.",
-      "pertence_a_classe": true
+        "id": "transtorno_psicotico_breve",
+        "condicao": "Transtorno Psicótico Breve",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "O transtorno psicótico breve dura menos de 1 mês e requer apenas 1 sintoma em vez de 2.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtornos de Humor com Psicose",
-      "ponto_distincao": "Diferencia-se pela relação temporal dos sintomas psicóticos com os episódios de humor.",
-      "pertence_a_classe": false
+        "id": "transtornos_de_humor_com_psicose",
+        "condicao": "Transtornos de Humor com Psicose",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Diferencia-se pela relação temporal dos sintomas psicóticos com os episódios de humor.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "delirium_ou_condicao_neurologica",
+        "condicao": "Delirium ou condição neurológica",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Flutuação de atenção, declínio cognitivo ou sinais neurológicos favorecem causa orgânica.",
+        "pertence_a_mesma_classe_dsm": false
+    },
+    {
+        "id": "transtorno_psicotico_induzido_por_substancia_ou_medicamento",
+        "condicao": "Transtorno psicótico induzido por substância ou medicamento",
+        "natureza": "substancia_medicamento",
+        "ponto_distincao": "Relação temporal com intoxicação, abstinência ou medicamento e remissão compatível favorecem etiologia induzida.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "panss",
+        "nome": "Escala das Síndromes Positiva e Negativa",
+        "sigla": "PANSS",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "A incidência é cerca de cinco vezes menor que a da esquizofrenia em países desenvolvidos.",
     "proporcao_sexo": "Incidência similar entre os sexos.",

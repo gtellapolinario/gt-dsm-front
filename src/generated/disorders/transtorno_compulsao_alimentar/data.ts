@@ -1,7 +1,7 @@
 import { TranstornoCompulsaoAlimentarSchema } from "./schema";
 
 export const data = TranstornoCompulsaoAlimentarSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "transtorno_compulsao_alimentar",
     "nome_completo": "Transtorno de Compulsão Alimentar",
@@ -153,9 +153,12 @@ export const data = TranstornoCompulsaoAlimentarSchema.parse({
   "subtipos": {
     "presente": false,
     "nome": null,
-    "mutuamente_exclusivos": true,
+    "natureza": null,
+    "formal_dsm": false,
+    "mutuamente_exclusivos": null,
     "subtipos": [],
-      },
+    "nota_aplicador": "O DSM-5-TR não define subtipos formais para este diagnóstico."
+},
   "especificadores": [
     {
         "id": "estado_remissao",
@@ -169,6 +172,14 @@ export const data = TranstornoCompulsaoAlimentarSchema.parse({
         "regra_criterial": null
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6B82",
+        "equivalencia": "direta",
+        "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "gravidade_atual",
@@ -207,41 +218,47 @@ export const data = TranstornoCompulsaoAlimentarSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "saude",
-      "label": "Saúde Física e Peso",
-      "icone": "HeartPulse",
-      "relevante_para": "transversal"
+        "id": "saude_fisica",
+        "label": "Saúde Física e Peso",
+        "icone": "HeartPulse",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional/Acadêmico",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional_academico",
+        "label": "Desempenho ocupacional ou acadêmico",
+        "icone": "Briefcase",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Bulimia nervosa",
-      "ponto_distincao": "Bulimia: comportamento compensatório inapropriado recorrente (purgação, exercício excessivo) e restrição dietética marcada entre episódios. TCA: ausência de compensação recorrente.",
-      "pertence_a_classe": true
+        "id": "bulimia_nervosa",
+        "condicao": "Bulimia nervosa",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Bulimia: comportamento compensatório inapropriado recorrente (purgação, exercício excessivo) e restrição dietética marcada entre episódios. Transtorno de Compulsão Alimentar: ausência de compensação recorrente.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Obesidade",
-      "ponto_distincao": "TCA: episódios de compulsão com perda de controle e sofrimento marcante. A maioria dos indivíduos obesos não se envolve em compulsão alimentar recorrente.",
-      "pertence_a_classe": false
+        "id": "obesidade",
+        "condicao": "Obesidade",
+        "natureza": "condicao_medica",
+        "ponto_distincao": "Transtorno de Compulsão Alimentar: episódios de compulsão com perda de controle e sofrimento marcante. A maioria dos indivíduos obesos não se envolve em compulsão alimentar recorrente.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno depressivo maior e transtorno bipolar",
-      "ponto_distincao": "Aumento do apetite pode ocorrer em episódios depressivos maiores com aspectos atípicos ou em transtorno bipolar. Se todos os critérios de ambos forem satisfeitos, ambos os diagnósticos podem ser dados.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior_e_transtorno_bipolar",
+        "condicao": "Transtorno depressivo maior e transtorno bipolar",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Aumento do apetite pode ocorrer em episódios depressivos maiores com aspectos atípicos ou em transtorno bipolar. Se todos os critérios de ambos forem satisfeitos, ambos os diagnósticos podem ser dados.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Transtornos bipolares",
@@ -264,7 +281,28 @@ export const data = TranstornoCompulsaoAlimentarSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "binge_eating_scale",
+        "nome": "Escala de Compulsão Alimentar Periódica",
+        "sigla": "BES",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "ede_q",
+        "nome": "Questionário de Exame dos Transtornos Alimentares",
+        "sigla": "EDE-Q",
+        "uso": "gravidade_monitoramento",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "1,6% (mulheres adultas norte-americanas); 0,8% (homens adultos norte-americanos) — prevalência de 12 meses.",
     "proporcao_sexo": "Bem menos assimétrico do que na bulimia nervosa. Tão prevalente entre mulheres de minorias raciais e étnicas quanto em mulheres brancas.",

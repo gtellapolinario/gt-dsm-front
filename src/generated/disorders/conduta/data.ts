@@ -1,7 +1,7 @@
 import { CondutaSchema } from "./schema";
 
 export const data = CondutaSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "conduta",
     "nome_completo": "Transtorno da Conduta",
@@ -186,43 +186,46 @@ export const data = CondutaSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Tipo de início",
+    "natureza": "tipo_de_inicio",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "infancia",
-        "codigo": {
-          "dsm5": "312.81",
-          "cid10": "F91.1",
-          "cid11": null
+        {
+            "id": "infancia",
+            "label": "Tipo com início na infância",
+            "descricao": "Pelo menos um sintoma característico antes dos 10 anos de idade.",
+            "codigo": {
+                "dsm5_legacy": "312.81",
+                "cid10_cm": "F91.1",
+                "cid11_mms": "6C91.0",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo com início na infância",
-        "descricao": "Pelo menos um sintoma característico antes dos 10 anos de idade.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "adolescencia",
-        "codigo": {
-          "dsm5": "312.82",
-          "cid10": "F91.2",
-          "cid11": null
+        {
+            "id": "adolescencia",
+            "label": "Tipo com início na adolescência",
+            "descricao": "Nenhum sintoma característico antes dos 10 anos de idade.",
+            "codigo": {
+                "dsm5_legacy": "312.82",
+                "cid10_cm": "F91.2",
+                "cid11_mms": "6C91.1",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
         },
-        "label": "Tipo com início na adolescência",
-        "descricao": "Nenhum sintoma característico antes dos 10 anos de idade.",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "nao_especificado",
-        "codigo": {
-          "dsm5": "312.89",
-          "cid10": "F91.9",
-          "cid11": null
-        },
-        "label": "Início não especificado",
-        "descricao": "Critérios preenchidos, porém sem informações suficientes para determinar a idade de início.",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "nao_especificado",
+            "label": "Início não especificado",
+            "descricao": "Critérios preenchidos, porém sem informações suficientes para determinar a idade de início.",
+            "codigo": {
+                "dsm5_legacy": "312.89",
+                "cid10_cm": "F91.9",
+                "cid11_mms": "6C91.Z",
+                "regra": "Não há correspondência CID-11 própria confirmada para esta opção; codificar o diagnóstico no sistema adotado. Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão."
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "emocoes_prosociais_limitadas",
@@ -232,6 +235,14 @@ export const data = CondutaSchema.parse({
         "regra_criterial": "Especificador aplicado quando pelo menos duas das quatro características (ausência de remorso, insensível/falta de empatia, despreocupado com desempenho, afeto superficial) estão presentes de forma persistente durante ≥12 meses e em múltiplos contextos."
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": "6C91",
+        "equivalencia": "contextual",
+        "regra": "Selecionar a subcategoria de início e, quando aplicável, o qualificador de emoções pró-sociais.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "transtorno",
@@ -266,57 +277,67 @@ export const data = CondutaSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": null
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "academico",
-      "label": "Desempenho Acadêmico",
-      "icone": "GraduationCap",
-      "relevante_para": "pediatria"
+        "id": "academico",
+        "label": "Aprendizagem e desempenho acadêmico",
+        "icone": "GraduationCap",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     },
     {
-      "id": "legal",
-      "label": "Consequências Legais",
-      "icone": "Gavel",
-      "relevante_para": null
+        "id": "seguranca_legal",
+        "label": "Segurança e repercussões legais",
+        "icone": "Scale",
+        "relevante_para": "transversal"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "Transtorno de oposição desafiante",
-      "ponto_distincao": "TOD: comportamentos menos graves, sem agressão grave ou destruição de propriedade; inclui desregulação emocional. Ambos podem ser diagnosticados se critérios preenchidos.",
-      "pertence_a_classe": true
+        "id": "transtorno_de_oposicao_desafiante",
+        "condicao": "Transtorno de oposição desafiante",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno de Oposição Desafiante: comportamentos menos graves, sem agressão grave ou destruição de propriedade; inclui desregulação emocional. Ambos podem ser diagnosticados se critérios preenchidos.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "TDAH",
-      "ponto_distincao": "Comportamento hiperativo/impulsivo no TDAH não viola normas ou direitos alheios por si só.",
-      "pertence_a_classe": false
+        "id": "transtorno_de_deficit_de_atencao_hiperatividade",
+        "condicao": "Transtorno de Déficit de Atenção/Hiperatividade",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Comportamento hiperativo/impulsivo no Transtorno de Déficit de Atenção/Hiperatividade não viola normas ou direitos alheios por si só.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtornos depressivo e bipolar",
-      "ponto_distincao": "Problemas de conduta devem estar presentes fora dos episódios de humor para justificar diagnóstico comórbido.",
-      "pertence_a_classe": false
+        "id": "transtornos_depressivo_e_bipolar",
+        "condicao": "Transtornos depressivo e bipolar",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Problemas de conduta devem estar presentes fora dos episódios de humor para justificar diagnóstico comórbido.",
+        "pertence_a_mesma_classe_dsm": false
     },
     {
-      "condicao": "Transtorno explosivo intermitente",
-      "ponto_distincao": "TEI: agressão impulsiva não premeditada sem objetivo tangível; conduta inclui agressão proativa/predatória.",
-      "pertence_a_classe": true
+        "id": "transtorno_explosivo_intermitente",
+        "condicao": "Transtorno explosivo intermitente",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "TEI: agressão impulsiva não premeditada sem objetivo tangível; conduta inclui agressão proativa/predatória.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtornos de adaptação",
-      "ponto_distincao": "Adaptação: problemas de conduta em clara associação com estressor psicossocial e dentro de 6 meses após o término.",
-      "pertence_a_classe": false
+        "id": "transtornos_de_adaptacao",
+        "condicao": "Transtornos de adaptação",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Adaptação: problemas de conduta em clara associação com estressor psicossocial e dentro de 6 meses após o término.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "TDAH",
@@ -339,7 +360,28 @@ export const data = CondutaSchema.parse({
       "nota": null
     }
   ],
-  "instrumentos_complementares": [],
+  "instrumentos_complementares": [
+    {
+        "id": "cbcl",
+        "nome": "Inventário de Comportamentos para Crianças e Adolescentes",
+        "sigla": "CBCL",
+        "uso": "triagem_informante",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    },
+    {
+        "id": "ksads_pl",
+        "nome": "Entrevista diagnóstica para crianças e adolescentes",
+        "sigla": "K-SADS-PL",
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "pediatria",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
+    }
+],
   "prevalencia": {
     "populacao_geral": "2–10% em um ano, mediana de 4%",
     "proporcao_sexo": "Mais elevado no sexo masculino",

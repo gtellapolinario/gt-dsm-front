@@ -1,7 +1,7 @@
 import { TncMaiorSchema } from "./schema";
 
 export const data = TncMaiorSchema.parse({
-  "$schema_version": "2.1.0",
+  "$schema_version": "2.2.0",
   "meta": {
     "id": "tnc_maior",
     "nome_completo": "Transtorno Neurocognitivo Maior",
@@ -104,101 +104,156 @@ export const data = TncMaiorSchema.parse({
   "subtipos": {
     "presente": true,
     "nome": "Subtipo etiológico",
+    "natureza": "etiologia",
+    "formal_dsm": true,
     "mutuamente_exclusivos": true,
     "subtipos": [
-      {
-        "id": "alzheimer",
-        "codigo": null,
-        "label": "Devido à doença de Alzheimer",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "frontotemporal",
-        "codigo": null,
-        "label": "Devido à degeneração lobar frontotemporal",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "corpos_lewy",
-        "codigo": null,
-        "label": "Com corpos de Lewy",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "vascular",
-        "codigo": null,
-        "label": "Vascular",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "lesao_traumatica",
-        "codigo": null,
-        "label": "Devido a lesão cerebral traumática",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "substancia",
-        "codigo": null,
-        "label": "Induzido por substância/medicamento",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "hiv",
-        "codigo": null,
-        "label": "Devido a infecção por HIV",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "prion",
-        "codigo": null,
-        "label": "Devido à doença do príon",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "parkinson",
-        "codigo": null,
-        "label": "Devido à doença de Parkinson",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "huntington",
-        "codigo": null,
-        "label": "Devido à doença de Huntington",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "outra_condicao",
-        "codigo": null,
-        "label": "Devido a outra condição médica",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "multiplas_etiologias",
-        "codigo": null,
-        "label": "Devido a múltiplas etiologias",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      },
-      {
-        "id": "nao_especificado",
-        "codigo": null,
-        "label": "Não especificado",
-        "descricao": "",
-        "sintomas_caracteristicos": []
-      }
+        {
+            "id": "alzheimer",
+            "label": "Devido à doença de Alzheimer",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D80"
+            }
+        },
+        {
+            "id": "frontotemporal",
+            "label": "Devido à degeneração lobar frontotemporal",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D83"
+            }
+        },
+        {
+            "id": "corpos_lewy",
+            "label": "Com corpos de Lewy",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D82"
+            }
+        },
+        {
+            "id": "vascular",
+            "label": "Vascular",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D81"
+            }
+        },
+        {
+            "id": "lesao_traumatica",
+            "label": "Devido a lesão cerebral traumática",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D85.7"
+            }
+        },
+        {
+            "id": "substancia",
+            "label": "Induzido por substância/medicamento",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D84"
+            }
+        },
+        {
+            "id": "hiv",
+            "label": "Devido a infecção por HIV",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D85.3"
+            }
+        },
+        {
+            "id": "prion",
+            "label": "Devido à doença do príon",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D85.5"
+            }
+        },
+        {
+            "id": "parkinson",
+            "label": "Devido à doença de Parkinson",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D85.0"
+            }
+        },
+        {
+            "id": "huntington",
+            "label": "Devido à doença de Huntington",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D85.1"
+            }
+        },
+        {
+            "id": "outra_condicao",
+            "label": "Devido a outra condição médica",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D85.Y"
+            }
+        },
+        {
+            "id": "multiplas_etiologias",
+            "label": "Devido a múltiplas etiologias",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Categoria residual; se etiologias específicas puderem ser codificadas em conjunto, seguir a orientação local de codificação.",
+                "cid11_mms": "6D8Y"
+            }
+        },
+        {
+            "id": "nao_especificado",
+            "label": "Não especificado",
+            "descricao": "",
+            "codigo": {
+                "dsm5_legacy": null,
+                "cid10_cm": null,
+                "regra": "Correspondência CID-11 MMS aplicável à opção; confirmar especificações adicionais de curso, gravidade ou remissão.",
+                "cid11_mms": "6D8Z"
+            }
+        }
     ],
-      },
+    "nota_aplicador": "Selecione somente opções sustentadas pela avaliação clínica."
+},
   "especificadores": [
     {
         "id": "perturbacao_comportamental",
@@ -224,6 +279,23 @@ export const data = TncMaiorSchema.parse({
         ]
     }
 ],
+  "codificacao": {
+    "cid11_mms": {
+        "codigo_base": [
+            "6D80",
+            "6D81",
+            "6D82",
+            "6D83",
+            "6D84",
+            "6D85",
+            "6D8Y",
+            "6D8Z"
+        ],
+        "equivalencia": "contextual",
+        "regra": "A CID-11 usa categorias de demência determinadas pela etiologia; selecionar a categoria etiológica específica.",
+        "versao": "CID-11 MMS 2026-01"
+    }
+},
   "gravidade": {
     "classificacao_dsm": "formal_categorica",
     "escopo": "tnc_maior",
@@ -256,41 +328,47 @@ export const data = TncMaiorSchema.parse({
       },
   "dominios_impacto": [
     {
-      "id": "avd",
-      "label": "Atividades da Vida Diária",
-      "icone": "House",
-      "relevante_para": "transversal"
+        "id": "autonomia_autocuidado",
+        "label": "Autonomia e autocuidado",
+        "icone": "House",
+        "relevante_para": "transversal"
     },
     {
-      "id": "social",
-      "label": "Funcionamento Social",
-      "icone": "Users",
-      "relevante_para": "transversal"
+        "id": "social",
+        "label": "Funcionamento social",
+        "icone": "Users",
+        "relevante_para": "transversal"
     },
     {
-      "id": "trabalho",
-      "label": "Desempenho Profissional",
-      "icone": "Briefcase",
-      "relevante_para": "adulto"
+        "id": "ocupacional",
+        "label": "Desempenho ocupacional",
+        "icone": "Briefcase",
+        "relevante_para": "adulto"
     }
-  ],
+],
   "diagnostico_diferencial": [
     {
-      "condicao": "TNC leve",
-      "ponto_distincao": "TNC maior: prejuízo interfere na independência em AVDs; TNC leve: independência preservada.",
-      "pertence_a_classe": true
+        "id": "transtorno_neurocognitivo_leve",
+        "condicao": "Transtorno Neurocognitivo leve",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Transtorno Neurocognitivo maior: prejuízo interfere na independência em AVDs; Transtorno Neurocognitivo leve: independência preservada.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Delirium",
-      "ponto_distincao": "Delirium: curso agudo, perturbação da atenção/consciência; TNC maior: curso gradual, sem perturbação da consciência.",
-      "pertence_a_classe": true
+        "id": "delirium",
+        "condicao": "Delirium",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Delirium: curso agudo, perturbação da atenção/consciência; Transtorno Neurocognitivo maior: curso gradual, sem perturbação da consciência.",
+        "pertence_a_mesma_classe_dsm": true
     },
     {
-      "condicao": "Transtorno depressivo maior",
-      "ponto_distincao": "Depressão pode causar pseudodemência; melhora com tratamento da depressão favorece este diagnóstico.",
-      "pertence_a_classe": false
+        "id": "transtorno_depressivo_maior",
+        "condicao": "Transtorno depressivo maior",
+        "natureza": "transtorno_mental",
+        "ponto_distincao": "Depressão pode causar pseudodemência; melhora com tratamento da depressão favorece este diagnóstico.",
+        "pertence_a_mesma_classe_dsm": false
     }
-  ],
+],
   "comorbidades_frequentes": [
     {
       "condicao": "Delirium",
@@ -305,27 +383,36 @@ export const data = TncMaiorSchema.parse({
   ],
   "instrumentos_complementares": [
     {
-      "nome": "Mini-Mental State Examination",
-      "sigla": "MMSE",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "moca",
+        "nome": "Avaliação Cognitiva de Montreal",
+        "sigla": "MoCA",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Montreal Cognitive Assessment",
-      "sigla": "MoCA",
-      "uso": "triagem",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "sugestao_clinica_padrao"
+        "id": "meem",
+        "nome": "Miniexame do Estado Mental",
+        "sigla": "MEEM",
+        "uso": "triagem",
+        "faixa_etaria": "adulto",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     },
     {
-      "nome": "Avaliação neuropsicológica formal",
-      "sigla": null,
-      "uso": "neuropsicologico",
-      "obrigatorio_para_diagnostico": false,
-      "fonte": "mencionado_no_dsm"
+        "id": "avaliacao_neuropsicologica",
+        "nome": "Avaliação neuropsicológica padronizada",
+        "sigla": null,
+        "uso": "apoio_diagnostico",
+        "faixa_etaria": "transversal",
+        "obrigatorio_para_diagnostico": false,
+        "fonte": "pratica_clinica_validada",
+        "nota_aplicador": "Documenta domínios cognitivos e funcionamento; interpretar com escolaridade, cultura e condição sensorial."
     }
-  ],
+],
   "prevalencia": {
     "populacao_geral": "1–2% aos 65 anos; até 30% aos 85 anos",
     "proporcao_sexo": null,
