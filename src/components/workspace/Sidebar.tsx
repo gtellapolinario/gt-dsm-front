@@ -4,12 +4,10 @@ import { ChevronRight, Search, BookOpen, File as FileIcon } from "lucide-react";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 
 import {
-  getSidebarTree,
-  searchDiseases,
-  getChapterKeyByDiseaseId,
-} from "@/lib/disease-catalog";
-
-import type { TreeNode } from "@/lib/disease-catalog";
+  getGeneratedSidebarTree,
+  searchGeneratedDisorders,
+  getGeneratedChapterKeyByDiseaseId,
+} from "@/infra/generated-disorder-catalog";
 
 import {
   Sidebar as ShadcnSidebar,
@@ -32,8 +30,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
-type ChapterNode = TreeNode & { type: "chapter"; children: TreeNode[] };
-
 export function Sidebar() {
   const navigate = useNavigate();
   const routerState = useRouterState();
@@ -47,16 +43,18 @@ export function Sidebar() {
 
   const activeChapterKey = useMemo(
     () =>
-      currentDiseaseId ? getChapterKeyByDiseaseId(currentDiseaseId) : undefined,
+      currentDiseaseId
+        ? getGeneratedChapterKeyByDiseaseId(currentDiseaseId)
+        : undefined,
     [currentDiseaseId],
   );
 
-  const tree = useMemo(() => getSidebarTree() as ChapterNode[], []);
+  const tree = useMemo(() => getGeneratedSidebarTree(), []);
 
   const results = useMemo(() => {
     const q = query.trim();
     if (!q) return [];
-    return searchDiseases(q);
+    return searchGeneratedDisorders(q);
   }, [query]);
 
   const visibleTree = useMemo(() => {

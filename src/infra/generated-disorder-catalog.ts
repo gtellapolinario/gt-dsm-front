@@ -3,7 +3,7 @@ import {
   type GeneratedDisorderId,
   type GeneratedDisorderMetadata,
 } from "@/generated/disorders";
-import { CHAPTER_BY_ID } from "@/lib/disease-catalog";
+import { CHAPTERS, CHAPTER_BY_ID } from "@/lib/disease-catalog";
 
 export interface GeneratedDisorderCatalogItem {
   id: GeneratedDisorderId;
@@ -53,4 +53,58 @@ export function listGeneratedDisordersByChapter(capituloId: string): readonly Ge
 
 export function isGeneratedDisorderId(id: string): id is GeneratedDisorderId {
   return id in generatedDisordersById;
+}
+
+/* ─── Navegação (sidebar): derivada do registry, sem catálogo paralelo ──── */
+
+export interface ChapterTreeNode {
+  type: "chapter";
+  key: string;
+  label: string;
+  meta: { n: string; count: number; hue: string };
+  children: Array<{ type: "disease"; key: string; label: string }>;
+}
+
+/** Árvore capítulo → transtornos, derivada do registry (fonte: payloads). */
+export function getGeneratedSidebarTree(): ChapterTreeNode[] {
+  const byChapter = new Map<string, GeneratedDisorderCatalogItem[]>();
+  for (const disorder of generatedDisorders) {
+    const list = byChapter.get(disorder.capituloId) ?? [];
+    list.push(disorder);
+    byChapter.set(disorder.capituloId, list);
+  }
+  return CHAPTERS.filter((ch) => byChapter.has(ch.id)).map((ch) => {
+    const items = byChapter.get(ch.id)!;
+    return {
+      type: "chapter" as const,
+      key: ch.key,
+      label: ch.nome,
+      meta: { n: ch.id, count: items.length, hue: ch.hue },
+      children: items.map((d) => ({
+        type: "disease" as const,
+        key: d.id,
+        label: d.nome,
+      })),
+    };
+  });
+}
+
+const normalize = (text: string) =>
+  text.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+/** Busca accent-insensitive por nome ou id do transtorno (fonte: registry). */
+export function searchGeneratedDisorders(
+  query: string,
+): GeneratedDisorderCatalogItem[] {
+  const q = normalize(query);
+  return generatedDisorders.filter(
+    (d) => normalize(d.nome).includes(q) || normalize(d.id).includes(q),
+  );
+}
+
+/** Chave abreviada do capítulo de um transtorno (ex.: "depr"). */
+export function getGeneratedChapterKeyByDiseaseId(
+  diseaseId: string,
+): string | undefined {
+  return getGeneratedDisorderMetadata(diseaseId)?.capituloKey;
 }

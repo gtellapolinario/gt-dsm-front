@@ -38,6 +38,12 @@ Tailwind v4 + shadcn/radix + zustand + zod.
   com `estrutura: "None"`).
 - Rotas: `src/routes/app.assess.$assessmentId.tsx` renderiza um transtorno via
   registry; demais rotas são dashboard/layout.
+- Navegação (sidebar/dashboard) deriva do registry:
+  `src/infra/generated-disorder-catalog.ts` (tree, busca, lookups por capítulo).
+  `src/lib/disease-catalog.ts` = **apenas metadados dos 21 capítulos**
+  (id/key/nome/hue); o catálogo legado de doenças (`estrutura: "None"`) foi
+  aposentado — a fonte de verdade dos transtornos é o registry de payloads.
+  `src/stores/` não existe mais (removido na refatoração do `__root`).
 
 ## Modelo de dados (payloads enriquecidos)
 
