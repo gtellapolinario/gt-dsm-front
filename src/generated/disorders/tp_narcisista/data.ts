@@ -1,23 +1,46 @@
 import { TpNarcisistaSchema } from "./schema";
 
 export const data = TpNarcisistaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_narcisista",
     "nome_completo": "Transtorno da Personalidade Narcisista",
-    "sigla": "TPN",
     "codigo": {
-      "dsm5": "301.81",
-      "cid10": "F60.81",
-      "cid11": "6D10"
+        "dsm5": "",
+        "cid10": "F60.81",
+        "cid11": "6D10"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster B",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPN",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F60.81",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6D10",
+            "equivalencia": "sem_correspondencia_categorial_direta",
+            "regra": "A CID-11 não conserva os tipos categóricos do DSM-5-TR. Codificar a gravidade em 6D10.0–6D10.2 ou 6D10.Z e acrescentar qualificadores de traço quando sustentados.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_b",
+            "label": "Cluster B",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -243,16 +266,18 @@ export const data = TpNarcisistaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0% a 6,2%",
-    "proporcao_sexo": "50 a 75% do sexo masculino entre os diagnosticados",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "0% a 6,2%",
+    "distribuicao_por_sexo": "50 a 75% do sexo masculino entre os diagnosticados",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início da vida adulta",
-    "trajetoria": "Crônico; dificuldades de adaptação às limitações do envelhecimento.",
-    "prognostico": "Vulnerabilidade da autoestima a críticas pode levar a retraimento ou depressão.",
-      },
+    "inicio_tipico": "O padrão deve estar estabelecido no início da vida adulta e ocorrer em múltiplos contextos.",
+    "trajetoria": "Pode persistir, com expressão variável diante de fracasso, crítica, envelhecimento e mudanças de status.",
+    "prognostico": "Fragilidade da autoestima, comorbidades, isolamento e prejuízo interpessoal influenciam a evolução.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

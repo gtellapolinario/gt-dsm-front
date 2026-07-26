@@ -1,26 +1,59 @@
 import { TranstornoDeficitAtencaoHiperatividadeSchema } from "./schema";
 
 export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_deficit_atencao_hiperatividade",
     "nome_completo": "Transtorno de Déficit de Atenção/Hiperatividade",
-    "sigla": "TDAH",
     "codigo": {
-      "dsm5": "314.01",
-      "cid10": "F90.2",
-      "cid11": "6A05"
+        "dsm5": "",
+        "cid10": "F90.2",
+        "cid11": "6A05"
     },
     "capitulo": "Transtornos do Neurodesenvolvimento",
-    "capitulo_id": "01",
-    "grupo": "Transtorno de Déficit de Atenção/Hiperatividade",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Instabilidade Psicomotora",
-      "Disfunção Cerebral Mínima"
+    "capitulo_id": "transtornos_do_neurodesenvolvimento",
+    "sigla": "TDAH",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F90.2",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A05",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6A05.0–6A05.2, 6A05.Y ou 6A05.Z conforme a apresentação.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_do_neurodesenvolvimento",
+            "label": "Transtornos do Neurodesenvolvimento"
+        },
+        "subgrupo": {
+            "id": "transtorno_de_deficit_de_atencao_hiperatividade",
+            "label": "Transtorno de Déficit de Atenção/Hiperatividade",
+            "natureza": "subgrupo_do_capitulo"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Instabilidade psicomotora",
+            "status": "obsoleto",
+            "equivalencia": "historica",
+            "nota": null
+        },
+        {
+            "termo": "Disfunção cerebral mínima",
+            "status": "obsoleto",
+            "equivalencia": "historica",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_clusters_simetricos",
   "clusters_sintomas": [
     {
@@ -484,16 +517,18 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Aproximadamente 5% das crianças e 2,5% dos adultos na maioria das culturas.",
-    "proporcao_sexo": "Mais comum em indivíduos do sexo masculino, com uma proporção de cerca de 2:1 em crianças e 1,6:1 em adultos.",
-    "variacoes_culturais": null,
-    "notas": "Prevalência constante entre diferentes países e culturas se aplicados os mesmos critérios diagnósticos estritos.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "Aproximadamente 5% das crianças e 2,5% dos adultos na maioria das culturas.",
+    "distribuicao_por_sexo": "Mais comum em indivíduos do sexo masculino, com uma proporção de cerca de 2:1 em crianças e 1,6:1 em adultos.",
+    "variacoes_contextuais": "As taxas observadas variam com método, informantes, acesso diagnóstico e práticas locais; critérios equivalentes não eliminam diferenças de aferição.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Infância (antes dos 12 anos)",
-    "trajetoria": "A hiperatividade física costuma declinar com a idade cronológica, transformando-se em inquietude subjetiva interna na adolescência e idade adulta, enquanto os sintomas de desatenção costumam persistir de forma crônica.",
-    "prognostico": "Elevado risco de abandono acadêmico, instabilidade profissional e dificuldades de relacionamento se não tratado precocemente.",
-      },
+    "inicio_tipico": "Os sintomas devem estar presentes antes dos 12 anos, embora o diagnóstico possa ocorrer mais tarde.",
+    "trajetoria": "Hiperatividade manifesta pode diminuir ou transformar-se em inquietação; desatenção e impulsividade podem persistir, com expressão dependente das demandas.",
+    "prognostico": "Gravidade, comorbidades, suporte e ambiente influenciam resultados acadêmicos, ocupacionais e relacionais; evitar causalidade determinista por idade de intervenção.",
+    "nota_aplicador": "O limiar antes dos 12 anos refere-se à presença de sintomas, não à idade do diagnóstico."
+},
   
   "_pipeline": {
     "rendering": {

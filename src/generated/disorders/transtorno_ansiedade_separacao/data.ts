@@ -1,23 +1,47 @@
 import { TranstornoAnsiedadeSeparacaoSchema } from "./schema";
 
 export const data = TranstornoAnsiedadeSeparacaoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_ansiedade_separacao",
     "nome_completo": "Transtorno de Ansiedade de Separação",
-    "sigla": "TAS",
     "codigo": {
-      "dsm5": "309.21",
-      "cid10": "F93.0",
-      "cid11": "6B05"
+        "dsm5": "",
+        "cid10": "F93.0",
+        "cid11": "6B05"
     },
     "capitulo": "Transtornos de Ansiedade",
-    "capitulo_id": "05",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_de_ansiedade",
+    "sigla": "TAS",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F93.0",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B05",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_de_ansiedade",
+            "label": "Transtornos de Ansiedade"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [{
+            "termo": "TAS",
+            "status": "sigla_ambigua",
+            "equivalencia": "nao_equivalente",
+            "nota": "Também pode designar transtorno de ansiedade social; não usar a sigla isolada em intercâmbio de dados."
+        }, ]
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -270,16 +294,18 @@ export const data = TranstornoAnsiedadeSeparacaoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "4% em crianças, 1,6% em adolescentes, 0,9–1,9% em adultos (prevalência de 12 meses)",
-    "proporcao_sexo": "Mais comum em mulheres na população geral",
-    "variacoes_culturais": null,
-    "notas": "Um dos mais prevalentes em crianças menores de 12 anos.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "4% em crianças, 1,6% em adolescentes, 0,9–1,9% em adultos (prevalência de 12 meses)",
+    "distribuicao_por_sexo": "Mais comum em mulheres na população geral",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Pode iniciar em qualquer idade; mais comum em crianças; média de início em adultos: final da adolescência/início da vida adulta",
-    "trajetoria": "Geralmente remite com o tempo; quando persiste na vida adulta pode ser crônico e causar prejuízo significativo.",
-    "prognostico": "Preditor de transtorno de pânico na vida adulta quando persistente.",
-      },
+    "inicio_tipico": "Pode iniciar na infância, adolescência ou vida adulta; na infância é uma das apresentações mais frequentes.",
+    "trajetoria": "Pode remitir, recorrer ou persistir até a vida adulta, com expressão ajustada ao estágio do desenvolvimento.",
+    "prognostico": "Persistência associa-se a outros transtornos de ansiedade, mas não determina evolução para transtorno de pânico.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

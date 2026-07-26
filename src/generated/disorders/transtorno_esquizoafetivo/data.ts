@@ -1,23 +1,42 @@
 import { TranstornoEsquizoafetivoSchema } from "./schema";
 
 export const data = TranstornoEsquizoafetivoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_esquizoafetivo",
     "nome_completo": "Transtorno Esquizoafetivo",
-    "sigla": null,
     "codigo": {
-      "dsm5": "295.70",
-      "cid10": "F25.9",
-      "cid11": "6A21"
+        "dsm5": "",
+        "cid10": "F25.9",
+        "cid11": "6A21"
     },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
-    "capitulo_id": "02",
-    "grupo": null,
+    "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F25.9",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A21",
+            "equivalencia": "contextual",
+            "regra": "A CID-11 codifica curso e remissão; os tipos bipolar/depressivo do DSM-5-TR não geram subcódigos correspondentes.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+            "label": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "conjuncao_temporal_complexa",
   "clusters_sintomas": [
     {
@@ -321,16 +340,18 @@ export const data = TranstornoEsquizoafetivoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Aproximadamente 0,3% ao longo da vida.",
-    "proporcao_sexo": "Mais comum em indivíduos do sexo feminino, impulsionado pelo tipo depressivo.",
-    "variacoes_culturais": null,
-    "notas": "O risco de suicídio ao longo da vida é de 5%, similar ao da esquizofrenia.",
-      },
+    "tipo_estimativa": "prevalencia_vida",
+    "estimativa": "Aproximadamente 0,3% ao longo da vida.",
+    "distribuicao_por_sexo": "Mais comum em indivíduos do sexo feminino, impulsionado pelo tipo depressivo.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início no jovem adulto",
-    "trajetoria": "A proporção relativa de sintomas de humor e psicose pode mudar ao longo do tempo. O prognóstico é ligeiramente melhor que o da esquizofrenia, mas geralmente pior que o de transtornos de humor isolados.",
-    "prognostico": "O prejuízo ocupacional e social é frequente, necessitando intervenção de longo prazo.",
-      },
+    "inicio_tipico": "Frequentemente no início da vida adulta, mas pode ocorrer em outras idades.",
+    "trajetoria": "A relação temporal entre sintomas de humor e psicose pode mudar; o diagnóstico exige avaliação longitudinal e pode ser revisto.",
+    "prognostico": "Curso, sintomas residuais, comorbidades, cognição, suicidabilidade e suporte influenciam o funcionamento; comparações globais com esquizofrenia ou transtornos do humor são imprecisas.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

@@ -1,23 +1,42 @@
 import { TranstornoObsessivoCompulsivoSchema } from "./schema";
 
 export const data = TranstornoObsessivoCompulsivoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_obsessivo_compulsivo",
     "nome_completo": "Transtorno Obsessivo-Compulsivo",
-    "sigla": "TOC",
     "codigo": {
-      "dsm5": "300.3",
-      "cid10": "F42",
-      "cid11": "6B20"
+        "dsm5": "",
+        "cid10": "F42",
+        "cid11": "6B20"
     },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
-    "capitulo_id": "06",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+    "sigla": "TOC",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F42",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B20",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6B20.0, 6B20.1 ou 6B20.Z conforme o grau de insight.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+            "label": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_clusters_assimetricos",
   "clusters_sintomas": [
     {
@@ -271,16 +290,18 @@ export const data = TranstornoObsessivoCompulsivoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1,2% (prevalência de 12 meses)",
-    "proporcao_sexo": "Levemente mais comum em mulheres adultas; mais em meninos na infância",
-    "variacoes_culturais": "Sintomas similares cross-culturalmente; conteúdo das obsessões pode variar.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "1,2% (prevalência de 12 meses)",
+    "distribuicao_por_sexo": "Levemente mais comum em mulheres adultas; mais em meninos na infância",
+    "variacoes_contextuais": "A estrutura dos sintomas é observada em diferentes culturas, mas conteúdo, significado e expressão das obsessões e compulsões variam.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Pico bimodal: 9–10 anos (meninos) e início na adolescência/adulto jovem (mulheres); mediana geral ~19–20 anos",
-    "trajetoria": "Geralmente crônico com flutuações; 15% curso deteriorante; 5% episódico.",
-    "prognostico": "Boa resposta a TCC com exposição e resposta (ERPrev) e ISRSs.",
-      },
+    "inicio_tipico": "Frequentemente na infância, adolescência ou início da vida adulta; início infantil é mais comum em meninos nas amostras descritas.",
+    "trajetoria": "Em geral persistente e flutuante; pode haver remissão parcial, recorrência ou curso contínuo.",
+    "prognostico": "Início precoce, comorbidades, insight reduzido e maior duração podem associar-se a maior persistência.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

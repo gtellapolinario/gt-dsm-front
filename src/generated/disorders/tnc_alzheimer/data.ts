@@ -1,25 +1,52 @@
 import { TncAlzheimerSchema } from "./schema";
 
 export const data = TncAlzheimerSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tnc_alzheimer",
     "nome_completo": "Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer",
-    "sigla": null,
     "codigo": {
-      "dsm5": "294.1x",
-      "cid10": "F02.8x",
-      "cid11": "6D80.0"
+        "dsm5": "",
+        "cid10": "F02.8",
+        "cid11": "6D80 / 6D71"
     },
     "capitulo": "Transtornos Neurocognitivos",
-    "capitulo_id": "17",
-    "grupo": null,
+    "capitulo_id": "transtornos_neurocognitivos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F02.8",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": [
+                "6D80",
+                "6D71"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Usar 6D80 para demência por doença de Alzheimer e 6D71 para transtorno neurocognitivo leve; a certeza provável/possível não cria código CID-11 próprio.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_neurocognitivos",
+            "label": "Transtornos Neurocognitivos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Demência de Alzheimer"
+    "terminologia_relacionada": [
+        {
+            "termo": "Demência de Alzheimer",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "Abrange a apresentação maior; não substitui a categoria leve."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [],
   "criterios_condicionais": [
@@ -255,16 +282,18 @@ export const data = TncAlzheimerSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Cerca de 60–90% das demências em idosos",
-    "proporcao_sexo": "Mais frequente em mulheres (devido à maior longevidade)",
-    "variacoes_culturais": null,
-    "notas": "7% entre 65–74a; 53% entre 75–84a; 40% ≥85a.",
-      },
+    "tipo_estimativa": "proporcao_etiologica",
+    "estimativa": "A doença de Alzheimer responde por grande parcela das demências; a proporção varia conforme idade, critérios e cenário assistencial, e a frequência aumenta acentuadamente com a idade.",
+    "distribuicao_por_sexo": "Mais frequente em mulheres em números absolutos, em parte pela maior longevidade; sexo não deve ser interpretado isoladamente como explicação causal.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Não usar distribuição de casos por faixa etária como se fosse prevalência específica por idade."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Oitava/nona década; formas precoces na quinta/sexta década",
-    "trajetoria": "Progressão gradual por cerca de 10 anos em média; platôs curtos possíveis.",
-    "prognostico": "Morte geralmente por pneumonia por aspiração no estágio terminal.",
-      },
+    "inicio_tipico": "Mais comum em idade avançada; formas de início precoce podem ocorrer antes dos 65 anos.",
+    "trajetoria": "Progressão geralmente insidiosa e gradual, com ritmo variável e possíveis períodos de relativa estabilidade.",
+    "prognostico": "É uma condição progressiva; complicações funcionais, clínicas e de deglutição tornam-se mais prováveis em fases avançadas.",
+    "nota_aplicador": "Idade e trajetória dependem da etiologia; mudança em relação ao nível prévio e curso temporal têm prioridade sobre a faixa típica."
+},
   
   "_pipeline": {
     "rendering": {

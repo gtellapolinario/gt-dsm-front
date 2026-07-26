@@ -1,26 +1,55 @@
 import { TranstornoBipolarTipo1Schema } from "./schema";
 
 export const data = TranstornoBipolarTipo1Schema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_bipolar_tipo_1",
     "nome_completo": "Transtorno Bipolar Tipo I",
-    "sigla": "TB1",
     "codigo": {
-      "dsm5": "296.40",
-      "cid10": "F31.9",
-      "cid11": "6A60"
+        "dsm5": "",
+        "cid10": "F31",
+        "cid11": "6A60"
     },
     "capitulo": "Transtorno Bipolar e Transtornos Relacionados",
-    "capitulo_id": "03",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Psicose maníaco-depressiva",
-      "Transtorno maníaco-depressivo clássico"
+    "capitulo_id": "transtorno_bipolar_e_transtornos_relacionados",
+    "sigla": "TB I",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F31",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A60",
+            "equivalencia": "contextual",
+            "regra": "Selecionar a subcategoria conforme episódio atual ou mais recente, sintomas psicóticos e remissão.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_bipolar_e_transtornos_relacionados",
+            "label": "Transtorno Bipolar e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Psicose maníaco-depressiva",
+            "status": "obsoleto",
+            "equivalencia": "historica",
+            "nota": null
+        },
+        {
+            "termo": "Transtorno maníaco-depressivo clássico",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -448,16 +477,18 @@ export const data = TranstornoBipolarTipo1Schema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,6% nos EUA (estimativa de 12 meses); variando de 0,0% a 0,6% internacionalmente.",
-    "proporcao_sexo": "Razão de aproximadamente 1,1:1 (sexo masculino para sexo feminino).",
-    "variacoes_culturais": "Prevalência em 12 meses significativamente mais baixa para afro-caribenhos do que para afro-americanos ou brancos nos EUA.",
-    "notas": "Mais comum em países com renda elevada do que com renda baixa (1,4% vs. 0,7%).",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Cerca de 0,6% em 12 meses nos Estados Unidos no panorama do DSM-5-TR; há variação internacional.",
+    "distribuicao_por_sexo": "Frequência global semelhante entre os sexos; polaridade, ciclagem e apresentação clínica podem diferir.",
+    "variacoes_contextuais": "Diferenças entre grupos podem refletir acesso, reconhecimento e diagnóstico diferencial; não atribuir taxas a raça ou etnia isoladamente.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Cerca de 18 anos",
-    "trajetoria": "Mais de 90% dos indivíduos com um único episódio de mania apresentam recorrências ao longo da vida. Cerca de 60% dos episódios de mania ocorrem imediatamente antes de um episódio depressivo maior.",
-    "prognostico": "Cerca de 30% mostram prejuízo profissional duradouro. Déficits cognitivos podem persistir e comprometer a funcionalidade mesmo em períodos eutímicos.",
-      },
+    "inicio_tipico": "Pode iniciar em diferentes idades; o início médio situa-se no fim da adolescência ou começo da vida adulta.",
+    "trajetoria": "Curso recorrente é comum após um episódio maníaco, com episódios maníacos, depressivos ou mistos e períodos variáveis de eutimia.",
+    "prognostico": "Número e gravidade dos episódios, sintomas residuais, psicose, comorbidades, cognição e suporte influenciam o funcionamento longitudinal.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

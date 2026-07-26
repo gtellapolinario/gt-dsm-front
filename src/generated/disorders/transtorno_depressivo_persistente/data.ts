@@ -1,28 +1,67 @@
 import { TranstornoDepressivoPersistenteSchema } from "./schema";
 
 export const data = TranstornoDepressivoPersistenteSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_depressivo_persistente",
     "nome_completo": "Transtorno Depressivo Persistente (Distimia)",
-    "sigla": "TDP",
     "codigo": {
-      "dsm5": "300.4",
-      "cid10": "F34.1",
-      "cid11": "6A71"
+        "dsm5": "",
+        "cid10": "F34.1",
+        "cid11": "6A72"
     },
     "capitulo": "Transtornos Depressivos",
-    "capitulo_id": "04",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Distimia",
-      "Transtorno distímico DSM-IV",
-      "Depressão crônica",
-      "TDM crônico"
+    "capitulo_id": "transtornos_depressivos",
+    "sigla": "TDP",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F34.1",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A72",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_depressivos",
+            "label": "Transtornos Depressivos"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Distimia",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Transtorno distímico",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Depressão crônica",
+            "status": "termo_descritivo",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Transtorno depressivo maior crônico",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -426,16 +465,18 @@ export const data = TranstornoDepressivoPersistenteSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,5% para TDP e 1,5% para TDM crônico (prevalência de 12 meses nos EUA)",
-    "proporcao_sexo": null,
-    "variacoes_culturais": null,
-    "notas": "Consolidação do transtorno distímico e TDM crônico do DSM-IV.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "0,5% para TDP e 1,5% para TDM crônico (prevalência de 12 meses nos EUA)",
+    "distribuicao_por_sexo": null,
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Frequentemente início precoce e insidioso (infância, adolescência ou início da vida adulta)",
-    "trajetoria": "Curso crônico por definição. Quando sintomas aumentam ao nível de EDM, provavelmente retornarão ao nível inferior. Sintomas depressivos têm menos probabilidade de desaparecer em determinado período que no TDM.",
-    "prognostico": "Início precoce (<21 anos) associado a maior probabilidade de transtornos de personalidade e por uso de substâncias. Efeitos funcionais podem ser iguais ou maiores que no TDM.",
-      },
+    "inicio_tipico": "Frequentemente precoce e insidioso, na infância, adolescência ou início da vida adulta; início tardio também ocorre.",
+    "trajetoria": "Persistente por definição, com intensidade flutuante e possíveis episódios depressivos maiores sobrepostos.",
+    "prognostico": "Início precoce, maior duração, comorbidades e sintomas sobrepostos associam-se a maior prejuízo funcional.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

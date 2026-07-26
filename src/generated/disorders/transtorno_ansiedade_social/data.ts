@@ -1,25 +1,54 @@
 import { TranstornoAnsiedadeSocialSchema } from "./schema";
 
 export const data = TranstornoAnsiedadeSocialSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_ansiedade_social",
     "nome_completo": "Transtorno de Ansiedade Social (Fobia Social)",
-    "sigla": "TAS",
     "codigo": {
-      "dsm5": "300.23",
-      "cid10": "F40.10",
-      "cid11": "6B04"
+        "dsm5": "",
+        "cid10": "F40.10",
+        "cid11": "6B04"
     },
     "capitulo": "Transtornos de Ansiedade",
-    "capitulo_id": "05",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Fobia Social"
+    "capitulo_id": "transtornos_de_ansiedade",
+    "sigla": "TAS",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F40.10",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B04",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_de_ansiedade",
+            "label": "Transtornos de Ansiedade"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "TAS",
+            "status": "sigla_ambigua",
+            "equivalencia": "nao_equivalente",
+            "nota": "Também pode designar transtorno de ansiedade de separação; não usar a sigla isolada em intercâmbio de dados."
+        }, {
+            "termo": "Fobia social",
+            "status": "nome_alternativo",
+            "equivalencia": "equivalente",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -281,16 +310,18 @@ export const data = TranstornoAnsiedadeSocialSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "7% (prevalência de 12 meses nos EUA); 2–3% em outros países",
-    "proporcao_sexo": "1,5–2:1 mulheres:homens na população geral; sem diferença em amostras clínicas",
-    "variacoes_culturais": "Taijin kyofusho (Japão): variante com medo de ofender os outros; taxas mais baixas em Ásia.",
-    "notas": "Segundo transtorno de ansiedade mais prevalente após fobia específica.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "7% (prevalência de 12 meses nos EUA); 2–3% em outros países",
+    "distribuicao_por_sexo": "1,5–2:1 mulheres:homens na população geral; sem diferença em amostras clínicas",
+    "variacoes_contextuais": "Taijin kyofusho (Japão): variante com medo de ofender os outros; taxas mais baixas em Ásia.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Mediana de início: ~13 anos; raro início após 25 anos",
-    "trajetoria": "Geralmente crônico sem tratamento; pode deteriorar com responsabilidades sociais crescentes.",
-    "prognostico": "Boa resposta à TCC; remissão menor que em outros transtornos de ansiedade sem tratamento.",
-      },
+    "inicio_tipico": "Frequentemente por volta do início da adolescência; início mais tardio também pode ocorrer.",
+    "trajetoria": "Pode ser persistente, com intensidade modulada por demandas sociais, ocupacionais e acadêmicas.",
+    "prognostico": "Maior generalização, comorbidades e evitação prolongada associam-se a maior persistência e prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

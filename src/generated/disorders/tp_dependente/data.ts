@@ -1,23 +1,46 @@
 import { TpDependenteSchema } from "./schema";
 
 export const data = TpDependenteSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_dependente",
     "nome_completo": "Transtorno da Personalidade Dependente",
-    "sigla": "TPD",
     "codigo": {
-      "dsm5": "301.6",
-      "cid10": "F60.7",
-      "cid11": "6D10"
+        "dsm5": "",
+        "cid10": "F60.7",
+        "cid11": "6D10"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster C",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPD",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F60.7",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6D10",
+            "equivalencia": "sem_correspondencia_categorial_direta",
+            "regra": "A CID-11 não conserva os tipos categóricos do DSM-5-TR. Codificar a gravidade em 6D10.0–6D10.2 ou 6D10.Z e acrescentar qualificadores de traço quando sustentados.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_c",
+            "label": "Cluster C",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -225,16 +248,18 @@ export const data = TpDependenteSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,49% a 0,6%",
-    "proporcao_sexo": "Diagnosticado mais em mulheres em contextos clínicos; alguns estudos mostram taxas similares",
-    "variacoes_culturais": "Ênfase em passividade e deferência em algumas culturas não deve ser confundida com TPD.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "0,49% a 0,6%",
+    "distribuicao_por_sexo": "Diagnosticado mais em mulheres em contextos clínicos; alguns estudos mostram taxas similares",
+    "variacoes_contextuais": "Ênfase em passividade e deferência em algumas culturas não deve ser confundida com TPD.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início da vida adulta",
-    "trajetoria": "Crônico; comportamento dependente pode ser apropriado ao desenvolvimento em crianças/adolescentes.",
-    "prognostico": "Cautela no diagnóstico em jovens.",
-      },
+    "inicio_tipico": "O padrão deve estar presente no início da vida adulta e em múltiplos contextos.",
+    "trajetoria": "Pode ser persistente, com intensidade modulada por relações, perdas, doença e demandas de autonomia.",
+    "prognostico": "Comorbidades ansiosas ou depressivas, exploração interpessoal e baixa autonomia associam-se a maior prejuízo.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

@@ -1,26 +1,55 @@
 import { MutismoSeletivoSchema } from "./schema";
 
 export const data = MutismoSeletivoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "mutismo_seletivo",
     "nome_completo": "Mutismo Seletivo",
-    "sigla": null,
     "codigo": {
-      "dsm5": "312.23",
-      "cid10": "F94.0",
-      "cid11": "6B06"
+        "dsm5": "",
+        "cid10": "F94.0",
+        "cid11": "6B06"
     },
     "capitulo": "Transtornos de Ansiedade",
-    "capitulo_id": "05",
-    "grupo": null,
+    "capitulo_id": "transtornos_de_ansiedade",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F94.0",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B06",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_de_ansiedade",
+            "label": "Transtornos de Ansiedade"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "pediatria",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Afasia voluntária",
-      "Mudismo eletivo"
+    "terminologia_relacionada": [
+        {
+            "termo": "Mutismo eletivo",
+            "status": "obsoleto",
+            "equivalencia": "historica",
+            "nota": null
+        },
+        {
+            "termo": "Afasia voluntária",
+            "status": "obsoleto",
+            "equivalencia": "nao_equivalente",
+            "nota": "Evitar: sugere voluntariedade e afasia, conceitos que não definem o transtorno."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -196,16 +225,18 @@ export const data = MutismoSeletivoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,03–1% (estimativa variável por contexto clínico vs. escolar vs. comunitário)",
-    "proporcao_sexo": "Sem variação significativa por sexo ou raça/etnia documentada",
-    "variacoes_culturais": "Crianças de famílias imigrantes podem se recusar a falar em nova língua — avaliar antes de diagnosticar.",
-    "notas": "Mais frequente em crianças menores que em adolescentes/adultos.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "0,03–1% (estimativa variável por contexto clínico vs. escolar vs. comunitário)",
+    "distribuicao_por_sexo": "Sem variação significativa por sexo ou raça/etnia documentada",
+    "variacoes_contextuais": "Crianças de famílias imigrantes podem se recusar a falar em nova língua — avaliar antes de diagnosticar.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Usualmente antes dos 5 anos; atenção clínica surge na entrada escolar",
+    "inicio_tipico": "Usualmente antes dos 5 anos; atenção clínica surge na entrada escolar",
     "trajetoria": "Muitos superam o mutismo seletivo; ansiedade social pode persistir mesmo após remissão.",
     "prognostico": "Variável; história natural pouco estudada.",
-      },
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

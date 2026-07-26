@@ -1,11 +1,10 @@
 // src/components/workspace/Sidebar.tsx
-import { useMemo, useState } from "react";
-import { ChevronRight, Search, BookOpen, File as FileIcon } from "lucide-react";
+import { useMemo } from "react";
+import { ChevronRight, BookOpen, File as FileIcon } from "lucide-react";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 
 import {
   getGeneratedSidebarTree,
-  searchGeneratedDisorders,
   getGeneratedChapterKeyByDiseaseId,
 } from "@/infra/generated-disorder-catalog";
 
@@ -27,18 +26,32 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { Input } from "@/components/ui/input";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import headerImage from "@/assets/icon/image.png";
+
+/** Abreviação nosológica universal para capítulos e transtornos. */
+function formatShortTitle(label: string): string {
+  if (!label) return "";
+  return label
+    .replace(/\bTranstornos?\s+(de|da|dos|das)?\s+Personalidade\b/gi, "TP.")
+    .replace(/\bTranstornos?\b/gi, "Tx.")
+    .replace(/\bSíndromes?\b/gi, "Sx.");
+}
 
 export function Sidebar() {
   const navigate = useNavigate();
   const routerState = useRouterState();
-  const [query, setQuery] = useState("");
 
-  // Tries to extract disease key from URL if we are on /app/assess/id or /consulta/id
+  // Tries to extract disease key from URL if we are on /app/assess/id
   const currentDiseaseId = useMemo(() => {
     const parts = routerState.location.pathname.split("/");
-    return parts[parts.length - 1]; // very basic extraction
+    return parts[parts.length - 1];
   }, [routerState.location.pathname]);
 
   const activeChapterKey = useMemo(
@@ -51,133 +64,146 @@ export function Sidebar() {
 
   const tree = useMemo(() => getGeneratedSidebarTree(), []);
 
-  const results = useMemo(() => {
-    const q = query.trim();
-    if (!q) return [];
-    return searchGeneratedDisorders(q);
-  }, [query]);
-
-  const visibleTree = useMemo(() => {
-    if (!query.trim()) return tree;
-
-    const matchingIds = new Set(results.map((item: any) => item.id));
-
-    return tree
-      .map((chapter) => ({
-        ...chapter,
-        children: chapter.children.filter((disease: any) =>
-          matchingIds.has(disease.key),
-        ),
-      }))
-      .filter((chapter) => chapter.children.length > 0);
-  }, [tree, results, query]);
-
   return (
-    <ShadcnSidebar variant="sidebar" collapsible="icon">
-      <SidebarHeader className="border-b px-4 py-3">
-        <div className="relative group-data-[collapsible=icon]:hidden">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar transtorno ou CID..."
-            className="pl-9 h-8 bg-background shadow-none"
+    <TooltipProvider>
+      <ShadcnSidebar
+        variant="sidebar"
+        collapsible="icon"
+        className="bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]! text-white border-r border-slate-800/60 shadow-2xl"
+      >
+        <SidebarHeader className="border-b border-white/10 px-4 py-3 bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]!">
+          <img
+            src={headerImage}
+            alt="GTmedic·DSM — avaliação clínica estruturada"
+            className="w-[80%] mx-auto  p-3 rounded-xl object-cover group-data-[collapsible=icon]:hidden shadow-md"
           />
-        </div>
-      </SidebarHeader>
+        </SidebarHeader>
 
-      <SidebarContent>
-        <SidebarGroup>
-          <div className="text-[10px] font-bold tracking-[1.2px] text-muted-foreground px-2 pt-2 pb-1.5 uppercase group-data-[collapsible=icon]:hidden">
-            Capítulos DSM-5
-          </div>
-          <SidebarMenu>
-            {visibleTree.map((chapter) => {
-              const isActiveChapter = chapter.key === activeChapterKey;
-              const defaultOpen = Boolean(query.trim()) || isActiveChapter;
+        <SidebarContent className="text-white bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]!">
+          <SidebarGroup>
+            <div className="text-[10px] font-bold tracking-[1.4px] text-cyan-300/80 px-2 pt-2.5 pb-1.5 uppercase group-data-[collapsible=icon]:hidden">
+              Capítulos DSM-5
+            </div>
+            <SidebarMenu>
+              {tree.map((chapter) => {
+                const isActiveChapter = chapter.key === activeChapterKey;
+                const shortChapterTitle = formatShortTitle(chapter.label);
 
-              return (
-                <Collapsible
-                  key={chapter.key}
-                  defaultOpen={defaultOpen}
-                  className="group/collapsible"
-                >
-                  <SidebarMenuItem>
-                    <CollapsibleTrigger asChild>
-                      <SidebarMenuButton
-                        className={cn(
-                          "w-full transition-colors",
-                          isActiveChapter && "bg-muted",
-                        )}
-                      >
-                        <ChevronRight className="h-2 w-2 shrink-0 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                        <span className="min-w-0 flex-1 truncate font-medium text-xs">
-                          {chapter.label}
-                        </span>
-                        <span className="text-xs text-muted-foreground tabular-nums">
-                          {chapter.meta?.count}
-                        </span>
-                      </SidebarMenuButton>
-                    </CollapsibleTrigger>
-
-                    <CollapsibleContent>
-                      <SidebarMenuSub className="pr-0 mr-0 text-xs border-l border-border ml-5 pl-2 mt-1 mb-2">
-                        {chapter.children.map((disease: any) => {
-                          const href = `/app/assess/${disease.key}`; // using current app's route structure
-                          const isActiveDisease =
-                            routerState.location.pathname === href;
-
-                          return (
-                            <SidebarMenuSubItem
-                              className="text-xs"
-                              key={disease.key}
+                return (
+                  <Collapsible
+                    key={chapter.key}
+                    defaultOpen={isActiveChapter}
+                    className="group/collapsible"
+                  >
+                    <SidebarMenuItem>
+                      <Tooltip delayDuration={200}>
+                        <TooltipTrigger asChild>
+                          <CollapsibleTrigger asChild>
+                            <SidebarMenuButton
+                              className={cn(
+                                "w-full text-slate-200 hover:text-white hover:bg-white/10 transition-all rounded-lg py-2",
+                                isActiveChapter &&
+                                  "bg-white/15 text-white font-semibold shadow-xs",
+                              )}
                             >
-                              <SidebarMenuSubButton
-                                asChild
-                                isActive={isActiveDisease}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  navigate({ to: href });
-                                }}
-                              >
-                                <a
-                                  href={href}
-                                  className="flex items-start gap-2 text-muted-foreground hover:text-foreground h-auto py-1"
+                              <ChevronRight className="h-3 w-3 shrink-0 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-cyan-400" />
+                              <span className="min-w-0 flex-1 truncate text-xs font-medium">
+                                {shortChapterTitle}
+                              </span>
+                              <span className="text-[11px] font-semibold text-cyan-200/70 bg-white/10 px-1.5 py-0.5 rounded-full tabular-nums">
+                                {chapter.meta?.count}
+                              </span>
+                            </SidebarMenuButton>
+                          </CollapsibleTrigger>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          side="right"
+                          className="bg-slate-950/95 text-white border border-slate-700/80 shadow-2xl max-w-xs text-xs font-medium px-3 py-1.5"
+                        >
+                          {chapter.label}
+                        </TooltipContent>
+                      </Tooltip>
+
+                      <CollapsibleContent>
+                        <SidebarMenuSub className="pr-0 mr-0 text-xs border-l border-white/15 ml-4 pl-2.5 mt-1 mb-2 space-y-0.5">
+                          {chapter.children.map((disease: any) => {
+                            const href = `/app/assess/${disease.key}`;
+                            const isActiveDisease =
+                              routerState.location.pathname === href;
+                            const shortDiseaseTitle = formatShortTitle(
+                              disease.label,
+                            );
+
+                            return (
+                              <Tooltip key={disease.key} delayDuration={200}>
+                                <TooltipTrigger asChild>
+                                  <SidebarMenuSubItem className="text-xs">
+                                    <SidebarMenuSubButton
+                                      asChild
+                                      isActive={isActiveDisease}
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        navigate({ to: href });
+                                      }}
+                                      className={cn(
+                                        "transition-all duration-150 text-slate-300 hover:text-white hover:bg-white/15 rounded-md px-2 py-1.5",
+                                        isActiveDisease &&
+                                          "bg-cyan-500/30 text-white font-semibold border-l-2 border-cyan-300 shadow-sm",
+                                      )}
+                                    >
+                                      <a
+                                        href={href}
+                                        className="flex items-center gap-2 h-auto text-xs"
+                                      >
+                                        <FileIcon className="h-3.5 w-3.5 shrink-0 opacity-70 text-cyan-300" />
+                                        <span className="text-xs truncate leading-snug">
+                                          {shortDiseaseTitle}
+                                        </span>
+                                      </a>
+                                    </SidebarMenuSubButton>
+                                  </SidebarMenuSubItem>
+                                </TooltipTrigger>
+                                <TooltipContent
+                                  side="right"
+                                  className="bg-slate-950/95 text-white border border-slate-700/80 shadow-2xl max-w-xs text-xs font-medium px-3 py-1.5"
                                 >
-                                  <FileIcon className="h-3.5 w-3.5 shrink-0 mt-0.5" />
-                                  <span className="text-xs line-clamp-2 leading-snug break-words whitespace-normal">
-                                    {disease.label}
-                                  </span>
-                                </a>
-                              </SidebarMenuSubButton>
-                            </SidebarMenuSubItem>
-                          );
-                        })}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  </SidebarMenuItem>
-                </Collapsible>
-              );
-            })}
-          </SidebarMenu>
-        </SidebarGroup>
+                                  {disease.label}
+                                </TooltipContent>
+                              </Tooltip>
+                            );
+                          })}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </SidebarMenuItem>
+                  </Collapsible>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <a href="#">
-                  <BookOpen className="w-4 h-4" /> Referências DSM-5
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+          <SidebarGroup>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  className="text-slate-200 hover:text-white hover:bg-white/10 transition-all rounded-lg"
+                >
+                  <a href="#">
+                    <BookOpen className="w-4 h-4 text-cyan-400" /> Referências
+                    DSM-5
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
 
-      <SidebarFooter>
-        <div className="p-3 mx-2 mb-2 bg-muted rounded-md border border-border"></div>
-      </SidebarFooter>
-    </ShadcnSidebar>
+        <SidebarFooter className="bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]!">
+          <div className="p-3 mx-2 mb-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-400">
+            GTmedic·DSM v2.2.0
+          </div>
+        </SidebarFooter>
+      </ShadcnSidebar>
+    </TooltipProvider>
   );
 }

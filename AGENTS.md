@@ -82,6 +82,17 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
   `condicao` e `descriptionKeys` inclui `ponto_distincao`, então o renderer já
   resolve rótulo/descrição); `dominios_impacto` (154, com `icone` Lucide —
   todo nome novo DEVE existir em `mapear-icones.ts`).
+- **v2.3.0 (meta/prevalência/curso, fonte:
+  `docs/meta_prevalencia_curso_dsm5tr_revisados_58.json`):** `meta.codigo.dsm5`
+  pode ser string vazia (DSM não é código — APA; o card nosológico omite);
+  `meta.codigo.cid10`/`cid11` com múltiplos códigos vêm **joinados com
+  " / "** (normalizado de arrays — nunca reintroduzir array, o Zod exige
+  string); `meta.sigla` é sempre string ou null (a forma objeto
+  `{valor, ambigua, nota}` foi normalizada; siglas ambíguas como TAS têm a
+  nota preservada em `meta.terminologia_relacionada` com
+  `status: "sigla_ambigua"`); `meta.capitulo_id` é slug
+  (ex.: "transtornos_depressivos") — o mapeamento para capítulos DSM usa o
+  `generatedDisorderMetadata` do registry, não este campo.
 - **Gravidade — fonte da verdade: `gravidade_dsm5tr_58_transtornos.md`.**
   O campo `gravidade.classificacao_dsm` discrimina 5 classes
   (`formal_categorica`, `formal_dimensional`, `formal_contextual`,
@@ -139,6 +150,11 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
 
 1. `npm run typecheck` limpo.
 2. `npm run build` verde.
-3. Para mudanças visuais: screenshot headless
+3. **Após qualquer mudança em `data.ts` ou `_shared/`: `npm run audit:payloads`**
+   — auditoria runtime que carrega os 58 módulos (passa pelo `Schema.parse`)
+   e valida o contrato do renderer. É o único check que pega erros de tipo
+   dentro dos dados (sigla objeto, cid array, ícone fora do mapa), invisíveis
+   para `tsc` e `vite build`.
+4. Para mudanças visuais: screenshot headless
    (`google-chrome --headless --screenshot ... http://localhost:3003/app/assess/<id>`)
    e conferir o resultado.

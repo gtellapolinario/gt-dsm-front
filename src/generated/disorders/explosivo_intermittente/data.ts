@@ -1,23 +1,42 @@
 import { ExplosivoIntermittenteSchema } from "./schema";
 
 export const data = ExplosivoIntermittenteSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "explosivo_intermittente",
     "nome_completo": "Transtorno Explosivo Intermitente",
-    "sigla": "TEI",
     "codigo": {
-      "dsm5": "312.34",
-      "cid10": "F63.81",
-      "cid11": "6C91"
+        "dsm5": "",
+        "cid10": "F63.81",
+        "cid11": "6C73"
     },
     "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
-    "capitulo_id": "15",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
+    "sigla": "TEI",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F63.81",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6C73",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
+            "label": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -271,16 +290,18 @@ export const data = ExplosivoIntermittenteSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2,7% em um ano (definição estrita, EUA)",
-    "proporcao_sexo": "1,4–2,3:1 M:F em alguns estudos",
-    "variacoes_culturais": "Prevalência mais baixa em Ásia, Oriente Médio, Romênia e Nigéria.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "2,7% em um ano (definição estrita, EUA)",
+    "distribuicao_por_sexo": "Alguns estudos encontram maior frequência em homens, com razão aproximada entre 1,4:1 e 2,3:1.",
+    "variacoes_contextuais": "Taxas variam entre países e métodos; normas culturais e contexto de violência devem ser considerados sem normalizar agressão desproporcional.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Fase final da infância ou adolescência",
-    "trajetoria": "Características persistentes por muitos anos; curso pode ser episódico ou crônico.",
-    "prognostico": "Relativamente comum independentemente de comorbidades.",
-      },
+    "inicio_tipico": "Frequentemente no fim da infância ou na adolescência.",
+    "trajetoria": "Pode persistir por anos, com frequência e intensidade variáveis dos episódios.",
+    "prognostico": "Comorbidades, exposição a violência, uso de substâncias e prejuízo relacional devem ser avaliados; presença de comorbidade não define sozinha o curso.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

@@ -1,23 +1,42 @@
 import { AgorafobiaSchema } from "./schema";
 
 export const data = AgorafobiaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "agorafobia",
     "nome_completo": "Agorafobia",
-    "sigla": null,
     "codigo": {
-      "dsm5": "300.22",
-      "cid10": "F40.00",
-      "cid11": "6B02"
+        "dsm5": "",
+        "cid10": "F40.00",
+        "cid11": "6B02"
     },
     "capitulo": "Transtornos de Ansiedade",
-    "capitulo_id": "05",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_de_ansiedade",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F40.00",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B02",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_de_ansiedade",
+            "label": "Transtornos de Ansiedade"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -276,16 +295,18 @@ export const data = AgorafobiaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1,7% (prevalência de 12 meses em adolescentes e adultos)",
-    "proporcao_sexo": "2:1 mulheres:homens",
-    "variacoes_culturais": null,
-    "notas": "Casos graves podem tornar a pessoa completamente homebound.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Cerca de 1,7% em 12 meses entre adolescentes e adultos, na estimativa descrita pelo DSM-5-TR.",
+    "distribuicao_por_sexo": "2:1 mulheres:homens",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Qualquer idade; pico: adolescência tardia e início da vida adulta; mediana ~17 anos",
-    "trajetoria": "Geralmente crônico e persistente sem tratamento; com tratamento, remissão possível.",
-    "prognostico": "Prognóstico pior que TP isolado; funcionalidade frequentemente comprometida.",
-      },
+    "inicio_tipico": "Pode iniciar em qualquer idade; é comum o início na adolescência tardia ou no começo da vida adulta.",
+    "trajetoria": "O curso pode ser persistente ou flutuante, com períodos de maior evitação; cronicidade e prejuízo funcional variam.",
+    "prognostico": "Maior extensão da evitação, comorbidades e restrição de autonomia associam-se a maior prejuízo; não comparar prognóstico de forma automática ao transtorno de pânico.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

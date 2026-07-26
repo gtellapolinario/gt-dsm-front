@@ -1,23 +1,42 @@
 import { TranstornoPsicoticoBreveSchema } from "./schema";
 
 export const data = TranstornoPsicoticoBreveSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_psicotico_breve",
     "nome_completo": "Transtorno Psicótico Breve",
-    "sigla": "TPB",
     "codigo": {
-      "dsm5": "298.8",
-      "cid10": "F23",
-      "cid11": "6A23.0"
+        "dsm5": "",
+        "cid10": "F23",
+        "cid11": "6A23"
     },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
-    "capitulo_id": "02",
-    "grupo": null,
+    "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F23",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A23",
+            "equivalencia": "aproximada",
+            "regra": "A CID-11 usa transtorno psicótico agudo e transitório e codifica curso/remissão; confirmar compatibilidade temporal antes da conversão.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+            "label": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -287,16 +306,18 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Pode responder por 9% dos casos de primeiro surto psicótico nos EUA.",
-    "proporcao_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",
-    "variacoes_culturais": null,
-    "notas": "A idade média de início é de cerca de 30 anos.",
-      },
+    "tipo_estimativa": "frequencia_em_primeiro_episodio_psicotico",
+    "estimativa": "A proporção em amostras de primeiro episódio psicótico não equivale à prevalência na população geral; a frequência populacional é baixa e imprecisa.",
+    "distribuicao_por_sexo": "Duas vezes mais comum em indivíduos do sexo feminino do que no masculino.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Amostras de primeiro episódio são selecionadas e não representam a população geral."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Cerca de 30 anos",
-    "trajetoria": "O início dos sintomas é tipicamente súbito, ocorrendo uma mudança de um estado não psicótico para psicótico dentro do intervalo de duas semanas. O retorno ao nível funcional anterior é completo.",
-    "prognostico": "Excelente prognóstico em termos de recuperação total, embora haja risco significativo de comportamento autolesivo e suicídio durante o período agudo.",
-      },
+    "inicio_tipico": "Pode ocorrer na vida adulta; a idade de início varia conforme contexto e amostra.",
+    "trajetoria": "Início súbito e duração inferior a um mês, com retorno ao funcionamento pré-mórbido exigido para confirmação retrospectiva do diagnóstico.",
+    "prognostico": "A recuperação do episódio é exigida pela definição, mas o diagnóstico longitudinal pode mudar; risco de suicídio e recorrência requer acompanhamento.",
+    "nota_aplicador": "O retorno completo ao nível pré-mórbido é confirmatório e retrospectivo; antes disso, manter diagnóstico provisório e diferencial longitudinal."
+},
   
   "_pipeline": {
     "rendering": {

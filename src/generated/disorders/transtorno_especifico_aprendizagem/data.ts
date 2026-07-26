@@ -1,27 +1,65 @@
 import { TranstornoEspecificoAprendizagemSchema } from "./schema";
 
 export const data = TranstornoEspecificoAprendizagemSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_especifico_aprendizagem",
     "nome_completo": "Transtorno Específico da Aprendizagem",
-    "sigla": null,
     "codigo": {
-      "dsm5": "315.00",
-      "cid10": "F81.0",
-      "cid11": "6A03"
+        "dsm5": "",
+        "cid10": "F81.0",
+        "cid11": "6A03"
     },
     "capitulo": "Transtornos do Neurodesenvolvimento",
-    "capitulo_id": "01",
-    "grupo": "Transtorno Específico da Aprendizagem",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Dislexia",
-      "Discalculia",
-      "Disgrafia"
+    "capitulo_id": "transtornos_do_neurodesenvolvimento",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F81.0",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A03",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6A03.0–6A03.2 para leitura, expressão escrita ou matemática; codificar cada domínio documentado.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_do_neurodesenvolvimento",
+            "label": "Transtornos do Neurodesenvolvimento"
+        },
+        "subgrupo": {
+            "id": "transtorno_especifico_da_aprendizagem",
+            "label": "Transtorno Específico da Aprendizagem",
+            "natureza": "subgrupo_do_capitulo"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Dislexia",
+            "status": "termo_de_dominio",
+            "equivalencia": "parcial",
+            "nota": "Usado para o padrão de prejuízo em leitura; não é sinônimo da categoria inteira."
+        },
+        {
+            "termo": "Discalculia",
+            "status": "termo_de_dominio",
+            "equivalencia": "parcial",
+            "nota": "Usado para o padrão de prejuízo em matemática; não é sinônimo da categoria inteira."
+        },
+        {
+            "termo": "Disgrafia",
+            "status": "termo_de_dominio",
+            "equivalencia": "parcial",
+            "nota": "Uso variável; não substitui a especificação formal do domínio prejudicado."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -318,16 +356,18 @@ export const data = TranstornoEspecificoAprendizagemSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "5% a 15% entre crianças em idade escolar e aproximadamente 4% em adultos.",
-    "proporcao_sexo": "Mais comum em indivíduos do sexo masculino.",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "5% a 15% entre crianças em idade escolar e aproximadamente 4% em adultos.",
+    "distribuicao_por_sexo": "Mais comum em indivíduos do sexo masculino.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Anos escolares (frequentemente 6 a 8 anos)",
-    "trajetoria": "Persiste até a idade adulta com dificuldades na velocidade de leitura, escrita acadêmica ou cálculos práticos, embora estratégias adaptativas amenizem o impacto prático.",
-    "prognostico": "Altamente dependente de diagnóstico precoce e intervenção psicopedagógica intensiva.",
-      },
+    "inicio_tipico": "Manifesta-se nos anos escolares, embora possa ficar evidente apenas quando as demandas acadêmicas aumentam.",
+    "trajetoria": "As dificuldades podem persistir na vida adulta, com expressão modificada por demandas, compensações e suporte.",
+    "prognostico": "Domínio afetado, gravidade, comorbidades e acesso a suporte influenciam o funcionamento; evitar promessas deterministas ligadas à idade do diagnóstico.",
+    "nota_aplicador": "A idade típica é um lembrete clínico; avaliar história do desenvolvimento e demandas atuais, sem usar a faixa etária como exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

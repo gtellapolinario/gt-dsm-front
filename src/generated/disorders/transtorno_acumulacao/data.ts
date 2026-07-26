@@ -1,25 +1,49 @@
 import { TranstornoAcumulacaoSchema } from "./schema";
 
 export const data = TranstornoAcumulacaoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_acumulacao",
     "nome_completo": "Transtorno de Acumulação",
-    "sigla": null,
     "codigo": {
-      "dsm5": "300.3",
-      "cid10": "F42",
-      "cid11": "6B23"
+        "dsm5": "",
+        "cid10": "F42",
+        "cid11": "6B24"
     },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
-    "capitulo_id": "06",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Hoarding disorder"
+    "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F42",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B24",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6B24.0, 6B24.1 ou 6B24.Z conforme o grau de insight.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+            "label": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Hoarding disorder",
+            "status": "nome_em_ingles",
+            "equivalencia": "equivalente",
+            "nota": "Não é termo histórico."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -244,16 +268,18 @@ export const data = TranstornoAcumulacaoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2–6% (estimativa populacao geral)",
-    "proporcao_sexo": "Levemente mais frequente em homens; mulheres mais frequentemente tratam",
-    "variacoes_culturais": null,
-    "notas": "Prevalência aumenta com a idade.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "Estimativas populacionais descritas entre 2% e 6%, com variação por idade e método.",
+    "distribuicao_por_sexo": "Levemente mais frequente em homens; mulheres mais frequentemente tratam",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Sintomas observáveis na infância/adolescência; apresentação clínica ~30s-40s; piora progressiva sem tratamento",
-    "trajetoria": "Crônico e progressivo; raramente remite espontaneamente.",
-    "prognostico": "Resposta moderada à TCC especializada; pior prognóstico que TOC.",
-      },
+    "inicio_tipico": "Sintomas podem surgir na adolescência e tornar-se clinicamente mais evidentes ao longo da vida adulta.",
+    "trajetoria": "Em geral persistente, podendo haver aumento gradual da acumulação e do prejuízo com o tempo.",
+    "prognostico": "Insight reduzido, risco ambiental, isolamento e comorbidades associam-se a maior complexidade e persistência.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

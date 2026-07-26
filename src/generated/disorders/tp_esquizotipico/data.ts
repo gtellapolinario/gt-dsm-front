@@ -1,23 +1,46 @@
 import { TpEsquizotipicoSchema } from "./schema";
 
 export const data = TpEsquizotipicoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_esquizotipico",
     "nome_completo": "Transtorno da Personalidade Esquizotípica",
-    "sigla": "TPET",
     "codigo": {
-      "dsm5": "301.22",
-      "cid10": "F21",
-      "cid11": "6A22"
+        "dsm5": "",
+        "cid10": "F21",
+        "cid11": "6A22"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster A",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPET",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F21",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A22",
+            "equivalencia": "aproximada",
+            "regra": "A CID-11 classifica o transtorno esquizotípico entre os transtornos psicóticos primários, não como transtorno da personalidade.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_a",
+            "label": "Cluster A",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -253,16 +276,18 @@ export const data = TpEsquizotipicoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,6% a 3,9%",
-    "proporcao_sexo": "Pouco mais comum no sexo masculino",
-    "variacoes_culturais": "Crenças religiosas culturalmente aceitas não devem ser consideradas esquizotípicas.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "0,6% a 3,9%",
+    "distribuicao_por_sexo": "Pouco mais comum no sexo masculino",
+    "variacoes_contextuais": "Crenças religiosas culturalmente aceitas não devem ser consideradas esquizotípicas.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Infância e adolescência",
-    "trajetoria": "Relativamente estável; pequena parcela desenvolve esquizofrenia.",
-    "prognostico": "Episódios psicóticos breves sob estresse.",
-      },
+    "inicio_tipico": "Traços podem aparecer na infância ou adolescência; o padrão diagnóstico consolida-se até o início da vida adulta.",
+    "trajetoria": "Em geral persistente; episódios psicóticos transitórios podem ocorrer e uma parcela desenvolve transtorno psicótico persistente.",
+    "prognostico": "Maior carga de sintomas psicóticos, isolamento, comorbidades e prejuízo funcional associam-se a evolução menos favorável.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

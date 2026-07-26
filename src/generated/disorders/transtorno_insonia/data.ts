@@ -1,23 +1,42 @@
 import { TranstornoInsoniaSchema } from "./schema";
 
 export const data = TranstornoInsoniaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_insonia",
     "nome_completo": "Transtorno de Insônia",
-    "sigla": null,
     "codigo": {
-      "dsm5": "307.42",
-      "cid10": "F51.01",
-      "cid11": "7A00"
+        "dsm5": "",
+        "cid10": "F51.01",
+        "cid11": "7A00"
     },
     "capitulo": "Transtornos do Sono-Vigília",
-    "capitulo_id": "12",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_do_sono_vigilia",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F51.01",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "7A00",
+            "equivalencia": "aproximada",
+            "regra": "7A00 corresponde a insônia crônica; curso curto ou não especificado requer 7A01 ou 7A0Z conforme o caso.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_do_sono_vigilia",
+            "label": "Transtornos do Sono-Vigília"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -349,16 +368,18 @@ export const data = TranstornoInsoniaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "6–10% atendem critérios do transtorno; 10–15% com prejuízos diurnos; ~1/3 com sintomas.",
-    "proporcao_sexo": "1,44:1 F:M",
-    "variacoes_culturais": null,
-    "notas": "Mais prevalente em mulheres e idosos.",
-      },
+    "tipo_estimativa": "multiplas_estimativas",
+    "estimativa": "Cerca de 6–10% atendem critérios do transtorno; sintomas de insônia isolados são muito mais frequentes e não equivalem ao diagnóstico.",
+    "distribuicao_por_sexo": "Mais frequente em mulheres; a magnitude varia por idade, definição e população.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Adultos jovens; também menopausa e idade avançada",
-    "trajetoria": "Pode ser ocasional, persistente ou recorrente. Taxas de cronicidade 45–75% em 1–7 anos.",
-    "prognostico": "Melhor com terapia cognitivo-comportamental do sono (TCC-I).",
-      },
+    "inicio_tipico": "Pode iniciar em qualquer idade; episódios são comuns em adultos jovens e em períodos de transição biológica ou psicossocial.",
+    "trajetoria": "Pode ser episódica, persistente ou recorrente; a cronicidade varia entre estudos e populações.",
+    "prognostico": "Duração, comorbidades, padrões comportamentais e fatores perpetuadores influenciam a persistência e o prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

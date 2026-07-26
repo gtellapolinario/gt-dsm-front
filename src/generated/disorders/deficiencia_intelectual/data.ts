@@ -1,26 +1,59 @@
 import { DeficienciaIntelectualSchema } from "./schema";
 
 export const data = DeficienciaIntelectualSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "deficiencia_intelectual",
     "nome_completo": "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)",
-    "sigla": "DI",
     "codigo": {
-      "dsm5": "319",
-      "cid10": "F79",
-      "cid11": "6A00"
+        "dsm5": "",
+        "cid10": "F70–F79",
+        "cid11": "6A00"
     },
     "capitulo": "Transtornos do Neurodesenvolvimento",
-    "capitulo_id": "01",
-    "grupo": "Deficiência Intelectual",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Oligofrenia",
-      "Retardo Mental"
+    "capitulo_id": "transtornos_do_neurodesenvolvimento",
+    "sigla": "DI",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F70–F79",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A00",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6A00.0–6A00.4 ou 6A00.Z conforme gravidade e possibilidade de avaliação válida.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_do_neurodesenvolvimento",
+            "label": "Transtornos do Neurodesenvolvimento"
+        },
+        "subgrupo": {
+            "id": "deficiencia_intelectual",
+            "label": "Deficiência Intelectual",
+            "natureza": "subgrupo_do_capitulo"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Retardo mental",
+            "status": "obsoleto",
+            "equivalencia": "historica",
+            "nota": "Substituído por terminologia centrada em desenvolvimento intelectual e funcionamento adaptativo."
+        },
+        {
+            "termo": "Oligofrenia",
+            "status": "obsoleto",
+            "equivalencia": "historica",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "tripartite_funcional",
   "clusters_sintomas": [
     {
@@ -216,16 +249,18 @@ export const data = DeficienciaIntelectualSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Aproximadamente 1% na população geral.",
-    "proporcao_sexo": "Razão de prevalência mais alta em indivíduos do sexo masculino.",
-    "variacoes_culturais": null,
-    "notas": "Prevalência para deficiência intelectual grave é de aproximadamente 6 por 1.000.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "Cerca de 1% na população geral; apresentações graves são menos frequentes.",
+    "distribuicao_por_sexo": "Razão de prevalência mais alta em indivíduos do sexo masculino.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Período do desenvolvimento",
-    "trajetoria": "Geralmente crônico e estável, embora intervenções e suporte adequado possam melhorar o funcionamento adaptativo ao longo da vida.",
-    "prognostico": "Depende da severidade e da presença de outras comorbidades neurológicas/psiquiátricas.",
-      },
+    "inicio_tipico": "No período do desenvolvimento; a idade de reconhecimento varia com a etiologia, a gravidade e as demandas ambientais.",
+    "trajetoria": "As limitações são duradouras, mas o funcionamento adaptativo pode mudar com desenvolvimento, saúde, ambiente e suporte.",
+    "prognostico": "É influenciado pelo funcionamento adaptativo, etiologia, condições neurológicas ou psiquiátricas associadas, saúde e suporte disponível.",
+    "nota_aplicador": "A idade típica é um lembrete clínico; avaliar história do desenvolvimento e demandas atuais, sem usar a faixa etária como exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

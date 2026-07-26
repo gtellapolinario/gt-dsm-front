@@ -1,23 +1,42 @@
 import { DeliriumSchema } from "./schema";
 
 export const data = DeliriumSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "delirium",
     "nome_completo": "Delirium",
-    "sigla": null,
     "codigo": {
-      "dsm5": "293.0",
-      "cid10": "F05",
-      "cid11": "6D70"
+        "dsm5": "",
+        "cid10": "F05",
+        "cid11": "6D70"
     },
     "capitulo": "Transtornos Neurocognitivos",
-    "capitulo_id": "17",
-    "grupo": null,
+    "capitulo_id": "transtornos_neurocognitivos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F05",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6D70",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6D70.0–6D70.2, 6D70.Y ou 6D70.Z conforme a etiologia; delirium induzido por substância também admite códigos específicos do bloco 6C4.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_neurocognitivos",
+            "label": "Transtornos Neurocognitivos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -283,16 +302,18 @@ export const data = DeliriumSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1–2% na comunidade; 14–24% em admissões hospitalares; 70–87% em UTI",
-    "proporcao_sexo": null,
-    "variacoes_culturais": null,
-    "notas": "Prevalência muito alta em idosos hospitalizados e pós-operatórios.",
-      },
+    "tipo_estimativa": "multiplas_estimativas",
+    "estimativa": "A frequência depende fortemente do cenário: baixa na comunidade, maior na admissão hospitalar e muito elevada em grupos críticos ou pós-operatórios de alto risco.",
+    "distribuicao_por_sexo": null,
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Qualquer idade; mais comum em idosos",
-    "trajetoria": "Recuperação completa com tratamento da causa subjacente; pode progredir para coma ou morte se não tratado.",
-    "prognostico": "Mortalidade alta em hospitalizados; até 40% morrem dentro de um ano.",
-      },
+    "inicio_tipico": "Pode ocorrer em qualquer idade; é mais frequente em pessoas idosas, gravemente enfermas ou com vulnerabilidade neurocognitiva.",
+    "trajetoria": "Instalação aguda e curso flutuante. Pode resolver, persistir ou deixar declínio residual mesmo após correção dos fatores precipitantes.",
+    "prognostico": "Associa-se a maior mortalidade, internação prolongada, institucionalização e declínio cognitivo; o desfecho depende da vulnerabilidade e da etiologia.",
+    "nota_aplicador": "Idade e trajetória dependem da etiologia; mudança em relação ao nível prévio e curso temporal têm prioridade sobre a faixa típica."
+},
   
   "_pipeline": {
     "rendering": {

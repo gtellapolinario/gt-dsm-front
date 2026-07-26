@@ -1,26 +1,62 @@
 import { TranstornoPorUsoDeAlcoolSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeAlcoolSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_por_uso_de_alcool",
     "nome_completo": "Transtorno por Uso de Álcool",
-    "sigla": null,
     "codigo": {
-      "dsm5": "303.90",
-      "cid10": "F10.20",
-      "cid11": "6C40"
+        "dsm5": "",
+        "cid10": "F10.10 / F10.20",
+        "cid11": "6C40"
     },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
-    "capitulo_id": "16",
-    "grupo": "Álcool",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Dependência de álcool",
-      "Abuso de álcool"
+    "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": [
+                "F10.10",
+                "F10.20"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6C40",
+            "equivalencia": "contextual",
+            "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+            "label": "Transtornos Relacionados a Substâncias e Transtornos Aditivos"
+        },
+        "subgrupo": {
+            "id": "alcool",
+            "label": "Álcool",
+            "natureza": "classe_de_substancia"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Dependência de álcool",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "Categoria anterior correspondente a parte mais grave do espectro."
+        },
+        {
+            "termo": "Abuso de álcool",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "Categoria anterior; não equivale automaticamente ao diagnóstico atual."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -271,16 +307,18 @@ export const data = TranstornoPorUsoDeAlcoolSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "4,6% (12-17a); 8,5% adultos ≥18a",
-    "proporcao_sexo": "12,4% homens vs 4,9% mulheres adultos",
-    "variacoes_culturais": "Maior entre índios norte-americanos (12,1%)",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "As estimativas descritas no DSM variam por idade, sexo e período do levantamento; não devem ser reutilizadas como prevalência brasileira atual.",
+    "distribuicao_por_sexo": "Mais diagnosticado em homens nas estimativas históricas, com diferença variável por coorte e contexto.",
+    "variacoes_contextuais": "Padrões de consumo, acesso, desigualdade e método de levantamento variam; categorias raciais ou indígenas não devem ser tratadas como fatores causais isolados.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Fim da adolescência / 20-25 anos",
-    "trajetoria": "Curso variável com períodos de remissão e recaídas. Primeira intoxicação na adolescência.",
-    "prognostico": "Prognóstico promissor para a maioria; casos graves representam parcela minoritária.",
-      },
+    "inicio_tipico": "Frequentemente no fim da adolescência ou vida adulta jovem, mas pode surgir em qualquer idade após exposição continuada.",
+    "trajetoria": "Heterogênea, com períodos de uso problemático, remissão e recorrência; gravidade e padrão podem mudar ao longo do tempo.",
+    "prognostico": "Gravidade, comorbidades, abstinência complicada, suporte, policonsumo e condições clínicas influenciam morbidade e mortalidade.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

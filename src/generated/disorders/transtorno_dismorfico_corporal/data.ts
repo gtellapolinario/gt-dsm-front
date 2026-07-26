@@ -1,25 +1,49 @@
 import { TranstornoDismorficoCorporalSchema } from "./schema";
 
 export const data = TranstornoDismorficoCorporalSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_dismorfico_corporal",
     "nome_completo": "Transtorno Dismórfico Corporal",
-    "sigla": "TDC",
     "codigo": {
-      "dsm5": "300.7",
-      "cid10": "F45.22",
-      "cid11": "6B21"
+        "dsm5": "",
+        "cid10": "F45.22",
+        "cid11": "6B21"
     },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
-    "capitulo_id": "06",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Dismorfofobia"
+    "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+    "sigla": "TDC",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F45.22",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B21",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6B21.0, 6B21.1 ou 6B21.Z conforme o grau de insight.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+            "label": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Dismorfofobia",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -211,16 +235,18 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2,4% em adultos (EUA); maior em pacientes de dermatologia e cirurgia estética",
-    "proporcao_sexo": "Levemente mais comum em mulheres na população geral",
-    "variacoes_culturais": null,
-    "notas": "Taxas de ideação suicida extremamente elevadas.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "2,4% em adultos (EUA); maior em pacientes de dermatologia e cirurgia estética",
+    "distribuicao_por_sexo": "Levemente mais comum em mulheres na população geral",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Mediana ~16–17 anos; frequentemente início gradual",
-    "trajetoria": "Geralmente crônico sem tratamento; alta taxa de hospitalizações e tentativas de suicídio.",
-    "prognostico": "Responde a ISRSs em doses altas e TCC adaptada.",
-      },
+    "inicio_tipico": "Frequentemente na adolescência, com início gradual ou menos reconhecido.",
+    "trajetoria": "Pode ser persistente e flutuante, com prejuízo variável e risco elevado de ideação ou comportamento suicida.",
+    "prognostico": "Maior prejuízo, insight ausente, comorbidades e suicidabilidade associam-se a maior gravidade e persistência.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

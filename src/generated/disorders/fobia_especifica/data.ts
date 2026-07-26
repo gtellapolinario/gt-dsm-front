@@ -1,23 +1,42 @@
 import { FobiaEspecificaSchema } from "./schema";
 
 export const data = FobiaEspecificaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "fobia_especifica",
     "nome_completo": "Fobia Específica",
-    "sigla": null,
     "codigo": {
-      "dsm5": "300.29",
-      "cid10": "F40.2",
-      "cid11": "6B03"
+        "dsm5": "",
+        "cid10": "F40.2",
+        "cid11": "6B03"
     },
     "capitulo": "Transtornos de Ansiedade",
-    "capitulo_id": "05",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_de_ansiedade",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F40.2",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B03",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_de_ansiedade",
+            "label": "Transtornos de Ansiedade"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -303,16 +322,18 @@ export const data = FobiaEspecificaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "7–9% (prevalência de 12 meses); 13,2% (prevalência na vida)",
-    "proporcao_sexo": "2:1 mulheres:homens; tipo sangue-injeção-ferimento: razão menor",
-    "variacoes_culturais": "Taxas variam; medo de magia e espíritos em algumas culturas; não classificar se sancionado culturalmente.",
-    "notas": "Prevalência decresce com a idade.",
-      },
+    "tipo_estimativa": "multiplas_estimativas",
+    "estimativa": "7–9% (prevalência de 12 meses); 13,2% (prevalência na vida)",
+    "distribuicao_por_sexo": "2:1 mulheres:homens; tipo sangue-injeção-ferimento: razão menor",
+    "variacoes_contextuais": "Taxas variam; medo de magia e espíritos em algumas culturas; não classificar se sancionado culturalmente.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Infância; tipo situacional: início mais tardio (~20 anos)",
-    "trajetoria": "Início na infância frequentemente remite; quando persiste na adultícia raramente remite espontaneamente.",
-    "prognostico": "Com tratamento (terapia de exposição), remissão em 80%+ dos casos.",
-      },
+    "inicio_tipico": "Frequentemente na infância; apresentações situacionais podem ser reconhecidas mais tarde.",
+    "trajetoria": "Pode remitir, persistir ou oscilar; quando persiste na vida adulta, a remissão espontânea tende a ser menos frequente.",
+    "prognostico": "Generalização da evitação, comorbidades e maior duração associam-se a maior persistência e prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

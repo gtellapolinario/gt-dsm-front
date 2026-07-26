@@ -1,25 +1,49 @@
 import { TranstornoPanicoSchema } from "./schema";
 
 export const data = TranstornoPanicoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_panico",
     "nome_completo": "Transtorno de Pânico",
-    "sigla": "TP",
     "codigo": {
-      "dsm5": "300.01",
-      "cid10": "F41.0",
-      "cid11": "6B01"
+        "dsm5": "",
+        "cid10": "F41.0",
+        "cid11": "6B01"
     },
     "capitulo": "Transtornos de Ansiedade",
-    "capitulo_id": "05",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Síndrome do pânico"
+    "capitulo_id": "transtornos_de_ansiedade",
+    "sigla": "TP",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F41.0",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B01",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_de_ansiedade",
+            "label": "Transtornos de Ansiedade"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Síndrome do pânico",
+            "status": "nome_informal",
+            "equivalencia": "aproximada",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -313,16 +337,18 @@ export const data = TranstornoPanicoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2–3% (prevalência de 12 meses em adultos e adolescentes nos EUA e Europa)",
-    "proporcao_sexo": "2:1 mulheres:homens",
-    "variacoes_culturais": "Ataque de pânico pode apresentar-se como khyâl cap (cultura cambojana) ou ataque de nervios (latino). Prevalência menor em africanos americanos, asiáticos americanos, latinos.",
-    "notas": "Prevalência de ataques de pânico (isolados) é ~11%/ano; critérios plenos do TP não atingidos na maioria.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "2–3% (prevalência de 12 meses em adultos e adolescentes nos EUA e Europa)",
+    "distribuicao_por_sexo": "2:1 mulheres:homens",
+    "variacoes_contextuais": "Síndromes culturais podem moldar a forma dos ataques e sua interpretação; comparar prevalências apenas com método e acesso diagnóstico equivalentes.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Adulto jovem; pico 20–24 anos; raro antes dos 14 e após os 45",
-    "trajetoria": "Geralmente crônico com flutuações. Episódio mais grave raramente excede 1 ano isoladamente.",
-    "prognostico": "Variável; prognóstico pior associado a esquiva fóbica marcada, depressão comórbida.",
-      },
+    "inicio_tipico": "Frequentemente no fim da adolescência ou início da vida adulta; início em outras idades também ocorre.",
+    "trajetoria": "Pode ser episódica ou persistente, com flutuações na frequência dos ataques, ansiedade antecipatória e evitação.",
+    "prognostico": "Agorafobia, depressão, uso de substâncias, maior evitação e duração associam-se a maior prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

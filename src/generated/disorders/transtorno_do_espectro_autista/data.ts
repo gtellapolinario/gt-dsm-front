@@ -1,27 +1,65 @@
 import { TranstornoDoEspectroAutistaSchema } from "./schema";
 
 export const data = TranstornoDoEspectroAutistaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_do_espectro_autista",
     "nome_completo": "Transtorno do Espectro Autista",
-    "sigla": "TEA",
     "codigo": {
-      "dsm5": "299.00",
-      "cid10": "F84.0",
-      "cid11": "6A02"
+        "dsm5": "",
+        "cid10": "F84.0",
+        "cid11": "6A02"
     },
     "capitulo": "Transtornos do Neurodesenvolvimento",
-    "capitulo_id": "01",
-    "grupo": "Transtorno do Espectro Autista",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Autismo Infantil",
-      "Síndrome de Asperger",
-      "Transtorno Invasivo do Desenvolvimento"
+    "capitulo_id": "transtornos_do_neurodesenvolvimento",
+    "sigla": "TEA",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F84.0",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A02",
+            "equivalencia": "contextual",
+            "regra": "Selecionar a subcategoria conforme transtorno do desenvolvimento intelectual e comprometimento da linguagem funcional.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_do_neurodesenvolvimento",
+            "label": "Transtornos do Neurodesenvolvimento"
+        },
+        "subgrupo": {
+            "id": "transtorno_do_espectro_autista",
+            "label": "Transtorno do Espectro Autista",
+            "natureza": "subgrupo_do_capitulo"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Autismo infantil",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Síndrome de Asperger",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "Categoria anterior incorporada ao espectro; não equivale isoladamente a todo o TEA."
+        },
+        {
+            "termo": "Transtorno invasivo do desenvolvimento",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "Família classificatória anterior."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_clusters_assimetricos",
   "clusters_sintomas": [
     {
@@ -331,16 +369,18 @@ export const data = TranstornoDoEspectroAutistaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Estima-se em cerca de 1% a 2% da população, com taxas de diagnóstico crescentes nas últimas décadas devido a maior conscientização e mudanças de critérios.",
-    "proporcao_sexo": "Razão de aproximadamente 4:1 a favor do sexo masculino.",
-    "variacoes_culturais": null,
-    "notas": "As taxas de prevalência parecem ser semelhantes entre diferentes culturas e raças.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "Cerca de 1% no panorama do DSM-5-TR; estimativas de vigilância posteriores variam conforme população, método e acesso diagnóstico.",
+    "distribuicao_por_sexo": "O diagnóstico é mais frequente no sexo masculino; a razão observada é influenciada por sub-reconhecimento de apresentações em meninas e mulheres.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Antes dos 2 anos de idade (embora sintomas sutis possam ser vistos no primeiro ano de vida)",
-    "trajetoria": "Os sintomas costumam ser contínuos e persistentes ao longo da vida, embora intervenções comportamentais precoces e intensivas alterem positivamente a trajetória funcional.",
-    "prognostico": "Altamente dependente da presença de deficiência intelectual e da capacidade de comunicação verbal funcional até os 5 anos de idade.",
-      },
+    "inicio_tipico": "Os sintomas estão presentes no período inicial do desenvolvimento, mas podem tornar-se claros apenas quando as demandas excedem as capacidades ou ser reconhecidos tardiamente.",
+    "trajetoria": "O padrão é duradouro, com necessidades de suporte e funcionamento variáveis ao longo da vida; não pressupor trajetória fixa.",
+    "prognostico": "Linguagem funcional, cognição, condições associadas, saúde, suporte e ambiente influenciam a autonomia; nenhum marcador isolado determina o desfecho individual.",
+    "nota_aplicador": "Reconhecimento tardio não contradiz início no período do desenvolvimento."
+},
   
   "_pipeline": {
     "rendering": {

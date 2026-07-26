@@ -1,23 +1,42 @@
 import { TranstornoEsquizofreniformeSchema } from "./schema";
 
 export const data = TranstornoEsquizofreniformeSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_esquizofreniforme",
     "nome_completo": "Transtorno Esquizofreniforme",
-    "sigla": null,
     "codigo": {
-      "dsm5": "295.40",
-      "cid10": "F20.81",
-      "cid11": "6A23"
+        "dsm5": "",
+        "cid10": "F20.81",
+        "cid11": "6A2Y"
     },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
-    "capitulo_id": "02",
-    "grupo": null,
+    "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F20.81",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A2Y",
+            "equivalencia": "sem_correspondencia_direta",
+            "regra": "A CID-11 não possui categoria equivalente direta ao transtorno esquizofreniforme; 6A2Y é residual e a escolha final depende do curso e da formulação diagnóstica.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+            "label": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -304,16 +323,18 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "A incidência é cerca de cinco vezes menor que a da esquizofrenia em países desenvolvidos.",
-    "proporcao_sexo": "Incidência similar entre os sexos.",
-    "variacoes_culturais": null,
-    "notas": "Aproximadamente um terço dos indivíduos recupera-se em até 6 meses, mantendo o diagnóstico de esquizofreniforme; os dois terços restantes evoluem para esquizofrenia ou esquizoafetivo.",
-      },
+    "tipo_estimativa": "incidencia_relativa",
+    "estimativa": "A incidência é descrita como menor que a da esquizofrenia em países com sistemas diagnósticos comparáveis; não há estimativa populacional única estável.",
+    "distribuicao_por_sexo": "Incidência similar entre os sexos.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Taxa de transição diagnóstica pertence ao curso, não à prevalência."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início da idade adulta",
-    "trajetoria": "O curso do transtorno esquizofreniforme é intermediário em termos de duração. Cerca de 60-80% dos diagnósticos provisórios acabam evoluindo para esquizofrenia ao longo de 6 meses.",
-    "prognostico": "Depende muito das características de bom prognóstico. Se presentes, a recuperação total é significativamente mais provável.",
-      },
+    "inicio_tipico": "Mais comum no início da vida adulta.",
+    "trajetoria": "Por definição dura de 1 a menos de 6 meses. Cerca de um terço mantém recuperação compatível com esse diagnóstico; a maioria recebe posteriormente diagnóstico de esquizofrenia ou transtorno esquizoafetivo.",
+    "prognostico": "Características de bom prognóstico aumentam a probabilidade de recuperação, mas a estabilidade diagnóstica só pode ser avaliada longitudinalmente.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

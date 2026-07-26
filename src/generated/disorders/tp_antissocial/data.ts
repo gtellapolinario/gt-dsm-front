@@ -1,27 +1,65 @@
 import { TpAntissocialSchema } from "./schema";
 
 export const data = TpAntissocialSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_antissocial",
     "nome_completo": "Transtorno da Personalidade Antissocial",
-    "sigla": "TPA",
     "codigo": {
-      "dsm5": "301.7",
-      "cid10": "F60.2",
-      "cid11": "6D11"
+        "dsm5": "",
+        "cid10": "F60.2",
+        "cid11": "6D10"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster B",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPA",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F60.2",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6D10",
+            "equivalencia": "sem_correspondencia_categorial_direta",
+            "regra": "A CID-11 não conserva os tipos categóricos do DSM-5-TR. Codificar a gravidade em 6D10.0–6D10.2 ou 6D10.Z e acrescentar qualificadores de traço quando sustentados.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_b",
+            "label": "Cluster B",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Psicopatia",
-      "Sociopatia",
-      "Transtorno da personalidade dissocial"
+    "terminologia_relacionada": [
+        {
+            "termo": "Psicopatia",
+            "status": "termo_relacionado",
+            "equivalencia": "nao_equivalente",
+            "nota": "Construto sobreposto, mas não sinônimo diagnóstico."
+        },
+        {
+            "termo": "Sociopatia",
+            "status": "historico",
+            "equivalencia": "nao_equivalente",
+            "nota": "Uso variável e não operacionalizado como sinônimo no DSM-5-TR."
+        },
+        {
+            "termo": "Transtorno da personalidade dissocial",
+            "status": "sistema_classificatorio_distinto",
+            "equivalencia": "aproximada",
+            "nota": "Denominação da CID-10; não há equivalência categorial direta na CID-11."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -278,16 +316,18 @@ export const data = TpAntissocialSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,2% a 3,3%",
-    "proporcao_sexo": "Muito mais comum no sexo masculino",
-    "variacoes_culturais": "Maior prevalência em contextos de pobreza e urbanos.",
-    "notas": "Maior prevalência em ambientes forenses e de abuso de substâncias.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "0,2% a 3,3%",
+    "distribuicao_por_sexo": "Muito mais comum no sexo masculino",
+    "variacoes_contextuais": "Pobreza, violência, encarceramento e viés de aferição podem alterar as taxas observadas; não converter contexto social em traço de personalidade.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Infância ou início da adolescência (conduta)",
-    "trajetoria": "Crônico; pode remitir após a quarta década, especialmente comportamento criminoso.",
-    "prognostico": "Remissão parcial com envelhecimento; envolvimento precoce na justiça juvenil é fator de risco.",
-      },
+    "inicio_tipico": "O diagnóstico exige idade mínima de 18 anos e evidência de transtorno da conduta antes dos 15 anos.",
+    "trajetoria": "O padrão pode persistir na vida adulta; comportamentos impulsivos e criminosos podem diminuir com a idade, sem implicar remissão global.",
+    "prognostico": "Início precoce, violência, uso de substâncias, encarceramento e baixa estabilidade social associam-se a maior prejuízo.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

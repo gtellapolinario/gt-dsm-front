@@ -1,23 +1,42 @@
 import { TranstornosAdaptacaoSchema } from "./schema";
 
 export const data = TranstornosAdaptacaoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtornos_adaptacao",
     "nome_completo": "Transtornos de Adaptação",
-    "sigla": null,
     "codigo": {
-      "dsm5": "309.0",
-      "cid10": "F43.20",
-      "cid11": "6B43"
+        "dsm5": "",
+        "cid10": "F43.20",
+        "cid11": "6B43"
     },
     "capitulo": "Transtornos Relacionados a Trauma e a Estressores",
-    "capitulo_id": "07",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_relacionados_a_trauma_e_a_estressores",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F43.20",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B43",
+            "equivalencia": "direta_sem_subcodigos_dsm",
+            "regra": "Os subtipos do DSM-5-TR não recebem códigos CID-11 MMS distintos.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_relacionados_a_trauma_e_a_estressores",
+            "label": "Transtornos Relacionados a Trauma e a Estressores"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "etiologico_externo",
   "clusters_sintomas": [
     {
@@ -243,16 +262,18 @@ export const data = TranstornosAdaptacaoSchema.parse({
   ],
   "instrumentos_complementares": [],
   "prevalencia": {
-    "populacao_geral": "5–20% em amostras ambulatoriais de saúde mental; 50% em serviços médicos",
-    "proporcao_sexo": "2:1 mulheres:homens",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "frequencia_em_servico",
+    "estimativa": "Frequência variável em saúde mental ambulatorial e em psiquiatria de ligação; percentuais de serviços selecionados não equivalem à prevalência populacional.",
+    "distribuicao_por_sexo": "2:1 mulheres:homens",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Identificar o denominador e o serviço antes de exibir qualquer percentual."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Dentro de 3 meses do estressor; qualquer idade",
-    "trajetoria": "Geralmente remite quando estressor cessa; crônico se estressor persistir.",
-    "prognostico": "Bom com intervenção breve focada no problema.",
-      },
+    "inicio_tipico": "Pode ocorrer em qualquer idade, com sintomas dentro de três meses após o estressor.",
+    "trajetoria": "Em geral reduz após o término do estressor ou de suas consequências; pode persistir quando o estressor ou suas consequências continuam.",
+    "prognostico": "Depende da persistência do estressor, suporte, comorbidades e funcionamento prévio.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

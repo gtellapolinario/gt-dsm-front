@@ -1,26 +1,55 @@
 import { TranstornoEscoriacaoSchema } from "./schema";
 
 export const data = TranstornoEscoriacaoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_escoriacao",
     "nome_completo": "Transtorno de Escoriação (Skin-Picking)",
-    "sigla": null,
     "codigo": {
-      "dsm5": "698.4",
-      "cid10": "L98.1",
-      "cid11": "6B26"
+        "dsm5": "",
+        "cid10": "L98.1",
+        "cid11": "6B25.1"
     },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
-    "capitulo_id": "06",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Excoriação neurótica",
-      "Dermatillomania"
+    "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "L98.1",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B25.1",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+            "label": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Excoriação neurótica",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Dermatillomania",
+            "status": "nome_informal",
+            "equivalencia": "aproximada",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -190,16 +219,18 @@ export const data = TranstornoEscoriacaoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1,4% (estimativa adultos)",
-    "proporcao_sexo": "Mais comum em mulheres (~75%)",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "Cerca de 1,4% em adultos na estimativa descrita, com incerteza conforme método de aferição.",
+    "distribuicao_por_sexo": "Mais diagnosticado em mulheres adultas; amostras clínicas podem ampliar essa diferença.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Bimodal: ~10 anos e início na adolescência/adulto jovem",
-    "trajetoria": "Crônico; pode flutuar com estresse.",
-    "prognostico": "Habit Reversal Training eficaz; N-acetilcisteína como adjuvante.",
-      },
+    "inicio_tipico": "Pode iniciar em diferentes idades; o começo é frequente na adolescência, por vezes associado a condição dermatológica.",
+    "trajetoria": "Pode ser persistente ou flutuante, com exacerbações relacionadas a estresse e diferentes graus de dano cutâneo.",
+    "prognostico": "Extensão das lesões, infecção, comorbidades e automatismo do comportamento influenciam a persistência e o prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

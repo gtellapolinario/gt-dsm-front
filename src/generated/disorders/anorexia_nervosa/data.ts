@@ -1,21 +1,45 @@
 import { AnorexiaNervosaSchema } from "./schema";
 
 export const data = AnorexiaNervosaSchema.parse({
-  "$schema_version": "2.2.0",
-  meta: {
-    id: "anorexia_nervosa",
-    nome_completo: "Anorexia Nervosa",
-    sigla: null,
-    codigo: {
-      dsm5: "307.1",
-      cid10: "F50.0x",
-      cid11: "6B80"},
-    capitulo: "Transtornos Alimentares",
-    capitulo_id: "10",
-    grupo: null,
-    faixa_etaria_alvo: "ambos",
-    versao_complementar_existe: false,
-    sinonimos_historicos: []},
+  "$schema_version": "2.3.0",
+  "meta": {
+    "id": "anorexia_nervosa",
+    "nome_completo": "Anorexia Nervosa",
+    "codigo": {
+        "dsm5": "",
+        "cid10": "F50.01 / F50.02",
+        "cid11": "6B80"
+    },
+    "capitulo": "Transtornos Alimentares",
+    "capitulo_id": "transtornos_alimentares",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": [
+                "F50.01",
+                "F50.02"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B80",
+            "equivalencia": "contextual",
+            "regra": "Selecionar a subcategoria conforme o nível ponderal, o padrão alimentar e a fase de recuperação.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_alimentares",
+            "label": "Transtornos Alimentares"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   estrutura_geral: "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -273,23 +297,19 @@ export const data = AnorexiaNervosaSchema.parse({
         "nota_aplicador": "Complementa a avaliação clínica; não substitui os critérios diagnósticos."
     }
 ],
-  prevalencia: {
-    populacao_geral:
-      "0,4% (prevalência de 12 meses entre jovens do sexo feminino).",
-    proporcao_sexo:
-      "Aproximadamente 10:1 feminino:masculino em populações clínicas.",
-    variacoes_culturais:
-      "Possivelmente mais prevalente em países ricos pós-industrializados. A ausência de medo intenso manifesto de ganhar peso parece relativamente mais comum na Ásia e entre grupos latinos nos EUA.",
-    notas: "Pouco se sabe sobre a prevalência no sexo masculino.",
-    },
-  curso_desenvolvimento: {
-    idade_inicio_tipica:
-      "Adolescência ou idade adulta jovem; raramente antes da puberdade ou após os 40 anos.",
-    trajetoria:
-      "Altamente variável. Alguns se recuperam após um único episódio; outros apresentam curso crônico. A maioria entra em remissão dentro de cinco anos.",
-    prognostico:
-      "Taxa bruta de mortalidade de cerca de 5% por década. Morte mais comum por complicações clínicas ou suicídio.",
-    },
+  "prevalencia": {
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Cerca de 0,4% em 12 meses entre mulheres jovens; estimativas para homens são menos precisas.",
+    "distribuicao_por_sexo": "Diagnósticos são muito mais frequentes em mulheres em amostras clínicas; homens e pessoas com apresentações atípicas podem ser sub-reconhecidos.",
+    "variacoes_contextuais": "Apresentação e reconhecimento variam culturalmente; ausência de medo verbalizado de ganhar peso não exclui o diagnóstico quando os demais mecanismos estão presentes.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
+  "curso_desenvolvimento": {
+    "inicio_tipico": "Mais comum na adolescência e no início da vida adulta; início antes da puberdade ou após os 40 anos é menos frequente.",
+    "trajetoria": "Heterogênea: pode haver episódio único, recorrências ou persistência; remissão e recuperação funcional podem exigir acompanhamento prolongado.",
+    "prognostico": "Complicações clínicas e suicídio contribuem para mortalidade elevada; duração, gravidade clínica e comorbidades influenciam o desfecho.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

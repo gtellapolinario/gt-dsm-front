@@ -1,25 +1,62 @@
 import { TncMaiorSchema } from "./schema";
 
 export const data = TncMaiorSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tnc_maior",
     "nome_completo": "Transtorno Neurocognitivo Maior",
-    "sigla": "TNC Maior",
     "codigo": {
-      "dsm5": "294.1x",
-      "cid10": "F02.8x",
-      "cid11": "6D80"
+        "dsm5": "",
+        "cid10": "F01 / F02 / F03",
+        "cid11": "6D80 / 6D81 / 6D82 / 6D83 / 6D84 / 6D85 / 6D8Y / 6D8Z"
     },
     "capitulo": "Transtornos Neurocognitivos",
-    "capitulo_id": "17",
-    "grupo": null,
+    "capitulo_id": "transtornos_neurocognitivos",
+    "sigla": "TNC Maior",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": [
+                "F01",
+                "F02",
+                "F03"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": [
+                "6D80",
+                "6D81",
+                "6D82",
+                "6D83",
+                "6D84",
+                "6D85",
+                "6D8Y",
+                "6D8Z"
+            ],
+            "equivalencia": "contextual",
+            "regra": "A CID-11 usa categorias de demência determinadas pela etiologia; selecionar a categoria etiológica específica.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_neurocognitivos",
+            "label": "Transtornos Neurocognitivos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Demência"
+    "terminologia_relacionada": [
+        {
+            "termo": "Demência",
+            "status": "termo_relacionado",
+            "equivalencia": "parcial",
+            "nota": "O DSM-5-TR admite o uso do termo tradicional quando apropriado; nem toda etiologia é nomeada apenas por esse termo."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -414,16 +451,18 @@ export const data = TncMaiorSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1–2% aos 65 anos; até 30% aos 85 anos",
-    "proporcao_sexo": null,
-    "variacoes_culturais": null,
-    "notas": "Prevalência varia conforme idade e subtipo etiológico.",
-      },
+    "tipo_estimativa": "multiplas_estimativas",
+    "estimativa": "A prevalência aumenta acentuadamente com a idade e varia conforme etiologia, população e método diagnóstico.",
+    "distribuicao_por_sexo": null,
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Geralmente idade avançada; varia por subtipo",
-    "trajetoria": "Varia por etiologia: degenerativa = progressão gradual; vascular = início agudo ou gradual.",
-    "prognostico": "Varia conforme etiologia subjacente e comorbidades.",
-      },
+    "inicio_tipico": "Mais frequente em idade avançada, mas varia amplamente conforme a etiologia.",
+    "trajetoria": "Pode ser progressiva, em degraus, flutuante ou parcialmente reversível, conforme a etiologia; não há trajetória única para a categoria sindrômica.",
+    "prognostico": "Depende da etiologia, gravidade funcional, velocidade de progressão, comorbidades, complicações clínicas e suporte.",
+    "nota_aplicador": "Idade e trajetória dependem da etiologia; mudança em relação ao nível prévio e curso temporal têm prioridade sobre a faixa típica."
+},
   
   "_pipeline": {
     "rendering": {

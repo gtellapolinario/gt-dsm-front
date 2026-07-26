@@ -1,25 +1,52 @@
 import { TncVascularSchema } from "./schema";
 
 export const data = TncVascularSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tnc_vascular",
     "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
-    "sigla": null,
     "codigo": {
-      "dsm5": "290.40",
-      "cid10": "F01.5x",
-      "cid11": "6D80.1"
+        "dsm5": "",
+        "cid10": "F01",
+        "cid11": "6D81 / 6D71"
     },
     "capitulo": "Transtornos Neurocognitivos",
-    "capitulo_id": "17",
-    "grupo": null,
+    "capitulo_id": "transtornos_neurocognitivos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F01",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": [
+                "6D81",
+                "6D71"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Usar 6D81 para demência por doença cerebrovascular e 6D71 para transtorno neurocognitivo leve; provável/possível não cria código próprio.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_neurocognitivos",
+            "label": "Transtornos Neurocognitivos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Demência vascular"
+    "terminologia_relacionada": [
+        {
+            "termo": "Demência vascular",
+            "status": "termo_relacionado",
+            "equivalencia": "parcial",
+            "nota": "Corresponde à apresentação maior, não à leve."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [],
   "criterios_condicionais": [
@@ -248,16 +275,18 @@ export const data = TncVascularSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,2% (65–70a) até 16% (≥80a); 20–30% pós-AVC",
-    "proporcao_sexo": "Mais em homens",
-    "variacoes_culturais": "Mais prevalente em afro-americanos e países do leste asiático.",
-    "notas": "Segunda causa mais comum de TNC.",
-      },
+    "tipo_estimativa": "multiplas_estimativas",
+    "estimativa": "A frequência aumenta com a idade e após doença cerebrovascular; as estimativas variam conforme definição de comprometimento vascular e população estudada.",
+    "distribuicao_por_sexo": "Mais em homens",
+    "variacoes_contextuais": "Diferenças entre grupos podem refletir carga vascular, acesso a cuidado, sobrevivência e critérios de aferição; evitar atribuição étnica essencialista.",
+    "nota_aplicador": "Distinguir prevalência populacional, frequência pós-AVC e proporção entre demências."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Qualquer idade; aumenta exponencialmente após 65a",
-    "trajetoria": "Variável: agudo com melhora parcial, gradual progressivo, ou flutuante com platôs.",
-    "prognostico": "Depende de controle dos fatores de risco vascular.",
-      },
+    "inicio_tipico": "Pode ocorrer após eventos cerebrovasculares em diferentes idades, mas a frequência aumenta com a idade e a carga vascular.",
+    "trajetoria": "Pode ser aguda, em degraus, flutuante ou gradualmente progressiva, conforme o mecanismo vascular e eventos subsequentes.",
+    "prognostico": "Depende da extensão e localização das lesões, recorrência vascular, reserva cognitiva, funcionalidade e comorbidades.",
+    "nota_aplicador": "Idade e trajetória dependem da etiologia; mudança em relação ao nível prévio e curso temporal têm prioridade sobre a faixa típica."
+},
   
   "_pipeline": {
     "rendering": {

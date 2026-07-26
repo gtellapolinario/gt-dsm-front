@@ -1,25 +1,55 @@
 import { TranstornoPorUsoDeTabacoSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeTabacoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_por_uso_de_tabaco",
     "nome_completo": "Transtorno por Uso de Tabaco",
-    "sigla": null,
     "codigo": {
-      "dsm5": "305.1",
-      "cid10": "F17.200",
-      "cid11": "6C4A"
+        "dsm5": "",
+        "cid10": "F17.2",
+        "cid11": "6C4A"
     },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
-    "capitulo_id": "16",
-    "grupo": "Tabaco",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Dependência de nicotina"
+    "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": [
+                "F17.2"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6C4A",
+            "equivalencia": "contextual",
+            "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+            "label": "Transtornos Relacionados a Substâncias e Transtornos Aditivos"
+        },
+        "subgrupo": {
+            "id": "tabaco",
+            "label": "Tabaco",
+            "natureza": "classe_de_substancia"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Dependência de nicotina",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "Categoria anterior; não deve ser confundida com simples uso atual de tabaco."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -264,16 +294,18 @@ export const data = TranstornoPorUsoDeTabacoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "~13% adultos ≥18a (dependência de nicotina DSM-IV); ~21% fumantes atuais.",
-    "proporcao_sexo": "14% homens vs 12% mulheres adultos.",
-    "variacoes_culturais": "Maior em índios norte-americanos (23%); maior em países em desenvolvimento.",
-    "notas": null,
-      },
+    "tipo_estimativa": "nao_comparavel_na_fonte",
+    "estimativa": "A fonte mistura dependência de nicotina, transtorno por uso de tabaco e tabagismo atual; não há uma estimativa única diretamente comparável sem fixar critério, produto e período.",
+    "distribuicao_por_sexo": "Varia por coorte, produto, país e período; não inferir transtorno apenas a partir da prevalência de tabagismo.",
+    "variacoes_contextuais": "Produto, regulação, coorte e contexto socioeconômico modificam as taxas; comparar levantamentos somente com definições equivalentes.",
+    "nota_aplicador": "Nunca substituir a prevalência do transtorno pela proporção de pessoas que usam ou fumam tabaco."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Adolescência; início após 21 anos é raro.",
-    "trajetoria": ">80% tentam parar; 60% recaem em uma semana; metade alcança abstinência.",
-    "prognostico": "50% dos que não param morrem prematuramente de doenças relacionadas ao tabaco.",
-      },
+    "inicio_tipico": "Frequentemente na adolescência; início na vida adulta também ocorre e depende do produto e da coorte.",
+    "trajetoria": "Pode ser persistente, com tentativas repetidas de redução ou cessação; recaída é comum e não implica ausência de mudança longitudinal.",
+    "prognostico": "Exposição cumulativa aumenta morbidade e mortalidade; risco individual depende de produto, dose, duração e condições clínicas.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

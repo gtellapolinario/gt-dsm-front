@@ -1,23 +1,42 @@
 import { TranstornoDisruptivoDesregulacaoHumorSchema } from "./schema";
 
 export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_disruptivo_desregulacao_humor",
     "nome_completo": "Transtorno Disruptivo da Desregulação do Humor",
-    "sigla": "TDDH",
     "codigo": {
-      "dsm5": "296.99",
-      "cid10": "F34.8",
-      "cid11": "6A83"
+        "dsm5": "",
+        "cid10": "F34.81",
+        "cid11": "6A8Y"
     },
     "capitulo": "Transtornos Depressivos",
-    "capitulo_id": "04",
-    "grupo": null,
+    "capitulo_id": "transtornos_depressivos",
+    "sigla": "TDDH",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F34.81",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A8Y",
+            "equivalencia": "sem_correspondencia_direta",
+            "regra": "A CID-11 MMS não possui categoria equivalente direta; 6A8Y é a categoria residual de outros transtornos do humor e exige julgamento clínico/codificador.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_depressivos",
+            "label": "Transtornos Depressivos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "pediatria",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -321,16 +340,18 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2 a 5% entre crianças e adolescentes na comunidade (estimativa de 6 meses a 1 ano)",
-    "proporcao_sexo": "Predominantemente masculino em amostras clínicas e comunitárias",
-    "variacoes_culturais": null,
-    "notas": "Estimativas baseadas em critério de irritabilidade persistente crônica e grave. Taxas mais elevadas em crianças do sexo masculino e em idade escolar.",
-      },
+    "tipo_estimativa": "prevalencia_6_a_12_meses",
+    "estimativa": "2 a 5% entre crianças e adolescentes na comunidade (estimativa de 6 meses a 1 ano)",
+    "distribuicao_por_sexo": "Predominantemente masculino em amostras clínicas e comunitárias",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Antes dos 10 anos (critério obrigatório); diagnóstico entre 7-18 anos",
-    "trajetoria": "Aproximadamente 50% das crianças com irritabilidade grave satisfarão critérios 1 ano depois. Baixas taxas de conversão para transtorno bipolar. Crianças com irritabilidade crônica têm risco aumentado de transtornos depressivos unipolares e/ou ansiedade na idade adulta.",
-    "prognostico": "Transtorno bipolar é mais comum antes da adolescência (<1%); TDDH tende a diminuir com a transição para a vida adulta.",
-      },
+    "inicio_tipico": "O início dos sintomas deve ocorrer antes dos 10 anos; o diagnóstico não deve ser feito pela primeira vez antes dos 6 nem após os 18 anos.",
+    "trajetoria": "A irritabilidade pode persistir por anos e tende a associar-se posteriormente a transtornos depressivos e de ansiedade, mais do que a transtorno bipolar.",
+    "prognostico": "A estabilidade diagnóstica é limitada; reavaliar desenvolvimento, contexto, comorbidades e mudança do padrão ao longo do tempo.",
+    "nota_aplicador": "Os limites etários são parte do critério formal: início antes dos 10 anos; primeira aplicação diagnóstica entre 6 e 18 anos."
+},
   
   "_pipeline": {
     "rendering": {

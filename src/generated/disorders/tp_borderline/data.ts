@@ -1,23 +1,49 @@
 import { TpBorderlineSchema } from "./schema";
 
 export const data = TpBorderlineSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_borderline",
     "nome_completo": "Transtorno da Personalidade Borderline",
-    "sigla": "TPB",
     "codigo": {
-      "dsm5": "301.83",
-      "cid10": "F60.3",
-      "cid11": "6D11.5"
+        "dsm5": "",
+        "cid10": "F60.3",
+        "cid11": "6D10 / 6D11.5"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster B",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPB",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F60.3",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": [
+                "6D10",
+                "6D11.5"
+            ],
+            "equivalencia": "aproximada_com_qualificador",
+            "regra": "Codificar primeiro a gravidade em 6D10.0–6D10.2 ou 6D10.Z; acrescentar 6D11.5 quando o padrão borderline estiver presente.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_b",
+            "label": "Cluster B",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -271,16 +297,18 @@ export const data = TpBorderlineSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1,6% a 5,9%",
-    "proporcao_sexo": "Cerca de 75% diagnosticados no sexo feminino",
-    "variacoes_culturais": null,
-    "notas": "Até 20% em pacientes psiquiátricos internados.",
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "1,6% a 5,9%",
+    "distribuicao_por_sexo": "Mulheres predominam em muitos contextos clínicos, mas estudos populacionais mostram distribuição mais equilibrada; considerar viés de encaminhamento e diagnóstico.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início da vida adulta",
-    "trajetoria": "Instabilidade crônica no início; melhora gradual após os 30–50 anos.",
-    "prognostico": "Metade não mais preenche critérios após ~10 anos de acompanhamento.",
-      },
+    "inicio_tipico": "O padrão costuma tornar-se reconhecível na adolescência tardia ou no início da vida adulta.",
+    "trajetoria": "Sintomas e risco podem diminuir ao longo do tempo, mas funcionamento interpessoal e ocupacional pode permanecer comprometido.",
+    "prognostico": "Suicidabilidade, impulsividade, comorbidades, trauma, suporte e funcionamento basal influenciam a evolução; remissão diagnóstica não equivale a recuperação funcional completa.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

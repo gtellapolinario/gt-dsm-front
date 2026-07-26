@@ -1,23 +1,42 @@
 import { TranstornoAlimentarRestritivoEvitativoSchema } from "./schema";
 
 export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_alimentar_restritivo_evitativo",
     "nome_completo": "Transtorno Alimentar Restritivo/Evitativo",
-    "sigla": "TARE",
     "codigo": {
-      "dsm5": "307.59",
-      "cid10": "F50.8",
-      "cid11": "6B83"
+        "dsm5": "",
+        "cid10": "F50.82",
+        "cid11": "6B83"
     },
     "capitulo": "Transtornos Alimentares",
-    "capitulo_id": "10",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_alimentares",
+    "sigla": "TARE",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F50.82",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B83",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_alimentares",
+            "label": "Transtornos Alimentares"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -257,16 +276,18 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": null,
-    "proporcao_sexo": "Igualmente comum em ambos os sexos na lactência e primeira infância; comórbido com TEA, é mais comum no sexo masculino.",
-    "variacoes_culturais": "Não deve ser diagnosticado quando a evitação estiver relacionada unicamente a práticas religiosas ou culturais específicas.",
-    "notas": "Mais comum em crianças do que em adultos; pode haver grande demora entre manifestação inicial e apresentação clínica.",
-      },
+    "tipo_estimativa": "nao_estabelecida",
+    "estimativa": "Prevalência populacional não estabelecida de forma robusta no DSM-5-TR.",
+    "distribuicao_por_sexo": "Os dados são insuficientes para uma razão estável por sexo; padrões de encaminhamento e comorbidades podem alterar as amostras.",
+    "variacoes_contextuais": "Não deve ser diagnosticado quando a evitação estiver relacionada unicamente a práticas religiosas ou culturais específicas.",
+    "nota_aplicador": "Ausência de estimativa robusta não significa ausência do transtorno em adultos."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Lactência ou primeira infância (evitação baseada em sensibilidade sensorial tende a surgir na primeira década).",
-    "trajetoria": "A evitação/restricão baseada em aspectos sensoriais é relativamente estável e duradoura. Pode persistir na idade adulta com funcionamento relativamente normal.",
-    "prognostico": "Pouca evidência associando diretamente TARE e manifestação subsequente de outro transtorno alimentar.",
-      },
+    "inicio_tipico": "Pode iniciar na lactência, infância, adolescência ou vida adulta; a apresentação sensorial costuma começar cedo.",
+    "trajetoria": "Varia conforme o mecanismo predominante; restrição sensorial pode ser duradoura, e apresentações por medo de consequências podem surgir após evento aversivo.",
+    "prognostico": "Duração, déficits nutricionais, dependência de suplementação, condições médicas e comorbidades do neurodesenvolvimento influenciam o curso.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

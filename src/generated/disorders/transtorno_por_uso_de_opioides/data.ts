@@ -1,26 +1,62 @@
 import { TranstornoPorUsoDeOpioidesSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeOpioidesSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_por_uso_de_opioides",
     "nome_completo": "Transtorno por Uso de Opioides",
-    "sigla": null,
     "codigo": {
-      "dsm5": "304.00",
-      "cid10": "F11.20",
-      "cid11": "6C41"
+        "dsm5": "",
+        "cid10": "F11.10 / F11.20",
+        "cid11": "6C43"
     },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
-    "capitulo_id": "16",
-    "grupo": "Opioides",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Dependência de heroína",
-      "Abuso de opioides"
+    "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": [
+                "F11.10",
+                "F11.20"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6C43",
+            "equivalencia": "contextual",
+            "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+            "label": "Transtornos Relacionados a Substâncias e Transtornos Aditivos"
+        },
+        "subgrupo": {
+            "id": "opioides",
+            "label": "Opioides",
+            "natureza": "classe_de_substancia"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Dependência de heroína",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Abuso de opioides",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -286,16 +322,18 @@ export const data = TranstornoPorUsoDeOpioidesSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,37% adultos ≥18a; ~1% (12-17a) para analgésicos.",
-    "proporcao_sexo": "1,5:1 homens:mulheres (analgesicos); 3:1 com heroína.",
-    "variacoes_culturais": "Maior entre índios norte-americanos (1,25%).",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "As estimativas variam conforme opioide, faixa etária e período do levantamento; uso de analgésicos e transtorno por uso de opioides não são medidas intercambiáveis.",
+    "distribuicao_por_sexo": "Varia conforme opioide, via, idade, período e população; não aplicar uma razão única a todas as exposições.",
+    "variacoes_contextuais": "Disponibilidade de substâncias, prescrição, mercado ilícito e acesso a cuidado determinam grande parte da variação entre populações.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Fim da adolescência / início dos 20 anos",
-    "trajetoria": "Curso crônico com recaídas frequentes após tratamento.",
-    "prognostico": "20-30% alcançam abstinência duradoura; mortalidade 1,5-2%/ano.",
-      },
+    "inicio_tipico": "Frequentemente no fim da adolescência ou início da vida adulta, mas pode surgir em outras idades conforme exposição.",
+    "trajetoria": "Pode ser recorrente ou persistente, com períodos de remissão e alto risco de recaída e overdose.",
+    "prognostico": "Risco de morte varia com potência, via, tolerância, policonsumo, acesso a cuidado e contexto; não aplicar percentuais antigos ao indivíduo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

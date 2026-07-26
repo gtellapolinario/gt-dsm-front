@@ -1,26 +1,59 @@
 import { TranstornoLinguagemSchema } from "./schema";
 
 export const data = TranstornoLinguagemSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_linguagem",
     "nome_completo": "Transtorno da Linguagem",
-    "sigla": null,
     "codigo": {
-      "dsm5": "315.32",
-      "cid10": "F80.2",
-      "cid11": "6A01"
+        "dsm5": "",
+        "cid10": "F80.2",
+        "cid11": "6A01.2"
     },
     "capitulo": "Transtornos do Neurodesenvolvimento",
-    "capitulo_id": "01",
-    "grupo": "Transtornos da Comunicação",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Afasia do desenvolvimento",
-      "Disfasia"
+    "capitulo_id": "transtornos_do_neurodesenvolvimento",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F80.2",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A01.2",
+            "equivalencia": "contextual",
+            "regra": "Selecionar 6A01.20–6A01.23 conforme o perfil receptivo, expressivo, pragmático ou outro prejuízo especificado.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_do_neurodesenvolvimento",
+            "label": "Transtornos do Neurodesenvolvimento"
+        },
+        "subgrupo": {
+            "id": "transtornos_da_comunicacao",
+            "label": "Transtornos da Comunicação",
+            "natureza": "subgrupo_do_capitulo"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Afasia do desenvolvimento",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Disfasia",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -201,16 +234,18 @@ export const data = TranstornoLinguagemSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Ocorre em aproximadamente 7% a 8% das crianças em idade escolar.",
-    "proporcao_sexo": "Mais frequente em meninos.",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "Ocorre em aproximadamente 7% a 8% das crianças em idade escolar.",
+    "distribuicao_por_sexo": "Mais frequente em meninos.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "4 anos (onde o diagnóstico se torna estável)",
-    "trajetoria": "Crianças com atrasos puramente expressivos têm melhor prognóstico que aquelas com atrasos mistos (receptivo-expressivos).",
-    "prognostico": "Dificuldades que persistem após os 4 anos tendem a ser crônicas na vida adulta.",
-      },
+    "inicio_tipico": "No período inicial do desenvolvimento, durante a aquisição da linguagem; o diagnóstico torna-se mais estável a partir dos primeiros anos.",
+    "trajetoria": "Dificuldades expressivas isoladas tendem a ter curso mais favorável que prejuízos receptivos e expressivos combinados; necessidades mudam com as demandas.",
+    "prognostico": "Persistência após os primeiros anos, prejuízo receptivo, comorbidades e dificuldades de alfabetização associam-se a maior impacto longitudinal.",
+    "nota_aplicador": "A idade típica é um lembrete clínico; avaliar história do desenvolvimento e demandas atuais, sem usar a faixa etária como exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

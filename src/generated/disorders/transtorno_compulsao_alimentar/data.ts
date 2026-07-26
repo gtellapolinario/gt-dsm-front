@@ -1,23 +1,42 @@
 import { TranstornoCompulsaoAlimentarSchema } from "./schema";
 
 export const data = TranstornoCompulsaoAlimentarSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_compulsao_alimentar",
     "nome_completo": "Transtorno de Compulsão Alimentar",
-    "sigla": "TCA",
     "codigo": {
-      "dsm5": "307.51",
-      "cid10": "F50.8",
-      "cid11": "6B82"
+        "dsm5": "",
+        "cid10": "F50.81",
+        "cid11": "6B82"
     },
     "capitulo": "Transtornos Alimentares",
-    "capitulo_id": "10",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_alimentares",
+    "sigla": "TCA",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F50.81",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B82",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_alimentares",
+            "label": "Transtornos Alimentares"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_clusters_assimetricos",
   "clusters_sintomas": [
     {
@@ -304,16 +323,18 @@ export const data = TranstornoCompulsaoAlimentarSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1,6% (mulheres adultas norte-americanas); 0,8% (homens adultos norte-americanos) — prevalência de 12 meses.",
-    "proporcao_sexo": "Bem menos assimétrico do que na bulimia nervosa. Tão prevalente entre mulheres de minorias raciais e étnicas quanto em mulheres brancas.",
-    "variacoes_culturais": "Prevalência comparável entre brancos não latinos, latinos, asiáticos e afro-americanos nos Estados Unidos.",
-    "notas": "Mais prevalente entre indivíduos que buscam tratamento para emagrecer do que na população em geral.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "1,6% (mulheres adultas norte-americanas); 0,8% (homens adultos norte-americanos) — prevalência de 12 meses.",
+    "distribuicao_por_sexo": "A diferença por sexo é menor que na anorexia nervosa e na bulimia nervosa; padrões de diagnóstico variam por amostra.",
+    "variacoes_contextuais": "O transtorno ocorre em diferentes grupos; acesso, estigma e padrões de encaminhamento modificam as taxas observadas.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Adolescência ou idade adulta jovem; pode ter início posterior na idade adulta.",
-    "trajetoria": "Relativamente persistente. O curso é comparável à bulimia nervosa em termos de gravidade e duração. Taxas de remissão maiores do que para bulimia ou anorexia.",
-    "prognostico": "Mudança diagnóstica de TCA para outros transtornos alimentares é incomum.",
-      },
+    "inicio_tipico": "Pode iniciar na adolescência ou vida adulta, inclusive mais tardiamente.",
+    "trajetoria": "Pode ser persistente, recorrente ou remitente; transição para outros transtornos alimentares ocorre, mas não é o curso mais comum.",
+    "prognostico": "Gravidade, comorbidades, estigma, alterações metabólicas e prejuízo funcional influenciam a evolução.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

@@ -1,23 +1,42 @@
 import { CondutaSchema } from "./schema";
 
 export const data = CondutaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "conduta",
     "nome_completo": "Transtorno da Conduta",
-    "sigla": null,
     "codigo": {
-      "dsm5": "312.8",
-      "cid10": "F91.x",
-      "cid11": "6C91"
+        "dsm5": "",
+        "cid10": "F91",
+        "cid11": "6C91"
     },
     "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
-    "capitulo_id": "15",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F91",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6C91",
+            "equivalencia": "contextual",
+            "regra": "Selecionar a subcategoria de início e, quando aplicável, o qualificador de emoções pró-sociais.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
+            "label": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -383,16 +402,18 @@ export const data = CondutaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2–10% em um ano, mediana de 4%",
-    "proporcao_sexo": "Mais elevado no sexo masculino",
-    "variacoes_culturais": "Contexto ambiental (áreas de alto crime, zonas de guerra) pode levar a aplicação incorreta do diagnóstico.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Entre 2% e 10% em 12 meses, com mediana aproximada de 4% nas estimativas descritas.",
+    "distribuicao_por_sexo": "Mais elevado no sexo masculino",
+    "variacoes_contextuais": "Contexto ambiental (áreas de alto crime, zonas de guerra) pode levar a aplicação incorreta do diagnóstico.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Começo dos anos pré-escolares até adolescência intermediária",
-    "trajetoria": "Tipo infância: pior prognóstico, mais agressão física, TDAH comórbido. Tipo adolescência: menos agressão, melhor prognóstico. Remissão na vida adulta é comum.",
-    "prognostico": "Persistência mais provável em subtipo infância + emoções pró-sociais limitadas + comorbidade com TDAH e substâncias.",
-      },
+    "inicio_tipico": "Pode iniciar nos anos pré-escolares até a adolescência; o tipo de início é definido pela presença de sintomas antes ou depois dos 10 anos.",
+    "trajetoria": "Heterogênea. Início infantil associa-se, em média, a maior persistência e agressividade; início adolescente pode ter curso mais circunscrito.",
+    "prognostico": "Início infantil, emoções pró-sociais limitadas, maior gravidade, TDAH e uso de substâncias associam-se a maior risco de persistência.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

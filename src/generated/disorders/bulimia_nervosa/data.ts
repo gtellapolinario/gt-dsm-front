@@ -1,23 +1,42 @@
 import { BulimiaNervosaSchema } from "./schema";
 
 export const data = BulimiaNervosaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "bulimia_nervosa",
     "nome_completo": "Bulimia Nervosa",
-    "sigla": null,
     "codigo": {
-      "dsm5": "307.51",
-      "cid10": "F50.2",
-      "cid11": "6B81"
+        "dsm5": "",
+        "cid10": "F50.2",
+        "cid11": "6B81"
     },
     "capitulo": "Transtornos Alimentares",
-    "capitulo_id": "10",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_alimentares",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F50.2",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B81",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_alimentares",
+            "label": "Transtornos Alimentares"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -288,16 +307,18 @@ export const data = BulimiaNervosaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1 a 1,5% (prevalência de 12 meses entre jovens do sexo feminino).",
-    "proporcao_sexo": "Aproximadamente 10:1 feminino:masculino.",
-    "variacoes_culturais": "Ocorrência relatada em frequências relativamente similares na maioria dos países industrializados.",
-    "notas": "A prevalência-ponto é maior entre adultos, já que o transtorno atinge seu pico no fim da adolescência e início da idade adulta.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Cerca de 1–1,5% em 12 meses entre mulheres jovens.",
+    "distribuicao_por_sexo": "Diagnósticos são muito mais frequentes em mulheres; a magnitude da diferença varia por amostra e método.",
+    "variacoes_contextuais": "Ocorrência relatada em frequências relativamente similares na maioria dos países industrializados.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Adolescência ou idade adulta jovem; incomum antes da puberdade ou após os 40 anos.",
-    "trajetoria": "Curso crônico ou intermitente com períodos de remissão e recorrência. Sintomas tendem a diminuir ao longo do tempo, especialmente com tratamento.",
-    "prognostico": "Períodos de remissão acima de um ano estão associados a evolução de longo prazo mais favorável. Taxa bruta de mortalidade de aproximadamente 2% por década.",
-      },
+    "inicio_tipico": "Mais comum na adolescência ou no início da vida adulta; início antes da puberdade é incomum.",
+    "trajetoria": "Pode ser intermitente ou persistente, com remissões e recorrências; a intensidade dos sintomas pode variar ao longo do tempo.",
+    "prognostico": "Remissões sustentadas associam-se a curso mais favorável; complicações clínicas e suicídio exigem vigilância.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

@@ -1,23 +1,46 @@
 import { TpParanoideSchema } from "./schema";
 
 export const data = TpParanoideSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_paranoide",
     "nome_completo": "Transtorno da Personalidade Paranóide",
-    "sigla": "TPP",
     "codigo": {
-      "dsm5": "301.0",
-      "cid10": "F60.0",
-      "cid11": "6D10"
+        "dsm5": "",
+        "cid10": "F60.0",
+        "cid11": "6D10"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster A",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPP",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F60.0",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6D10",
+            "equivalencia": "sem_correspondencia_categorial_direta",
+            "regra": "A CID-11 não conserva os tipos categóricos do DSM-5-TR. Codificar a gravidade em 6D10.0–6D10.2 ou 6D10.Z e acrescentar qualificadores de traço quando sustentados.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_a",
+            "label": "Cluster A",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -245,16 +268,18 @@ export const data = TpParanoideSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2,3% a 4,4%",
-    "proporcao_sexo": "Mais comumente diagnosticado no sexo masculino (amostras clínicas)",
-    "variacoes_culturais": "Comportamentos defensivos de minorias não devem ser confundidos com TPP.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "2,3% a 4,4%",
+    "distribuicao_por_sexo": "Mais comumente diagnosticado no sexo masculino (amostras clínicas)",
+    "variacoes_contextuais": "Comportamentos defensivos de minorias não devem ser confundidos com TPP.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Infância e adolescência (solidão, relacionamento ruim com colegas)",
-    "trajetoria": "Crônico; pode preceder transtorno delirante ou esquizofrenia.",
-    "prognostico": "Difícil convivência; episódios psicóticos breves sob estresse.",
-      },
+    "inicio_tipico": "Traços podem ser percebidos antes, mas o padrão diagnóstico deve estar estabelecido no início da vida adulta.",
+    "trajetoria": "Tende a ser persistente; desconfiança pode intensificar-se sob estresse, sem implicar inevitável evolução para psicose.",
+    "prognostico": "Isolamento, conflitos, comorbidades e rigidez das crenças influenciam o funcionamento e a estabilidade relacional.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

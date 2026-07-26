@@ -1,27 +1,72 @@
 import { TranstornoPorUsoDeEstimulantesSchema } from "./schema";
 
 export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_por_uso_de_estimulantes",
     "nome_completo": "Transtorno por Uso de Estimulantes",
-    "sigla": null,
     "codigo": {
-      "dsm5": "304.40",
-      "cid10": "F15.20",
-      "cid11": "6C42"
+        "dsm5": "",
+        "cid10": "F14 / F15",
+        "cid11": "6C45 / 6C46 / 6C47"
     },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
-    "capitulo_id": "16",
-    "grupo": "Estimulantes",
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Dependência de cocaína",
-      "Dependência de anfetaminas",
-      "Metanfetamina"
+    "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": [
+                "F14",
+                "F15"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": [
+                "6C45",
+                "6C46",
+                "6C47"
+            ],
+            "equivalencia": "contextual",
+            "regra": "A CID-11 separa episódio de uso nocivo, padrão nocivo e dependência. Selecionar a subcategoria conforme o padrão clínico; a gravidade DSM não determina conversão automática. Escolher primeiro cocaína, estimulantes anfetamínicos ou catinonas sintéticas.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
+            "label": "Transtornos Relacionados a Substâncias e Transtornos Aditivos"
+        },
+        "subgrupo": {
+            "id": "estimulantes",
+            "label": "Estimulantes",
+            "natureza": "classe_de_substancia"
+        }
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Dependência de cocaína",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Dependência de anfetaminas",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Metanfetamina",
+            "status": "classe_de_substancia",
+            "equivalencia": "nao_equivalente",
+            "nota": "É uma substância abrangida, não sinônimo do transtorno."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -306,16 +351,18 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Anfetamina: 0,2% (12-17a e adultos); Cocaína: 0,2% (12-17a), 0,3% adultos.",
-    "proporcao_sexo": "Cocaína: mais em homens (0,4% vs 0,1% adultos).",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "As estimativas variam por classe de estimulante, faixa etária e período do levantamento; cocaína e anfetaminas não devem ser colapsadas em uma taxa única.",
+    "distribuicao_por_sexo": "Mais diagnosticado em homens em muitos levantamentos; a diferença varia por substância, idade e contexto.",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "12-25 anos",
-    "trajetoria": "Progressão rápida com uso fumado/intravenoso; gradual com uso intranasal/oral.",
-    "prognostico": "Reservado para uso crônico; depressão/ideação suicida durante abstinência.",
-      },
+    "inicio_tipico": "Frequentemente na adolescência ou vida adulta jovem; varia conforme substância e contexto de exposição.",
+    "trajetoria": "Pode haver escalada rápida ou gradual conforme substância, via, frequência e ambiente, com períodos de remissão e recorrência.",
+    "prognostico": "Uso frequente, via de maior risco, psicose, depressão, suicidabilidade, policonsumo e instabilidade social associam-se a maior gravidade.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

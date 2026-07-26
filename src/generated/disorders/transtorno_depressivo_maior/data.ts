@@ -1,27 +1,67 @@
 import { TranstornoDepressivoMaiorSchema } from "./schema";
 
 export const data = TranstornoDepressivoMaiorSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_depressivo_maior",
     "nome_completo": "Transtorno Depressivo Maior",
-    "sigla": "TDM",
     "codigo": {
-      "dsm5": "296.21",
-      "cid10": "F32.0",
-      "cid11": "6A70"
+        "dsm5": "",
+        "cid10": "F32 / F33",
+        "cid11": "6A70 / 6A71"
     },
     "capitulo": "Transtornos Depressivos",
-    "capitulo_id": "04",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Depressão maior",
-      "Depressão unipolar",
-      "Episódio depressivo maior"
+    "capitulo_id": "transtornos_depressivos",
+    "sigla": "TDM",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": [
+                "F32",
+                "F33"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": [
+                "6A70",
+                "6A71"
+            ],
+            "equivalencia": "contextual",
+            "regra": "Usar 6A70 para episódio único e 6A71 para transtorno depressivo recorrente; selecionar gravidade, psicose e remissão.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_depressivos",
+            "label": "Transtornos Depressivos"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Depressão maior",
+            "status": "nome_alternativo",
+            "equivalencia": "equivalente",
+            "nota": null
+        },
+        {
+            "termo": "Depressão unipolar",
+            "status": "termo_relacionado",
+            "equivalencia": "parcial",
+            "nota": null
+        },
+        {
+            "termo": "Episódio depressivo maior",
+            "status": "componente_diagnostico",
+            "equivalencia": "nao_equivalente",
+            "nota": "É o episódio exigido pelo diagnóstico, não sinônimo do transtorno."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -473,16 +513,18 @@ export const data = TranstornoDepressivoMaiorSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Aproximadamente 7% (prevalência de 12 meses nos EUA); prevalência em 18-29 anos é 3x maior que em indivíduos acima de 60 anos",
-    "proporcao_sexo": "1,5 a 3x mais em mulheres que em homens; disparidade inicia na adolescência",
-    "variacoes_culturais": "Diferenças de até 7x nas taxas entre culturas; sintomas somáticos como queixa predominante em muitas culturas; insônia e perda de energia mais uniformemente relatados",
-    "notas": "Alta mortalidade associada, em boa parte pelo suicídio. Indivíduos deprimidos em asilos têm probabilidade aumentada de morte no primeiro ano.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Aproximadamente 7% (prevalência de 12 meses nos EUA); prevalência em 18-29 anos é 3x maior que em indivíduos acima de 60 anos",
+    "distribuicao_por_sexo": "1,5 a 3x mais em mulheres que em homens; disparidade inicia na adolescência",
+    "variacoes_contextuais": "Diferenças de até 7x nas taxas entre culturas; sintomas somáticos como queixa predominante em muitas culturas; insônia e perda de energia mais uniformemente relatados",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Pico na década dos 20 anos; pode surgir em qualquer idade; probabilidade aumenta sensivelmente com a puberdade",
-    "trajetoria": "Curso bastante variável. Recuperação começa em 3 meses em 2/5 dos casos; em 1 ano em 4/5. Risco de recorrência aumenta progressivamente com número de episódios. Possível transição para bipolar, especialmente em início na adolescência ou com características psicóticas.",
-    "prognostico": "Cronicidade aumenta probabilidade de transtornos de personalidade, ansiedade e abuso de substância. Tempos médios de recuperação estáveis por longos períodos.",
-      },
+    "inicio_tipico": "Pode surgir em qualquer idade; a incidência aumenta após a puberdade e o início é comum na vida adulta jovem.",
+    "trajetoria": "Muito variável: pode haver episódio único, recuperação parcial, recorrências ou persistência; risco de recorrência aumenta com episódios prévios.",
+    "prognostico": "Maior duração, sintomas residuais, episódios prévios, comorbidades, psicose e suicidabilidade associam-se a evolução menos favorável.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

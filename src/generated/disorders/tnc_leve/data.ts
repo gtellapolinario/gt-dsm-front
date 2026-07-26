@@ -1,25 +1,49 @@
 import { TncLeveSchema } from "./schema";
 
 export const data = TncLeveSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tnc_leve",
     "nome_completo": "Transtorno Neurocognitivo Leve",
-    "sigla": "TNC Leve",
     "codigo": {
-      "dsm5": "331.83",
-      "cid10": "G31.84",
-      "cid11": "6D81"
+        "dsm5": "",
+        "cid10": "G31.84",
+        "cid11": "6D71"
     },
     "capitulo": "Transtornos Neurocognitivos",
-    "capitulo_id": "17",
-    "grupo": null,
+    "capitulo_id": "transtornos_neurocognitivos",
+    "sigla": "TNC Leve",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "G31.84",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6D71",
+            "equivalencia": "contextual",
+            "regra": "Registrar a etiologia por codificação adicional quando o sistema local exigir; as opções etiológicas não têm todas uma subcategoria própria sob 6D71.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_neurocognitivos",
+            "label": "Transtornos Neurocognitivos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Transtorno cognitivo sem outra especificação (DSM-IV, parcial)"
+    "terminologia_relacionada": [
+        {
+            "termo": "Transtorno cognitivo sem outra especificação",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "Categoria anterior mais ampla e não equivalente."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -363,16 +387,18 @@ export const data = TncLeveSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2–10% aos 65 anos; 5–25% aos 85 anos",
-    "proporcao_sexo": null,
-    "variacoes_culturais": null,
-    "notas": "Estimativas variam conforme definição utilizada.",
-      },
+    "tipo_estimativa": "multiplas_estimativas",
+    "estimativa": "Estimativas aumentam com a idade e variam conforme definição, instrumento e etiologia; não há uma taxa única aplicável a todos os transtornos neurocognitivos leves.",
+    "distribuicao_por_sexo": null,
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Varia por subtipo etiológico",
-    "trajetoria": "Varia por etiologia; pode progredir para TNC maior ou estabilizar.",
-    "prognostico": "Varia conforme etiologia subjacente.",
-      },
+    "inicio_tipico": "Varia conforme a etiologia; a frequência aumenta com a idade, mas apresentações precoces podem ocorrer.",
+    "trajetoria": "Pode permanecer estável, melhorar ou progredir para transtorno neurocognitivo maior; o padrão temporal depende da etiologia.",
+    "prognostico": "Etiologia, biomarcadores quando indicados, reserva cognitiva, funcionalidade e comorbidades influenciam o risco de progressão.",
+    "nota_aplicador": "Idade e trajetória dependem da etiologia; mudança em relação ao nível prévio e curso temporal têm prioridade sobre a faixa típica."
+},
   
   "_pipeline": {
     "rendering": {

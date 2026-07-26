@@ -1,25 +1,49 @@
 import { EsquizofreniaSchema } from "./schema";
 
 export const data = EsquizofreniaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "esquizofrenia",
     "nome_completo": "Esquizofrenia",
-    "sigla": null,
     "codigo": {
-      "dsm5": "295.90",
-      "cid10": "F20.9",
-      "cid11": "6A20"
+        "dsm5": "",
+        "cid10": "F20.9",
+        "cid11": "6A20"
     },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
-    "capitulo_id": "02",
-    "grupo": null,
+    "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F20.9",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A20",
+            "equivalencia": "contextual",
+            "regra": "Selecionar a subcategoria conforme curso episódico/contínuo e estado sintomático ou de remissão.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+            "label": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Dementia praecox"
+    "terminologia_relacionada": [
+        {
+            "termo": "Dementia praecox",
+            "status": "obsoleto",
+            "equivalencia": "historica",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_com_ancora",
   "clusters_sintomas": [
     {
@@ -351,16 +375,18 @@ export const data = EsquizofreniaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Entre 0,3% e 0,7% ao longo da vida.",
-    "proporcao_sexo": "Similar entre os sexos, embora com início ligeiramente mais precoce e prognóstico mais grave no sexo masculino.",
-    "variacoes_culturais": "Ideias delirantes que parecem bizarras em uma cultura (ex: feitiçaria) podem ser comumente aceitas em outra, necessitando avaliação atenta.",
-    "notas": "O risco de suicídio é elevado, com 5% a 6% dos indivíduos morrendo por autoextermínio e cerca de 20% realizando tentativas.",
-      },
+    "tipo_estimativa": "prevalencia_vida",
+    "estimativa": "Entre 0,3% e 0,7% ao longo da vida.",
+    "distribuicao_por_sexo": "Similar entre os sexos, embora com início ligeiramente mais precoce e prognóstico mais grave no sexo masculino.",
+    "variacoes_contextuais": "Ideias delirantes que parecem bizarras em uma cultura (ex: feitiçaria) podem ser comumente aceitas em outra, necessitando avaliação atenta.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início/meados dos 20 anos (homens); fim dos 20 anos (mulheres)",
-    "trajetoria": "O início pode ser abrupto ou gradual, mas a maioria exibe curso flutuante ou crônico com exacerbações agudas e declínio progressivo da funcionalidade social e cognitiva.",
-    "prognostico": "Geralmente crônico e com prejuízos funcionais residuais em grande parte dos indivíduos, necessitando de suporte medicamentoso e psicossocial contínuo.",
-      },
+    "inicio_tipico": "Em geral no fim da adolescência ou início da vida adulta; o início tende a ocorrer mais cedo em homens nas amostras descritas.",
+    "trajetoria": "Heterogênea: pode ser episódica, contínua ou flutuante, com diferentes graus de remissão e prejuízo residual; declínio progressivo não é inevitável.",
+    "prognostico": "Funcionamento, sintomas negativos, cognição, suporte social, comorbidades e acesso ao cuidado influenciam o desfecho.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

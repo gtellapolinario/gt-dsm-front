@@ -1,23 +1,42 @@
 import { OposicaoDesafianteSchema } from "./schema";
 
 export const data = OposicaoDesafianteSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "oposicao_desafiante",
     "nome_completo": "Transtorno de Oposição Desafiante",
-    "sigla": "TOD",
     "codigo": {
-      "dsm5": "313.81",
-      "cid10": "F91.3",
-      "cid11": "6C90"
+        "dsm5": "",
+        "cid10": "F91.3",
+        "cid11": "6C90"
     },
     "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
-    "capitulo_id": "15",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
+    "sigla": "TOD",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F91.3",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6C90",
+            "equivalencia": "contextual",
+            "regra": "Selecionar a subcategoria conforme irritabilidade-raiva crônica e emoções pró-sociais.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
+            "label": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -294,16 +313,18 @@ export const data = OposicaoDesafianteSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1–11%, média estimada de 3,3%",
-    "proporcao_sexo": "1,4:1 M:F antes da adolescência",
-    "variacoes_culturais": "Prevalência relativamente consistente entre países com diferentes raças e etnias.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "1–11%, média estimada de 3,3%",
+    "distribuicao_por_sexo": "Antes da adolescência, a frequência descrita é discretamente maior em meninos; a diferença tende a diminuir depois.",
+    "variacoes_contextuais": "Normas de desenvolvimento, autoridade e expressão emocional variam; avaliar persistência, contexto e prejuízo, não apenas confronto com adultos.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Anos pré-escolares",
-    "trajetoria": "Pode preceder transtorno da conduta; maioria das crianças com TOD não desenvolve conduta. Risco aumentado para ansiedade e depressão.",
-    "prognostico": "Sintomas desafiantes/questionadores predizem conduta; sintomas de humor predizem transtornos emocionais.",
-      },
+    "inicio_tipico": "Frequentemente nos anos pré-escolares; início novo após a adolescência é incomum.",
+    "trajetoria": "Pode remitir ou persistir. Parte evolui com transtorno da conduta, mas essa progressão não é inevitável; sintomas de irritabilidade associam-se também a desfechos emocionais.",
+    "prognostico": "Maior pervasividade, gravidade, disfunção familiar, TDAH e adversidade associam-se a maior persistência e prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

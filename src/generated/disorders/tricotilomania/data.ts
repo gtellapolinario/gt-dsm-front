@@ -1,25 +1,49 @@
 import { TricotilomaniaSchema } from "./schema";
 
 export const data = TricotilomaniaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tricotilomania",
     "nome_completo": "Tricotilomania (Transtorno de Arrancar o Cabelo)",
-    "sigla": null,
     "codigo": {
-      "dsm5": "312.39",
-      "cid10": "F63.3",
-      "cid11": "6B25"
+        "dsm5": "",
+        "cid10": "F63.3",
+        "cid11": "6B25.0"
     },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
-    "capitulo_id": "06",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Hair-pulling disorder"
+    "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F63.3",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B25.0",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
+            "label": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Hair-pulling disorder",
+            "status": "nome_em_ingles",
+            "equivalencia": "equivalente",
+            "nota": "Não é termo histórico."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -189,16 +213,18 @@ export const data = TricotilomaniaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1–2% (prevalência de 12 meses)",
-    "proporcao_sexo": "10:1 mulheres:homens em amostras clínicas; mais equilibrado na infância",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Cerca de 1–2% em 12 meses.",
+    "distribuicao_por_sexo": "10:1 mulheres:homens em amostras clínicas; mais equilibrado na infância",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Pico na pré-adolescência (~12–13 anos); pode ser crônico se não tratado",
-    "trajetoria": "Crônico com flutuações; pode remitir na gravidez.",
-    "prognostico": "Responde a TCC (Habit Reversal Training) e N-acetilcisteína.",
-      },
+    "inicio_tipico": "Frequentemente no período peripuberal, mas pode iniciar em outras idades.",
+    "trajetoria": "Pode ser persistente ou flutuante, com períodos de redução e exacerbação; não há base para tratar gravidez como remissão típica.",
+    "prognostico": "Gravidade, comorbidades, dano físico e automatismo do comportamento influenciam a persistência e o prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

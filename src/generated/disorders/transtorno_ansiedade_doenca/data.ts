@@ -1,25 +1,49 @@
 import { TranstornoAnsiedadeDoencaSchema } from "./schema";
 
 export const data = TranstornoAnsiedadeDoencaSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_ansiedade_doenca",
     "nome_completo": "Transtorno de Ansiedade de Doença",
-    "sigla": "TAD",
     "codigo": {
-      "dsm5": "300.7",
-      "cid10": "F45.21",
-      "cid11": "6B24"
+        "dsm5": "",
+        "cid10": "F45.21",
+        "cid11": "6B23"
     },
     "capitulo": "Transtorno de Sintomas Somáticos e Transtornos Relacionados",
-    "capitulo_id": "09",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Hipocondria"
+    "capitulo_id": "transtorno_de_sintomas_somaticos_e_transtornos_relacionados",
+    "sigla": "TAD",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F45.21",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B23",
+            "equivalencia": "aproximada",
+            "regra": "A CID-11 usa a denominação hypochondriasis e subcategorias por insight; os tipos busca/evitação de cuidado do DSM não geram códigos próprios.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_de_sintomas_somaticos_e_transtornos_relacionados",
+            "label": "Transtorno de Sintomas Somáticos e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Hipocondria",
+            "status": "historico",
+            "equivalencia": "parcial",
+            "nota": "A categoria anterior foi redistribuída entre diagnósticos do DSM-5-TR."
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -233,16 +257,18 @@ export const data = TranstornoAnsiedadeDoencaSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "1,3–10% (estimativa em serviços de atenção primária)",
-    "proporcao_sexo": "Igual entre sexos",
-    "variacoes_culturais": null,
-    "notas": null,
-      },
+    "tipo_estimativa": "frequencia_em_servico",
+    "estimativa": "1,3–10% (estimativa em serviços de atenção primária)",
+    "distribuicao_por_sexo": "Igual entre sexos",
+    "variacoes_contextuais": null,
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início adulto jovem",
-    "trajetoria": "Crônico sem tratamento; bom prognóstico com TCC.",
-    "prognostico": "TCC focada em ansiedade de saúde é tratamento de primeira linha.",
-      },
+    "inicio_tipico": "Pode surgir ao longo da vida adulta, com início frequente no começo ou meio da vida adulta.",
+    "trajetoria": "Pode ser persistente ou episódico, especialmente diante de doença, perdas ou exposição a informações de saúde.",
+    "prognostico": "Comorbidades, reforço por verificações repetidas e eventos médicos reais influenciam a persistência e o prejuízo.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

@@ -1,23 +1,42 @@
 import { TranstornoBipolarTipo2Schema } from "./schema";
 
 export const data = TranstornoBipolarTipo2Schema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_bipolar_tipo_2",
     "nome_completo": "Transtorno Bipolar Tipo II",
-    "sigla": "TB2",
     "codigo": {
-      "dsm5": "296.89",
-      "cid10": "F31.81",
-      "cid11": "6A61"
+        "dsm5": "",
+        "cid10": "F31.81",
+        "cid11": "6A61"
     },
     "capitulo": "Transtorno Bipolar e Transtornos Relacionados",
-    "capitulo_id": "03",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "capitulo_id": "transtorno_bipolar_e_transtornos_relacionados",
+    "sigla": "TB II",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F31.81",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A61",
+            "equivalencia": "contextual",
+            "regra": "Selecionar a subcategoria conforme episódio atual ou mais recente, sintomas psicóticos e remissão.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_bipolar_e_transtornos_relacionados",
+            "label": "Transtorno Bipolar e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_clusters_simetricos",
   "clusters_sintomas": [
     {
@@ -290,16 +309,18 @@ export const data = TranstornoBipolarTipo2Schema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "0,3% internacionalmente; 0,8% nas estimativas do DSM-5 nos EUA.",
-    "proporcao_sexo": "Tendência de maior prevalência de estados depressivos e ciclagens rápidas em mulheres.",
-    "variacoes_culturais": "Não há informações robustas de variação cultural bem definida na literatura.",
-    "notas": "A prevalência acumulada do transtorno bipolar II ao longo do tempo demonstra grande morbidade.",
-      },
+    "tipo_estimativa": "multiplas_estimativas",
+    "estimativa": "Cerca de 0,3% em estimativas internacionais e 0,8% em estimativa norte-americana descrita pelo DSM-5.",
+    "distribuicao_por_sexo": "Tendência de maior prevalência de estados depressivos e ciclagens rápidas em mulheres.",
+    "variacoes_contextuais": "Não há informações robustas de variação cultural bem definida na literatura.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Cerca de 25 anos",
-    "trajetoria": "Geralmente se inicia com um episódio depressivo. 5-15% dos casos evoluem para Transtorno Bipolar Tipo I ao longo da vida com a manifestação de um episódio de mania.",
-    "prognostico": "Não deve ser considerado mais leve que o Bipolar I. Pacientes passam longos períodos incapacitados pela cronicidade e depressão recorrente.",
-      },
+    "inicio_tipico": "Frequentemente no fim da adolescência ou vida adulta jovem; o reconhecimento pode ocorrer após episódios depressivos recorrentes.",
+    "trajetoria": "Episódios depressivos costumam predominar. O surgimento de mania exige reclassificação para transtorno bipolar tipo I, não progressão de gravidade dentro do tipo II.",
+    "prognostico": "Carga depressiva, recorrência, ansiedade, uso de substâncias e ciclagem rápida influenciam o prejuízo; o tipo II não deve ser presumido como forma leve.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

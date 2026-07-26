@@ -1,26 +1,55 @@
 import { TranstornoConversaoSchema } from "./schema";
 
 export const data = TranstornoConversaoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_conversao",
     "nome_completo": "Transtorno de Conversão (Transtorno de Sintomas Neurológicos Funcionais)",
-    "sigla": null,
     "codigo": {
-      "dsm5": "300.11",
-      "cid10": "F44.x",
-      "cid11": "6B60"
+        "dsm5": "",
+        "cid10": "F44",
+        "cid11": "6B60"
     },
     "capitulo": "Transtorno de Sintomas Somáticos e Transtornos Relacionados",
-    "capitulo_id": "09",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": [
-      "Histeria",
-      "Transtorno de conversão"
+    "capitulo_id": "transtorno_de_sintomas_somaticos_e_transtornos_relacionados",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F44",
+            "equivalencia": "contextual",
+            "regra": "Referência de família ou conjunto de códigos; selecionar o código CID-10-CM específico conforme apresentação, curso, gravidade e regras da versão adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B60",
+            "equivalencia": "contextual",
+            "regra": "A CID-11 denomina o quadro transtorno dissociativo de sintomas neurológicos e codifica vários tipos pelo sintoma predominante.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtorno_de_sintomas_somaticos_e_transtornos_relacionados",
+            "label": "Transtorno de Sintomas Somáticos e Transtornos Relacionados"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "Histeria",
+            "status": "obsoleto",
+            "equivalencia": "nao_equivalente",
+            "nota": "Categoria histórica ampla e heterogênea; não equivale ao diagnóstico atual."
+        },
+        {
+            "termo": "Transtorno de sintomas neurológicos funcionais",
+            "status": "nome_alternativo",
+            "equivalencia": "equivalente",
+            "nota": null
+        }
     ]
-  },
+},
   "estrutura_geral": "monothetic_puro",
   "clusters_sintomas": [
     {
@@ -280,16 +309,18 @@ export const data = TranstornoConversaoSchema.parse({
   ],
   "instrumentos_complementares": [],
   "prevalencia": {
-    "populacao_geral": "2–5/100.000/ano (incidência estimada); comum em neurology clinics",
-    "proporcao_sexo": "2–3:1 mulheres:homens",
-    "variacoes_culturais": "Prevalência maior em países com renda baixa e recursos médicos limitados.",
-    "notas": null,
-      },
+    "tipo_estimativa": "incidencia_anual",
+    "estimativa": "Incidência estimada de 2–5 por 100.000 pessoas-ano; a frequência é maior em serviços neurológicos do que na população geral.",
+    "distribuicao_por_sexo": "2–3:1 mulheres:homens",
+    "variacoes_contextuais": "Forma de apresentação e procura por cuidado variam com contexto cultural e acesso à neurologia; diferenças observadas não demonstram maior predisposição intrínseca.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Mediana ~30 anos; pode ocorrer em qualquer faixa etária",
-    "trajetoria": "50% remitem espontaneamente em 2 semanas; crônico em alguns.",
-    "prognostico": "Intervenção neuropsiquiátrica precoce é fator prognóstico positivo.",
-      },
+    "inicio_tipico": "Pode ocorrer em qualquer idade; muitas amostras clínicas concentram-se em adultos jovens e de meia-idade.",
+    "trajetoria": "Variável: apresentações agudas podem remitir, enquanto sintomas persistentes ou recorrentes são comuns em parte dos casos.",
+    "prognostico": "Menor duração antes do diagnóstico, formulação compartilhada e menor carga de comorbidades associam-se a melhor evolução; não presumir remissão espontânea rápida.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

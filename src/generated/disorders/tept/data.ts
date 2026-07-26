@@ -1,25 +1,49 @@
 import { TeptSchema } from "./schema";
 
 export const data = TeptSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tept",
     "nome_completo": "Transtorno de Estresse Pós-Traumático",
-    "sigla": "TEPT",
     "codigo": {
-      "dsm5": "309.81",
-      "cid10": "F43.10",
-      "cid11": "6B40"
+        "dsm5": "",
+        "cid10": "F43.10",
+        "cid11": "6B40"
     },
     "capitulo": "Transtornos Relacionados a Trauma e a Estressores",
-    "capitulo_id": "07",
-    "grupo": null,
-    "faixa_etaria_alvo": "ambos",
-    "versao_complementar_existe": true,
-    "sinonimos_historicos": [
-      "PTSD"
+    "capitulo_id": "transtornos_relacionados_a_trauma_e_a_estressores",
+    "sigla": "TEPT",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F43.10",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6B40",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta; selecionar eventual subcategoria de curso, gravidade ou remissão quando aplicável.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_relacionados_a_trauma_e_a_estressores",
+            "label": "Transtornos Relacionados a Trauma e a Estressores"
+        },
+        "subgrupo": null
+    },
+    "faixa_etaria_alvo": "transversal",
+    "terminologia_relacionada": [
+        {
+            "termo": "PTSD",
+            "status": "sigla_em_ingles",
+            "equivalencia": "equivalente",
+            "nota": "Não é termo histórico; é a sigla inglesa corrente."
+        }
     ]
-  },
+},
   "estrutura_geral": "polythetic_clusters_simetricos",
   "clusters_sintomas": [
     {
@@ -455,16 +479,18 @@ export const data = TeptSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "3,5% (prevalência de 12 meses nos EUA); 0,5–1% internacionalmente",
-    "proporcao_sexo": "2:1 mulheres:homens",
-    "variacoes_culturais": "Taxas menores em países com renda baixa; expressão varia culturalmente.",
-    "notas": "Risco de TEPT condicional (após trauma) ~20%; variaações por tipo de trauma.",
-      },
+    "tipo_estimativa": "prevalencia_12_meses",
+    "estimativa": "Cerca de 3,5% em 12 meses nos Estados Unidos no panorama do DSM-5-TR; estimativas internacionais são menores e variam amplamente por exposição e contexto.",
+    "distribuicao_por_sexo": "2:1 mulheres:homens",
+    "variacoes_contextuais": "A exposição a traumas, o contexto social e a expressão dos sintomas variam entre populações; taxas nacionais não devem ser generalizadas sem ajustar a exposição.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Qualquer idade; pode ocorrer em crianças pequenas após trauma",
-    "trajetoria": "Altamente variável: ~50% recuperam em 3 meses; outros persistem décadas.",
-    "prognostico": "Boa resposta a TCC focada no trauma (CPT, PE) e EMDR.",
-      },
+    "inicio_tipico": "Pode surgir em qualquer idade após exposição traumática; a expressão varia ao longo do desenvolvimento.",
+    "trajetoria": "Altamente variável: parte apresenta remissão em meses, enquanto outra mantém sintomas persistentes ou de expressão tardia.",
+    "prognostico": "Exposição repetida, dissociação, comorbidades, apoio social e estressores contínuos influenciam o curso.",
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {

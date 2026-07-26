@@ -1,23 +1,49 @@
 import { TpObsessivoCompulsivoSchema } from "./schema";
 
 export const data = TpObsessivoCompulsivoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_obsessivo_compulsivo",
     "nome_completo": "Transtorno da Personalidade Obsessivo-Compulsiva",
-    "sigla": "TPOC",
     "codigo": {
-      "dsm5": "301.4",
-      "cid10": "F60.5",
-      "cid11": "6D10"
+        "dsm5": "",
+        "cid10": "F60.5",
+        "cid11": "6D10 / 6D11.4"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster C",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPOC",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F60.5",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": [
+                "6D10",
+                "6D11.4"
+            ],
+            "equivalencia": "aproximada_com_qualificador",
+            "regra": "Codificar primeiro a gravidade em 6D10.0–6D10.2 ou 6D10.Z; 6D11.4 qualifica anancastia quando sustentada.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_c",
+            "label": "Cluster C",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -253,16 +279,18 @@ export const data = TpObsessivoCompulsivoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2,1% a 7,9%",
-    "proporcao_sexo": "Cerca de duas vezes mais em homens",
-    "variacoes_culturais": "Culturas que enfatizam trabalho e produtividade não devem ser confundidas.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "2,1% a 7,9%",
+    "distribuicao_por_sexo": "Cerca de duas vezes mais em homens",
+    "variacoes_contextuais": "Culturas que enfatizam trabalho e produtividade não devem ser confundidas.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Início da vida adulta",
-    "trajetoria": "Crônico; traços moderados podem ser adaptativos em contextos de alto desempenho.",
-    "prognostico": "Dificuldade em novas situações que exijam flexibilidade.",
-      },
+    "inicio_tipico": "O padrão deve estar estabelecido no início da vida adulta e ocorrer em múltiplos contextos.",
+    "trajetoria": "Tende a ser persistente; rigidez e perfeccionismo podem causar maior prejuízo quando flexibilidade e delegação são exigidas.",
+    "prognostico": "Pervasividade, conflitos interpessoais e comorbidades influenciam o prejuízo; organização e dedicação isoladas não definem o transtorno.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

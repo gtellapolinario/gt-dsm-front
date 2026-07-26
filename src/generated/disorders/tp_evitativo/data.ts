@@ -1,23 +1,46 @@
 import { TpEvitativoSchema } from "./schema";
 
 export const data = TpEvitativoSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "tp_evitativo",
     "nome_completo": "Transtorno da Personalidade Evitativa",
-    "sigla": "TPEV",
     "codigo": {
-      "dsm5": "301.82",
-      "cid10": "F60.6",
-      "cid11": "6D10"
+        "dsm5": "",
+        "cid10": "F60.6",
+        "cid11": "6D10"
     },
     "capitulo": "Transtornos da Personalidade",
-    "capitulo_id": "18",
-    "grupo": "Cluster C",
+    "capitulo_id": "transtornos_da_personalidade",
+    "sigla": "TPEV",
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F60.6",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6D10",
+            "equivalencia": "sem_correspondencia_categorial_direta",
+            "regra": "A CID-11 não conserva os tipos categóricos do DSM-5-TR. Codificar a gravidade em 6D10.0–6D10.2 ou 6D10.Z e acrescentar qualificadores de traço quando sustentados.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "transtornos_da_personalidade",
+            "label": "Transtornos da Personalidade"
+        },
+        "subgrupo": {
+            "id": "cluster_c",
+            "label": "Cluster C",
+            "natureza": "agrupamento_dsm_de_personalidade"
+        }
+    },
     "faixa_etaria_alvo": "adulto",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "polythetic_monocluster",
   "clusters_sintomas": [
     {
@@ -218,16 +241,18 @@ export const data = TpEvitativoSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "2,4%",
-    "proporcao_sexo": "Igualmente frequente em ambos os sexos",
-    "variacoes_culturais": "Retraimento pode ser consequência de aculturação após imigração.",
-    "notas": null,
-      },
+    "tipo_estimativa": "prevalencia_pontual",
+    "estimativa": "2,4%",
+    "distribuicao_por_sexo": "Igualmente frequente em ambos os sexos",
+    "variacoes_contextuais": "Retraimento pode ser consequência de aculturação após imigração.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Infância (timidez, medo de estranhos)",
-    "trajetoria": "Tendência a piorar na adolescência; pode remitir com o envelhecimento.",
-    "prognostico": "Uso cauteloso em crianças e adolescentes, pois timidez pode ser adequada ao desenvolvimento.",
-      },
+    "inicio_tipico": "Timidez e evitação podem anteceder o quadro, mas o diagnóstico requer padrão persistente a partir do início da vida adulta.",
+    "trajetoria": "Pode permanecer estável ou variar com demandas interpessoais, experiências de rejeição e comorbidades ansiosas.",
+    "prognostico": "Generalização da evitação, isolamento e comorbidades associam-se a maior prejuízo; timidez normativa não define o transtorno.",
+    "nota_aplicador": "Traços antecedentes podem aparecer antes da vida adulta; o diagnóstico requer padrão persistente, pervasivo e não explicado por desenvolvimento, cultura ou outra condição."
+},
   
   "_pipeline": {
     "rendering": {

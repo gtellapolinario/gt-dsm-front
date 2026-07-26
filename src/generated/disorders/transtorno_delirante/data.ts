@@ -1,23 +1,42 @@
 import { TranstornoDeliranteSchema } from "./schema";
 
 export const data = TranstornoDeliranteSchema.parse({
-  "$schema_version": "2.2.0",
+  "$schema_version": "2.3.0",
   "meta": {
     "id": "transtorno_delirante",
     "nome_completo": "Transtorno Delirante",
-    "sigla": null,
     "codigo": {
-      "dsm5": "297.1",
-      "cid10": "F22",
-      "cid11": "6A24"
+        "dsm5": "",
+        "cid10": "F22",
+        "cid11": "6A24"
     },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
-    "capitulo_id": "02",
-    "grupo": null,
+    "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+    "sigla": null,
+    "codificacao": {
+        "cid10_cm": {
+            "referencia_base": "F22",
+            "equivalencia": "direta",
+            "regra": "Correspondência diagnóstica direta no nível informado; confirmar especificadores e requisitos da versão CID-10-CM adotada.",
+            "sistema": "CID-10-CM"
+        },
+        "cid11_mms": {
+            "codigo_base": "6A24",
+            "equivalencia": "contextual",
+            "regra": "A CID-11 codifica curso e remissão, não o conteúdo predominante do delírio.",
+            "versao": "CID-11 MMS 2026-01"
+        }
+    },
+    "agrupamento": {
+        "capitulo": {
+            "id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
+            "label": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos"
+        },
+        "subgrupo": null
+    },
     "faixa_etaria_alvo": "transversal",
-    "versao_complementar_existe": false,
-    "sinonimos_historicos": []
-  },
+    "terminologia_relacionada": []
+},
   "estrutura_geral": "categorico_por_subtipo",
   "clusters_sintomas": [
     {
@@ -356,16 +375,18 @@ export const data = TranstornoDeliranteSchema.parse({
     }
 ],
   "prevalencia": {
-    "populacao_geral": "Aproximadamente 0,2% ao longo da vida.",
-    "proporcao_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",
-    "variacoes_culturais": "Antecedentes culturais e religiosos individuais devem ser levados em conta na avaliação; o conteúdo dos delírios varia conforme os contextos culturais.",
-    "notas": "O subtipo mais frequente é o persecutório. A condição pode ser mais prevalente em indivíduos mais velhos.",
-      },
+    "tipo_estimativa": "prevalencia_vida",
+    "estimativa": "Aproximadamente 0,2% ao longo da vida.",
+    "distribuicao_por_sexo": "Sem grandes diferenças de gênero na frequência geral, embora o subtipo ciumento seja provavelmente mais comum em indivíduos do sexo masculino.",
+    "variacoes_contextuais": "Antecedentes culturais e religiosos individuais devem ser levados em conta na avaliação; o conteúdo dos delírios varia conforme os contextos culturais.",
+    "nota_aplicador": "Estimativa descritiva dependente de período, população e método; não usar como taxa brasileira atual sem fonte epidemiológica local."
+},
   "curso_desenvolvimento": {
-    "idade_inicio_tipica": "Idade adulta ou mais tardia",
+    "inicio_tipico": "Idade adulta ou mais tardia",
     "trajetoria": "O diagnóstico costuma ser estável, embora uma parte dos indivíduos possa evoluir no sentido de desenvolver esquizofrenia. A função global é geralmente melhor que a observada na esquizofrenia.",
     "prognostico": "Costuma apresentar prejuízo funcional mais circunscrito do que outros transtornos psicóticos, permitindo funcionamento social e profissional aceitável fora das discussões delirantes.",
-      },
+    "nota_aplicador": "Início e trajetória são descritores típicos, não critérios isolados; um curso diferente exige reavaliação, mas não exclusão automática."
+},
   
   "_pipeline": {
     "rendering": {
