@@ -1,0 +1,26 @@
+﻿# Assets pesados (no Git, mas inútil pro agente)
+*.png
+*.jpg
+*.mp4
+*.pdf
+*.svg
+
+# Lock files (muitos tokens, zero utilidade pro agente)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Dados e logs
+*.log
+*.csv
+*.sql
+
+# Build (se não tiver no .gitignore)
+dist/
+build/
+.next/
+.nuxt/
+
+# Pastas pesadas
+data/
+backups/

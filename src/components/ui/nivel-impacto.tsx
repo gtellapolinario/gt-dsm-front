@@ -3,7 +3,7 @@ import { getIcone } from "@/lib/mapear-icones";
 interface DominioImpacto {
   id: string;
   label: string;
-  icone_fa: string;
+  icone: string;
 }
 
 interface NivelImpactoProps {
@@ -20,7 +20,7 @@ const niveis = [
 ];
 
 export function NivelImpacto({ dominio, value, onChange }: NivelImpactoProps) {
-  const Icon = getIcone(dominio.icone_fa);
+  const Icon = getIcone(dominio.icone);
 
   return (
     <div className="flex items-center gap-2">

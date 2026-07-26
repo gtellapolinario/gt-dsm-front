@@ -13,16 +13,6 @@ import {
   titleFromValue,
 } from "./disorderDataAccess";
 
-export interface ClinicalMarkdownConfig {
-  readonly id: string;
-  readonly nome: string;
-  readonly sigla?: string | null;
-  readonly codigo_dsm5?: string | null;
-  readonly codigo_cid10?: string | null;
-  readonly codigo_cid11?: string | null;
-  readonly route_path?: string;
-}
-
 function line(label: string, value: string | null | undefined) {
   return `- **${label}:** ${value && value.trim().length > 0 ? value : "Não informado"}`;
 }
@@ -54,8 +44,16 @@ function conditionalLines(value: unknown, selected: Record<string, boolean>) {
   return normalizeChoiceItems(value).map((item) => `- ${selected[item.id] ? "[x]" : "[ ]"} **${item.label}**${item.description ? ` — ${item.description}` : ""}`);
 }
 
-export function generateClinicalMarkdown(state: DisorderAssessmentState, data: ClinicalDisorder, config: ClinicalMarkdownConfig): string {
-  const codes = [config.codigo_dsm5 ? `DSM-5 ${config.codigo_dsm5}` : null, config.codigo_cid10 ? `CID-10 ${config.codigo_cid10}` : null, config.codigo_cid11 ? `CID-11 ${config.codigo_cid11}` : null]
+export function generateClinicalMarkdown(state: DisorderAssessmentState, data: ClinicalDisorder): string {
+  const dsm5Code = data.meta?.codigo?.dsm5;
+  const cid10Code = data.meta?.codigo?.cid10;
+  const cid11Code = data.meta?.codigo?.cid11;
+
+  const codes = [
+    dsm5Code ? `DSM-5 ${dsm5Code}` : null,
+    cid10Code ? `CID-10 ${cid10Code}` : null,
+    cid11Code ? `CID-11 ${cid11Code}` : null,
+  ]
     .filter(Boolean)
     .join(" · ");
   const clusters = data.clusters_sintomas ?? [];
@@ -67,7 +65,7 @@ export function generateClinicalMarkdown(state: DisorderAssessmentState, data: C
   const ddx = selectedLabels(data.diagnostico_diferencial, state.comorbidities);
 
   const output: string[] = [
-    `# Avaliação clínica — ${disorderName(data, config.nome)}`,
+    `# Avaliação clínica — ${disorderName(data)}`,
     codes ? `_${codes}_` : "",
     "",
     "## Identificação",

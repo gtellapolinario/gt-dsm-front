@@ -1,3 +1,5 @@
+//  O "passthrough" está depreciado e foi trocado por "loose"
+// na geração dos schemas. Não modificar
 import { z } from "zod";
 
 export const UnknownRecordSchema = z.record(z.string(), z.unknown());
@@ -9,7 +11,7 @@ export const CodigoSchema = z
     cid10: z.string().nullable().optional(),
     cid11: z.string().nullable().optional(),
   })
-  .passthrough();
+  .loose();
 
 export const MetaSchema = z
   .object({
@@ -23,7 +25,7 @@ export const MetaSchema = z
     grupo: NullableStringSchema,
     faixa_etaria_alvo: NullableStringSchema,
   })
-  .passthrough();
+  .loose();
 
 export const SintomaSchema = z
   .object({
@@ -34,7 +36,7 @@ export const SintomaSchema = z
     descricao: z.string().optional(),
     pergunta: z.string().optional(),
   })
-  .passthrough();
+  .loose();
 
 export const ClusterSintomasSchema = z
   .object({
@@ -45,7 +47,7 @@ export const ClusterSintomasSchema = z
     limiar: z.unknown().optional(),
     sintomas: z.array(SintomaSchema).default([]),
   })
-  .passthrough();
+  .loose();
 
 export const CriterioCondicionalSchema = z
   .object({
@@ -56,7 +58,7 @@ export const CriterioCondicionalSchema = z
     obrigatorio: z.boolean().optional(),
     descricao_completa: z.string().optional(),
   })
-  .passthrough();
+  .loose();
 
 export const SubtipoSchema = z
   .object({
@@ -65,7 +67,7 @@ export const SubtipoSchema = z
     nome: z.string().optional(),
     descricao: z.string().optional(),
   })
-  .passthrough();
+  .loose();
 
 export const EspecificadorSchema = z
   .object({
@@ -74,7 +76,7 @@ export const EspecificadorSchema = z
     nome: z.string().optional(),
     descricao: z.string().optional(),
   })
-  .passthrough();
+  .loose();
 
 export const NivelGravidadeSchema = z
   .object({
@@ -83,7 +85,7 @@ export const NivelGravidadeSchema = z
     descritor: z.string().optional(),
     descricao: z.string().optional(),
   })
-  .passthrough();
+  .loose();
 
 export const GravidadeSchema = z
   .object({
@@ -92,10 +94,13 @@ export const GravidadeSchema = z
     niveis: z.array(NivelGravidadeSchema).optional(),
     dominios: z.array(UnknownRecordSchema).optional(),
   })
-  .passthrough();
+  .loose();
 
 export const HierarquiaSchema = UnknownRecordSchema;
-export const DiagnosticoDiferencialSchema = z.union([z.array(UnknownRecordSchema), UnknownRecordSchema]);
+export const DiagnosticoDiferencialSchema = z.union([
+  z.array(UnknownRecordSchema),
+  UnknownRecordSchema,
+]);
 export const PrevalenciaSchema = UnknownRecordSchema;
 export const CursoDesenvolvimentoSchema = UnknownRecordSchema;
 export const TemplateProntuarioSchema = UnknownRecordSchema;
@@ -108,7 +113,9 @@ export const ClinicalDisorderSchema = z
     clusters_sintomas: z.array(ClusterSintomasSchema).optional(),
     criterios_condicionais: z.array(CriterioCondicionalSchema).optional(),
     subtipos: z.union([z.array(SubtipoSchema), UnknownRecordSchema]).optional(),
-    especificadores: z.union([z.array(EspecificadorSchema), UnknownRecordSchema]).optional(),
+    especificadores: z
+      .union([z.array(EspecificadorSchema), UnknownRecordSchema])
+      .optional(),
     gravidade: GravidadeSchema.optional(),
     hierarquia: HierarquiaSchema.optional(),
     dominios_impacto: z.array(UnknownRecordSchema).optional(),
@@ -123,6 +130,6 @@ export const ClinicalDisorderSchema = z
     master_metadata: UnknownRecordSchema.optional(),
     inventory_notes: UnknownRecordSchema.optional(),
   })
-  .passthrough();
+  .loose();
 
 export type ClinicalDisorder = z.infer<typeof ClinicalDisorderSchema>;

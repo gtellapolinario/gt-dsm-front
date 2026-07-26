@@ -115,6 +115,6 @@ export function normalizeChoiceItems(value: unknown): Array<{ id: string; label:
   });
 }
 
-export function disorderName(data: ClinicalDisorder, fallback: string) {
-  return data.meta.nome_completo ?? data.meta.nome ?? fallback;
+export function disorderName(data: ClinicalDisorder, fallback?: string) {
+  return data.meta.nome_completo ?? data.meta.nome ?? fallback ?? data.meta.id;
 }

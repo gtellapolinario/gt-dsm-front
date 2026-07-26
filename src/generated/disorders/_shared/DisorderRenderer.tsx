@@ -9,6 +9,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   Activity,
   BookOpen,
+  BookMarked,
   Brain,
   Briefcase,
   Cake,
@@ -19,6 +20,7 @@ import {
   Copy,
   FileSpreadsheet,
   FileText,
+  Gauge,
   GraduationCap,
   Info,
   Layers,
@@ -29,6 +31,7 @@ import {
   RotateCcw,
   SearchCheck,
   SlidersHorizontal,
+  Tags,
   TrendingUp,
   User,
   UserPen,
@@ -82,10 +85,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Markdown, MarkdownInline } from "./Markdown";
-/** Ícone lucide a partir do `icone_fa` (Font Awesome) presente no payload clínico. */
+/** Ícone lucide a partir do nome no campo `icone` do payload clínico. */
 function itemIcon(raw: unknown): LucideIcon | null {
-  return isRecord(raw) && typeof raw.icone_fa === "string"
-    ? getIcone(raw.icone_fa)
+  return isRecord(raw) && typeof raw.icone === "string"
+    ? getIcone(raw.icone)
     : null;
 }
 
@@ -94,33 +97,16 @@ function ItemIcon({ raw }: { readonly raw: unknown }) {
   return Icon ? <Icon className="mr-1 inline h-3 w-3" /> : null;
 }
 
-export interface DisorderRenderConfig {
-  readonly id: string;
-  readonly nome: string;
-  readonly sigla?: string | null;
-  readonly capitulo_id?: string | null;
-  readonly capitulo_nome?: string | null;
-  readonly codigo_dsm5?: string | null;
-  readonly codigo_cid10?: string | null;
-  readonly codigo_cid11?: string | null;
-  readonly faixa_etaria_alvo?: string | null;
-  readonly estrutura_geral?: string | null;
-  readonly render_component: "GenericDisorderRenderer";
-  readonly route_path: string;
-  readonly tags: readonly string[];
-}
-
+// Seções suplementares: apenas o que o Guia Clínico NÃO cobre.
+// prevalencia, curso_desenvolvimento, gravidade, instrumentos_complementares
+// e subtipos são apresentados pelo ClinicalGuideSection — reexibi-los aqui
+// duplicava o conteúdo (sanitização 2026-07).
 const clinicalSections = [
   "criterios_condicionais",
-  "subtipos",
   "especificadores",
-  "gravidade",
   "dominios_impacto",
   "diagnostico_diferencial",
   "comorbidades_frequentes",
-  "instrumentos_complementares",
-  "prevalencia",
-  "curso_desenvolvimento",
 ] as const;
 
 const hiddenKeys = new Set([
@@ -128,7 +114,7 @@ const hiddenKeys = new Set([
   "metadados",
   "master_metadata",
   "inventory_notes",
-  "icone_fa",
+  "icone",
 ]);
 
 type Assessment = ReturnType<typeof useDisorderAssessment>;
@@ -386,6 +372,32 @@ function IdentificationSection({
   );
 }
 
+/**
+ * Critérios condicionais do payload + critério A sintetizado a partir do
+ * cluster de sintomas (id "A") quando o payload não o traz como critério
+ * condicional. `derivado_do_cluster` marca a origem para deduplicar depois;
+ * se o payload já tem letra A, prevalece o payload e nada é sintetizado.
+ */
+function conditionalCriteriaItems(data: ClinicalDisorder) {
+  const rawItems = normalizeChoiceItems(data.criterios_condicionais);
+  const clusterA = data.clusters_sintomas?.find(
+    (cluster) => cluster.id === "A",
+  );
+  const hasLetterA = rawItems.some(
+    (item) => isRecord(item.raw) && item.raw.letra === "A",
+  );
+  if (hasLetterA || !clusterA) return rawItems;
+  return [
+    {
+      id: "criterio-a-cluster",
+      label: clusterA.nome ?? clusterA.id,
+      description: clusterA.descricao ?? null,
+      raw: { letra: "A", derivado_do_cluster: clusterA.id },
+    },
+    ...rawItems,
+  ];
+}
+
 function ConditionalCriteriaSection({
   data,
   assessment,
@@ -393,66 +405,73 @@ function ConditionalCriteriaSection({
   readonly data: ClinicalDisorder;
   readonly assessment: Assessment;
 }) {
-  const items = normalizeChoiceItems(data.criterios_condicionais);
-  if (items.length === 0) return null;
+  const items = conditionalCriteriaItems(data);
 
-  // A letra do criterio ("B", "C"...) e o identificador clinico exibido;
+  // A letra do criterio ("A", "B"...) e o identificador clinico exibido;
   // o id snake_case do JSON nao aparece na UI.
   const letterOf = (raw: unknown): string | null =>
     isRecord(raw) && typeof raw.letra === "string" ? raw.letra : null;
 
+  if (items.length === 0) return null;
+
   return (
     <div className="p-5 space-y-3">
       <p className="text-sm text-text-3">
-        Critérios obrigatórios para o diagnóstico. Clique para confirmar cada
-        item.
+        Critérios obrigatórios para o diagnóstico. Marque cada item confirmado.
       </p>
-      <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
         {items.map((item) => {
           const letter = letterOf(item.raw);
+          const checked =
+            assessment.state.conditionalCriteria[item.id] ?? false;
           return (
-            <ToggleChip
+            <div
               key={item.id}
-              active={assessment.state.conditionalCriteria[item.id] ?? false}
-              onClick={() =>
-                assessment.setToggle(
-                  "conditionalCriteria",
-                  item.id,
-                  !(assessment.state.conditionalCriteria[item.id] ?? false),
-                )
-              }
+              className={cn(
+                "flex items-start gap-3 rounded-lg border p-3 transition",
+                checked
+                  ? "border-primary bg-accent/60"
+                  : "border-border hover:bg-surface-2",
+              )}
             >
-              <ItemIcon raw={item.raw} />
-              {letter ? (
-                <span className="font-mono text-sm mr-1 opacity-70">
-                  {letter}
+              <Checkbox
+                id={`cc-${item.id}`}
+                checked={checked}
+                onCheckedChange={(v) =>
+                  assessment.setToggle(
+                    "conditionalCriteria",
+                    item.id,
+                    v === true,
+                  )
+                }
+                className="mt-0.5"
+                aria-label={`Confirmar critério ${letter ?? item.label}`}
+              />
+              <label
+                htmlFor={`cc-${item.id}`}
+                className="flex-1 cursor-pointer select-none space-y-1"
+              >
+                <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                  <ItemIcon raw={item.raw} />
+                  {letter ? (
+                    <span className="font-mono text-sm font-bold text-primary">
+                      {letter}
+                    </span>
+                  ) : null}
+                  <span className="text-sm font-semibold text-text">
+                    {item.label}
+                  </span>
                 </span>
-              ) : null}
-              {item.label}
-            </ToggleChip>
+                {item.description ? (
+                  <p className="text-sm text-text-2 leading-relaxed text-justify">
+                    {item.description}
+                  </p>
+                ) : null}
+              </label>
+            </div>
           );
         })}
       </div>
-      {items.some((item) => item.description) ? (
-        <ul className="space-y-1 pt-1">
-          {items
-            .filter((item) => item.description)
-            .map((item) => {
-              const letter = letterOf(item.raw);
-              return (
-                <li
-                  key={item.id}
-                  className="text-sm text-text-3 leading-relaxed"
-                >
-                  <span className="font-semibold text-text-2">
-                    {letter ? `${letter} — ${item.label}` : item.label}:
-                  </span>{" "}
-                  {item.description}
-                </li>
-              );
-            })}
-        </ul>
-      ) : null}
     </div>
   );
 }
@@ -908,150 +927,379 @@ async function copyText(text: string) {
 
 /* ─── Guia Clínico Informativo (Resumo do Aplicador) ───────────────────── */
 
+function GuideCardHeader({
+  icon: Icon,
+  iconClass,
+  children,
+}: {
+  readonly icon: LucideIcon;
+  readonly iconClass: string;
+  readonly children: ReactNode;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex items-center gap-2 text-xs font-bold uppercase tracking-wider",
+        iconClass,
+      )}
+    >
+      <Icon className="h-4 w-4" />
+      <span>{children}</span>
+    </div>
+  );
+}
+
+/** Rótulos de subtipos a partir da chave canônica `subtipos.subtipos`. */
+function subtiposLabelsOf(data: ClinicalDisorder): string[] {
+  const rawData = data as any;
+  const arr = rawData.subtipos?.subtipos;
+  if (!Array.isArray(arr)) return [];
+  return arr.map((s: any) =>
+    typeof s === "string" ? s : String(s.label ?? s.nome ?? s.id),
+  );
+}
+
+/** Escala ordinal de gravidade: a cor acompanha a posição no eixo. */
+function SeverityScale({
+  levels,
+}: {
+  readonly levels: Array<{ label: string; descritor: string | null }>;
+}) {
+  const tints = [
+    "bg-emerald-800 dark:bg-emerald-800",
+    "bg-amber-400 dark:bg-amber-500",
+    "bg-orange-400 dark:bg-orange-500",
+    "bg-red-400 dark:bg-red-500",
+  ];
+  return (
+    <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:gap-4">
+      {levels.map((lvl, i) => (
+        <div key={i} className="min-w-0 sm:flex-1">
+          <div
+            className={cn(
+              "h-1.5 rounded-full",
+              tints[Math.min(i, tints.length - 1)],
+            )}
+          />
+          <p className="mt-1.5 text-sm font-semibold text-text">{lvl.label}</p>
+          {lvl.descritor ? (
+            <p className="text-xs leading-relaxed text-text-3">
+              {lvl.descritor}
+            </p>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Bloco de gravidade do guia, fiel ao contrato
+ * `gravidade_dsm5tr_58_transtornos.md`: `classificacao_dsm` é a fonte da
+ * verdade e decide a apresentação. `sem_niveis_formais` renderiza nota
+ * informativa — nunca opção selecionável.
+ */
+function SeverityBlock({ data }: { readonly data: ClinicalDisorder }) {
+  const g = (data as any).gravidade;
+  if (!g?.classificacao_dsm) return null;
+
+  const dominioLabel = (id: string) =>
+    g.dominios?.find((d: any) => d.id === id)?.label ?? id;
+  const nivel = (n: any): { label: string; descritor: string | null } => ({
+    label: String(n.label ?? n.id),
+    descritor: n.descritor
+      ? String(n.descritor)
+      : n.descritores_por_dominio
+        ? Object.entries(n.descritores_por_dominio)
+            .map(([k, v]) => `${dominioLabel(k)}: ${String(v)}`)
+            .join(" ")
+        : null,
+  });
+
+  const semNiveis = g.classificacao_dsm === "sem_niveis_formais";
+  let body: ReactNode;
+  if (semNiveis) {
+    body = (
+      <p className="mt-2 text-sm leading-relaxed text-text-2">
+        {String(g.lembrete_aplicador)}
+      </p>
+    );
+  } else if (Array.isArray(g.regras_por_episodio)) {
+    body = g.regras_por_episodio.map((r: any) => (
+      <div key={String(r.episodio)}>
+        <p className="mt-3 text-xs font-bold uppercase tracking-wider text-text-2">
+          {String(r.label)}
+        </p>
+        <SeverityScale levels={(r.niveis ?? []).map(nivel)} />
+      </div>
+    ));
+  } else {
+    body = (
+      <>
+        {Array.isArray(g.dominios) && g.dominios.length > 0 ? (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {g.dominios.map((d: any) => (
+              <span
+                key={String(d.id)}
+                className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs font-medium text-text-2"
+              >
+                {String(d.label ?? d.id)}
+              </span>
+            ))}
+          </div>
+        ) : null}
+        {g.condicao_aplicabilidade ? (
+          <p className="mt-2 text-xs font-medium text-amber-700 dark:text-amber-400">
+            {String(g.condicao_aplicabilidade)}
+          </p>
+        ) : null}
+        {Array.isArray(g.niveis) && g.niveis.length > 0 ? (
+          <SeverityScale levels={g.niveis.map(nivel)} />
+        ) : null}
+        {Array.isArray(g.niveis_referencia) && g.niveis_referencia.length > 0 ? (
+          <SeverityScale levels={g.niveis_referencia.map(nivel)} />
+        ) : null}
+        {Array.isArray(g.escala?.niveis) ? (
+          <SeverityScale
+            levels={g.escala.niveis.map((n: any) => ({
+              label: `${String(n.valor)} — ${String(n.label)}`,
+              descritor: null,
+            }))}
+          />
+        ) : null}
+      </>
+    );
+  }
+
+  return (
+    <div className="rounded-xl border border-border bg-surface-2/40 p-4">
+      <GuideCardHeader icon={Gauge} iconClass="text-red-600 dark:text-red-400">
+        Parâmetros de Gravidade
+      </GuideCardHeader>
+      {body}
+      {!semNiveis && g.observacao ? (
+        <p className="mt-3 text-xs leading-relaxed text-text-3">
+          {String(g.observacao)}
+        </p>
+      ) : null}
+      {!semNiveis && g.lembrete_aplicador ? (
+        <p className="mt-2 border-t border-border pt-2 text-[11px] italic text-text-3">
+          {String(g.lembrete_aplicador)}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+/** O guia só existe quando há algo para mostrar: campo nulo não renderiza. */
+function clinicalGuideHasData(data: ClinicalDisorder): boolean {
+  const rawData = data as any;
+  return Boolean(
+    rawData.meta?.codigo?.dsm5 ||
+    rawData.meta?.codigo?.cid10 ||
+    rawData.meta?.codigo?.cid11 ||
+    rawData.prevalencia?.populacao_geral ||
+    rawData.prevalencia?.proporcao_sexo ||
+    rawData.prevalencia?.variacoes_culturais ||
+    rawData.prevalencia?.notas ||
+    rawData.curso_desenvolvimento?.idade_inicio_tipica ||
+    rawData.curso_desenvolvimento?.trajetoria ||
+    rawData.curso_desenvolvimento?.prognostico ||
+    rawData.gravidade?.classificacao_dsm != null ||
+    subtiposLabelsOf(data).length > 0 ||
+    rawData.instrumentos_complementares?.length > 0,
+  );
+}
+
 function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
   const rawData = data as any;
   const prevalencia = rawData.prevalencia;
   const curso = rawData.curso_desenvolvimento;
-  const gravidade = rawData.rendering?.severity;
-  const instrumentos: Array<{ nome?: string; sigla?: string }> =
+  const instrumentos: Array<{ nome?: string; sigla?: string; uso?: string }> =
     rawData.instrumentos_complementares ?? [];
-  const subtipos: string[] = rawData.rendering?.subtypes_presentations ?? [];
+  const subtipos = subtiposLabelsOf(data);
+
+  const codigos = [
+    { sistema: "DSM-5", valor: rawData.meta?.codigo?.dsm5 },
+    { sistema: "CID-10", valor: rawData.meta?.codigo?.cid10 },
+    { sistema: "CID-11", valor: rawData.meta?.codigo?.cid11 },
+  ].filter((codigo) => codigo.valor);
+  const temCodigos = codigos.length > 0;
+
+  const temPrevalencia = Boolean(
+    prevalencia?.populacao_geral ||
+    prevalencia?.proporcao_sexo ||
+    prevalencia?.variacoes_culturais ||
+    prevalencia?.notas,
+  );
+  const cursoEtapas = [
+    { rotulo: "Início típico", valor: curso?.idade_inicio_tipica },
+    { rotulo: "Trajetória", valor: curso?.trajetoria },
+    { rotulo: "Prognóstico", valor: curso?.prognostico },
+  ].filter((etapa) => etapa.valor);
+  const temGravidade = rawData.gravidade?.classificacao_dsm != null;
+
+  // Campos nulos não renderizam: sem dados, sem seção.
+  if (
+    !temCodigos &&
+    !temPrevalencia &&
+    cursoEtapas.length === 0 &&
+    !temGravidade &&
+    subtipos.length === 0 &&
+    instrumentos.length === 0
+  ) {
+    return null;
+  }
+
+  const sex = [{ label: "sex", value: "(♀:♂)" }];
 
   return (
-    <div className="p-5 space-y-5">
-      {/* Grade de 3 Cards de Resumo Rápidos */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* 📊 Prevalência & Epidemiologia */}
-        <div className="bg-surface-2/60 rounded-xl p-4 border border-border space-y-2">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-            <Activity className="h-4 w-4" />
-            <span>Prevalência & Demografia</span>
-          </div>
-          <div className="text-xs space-y-1 text-text-2">
-            {prevalencia?.populacao_geral ? (
-              <p>
-                <strong className="text-text font-semibold">Geral:</strong>{" "}
-                {String(prevalencia.populacao_geral)}
-              </p>
-            ) : null}
-            {prevalencia?.proporcao_sexo ? (
-              <p>
-                <strong className="text-text font-semibold">
-                  Razão (♀:♂):
-                </strong>{" "}
-                {String(prevalencia.proporcao_sexo)}
-              </p>
-            ) : null}
-            {prevalencia?.notas ? (
-              <p className="text-[11px] text-text-3 italic mt-1">
-                {String(prevalencia.notas)}
-              </p>
-            ) : null}
-            {!prevalencia?.populacao_geral &&
-            !prevalencia?.proporcao_sexo &&
-            !prevalencia?.notas ? (
-              <p className="text-text-3 italic">
-                Dados epidemiológicos padronizados do DSM-5-TR.
-              </p>
-            ) : null}
-          </div>
-        </div>
-
-        {/* ⏳ Curso & Desenvolvimento */}
-        <div className="bg-surface-2/60 rounded-xl p-4 border border-border space-y-2">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-            <Clock className="h-4 w-4" />
-            <span>Curso & Desenvolvimento</span>
-          </div>
-          <div className="text-xs space-y-1 text-text-2">
-            {curso?.idade_inicio_tipica ? (
-              <p>
-                <strong className="text-text font-semibold">
-                  Início Típico:
-                </strong>{" "}
-                {String(curso.idade_inicio_tipica)}
-              </p>
-            ) : null}
-            {curso?.trajetoria ? (
-              <p>
-                <strong className="text-text font-semibold">Trajetória:</strong>{" "}
-                {String(curso.trajetoria)}
-              </p>
-            ) : null}
-            {curso?.prognostico ? (
-              <p className="text-[11px] text-text-3 italic mt-1">
-                {String(curso.prognostico)}
-              </p>
-            ) : null}
-            {!curso?.idade_inicio_tipica && !curso?.trajetoria ? (
-              <p className="text-text-3 italic">
-                Evolução longitudinal e curso clínico típicos do capítulo.
-              </p>
-            ) : null}
-          </div>
-        </div>
-
-        {/* 📋 Instrumentos & Escalas */}
-        <div className="bg-surface-2/60 rounded-xl p-4 border border-border space-y-2">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-            <FileSpreadsheet className="h-4 w-4" />
-            <span>Escalas Complementares</span>
-          </div>
-          {instrumentos.length > 0 ? (
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {instrumentos.map((inst, idx) => (
-                <span
-                  key={idx}
-                  title={inst.nome}
-                  className="text-xs font-medium px-2 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
-                >
-                  {inst.sigla || inst.nome}
-                </span>
-              ))}
-            </div>
-          ) : (
-            <p className="text-xs text-text-3">
-              Avaliação primariamente clínica baseada no checklist DSM-5-TR.
-            </p>
-          )}
-        </div>
-      </div>
-
-      {/* Grade Inferior: Gravidade e Subtipos */}
-      {gravidade?.levels?.length || subtipos.length ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {gravidade?.levels &&
-          Array.isArray(gravidade.levels) &&
-          gravidade.levels.length > 0 ? (
-            <div className="bg-surface-2/40 rounded-xl p-4 border border-border space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-text-2">
-                Parâmetros de Gravidade
-              </h4>
-              <ul className="space-y-1.5 text-xs">
-                {gravidade.levels.map((lvl: any, i: number) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="font-semibold text-text min-w-[70px]">
-                      {String(lvl.label || lvl.id)}:
+    <div className="p-5 space-y-4">
+      {temPrevalencia || cursoEtapas.length > 0 ? (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
+          {temPrevalencia ? (
+            <div className="rounded-xl border border-border bg-surface-2/60 p-4">
+              <GuideCardHeader
+                icon={Activity}
+                iconClass="text-blue-600 dark:text-blue-400"
+              >
+                Prevalência & Demografia
+              </GuideCardHeader>
+              {prevalencia.populacao_geral ? (
+                <p className="mt-2 font-serif text-xl font-bold leading-snug text-text">
+                  {String(prevalencia.populacao_geral)}
+                </p>
+              ) : null}
+              {prevalencia.proporcao_sexo ? (
+                <p className="mt-1.5 text-lg text-stone-700 ">
+                  <span className="font-semibold text-text">
+                    Razão{" "}
+                    <span className="text-2xl text-stone-800">
+                      {sex[0].value}
                     </span>
-                    <span className="text-text-2">{String(lvl.descritor)}</span>
+                  </span>{" "}
+                  {String(prevalencia.proporcao_sexo)}
+                </p>
+              ) : null}
+              {prevalencia.variacoes_culturais ? (
+                <p className="mt-1.5 text-xs leading-relaxed text-text-2">
+                  <span className="font-semibold text-text">
+                    Variações culturais:
+                  </span>{" "}
+                  {String(prevalencia.variacoes_culturais)}
+                </p>
+              ) : null}
+              {prevalencia.notas ? (
+                <p className="mt-2 border-t border-border pt-2 text-[11px] italic text-text-3">
+                  {String(prevalencia.notas)}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+
+          {cursoEtapas.length > 0 ? (
+            <div className="rounded-xl border border-border bg-surface-2/60 p-4">
+              <GuideCardHeader
+                icon={Clock}
+                iconClass="text-amber-600 dark:text-amber-400"
+              >
+                Curso & Desenvolvimento
+              </GuideCardHeader>
+              <ol className="mt-3 space-y-3 border-l-2 border-amber-200 pl-4 dark:border-amber-800">
+                {cursoEtapas.map((etapa) => (
+                  <li key={etapa.rotulo} className="relative">
+                    <span className="absolute top-1 -left-[23px] h-2.5 w-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 dark:ring-amber-950" />
+                    <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                      {etapa.rotulo}
+                    </p>
+                    <p className="text-sm leading-relaxed text-text-2">
+                      {String(etapa.valor)}
+                    </p>
                   </li>
                 ))}
-              </ul>
+              </ol>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      <SeverityBlock data={data} />
+
+      {subtipos.length > 0 || instrumentos.length > 0 ? (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
+          {subtipos.length > 0 ? (
+            <div className="rounded-xl border border-border bg-surface-2/40 p-4">
+              <GuideCardHeader
+                icon={Tags}
+                iconClass="text-violet-600 dark:text-violet-400"
+              >
+                Subtipos / Especificadores Clínicos
+              </GuideCardHeader>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {subtipos.map((sub, i) => (
+                  <span
+                    key={i}
+                    className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs font-medium text-text-2"
+                  >
+                    {String(sub)}
+                  </span>
+                ))}
+              </div>
             </div>
           ) : null}
 
-          {subtipos.length > 0 ? (
-            <div className="bg-surface-2/40 rounded-xl p-4 border border-border space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-text-2">
-                Subtipos / Especificadores Clínicos
-              </h4>
-              <ul className="list-disc pl-4 space-y-1 text-xs text-text-2">
-                {subtipos.map((sub: string, i: number) => (
-                  <li key={i}>{String(sub)}</li>
+          {instrumentos.length > 0 ? (
+            <div className="rounded-xl border border-border bg-surface-2/40 p-4">
+              <GuideCardHeader
+                icon={FileSpreadsheet}
+                iconClass="text-emerald-600 dark:text-emerald-400"
+              >
+                Escalas Complementares
+              </GuideCardHeader>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {instrumentos.map((inst, idx) => (
+                  <span
+                    key={idx}
+                    title={[inst.nome, inst.uso].filter(Boolean).join(" — ")}
+                    className="rounded-md border border-emerald-200 bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
+                  >
+                    {inst.sigla || inst.nome}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ) : null}
+        </div>
+      ) : null}
+
+      {temCodigos ? (
+        <div className="rounded-xl border border-border bg-surface-2/60 p-4">
+          <GuideCardHeader
+            icon={BookMarked}
+            iconClass="text-slate-600 dark:text-slate-400"
+          >
+            Classificação Nosológica
+          </GuideCardHeader>
+          <dl
+            className="mt-3 grid gap-3"
+            style={{
+              gridTemplateColumns: `repeat(${codigos.length}, minmax(0, 1fr))`,
+            }}
+          >
+            {codigos.map((codigo) => (
+              <div
+                key={codigo.sistema}
+                className="rounded-lg border border-border/60 bg-surface px-3 py-2 text-center"
+              >
+                <dt className="text-xs font-bold uppercase tracking-wider text-text-3">
+                  {codigo.sistema}
+                </dt>
+                <dd className="mt-0.5 font-mono text-sm font-semibold text-text">
+                  {String(codigo.valor)}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       ) : null}
     </div>
@@ -1062,29 +1310,29 @@ function ClinicalGuideSection({ data }: { readonly data: ClinicalDisorder }) {
 
 export function DisorderRenderer({
   data,
-  config,
 }: {
   readonly data: ClinicalDisorder;
-  readonly config: DisorderRenderConfig;
 }) {
-  const assessment = useDisorderAssessment(data, config);
+  const assessment = useDisorderAssessment(data);
   const [copyFeedback, setCopyFeedback] = useState("Copiar Markdown");
 
-  const metaName = data.meta.nome_completo ?? data.meta.nome ?? config.nome;
+  const metaName = data.meta.nome_completo ?? data.meta.nome;
+  const sigla = data.meta.sigla;
+  const targetAge = data.meta.faixa_etaria_alvo;
   const subtitle = [
-    config.capitulo_nome ?? "DSM-5",
-    config.faixa_etaria_alvo ? `faixa alvo: ${config.faixa_etaria_alvo}` : null,
+    data.meta.capitulo ?? "DSM-5",
+    targetAge ? `faixa alvo: ${targetAge}` : null,
   ]
     .filter(Boolean)
     .join(" · ");
   const codes = [
-    ["DSM-5", config.codigo_dsm5],
-    ["CID-10", config.codigo_cid10],
-    ["CID-11", config.codigo_cid11],
+    ["DSM-5", data.meta.codigo?.dsm5],
+    ["CID-10", data.meta.codigo?.cid10],
+    ["CID-11", data.meta.codigo?.cid11],
   ] as const;
 
   const clusters = data.clusters_sintomas ?? [];
-  const criteriaItems = normalizeChoiceItems(data.criterios_condicionais);
+  const criteriaItems = conditionalCriteriaItems(data);
   const comorbidityItems = normalizeChoiceItems(data.comorbidades_frequentes);
   const ddxItems = normalizeChoiceItems(data.diagnostico_diferencial);
   const specifierItems = normalizeChoiceItems(data.especificadores);
@@ -1114,7 +1362,7 @@ export function DisorderRenderer({
 
   const [openSections, setOpenSections] = useState<string[]>(defaultOpen);
 
-  const allSectionIds: string[] = ["identificacao", "guia-clinico"];
+  const allSectionIds: string[] = ["identificacao"];
   if (criteriaItems.length > 0) allSectionIds.push("criterios");
   clusters.forEach((cluster) => allSectionIds.push(`cluster-${cluster.id}`));
   allSectionIds.push("impacto");
@@ -1154,9 +1402,9 @@ export function DisorderRenderer({
             <div className="min-w-0">
               <h1 className="text-lg font-serif font-bold text-text leading-tight truncate">
                 {metaName}
-                {config.sigla ? (
+                {sigla ? (
                   <span className="ml-2 text-md font-sans font-semibold text-text-3">
-                    {config.sigla}
+                    {sigla}
                   </span>
                 ) : null}
               </h1>
@@ -1215,14 +1463,16 @@ export function DisorderRenderer({
             <IdentificationSection assessment={assessment} />
           </Section>
 
-          <Section
-            id="guia-clinico"
-            icon={BookOpen}
-            iconClass="text-emerald-600 dark:text-emerald-400"
-            title="Guia Clínico & Informativo (Resumo do Aplicador)"
-          >
-            <ClinicalGuideSection data={data} />
-          </Section>
+          {clinicalGuideHasData(data) ? (
+            <Section
+              id="guia-clinico"
+              icon={BookOpen}
+              iconClass="text-emerald-600 dark:text-emerald-400"
+              title="Guia Clínico & Informativo (Resumo do Aplicador)"
+            >
+              <ClinicalGuideSection data={data} />
+            </Section>
+          ) : null}
 
           <Section id="painel" icon={ListChecks} title="Painel de Critérios">
             <CriteriaPanel
@@ -1393,16 +1643,31 @@ export function DisorderRenderer({
             icon={FileText}
             title="Pré-visualização Markdown"
             badge={
+              // asChild + span: o trigger do acordeão já é um <button>;
+              // um <button> aqui dentro gera HTML inválido (erro de hydration).
               <Button
+                asChild
                 variant="secondary"
                 size="xs"
                 className="no-print"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleCopy();
-                }}
               >
-                <Copy data-icon="inline-start" /> Copiar
+                <span
+                  role="button"
+                  tabIndex={0}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCopy();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      handleCopy();
+                    }
+                  }}
+                >
+                  <Copy data-icon="inline-start" /> Copiar
+                </span>
               </Button>
             }
           >

@@ -45,6 +45,13 @@ html {
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+  /* Aliases usados no app inteiro (text-text*, bg-surface*, bg-bg). */
+  --color-bg: var(--background);
+  --color-surface: var(--card);
+  --color-surface-2: var(--muted);
+  --color-text: var(--foreground);
+  --color-text-2: color-mix(in oklab, var(--foreground) 72%, var(--muted-foreground));
+  --color-text-3: var(--muted-foreground);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);

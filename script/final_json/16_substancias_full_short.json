@@ -1,0 +1,2248 @@
+{
+  "$schema_version": "gtmedics.dsm.final_json.v2",
+  "chapter_id": "16",
+  "chapter_name": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
+  "capitulo_id": "16",
+  "capitulo_nome": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
+  "source_markdown": "16_substancias_full_short.md",
+  "normalization_round": "4_super_enriched_release",
+  "patch_count": 3,
+  "source_files": {
+    "rich": "dsm/output/json/16_transtornos_relacionados_substancias_transtornos_aditivos.json",
+    "poor": "dsm/output/final_json_poor/16_substancias_full_short.json",
+    "super_dir": "dsm/output/json_super_adicionado"
+  },
+  "items": [
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_por_uso_de_alcool",
+        "nome_completo": "Transtorno por Uso de Álcool",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "303.90",
+          "cid10": "F10.20",
+          "cid11": "6C40"
+        },
+        "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
+        "capitulo_id": "16",
+        "grupo": "Álcool",
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Dependência de álcool",
+          "Abuso de álcool"
+        ]
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Critérios de Uso Problemático de álcool",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 2,
+            "pediatria": 2
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Quantidades/periodo maiores que pretendido",
+              "desc": "álcool consumido em maiores quantidades ou por período mais longo do que pretendido.",
+              "pergunta": "Você já usou álcool em quantidades maiores ou por mais tempo do que pretendia?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+              "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de álcool.",
+              "pergunta": "Você já tentou reduzir ou parar de usar álcool sem sucesso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+              "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de álcool.",
+              "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de álcool?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Fissura ou forte desejo de usar",
+              "desc": "Fissura ou forte desejo ou necessidade de usar álcool.",
+              "pergunta": "Você sente forte desejo ou necessidade de usar álcool?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Fracasso em papéis por uso recorrente",
+              "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+              "pergunta": "O uso de álcool já causou problemas no trabalho, na escola ou em casa?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+              "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+              "pergunta": "Você continua usando álcool mesmo tendo problemas com outras pessoas por causa disso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Abandono de atividades importantes",
+              "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+              "pergunta": "Você deixou de fazer atividades importantes por causa do uso de álcool?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Uso recorrente em situações perigosas",
+              "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+              "pergunta": "Você já usou álcool em situações que poderiam ser perigosas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+              "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+              "pergunta": "Você continua usando álcool mesmo sabendo que isso agrava problemas de saúde?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A10",
+              "rotulo": "Tolerância",
+              "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+              "pergunta": "Você precisa de quantidades maiores de álcool para sentir o mesmo efeito?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A11",
+              "rotulo": "Abstinência",
+              "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+              "pergunta": "Você sente sintomas desagradáveis quando para de usar álcool, ou o usa para evitar esses sintomas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "periodo_12meses",
+          "letra": "A",
+          "rotulo": "Padrão problemático em 12 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Um padrão problemático de uso de álcool, levando a comprometimento ou sofrimento clinicamente significativos, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "D",
+          "rotulo": "Não atribuível a outra condição médica ou substância",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "remissao_inicial",
+          "nome": "Em remissão inicial",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "3-12 meses sem critérios (exceto fissura) para álcool.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "remissao_sustentada",
+          "nome": "Em remissão sustentada",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "≥12 meses sem critérios (exceto fissura) para álcool.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "ambiente_protegido",
+          "nome": "Em ambiente protegido",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Presença de 2 ou 3 sintomas."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Presença de 4 ou 5 sintomas."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Presença de 6 ou mais sintomas."
+          }
+        ],
+        "regra_atribuicao": "Baseada na quantidade de critérios preenchidos no cluster A.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "saude",
+          "label": "Saúde Física",
+          "icone_fa": "fa-heartbeat",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Uso não patológico de álcool",
+          "ponto_distincao": "Ingestão ocasional ou diária em pequenas doses sem sofrimento/significativo prejuízo funcional.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno por uso de sedativos, hipnóticos ou ansiolíticos",
+          "ponto_distincao": "Sintomas semelhantes, mas curso pode ser diferente, especialmente quanto a problemas médicos.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno bipolar",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno da personalidade antissocial",
+          "frequencia": "alta",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "AUDIT",
+          "sigla": "AUDIT",
+          "uso": "triagem",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "sugestao_clinica_padrao"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "4,6% (12-17a); 8,5% adultos ≥18a",
+        "proporcao_sexo": "12,4% homens vs 4,9% mulheres adultos",
+        "variacoes_culturais": "Maior entre índios norte-americanos (12,1%)",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Fim da adolescência / 20-25 anos",
+        "trajetoria": "Curso variável com períodos de remissão e recaídas. Primeira intoxicação na adolescência.",
+        "prognostico": "Prognóstico promissor para a maioria; casos graves representam parcela minoritária.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno por Uso de Álcool - {nome_paciente}",
+        "rodape_metodologico": "DSM-5 (303.90 / F10.20)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "16_transtornos_relacionados_substancias_transtornos_aditivos.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_por_uso_de_alcool",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "Consumo em maiores quantidades ou por periodo maior que o pretendido",
+          "Desejo persistente ou esforcos malsucedidos para reduzir/controlar",
+          "Muito tempo gasto obtendo, usando ou se recuperando",
+          "Fissura (craving) forte",
+          "Fracasso em cumprir obrigacoes (trabalho/escola/casa)",
+          "Uso continuado apesar de problemas sociais/interpessoais",
+          "Abandono/reducao de atividades importantes",
+          "Uso recorrente em situacoes perigosas",
+          "Uso continuado apesar de problemas fisicos/psicologicos",
+          "Tolerancia (doses maiores para mesmo efeito, ou efeito reduzido)",
+          "Abstinencia (sindrome caracteristica ou uso para aliviar sintomas)"
+        ],
+        "diagnostic_rule": "pelo menos 2 de 11 criterios em 12 meses",
+        "clusters": [
+          "Baixo Controle",
+          "Prejuizo Social",
+          "Uso Arriscado",
+          "Farmacologicos"
+        ],
+        "duration": "12 meses",
+        "age_onset": null,
+        "functional_impairment": "comprometimento clinicamente significativo",
+        "exclusions": [
+          "Uso nao patologico de alcool (intoxicacao ocasional, ingestao social)",
+          "Transtorno por uso de sedativos/hipnoticos/ansioliticos (sintomas semelhantes)",
+          "Transtorno da conduta / personalidade antissocial (comorbidade comum, diagnosticar ambos)",
+          "Transtorno mental induzido por alcool (sintomas devem persistir >1 mes apos abstinencia para ser independente)"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "em remissao inicial",
+          "em remissao sustentada",
+          "em ambiente protegido"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "contagem_sintomas_e_prejuizo",
+          "levels": [
+            "leve (2-3)",
+            "moderado (4-5)",
+            "grave (6+)"
+          ],
+          "assignment_rule": "numero de criterios preenchidos em 12 meses",
+          "domains": []
+        },
+        "critical_differentials": [
+          {
+            "condicao": "Uso social",
+            "diferenciador": "Nao ha prejuizo funcional ou compulsao"
+          },
+          {
+            "condicao": "Dependencia fisica sem transtorno",
+            "diferenciador": "Tolerancia/abstinencia isoladas nao sao suficientes"
+          },
+          {
+            "condicao": "TDM/Tag",
+            "diferenciador": "Sintomas de ansiedade/depressao que MELHORAM com abstinencia = induzidos"
+          }
+        ],
+        "key_questions": [
+          "Nas ultimas 4 semanas, sentiu necessidade forte de beber? (fissura)",
+          "Alguem ja se preocupou ou reclamou do seu consumo de alcool?",
+          "Ja tentou diminuir ou parar sem conseguir?",
+          "O alcool ja atrapalhou trabalho, estudo ou relacionome_completontos?",
+          "Ja dirigiu ou fez algo perigoso apos beber?",
+          "Continua bebendo apesar de problemas de saude?"
+        ],
+        "alerts": [
+          "ALERTA: abstinencia de alcool/sedativos pode ser FATAL",
+          "Tolerancia e abstinencia decorrentes de tratamento medico adequado NAO contam para o diagnostico"
+        ],
+        "source_trace": {
+          "markdown_section": "## 1. TRANSTORNO POR USO DE ALCOOL (TUA)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "303.90",
+      "codigo_cid10": "F10.20",
+      "grupo": "Álcool",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "",
+        "estrutura_efetiva": "",
+        "notas_clinicas": "Padrão problemático de uso de álcool com comprometimento significativo (2+ critérios em 12 meses). Inclui tolerância, abstinência, fissura e uso continuado apesar de consequências adversas."
+      },
+      "codigo_cid11": "6C40",
+      "super_enrichment": {
+        "id": "transtorno_por_uso_de_alcool",
+        "nome_original": "TRANSTORNO POR USO DE ALCOOL",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno bipolar",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno da personalidade antissocial",
+            "frequencia": "alta",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Uso não patológico de álcool",
+            "ponto_distincao": "Ingestão ocasional ou diária em pequenas doses sem sofrimento/significativo prejuízo funcional.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno por uso de sedativos, hipnóticos ou ansiolíticos",
+            "ponto_distincao": "Sintomas semelhantes, mas curso pode ser diferente, especialmente quanto a problemas médicos.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "4,6% (12-17a); 8,5% adultos ≥18a",
+          "proporcao_sexo": "12,4% homens vs 4,9% mulheres adultos",
+          "variacoes_culturais": "Maior entre índios norte-americanos (12,1%)"
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Fim da adolescência / 20-25 anos",
+          "trajetoria": "Curso variável com períodos de remissão e recaídas. Primeira intoxicação na adolescência.",
+          "prognostico": "Prognóstico promissor para a maioria; casos graves representam parcela minoritária."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "AUDIT",
+            "sigla": "AUDIT",
+            "uso": "triagem",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "sugestao_clinica_padrao"
+          }
+        ],
+        "transtorno_por_uso_de_alcool": "| Campo | Valor |\n|-------|-------|\n| **nome** | Transtorno por Uso de Álcool |\n| **categoria** | Transtornos Relacionados a Substâncias - Depressores |\n| **codigo_dsm5** | 303.90 (F10.20) / 305.00 (F10.10) leve |\n| **estrutura_diagnostica** | polythetic_monocluster |\n| **duracao** | 12 meses |\n| **renderiza_entrevista** | true |\n| **modo** | structured_full |",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "Padrão problemático de uso de álcool levando a comprometimento clinicamente significativo, manifestado por **pelo menos 2 dos 11 critérios** abaixo, em 12 meses:"
+          }
+        ],
+        "clusters_sintomaticos": [
+          {
+            "#": "10",
+            "Critério": "Tolerância (doses maiores para mesmo efeito, ou efeito reduzido)",
+            "Pergunta Chave": "\"Precisa beber mais para sentir o mesmo efeito? O mesmo quantidade já não basta?\""
+          },
+          {
+            "#": "11",
+            "Critério": "Abstinência (síndrome característica ou uso para aliviar sintomas)",
+            "Pergunta Chave": "\"Quando para de beber, sente tremor, suor, ansiedade, insônia, náusea?\""
+          }
+        ],
+        "regra_diagnostica": "Contagem de critérios em 12 meses:\n- 2-3 sintomas → LEVE\n- 4-5 sintomas → MODERADO  \n- 6+ sintomas → GRAVE",
+        "gravidade": {
+          "texto_completo": "| Nível | Critérios | Códigos |\n|-------|-----------|---------|\n| Leve | 2-3 sintomas | 305.00 (F10.10) |\n| Moderada | 4-5 sintomas | 303.90 (F10.20) |\n| Grave | 6+ sintomas | 303.90 (F10.20) |\n| tipo_gravidade | contagem_sintomas_e_prejuizo | |"
+        },
+        "especificadores": [
+          {
+            "nome": "Em remissão inicial",
+            "descricao": "3-12 meses sem critérios (exceto fissura)"
+          },
+          {
+            "nome": "Em remissão sustentada",
+            "descricao": "12+ meses sem critérios (exceto fissura)"
+          },
+          {
+            "nome": "Em ambiente protegido",
+            "descricao": "acesso restrito à substância (prisão, comunidade terapêutica)"
+          }
+        ],
+        "exclusoes_obrigatorias": "1. Uso não patológico de álcool (intoxicação ocasional, ingestão social)\n2. Transtorno por uso de sedativos/hipnóticos/ansiolíticos (sintomas semelhantes)\n3. Transtorno da conduta / personalidade antissocial (comorbidade comum, diagnosticar ambos)\n4. Transtorno mental induzido por álcool (sintomas devem persistir >1 mês após abstinência para ser independente)",
+        "diferenciais_criticos": [
+          {
+            "Condição": "Uso social",
+            "Diferenciador": "Não há prejuíço funcional ou compulsão"
+          },
+          {
+            "Condição": "Dependência física sem transtorno",
+            "Diferenciador": "Tolerância/abstinência isoladas não são suficientes"
+          },
+          {
+            "Condição": "TDM/Tag",
+            "Diferenciador": "Sintomas de ansiedade/depressão que MELHORAM com abstinência = induzidos"
+          }
+        ],
+        "perguntas_de_triagem_3_minutos": "1. \"Nas últimas 4 semanas, sentiu necessidade forte de beber?\" (fissura)\n2. \"Alguém já se preocupou ou reclamou do seu consumo de álcool?\"\n3. \"Já tentou diminuir ou parar sem conseguir?\"\n4. \"O álcool já atrapalhou trabalho, estudo ou relacionamentos?\"\n5. \"Já dirigiu ou fez algo perigoso após beber?\"\n6. \"Continua bebendo apesar de problemas de saúde?\"\n\n---"
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_por_uso_de_alcool.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_por_uso_de_opioides",
+        "nome_completo": "Transtorno por Uso de Opioides",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "304.00",
+          "cid10": "F11.20",
+          "cid11": "6C41"
+        },
+        "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
+        "capitulo_id": "16",
+        "grupo": "Opioides",
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Dependência de heroína",
+          "Abuso de opioides"
+        ]
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Critérios de Uso Problemático de opioides",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 2,
+            "pediatria": 2
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Quantidades/periodo maiores que pretendido",
+              "desc": "opioides consumido em maiores quantidades ou por período mais longo do que pretendido.",
+              "pergunta": "Você já usou opioides em quantidades maiores ou por mais tempo do que pretendia?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+              "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de opioides.",
+              "pergunta": "Você já tentou reduzir ou parar de usar opioides sem sucesso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+              "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de opioides.",
+              "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de opioides?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Fissura ou forte desejo de usar",
+              "desc": "Fissura ou forte desejo ou necessidade de usar opioides.",
+              "pergunta": "Você sente forte desejo ou necessidade de usar opioides?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Fracasso em papéis por uso recorrente",
+              "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+              "pergunta": "O uso de opioides já causou problemas no trabalho, na escola ou em casa?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+              "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+              "pergunta": "Você continua usando opioides mesmo tendo problemas com outras pessoas por causa disso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Abandono de atividades importantes",
+              "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+              "pergunta": "Você deixou de fazer atividades importantes por causa do uso de opioides?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Uso recorrente em situações perigosas",
+              "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+              "pergunta": "Você já usou opioides em situações que poderiam ser perigosas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+              "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+              "pergunta": "Você continua usando opioides mesmo sabendo que isso agrava problemas de saúde?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A10",
+              "rotulo": "Tolerância",
+              "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+              "pergunta": "Você precisa de quantidades maiores de opioides para sentir o mesmo efeito?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A11",
+              "rotulo": "Abstinência",
+              "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+              "pergunta": "Você sente sintomas desagradáveis quando para de usar opioides, ou o usa para evitar esses sintomas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "periodo_12meses",
+          "letra": "A",
+          "rotulo": "Padrão problemático em 12 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Um padrão problemático de uso de opioides, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "D",
+          "rotulo": "Não atribuível a outra condição médica ou substância",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "remissao_inicial",
+          "nome": "Em remissão inicial",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "3-12 meses sem critérios (exceto fissura) para opioides.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "remissao_sustentada",
+          "nome": "Em remissão sustentada",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "≥12 meses sem critérios (exceto fissura) para opioides.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "ambiente_protegido",
+          "nome": "Em ambiente protegido",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "terapia_manutencao",
+          "nome": "Em terapia de manutenção",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Presença de 2 ou 3 sintomas."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Presença de 4 ou 5 sintomas."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Presença de 6 ou mais sintomas."
+          }
+        ],
+        "regra_atribuicao": "Baseada na quantidade de critérios preenchidos no cluster A.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "saude",
+          "label": "Saúde Física",
+          "icone_fa": "fa-heartbeat",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtornos mentais induzidos por opioides",
+          "ponto_distincao": "Sintomas específicos de outro transtorno predominam e justificam atenção clínica independente.",
+          "pertence_a_classe": true
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Hepatite C",
+          "frequencia": "alta",
+          "nota": "Até 90% em usuários intravenosos."
+        },
+        {
+          "condicao": "HIV",
+          "frequencia": "alta",
+          "nota": "Alto risco em usuários intravenosos."
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno da personalidade antissocial",
+          "frequencia": "alta",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Exame toxicológico de urina",
+          "sigla": null,
+          "uso": "diagnostico",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "mencionado_no_dsm"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "0,37% adultos ≥18a; ~1% (12-17a) para analgésicos.",
+        "proporcao_sexo": "1,5:1 homens:mulheres (analgesicos); 3:1 com heroína.",
+        "variacoes_culturais": "Maior entre índios norte-americanos (1,25%).",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Fim da adolescência / início dos 20 anos",
+        "trajetoria": "Curso crônico com recaídas frequentes após tratamento.",
+        "prognostico": "20-30% alcançam abstinência duradoura; mortalidade 1,5-2%/ano.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno por Uso de Opioides - {nome_paciente}",
+        "rodape_metodologico": "DSM-5 (304.00 / F11.20)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "16_transtornos_relacionados_substancias_transtornos_aditivos.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_por_uso_de_opioides",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "Dose/tempo maior que pretendido",
+          "Tentativas malsucedidas de reducao",
+          "Tempo gasto obtendo/usando",
+          "Fissura",
+          "Fracasso em obrigacoes",
+          "Uso apesar de problemas sociais",
+          "Abandono de atividades",
+          "Uso em situacoes perigosas",
+          "Uso apesar de problemas de saude",
+          "Tolerancia (doses maiores para mesmo efeito)",
+          "Abstinencia (sindrome caracteristica ou uso para aliviar)"
+        ],
+        "diagnostic_rule": "pelo menos 2 de 11 criterios em 12 meses",
+        "clusters": [
+          "Baixo Controle",
+          "Prejuizo Social",
+          "Uso Arriscado",
+          "Farmacologicos"
+        ],
+        "duration": "12 meses",
+        "age_onset": null,
+        "functional_impairment": "comprometimento clinicamente significativo",
+        "exclusions": [
+          "Uso adequado de opioides prescritos (sem compulsao, sem prejuizo funcional)",
+          "Dor cronica legitima (uso conforme prescricao, monitoramento medico)"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Em terapia de manutencao",
+          "em remissao inicial",
+          "em remissao sustentada",
+          "em ambiente protegido"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "contagem_sintomas_e_prejuizo",
+          "levels": [
+            "leve (2-3)",
+            "moderado (4-5)",
+            "grave (6+)"
+          ],
+          "assignment_rule": "numero de criterios preenchidos em 12 meses",
+          "domains": []
+        },
+        "critical_differentials": [
+          {
+            "condicao": "Uso adequado de opioides prescritos",
+            "diferenciador": "Sem compulsao, sem prejuizo funcional"
+          },
+          {
+            "condicao": "Dor cronica legitima",
+            "diferenciador": "Uso conforme prescricao, monitoramento medico"
+          },
+          {
+            "condicao": "Abstinencia de sedativos",
+            "diferenciador": "Pupilas DILATADAS em abstinencia de opioides; pupilas normais em sedativos"
+          },
+          {
+            "condicao": "Intoxicacao por alcool/sedativos",
+            "diferenciador": "Sem miose; sem resposta a naloxona"
+          }
+        ],
+        "key_questions": [
+          "Usou mais comprimidos ou injecoes do que planejava?",
+          "Ja tentou parar ou diminuir? Conseguiu? Por quanto tempo?",
+          "Quanto tempo gasta para conseguir opioides? Ja visitou varios medicos?",
+          "Sentiu necessidade intensa de usar?",
+          "Faltou ao trabalho ou negligenciou familia por causa dos opioides?",
+          "Continuou usando apesar de brigas ou perda de relacionome_completontos?",
+          "Deixou hobbies, esportes ou trabalho por causa do uso?",
+          "Usou em situacoes de risco (ex: dividindo agulhas, usando sozinho)?",
+          "Continua usando apesar de constipacao, overdoses previas ou infeccoes?",
+          "Precisa de doses maiores para aliviar a dor ou sentir efeito?",
+          "Quando para, sente calafrios, colicas, suores, ansiedade, vomitos?"
+        ],
+        "alerts": [
+          "Overdose: Miose + depressao respiratoria = emergencia. Naloxona reverte em minutos.",
+          "Risco de suicidio: TUO associado a 1,5-2% mortalidade/ano; overdose pode ser acidental ou deliberada.",
+          "Complicacoes medicas: HIV, hepatite C (ate 90% em usuarios IV), endocardite, tuberculose.",
+          "Sindrome neonatal: ~50% dos bebes de maes com TUO desenvolvem abstinencia neonatal.",
+          "Nota Critica: Tolerancia e abstinencia desconsiderados em individuos cujo uso se da UNICAMENTE sob supervisao medica adequada."
+        ],
+        "source_trace": {
+          "markdown_section": "## 7. TRANSTORNO POR USO DE OPIOIDES (TUO)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "304.00",
+      "codigo_cid10": "F11.20",
+      "grupo": "Opioides",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "",
+        "estrutura_efetiva": "",
+        "notas_clinicas": "Padrão problemático de uso de opioides (heroína, analgésicos prescritos) com comprometimento significativo (2+ critérios em 12 meses). Autoadministração compulsiva, tolerância, abstinência."
+      },
+      "codigo_cid11": "6C41",
+      "super_enrichment": {
+        "id": "transtorno_por_uso_de_opioides",
+        "nome_original": "TRANSTORNO POR USO DE OPIOIDES",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Hepatite C",
+            "frequencia": "alta",
+            "nota": "Até 90% em usuários intravenosos."
+          },
+          {
+            "condicao": "HIV",
+            "frequencia": "alta",
+            "nota": "Alto risco em usuários intravenosos."
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno da personalidade antissocial",
+            "frequencia": "alta",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtornos mentais induzidos por opioides",
+            "ponto_distincao": "Sintomas específicos de outro transtorno predominam e justificam atenção clínica independente.",
+            "pertence_a_classe": true
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "0,37% adultos ≥18a; ~1% (12-17a) para analgésicos.",
+          "proporcao_sexo": "1,5:1 homens:mulheres (analgesicos); 3:1 com heroína.",
+          "variacoes_culturais": "Maior entre índios norte-americanos (1,25%)."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Fim da adolescência / início dos 20 anos",
+          "trajetoria": "Curso crônico com recaídas frequentes após tratamento.",
+          "prognostico": "20-30% alcançam abstinência duradoura; mortalidade 1,5-2%/ano."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Exame toxicológico de urina",
+            "sigla": null,
+            "uso": "diagnostico",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "mencionado_no_dsm"
+          }
+        ],
+        "transtorno_por_uso_de_opioides": "| Campo | Valor |\n|-------|-------|\n| **nome** | Transtorno por Uso de Opioides |\n| **codigo_dsm5** | 304.00 (F11.20) / 305.50 (F11.10) leve |\n| **estrutura_diagnostica** | polythetic_monocluster |\n| **duracao** | 12 meses |\n| **renderiza_entrevista** | true |\n| **modo** | structured_full |",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "**Mesma estrutura de 11 critérios**, com nota especial:\n\n> **Nota Crítica para Critério 10 (Tolerância) e 11 (Abstinência)**: Desconsiderados em indivíduos cujo uso se dá UNICAMENTE sob supervisão médica adequada (ex: analgesia prescrita corretamente)."
+          }
+        ],
+        "perguntas_chave_especificas": [],
+        "regra_diagnostica": "- 2-3 sintomas → LEVE (305.50 / F11.10)\n- 4-5 sintomas → MODERADO (304.00 / F11.20)\n- 6+ sintomas → GRAVE (304.00 / F11.20)",
+        "especificadores": [
+          {
+            "nome": "Em terapia de manutenção",
+            "descricao": "Uso de agonista prescrito (metadona, buprenorfina) sem critérios para TUO (exceto tolerância/abstinência do agonista)"
+          }
+        ],
+        "alertas_clinicos": "> **Overdose**: Miose + depressão respiratória = emergência. Naloxona reverte em minutos.\n> **Risco de suicídio**: TUO associado a 1,5-2% mortalidade/ano; overdose pode ser acidental ou deliberada.\n> **Complicações médicas**: HIV, hepatite C (até 90% em usuários IV), endocardite, tuberculose.\n> **Síndrome neonatal**: ~50% dos bebês de mães com TUO desenvolvem abstinência neonatal.",
+        "diferenciais_criticos": [
+          {
+            "Condição": "Uso adequado de opioides prescritos",
+            "Diferenciador": "Sem compulsão, sem prejuízo funcional"
+          },
+          {
+            "Condição": "Dor crônica legítima",
+            "Diferenciador": "Uso conforme prescrição, monitoramento médico"
+          },
+          {
+            "Condição": "Abstinência de sedativos",
+            "Diferenciador": "Pupilas DILATADAS em abstinência de opioides; pupilas normais em sedativos"
+          },
+          {
+            "Condição": "Intoxicação por álcool/sedativos",
+            "Diferenciador": "Sem miose; sem resposta a naloxona"
+          }
+        ]
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_por_uso_de_opioides.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_por_uso_de_estimulantes",
+        "nome_completo": "Transtorno por Uso de Estimulantes",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "304.40",
+          "cid10": "F15.20",
+          "cid11": "6C42"
+        },
+        "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
+        "capitulo_id": "16",
+        "grupo": "Estimulantes",
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Dependência de cocaína",
+          "Dependência de anfetaminas",
+          "Metanfetamina"
+        ]
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Critérios de Uso Problemático de estimulante",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 2,
+            "pediatria": 2
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Quantidades/periodo maiores que pretendido",
+              "desc": "estimulante consumido em maiores quantidades ou por período mais longo do que pretendido.",
+              "pergunta": "Você já usou estimulante em quantidades maiores ou por mais tempo do que pretendia?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+              "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de estimulante.",
+              "pergunta": "Você já tentou reduzir ou parar de usar estimulante sem sucesso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+              "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de estimulante.",
+              "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de estimulante?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Fissura ou forte desejo de usar",
+              "desc": "Fissura ou forte desejo ou necessidade de usar estimulante.",
+              "pergunta": "Você sente forte desejo ou necessidade de usar estimulante?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Fracasso em papéis por uso recorrente",
+              "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+              "pergunta": "O uso de estimulante já causou problemas no trabalho, na escola ou em casa?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+              "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+              "pergunta": "Você continua usando estimulante mesmo tendo problemas com outras pessoas por causa disso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Abandono de atividades importantes",
+              "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+              "pergunta": "Você deixou de fazer atividades importantes por causa do uso de estimulante?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Uso recorrente em situações perigosas",
+              "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+              "pergunta": "Você já usou estimulante em situações que poderiam ser perigosas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+              "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+              "pergunta": "Você continua usando estimulante mesmo sabendo que isso agrava problemas de saúde?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A10",
+              "rotulo": "Tolerância",
+              "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+              "pergunta": "Você precisa de quantidades maiores de estimulante para sentir o mesmo efeito?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A11",
+              "rotulo": "Abstinência",
+              "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+              "pergunta": "Você sente sintomas desagradáveis quando para de usar estimulante, ou o usa para evitar esses sintomas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "periodo_12meses",
+          "letra": "A",
+          "rotulo": "Padrão problemático em 12 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Um padrão de uso de substância tipo anfetamina, cocaína ou outro estimulante, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "D",
+          "rotulo": "Não atribuível a outra condição médica ou substância",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "remissao_inicial",
+          "nome": "Em remissão inicial",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "3-12 meses sem critérios (exceto fissura) para estimulante.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "remissao_sustentada",
+          "nome": "Em remissão sustentada",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "≥12 meses sem critérios (exceto fissura) para estimulante.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "ambiente_protegido",
+          "nome": "Em ambiente protegido",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Presença de 2 ou 3 sintomas."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Presença de 4 ou 5 sintomas."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Presença de 6 ou mais sintomas."
+          }
+        ],
+        "regra_atribuicao": "Baseada na quantidade de critérios preenchidos no cluster A.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "saude",
+          "label": "Saúde Cardiopulmonar",
+          "icone_fa": "fa-heartbeat",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtornos mentais primários",
+          "ponto_distincao": "Efeitos de estimulantes devem ser distinguidos de esquizofrenia, transtornos bipolares/depressivos, TAG e TP.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno por uso de álcool",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno por uso de Cannabis",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno de déficit de atenção/hiperatividade",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "Anfetamina: 0,2% (12-17a e adultos); Cocaína: 0,2% (12-17a), 0,3% adultos.",
+        "proporcao_sexo": "Cocaína: mais em homens (0,4% vs 0,1% adultos).",
+        "variacoes_culturais": null,
+        "notas": null,
+        "metadados": {
+          "completo": false,
+          "lacunas": [
+            "variacoes_culturais"
+          ],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "12-25 anos",
+        "trajetoria": "Progressão rápida com uso fumado/intravenoso; gradual com uso intranasal/oral.",
+        "prognostico": "Reservado para uso crônico; depressão/ideação suicida durante abstinência.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno por Uso de Estimulantes - {nome_paciente}",
+        "rodape_metodologico": "DSM-5 (304.40 / F15.20)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "16_transtornos_relacionados_substancias_transtornos_aditivos.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4",
+        "lacunas_globais": [
+          "variacoes_culturais"
+        ],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_por_uso_de_estimulantes",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "Dose/tempo excessivo",
+          "Tentativas de reducao",
+          "Tempo gasto",
+          "Fissura",
+          "Fracasso em obrigacoes",
+          "Problemas sociais",
+          "Abandono de atividades",
+          "Uso perigoso",
+          "Uso apesar de problemas de saude",
+          "Tolerancia",
+          "Abstinencia (fadiga excessiva, depressao, fome aumentada, pesadelos)"
+        ],
+        "diagnostic_rule": "pelo menos 2 de 11 criterios em 12 meses",
+        "clusters": [
+          "Baixo Controle",
+          "Prejuizo Social",
+          "Uso Arriscado",
+          "Farmacologicos"
+        ],
+        "duration": "12 meses",
+        "age_onset": null,
+        "functional_impairment": "comprometimento clinicamente significativo",
+        "exclusions": [
+          "Uso de estimulantes sob supervisao medica adequada (ex: TDAH, narcolepsia) - tolerancia e abstinencia desconsideradas"
+        ],
+        "subtypes_presentations": [
+          "Substancia tipo anfetamina (incl. metanfetamina)",
+          "Cocaina",
+          "Outro estimulante"
+        ],
+        "specifiers": [
+          "em remissao inicial",
+          "em remissao sustentada",
+          "em ambiente protegido"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "contagem_sintomas_e_prejuizo",
+          "levels": [
+            "leve (2-3)",
+            "moderado (4-5)",
+            "grave (6+)"
+          ],
+          "assignment_rule": "numero de criterios preenchidos em 12 meses",
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Usou mais cocaina/anfetamina do que pretendia? Ficou usando por dias sem parar (binges)?",
+          "Ja tentou parar ou controlar? Conseguiu?",
+          "Quanto tempo investe em conseguir ou usar?",
+          "Sentiu necessidade intensa de usar?",
+          "O uso atrapalhou trabalho, estudo ou responsabilidades?",
+          "Brigou ou perdeu amizades por causa do uso?",
+          "Deixou de fazer coisas importantes para usar?",
+          "Usou e dirigiu? Usou de formas perigosas (injeccao, desconhecidos)?",
+          "Continua usando apesar de dor no peito, perda de peso, problemas nasais?",
+          "Precisa de mais para sentir o mesmo efeito?",
+          "Quando para, sente fadiga excessiva, depressao, fome aumentada, pesadelos?"
+        ],
+        "alerts": [
+          "Complicacoes agudas: Infarto do miocardio, arritmias, morte subita",
+          "AVC, convulsoes",
+          "Pneumotorax (manobra Valsalva ao fumar)",
+          "Transtorno psicotico induzido (delirios paranoides, alucinacoes tateis)",
+          "Risco de suicidio durante abstinencia (repe)",
+          "Nota Critica: Criterios de tolerancia e abstinencia sao DESCONSIDERADOS em individuos cujo uso se da unicamente sob supervisao medica adequada."
+        ],
+        "source_trace": {
+          "markdown_section": "## 10. TRANSTORNO POR USO DE ESTIMULANTES (TUEst)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "304.40",
+      "codigo_cid10": "F15.20",
+      "grupo": "Estimulantes",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "",
+        "estrutura_efetiva": "",
+        "notas_clinicas": "Padrão problemático de uso de cocaína (pó, crack, freebase) com comprometimento significativo. Critérios idênticos aos de anfetamina-type."
+      },
+      "codigo_cid11": "6C42",
+      "super_enrichment": {
+        "id": "transtorno_por_uso_de_estimulantes",
+        "nome_original": "TRANSTORNO POR USO DE ESTIMULANTES",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno por uso de álcool",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno por uso de Cannabis",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno de déficit de atenção/hiperatividade",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtornos mentais primários",
+            "ponto_distincao": "Efeitos de estimulantes devem ser distinguidos de esquizofrenia, transtornos bipolares/depressivos, TAG e TP.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "Anfetamina: 0,2% (12-17a e adultos); Cocaína: 0,2% (12-17a), 0,3% adultos.",
+          "proporcao_sexo": "Cocaína: mais em homens (0,4% vs 0,1% adultos).",
+          "variacoes_culturais": null
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "12-25 anos",
+          "trajetoria": "Progressão rápida com uso fumado/intravenoso; gradual com uso intranasal/oral.",
+          "prognostico": "Reservado para uso crônico; depressão/ideação suicida durante abstinência."
+        },
+        "instrumentos_complementares": [],
+        "transtorno_por_uso_de_estimulantes": "| Campo | Valor |\n|-------|-------|\n| **nome** | Transtorno por Uso de Estimulantes |\n| **codigo_dsm5** | 304.20 (F14.20/F15.20) / 305.60 (F14.10) cocaína leve / 305.70 (F15.10) anfetamina leve |\n| **estrutura_diagnostica** | polythetic_monocluster |\n| **duracao** | 12 meses |\n| **renderiza_entrevista** | true |\n| **modo** | structured_full |",
+        "especificacao_obrigatoria": [
+          "Substância tipo anfetamina (incl. metanfetamina)",
+          "Cocaína",
+          "Outro estimulante"
+        ],
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "**Mesma estrutura de 11 critérios**, com notas:\n\n> **Nota Crítica**: Critérios de tolerância e abstinência são DESCONSIDERADOS em indivíduos cujo uso de estimulantes se dá unicamente sob supervisão médica adequada (ex: TDAH, narcolepsia)."
+          }
+        ],
+        "perguntas_chave_especificas": [],
+        "regra_diagnostica": "- 2-3 sintomas → LEVE\n- 4-5 sintomas → MODERADO\n- 6+ sintomas → GRAVE",
+        "gravidade": {
+          "texto_completo": "| Nível | Cocaína | Anfetamina/Outro |\n|-------|---------|------------------|\n| Leve | 305.60 (F14.10) | 305.70 (F15.10) |\n| Moderada | 304.20 (F14.20) | 304.40 (F15.20) |\n| Grave | 304.20 (F14.20) | 304.40 (F15.20) |"
+        },
+        "padroes_de_uso_tipicos": "- **Uso episódico (\"binges\")**: Uso contínuo de altas doses por horas/dias, interrompido apenas por exaustão ou falta da droga\n- **Uso diário crônico**: Doses altas ou baixas com aumento progressivo\n- **Uso intranasal/oral**: Progressão mais lenta (meses a anos)\n- **Uso IV/fumado**: Progressão rápida para grave (semanas a meses)",
+        "complicacoes_agudas": "- Infarto do miocárdio, arritmias, morte súbita\n- AVC, convulsões\n- Pneumotórax (manobra Valsalva ao fumar)\n- Transtorno psicótico induzido (delírios paranoides, alucinações táteis)\n- Risco de suicídio durante abstinência (\"repé\")\n\n---"
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_por_uso_de_estimulantes.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "transtorno_por_uso_de_tabaco",
+        "nome_completo": "Transtorno por Uso de Tabaco",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "305.1",
+          "cid10": "F17.200",
+          "cid11": "6C4A"
+        },
+        "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
+        "capitulo_id": "16",
+        "grupo": "Tabaco",
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": [
+          "Dependência de nicotina"
+        ]
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Critérios de Uso Problemático de tabaco",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 2,
+            "pediatria": 2
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Quantidades/periodo maiores que pretendido",
+              "desc": "tabaco consumido em maiores quantidades ou por período mais longo do que pretendido.",
+              "pergunta": "Você já usou tabaco em quantidades maiores ou por mais tempo do que pretendia?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Desejo persistente ou esforços malsucedidos de reduzir",
+              "desc": "Desejo persistente ou esforços malsucedidos para reduzir ou controlar o uso de tabaco.",
+              "pergunta": "Você já tentou reduzir ou parar de usar tabaco sem sucesso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Muito tempo obtendo, usando ou recuperando-se",
+              "desc": "Muito tempo gasto em atividades necessárias para obtenção, uso ou recuperação dos efeitos de tabaco.",
+              "pergunta": "Você passa muito tempo obtendo, usando ou se recuperando dos efeitos de tabaco?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Fissura ou forte desejo de usar",
+              "desc": "Fissura ou forte desejo ou necessidade de usar tabaco.",
+              "pergunta": "Você sente forte desejo ou necessidade de usar tabaco?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Fracasso em papéis por uso recorrente",
+              "desc": "Uso recorrente resultando em fracasso em cumprir obrigações no trabalho, escola ou casa.",
+              "pergunta": "O uso de tabaco já causou problemas no trabalho, na escola ou em casa?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Uso continuado apesar de problemas sociais/interpessoais",
+              "desc": "Uso continuado apesar de problemas sociais ou interpessoais persistentes causados ou exacerbados pelos efeitos.",
+              "pergunta": "Você continua usando tabaco mesmo tendo problemas com outras pessoas por causa disso?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Abandono de atividades importantes",
+              "desc": "Atividades sociais, profissionais ou recreacionais importantes abandonadas ou reduzidas em virtude do uso.",
+              "pergunta": "Você deixou de fazer atividades importantes por causa do uso de tabaco?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Uso recorrente em situações perigosas",
+              "desc": "Uso recorrente em situações nas quais isso representa perigo para a integridade física.",
+              "pergunta": "Você já usou tabaco em situações que poderiam ser perigosas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Uso mantido apesar de problemas físicos/psicológicos",
+              "desc": "Uso mantido apesar da consciência de ter um problema físico ou psicológico persistente provavelmente causado ou exacerbado pela substância.",
+              "pergunta": "Você continua usando tabaco mesmo sabendo que isso agrava problemas de saúde?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A10",
+              "rotulo": "Tolerância",
+              "desc": "Tolerância: necessidade de quantidades progressivamente maiores para obter o efeito desejado, ou efeito acentuadamente menor com a mesma quantidade.",
+              "pergunta": "Você precisa de quantidades maiores de tabaco para sentir o mesmo efeito?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A11",
+              "rotulo": "Abstinência",
+              "desc": "Abstinência: síndrome característica ao cessar/reduzir, ou uso para aliviar/evitar sintomas de abstinência.",
+              "pergunta": "Você sente sintomas desagradáveis quando para de usar tabaco, ou o usa para evitar esses sintomas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "periodo_12meses",
+          "letra": "A",
+          "rotulo": "Padrão problemático em 12 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Um padrão problemático de uso de tabaco, levando a comprometimento ou sofrimento clinicamente significativo, manifestado por pelo menos dois dos critérios, ocorrendo durante um período de 12 meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_substancia_medica",
+          "letra": "D",
+          "rotulo": "Não atribuível a outra condição médica ou substância",
+          "tipo": "exclusao_substancia_medica",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Os sinais ou sintomas não são atribuíveis a outra condição médica nem são mais bem explicados por outro transtorno mental, incluindo intoxicação por ou abstinência de outra substância.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "remissao_inicial",
+          "nome": "Em remissão inicial",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "3-12 meses sem critérios (exceto fissura) para tabaco.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "remissao_sustentada",
+          "nome": "Em remissão sustentada",
+          "tipo": "booleano",
+          "ortogonal": false,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "≥12 meses sem critérios (exceto fissura) para tabaco.",
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "ambiente_protegido",
+          "nome": "Em ambiente protegido",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "terapia_manutencao",
+          "nome": "Em terapia de manutenção",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Presença de 2 ou 3 sintomas."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Presença de 4 ou 5 sintomas."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Presença de 6 ou mais sintomas."
+          }
+        ],
+        "regra_atribuicao": "Baseada na quantidade de critérios preenchidos no cluster A.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "saude",
+          "label": "Saúde Física",
+          "icone_fa": "fa-heartbeat",
+          "relevante_para": "transversal"
+        },
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": "transversal"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Uso não diário de tabaco",
+          "ponto_distincao": "~20% dos fumantes atuais não fumam diariamente; critérios podem não ser preenchidos.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtorno por uso de álcool",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno de ansiedade",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [
+        {
+          "nome": "Monóxido de carbono no ar expirado",
+          "sigla": null,
+          "uso": "monitoramento",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "mencionado_no_dsm"
+        },
+        {
+          "nome": "Cotinina no sangue/saliva/urina",
+          "sigla": null,
+          "uso": "monitoramento",
+          "obrigatorio_para_diagnostico": false,
+          "fonte": "mencionado_no_dsm"
+        }
+      ],
+      "prevalencia": {
+        "populacao_geral": "~13% adultos ≥18a (dependência de nicotina DSM-IV); ~21% fumantes atuais.",
+        "proporcao_sexo": "14% homens vs 12% mulheres adultos.",
+        "variacoes_culturais": "Maior em índios norte-americanos (23%); maior em países em desenvolvimento.",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Adolescência; início após 21 anos é raro.",
+        "trajetoria": ">80% tentam parar; 60% recaem em uma semana; metade alcança abstinência.",
+        "prognostico": "50% dos que não param morrem prematuramente de doenças relacionadas ao tabaco.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno por Uso de Tabaco - {nome_paciente}",
+        "rodape_metodologico": "DSM-5 (305.1 / F17.200)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "16_transtornos_relacionados_substancias_transtornos_aditivos.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "transtorno_por_uso_de_tabaco",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_monocluster",
+        "criteria": [
+          "Quantidade/tempo maior",
+          "Tentativas de reducao",
+          "Tempo gasto",
+          "Fissura",
+          "Fracasso em obrigacoes",
+          "Problemas sociais",
+          "Abandono de atividades",
+          "Uso perigoso",
+          "Uso apesar de problemas de saude",
+          "Tolerancia",
+          "Abstinencia (irritabilidade, ansiedade, dificuldade de concentracao, aumento do apetite)"
+        ],
+        "diagnostic_rule": "pelo menos 2 de 11 criterios em 12 meses",
+        "clusters": [
+          "Baixo Controle",
+          "Prejuizo Social",
+          "Uso Arriscado",
+          "Farmacologicos"
+        ],
+        "duration": "12 meses",
+        "age_onset": null,
+        "functional_impairment": "comprometimento clinicamente significativo",
+        "exclusions": [],
+        "subtypes_presentations": [],
+        "specifiers": [
+          "Em terapia de manutencao",
+          "em remissao inicial",
+          "em remissao sustentada",
+          "em ambiente protegido"
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "contagem_sintomas_e_prejuizo",
+          "levels": [
+            "leve (2-3)",
+            "moderado (4-5)",
+            "grave (6+)"
+          ],
+          "assignment_rule": "numero de criterios preenchidos em 12 meses",
+          "domains": []
+        },
+        "critical_differentials": [],
+        "key_questions": [
+          "Fuma mais do que pretendia? Tenta fumar menos e nao consegue?",
+          "Ja tentou parar? Quantas vezes? Por quanto tempo ficou?",
+          "Gasta muito tempo comprando cigarros ou organizando o momento de fumar?",
+          "Sente vontade intensa de fumar quando nao pode (ex: em reunioes, aviao)?",
+          "O tabaco ja causou problemas no trabalho ou em casa? (ex: faltar para comprar)",
+          "Brigou ou incomodou outros por causa da fumaca?",
+          "Evita lugares onde nao pode fumar?",
+          "Fuma na cama? Proximo a materiais inflamaveis?",
+          "Continua fumando apesar de problemas respiratorios, tosse, ou doenca?",
+          "O primeiro cigarro do dia e o que mais satisfaz? Precisa de mais?",
+          "Quando para de fumar, sente irritabilidade, ansiedade, dificuldade de concentracao, aumento do apetite?"
+        ],
+        "alerts": [
+          "Nota de codificacao: Tabaco NAO tem codigo leve com CID-10 para transtornos induzidos. Abstinencia de tabaco so ocorre com TUT moderado/grave."
+        ],
+        "source_trace": {
+          "markdown_section": "## 13. TRANSTORNO POR USO DE TABACO (TUT)",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "305.1",
+      "codigo_cid10": "F17.200",
+      "grupo": "Tabaco",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "",
+        "estrutura_efetiva": "",
+        "notas_clinicas": "Padrão problemático de uso de tabaco com comprometimento significativo (2+ critérios em 12 meses). Fissura, tolerância, uso apesar de problemas, dificuldade de reduzir."
+      },
+      "codigo_cid11": "6C4A",
+      "super_enrichment": {
+        "id": "transtorno_por_uso_de_tabaco",
+        "nome_original": "TRANSTORNO POR USO DE TABACO",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtorno por uso de álcool",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno de ansiedade",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Uso não diário de tabaco",
+            "ponto_distincao": "~20% dos fumantes atuais não fumam diariamente; critérios podem não ser preenchidos.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": ""
+        },
+        "prevalencia": {
+          "populacao_geral": "~13% adultos ≥18a (dependência de nicotina DSM-IV); ~21% fumantes atuais.",
+          "proporcao_sexo": "14% homens vs 12% mulheres adultos.",
+          "variacoes_culturais": "Maior em índios norte-americanos (23%); maior em países em desenvolvimento."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Adolescência; início após 21 anos é raro.",
+          "trajetoria": ">80% tentam parar; 60% recaem em uma semana; metade alcança abstinência.",
+          "prognostico": "50% dos que não param morrem prematuramente de doenças relacionadas ao tabaco."
+        },
+        "instrumentos_complementares": [
+          {
+            "nome": "Monóxido de carbono no ar expirado",
+            "sigla": null,
+            "uso": "monitoramento",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "mencionado_no_dsm"
+          },
+          {
+            "nome": "Cotinina no sangue/saliva/urina",
+            "sigla": null,
+            "uso": "monitoramento",
+            "obrigatorio_para_diagnostico": false,
+            "fonte": "mencionado_no_dsm"
+          }
+        ],
+        "transtorno_por_uso_de_tabaco": "| Campo | Valor |\n|-------|-------|\n| **nome** | Transtorno por Uso de Tabaco |\n| **codigo_dsm5** | 305.1 (F17.200) / (Z72.0) leve |\n| **estrutura_diagnostica** | polythetic_monocluster |\n| **duracao** | 12 meses |\n| **renderiza_entrevista** | true |\n| **modo** | structured_full |",
+        "criterios_obrigatorios": [
+          {
+            "id": "completo",
+            "texto": "**Mesma estrutura de 11 critérios**, com adaptações:\n\n> **Nota**: A intoxicação por tabaco/nicotina é muito rara; \"gastar muito tempo\" e \"fracasso em obrigações\" são critérios menos frequentemente preenchidos."
+          }
+        ],
+        "perguntas_chave_especificas": [],
+        "regra_diagnostica": "- 2-3 sintomas → LEVE (305.1 / Z72.0)\n- 4-5 sintomas → MODERADO (305.1 / F17.200)\n- 6+ sintomas → GRAVE (305.1 / F17.200)\n> **Nota de codificação**: Tabaco NÃO tem código leve com CID-10 para transtornos induzidos. Abstinência de tabaco só ocorre com TUT moderado/grave.",
+        "especificadores": [
+          {
+            "nome": "Em terapia de manutenção",
+            "descricao": "Uso de reposição de nicotina ou outros medicamentos para cessação; nenhum critério satisfeito para esses medicamentos (exceto tolerância/abstinência)"
+          }
+        ],
+        "marcadores_de_severidade": "- Fumar nos primeiros 30 min após acordar\n- Fumar >20 cigarros/dia\n- Acordar à noite para fumar\n- Fissura intensa após poucas horas\n\n---"
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/transtorno_por_uso_de_tabaco.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  ]
+}

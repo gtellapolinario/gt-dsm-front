@@ -29,17 +29,15 @@ export interface DiseaseModule {
 export type DiseaseImporter = () => Promise<DiseaseModule>;
 
 function adaptDiseaseConfig(
-  config: GeneratedDisorderModule["config"] | undefined,
+  module: GeneratedDisorderModule,
+  fallback: GeneratedDisorderMetadata,
 ): DiseaseModule["config"] | undefined {
-  if (!config) {
-    return undefined;
-  }
-
+  const estrutura_geral = module.data?.estrutura_geral;
   return {
-    estrutura: isEstruturaDiagnostica(config.estrutura_geral)
-      ? config.estrutura_geral
+    estrutura: isEstruturaDiagnostica(estrutura_geral)
+      ? estrutura_geral
       : undefined,
-    route: config.route_path,
+    route: fallback.route_path,
   };
 }
 
@@ -62,7 +60,7 @@ function adaptGeneratedModule(
   return {
     default: module.default,
     meta: adaptDiseaseMeta(module, fallback),
-    config: adaptDiseaseConfig(module.config),
+    config: adaptDiseaseConfig(module, fallback),
     data: module.data,
   };
 }

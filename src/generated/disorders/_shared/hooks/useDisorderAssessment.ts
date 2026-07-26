@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import type { ClinicalDisorder } from "../schema";
-import { generateClinicalMarkdown, type ClinicalMarkdownConfig } from "../utils/clinicalMarkdown";
+import { generateClinicalMarkdown } from "../utils/clinicalMarkdown";
 import { severityOptions, thresholdNumber, type SeverityLevel } from "../utils/disorderDataAccess";
 
 export interface PatientIdentification {
@@ -62,10 +62,10 @@ function makeInitialState(): DisorderAssessmentState {
   };
 }
 
-export function useDisorderAssessment(data: ClinicalDisorder, config: ClinicalMarkdownConfig) {
+export function useDisorderAssessment(data: ClinicalDisorder) {
   const [state, setState] = useState<DisorderAssessmentState>(() => ({
     ...makeInitialState(),
-    markdown: generateClinicalMarkdown(makeInitialState(), data, config),
+    markdown: generateClinicalMarkdown(makeInitialState(), data),
   }));
 
   const setPatientField = useCallback(<K extends keyof PatientIdentification>(field: K, value: PatientIdentification[K]) => {
@@ -111,20 +111,20 @@ export function useDisorderAssessment(data: ClinicalDisorder, config: ClinicalMa
   const refreshMarkdown = useCallback(() => {
     let nextMarkdown = "";
     setState((current) => {
-      nextMarkdown = generateClinicalMarkdown(current, data, config);
+      nextMarkdown = generateClinicalMarkdown(current, data);
       return { ...current, markdown: nextMarkdown };
     });
     return nextMarkdown;
-  }, [config, data]);
+  }, [data]);
 
   const buildMarkdown = useCallback((currentState: DisorderAssessmentState = state) => {
-    return generateClinicalMarkdown(currentState, data, config);
-  }, [config, data, state]);
+    return generateClinicalMarkdown(currentState, data);
+  }, [data, state]);
 
   const reset = useCallback(() => {
     const next = makeInitialState();
-    setState({ ...next, markdown: generateClinicalMarkdown(next, data, config) });
-  }, [config, data]);
+    setState({ ...next, markdown: generateClinicalMarkdown(next, data) });
+  }, [data]);
 
   const clusterCounters = useMemo<ClusterCounter[]>(() => {
     return (data.clusters_sintomas ?? []).map((cluster, index) => {

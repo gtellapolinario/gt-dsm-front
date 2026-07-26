@@ -1,0 +1,2025 @@
+{
+  "$schema_version": "gtmedics.dsm.final_json.v2",
+  "chapter_id": "15",
+  "chapter_name": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
+  "capitulo_id": "15",
+  "capitulo_nome": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
+  "source_markdown": "15_disruptivos_impulsos_full_short.md",
+  "normalization_round": "4_super_enriched_release",
+  "patch_count": 3,
+  "source_files": {
+    "rich": "dsm/output/json/15_transtornos_disruptivos_controle_impulsos_conduta.json",
+    "poor": "dsm/output/final_json_poor/15_disruptivos_impulsos_full_short.json",
+    "super_dir": "dsm/output/json_super_adicionado"
+  },
+  "items": [
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "oposicao_desafiante",
+        "nome_completo": "Transtorno de Oposição Desafiante",
+        "sigla": "TOD",
+        "codigo": {
+          "dsm5": "313.81",
+          "cid10": "F91.3",
+          "cid11": "6C90"
+        },
+        "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
+        "capitulo_id": "15",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Humor raivoso, comportamento questionador ou índole vingativa",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 4,
+            "pediatria": 4
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Perde a calma com frequência",
+              "desc": "Perde a calma com frequência.",
+              "pergunta": "Você (ou a criança) perde a calma com frequência, mesmo com estímulos pequenos?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Sensível ou facilmente incomodado",
+              "desc": "É sensível ou facilmente incomodado com frequência.",
+              "pergunta": "Você se irrita ou se incomoda facilmente com coisas que outras pessoas toleram?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Raivoso e ressentido com frequência",
+              "desc": "É raivoso e ressentido com frequência.",
+              "pergunta": "Você se sente frequentemente com raiva ou ressentido?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Questiona figuras de autoridade",
+              "desc": "Questiona figuras de autoridade ou, no caso de crianças e adolescentes, adultos.",
+              "pergunta": "Você questiona ou discute com figuras de autoridade com frequência?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Desafia ou recusa obedecer regras",
+              "desc": "Desafia acintosamente ou se recusa a obedecer a regras ou pedidos de figuras de autoridade.",
+              "pergunta": "Você desafia ou se recusa a seguir regras ou pedidos de autoridade?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Incomoda deliberadamente outras pessoas",
+              "desc": "Incomoda deliberadamente outras pessoas com frequência.",
+              "pergunta": "Você incomoda ou provoca outras pessoas de propósito com frequência?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Culpa outros por seus erros",
+              "desc": "Culpa outros por seus erros ou mau comportamento com frequência.",
+              "pergunta": "Você costuma culpar outras pessoas por seus próprios erros ou comportamento?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Malvado ou vingativo",
+              "desc": "Foi malvado ou vingativo pelo menos duas vezes nos últimos seis meses.",
+              "pergunta": "Nos últimos seis meses, houve pelo menos duas vezes em que você foi deliberadamente vingativo ou malvado?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "duracao_6meses",
+          "letra": "A_cont",
+          "rotulo": "Duração mínima de 6 meses",
+          "tipo": "temporal_duracao_minima",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Padrão de comportamento com duração de pelo menos seis meses. Nota: para <5 anos, na maioria dos dias; para ≥5 anos, pelo menos uma vez por semana.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "nao_irmao",
+          "letra": "A_cont2",
+          "rotulo": "Exibido com pelo menos um indivíduo que não seja irmão",
+          "tipo": "multicontexto",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-users",
+          "ddx_sugeridos": [],
+          "descricao_completa": "O comportamento deve ser exibido na interação com pelo menos um indivíduo que não seja um irmão.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "prejuizo_funcional",
+          "letra": "B",
+          "rotulo": "Sofrimento ou prejuízo funcional",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A perturbação no comportamento está associada a sofrimento para o indivíduo ou para os outros em seu contexto social imediato, ou causa impactos negativos no funcionamento social, educacional, profissional ou outras áreas importantes.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros",
+          "letra": "C",
+          "rotulo": "Não ocorre exclusivamente em curso de outro transtorno",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_psicotico",
+            "transtorno_uso_substancia",
+            "transtorno_depressivo",
+            "transtorno_bipolar",
+            "transtorno_desregulacao_humor"
+          ],
+          "descricao_completa": "Os comportamentos não ocorrem exclusivamente durante o curso de um transtorno psicótico, por uso de substância, depressivo ou bipolar. Além disso, os critérios para transtorno disruptivo da desregulação do humor não são preenchidos.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Sintomas limitam-se a apenas um ambiente."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Alguns sintomas estão presentes em pelo menos dois ambientes."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Alguns sintomas estão presentes em três ou mais ambientes."
+          }
+        ],
+        "regra_atribuicao": "Leve = 1 ambiente; Moderada = 2 ambientes; Grave = 3+ ambientes.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": "TDDH não modelado no dataset atual; hierarquia pendente.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": null
+        },
+        {
+          "id": "academico",
+          "label": "Desempenho Acadêmico/Escolar",
+          "icone_fa": "fa-graduation-cap",
+          "relevante_para": "pediatria"
+        },
+        {
+          "id": "familiar",
+          "label": "Relações Familiares",
+          "icone_fa": "fa-home",
+          "relevante_para": null
+        },
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno da conduta",
+          "ponto_distincao": "TOD não inclui agressão a pessoas/animais, destruição de propriedade ou padrão de roubo/falsidade; inclui desregulação emocional não presente na conduta.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "TDAH",
+          "ponto_distincao": "A desobediência no TDAH ocorre em situações que demandam esforço sustentado; no TOD é mais generalizada.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtornos depressivo e bipolar",
+          "ponto_distincao": "O TOD não deve ser diagnosticado se os sintomas ocorrerem exclusivamente durante o curso de um transtorno do humor.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno explosivo intermitente",
+          "ponto_distincao": "TEI envolve agressão grave dirigida a outros; TOD não inclui agressão física grave.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Deficiência intelectual",
+          "ponto_distincao": "O comportamento opositor deve ser acentuadamente maior do que o observado em indivíduos com idade mental comparável.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "TDAH",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno da conduta",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos de ansiedade",
+          "frequencia": "moderada",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno depressivo maior",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "1–11%, média estimada de 3,3%",
+        "proporcao_sexo": "1,4:1 M:F antes da adolescência",
+        "variacoes_culturais": "Prevalência relativamente consistente entre países com diferentes raças e etnias.",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Anos pré-escolares",
+        "trajetoria": "Pode preceder transtorno da conduta; maioria das crianças com TOD não desenvolve conduta. Risco aumentado para ansiedade e depressão.",
+        "prognostico": "Sintomas desafiantes/questionadores predizem conduta; sintomas de humor predizem transtornos emocionais.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno de Oposição Desafiante - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (313.81 / F91.3)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "15_transtornos_disruptivos,_controle_impulsos_da_conduta.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "oposicao_desafiante",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_clusters_assimetricos",
+        "criteria": [
+          "A. Humor raivoso/irritavel (3 sintomas: perde calma, sensivel, raivoso)",
+          "B. Comportamento questionador/desafiante (4 sintomas: questiona autoridade, desafia regras, incomoda outros, culpa outros)",
+          "C. Indole vingativa (1 sintoma: malvado/vingativo >=2x/6meses)",
+          "D. Perturbacao causa sofrimento OU impactos negativos no funcionome_completonto",
+          "E. Exclusoes: nao ocorre exclusivamente durante psicotico, uso de substancia, depressivo/bipolar, TODD"
+        ],
+        "diagnostic_rule": "A (>=4 sintomas de 8, distribuidos em 3 clusters) + B (sofrimento/prejuizo) + C (exclusoes); frequencia minima: <5 anos=na maioria dos dias, >=5 anos=1x/semana (exceto A8=2x/6meses)",
+        "clusters": [
+          "Humor Raivoso/Irritavel",
+          "Comportamento Questionador/Desafiante",
+          "Indole Vingativa"
+        ],
+        "duration": "6+ meses",
+        "age_onset": null,
+        "functional_impairment": "sofrimento para o individuo ou outros no contexto social, ou impactos negativos no funcionome_completonto social, educacional, profissional",
+        "exclusions": [
+          "transtorno psicotico",
+          "uso de substancia",
+          "transtorno depressivo ou bipolar",
+          "transtorno disruptivo da desregulacao do humor (mutuamente exclusivo)"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "pervasividade_contextual",
+          "levels": [
+            "leve",
+            "moderada",
+            "grave"
+          ],
+          "assignment_rule": "leve = 1 ambiente; moderada = 2 ambientes; grave = 3+ ambientes",
+          "domains": []
+        },
+        "critical_differentials": [
+          "transtorno da conduta",
+          "TDAH",
+          "transtorno depressivo/bipolar",
+          "transtorno disruptivo da desregulacao do humor",
+          "transtorno explosivo intermitente",
+          "deficiencia intelectual",
+          "transtorno de ansiedade social"
+        ],
+        "key_questions": [
+          "Com que frequencia perde a calma ou tem explosoes de raiva?",
+          "Frequentemente irritado, ressentido ou de mau humor?",
+          "Questiona regras, desafia adultos ou se recusa a obedecer?",
+          "Incomoda propositalmente outras pessoas? Culpa outros por erros?",
+          "Ja foi deliberadamente cruel ou vingativo?",
+          "Comportamentos em casa, escola, com colegas? (avaliar pervasividade)",
+          "Ha sofrimento significativo ou prejuizo no funcionome_completonto?",
+          "Sintomas antes dos 5 anos (maioria dos dias) ou depois (1x/semana)?"
+        ],
+        "alerts": [
+          "nao confundir com transtorno da conduta - TOD nao viola direitos fundamentais",
+          "TOD e TODD sao mutuamente exclusivos"
+        ],
+        "source_trace": {
+          "markdown_section": "## 1. TRANSTORNO DE OPOSICAO DESAFIANTE (TOD) - FICHA FULL",
+          "patches_applied": [
+            "CRITICAL: gravidade.tipo ordinal_por_dominio→pervasividade_contextual"
+          ]
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TOD",
+      "codigo_dsm5": "313.81",
+      "codigo_cid10": "F91.3",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 313.81 / F91.3",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Padrao de humor raivoso/irritavel, comportamento questionador/desafiante ou indole vingativa com duracao de pelo menos 6 meses. Exigidos pelo menos 4 sintomas de 3 categorias possiveis, em interacao com pelo menos um individuo que nao seja irmao. As 3 categorias sao: (1) Humor Raivoso/Irritavel — perder a calma, ser sensivel/facilmente incomodado, ser raivoso/ressentido; (2) Comportamento Questionador/Desafiante — questionar autoridades, desafiar recusar regras, incomodar deliberadamente, culpar outros; (3) Indole Vingativa — foi malvado/vingativo pelo menos 2 vezes nos ultimos 6 meses. Criterio B exige sofrimento ou impacto negativo em funcionamento social/educacional/profissional. Criterio C exclui curso exclusivo de transtorno psicotico, uso de substancia, depressivo, bipolar e nao preencher criterios de transtorno disruptivo da desregulacao do humor.",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6C90",
+      "super_enrichment": {
+        "id": "oposicao_desafiante",
+        "nome_original": "TRANSTORNO DE OPOSICAO DESAFIANTE",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "TDAH",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno da conduta",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos de ansiedade",
+            "frequencia": "moderada",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno depressivo maior",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno da conduta",
+            "ponto_distincao": "TOD não inclui agressão a pessoas/animais, destruição de propriedade ou padrão de roubo/falsidade; inclui desregulação emocional não presente na conduta.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "TDAH",
+            "ponto_distincao": "A desobediência no TDAH ocorre em situações que demandam esforço sustentado; no TOD é mais generalizada.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtornos depressivo e bipolar",
+            "ponto_distincao": "O TOD não deve ser diagnosticado se os sintomas ocorrerem exclusivamente durante o curso de um transtorno do humor.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno explosivo intermitente",
+            "ponto_distincao": "TEI envolve agressão grave dirigida a outros; TOD não inclui agressão física grave.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Deficiência intelectual",
+            "ponto_distincao": "O comportamento opositor deve ser acentuadamente maior do que o observado em indivíduos com idade mental comparável.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": "TDDH não modelado no dataset atual; hierarquia pendente."
+        },
+        "prevalencia": {
+          "populacao_geral": "1–11%, média estimada de 3,3%",
+          "proporcao_sexo": "1,4:1 M:F antes da adolescência",
+          "variacoes_culturais": "Prevalência relativamente consistente entre países com diferentes raças e etnias."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Anos pré-escolares",
+          "trajetoria": "Pode preceder transtorno da conduta; maioria das crianças com TOD não desenvolve conduta. Risco aumentado para ansiedade e depressão.",
+          "prognostico": "Sintomas desafiantes/questionadores predizem conduta; sintomas de humor predizem transtornos emocionais."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Transtorno de Oposicao Desafiante",
+          "codigo_dsm5": "313.81 (F91.3)",
+          "categoria": "Transtornos Disruptivos, Controle de Impulsos e da Conduta",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "polythetic_clusters_assimetricos"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A",
+            "texto": "Padrao de humor raivoso/irritavel, comportamento questionador/desafiante ou indole vingativa com duracao de pelo menos 6 meses, com pelo menos **4 sintomas** de qualquer das categorias seguintes, exibido na interacao com pelo menos um individuo que nao seja um irmao.\n\n**CLUSTER 1: Humor Raivoso/Irritavel (frequência mínima: 1x/semana para ≥5 anos; na maioria dos dias para <5 anos)**\n| # | Sintoma |\n|---|---------|\n| A1 | Perde a calma com frequencia |\n| A2 | Sensivel ou facilmente incomodado com frequencia |\n| A3 | Raivoso e ressentido com frequencia |\n\n**CLUSTER 2: Comportamento Questionador/Desafiante (frequência mínima: 1x/semana para ≥5 anos; na maioria dos dias para <5 anos)**\n| # | Sintoma |\n|---|---------|\n| A4 | Questiona figuras de autoridade/adultos com frequencia |\n| A5 | Desafia acintosamente ou se recusa a obedecer a regras com frequencia |\n| A6 | Incomoda deliberadamente outras pessoas com frequencia |\n| A7 | Culpa outros por seus erros ou mau comportamento com frequencia |\n\n**CLUSTER 3: Indole Vingativa (frequência: pelo menos 2x nos últimos 6 meses)**\n| # | Sintoma |\n|---|---------|\n| A8 | Foi malvado ou vingativo pelo menos duas vezes nos ultimos seis meses |"
+          },
+          {
+            "id": "B",
+            "texto": "Perturbacao associada a sofrimento para o individuo ou outros em seu contexto social, OU impactos negativos no funcionamento social, educacional, profissional ou outras areas importantes."
+          },
+          {
+            "id": "C (Exclusoes)",
+            "texto": "Comportamentos NAO ocorrem exclusivamente durante: transtorno psicotico, uso de substancia, transtorno depressivo ou bipolar. Critérios para transtorno disruptivo da desregulacao do humor NAO sao preenchidos."
+          }
+        ],
+        "regra_diagnostica": "TOD = A (≥4 sintomas de 8, distribuidos em 3 clusters) + B (sofrimento/prejuizo) + C (exclusoes)",
+        "clusters": "| Cluster | Limiar | Itens Disponiveis |\n|---------|--------|-------------------|\n| Humor Raivoso/Irritavel | min 1 (contribui para total) | 3 |\n| Comportamento Questionador/Desafiante | min 1 (contribui para total) | 4 |\n| Indole Vingativa | min 1 (contribui para total) | 1 |\n| **TOTAL** | **≥4 de 8** | **8** |",
+        "duracao_idade_prejuizo": {
+          "duracao": "≥6 meses",
+          "frequencia_minima": "<5 anos: na maioria dos dias; ≥5 anos: ≥1x/semana (exceto A8)",
+          "a8_especifico": "≥2x nos ultimos 6 meses"
+        },
+        "prejuizo_funcional": "- Sofrimento para o individuo OU\n- Sofrimento para outros no contexto social imediato (familia, pares, colegas) OU\n- Impactos negativos no funcionamento social, educacional, profissional",
+        "exclusoes_obrigatorias": "1. Transtorno psicotico\n2. Uso de substancia\n3. Transtorno depressivo ou bipolar\n4. Transtorno disruptivo da desregulacao do humor (mutuamente exclusivo)",
+        "subtipos_e_especificadores": [
+          {
+            "gravidade.tipo": "Gravidade",
+            "pervasividade_contextual": "Definicao"
+          },
+          {
+            "gravidade.tipo": "Leve",
+            "pervasividade_contextual": "Sintomas limitam-se a apenas 1 ambiente"
+          },
+          {
+            "gravidade.tipo": "Moderada",
+            "pervasividade_contextual": "Alguns sintomas presentes em ≥2 ambientes"
+          },
+          {
+            "gravidade.tipo": "Grave",
+            "pervasividade_contextual": "Alguns sintomas presentes em ≥3 ambientes"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "Transtorno": "Transtorno da Conduta",
+            "Chave de Diferenciacao": "TC = violacao de direitos/normas (agressao, furto, destruicao); TOD = negativismo sem violacao grave. TOD inclui desregulacao emocional (humor raivoso) que nao esta na TC. Ambos podem ser diagnosticados se criterios preenchidos."
+          },
+          {
+            "Transtorno": "TDAH",
+            "Chave de Diferenciacao": "TOD ≠ falha em obedecer apenas em situacoes que demandam esforco/atencao sustentados."
+          },
+          {
+            "Transtorno": "Transtornos depressivo/bipolar",
+            "Chave de Diferenciacao": "Nao diagnosticar TOD se sintomas ocorrem EXCLUSIVAMENTE durante episodio de humor."
+          },
+          {
+            "Transtorno": "Transtorno disruptivo da desregulacao do humor",
+            "Chave de Diferenciacao": "Mutuamente exclusivo. TODD = humor negativo persistente + explosoes graves; TOD = explosoes menos graves/frequentes."
+          },
+          {
+            "Transtorno": "Transtorno explosivo intermitente",
+            "Chave de Diferenciacao": "TEI = agressao fisica grave dirigida a outros; TOD = raiva verbal, questionamento, sem agressao grave."
+          },
+          {
+            "Transtorno": "Deficiencia intelectual",
+            "Chave de Diferenciacao": "Diagnosticar TOD apenas se comportamento opositor for acentuadamente maior que o esperado para idade mental comparavel."
+          },
+          {
+            "Transtorno": "Transtorno de ansiedade social",
+            "Chave de Diferenciacao": "Diferenciar da recusa decorrente do medo de avaliacao negativa."
+          }
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "Com que frequencia [crianca/paciente] perde a calma ou tem explosoes de raiva?"
+          },
+          {
+            "numero": 2,
+            "texto": "Ele(a) parece frequentemente irritado, ressentido ou de mau humor?"
+          },
+          {
+            "numero": 3,
+            "texto": "Questiona regras, desafia adultos ou se recusa a obedecer com frequencia?"
+          },
+          {
+            "numero": 4,
+            "texto": "Incomoda propositalmente outras pessoas? Culpa outros por seus proprios erros?"
+          },
+          {
+            "numero": 5,
+            "texto": "Ja foi deliberadamente cruel ou vingativo com alguem nas ultimas semanas?"
+          },
+          {
+            "numero": 6,
+            "texto": "Esses comportamentos ocorrem em casa? Na escola? Com colegas?"
+          },
+          {
+            "numero": 7,
+            "texto": "Ha sofrimento significativo para a familia ou prejuizo no funcionamento?"
+          },
+          {
+            "numero": 8,
+            "texto": "Os sintomas comecaram antes dos 5 anos (maioria dos dias) ou depois (1x/semana)?"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/oposicao_desafiante.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "explosivo_intermittente",
+        "nome_completo": "Transtorno Explosivo Intermitente",
+        "sigla": "TEI",
+        "codigo": {
+          "dsm5": "312.34",
+          "cid10": "F63.81",
+          "cid11": "6C91"
+        },
+        "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
+        "capitulo_id": "15",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_monocluster",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Explosões comportamentais recorrentes",
+          "tipo": "polythetic_com_limiar",
+          "limiar": {
+            "adulto": 1,
+            "pediatria": 1
+          },
+          "ancora_obrigatoria": null,
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Agressão verbal ou física frequente sem danos graves",
+              "desc": "Agressão verbal ou física dirigida a propriedade, animais ou outros indivíduos, ocorrendo em média de duas vezes por semana, durante três meses, sem danos ou destruição de propriedade nem lesões físicas.",
+              "pergunta": "Nos últimos 3 meses, houve em média pelo menos duas vezes por semana explosões de agressão verbal ou física que não causaram lesões ou danos graves?",
+              "exemplos_clinicos": [
+                "Acessos de raiva",
+                "Injúrias",
+                "Discussões verbais"
+              ],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Três explosões com danos ou lesões em 12 meses",
+              "desc": "Três explosões comportamentais envolvendo danos ou destruição de propriedade e/ou agressão física com lesões contra animais ou outros indivíduos, ocorrendo dentro de 12 meses.",
+              "pergunta": "No último ano, houve pelo menos três explosões de agressão que causaram danos a propriedade ou lesões físicas a outras pessoas/animais?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "desproporcional",
+          "letra": "B",
+          "rotulo": "Magnitude desproporcional à provocação",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-balance-scale",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A magnitude da agressividade expressa durante as explosões recorrentes é grosseiramente desproporcional em relação à provocação ou a quaisquer estressores psicossociais precipitantes.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "impulsivo_nao_instrumental",
+          "letra": "C",
+          "rotulo": "Não premeditado e sem objetivo tangível",
+          "tipo": "qualitativo_descritivo",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-bolt",
+          "ddx_sugeridos": [],
+          "descricao_completa": "As explosões de agressividade recorrentes não são premeditadas (i.e., são impulsivas e/ou decorrentes de raiva) e não têm por finalidade atingir algum objetivo tangível (p. ex., dinheiro, poder, intimidação).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "prejuizo_sofrimento",
+          "letra": "D",
+          "rotulo": "Sofrimento ou prejuízo funcional/consequências",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "As explosões de agressividade recorrentes causam sofrimento acentuado ao indivíduo ou prejuízo no funcionamento profissional ou interpessoal, ou estão associadas a consequências financeiras ou legais.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "idade_minima",
+          "letra": "E",
+          "rotulo": "Idade cronológica ≥6 anos",
+          "tipo": "temporal_idade_inicio",
+          "ui_widget": "campo_duracao_anos",
+          "obrigatorio": true,
+          "icone_fa": "fa-child",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A idade cronológica é de pelo menos 6 anos (ou nível de desenvolvimento equivalente).",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_outros",
+          "letra": "F",
+          "rotulo": "Não mais bem explicado por outro transtorno ou condição",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "select_multiplos_ddx",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_depressivo_maior",
+            "transtorno_bipolar",
+            "transtorno_desregulacao_humor",
+            "transtorno_psicotico",
+            "transtorno_personalidade_antissocial",
+            "transtorno_personalidade_borderline"
+          ],
+          "descricao_completa": "As explosões de agressividade recorrentes não são mais bem explicadas por outro transtorno mental, condição médica ou efeitos fisiológicos de uma substância. Em crianças de 6 a 18 anos, o comportamento agressivo como parte de transtorno de adaptação não deve ser considerado.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": false,
+        "nome": null,
+        "mutuamente_exclusivos": true,
+        "subtipos": [],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [],
+      "gravidade": {
+        "tipo": "nao_aplica",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": false,
+        "exclui_se_diagnosticado": [],
+        "exclui_diagnostico_de": [],
+        "notas": "Pode ser diagnosticado comorbidamente com TDAH, conduta, TOD ou TEA se as explosões excederem o usual.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": null
+        },
+        {
+          "id": "profissional",
+          "label": "Funcionamento Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "legal",
+          "label": "Consequências Legais",
+          "icone_fa": "fa-gavel",
+          "relevante_para": null
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno disruptivo da desregulação do humor",
+          "ponto_distincao": "TDDH: humor negativo persistente quase todos os dias; TEI: explosões isoladas sem humor crônico. São mutuamente exclusivos.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno da personalidade antissocial ou borderline",
+          "ponto_distincao": "Nesses transtornos, os níveis de agressividade impulsiva são inferiores aos do TEI.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno de adaptação",
+          "ponto_distincao": "Em crianças de 6–18 anos, explosões no contexto de adaptação não contam para TEI.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Intoxicação ou abstinência de substâncias",
+          "ponto_distincao": "Se as explosões estiverem quase sempre associadas a intoxicação/abstinência, não se faz diagnóstico de TEI.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "TDAH, transtorno da conduta, TOD, TEA",
+          "ponto_distincao": "TEI pode ser comórbido se as explosões justificarem atenção clínica independente.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "Transtornos depressivos",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos de ansiedade",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos por uso de substâncias",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno da personalidade antissocial ou borderline",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "2,7% em um ano (definição estrita, EUA)",
+        "proporcao_sexo": "1,4–2,3:1 M:F em alguns estudos",
+        "variacoes_culturais": "Prevalência mais baixa em Ásia, Oriente Médio, Romênia e Nigéria.",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Fase final da infância ou adolescência",
+        "trajetoria": "Características persistentes por muitos anos; curso pode ser episódico ou crônico.",
+        "prognostico": "Relativamente comum independentemente de comorbidades.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno Explosivo Intermitente - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (312.34 / F63.81)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "15_transtornos_disruptivos,_controle_impulsos_da_conduta.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "explosivo_intermittente",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_com_ancora",
+        "criteria": [
+          "A1. Agressao verbal ou fisica sem danos: media de 2x/semana durante 3 meses",
+          "A2. 3 explosoes com danos/destruicao de propriedade e/ou agressao fisica com lesoes em 12 meses",
+          "B. Magnitude desproporcional em relacao a provocacao",
+          "C. Explosoes nao premeditadas (impulsivas) e sem objetivo tangivel",
+          "D. Causam sofrimento acentuado OU prejuizo profissional/interpessoal OU consequencias financeiras/legais",
+          "E. Idade >= 6 anos",
+          "F. Exclusoes: nao melhor explicado por TDM, bipolar, psicose, TAS, borderline, condicao medica, substancia"
+        ],
+        "diagnostic_rule": "A(1 OU 2) + B(desproporcional) + C(impulsiva/nao instrumental) + D(sofrimento/prejuizo) + E(idade>=6) + F(exclusoes)",
+        "clusters": [
+          "Ancora Frequencia (A1)",
+          "Ancora Gravidade (A2)"
+        ],
+        "duration": "3 meses (A1) ou 12 meses acumulado (A2)",
+        "age_onset": ">= 6 anos (diagnostico); tipico fase final infancia/adolescencia; raro apos 40",
+        "functional_impairment": "sofrimento acentuado, prejuizo profissional/interpessoal, consequencias financeiras/legais",
+        "exclusions": [
+          "transtorno depressivo maior",
+          "transtorno bipolar",
+          "transtorno disruptivo da desregulacao do humor (mutuamente exclusivo)",
+          "transtorno psicotico",
+          "transtorno da personalidade antissocial",
+          "transtorno da personalidade borderline",
+          "condicao medica (TCC, Alzheimer, epilepsia)",
+          "efeitos fisiologicos de substancia/medicamento",
+          "transtorno de adaptacao (criancas 6-18 anos)"
+        ],
+        "subtypes_presentations": [],
+        "specifiers": [],
+        "operational_profiles": [
+          {
+            "id": "verbal_predominante",
+            "description": "A1: agressao verbal recorrente sem danos fisicos"
+          },
+          {
+            "id": "agressao_fisica_grave",
+            "description": "A2: explosoes com danos/destruicao ou lesoes"
+          },
+          {
+            "id": "misto",
+            "description": "Padrao A1 + A2 coexistentes"
+          }
+        ],
+        "severity": {
+          "has_formal_severity": false,
+          "type": "nao_aplica",
+          "levels": [],
+          "assignment_rule": null,
+          "domains": []
+        },
+        "critical_differentials": [
+          "TODD (desregulacao do humor)",
+          "transtorno da conduta",
+          "TAS/Borderline",
+          "substancia",
+          "TDAH/TEA/TOD"
+        ],
+        "key_questions": [
+          "Com que frequencia tem explosoes de raiva?",
+          "Explosoes sao desproporcionais a situacao?",
+          "Consegue controlar a raiva antes de explodir?",
+          "Sao impulsivas ou planeja agredir?",
+          "Ja causou danos a propriedade ou lesoes?",
+          "Causaram problemas no trabalho, relacionome_completontos ou justica?",
+          "Idade do inicio foi antes dos 6 anos? (exclusao)",
+          "Explosoes ocorrem apenas quando intoxicado? (exclusao)",
+          "Humor negativo persistente quase todos os dias entre explosoes? (diferenciar TODD)"
+        ],
+        "alerts": [
+          "Mutuamente exclusivo com TODD",
+          "Pode ser diagnostico adicional a TDAH, TC, TOD ou TEA se explosoes excedem as normalmente observadas"
+        ],
+        "source_trace": {
+          "markdown_section": "## 2. TRANSTORNO EXPLOSIVO INTERMITENTE (TEI) - FICHA FULL",
+          "patches_applied": [
+            "HIGH: subtipos movidos para perfis_operacionais (nao aplicado - apply_automatically=false)"
+          ]
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "sigla": "TEI",
+      "codigo_dsm5": "312.34",
+      "codigo_cid10": "F63.81",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 312.34 / F63.81",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Explosoes comportamentais recorrentes representando falha em controlar impulsos agressivos, conforme manifestado por UM dos seguintes: (A1) Agressao verbal ou fisica sem dano/destruicao/lesao, ocorrendo em media 2 vezes por semana durante 3 meses; OU (A2) 3 explosoes com danos/destruicao de propriedade e/ou agressao fisica com lesao fisica contra animais/pessoas em 12 meses. A magnitude da agressividade e grosseiramente desproporcional a provocacao (B). Explosoes nao premeditadas, impulsivas/decorrentes de raiva, sem objetivo tangivel (C). Causam sofrimento acentuado ou prejuizo funcional (D). Idade cronologica >= 6 anos (E). Nao melhor explicadas por outro transtorno mental, condicao medica ou substancia (F). Pode ser feito em adicao a TDAH, transtorno da conduta, TOD ou TEA se explosoes excedem o tipico desses transtornos.",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "codigo_cid11": "6C91",
+      "super_enrichment": {
+        "id": "explosivo_intermittente",
+        "nome_original": "TRANSTORNO EXPLOSIVO INTERMITENTE",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "Transtornos depressivos",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos de ansiedade",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos por uso de substâncias",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno da personalidade antissocial ou borderline",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno disruptivo da desregulação do humor",
+            "ponto_distincao": "TDDH: humor negativo persistente quase todos os dias; TEI: explosões isoladas sem humor crônico. São mutuamente exclusivos.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno da personalidade antissocial ou borderline",
+            "ponto_distincao": "Nesses transtornos, os níveis de agressividade impulsiva são inferiores aos do TEI.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno de adaptação",
+            "ponto_distincao": "Em crianças de 6–18 anos, explosões no contexto de adaptação não contam para TEI.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Intoxicação ou abstinência de substâncias",
+            "ponto_distincao": "Se as explosões estiverem quase sempre associadas a intoxicação/abstinência, não se faz diagnóstico de TEI.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "TDAH, transtorno da conduta, TOD, TEA",
+            "ponto_distincao": "TEI pode ser comórbido se as explosões justificarem atenção clínica independente.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": false,
+          "exclui_se_diagnosticado": [],
+          "exclui_diagnostico_de": [],
+          "notas": "Pode ser diagnosticado comorbidamente com TDAH, conduta, TOD ou TEA se as explosões excederem o usual."
+        },
+        "prevalencia": {
+          "populacao_geral": "2,7% em um ano (definição estrita, EUA)",
+          "proporcao_sexo": "1,4–2,3:1 M:F em alguns estudos",
+          "variacoes_culturais": "Prevalência mais baixa em Ásia, Oriente Médio, Romênia e Nigéria."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Fase final da infância ou adolescência",
+          "trajetoria": "Características persistentes por muitos anos; curso pode ser episódico ou crônico.",
+          "prognostico": "Relativamente comum independentemente de comorbidades."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Transtorno Explosivo Intermitente",
+          "codigo_dsm5": "312.34 (F63.81)",
+          "categoria": "Transtornos Disruptivos, Controle de Impulsos e da Conduta",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "polythetic_com_ancora"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A (Ancora - alternativa 1 OU 2)",
+            "texto": "| Opcao | Descricao | Limiar Temporal |\n|-------|-----------|-----------------|\n| A1 | Agressao verbal ou fisica (sem danos/lesões) a propriedade, animais ou pessoas | Media de 2x/semana durante 3 meses |\n| A2 | 3 explosoes com danos/destruicao de propriedade e/ou agressao fisica com lesões | Dentro de 12 meses |"
+          },
+          {
+            "id": "B",
+            "texto": "Magnitude da agressividade grosseiramente **desproporcional** em relacao a provocacao ou estressores psicossociais."
+          },
+          {
+            "id": "C",
+            "texto": "Explosoes NAO sao premeditadas (impulsivas/decorrentes de raiva) e NAO tem por finalidade atingir objetivo tangivel (dinheiro, poder, intimidacao)."
+          },
+          {
+            "id": "D",
+            "texto": "Causam sofrimento acentuado OU prejuizo profissional/interpessoal OU consequencias financeiras/legais."
+          },
+          {
+            "id": "E",
+            "texto": "Idade cronologica ≥6 anos (ou nivel de desenvolvimento equivalente)."
+          },
+          {
+            "id": "F (Exclusoes)",
+            "texto": "Nao melhor explicado por: TDM, bipolar, psicose, TAS, borderline, condicao medica, efeitos de substancia. Em criancas 6-18 anos: nao considerar se parte de transtorno de adaptacao."
+          }
+        ],
+        "regra_diagnostica": "TEI = A(1 OU 2) + B(desproporcional) + C(impulsiva/nao instrumental) + D(sofrimento/prejuizo) + E(idade≥6) + F(exclusoes)",
+        "clusters_sintomaticos": [
+          {
+            "Dimensao": "A1 - explosoes leves (verbal/fisica sem dano)",
+            "Limiar": "2x/semana x 3 meses"
+          },
+          {
+            "Dimensao": "A2 - explosoes graves (com danos/lesões)",
+            "Limiar": "3 eventos em 12 meses"
+          }
+        ],
+        "duracao_idade_prejuizo": {
+          "duracao_minima": "3 meses (para A1) ou acumulo em 12 meses (para A2)",
+          "idade_minima": "≥6 anos",
+          "inicio_tipico": "Fase final da infancia ou adolescencia; raro apos 40 anos"
+        },
+        "prejuizo_funcional": "- Sofrimento acentuado ao individuo OU\n- Prejuizo profissional ou interpessoal OU\n- Consequencias financeiras ou legais",
+        "exclusoes_obrigatorias": "1. Transtorno depressivo maior\n2. Transtorno bipolar\n3. Transtorno disruptivo da desregulacao do humor (mutuamente exclusivo)\n4. Transtorno psicotico\n5. Transtorno da personalidade antissocial\n6. Transtorno da personalidade borderline\n7. Condicao medica (TCC, Alzheimer, epilepsia)\n8. Efeitos fisiologicos de substancia/medicamento\n9. Transtorno de adaptacao (criancas 6-18 anos)\n\n**Nota:** Pode ser diagnostico adicional a TDAH, TC, TOD ou TEA se explosoes excederem as normalmente observadas nesses transtornos.",
+        "subtipos": [
+          {
+            "Apresentacao": "Predominantemente verbal",
+            "Caracteristicas": "A1: agressao verbal recorrente sem danos fisicos"
+          },
+          {
+            "Apresentacao": "Com agressao fisica grave",
+            "Caracteristicas": "A2: explosoes com danos/destruicao ou lesões"
+          },
+          {
+            "Apresentacao": "Misto",
+            "Caracteristicas": "Padrao A1 + A2 coexistentes"
+          }
+        ],
+        "diferenciais_criticos": [
+          {
+            "Transtorno": "TODD (desregulacao do humor)",
+            "Chave de Diferenciacao": "Mutuamente exclusivo. TODD = humor negativo persistente quase todos os dias + inicio antes dos 10 anos; TEI = explosoes episodicas sem humor cronico."
+          },
+          {
+            "Transtorno": "Transtorno da conduta",
+            "Chave de Diferenciacao": "TC = agressao proativa/predatoria; TEI = agressao impulsiva, nao premeditada."
+          },
+          {
+            "Transtorno": "TAS/Borderline",
+            "Chave de Diferenciacao": "Niveis de agressividade impulsiva inferiores aos do TEI."
+          },
+          {
+            "Transtorno": "Substancia",
+            "Chave de Diferenciacao": "Nao diagnosticar se explosoes quase sempre associadas a intoxicacao/abstinencia."
+          },
+          {
+            "Transtorno": "TDAH/TEA/TOD",
+            "Chave de Diferenciacao": "Agressividade associada a esses transtornos e inferior; se criterios A-E preenchidos e explosoes justificam atencao independente, pode fazer diagnostico adicional."
+          }
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "Com que frequencia voce tem explosoes de raiva ou agressividade?"
+          },
+          {
+            "numero": 2,
+            "texto": "As explosoes sao desproporcionais a situacao que as desencadeou?"
+          },
+          {
+            "numero": 3,
+            "texto": "Voce consegue controlar a raiva antes de explodir?"
+          },
+          {
+            "numero": 4,
+            "texto": "As explosoes sao impulsivas ou voce planeja agredir?"
+          },
+          {
+            "numero": 5,
+            "texto": "Ja causou danos a propriedade ou lesões em outras pessoas?"
+          },
+          {
+            "numero": 6,
+            "texto": "Essas explosoes causaram problemas no trabalho, relacionamentos ou com a justica?"
+          },
+          {
+            "numero": 7,
+            "texto": "A idade do inicio das explosoes foi antes dos 6 anos?"
+          },
+          {
+            "numero": 8,
+            "texto": "As explosoes ocorrem apenas quando voce esta intoxicado?"
+          },
+          {
+            "numero": 9,
+            "texto": "Ha um humor negativo persistente quase todos os dias entre as explosoes?"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/explosivo_intermittente.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": false,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "missing",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    },
+    {
+      "$schema_version": "1.0.0",
+      "meta": {
+        "id": "conduta",
+        "nome_completo": "Transtorno da Conduta",
+        "sigla": null,
+        "codigo": {
+          "dsm5": "312.8",
+          "cid10": "F91.x",
+          "cid11": "6C91"
+        },
+        "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
+        "capitulo_id": "15",
+        "grupo": null,
+        "faixa_etaria_alvo": "ambos",
+        "versao_complementar_existe": false,
+        "sinonimos_historicos": []
+      },
+      "estrutura_geral": "polythetic_com_ancora",
+      "clusters_sintomas": [
+        {
+          "id": "A",
+          "nome": "Comportamentos de violação de direitos ou normas",
+          "tipo": "polythetic_com_ancora",
+          "limiar": {
+            "adulto": 3,
+            "pediatria": 3
+          },
+          "ancora_obrigatoria": {
+            "descricao": "Pelo menos um dos sintomas do cluster A deve estar presente nos últimos seis meses.",
+            "ids_obrigatorios": [
+              "A1",
+              "A2",
+              "A3",
+              "A4",
+              "A5",
+              "A6",
+              "A7",
+              "A8",
+              "A9",
+              "A10",
+              "A11",
+              "A12",
+              "A13",
+              "A14",
+              "A15"
+            ],
+            "n_minimo": 1
+          },
+          "sintomas": [
+            {
+              "id": "A1",
+              "rotulo": "Provoca, ameaça ou intimida outros",
+              "desc": "Frequentemente provoca, ameaça ou intimida outros.",
+              "pergunta": "Você provoca, ameaça ou intimida outras pessoas com frequência?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A2",
+              "rotulo": "Inicia brigas físicas",
+              "desc": "Frequentemente inicia brigas físicas.",
+              "pergunta": "Você começa brigas físicas com frequência?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A3",
+              "rotulo": "Usou arma capaz de causar danos graves",
+              "desc": "Usou alguma arma que pode causar danos físicos graves a outros (p. ex., bastão, tijolo, garrafa quebrada, faca, arma de fogo).",
+              "pergunta": "Você já usou alguma arma ou objeto que poderia causar ferimentos graves em outra pessoa?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A4",
+              "rotulo": "Fisicamente cruel com pessoas",
+              "desc": "Foi fisicamente cruel com pessoas.",
+              "pergunta": "Você foi fisicamente cruel ou violentou outras pessoas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A5",
+              "rotulo": "Fisicamente cruel com animais",
+              "desc": "Foi fisicamente cruel com animais.",
+              "pergunta": "Você foi fisicamente cruel com animais?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A6",
+              "rotulo": "Roubou durante confronto com vítima",
+              "desc": "Roubou durante o confronto com uma vítima (p. ex., assalto, roubo de bolsa, extorsão, roubo à mão armada).",
+              "pergunta": "Você já roubou algo usando força, ameaça ou confrontando a vítima?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A7",
+              "rotulo": "Forçou alguém a atividade sexual",
+              "desc": "Forçou alguém a atividade sexual.",
+              "pergunta": "Você já forçou ou coagiu alguém a praticar atos sexuais?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A8",
+              "rotulo": "Provocou incêndios deliberadamente",
+              "desc": "Envolveu-se deliberadamente na provocação de incêndios com a intenção de causar danos graves.",
+              "pergunta": "Você já provocou incêndios de forma deliberada para causar danos?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A9",
+              "rotulo": "Destruiu deliberadamente propriedade alheia",
+              "desc": "Destruiu deliberadamente propriedade de outras pessoas (excluindo provocação de incêndios).",
+              "pergunta": "Você já destruiu de propósito propriedade ou bens de outras pessoas?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A10",
+              "rotulo": "Invadiu casa, edifício ou carro",
+              "desc": "Invadiu a casa, o edifício ou o carro de outra pessoa.",
+              "pergunta": "Você já invadiu a casa, um prédio ou o carro de outra pessoa?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A11",
+              "rotulo": "Mente para obter bens ou favores (trapaceia)",
+              "desc": "Frequentemente mente para obter bens materiais ou favores ou para evitar obrigações (i.e., 'trapaceia').",
+              "pergunta": "Você mente frequentemente para conseguir coisas, favores ou para escapar de obrigações?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A12",
+              "rotulo": "Furtou itens de valor sem confrontar vítima",
+              "desc": "Furtou itens de valores consideráveis sem confrontar a vítima (p. ex., furto em lojas, mas sem invadir ou forçar a entrada; falsificação).",
+              "pergunta": "Você já furtou itens de valor sem confrontar a vítima (furto em lojas, falsificação)?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": null
+            },
+            {
+              "id": "A13",
+              "rotulo": "Fica fora de casa à noite apesar de proibição (<13a)",
+              "desc": "Frequentemente fica fora de casa à noite, apesar da proibição dos pais, com início antes dos 13 anos de idade.",
+              "pergunta": "Antes dos 13 anos, você ficava fora de casa à noite contra a vontade dos pais?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": "pediatria"
+            },
+            {
+              "id": "A14",
+              "rotulo": "Fugiu de casa pelo menos duas vezes",
+              "desc": "Fugiu de casa, passando a noite fora, pelo menos duas vezes enquanto morando com os pais ou em lar substituto, ou uma vez sem retornar por um longo período.",
+              "pergunta": "Você já fugiu de casa e passou a noite fora pelo menos duas vezes?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": "pediatria"
+            },
+            {
+              "id": "A15",
+              "rotulo": "Falta às aulas com frequência (<13a)",
+              "desc": "Com frequência falta às aulas, com início antes dos 13 anos de idade.",
+              "pergunta": "Antes dos 13 anos, você faltava às aulas com frequência?",
+              "exemplos_clinicos": [],
+              "faixa_aplicavel": "pediatria"
+            }
+          ],
+          "descricao_qualitativa": null,
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "criterios_condicionais": [
+        {
+          "id": "janela_12meses",
+          "letra": "A_cont",
+          "rotulo": "Pelo menos 3 comportamentos nos últimos 12 meses",
+          "tipo": "temporal_duracao_janela",
+          "ui_widget": "campo_duracao_meses",
+          "obrigatorio": true,
+          "icone_fa": "fa-calendar",
+          "ddx_sugeridos": [],
+          "descricao_completa": "Pelo menos três dos 15 comportamentos devem estar presentes nos últimos 12 meses, com pelo menos um comportamento presente nos últimos seis meses.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "prejuizo_funcional",
+          "letra": "B",
+          "rotulo": "Prejuízo clinicamente significativo",
+          "tipo": "prejuizo_funcional",
+          "ui_widget": "toggle_com_justificativa_obrigatoria",
+          "obrigatorio": true,
+          "icone_fa": "fa-check",
+          "ddx_sugeridos": [],
+          "descricao_completa": "A perturbação comportamental causa prejuízos clinicamente significativos no funcionamento social, acadêmico ou profissional.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        },
+        {
+          "id": "exclusao_tpa",
+          "letra": "C",
+          "rotulo": "Não preenche critérios para TPA (se ≥18 anos)",
+          "tipo": "exclusao_diagnostica",
+          "ui_widget": "toggle_simples",
+          "obrigatorio": true,
+          "icone_fa": "fa-ban",
+          "ddx_sugeridos": [
+            "transtorno_personalidade_antissocial"
+          ],
+          "descricao_completa": "Se o indivíduo tem 18 anos ou mais, os critérios para transtorno da personalidade antissocial não são preenchidos.",
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": null,
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "subtipos": {
+        "presente": true,
+        "nome": "Tipo de início",
+        "mutuamente_exclusivos": true,
+        "subtipos": [
+          {
+            "id": "infancia",
+            "codigo": {
+              "dsm5": "312.81",
+              "cid10": "F91.1",
+              "cid11": null
+            },
+            "label": "Tipo com início na infância",
+            "descricao": "Pelo menos um sintoma característico antes dos 10 anos de idade.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "adolescencia",
+            "codigo": {
+              "dsm5": "312.82",
+              "cid10": "F91.2",
+              "cid11": null
+            },
+            "label": "Tipo com início na adolescência",
+            "descricao": "Nenhum sintoma característico antes dos 10 anos de idade.",
+            "sintomas_caracteristicos": []
+          },
+          {
+            "id": "nao_especificado",
+            "codigo": {
+              "dsm5": "312.89",
+              "cid10": "F91.9",
+              "cid11": null
+            },
+            "label": "Início não especificado",
+            "descricao": "Critérios preenchidos, porém sem informações suficientes para determinar a idade de início.",
+            "sintomas_caracteristicos": []
+          }
+        ],
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "especificadores": [
+        {
+          "id": "emocoes_prosociais_limitadas",
+          "nome": "Com emoções pró-sociais limitadas",
+          "tipo": "booleano",
+          "ortogonal": true,
+          "opcoes": [],
+          "metadados": {
+            "completo": true,
+            "lacunas": [],
+            "notas_agente": "Especificador aplicado quando pelo menos duas das quatro características (ausência de remorso, insensível/falta de empatia, despreocupado com desempenho, afeto superficial) estão presentes de forma persistente durante ≥12 meses e em múltiplos contextos.",
+            "fonte_passada_1": true
+          }
+        }
+      ],
+      "gravidade": {
+        "tipo": "ordinal_simples",
+        "niveis": [
+          {
+            "id": "leve",
+            "label": "Leve",
+            "descritor": "Poucos problemas além dos necessários para o diagnóstico; danos relativamente pequenos a outros (mentir, faltar, ficar fora à noite)."
+          },
+          {
+            "id": "moderada",
+            "label": "Moderada",
+            "descritor": "Número de problemas e efeito sobre os outros entre leve e grave (furtar sem confronto, vandalismo)."
+          },
+          {
+            "id": "grave",
+            "label": "Grave",
+            "descritor": "Muitos problemas além dos necessários, ou conduta causando danos consideráveis (sexo forçado, crueldade, armas, roubo com confronto, invasão)."
+          }
+        ],
+        "regra_atribuicao": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "hierarquia": {
+        "presente": true,
+        "exclui_se_diagnosticado": [
+          "tp_antissocial"
+        ],
+        "exclui_diagnostico_de": [],
+        "notas": "Apenas para indivíduos com 18 anos ou mais: TPA exclui o diagnóstico de transtorno da conduta.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "dominios_impacto": [
+        {
+          "id": "social",
+          "label": "Funcionamento Social",
+          "icone_fa": "fa-users",
+          "relevante_para": null
+        },
+        {
+          "id": "academico",
+          "label": "Desempenho Acadêmico",
+          "icone_fa": "fa-graduation-cap",
+          "relevante_para": "pediatria"
+        },
+        {
+          "id": "trabalho",
+          "label": "Desempenho Profissional",
+          "icone_fa": "fa-briefcase",
+          "relevante_para": "adulto"
+        },
+        {
+          "id": "legal",
+          "label": "Consequências Legais",
+          "icone_fa": "fa-gavel",
+          "relevante_para": null
+        }
+      ],
+      "diagnostico_diferencial": [
+        {
+          "condicao": "Transtorno de oposição desafiante",
+          "ponto_distincao": "TOD: comportamentos menos graves, sem agressão grave ou destruição de propriedade; inclui desregulação emocional. Ambos podem ser diagnosticados se critérios preenchidos.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "TDAH",
+          "ponto_distincao": "Comportamento hiperativo/impulsivo no TDAH não viola normas ou direitos alheios por si só.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtornos depressivo e bipolar",
+          "ponto_distincao": "Problemas de conduta devem estar presentes fora dos episódios de humor para justificar diagnóstico comórbido.",
+          "pertence_a_classe": false
+        },
+        {
+          "condicao": "Transtorno explosivo intermitente",
+          "ponto_distincao": "TEI: agressão impulsiva não premeditada sem objetivo tangível; conduta inclui agressão proativa/predatória.",
+          "pertence_a_classe": true
+        },
+        {
+          "condicao": "Transtornos de adaptação",
+          "ponto_distincao": "Adaptação: problemas de conduta em clara associação com estressor psicossocial e dentro de 6 meses após o término.",
+          "pertence_a_classe": false
+        }
+      ],
+      "comorbidades_frequentes": [
+        {
+          "condicao": "TDAH",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno de oposição desafiante",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtornos por uso de substâncias",
+          "frequencia": "alta",
+          "nota": null
+        },
+        {
+          "condicao": "Transtorno específico da aprendizagem",
+          "frequencia": "moderada",
+          "nota": null
+        }
+      ],
+      "instrumentos_complementares": [],
+      "prevalencia": {
+        "populacao_geral": "2–10% em um ano, mediana de 4%",
+        "proporcao_sexo": "Mais elevado no sexo masculino",
+        "variacoes_culturais": "Contexto ambiental (áreas de alto crime, zonas de guerra) pode levar a aplicação incorreta do diagnóstico.",
+        "notas": null,
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "curso_desenvolvimento": {
+        "idade_inicio_tipica": "Começo dos anos pré-escolares até adolescência intermediária",
+        "trajetoria": "Tipo infância: pior prognóstico, mais agressão física, TDAH comórbido. Tipo adolescência: menos agressão, melhor prognóstico. Remissão na vida adulta é comum.",
+        "prognostico": "Persistência mais provável em subtipo infância + emoções pró-sociais limitadas + comorbidade com TDAH e substâncias.",
+        "metadados": {
+          "completo": true,
+          "lacunas": [],
+          "notas_agente": null,
+          "fonte_passada_1": true
+        }
+      },
+      "template_prontuario": {
+        "cabecalho": "## Avaliação do Transtorno da Conduta - {nome_paciente}",
+        "rodape_metodologico": "Anamnese clínica com base nos critérios DSM-5 (312.8 / F91.x)."
+      },
+      "metadados_globais": {
+        "fonte_capitulo_md": "15_transtornos_disruptivos,_controle_impulsos_da_conduta.md",
+        "fonte_inventario_md": null,
+        "data_extracao": "2026-05-31",
+        "modelo_agente": "claude-opus-4",
+        "lacunas_globais": [],
+        "inconsistencias_detectadas": [],
+        "notas_agente_globais": null,
+        "revisao_humana_necessaria": false
+      },
+      "id": "conduta",
+      "category": "FULL",
+      "ui_mode": "structured_full",
+      "render_structured_interview": true,
+      "rendering": {
+        "estrutura_diagnostica": "polythetic_clusters_assimetricos",
+        "criteria": [
+          "A1-A7. Agressao a Pessoas e Animais (7 criterios)",
+          "A8-A9. Destruicao de Propriedade (2 criterios)",
+          "A10-A12. Falsidade ou Furto (3 criterios)",
+          "A13-A15. Violacoes Graves de Regras (3 criterios)",
+          "B. Perturbacao comportamental causa prejuizos clinicamente significativos",
+          "C. Se >=18 anos, criterios para TPA NAO preenchidos"
+        ],
+        "diagnostic_rule": "A (>=3 de 15, sendo >=1 nos ultimos 6 meses) + B(prejuizo) + C(idade>=18 -> nao TAS)",
+        "clusters": [
+          "Agressao a Pessoas e Animais",
+          "Destruicao de Propriedade",
+          "Falsidade ou Furto",
+          "Violacoes Graves de Regras"
+        ],
+        "duration": "12 meses (janela de avaliacao); >=1 sintoma nos ultimos 6 meses",
+        "age_onset": "subtipo inicio infancia: >=1 sintoma antes dos 10 anos; subtipo inicio adolescencia: nenhum antes dos 10",
+        "functional_impairment": "prejuizos clinicamente significativos no funcionome_completonto social, academico ou profissional",
+        "exclusions": [
+          "transtorno da personalidade antissocial (se >=18 anos)"
+        ],
+        "subtypes_presentations": [
+          {
+            "id": "inicio_infancia",
+            "nome_completo": "Inicio na Infancia",
+            "criterion": ">=1 sintoma antes dos 10 anos"
+          },
+          {
+            "id": "inicio_adolescencia",
+            "nome_completo": "Inicio na Adolescencia",
+            "criterion": "nenhum sintoma antes dos 10 anos"
+          },
+          {
+            "id": "inicio_nao_especificado",
+            "nome_completo": "Inicio Nao Especificado",
+            "criterion": "informacoes insuficientes"
+          }
+        ],
+        "specifiers": [
+          {
+            "id": "emocoes_pro_sociais_limitadas",
+            "nome_completo": "Com Emocoes Pro-Sociais Limitadas",
+            "criterion": ">=2 caracteristicas persistentes por >=12 meses: ausencia de remorso, insensivel/falta de empata, despreocupado com desempenho, afeto superficial"
+          }
+        ],
+        "operational_profiles": [],
+        "severity": {
+          "has_formal_severity": true,
+          "type": "contagem_sintomas_e_prejuizo",
+          "levels": [
+            "leve",
+            "moderada",
+            "grave"
+          ],
+          "assignment_rule": "leve: poucos problemas alem do necessario, danos relativamente pequenos; moderada: numero de problemas entre leve e grave; grave: muitos problemas, danos consideraveis",
+          "domains": []
+        },
+        "critical_differentials": [
+          "TOD",
+          "TDAH",
+          "TDM/Bipolar",
+          "transtorno de adaptacao",
+          "TEI"
+        ],
+        "key_questions": [
+          "Ja iniciou brigas fisicas? Com que frequencia?",
+          "Ja usou arma, foi cruel com animais ou pessoas?",
+          "Ja roubou confrontando vitima? Forcou alguem a atividade sexual?",
+          "Ja destruiu propriedade ou provocou incendios?",
+          "Ja invadiu casa/carro? Trapaceou ou furtou?",
+          "Fica fora a noite sem permissao? Faltou as aulas? Fugiu de casa?",
+          "Quando esses comportamentos comecaram? (subtipo)",
+          "Ha prejuizo significativo na escola, familia ou comunidade?",
+          "Demonstra remorso? Preocupa-se com sentimentos dos outros? (especificador pro-social)"
+        ],
+        "alerts": [
+          "Pior prognostico associado ao subtipo de inicio na infancia",
+          "Requer multiplas fontes de informacao; nao se basear apenas em autorrelato para especificador pro-social"
+        ],
+        "source_trace": {
+          "markdown_section": "## 3. TRANSTORNO DA CONDUTA (TC) - FICHA FULL",
+          "patches_applied": []
+        },
+        "category": "FULL",
+        "ui_mode": "structured_full",
+        "render_structured_interview": true
+      },
+      "codigo_dsm5": "312.8",
+      "codigo_cid10": "F91.x",
+      "faixa_etaria_alvo": "ambos",
+      "versao_complementar_existe": false,
+      "inventario_clinico": {
+        "codigo_bruto": "- **Codigo DSM-5 / CID-10:** 312.9 / F91.9",
+        "estrutura_efetiva": "- **Estrutura efetiva:** Categoria residual para apresentacoes em que sintomas caracteristicos de transtorno disruptivo/controle de impulsos/conduta causam sofrimento clinicamente significativo ou prejuizo funcional mas nao satisfazem todos os criterios para qualquer transtorno especifico da classe. O clinico opta por NAO especificar a razao pela qual os criterios nao sao satisfeitos. Inclui apresentacoes com informacoes insuficientes para diagnostico mais especifico (ex.: salas de emergencia).",
+        "notas_clinicas": "- **Notas:**"
+      },
+      "hierarquia_exclusao": {
+        "exclui": [
+          "tp_antissocial"
+        ],
+        "exclui_de": [],
+        "notas_hierarquia": "Apenas para indivíduos com 18 anos ou mais: TPA exclui o diagnóstico de transtorno da conduta."
+      },
+      "codigo_cid11": "6C91",
+      "super_enrichment": {
+        "id": "conduta",
+        "nome_original": "TRANSTORNO DA CONDUTA",
+        "comorbidades_frequentes": [
+          {
+            "condicao": "TDAH",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno de oposição desafiante",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtornos por uso de substâncias",
+            "frequencia": "alta",
+            "nota": null
+          },
+          {
+            "condicao": "Transtorno específico da aprendizagem",
+            "frequencia": "moderada",
+            "nota": null
+          }
+        ],
+        "diagnostico_diferencial": [
+          {
+            "condicao": "Transtorno de oposição desafiante",
+            "ponto_distincao": "TOD: comportamentos menos graves, sem agressão grave ou destruição de propriedade; inclui desregulação emocional. Ambos podem ser diagnosticados se critérios preenchidos.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "TDAH",
+            "ponto_distincao": "Comportamento hiperativo/impulsivo no TDAH não viola normas ou direitos alheios por si só.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtornos depressivo e bipolar",
+            "ponto_distincao": "Problemas de conduta devem estar presentes fora dos episódios de humor para justificar diagnóstico comórbido.",
+            "pertence_a_classe": false
+          },
+          {
+            "condicao": "Transtorno explosivo intermitente",
+            "ponto_distincao": "TEI: agressão impulsiva não premeditada sem objetivo tangível; conduta inclui agressão proativa/predatória.",
+            "pertence_a_classe": true
+          },
+          {
+            "condicao": "Transtornos de adaptação",
+            "ponto_distincao": "Adaptação: problemas de conduta em clara associação com estressor psicossocial e dentro de 6 meses após o término.",
+            "pertence_a_classe": false
+          }
+        ],
+        "hierarquia": {
+          "presente": true,
+          "exclui_se_diagnosticado": [
+            "tp_antissocial"
+          ],
+          "exclui_diagnostico_de": [],
+          "notas": "Apenas para indivíduos com 18 anos ou mais: TPA exclui o diagnóstico de transtorno da conduta."
+        },
+        "prevalencia": {
+          "populacao_geral": "2–10% em um ano, mediana de 4%",
+          "proporcao_sexo": "Mais elevado no sexo masculino",
+          "variacoes_culturais": "Contexto ambiental (áreas de alto crime, zonas de guerra) pode levar a aplicação incorreta do diagnóstico."
+        },
+        "curso_desenvolvimento": {
+          "idade_inicio_tipica": "Começo dos anos pré-escolares até adolescência intermediária",
+          "trajetoria": "Tipo infância: pior prognóstico, mais agressão física, TDAH comórbido. Tipo adolescência: menos agressão, melhor prognóstico. Remissão na vida adulta é comum.",
+          "prognostico": "Persistência mais provável em subtipo infância + emoções pró-sociais limitadas + comorbidade com TDAH e substâncias."
+        },
+        "instrumentos_complementares": [],
+        "identificacao": {
+          "nome": "Transtorno da Conduta",
+          "codigo_dsm5": "312.8x (F91.x)",
+          "categoria": "Transtornos Disruptivos, Controle de Impulsos e da Conduta",
+          "categoria_operacional": "FULL",
+          "estrutura_diagnostica": "polythetic_clusters_assimetricos"
+        },
+        "criterios_obrigatorios": [
+          {
+            "id": "A",
+            "texto": "Padrao de comportamento repetitivo e persistente violando direitos basicos ou normas sociais, com pelo menos **3 dos 15 criterios** nos ultimos 12 meses, com pelo menos **1 criterio presente nos ultimos 6 meses**.\n\n**CLUSTER 1: Agressao a Pessoas e Animais**\n| # | Sintoma |\n|---|---------|\n| A1 | Frequentemente provoca, ameaca ou intimida outros |\n| A2 | Frequentemente inicia brigas fisicas |\n| A3 | Usou arma que pode causar danos fisicos graves |\n| A4 | Fisicamente cruel com pessoas |\n| A5 | Fisicamente cruel com animais |\n| A6 | Roubou durante confronto com vitima (assalto, extorsao) |\n| A7 | Forcou alguem a atividade sexual |\n\n**CLUSTER 2: Destruicao de Propriedade**\n| # | Sintoma |\n|---|---------|\n| A8 | Provocou incendios deliberadamente com intencao de causar danos |\n| A9 | Destruiu deliberadamente propriedade de outros (excluindo incendios) |\n\n**CLUSTER 3: Falsidade ou Furto**\n| # | Sintoma |\n|---|---------|\n| A10 | Invadiu casa, edificio ou carro de outra pessoa |\n| A11 | Frequentemente mente para obter bens/favores ou evitar obrigacoes (\"trapaceia\") |\n| A12 | Furtou itens de valor sem confrontar a vitima (furtos em lojas, falsificacao) |\n\n**CLUSTER 4: Violacoes Graves de Regras**\n| # | Sintoma |\n|---|---------|\n| A13 | Fica fora de casa a noite apesar da proibicao, inicio antes dos 13 anos |\n| A14 | Fugiu de casa pelo menos 2x (ou 1x sem retorno por longo periodo) |\n| A15 | Freqüentemente falta as aulas, inicio antes dos 13 anos |"
+          },
+          {
+            "id": "B",
+            "texto": "Perturbacao comportamental causa prejuizos clinicamente significativos no funcionamento social, academico ou profissional."
+          },
+          {
+            "id": "C",
+            "texto": "Se individuo ≥18 anos, criterios para transtorno da personalidade antissocial NAO sao preenchidos."
+          }
+        ],
+        "regra_diagnostica": "TC = A(≥3 de 15, sendo ≥1 nos ultimos 6 meses) + B(prejuizo) + C(idade≥18 → nao TAS)",
+        "clusters": "| Cluster | Itens Disponiveis | Itens Minimos para Diagnostico |\n|---------|-------------------|-------------------------------|\n| Agressao a Pessoas/Animais | 7 | Contribui para total de 3 |\n| Destruicao de Propriedade | 2 | Contribui para total de 3 |\n| Falsidade/Furto | 3 | Contribui para total de 3 |\n| Violacoes Graves de Regras | 3 | Contribui para total de 3 |\n| **TOTAL** | **15** | **≥3** |",
+        "duracao_idade_prejuizo": {
+          "janela_de_avaliacao": "12 meses",
+          "requisito_de_recencia": "≥1 sintoma nos ultimos 6 meses",
+          "violacoes_de_regras": "Inicio antes dos 13 anos (A13, A15)",
+          "fuga_de_casa": "≥2x (ou 1x sem retorno prolongado); excluir se consequencia direta de abuso"
+        },
+        "prejuizo_funcional": "- Prejuizos clinicamente significativos no funcionamento social, academico ou profissional",
+        "subtipos": [
+          {
+            "Subtipo": "Inicio na infancia",
+            "Critério": "≥1 sintoma antes dos 10 anos",
+            "Codigo": "312.81 (F91.1)"
+          },
+          {
+            "Subtipo": "Inicio na adolescencia",
+            "Critério": "Nenhum sintoma antes dos 10 anos",
+            "Codigo": "312.82 (F91.2)"
+          },
+          {
+            "Subtipo": "Inicio nao especificado",
+            "Critério": "Informacoes insuficientes",
+            "Codigo": "312.89 (F91.9)"
+          }
+        ],
+        "especificador_com_emocoes_pro_sociais_limitadas": "Requer ≥2 caracteristicas persistentes por ≥12 meses em multiplos relacionamentos/ambientes:\n1. Ausencia de remorso ou culpa\n2. Insensivel / falta de empata\n3. Despreocupado com o desempenho\n4. Afeto superficial ou deficiente\n\n**Nota:** Requer multiplas fontes de informacao. Nao se baseia apenas em autorrelato.",
+        "gravidade": {
+          "texto_completo": "| Gravidade | Definicao |\n|-----------|-----------|\n| Leve | Poucos problemas alem do necessario; danos relativamente pequenos (mentir, faltar aula, violacoes de regras) |\n| Moderada | Numero de problemas e efeito entre leve e grave (furtar sem confronto, vandalismo) |\n| Grave | Muitos problemas alem do necessario; danos consideraveis (sexo forcado, crueldade fisica, armas, roubo confrontando vitima, invasao) |"
+        },
+        "exclusoes_obrigatorias": "1. Transtorno da personalidade antissocial (se ≥18 anos, exclusao)",
+        "diferenciais_criticos": [
+          {
+            "Transtorno": "TOD",
+            "Chave de Diferenciacao": "TC = violacao de direitos/normas (agressao, destruicao, furto); TOD = negativismo, humor raivoso. TOD NAO inclui agressao a pessoas/animais, destruicao de propriedade, padrao de furto/falsidade. Ambos podem ser diagnosticados."
+          },
+          {
+            "Transtorno": "TDAH",
+            "Chave de Diferenciacao": "TDAH = hiperatividade/impulsividade disruptiva mas sem violacao de normas. Ambos podem coexistir."
+          },
+          {
+            "Transtorno": "TDM/Bipolar",
+            "Chave de Diferenciacao": "Comportamentos de TC devem persistir em periodos SEM perturbacao do humor (historia previa ou concomitante)."
+          },
+          {
+            "Transtorno": "Transtorno de adaptacao",
+            "Chave de Diferenciacao": "TA = surgimento claro associado a estressor + resolucao em 6 meses; TC = padrao repetitivo/persistente."
+          },
+          {
+            "Transtorno": "TEI",
+            "Chave de Diferenciacao": "TEI = agressao impulsiva sem objetivo tangivel; TC = agressao proativa/predatoria + sintomas nao agressivos."
+          }
+        ],
+        "perguntas_chave_entrevista": [
+          {
+            "numero": 1,
+            "texto": "[Crianca/adolescente] ja iniciou brigas fisicas? Com que frequencia?"
+          },
+          {
+            "numero": 2,
+            "texto": "Ja usou alguma arma, foi cruel com animais ou pessoas?"
+          },
+          {
+            "numero": 3,
+            "texto": "Ja roubou confrontando a vitima? Forcou alguem a atividade sexual?"
+          },
+          {
+            "numero": 4,
+            "texto": "Ja destruiu propriedade de proposito ou provocou incendios?"
+          },
+          {
+            "numero": 5,
+            "texto": "Ja invadiu casa/carro? Ja trapaceou ou furtou em lojas?"
+          },
+          {
+            "numero": 6,
+            "texto": "Fica fora a noite sem permissao? Faltou as aulas com frequencia? Ja fugiu de casa?"
+          },
+          {
+            "numero": 7,
+            "texto": "Quando esses comportamentos comecaram?"
+          },
+          {
+            "numero": 8,
+            "texto": "Ha prejuizo significativo na escola, com a familia ou na comunidade?"
+          },
+          {
+            "numero": 9,
+            "texto": "O individuo demonstra remorso? Preocupa-se com os sentimentos dos outros?"
+          },
+          {
+            "numero": 10,
+            "texto": "Ha historia de abuso fisico/sexual que explique a fuga de casa?"
+          }
+        ],
+        "ui": {}
+      },
+      "super_enrichment_source": "dsm/output/json_super_adicionado/conduta.json",
+      "enrichment_status": {
+        "has_poor": true,
+        "has_master": true,
+        "has_inventory": true,
+        "has_hierarchy": true,
+        "has_cid11": true,
+        "has_super_enrichment": true,
+        "match_notes": {
+          "poor": "id",
+          "master": "id",
+          "inventario": "id",
+          "hierarquia": "id",
+          "cid11": "id",
+          "super": "id"
+        }
+      }
+    }
+  ]
+}

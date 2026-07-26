@@ -1,0 +1,16 @@
+{
+  "$schema_version": "gtmedics.dsm.final_json.v2",
+  "chapter_id": "08",
+  "chapter_name": "Transtornos Dissociativos",
+  "capitulo_id": "08",
+  "capitulo_nome": "Transtornos Dissociativos",
+  "source_markdown": "08_dissociativos_full_short.md",
+  "normalization_round": "4_super_enriched_release",
+  "patch_count": 0,
+  "source_files": {
+    "rich": "dsm/output/json/08_transtornos_dissociativos.json",
+    "poor": "dsm/output/final_json_poor/08_dissociativos_full_short.json",
+    "super_dir": "dsm/output/json_super_adicionado"
+  },
+  "items": []
+}

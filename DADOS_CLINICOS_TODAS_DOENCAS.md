@@ -1116,6 +1116,10 @@
   }
 ```
 
+
+[sd](/root/PROJETOS/limpa.md)
+
+
 ## 📈 Níveis de Gravidade
 ```json
 {
