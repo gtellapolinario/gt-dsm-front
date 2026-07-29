@@ -5,15 +5,15 @@ export const data = FobiaEspecificaSchema.parse({
   "meta": {
     "id": "fobia_especifica",
     "nome_completo": "Fobia Específica",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F40.2",
-        "cid11": "6B03"
-    },
     "capitulo": "Transtornos de Ansiedade",
     "capitulo_id": "transtornos_de_ansiedade",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.29",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F40.2",
             "equivalencia": "direta",

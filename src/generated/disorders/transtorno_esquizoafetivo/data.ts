@@ -5,15 +5,15 @@ export const data = TranstornoEsquizoafetivoSchema.parse({
   "meta": {
     "id": "transtorno_esquizoafetivo",
     "nome_completo": "Transtorno Esquizoafetivo",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F25.9",
-        "cid11": "6A21"
-    },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
     "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "295.70",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F25.9",
             "equivalencia": "direta",

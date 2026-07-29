@@ -5,15 +5,15 @@ export const data = TranstornoCompulsaoAlimentarSchema.parse({
   "meta": {
     "id": "transtorno_compulsao_alimentar",
     "nome_completo": "Transtorno de Compulsão Alimentar",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F50.81",
-        "cid11": "6B82"
-    },
     "capitulo": "Transtornos Alimentares",
     "capitulo_id": "transtornos_alimentares",
     "sigla": "TCA",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "307.51",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F50.81",
             "equivalencia": "contextual",

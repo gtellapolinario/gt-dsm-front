@@ -5,15 +5,15 @@ export const data = TncMaiorSchema.parse({
   "meta": {
     "id": "tnc_maior",
     "nome_completo": "Transtorno Neurocognitivo Maior",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F01 / F02 / F03",
-        "cid11": "6D80 / 6D81 / 6D82 / 6D83 / 6D84 / 6D85 / 6D8Y / 6D8Z"
-    },
     "capitulo": "Transtornos Neurocognitivos",
     "capitulo_id": "transtornos_neurocognitivos",
     "sigla": "TNC Maior",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "294.1x",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": [
                 "F01",

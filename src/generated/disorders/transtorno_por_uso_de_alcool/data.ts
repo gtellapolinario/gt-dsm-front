@@ -5,15 +5,15 @@ export const data = TranstornoPorUsoDeAlcoolSchema.parse({
   "meta": {
     "id": "transtorno_por_uso_de_alcool",
     "nome_completo": "Transtorno por Uso de Álcool",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F10.10 / F10.20",
-        "cid11": "6C40"
-    },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
     "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "303.90",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": [
                 "F10.10",

@@ -5,15 +5,15 @@ export const data = TranstornoEspecificoAprendizagemSchema.parse({
   "meta": {
     "id": "transtorno_especifico_aprendizagem",
     "nome_completo": "Transtorno Específico da Aprendizagem",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F81.0",
-        "cid11": "6A03"
-    },
     "capitulo": "Transtornos do Neurodesenvolvimento",
     "capitulo_id": "transtornos_do_neurodesenvolvimento",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "315.00",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F81.0",
             "equivalencia": "direta",

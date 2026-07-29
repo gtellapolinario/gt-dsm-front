@@ -5,15 +5,15 @@ export const data = TpObsessivoCompulsivoSchema.parse({
   "meta": {
     "id": "tp_obsessivo_compulsivo",
     "nome_completo": "Transtorno da Personalidade Obsessivo-Compulsiva",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F60.5",
-        "cid11": "6D10 / 6D11.4"
-    },
     "capitulo": "Transtornos da Personalidade",
     "capitulo_id": "transtornos_da_personalidade",
     "sigla": "TPOC",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "301.4",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F60.5",
             "equivalencia": "direta",

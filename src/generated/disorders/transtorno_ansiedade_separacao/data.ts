@@ -5,15 +5,15 @@ export const data = TranstornoAnsiedadeSeparacaoSchema.parse({
   "meta": {
     "id": "transtorno_ansiedade_separacao",
     "nome_completo": "Transtorno de Ansiedade de Separação",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F93.0",
-        "cid11": "6B05"
-    },
     "capitulo": "Transtornos de Ansiedade",
     "capitulo_id": "transtornos_de_ansiedade",
     "sigla": "TAS",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "309.21",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F93.0",
             "equivalencia": "direta",

@@ -5,15 +5,15 @@ export const data = DeficienciaIntelectualSchema.parse({
   "meta": {
     "id": "deficiencia_intelectual",
     "nome_completo": "Transtorno do Desenvolvimento Intelectual (Deficiência Intelectual)",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F70–F79",
-        "cid11": "6A00"
-    },
     "capitulo": "Transtornos do Neurodesenvolvimento",
     "capitulo_id": "transtornos_do_neurodesenvolvimento",
     "sigla": "DI",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "319",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F70–F79",
             "equivalencia": "contextual",

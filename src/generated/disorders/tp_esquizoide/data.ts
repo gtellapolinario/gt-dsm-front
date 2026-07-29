@@ -5,15 +5,15 @@ export const data = TpEsquizoideSchema.parse({
   "meta": {
     "id": "tp_esquizoide",
     "nome_completo": "Transtorno da Personalidade Esquizoide",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F60.1",
-        "cid11": "6D10"
-    },
     "capitulo": "Transtornos da Personalidade",
     "capitulo_id": "transtornos_da_personalidade",
     "sigla": "TPE",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "301.20",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F60.1",
             "equivalencia": "direta",

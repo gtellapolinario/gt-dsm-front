@@ -5,15 +5,15 @@ export const data = TpBorderlineSchema.parse({
   "meta": {
     "id": "tp_borderline",
     "nome_completo": "Transtorno da Personalidade Borderline",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F60.3",
-        "cid11": "6D10 / 6D11.5"
-    },
     "capitulo": "Transtornos da Personalidade",
     "capitulo_id": "transtornos_da_personalidade",
     "sigla": "TPB",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "301.83",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F60.3",
             "equivalencia": "direta",

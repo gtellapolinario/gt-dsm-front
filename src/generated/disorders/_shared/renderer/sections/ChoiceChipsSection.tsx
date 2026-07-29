@@ -2,8 +2,8 @@ import type { ChoiceSlice } from "../model/assessmentPort";
 import { normalizeChoiceItems } from "../../utils/disorderDataAccess";
 import { ToggleChip } from "../ui/ToggleChip";
 import { ItemIcon } from "../ui/ItemIcon";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
+import { Field, FieldLabel } from "@ui/field";
+import { Textarea } from "@ui/textarea";
 
 export function ChoiceChipsSection({
   data,
@@ -24,7 +24,7 @@ export function ChoiceChipsSection({
   if (items.length === 0) return null;
   return (
     <div className="p-5 space-y-3">
-      <p className="text-sm text-text-3">{hint}</p>
+      <p className="text-shadow-xs font-serif text-sm font-medium italic leading-relaxed text-stone-500 text-justify text-wrap mx-3">{hint}</p>
       <div className="flex flex-wrap gap-2">
         {items.map((item) => (
           <ToggleChip

@@ -5,15 +5,15 @@ export const data = TranstornoEscoriacaoSchema.parse({
   "meta": {
     "id": "transtorno_escoriacao",
     "nome_completo": "Transtorno de Escoriação (Skin-Picking)",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "L98.1",
-        "cid11": "6B25.1"
-    },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
     "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "698.4",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "L98.1",
             "equivalencia": "direta",

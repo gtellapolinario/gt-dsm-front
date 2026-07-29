@@ -5,15 +5,15 @@ export const data = TpAntissocialSchema.parse({
   "meta": {
     "id": "tp_antissocial",
     "nome_completo": "Transtorno da Personalidade Antissocial",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F60.2",
-        "cid11": "6D10"
-    },
     "capitulo": "Transtornos da Personalidade",
     "capitulo_id": "transtornos_da_personalidade",
     "sigla": "TPA",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "301.7",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F60.2",
             "equivalencia": "direta",

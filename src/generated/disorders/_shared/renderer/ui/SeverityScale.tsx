@@ -7,10 +7,10 @@ export function SeverityScale({
   readonly levels: readonly { label: string; descritor: string | null }[];
 }) {
   const tints = [
-    "bg-emerald-800 dark:bg-emerald-800",
-    "bg-amber-400 dark:bg-amber-500",
-    "bg-orange-400 dark:bg-orange-500",
-    "bg-red-400 dark:bg-red-500",
+    "bg-emerald-800",
+    "bg-amber-400",
+    "bg-orange-400",
+    "bg-red-400",
   ];
   return (
     <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:gap-4">

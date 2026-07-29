@@ -5,15 +5,15 @@ export const data = OposicaoDesafianteSchema.parse({
   "meta": {
     "id": "oposicao_desafiante",
     "nome_completo": "Transtorno de Oposição Desafiante",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F91.3",
-        "cid11": "6C90"
-    },
     "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
     "capitulo_id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
     "sigla": "TOD",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "313.81",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F91.3",
             "equivalencia": "contextual",

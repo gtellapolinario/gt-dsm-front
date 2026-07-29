@@ -2,9 +2,9 @@ import { MessageSquare } from "lucide-react";
 import type { ClinicalDisorder } from "../../schema";
 import type { SymptomSlice } from "../model/assessmentPort";
 import { SymptomSeveritySelect } from "../ui/SymptomSeveritySelect";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Field, FieldLabel } from "@ui/field";
+import { Textarea } from "@ui/textarea";
+import { Checkbox } from "@ui/checkbox";
 
 export function ClusterSection({
   cluster,
@@ -16,7 +16,7 @@ export function ClusterSection({
   return (
     <div>
       {cluster.descricao ? (
-        <p className="px-5 pt-4 text-sm text-text-3 leading-relaxed">
+        <p className="px-5 pt-4 text-shadow-xs font-serif text-sm font-medium italic leading-relaxed text-stone-500 text-justify text-wrap mx-3">
           {cluster.descricao}
         </p>
       ) : null}
@@ -26,7 +26,7 @@ export function ClusterSection({
           return (
             <div
               key={symptom.id}
-              className="flex items-start gap-3 p-2.5 rounded-lg transition hover:bg-surface-2"
+              className="flex flex-wrap items-start gap-2 mt-4  p-2.5 rounded-xl shadow-md bg-gray-100/80 transition hover:bg-surface-2"
             >
               <Checkbox
                 id={`sym-${symptom.id}`}
@@ -39,36 +39,38 @@ export function ClusterSection({
               />
               <label
                 htmlFor={`sym-${symptom.id}`}
-                className="flex-1 cursor-pointer select-none"
+                className="flex-1 min-w-56 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-2 mb-0.5">
                   <span className="text-sm font-semibold tracking-wide uppercase text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
                     {symptom.id}
                   </span>
-                  <span className="text-md font-semibold text-text">
+                  <span className="text-md font-semibold text-stone-800">
                     {symptom.rotulo ?? symptom.texto ?? symptom.id}
                   </span>
                 </div>
                 {(symptom.desc ?? symptom.descricao ?? symptom.texto) ? (
-                  <p className="text-sm text-text-2 leading-relaxed mb-1">
+                  <p className="text-shadow-xs font-serif text-sm font-medium leading-relaxed text-stone-700 text-justify text-wrap mb-1">
                     {symptom.desc ?? symptom.descricao ?? symptom.texto}
                   </p>
                 ) : null}
                 {symptom.pergunta ? (
-                  <p className="text-sm text-text-3 italic leading-relaxed">
+                  <p className="text-shadow-xs font-serif text-sm font-medium italic leading-relaxed text-stone-500">
                     <MessageSquare className="mr-1 inline h-3 w-3 not-italic" />
                     {symptom.pergunta}
                   </p>
                 ) : null}
               </label>
-              <SymptomSeveritySelect
-                value={
-                  assessment.state.symptomSeverity[symptom.id] ?? "ausente"
-                }
-                onChange={(value) =>
-                  assessment.setSymptomSeverity(symptom.id, value)
-                }
-              />
+              <div className="ml-auto">
+                <SymptomSeveritySelect
+                  value={
+                    assessment.state.symptomSeverity[symptom.id] ?? "ausente"
+                  }
+                  onChange={(value) =>
+                    assessment.setSymptomSeverity(symptom.id, value)
+                  }
+                />
+              </div>
             </div>
           );
         })}

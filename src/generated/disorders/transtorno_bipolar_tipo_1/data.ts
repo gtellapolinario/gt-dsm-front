@@ -5,15 +5,15 @@ export const data = TranstornoBipolarTipo1Schema.parse({
   "meta": {
     "id": "transtorno_bipolar_tipo_1",
     "nome_completo": "Transtorno Bipolar Tipo I",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F31",
-        "cid11": "6A60"
-    },
     "capitulo": "Transtorno Bipolar e Transtornos Relacionados",
     "capitulo_id": "transtorno_bipolar_e_transtornos_relacionados",
     "sigla": "TB I",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "296.40",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F31",
             "equivalencia": "contextual",

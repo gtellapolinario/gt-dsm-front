@@ -5,15 +5,15 @@ export const data = ExplosivoIntermittenteSchema.parse({
   "meta": {
     "id": "explosivo_intermittente",
     "nome_completo": "Transtorno Explosivo Intermitente",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F63.81",
-        "cid11": "6C73"
-    },
     "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
     "capitulo_id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
     "sigla": "TEI",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "312.34",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F63.81",
             "equivalencia": "direta",

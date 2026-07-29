@@ -5,15 +5,15 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
   "meta": {
     "id": "transtorno_deficit_atencao_hiperatividade",
     "nome_completo": "Transtorno de Déficit de Atenção/Hiperatividade",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F90.2",
-        "cid11": "6A05"
-    },
     "capitulo": "Transtornos do Neurodesenvolvimento",
     "capitulo_id": "transtornos_do_neurodesenvolvimento",
     "sigla": "TDAH",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "314.01",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F90.2",
             "equivalencia": "direta",
@@ -57,8 +57,8 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
   "estrutura_geral": "polythetic_clusters_simetricos",
   "clusters_sintomas": [
     {
-        "id": "A",
-        "nome": "Desatenção e hiperatividade ou impulsividade",
+        "id": "A1",
+        "nome": "Desatenção",
         "tipo": "polythetic_com_limiar",
         "limiar": {
             "adulto": 5,
@@ -67,7 +67,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
         "ancora_obrigatoria": null,
         "sintomas": [
             {
-                "id": "A1",
+                "id": "A1a",
                 "rotulo": "Erros por descuido ou falta de atenção a detalhes",
                 "desc": "Frequentemente deixa de prestar atenção a detalhes ou comete erros por descuido em atividades escolares, no trabalho ou durante outras atividades.",
                 "pergunta": "A pessoa costuma cometer erros bobos por distração no trabalho ou estudos, ou deixar passar detalhes importantes em tarefas longas?",
@@ -79,7 +79,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A2",
+                "id": "A1b",
                 "rotulo": "Dificuldade em manter a atenção",
                 "desc": "Frequentemente tem dificuldade em manter a atenção em tarefas ou atividades lúdicas (ex: palestras, conversas, leituras longas).",
                 "pergunta": "Fica muito difícil se concentrar em conversas demoradas, aulas ou leituras de textos extensos sem que sua mente divague?",
@@ -91,7 +91,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A3",
+                "id": "A1c",
                 "rotulo": "Parece não escutar quando se fala diretamente",
                 "desc": "Frequentemente parece não escutar quando alguém lhe dirige a palavra diretamente, com a mente parecendo estar em outro lugar.",
                 "pergunta": "As pessoas costumam reclamar que chamam a pessoa ou falam diretamente com a pessoa e a pessoa parece estar 'no mundo da lua'?",
@@ -103,7 +103,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A4",
+                "id": "A1d",
                 "rotulo": "Não segue instruções e não termina tarefas",
                 "desc": "Frequentemente não segue instruções até o fim e deixa de concluir tarefas escolares, tarefas domésticas ou deveres no trabalho.",
                 "pergunta": "A pessoa costuma iniciar projetos ou tarefas com muito entusiasmo, mas acaba deixando-os pela metade por cansaço ou perda de interesse?",
@@ -115,7 +115,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A5",
+                "id": "A1e",
                 "rotulo": "Dificuldade para organizar tarefas e atividades",
                 "desc": "Frequentemente tem dificuldade para organizar tarefas e atividades (ex: gerenciar materiais, organizar tempo, cumprir prazos).",
                 "pergunta": "Como é a sua capacidade de organizar sua rotina, gerenciar o tempo, prazos e manter seu espaço de trabalho arrumado?",
@@ -127,7 +127,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A6",
+                "id": "A1f",
                 "rotulo": "Evita tarefas que exigem esforço mental prolongado",
                 "desc": "Frequentemente evita, antipatiza ou reluta em envolver-se em tarefas que exijam esforço mental prolongado.",
                 "pergunta": "A pessoa costuma procrastinar ou adiar tarefas longas que exigem muito raciocínio e atenção, como relatórios ou burocracias?",
@@ -139,7 +139,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A7",
+                "id": "A1g",
                 "rotulo": "Perde coisas necessárias para tarefas ou atividades",
                 "desc": "Frequentemente perde objetos necessários para tarefas ou atividades (ex: materiais escolares, carteira, chaves, óculos, celulares).",
                 "pergunta": "A pessoa perde chaves, celular, documentos ou ferramentas de trabalho com uma frequência muito maior do que as outras pessoas?",
@@ -151,7 +151,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A8",
+                "id": "A1h",
                 "rotulo": "Facilmente distraído por estímulos externos",
                 "desc": "Frequentemente é facilmente distraído por estímulos externos (inclusive pensamentos não relacionados em adultos).",
                 "pergunta": "Qualquer barulho na rua ou passagem de uma pessoa na sala de trabalho faz a pessoa perder a concentração no que estava fazendo?",
@@ -163,7 +163,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A9",
+                "id": "A1i",
                 "rotulo": "Esquecido em atividades diárias",
                 "desc": "Frequentemente é esquecido em atividades diárias (ex: tarefas domésticas, pagar contas, manter compromissos).",
                 "pergunta": "A pessoa costuma esquecer compromissos marcados, aniversários importantes ou o pagamento de contas recorrentes no dia a dia?",
@@ -174,8 +174,20 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                     "Esquecer de levar o almoço para o trabalho"
                 ]
             },
+        ]
+    },
+    {
+        "id": "A2",
+        "nome": "Hiperatividade/Impulsividade",
+        "tipo": "polythetic_com_limiar",
+        "limiar": {
+            "adulto": 5,
+            "pediatria": 6
+        },
+        "ancora_obrigatoria": null,
+        "sintomas": [
             {
-                "id": "A10",
+                "id": "A2a",
                 "rotulo": "Remexer-se na cadeira ou batucar mãos/pés",
                 "desc": "Frequentemente remexe as mãos ou os pés ou se contorce na cadeira.",
                 "pergunta": "A pessoa tem dificuldade em ficar sentado imóvel, movimentando constantemente as pernas ou batucando os dedos na mesa?",
@@ -187,7 +199,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A11",
+                "id": "A2b",
                 "rotulo": "Levantar-se quando deveria permanecer sentado",
                 "desc": "Frequentemente levanta-se da cadeira em sala de aula ou em outras situações nas quais se espera que permaneça sentado.",
                 "pergunta": "A pessoa sente necessidade de se levantar ou caminhar em situações em que deveria ficar sentado, como em reuniões ou cinema?",
@@ -199,7 +211,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A12",
+                "id": "A2c",
                 "rotulo": "Correr ou subir nas coisas em situações inapropriadas",
                 "desc": "Frequentemente corre ou sobe nas coisas em situações em que isso é inapropriado (em adolescentes/adultos pode se limitar a sensações subjetivas de inquietude).",
                 "pergunta": "A pessoa sente uma inquietude física interna constante, como se estivesse ligado na tomada, mesmo em momentos de descanso?",
@@ -211,7 +223,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A13",
+                "id": "A2d",
                 "rotulo": "Dificuldade em brincar ou fazer lazer em silêncio",
                 "desc": "Frequentemente tem dificuldade para brincar ou envolver-se em atividades de lazer de forma silenciosa.",
                 "pergunta": "Acha difícil aproveitar momentos de lazer de forma silenciosa e calma, preferindo atividades mais barulhentas ou ativas?",
@@ -223,7 +235,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A14",
+                "id": "A2e",
                 "rotulo": "Inquietude motora extrema e sensação de 'motor ligado'",
                 "desc": "Frequentemente está 'a mil' ou age como se estivesse 'ligado por um motor' (incapaz de ficar parado ou desconfortável em jantares/reuniões).",
                 "pergunta": "As pessoas já disseram que a pessoa parece estar sempre acelerado, ativo demais ou inquieto como se estivesse 'ligado na tomada'?",
@@ -235,7 +247,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A15",
+                "id": "A2f",
                 "rotulo": "Falar em excesso",
                 "desc": "Frequentemente fala em excesso.",
                 "pergunta": "A pessoa percebe que costuma falar muito mais que as outras pessoas em interações sociais, monopolizando conversas?",
@@ -247,7 +259,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A16",
+                "id": "A2g",
                 "rotulo": "Responder a perguntas antes que sejam concluídas",
                 "desc": "Frequentemente deixa escapar uma resposta antes que a pergunta tenha sido concluída ou completa frases dos outros.",
                 "pergunta": "Costuma responder às pessoas ou completar as frases delas antes mesmo que elas terminem de fazer a pergunta?",
@@ -259,7 +271,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A17",
+                "id": "A2h",
                 "rotulo": "Dificuldade em esperar a sua vez",
                 "desc": "Frequentemente tem dificuldade para esperar a sua vez (ex: em filas, conversas).",
                 "pergunta": "Ficar em filas longas ou esperar sua vez no trânsito ou jogos causa um sofrimento ou impaciência extrema em a pessoa?",
@@ -271,7 +283,7 @@ export const data = TranstornoDeficitAtencaoHiperatividadeSchema.parse({
                 ]
             },
             {
-                "id": "A18",
+                "id": "A2i",
                 "rotulo": "Interromper ou intrometer-se nas atividades alheias",
                 "desc": "Frequentemente interrompe ou se intromete em conversas, jogos ou atividades de outros, podendo usar coisas dos outros sem pedir.",
                 "pergunta": "A pessoa costuma se meter em conversas de colegas de trabalho ou jogos alheios de forma intrusiva?",

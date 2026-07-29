@@ -1,7 +1,7 @@
 import type { ClinicalDisorder } from "../../schema";
 
 export interface RawExtras {
-  readonly meta?: { readonly codigo?: { readonly dsm5?: unknown; readonly cid10?: unknown; readonly cid11?: unknown } };
+  readonly meta?: { readonly codificacao?: Record<string, unknown> };
   readonly prevalencia?: Record<string, unknown>;
   readonly curso_desenvolvimento?: Record<string, unknown>;
   readonly gravidade?: Record<string, unknown>;

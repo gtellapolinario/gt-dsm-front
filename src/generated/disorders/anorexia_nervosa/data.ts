@@ -5,15 +5,15 @@ export const data = AnorexiaNervosaSchema.parse({
   "meta": {
     "id": "anorexia_nervosa",
     "nome_completo": "Anorexia Nervosa",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F50.01 / F50.02",
-        "cid11": "6B80"
-    },
     "capitulo": "Transtornos Alimentares",
     "capitulo_id": "transtornos_alimentares",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "307.1",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": [
                 "F50.01",

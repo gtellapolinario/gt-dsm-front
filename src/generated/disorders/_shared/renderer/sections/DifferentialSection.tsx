@@ -1,9 +1,9 @@
 import type { ClinicalDisorder } from "../../schema";
 import type { ChoiceSlice } from "../model/assessmentPort";
 import { normalizeChoiceItems } from "../../utils/disorderDataAccess";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Field, FieldLabel } from "@ui/field";
+import { Textarea } from "@ui/textarea";
+import { Checkbox } from "@ui/checkbox";
 
 export function DifferentialSection({
   data,
@@ -16,12 +16,12 @@ export function DifferentialSection({
   if (items.length === 0) return null;
   return (
     <div className="p-5 space-y-3">
-      <p className="text-sm text-text-3">
+      <p className="text-shadow-xs font-serif text-sm font-medium italic leading-relaxed text-stone-500 text-justify text-wrap mx-3">
         Confirme se cada condição foi considerada e excluída.
       </p>
       <div className="space-y-1">
         {items.map((item) => {
-          const checked = assessment.state.comorbidities[item.id] ?? false;
+          const checked = assessment.state.ddx[item.id] ?? false;
           return (
             <div
               key={item.id}
@@ -31,7 +31,7 @@ export function DifferentialSection({
                 id={`ddx-${item.id}`}
                 checked={checked}
                 onCheckedChange={(v) =>
-                  assessment.setToggle("comorbidities", item.id, v === true)
+                  assessment.setToggle("ddx", item.id, v === true)
                 }
                 className="mt-0.5"
               />
@@ -39,11 +39,11 @@ export function DifferentialSection({
                 htmlFor={`ddx-${item.id}`}
                 className="flex-1 cursor-pointer select-none"
               >
-                <span className="text-md font-semibold text-text">
+                <span className="text-md font-semibold text-stone-800">
                   {item.label}
                 </span>
                 {item.description ? (
-                  <p className="text-sm text-text-2 leading-relaxed">
+                  <p className="text-shadow-xs font-serif text-sm font-medium leading-relaxed text-stone-700 text-justify text-wrap">
                     {item.description}
                   </p>
                 ) : null}

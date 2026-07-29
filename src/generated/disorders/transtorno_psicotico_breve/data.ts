@@ -5,15 +5,15 @@ export const data = TranstornoPsicoticoBreveSchema.parse({
   "meta": {
     "id": "transtorno_psicotico_breve",
     "nome_completo": "Transtorno Psicótico Breve",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F23",
-        "cid11": "6A23"
-    },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
     "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "298.8",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F23",
             "equivalencia": "direta",

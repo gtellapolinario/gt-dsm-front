@@ -5,14 +5,15 @@ import {
   Printer,
   RotateCcw,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@ui/tooltip";
 import type { ClinicalDisorder } from "../../schema";
+import { nosologyCodes } from "../../utils/disorderDataAccess";
 
 export function DisorderHeader({
   data,
@@ -36,11 +37,9 @@ export function DisorderHeader({
   ]
     .filter(Boolean)
     .join(" · ");
-  const codes = [
-    ["DSM-5", data.meta.codigo?.dsm5],
-    ["CID-10", data.meta.codigo?.cid10],
-    ["CID-11", data.meta.codigo?.cid11],
-  ] as const;
+  const codes = nosologyCodes(data)
+    .filter((c) => c.valor !== null)
+    .map((c) => [c.sistema, c.valor] as const);
 
   return (
     <header className="sticky top-0 z-40 bg-muted border-b border-border shadow-sm no-print">
@@ -83,7 +82,9 @@ export function DisorderHeader({
                   <ChevronsDown className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="bottom">Expandir todas as seções</TooltipContent>
+              <TooltipContent side="bottom">
+                Expandir todas as seções
+              </TooltipContent>
             </Tooltip>
 
             <Tooltip>
@@ -98,7 +99,9 @@ export function DisorderHeader({
                   <ChevronsUp className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="bottom">Recolher todas as seções</TooltipContent>
+              <TooltipContent side="bottom">
+                Recolher todas as seções
+              </TooltipContent>
             </Tooltip>
 
             <Tooltip>
@@ -113,7 +116,9 @@ export function DisorderHeader({
                   <Printer className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="bottom">Imprimir relatório clínico</TooltipContent>
+              <TooltipContent side="bottom">
+                Imprimir relatório clínico
+              </TooltipContent>
             </Tooltip>
 
             <Tooltip>
@@ -128,7 +133,9 @@ export function DisorderHeader({
                   <RotateCcw className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="bottom">Limpar respostas da avaliação</TooltipContent>
+              <TooltipContent side="bottom">
+                Limpar respostas da avaliação
+              </TooltipContent>
             </Tooltip>
           </div>
         </TooltipProvider>

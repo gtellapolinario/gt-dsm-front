@@ -20,18 +20,18 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
   SidebarMenuSubButton,
-} from "@/components/ui/sidebar";
+} from "@ui/sidebar";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from "@ui/collapsible";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@ui/tooltip";
 import { cn } from "@/lib/utils";
 import headerImage from "@/assets/icon/image.png";
 
@@ -106,7 +106,7 @@ export function Sidebar() {
                                   "bg-white/15 text-white font-semibold shadow-xs",
                               )}
                             >
-                              <ChevronRight className="h-3 w-3 shrink-0 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-cyan-400" />
+                              <ChevronRight className="h-3 w-3 text-white/80 shrink-0 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 " />
                               <span className="min-w-0 flex-1 truncate text-xs font-medium">
                                 {shortChapterTitle}
                               </span>
@@ -153,10 +153,10 @@ export function Sidebar() {
                                     >
                                       <a
                                         href={href}
-                                        className="flex items-center gap-2 h-auto text-xs"
+                                        className="flex items-center gap-2 h-auto"
                                       >
-                                        <FileIcon className="h-3.5 w-3.5 shrink-0 opacity-70 text-cyan-300" />
-                                        <span className="text-xs truncate leading-snug">
+                                        <FileIcon className="h-3.5 w-3.5 shrink-0 opacity-70 text-cyan-200!" />
+                                        <span className="text-xs font-medium truncate leading-snug">
                                           {shortDiseaseTitle}
                                         </span>
                                       </a>
@@ -200,7 +200,7 @@ export function Sidebar() {
 
         <SidebarFooter className="bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]!">
           <div className="p-3 mx-2 mb-2 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-400">
-            GTmedic·DSM v2.2.0
+            GT-DSM ® 2026
           </div>
         </SidebarFooter>
       </ShadcnSidebar>

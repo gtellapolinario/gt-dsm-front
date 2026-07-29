@@ -5,15 +5,15 @@ export const data = TncVascularSchema.parse({
   "meta": {
     "id": "tnc_vascular",
     "nome_completo": "Transtorno Neurocognitivo Vascular Maior ou Leve",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F01",
-        "cid11": "6D81 / 6D71"
-    },
     "capitulo": "Transtornos Neurocognitivos",
     "capitulo_id": "transtornos_neurocognitivos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "290.40",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F01",
             "equivalencia": "contextual",

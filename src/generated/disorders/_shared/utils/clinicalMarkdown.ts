@@ -2,19 +2,21 @@ import type { ClinicalDisorder } from "../schema";
 import type { DisorderAssessmentState } from "../hooks/useDisorderAssessment";
 import {
   disorderName,
-  formatThreshold,
   getDisplayDescription,
   getDisplayLabel,
   getRecordId,
   isRecord,
   normalizeChoiceItems,
+  nosologyCodes,
   stringifyClinicalValue,
   thresholdNumber,
   titleFromValue,
 } from "./disorderDataAccess";
 
-function line(label: string, value: string | null | undefined) {
-  return `- **${label}:** ${value && value.trim().length > 0 ? value : "Não informado"}`;
+function filled(label: string, value: string | null | undefined): string | null {
+  return value && value.trim().length > 0
+    ? `- **${label}:** ${value.trim()}`
+    : null;
 }
 
 /** "1994-02-10" (input date) → "10/02/1994 (32 anos)". */
@@ -40,59 +42,53 @@ function selectedLabels(value: unknown, selected: Record<string, boolean>) {
     .map((item) => item.label);
 }
 
-function conditionalLines(value: unknown, selected: Record<string, boolean>) {
-  return normalizeChoiceItems(value).map((item) => `- ${selected[item.id] ? "[x]" : "[ ]"} **${item.label}**${item.description ? ` — ${item.description}` : ""}`);
-}
-
+/**
+ * Gera o documento clínico SOMENTE com o que o aplicador fez (padrão
+ * script/tdah.html): campos vazios, itens não marcados e conteúdo do
+ * payload (limiares, descrições, escalas) não vão para o markdown.
+ */
 export function generateClinicalMarkdown(state: DisorderAssessmentState, data: ClinicalDisorder): string {
-  const dsm5Code = data.meta?.codigo?.dsm5;
-  const cid10Code = data.meta?.codigo?.cid10;
-  const cid11Code = data.meta?.codigo?.cid11;
-
-  const codes = [
-    dsm5Code ? `DSM-5 ${dsm5Code}` : null,
-    cid10Code ? `CID-10 ${cid10Code}` : null,
-    cid11Code ? `CID-11 ${cid11Code}` : null,
-  ]
-    .filter(Boolean)
+  const codes = nosologyCodes(data)
+    .filter((c) => c.valor !== null)
+    .map((c) => `${c.sistema} ${c.valor}`)
     .join(" · ");
   const clusters = data.clusters_sintomas ?? [];
   const metClusters = clusters.filter((cluster) => cluster.sintomas.filter((symptom) => state.symptomChecked[symptom.id]).length >= thresholdNumber(cluster.limiar, cluster.sintomas.length));
   const requiredConditionals = normalizeChoiceItems(data.criterios_condicionais).filter((item) => isRecord(item.raw) && item.raw.obrigatorio === true);
   const metRequired = requiredConditionals.filter((item) => state.conditionalCriteria[item.id]).length;
+  const confirmedConditionals = normalizeChoiceItems(data.criterios_condicionais).filter((item) => state.conditionalCriteria[item.id]);
   const specs = selectedLabels(data.especificadores, state.specifiers);
   const comorbidities = selectedLabels(data.comorbidades_frequentes, state.comorbidities);
-  const ddx = selectedLabels(data.diagnostico_diferencial, state.comorbidities);
+  const ddx = selectedLabels(data.diagnostico_diferencial, state.ddx);
 
   const output: string[] = [
     `# Avaliação clínica — ${disorderName(data)}`,
     codes ? `_${codes}_` : "",
     "",
     "## Identificação",
-    line("Paciente", state.patient.nomeId),
-    line("Data de nascimento", formatNascimento(state.patient.dataNascimento)),
-    line("Sexo", state.patient.sexo),
-    line("Gênero", state.patient.genero),
-    line("Escolaridade", state.patient.escolaridade),
-    line("Ocupação", state.patient.ocupacao),
-    line("Motivo da consulta", state.patient.queixaPrincipal),
-    "",
-    "## Critérios e sintomas por cluster",
+    `- **Data da avaliação:** ${new Date().toLocaleDateString("pt-BR")}`,
   ];
 
-  if (clusters.length === 0) {
-    output.push("- Não há clusters de sintomas estruturados no payload.");
-  }
+  const identificacao = [
+    filled("Paciente", state.patient.nomeId),
+    filled("Data de nascimento", formatNascimento(state.patient.dataNascimento)),
+    filled("Sexo", state.patient.sexo),
+    filled("Gênero", state.patient.genero),
+    filled("Escolaridade", state.patient.escolaridade),
+    filled("Motivo da consulta", state.patient.queixaPrincipal),
+  ].filter((item): item is string => item !== null);
+  output.push(...identificacao);
 
-  clusters.forEach((cluster, clusterIndex) => {
-    const selectedSymptoms = cluster.sintomas.filter((symptom) => state.symptomChecked[symptom.id]);
-    const threshold = thresholdNumber(cluster.limiar, cluster.sintomas.length);
-    const thresholdLabel = formatThreshold(cluster.limiar) ?? `fallback ≥ ${threshold}`;
-    output.push("", `### ${cluster.nome ?? `Cluster ${clusterIndex + 1}`} (${selectedSymptoms.length}/${threshold})`, `- Limiar: ${thresholdLabel}`);
-    if (cluster.descricao) output.push(`- Descrição: ${cluster.descricao}`);
-    if (selectedSymptoms.length === 0) {
-      output.push("- Nenhum item marcado.");
-    } else {
+  // ─── Sintomas: só os marcados, com gravidade e observações ───
+  const clustersComMarcados = clusters.filter((cluster) =>
+    cluster.sintomas.some((symptom) => state.symptomChecked[symptom.id]),
+  );
+  if (clustersComMarcados.length > 0) {
+    output.push("", "## Critérios e sintomas");
+    clustersComMarcados.forEach((cluster, index) => {
+      const selectedSymptoms = cluster.sintomas.filter((symptom) => state.symptomChecked[symptom.id]);
+      const threshold = thresholdNumber(cluster.limiar, cluster.sintomas.length);
+      output.push("", `### ${cluster.nome ?? `Cluster ${index + 1}`} (${selectedSymptoms.length}/${threshold})`);
       selectedSymptoms.forEach((symptom) => {
         const label = symptom.rotulo ?? symptom.texto ?? symptom.id;
         const severity = state.symptomSeverity[symptom.id] ?? "leve";
@@ -100,38 +96,69 @@ export function generateClinicalMarkdown(state: DisorderAssessmentState, data: C
         const note = state.symptomNotes[symptom.id];
         if (note?.trim()) output.push(`  - Observação: ${note.trim()}`);
       });
-    }
-    const clusterNote = state.clusterNotes[cluster.id];
-    if (clusterNote?.trim()) output.push(`- Observações do cluster: ${clusterNote.trim()}`);
-  });
+      const clusterNote = state.clusterNotes[cluster.id];
+      if (clusterNote?.trim()) output.push(`- *Observações clínicas:* ${clusterNote.trim()}`);
+    });
+  }
 
-  output.push("", "## Critérios condicionais");
-  const conditionals = conditionalLines(data.criterios_condicionais, state.conditionalCriteria);
-  output.push(...(conditionals.length > 0 ? conditionals : ["- Sem critérios condicionais estruturados."]));
+  // ─── Critérios condicionais: só os confirmados ───
+  if (confirmedConditionals.length > 0) {
+    output.push("", `## Critérios condicionais confirmados (${metRequired}/${requiredConditionals.length} obrigatórios)`);
+    confirmedConditionals.forEach((item) => output.push(`- ✓ **${item.label}**`));
+  }
 
-  output.push("", "## Especificadores, DDx e comorbidades");
-  output.push(line("Especificadores", specs.join(", ")));
-  output.push(line("Comorbidades/DDx selecionados", [...comorbidities, ...ddx].join(", ")));
-  output.push(line("Impacto funcional", state.impactFunctional));
+  if (specs.length > 0) {
+    output.push("", "## Especificadores");
+    specs.forEach((label) => output.push(`- ${label}`));
+    const note = state.sectionNotes.especificadores;
+    if (note?.trim()) output.push(`- *Notas:* ${note.trim()}`);
+  }
 
-  output.push("", "## Observações clínicas por seção");
-  const sectionNotes = Object.entries(state.sectionNotes).filter(([, note]) => note.trim().length > 0);
-  output.push(...(sectionNotes.length > 0 ? sectionNotes.map(([section, note]) => `- **${titleFromValue(section)}:** ${note.trim()}`) : ["- Sem observações adicionais registradas."]));
+  if (comorbidities.length > 0) {
+    output.push("", "## Comorbidades");
+    comorbidities.forEach((label) => output.push(`- ${label}`));
+    const note = state.sectionNotes.comorbidades_frequentes;
+    if (note?.trim()) output.push(`- *Detalhamento:* ${note.trim()}`);
+  }
+
+  if (ddx.length > 0) {
+    output.push("", "## Diagnóstico diferencial");
+    ddx.forEach((label) => output.push(`- ✓ Excluído: ${label}`));
+    const note = state.sectionNotes.diagnostico_diferencial;
+    if (note?.trim()) output.push(`- *Notas DDx:* ${note.trim()}`);
+  }
+
+  if (state.impactFunctional !== "ausente") {
+    output.push("", "## Impacto funcional");
+    output.push(`- **Impacto funcional global:** ${state.impactFunctional}`);
+    const note = state.sectionNotes.impacto_funcional;
+    if (note?.trim()) output.push(`- *Observações:* ${note.trim()}`);
+  }
+
+  // Notas de seção com chave fora do mapa acima (nenhuma hoje — defensivo).
+  const notasMapeadas = new Set([
+    "especificadores",
+    "comorbidades_frequentes",
+    "diagnostico_diferencial",
+    "impacto_funcional",
+  ]);
+  const outrasNotas = Object.entries(state.sectionNotes).filter(
+    ([section, note]) => !notasMapeadas.has(section) && note.trim().length > 0,
+  );
+  if (outrasNotas.length > 0) {
+    output.push("", "## Observações clínicas");
+    outrasNotas.forEach(([section, note]) =>
+      output.push(`- **${titleFromValue(section)}:** ${note.trim()}`),
+    );
+  }
 
   output.push("", "## Síntese diagnóstica orientativa");
   output.push(`- Clusters com limiar atingido: ${metClusters.length}/${clusters.length}.`);
-  output.push(`- Critérios obrigatórios marcados: ${metRequired}/${requiredConditionals.length}.`);
+  output.push(`- Critérios obrigatórios confirmados: ${metRequired}/${requiredConditionals.length}.`);
   output.push(`- Hipótese/apresentação: ${metClusters.length === clusters.length && (requiredConditionals.length === 0 || metRequired === requiredConditionals.length) ? "compatibilidade clínica preliminar com os critérios preenchidos" : "compatibilidade parcial; revisar critérios faltantes, prejuízo funcional, exclusões e diagnóstico diferencial"}.`);
-  output.push("- Conclusão orientativa: síntese gerada como apoio ao registro clínico; não substitui entrevista clínica, julgamento profissional, instrumentos validados e avaliação de risco.");
 
-  output.push("", "## Dados clínicos complementares preservados do payload");
-  ["gravidade", "dominios_impacto", "diagnostico_diferencial", "instrumentos_complementares"].forEach((section) => {
-    const value = data[section];
-    if (value !== undefined && value !== null) {
-      const summary = stringifyClinicalValue(value);
-      if (summary) output.push(`- **${titleFromValue(section)}:** ${summary}`);
-    }
-  });
+  output.push("", "---", "");
+  output.push(`> Dados obtidos por avaliação clínica estruturada com base nos critérios DSM-5/DSM-5-TR para ${disorderName(data)}. Ferramenta auxiliar — não substitui entrevista clínica, instrumentos validados ou julgamento profissional.`);
 
   return output.filter((item) => item !== "").join("\n");
 }

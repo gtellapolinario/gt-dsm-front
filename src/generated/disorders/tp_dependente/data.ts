@@ -5,15 +5,15 @@ export const data = TpDependenteSchema.parse({
   "meta": {
     "id": "tp_dependente",
     "nome_completo": "Transtorno da Personalidade Dependente",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F60.7",
-        "cid11": "6D10"
-    },
     "capitulo": "Transtornos da Personalidade",
     "capitulo_id": "transtornos_da_personalidade",
     "sigla": "TPD",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "301.6",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F60.7",
             "equivalencia": "direta",

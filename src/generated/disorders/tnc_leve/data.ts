@@ -5,15 +5,15 @@ export const data = TncLeveSchema.parse({
   "meta": {
     "id": "tnc_leve",
     "nome_completo": "Transtorno Neurocognitivo Leve",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "G31.84",
-        "cid11": "6D71"
-    },
     "capitulo": "Transtornos Neurocognitivos",
     "capitulo_id": "transtornos_neurocognitivos",
     "sigla": "TNC Leve",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "331.83",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "G31.84",
             "equivalencia": "direta",

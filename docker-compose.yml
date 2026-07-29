@@ -1,0 +1,43 @@
+# ──────────────────────────────────────────────────────────────────────────
+# GT-DSM Front — esboço de PRODUÇÃO (Docker Compose + Traefik)
+#
+# SPA estática (Vite build -> nginx) servida em gt-dsm.gtmedics.com.
+# Sem backend: todos os dados clínicos estão no bundle (58 payloads).
+#
+# Pré-requisitos no host (mesma convenção do GT-Medic Escalas):
+#   - Traefik já rodando, com a rede externa `web` e o certresolver `mytlschallenge`.
+#   - DNS de gt-dsm.gtmedics.com apontando para o host.
+#
+# Subir:  docker compose up -d --build
+# ──────────────────────────────────────────────────────────────────────────
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gt-dsm-front:latest
+    container_name: gt-dsm-front
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.gt-dsm.rule=Host(`gt-dsm.gtmedics.com`)"
+      - "traefik.http.routers.gt-dsm.entrypoints=websecure"
+      - "traefik.http.routers.gt-dsm.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.gt-dsm.loadbalancer.server.port=8085"
+      - "traefik.http.routers.gt-dsm-http.rule=Host(`gt-dsm.gtmedics.com`)"
+      - "traefik.http.routers.gt-dsm-http.entrypoints=web"
+      - "traefik.http.routers.gt-dsm-http.middlewares=gt-dsm-redirect"
+      - "traefik.http.middlewares.gt-dsm-redirect.redirectscheme.scheme=https"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8085"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  web:
+    external: true

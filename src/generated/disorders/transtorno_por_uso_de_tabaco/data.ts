@@ -5,15 +5,15 @@ export const data = TranstornoPorUsoDeTabacoSchema.parse({
   "meta": {
     "id": "transtorno_por_uso_de_tabaco",
     "nome_completo": "Transtorno por Uso de Tabaco",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F17.2",
-        "cid11": "6C4A"
-    },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
     "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "305.1",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": [
                 "F17.2"

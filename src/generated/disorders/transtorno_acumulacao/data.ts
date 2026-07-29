@@ -5,15 +5,15 @@ export const data = TranstornoAcumulacaoSchema.parse({
   "meta": {
     "id": "transtorno_acumulacao",
     "nome_completo": "Transtorno de Acumulação",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F42",
-        "cid11": "6B24"
-    },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
     "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.3",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F42",
             "equivalencia": "direta",

@@ -10,8 +10,9 @@
 
 **1 divergência real encontrada e aplicada. Após o port, a refatoração é
 provadamente equivalente ao monobloco: 58/58 rotas com DOM idêntico.**
-O monobloco foi restaurado como entry point — a troca definitiva aguarda
-autorização (rollback: `git checkout -- src/generated/disorders/_shared/DisorderRenderer.tsx`).
+**SWAP EXECUTADO em 2026-07-26** — ver "Prosseguimento executado" abaixo.
+Rollback: `git checkout -- src/generated/disorders/_shared/` ou restaurar
+`script/DisorderRenderer.backup` como `DisorderRenderer.tsx`.
 
 ## Método (3 provas independentes)
 
@@ -71,27 +72,46 @@ ordem de seções, badges, visibilidade condicional (guia, critérios,
 clusters, subtipos, hierarquia, instrumentos) e o contrato `openByDefault`/
 `collapsible` do acordeão.
 
-## Estado do working tree agora
+## Estado do working tree agora (PÓS-SWAP, 2026-07-26)
 
-- `DisorderRenderer.tsx` = **monobloco restaurado** (entry point em produção).
-- `renderer/` = refatoração completa **com o port do header aplicado** —
-  pronta para o swap.
-- `DisorderRendererNew.tsx` = barril candidato (torna-se o conteúdo do
-  `DisorderRenderer.tsx` no swap; arquivo some depois).
-- Backup do monobloco em `/tmp/DisorderRenderer.monobloco.bak` (e no git).
+- `DisorderRenderer.tsx` = **barril de 4 linhas** — a refatoração modular
+  (`renderer/`) é o entry point em produção.
+- `DisorderRendererNew.tsx` = deletado (conteúdo virou o barril).
+- Monobloco preservado em `script/DisorderRenderer.backup` (fora do src),
+  `/tmp/DisorderRenderer.monobloco.bak` e no histórico git.
 
-## Pendências para o prosseguimento (quando autorizado)
+## Prosseguimento executado (2026-07-26)
 
-1. Swap: `DisorderRenderer.tsx` ← barril de 4 linhas (conteúdo de
-   `DisorderRendererNew.tsx`).
-2. `npm run typecheck && npm run build && npm run audit:payloads`.
-3. Re-rodar dump-DOM 58× (sanidade pós-swap definitivo) + 6 screenshots
-   visuais (1 por classe de gravidade + hierarquia).
-4. Deletar `DisorderRendererNew.tsx`.
-5. Abrir as tarefas de dívida catalogadas no relatório do refactor:
-   **D1** ("Expandir" não abre o Guia Clínico — `collapsible: false`) e
-   **D2** (DDx compartilha o namespace `comorbidities` no estado — colisão
-   de ids acopla checkboxes).
+1. Swap feito manualmente; efeito colateral corrigido: a renomeação reescreveu
+   os imports dos 58 `index.tsx` para `DisorderRenderer.backup` — revertidos
+   via `git checkout` (cada diff era só a linha do import).
+2. `typecheck` + `build` + `audit:payloads` verdes.
+3. Dump-DOM 61 rotas pós-swap (`/tmp/domC`) × pré-swap (`/tmp/domB`):
+   **body-DOM 61/61 idêntico**. O diff de CSS era só o scanner do Tailwind:
+   com o monobloco fora do `src/`, utilities que só existiam como literais
+   mortos nele deixaram de ser emitidas (16 variáveis `--color-*`). Varredura
+   das 61 rotas confirmou que toda classe de cor usada no DOM tem regra —
+   exceto `border-slate-800/60` (Sidebar.tsx:72), ausente **igualmente nos
+   dumps A, B e C**: lacuna pré-existente, não regressão do swap.
+4. **Bug descoberto na verificação (pré-datava o swap):** o card de
+   Prevalência nunca renderizava e o "Início típico" sumira do Curso — o
+   enriquecimento v2.3.0 renomeou as chaves do payload
+   (`prevalencia.estimativa/distribuicao_por_sexo/variacoes_contextuais/
+   nota_aplicador`, `curso_desenvolvimento.inicio_tipico`) e o renderer
+   (monobloco e refactor, bug-for-bug) seguia lendo as antigas
+   (`populacao_geral`, `proporcao_sexo`, `variacoes_culturais`, `notas`,
+   `idade_inicio_tipica`). Corrigido em `renderer/adapters/guideAdapter.ts` +
+   `guideView.ts` + `PrevalenceCard.tsx`: **58/58 com card de prevalência e
+   curso completo (3 etapas)**. Verificado em runtime (vite-node) e em
+   screenshots com o guia aberto (agorafobia = sem_niveis_formais,
+   esquizofrenia = formal_dimensional).
+5. Dívidas **D1/D2** resolvidas: D1 (Guia não expansível pelo "Expandir")
+   pelo usuário; D2 (DDx no namespace `comorbidities`) em 2026-07-26 — estado
+   ganhou `ddx: Record<string, boolean>` próprio (`useDisorderAssessment`),
+   `DifferentialSection` e `clinicalMarkdown` passaram a ler `state.ddx`, e o
+   contador "Comorbidades / DDx" do painel soma os dois namespaces (UX
+   preservada). Verificação: nenhuma colisão real de ids nos 58 payloads —
+   era acoplamento estrutural latente, não bug visível.
 
 ## Notas de processo
 

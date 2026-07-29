@@ -1,8 +1,12 @@
 // src/routes/__root.tsx
-// Root layout. Hosts the QueryClientProvider, the theme sync hook, the
-// global ⌘K palette + hotkey, and the <Outlet /> for child routes.
+// Root layout. Hosts the QueryClientProvider, the global ⌘K palette +
+// hotkey, and the <Outlet /> for child routes.
 
-import { Outlet, createRootRouteWithContext, useRouterState } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRouteWithContext,
+  useRouterState,
+} from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export interface RouterContext {
@@ -10,7 +14,7 @@ export interface RouterContext {
 }
 
 import { GTMedicsLoadingModal } from "@/components/workspace/GTMedicsLoadingModal";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@ui/sonner";
 
 export const queryClient = new QueryClient({
   defaultOptions: {

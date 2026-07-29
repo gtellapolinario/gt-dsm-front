@@ -5,15 +5,15 @@ export const data = BulimiaNervosaSchema.parse({
   "meta": {
     "id": "bulimia_nervosa",
     "nome_completo": "Bulimia Nervosa",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F50.2",
-        "cid11": "6B81"
-    },
     "capitulo": "Transtornos Alimentares",
     "capitulo_id": "transtornos_alimentares",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "307.51",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F50.2",
             "equivalencia": "contextual",

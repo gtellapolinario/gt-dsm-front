@@ -5,15 +5,15 @@ export const data = TranstornoPorUsoDeEstimulantesSchema.parse({
   "meta": {
     "id": "transtorno_por_uso_de_estimulantes",
     "nome_completo": "Transtorno por Uso de Estimulantes",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F14 / F15",
-        "cid11": "6C45 / 6C46 / 6C47"
-    },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
     "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "304.40",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": [
                 "F14",

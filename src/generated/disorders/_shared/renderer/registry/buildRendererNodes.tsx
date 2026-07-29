@@ -5,12 +5,19 @@ import {
   FileText,
   Layers,
   ListChecks,
+  RotateCcw,
   SearchCheck,
   SlidersHorizontal,
   TrendingUp,
   UserPen,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@ui/tooltip";
 import type { ClinicalDisorder } from "../../schema";
 import { normalizeChoiceItems } from "../../utils/disorderDataAccess";
 import { conditionalCriteriaItems } from "../adapters/criteriaAdapter";
@@ -25,7 +32,6 @@ import { ImpactSection } from "../sections/ImpactSection";
 import { ChoiceChipsSection } from "../sections/ChoiceChipsSection";
 import { DifferentialSection } from "../sections/DifferentialSection";
 import { MarkdownPreviewSection } from "../sections/MarkdownPreviewSection";
-import { DisorderToolbar } from "../layout/DisorderToolbar";
 import type { RendererNode } from "./sectionDescriptor";
 
 /**
@@ -46,7 +52,7 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
       id: "identificacao",
       icon: UserPen,
       title: "Identificação do Paciente",
-      openByDefault: true,
+      openByDefault: false,
       collapsible: true,
       render: (ctx) => <IdentificationSection assessment={ctx.assessment} />,
     },
@@ -57,7 +63,7 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
       kind: "section",
       id: "guia-clinico",
       icon: BookOpen,
-      iconClass: "text-emerald-600 dark:text-emerald-400",
+      iconClass: "text-emerald-600",
       title: "Guia Clínico & Informativo (Resumo do Aplicador)",
       openByDefault: false,
       collapsible: false,
@@ -70,7 +76,7 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
     id: "painel",
     icon: ListChecks,
     title: "Painel de Critérios",
-    openByDefault: true,
+    openByDefault: false,
     collapsible: true,
     render: (ctx) => (
       <CriteriaPanelSection
@@ -86,7 +92,7 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
       id: "criterios",
       icon: ListChecks,
       title: "Critérios Condicionais",
-      openByDefault: true,
+      openByDefault: false,
       collapsible: true,
       badge: (ctx) => (
         <CountBadge
@@ -102,7 +108,10 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
         />
       ),
       render: (ctx) => (
-        <ConditionalCriteriaSection data={ctx.data} assessment={ctx.assessment} />
+        <ConditionalCriteriaSection
+          data={ctx.data}
+          assessment={ctx.assessment}
+        />
       ),
     });
   }
@@ -114,7 +123,7 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
       icon: ClipboardList,
       iconClass: index % 2 === 0 ? "text-amber-600" : "text-red-600",
       title: `${cluster.id} – ${cluster.nome ?? `Cluster ${index + 1}`}`,
-      openByDefault: true,
+      openByDefault: false,
       collapsible: true,
       badge: (ctx) => {
         const counter = ctx.assessment.clusterCounters.find(
@@ -141,7 +150,9 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
     title: "Avaliação de Impacto Funcional",
     openByDefault: false,
     collapsible: true,
-    render: (ctx) => <ImpactSection data={ctx.data} assessment={ctx.assessment} />,
+    render: (ctx) => (
+      <ImpactSection data={ctx.data} assessment={ctx.assessment} />
+    ),
   });
 
   if (comorbidityItems.length > 0) {
@@ -155,13 +166,10 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
       badge: (ctx) => (
         <CountBadge
           n={
-            Object.values(ctx.assessment.state.comorbidities).filter(
-              Boolean,
-            ).length
+            Object.values(ctx.assessment.state.comorbidities).filter(Boolean)
+              .length
           }
-          met={Object.values(ctx.assessment.state.comorbidities).some(
-            Boolean,
-          )}
+          met={Object.values(ctx.assessment.state.comorbidities).some(Boolean)}
         />
       ),
       render: (ctx) => (
@@ -203,8 +211,10 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
       collapsible: true,
       badge: (ctx) => (
         <CountBadge
-          n={Object.values(ctx.assessment.state.specifiers).filter(Boolean)
-            .length}
+          n={
+            Object.values(ctx.assessment.state.specifiers).filter(Boolean)
+              .length
+          }
           met={Object.values(ctx.assessment.state.specifiers).some(Boolean)}
         />
       ),
@@ -222,49 +232,83 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
   }
 
   nodes.push({
-    kind: "slot",
-    id: "__toolbar",
-    render: (ctx) => (
-      <DisorderToolbar
-        onRefresh={ctx.assessment.refreshMarkdown}
-        onCopy={ctx.onCopy}
-      />
-    ),
-  });
-
-  nodes.push({
     kind: "section",
     id: "markdown",
     icon: FileText,
     title: "Pré-visualização Markdown",
     openByDefault: false,
     collapsible: true,
+    // Ações no header do acordeão, no mesmo padrão dos botões do
+    // DisorderHeader: ícone-only redondo + tooltip. asChild + span porque o
+    // trigger do acordeão já é um <button> (um <button> aqui dentro gera
+    // HTML inválido — erro de hydration).
     badge: (ctx) => (
-      // asChild + span: o trigger do acordeão já é um <button>;
-      // um <button> aqui dentro gera HTML inválido (erro de hydration).
-      <Button asChild variant="secondary" size="xs" className="no-print">
-        <span
-          role="button"
-          tabIndex={0}
-          onClick={(e) => {
-            e.stopPropagation();
-            ctx.onCopy();
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.stopPropagation();
-              e.preventDefault();
-              ctx.onCopy();
-            }
-          }}
-        >
-          <Copy data-icon="inline-start" /> Copiar
-        </span>
-      </Button>
+      <span className="flex items-center gap-2 no-print">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                asChild
+                variant="outline"
+                size="icon"
+                className="h-9 w-9 rounded-full"
+              >
+                <span
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Atualizar síntese"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    ctx.assessment.refreshMarkdown();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      ctx.assessment.refreshMarkdown();
+                    }
+                  }}
+                >
+                  <RotateCcw className="h-4 w-4" />
+                </span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">Atualizar síntese</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                asChild
+                variant="outline"
+                size="icon"
+                className="h-9 w-9 rounded-full"
+              >
+                <span
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Copiar Markdown"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    ctx.onCopy();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      ctx.onCopy();
+                    }
+                  }}
+                >
+                  <Copy className="h-4 w-4" />
+                </span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">Copiar Markdown</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </span>
     ),
-    render: (ctx) => (
-      <MarkdownPreviewSection markdown={ctx.liveMarkdown} onCopy={ctx.onCopy} />
-    ),
+    render: (ctx) => <MarkdownPreviewSection markdown={ctx.liveMarkdown} />,
   });
 
   return nodes;

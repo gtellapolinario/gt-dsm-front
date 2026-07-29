@@ -118,3 +118,44 @@ export function normalizeChoiceItems(value: unknown): Array<{ id: string; label:
 export function disorderName(data: ClinicalDisorder, fallback?: string) {
   return data.meta.nome_completo ?? data.meta.nome ?? fallback ?? data.meta.id;
 }
+
+export interface NosologyCode {
+  readonly sistema: "DSM-5-TR" | "CID-10" | "CID-11";
+  readonly valor: string | null;
+  readonly equivalencia: string | null;
+  readonly regra: string | null;
+}
+
+/**
+ * Fonte canônica dos códigos nosológicos: `meta.codificacao`
+ * (o bloco `meta.codigo` foi aposentado em 2026-07-26 — era incompleto e
+ * duplicado). DSM-5-TR = código editorial ICD-9-CM legacy (`dsm5_tr.codigo`);
+ * CID-10 = `cid10_cm.referencia_base`; CID-11 = `cid11_mms.codigo_base`.
+ */
+export function nosologyCodes(data: ClinicalDisorder): readonly NosologyCode[] {
+  const meta: UnknownRecord = isRecord(data.meta) ? data.meta : {};
+  const cod = isRecord(meta.codificacao) ? meta.codificacao : {};
+  const dsm = isRecord(cod.dsm5_tr) ? cod.dsm5_tr : {};
+  const c10 = isRecord(cod.cid10_cm) ? cod.cid10_cm : {};
+  const c11 = isRecord(cod.cid11_mms) ? cod.cid11_mms : {};
+  return [
+    {
+      sistema: "DSM-5-TR",
+      valor: previewText(dsm.codigo),
+      equivalencia: null,
+      regra: null,
+    },
+    {
+      sistema: "CID-10",
+      valor: previewText(c10.referencia_base),
+      equivalencia: previewText(c10.equivalencia),
+      regra: previewText(c10.regra),
+    },
+    {
+      sistema: "CID-11",
+      valor: previewText(c11.codigo_base),
+      equivalencia: previewText(c11.equivalencia),
+      regra: previewText(c11.regra),
+    },
+  ];
+}

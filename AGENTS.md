@@ -10,6 +10,9 @@ Tailwind v4 + shadcn/radix + zustand + zod.
   o `vite.config.ts` diz 3000, mas a 3000 é de outro projeto na máquina).
 - `npm run typecheck` — `tsc -b --noEmit` (rode após qualquer mudança).
 - `npm run build` — `vite build`.
+- `docker compose up -d --build` — esboço de produção (nginx estático +
+  Traefik na rede `web`, host `gt-dsm.gtmedics.com`; ver `Dockerfile` e
+  `docker/nginx.conf` com SPA fallback).
 - Não há testes nem linter configurados.
 
 ## Arquitetura
@@ -23,11 +26,21 @@ Tailwind v4 + shadcn/radix + zustand + zod.
   **manuais**; não regerar nem esperar regeneração. Anomalias de dado são
   corrigidas diretamente nos `data.ts`.
 - `src/generated/disorders/_shared/` — tudo que é comum:
-  - `DisorderRenderer.tsx` — renderer único e genérico dos 58 transtornos.
+  - `DisorderRenderer.tsx` — **barril de 4 linhas** (re-exporta
+    `DisorderRendererView` de `./renderer/`); caminho e named export
+    preservados para os 58 wrappers. Desde 2026-07-26 a implementação é a
+    refatoração modular em `renderer/` (adapters/ports/registry/sections/
+    layout/ui), auditada como DOM-idêntica ao monobloco — ver
+    `AUDITORIA-monobloco-x-refactor.md`. O monobloco (1.782 linhas) sobrevive
+    apenas como backup em `script/DisorderRenderer.backup` — não editar nem
+    reimportar de lá.
     **Decisão de arquitetura: um renderer só, dirigido pelo payload. NÃO criar
     renderer por estrutura nem por transtorno** (o passado tinha 60 cópias de
     313 linhas; ver `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`).
   - `hooks/useDisorderAssessment.ts` — estado da avaliação + markdown.
+    Namespaces de toggles: `conditionalCriteria`, `specifiers`,
+    `comorbidities` e `ddx` (D2 resolvido em 2026-07-26 — DDx não
+    compartilha mais o namespace `comorbidities`).
   - `utils/disorderDataAccess.ts` — acesso defensivo ao payload (`isRecord`,
     `normalizeChoiceItems`, `thresholdNumber`, ...).
   - `Markdown.tsx` — wrapper de `react-markdown` + `remark-gfm` +
@@ -61,7 +74,8 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
   `ancora_obrigatoria` é `{descricao, ids_obrigatorios, n_minimo}` ou `null`.
 - Critério condicional: shape uniforme `{id, letra, rotulo, tipo, ui_widget,
   obrigatorio, icone, ddx_sugeridos, descricao_completa, metadados}`.
-- **Sanitização 2026-07 (2 ondas):** raiz limpa — códigos só em `meta.codigo`;
+- **Sanitização 2026-07 (2 ondas):** raiz limpa — códigos só em
+  `meta.codificacao` (até 2026-07-26 era `meta.codigo`, aposentado);
   identificação só em `meta`; sem `metadados` de pipeline aninhados (573
   blocos removidos, conteúdo vivo resgatado em `RESCUE_METADADOS.md`);
   `rendering.severity`/`subtypes_presentations` e `hierarquia_exclusao`
@@ -72,8 +86,7 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
   `campos_complementares_dsm5tr_revisados_58.md` + `.json`):**
   `$schema_version: "2.2.0"` nos 58. Novos/blocos revistos:
   `codificacao.cid11_mms` (CID-11 MMS 2026-01: codigo_base, equivalencia,
-  regra, versao — ainda não exibido na UI; o card nosológico segue em
-  `meta.codigo`); `subtipos` com `formal_dsm` + `nota_aplicador` (18 formais,
+  regra, versao — exibido no card nosológico desde 2026-07-26); `subtipos` com `formal_dsm` + `nota_aplicador` (18 formais,
   40 com nota de ausência — a nota ainda não é exibida; chips leem
   `subtipos.subtipos[].label`); `instrumentos_complementares` (99, com
   sigla/uso/faixa/nota APA — nunca diagnóstico isolado);
@@ -83,16 +96,34 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
   resolve rótulo/descrição); `dominios_impacto` (154, com `icone` Lucide —
   todo nome novo DEVE existir em `mapear-icones.ts`).
 - **v2.3.0 (meta/prevalência/curso, fonte:
-  `docs/meta_prevalencia_curso_dsm5tr_revisados_58.json`):** `meta.codigo.dsm5`
-  pode ser string vazia (DSM não é código — APA; o card nosológico omite);
-  `meta.codigo.cid10`/`cid11` com múltiplos códigos vêm **joinados com
-  " / "** (normalizado de arrays — nunca reintroduzir array, o Zod exige
-  string); `meta.sigla` é sempre string ou null (a forma objeto
+  `docs/meta_prevalencia_curso_dsm5tr_revisados_58.json`):**
+  **`meta.codigo` foi APOSENTADO em 2026-07-26** (era incompleto — `dsm5`
+  sempre vazio — e duplicado; removido dos 58 payloads, do `MetaSchema` e do
+  `CodigoSchema`). A fonte canônica de códigos é **`meta.codificacao`**, lida
+  via `nosologyCodes()` de `utils/disorderDataAccess.ts` (usado pelo card
+  nosológico, pelo header e pelo markdown — nunca ler outro caminho):
+  - `dsm5_tr.codigo` — código editorial ICD-9-CM legacy do DSM-5-TR (ex.:
+    agorafobia = 300.22; fonte: `codificacao_dsm5tr_legacy_58.md`, injetado
+    em 2026-07-26 como primeira chave do bloco; os 58 têm);
+  - `cid10_cm.{referencia_base, equivalencia, regra, sistema}` — CID-10-CM;
+  - `cid11_mms.{codigo_base, equivalencia, regra, versao}` — CID-11 MMS.
+  O card nosológico exibe as 3 células + badge de equivalência não-direta +
+  notas (legacy do DSM e `regra` das equivalências contextuais).
+  `meta.sigla` é sempre string ou null (a forma objeto
   `{valor, ambigua, nota}` foi normalizada; siglas ambíguas como TAS têm a
   nota preservada em `meta.terminologia_relacionada` com
   `status: "sigla_ambigua"`); `meta.capitulo_id` é slug
   (ex.: "transtornos_depressivos") — o mapeamento para capítulos DSM usa o
   `generatedDisorderMetadata` do registry, não este campo.
+  **`prevalencia`/`curso_desenvolvimento` — chaves canônicas v2.3.0** (o
+  renderer lê APENAS estas; as antigas `populacao_geral`, `proporcao_sexo`,
+  `variacoes_culturais`, `notas`, `idade_inicio_tipica` não existem mais em
+  nenhum payload — reintroduzi-las quebra o card silenciosamente):
+  `prevalencia.{tipo_estimativa, estimativa, distribuicao_por_sexo,
+  variacoes_contextuais, nota_aplicador}` e
+  `curso_desenvolvimento.{inicio_tipico, trajetoria, prognostico,
+  nota_aplicador}`. `tipo_estimativa` (ex.: "prevalencia_12_meses") e o
+  `nota_aplicador` do curso ainda não são exibidos.
 - **Gravidade — fonte da verdade: `gravidade_dsm5tr_58_transtornos.md`.**
   O campo `gravidade.classificacao_dsm` discrimina 5 classes
   (`formal_categorica`, `formal_dimensional`, `formal_contextual`,
@@ -116,13 +147,37 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
   do componente Lucide (`"Ban"`, `"Scale"`...). `src/lib/mapear-icones.ts`
   mapeia nome → componente; ícone novo no payload = adicionar 1 linha lá.
   Font Awesome está proibido (foi removido; não reintroduzir).
+- **Tema único: claro.** Sem variantes dark — o bloco `.dark` do `index.css`,
+  os tokens `dark:*` dos componentes e o `next-themes` foram removidos em
+  2026-07-26; `index.css` declara `color-scheme: light` no `:root`. Não
+  reintroduzir `dark:` nem seletor `.dark`.
 - **Classes de cor:** além dos tokens shadcn, existem aliases em
   `src/index.css` (`@theme inline`): `text-text`, `text-text-2`, `text-text-3`,
   `bg-bg`, `bg-surface`, `bg-surface-2`. Não inventar variantes novas sem
-  declarar o token.
+  declarar o token. O mesmo vale para `text-md` (font-size): a escala do
+  Tailwind pula de `sm` para `base` — o token `--text-md` (1rem) foi
+  declarado no `@theme inline` para a classe existir.
 - **Null-safe na UI:** campo ausente/nulo no payload = não renderizar o bloco
   (sem placeholders). Ex.: `ClinicalGuideSection` some inteira sem dados.
-- **Markdown:** sempre via `Markdown`/`MarkdownInline` do `_shared`.
+- **Markdown:** sempre via `Markdown`/`MarkdownInline` do `_shared`. O
+  markdown do prontuário (`generateClinicalMarkdown`) segue o padrão de
+  `script/tdah.html`: **só entra o que o aplicador fez** — campos vazios,
+  itens não marcados e conteúdo do payload (limiares, descrições, escalas)
+  ficam de fora; seções vazias são omitidas inteiras.
+- **Acordeões abrem todos fechados** (`openByDefault: false` em todos os
+  descriptors desde 2026-07-26). Ações da seção de markdown (atualizar
+  síntese, copiar) vivem no **header do próprio acordeão** como botões
+  redondos ícone-only + tooltip — padrão `Button asChild` + `<span
+  role="button">` com `stopPropagation` (o trigger do Radix já é um
+  `<button>`; `<button>` aninhado quebra a hydration). A `DisorderToolbar`
+  solta foi aposentada — não recriar.
+- **Design language das seções/cards do guia (2026-07-26):** container
+  `rounded-xl shadow-md border bg-surface-2/60 p-4`; header `text-*-800
+  text-shadow-xs`; prosa `text-shadow-xs font-serif text-sm|md font-medium
+  leading-relaxed text-stone-700 text-justify text-wrap mx-3 mb-2`;
+  rótulos inline `font-bold uppercase tracking-wider text-stone-800`; notas
+  `border-t pt-2 italic font-serif text-sm font-medium text-stone-500`;
+  letras de critério em `text-orange-600 font-bold` com hífen (`A -`).
 - Estilo dos payloads segue o arquivo existente (atenção: `anorexia_nervosa`
   usa chaves sem aspas — quebra greps ingênuos).
 
@@ -130,9 +185,19 @@ Contratos estáveis (inventário exato em `ANALISE_ESTRUTURAS_DIAGNOSTICAS.md`):
 
 - `severity.levels` está vazio em todos os payloads (a escala de gravidade do
   Guia Clínico só aparece quando a fonte preencher).
+- `border-slate-800/60` (Sidebar.tsx:72) não tem regra gerada pelo Tailwind
+  (verificado em dumps-DOM de 2026-07-26) — lacuna pré-existente; a borda da
+  sidebar cai no default. Não é regressão do swap do renderer.
 - Anomalias de dado registradas no MD de análise: `tnc_alzheimer`/
   `tnc_vascular` sem clusters; TDDH com tipo/limiar inconsistentes;
   esquizoafetivo com `pediatria: null`.
+- **TDAH — estrutura corrigida em 2026-07-26:** o payload tinha 1 cluster
+  único "A" com 18 sintomas (A1–A18); DSM exige 2 domínios pontuados à
+  parte. Hoje são 2 clusters simétricos (`A1 — Desatenção`, `A2 —
+  Hiperatividade/Impulsividade`, 9 sintomas cada, limiar `{adulto: 5,
+  pediatria: 6}`) e ids em notação DSM (`A1a–A1i`, `A2a–A2i`). Obs.: o badge
+  do sintoma usa `uppercase` no CSS, então exibe "A1A" (a notação DSM é
+  minúscula).
 - `src/components/ui/` contém apenas componentes vivos (21 arquivos). Os
   componentes mortos (`dsm-components`, `nivel-impacto`, `accordion-section`,
   `toggle-chip`, `count-badge`, `dialog`, `drawer`, `dropdown-menu`, `alert*`,

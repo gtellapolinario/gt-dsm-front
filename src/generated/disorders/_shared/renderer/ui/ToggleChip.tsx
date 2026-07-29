@@ -1,4 +1,4 @@
-import { Toggle } from "@/components/ui/toggle";
+import { Toggle } from "@ui/toggle";
 import type { ReactNode } from "react";
 
 export function ToggleChip({

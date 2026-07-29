@@ -1,5 +1,5 @@
-import { Logo } from "@/components/ui/Logo";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Logo } from "@ui/Logo";
+import { SidebarTrigger } from "@ui/sidebar";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -11,7 +11,7 @@ export function Header({ className }: HeaderProps) {
     <header
       className={cn(
         "flex items-center gap-4 h-[52px] px-4 shrink-0 border-b border-border bg-surface",
-        className
+        className,
       )}
     >
       <SidebarTrigger className="-ml-2" />

@@ -5,15 +5,15 @@ export const data = TranstornoDepressivoMaiorSchema.parse({
   "meta": {
     "id": "transtorno_depressivo_maior",
     "nome_completo": "Transtorno Depressivo Maior",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F32 / F33",
-        "cid11": "6A70 / 6A71"
-    },
     "capitulo": "Transtornos Depressivos",
     "capitulo_id": "transtornos_depressivos",
     "sigla": "TDM",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "296.21",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": [
                 "F32",

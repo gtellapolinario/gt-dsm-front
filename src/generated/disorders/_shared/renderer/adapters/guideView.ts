@@ -1,14 +1,16 @@
 import type { SeverityView } from "./severityAdapter";
 
 export interface CodeEntry {
-  readonly sistema: "DSM-5" | "CID-10" | "CID-11";
+  readonly sistema: "DSM-5-TR" | "CID-10" | "CID-11";
   readonly valor: string;
+  readonly equivalencia?: string | null;
+  readonly regra?: string | null;
 }
 export interface PrevalenceView {
-  readonly populacaoGeral: string | null;
-  readonly proporcaoSexo: string | null;
-  readonly variacoesCulturais: string | null;
-  readonly notas: string | null;
+  readonly estimativa: string | null;
+  readonly distribuicaoSexo: string | null;
+  readonly variacoesContextuais: string | null;
+  readonly notaAplicador: string | null;
 }
 export interface CourseStep {
   readonly rotulo: "Início típico" | "Trajetória" | "Prognóstico";

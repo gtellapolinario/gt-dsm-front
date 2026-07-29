@@ -11,7 +11,7 @@ interface LogoProps {
 export function Logo({ size = 22, className, markOnly = false }: LogoProps) {
   return (
     <span className={cn("inline-flex items-center gap-2 text-text font-medium", className)}>
-      <Brain size={size} className="text-cyan-600 dark:text-cyan-400 shrink-0" />
+      <Brain size={size} className="text-cyan-600 shrink-0" />
       {!markOnly && (
         <span className="font-serif text-[17px] font-medium tracking-[-0.3px] leading-none">
           GTmedic<span className="opacity-50">·</span>DSM

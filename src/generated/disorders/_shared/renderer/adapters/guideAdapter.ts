@@ -1,5 +1,6 @@
 import type { ClinicalDisorder } from "../../schema";
 import { asRaw, list, rec, str } from "./raw";
+import { nosologyCodes } from "../../utils/disorderDataAccess";
 import type {
   CodeEntry,
   CourseStep,
@@ -39,14 +40,12 @@ function hierarquiaDe(data: ClinicalDisorder): HierarchyView | null {
 export function clinicalGuideHasData(data: ClinicalDisorder): boolean {
   const rawData = asRaw(data);
   return Boolean(
-    rawData.meta?.codigo?.dsm5 ||
-    rawData.meta?.codigo?.cid10 ||
-    rawData.meta?.codigo?.cid11 ||
-    rawData.prevalencia?.populacao_geral ||
-    rawData.prevalencia?.proporcao_sexo ||
-    rawData.prevalencia?.variacoes_culturais ||
-    rawData.prevalencia?.notas ||
-    rawData.curso_desenvolvimento?.idade_inicio_tipica ||
+    nosologyCodes(data).some((c) => c.valor !== null) ||
+    rawData.prevalencia?.estimativa ||
+    rawData.prevalencia?.distribuicao_por_sexo ||
+    rawData.prevalencia?.variacoes_contextuais ||
+    rawData.prevalencia?.nota_aplicador ||
+    rawData.curso_desenvolvimento?.inicio_tipico ||
     rawData.curso_desenvolvimento?.trajetoria ||
     rawData.curso_desenvolvimento?.prognostico ||
     rawData.gravidade?.classificacao_dsm != null ||
@@ -62,40 +61,47 @@ export function buildGuideView(data: ClinicalDisorder): GuideView {
   const prevalencia = rawData.prevalencia;
   const curso = rawData.curso_desenvolvimento;
 
-  const codigos: CodeEntry[] = (
-    [
-      { sistema: "DSM-5", valor: rawData.meta?.codigo?.dsm5 },
-      { sistema: "CID-10", valor: rawData.meta?.codigo?.cid10 },
-      { sistema: "CID-11", valor: rawData.meta?.codigo?.cid11 },
-    ] as const
-  )
-    .filter((codigo) => codigo.valor)
-    .map((codigo) => ({ sistema: codigo.sistema, valor: String(codigo.valor) }));
+  // Fonte canônica: meta.codificacao (dsm5_tr editorial ICD-9-CM, cid10_cm,
+  // cid11_mms). O bloco meta.codigo foi aposentado — incompleto e duplicado.
+  const codigos: CodeEntry[] = nosologyCodes(data)
+    .filter((c) => c.valor !== null)
+    .map((c) => ({
+      sistema: c.sistema,
+      valor: String(c.valor),
+      equivalencia: c.equivalencia,
+      regra: c.regra,
+    }));
 
+  // Chaves do payload v2.3.0 (fonte:
+  // docs/meta_prevalencia_curso_dsm5tr_revisados_58.json). As chaves antigas
+  // (populacao_geral, proporcao_sexo, variacoes_culturais, notas,
+  // idade_inicio_tipica) não existem mais em nenhum dos 58 payloads.
   const temPrevalencia = Boolean(
-    prevalencia?.populacao_geral ||
-    prevalencia?.proporcao_sexo ||
-    prevalencia?.variacoes_culturais ||
-    prevalencia?.notas,
+    prevalencia?.estimativa ||
+    prevalencia?.distribuicao_por_sexo ||
+    prevalencia?.variacoes_contextuais ||
+    prevalencia?.nota_aplicador,
   );
   const prevalenciaView: PrevalenceView | null = temPrevalencia
     ? {
-        populacaoGeral: prevalencia?.populacao_geral
-          ? String(prevalencia.populacao_geral)
+        estimativa: prevalencia?.estimativa
+          ? String(prevalencia.estimativa)
           : null,
-        proporcaoSexo: prevalencia?.proporcao_sexo
-          ? String(prevalencia.proporcao_sexo)
+        distribuicaoSexo: prevalencia?.distribuicao_por_sexo
+          ? String(prevalencia.distribuicao_por_sexo)
           : null,
-        variacoesCulturais: prevalencia?.variacoes_culturais
-          ? String(prevalencia.variacoes_culturais)
+        variacoesContextuais: prevalencia?.variacoes_contextuais
+          ? String(prevalencia.variacoes_contextuais)
           : null,
-        notas: prevalencia?.notas ? String(prevalencia.notas) : null,
+        notaAplicador: prevalencia?.nota_aplicador
+          ? String(prevalencia.nota_aplicador)
+          : null,
       }
     : null;
 
   const cursoEtapas: CourseStep[] = (
     [
-      { rotulo: "Início típico", valor: curso?.idade_inicio_tipica },
+      { rotulo: "Início típico", valor: curso?.inicio_tipico },
       { rotulo: "Trajetória", valor: curso?.trajetoria },
       { rotulo: "Prognóstico", valor: curso?.prognostico },
     ] as const

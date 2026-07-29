@@ -5,15 +5,15 @@ export const data = TranstornoLinguagemSchema.parse({
   "meta": {
     "id": "transtorno_linguagem",
     "nome_completo": "Transtorno da Linguagem",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F80.2",
-        "cid11": "6A01.2"
-    },
     "capitulo": "Transtornos do Neurodesenvolvimento",
     "capitulo_id": "transtornos_do_neurodesenvolvimento",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "315.32",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F80.2",
             "equivalencia": "direta",

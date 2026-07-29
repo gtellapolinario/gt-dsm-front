@@ -11,5 +11,5 @@ function itemIcon(raw: unknown): LucideIcon | null {
 
 export function ItemIcon({ raw }: { readonly raw: unknown }) {
   const Icon = itemIcon(raw);
-  return Icon ? <Icon className="mr-1 inline h-3 w-3" /> : null;
+  return Icon ? <Icon className="mr-1 inline h-4 w-4" /> : null;
 }

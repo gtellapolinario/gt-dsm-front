@@ -33,7 +33,7 @@ export function CompactClinicalValue({
         {value.slice(0, 6).map((item, index) => (
           <li
             key={`${stringifyClinicalValue(item)}-${index}`}
-            className="flex gap-2 text-md text-text-2"
+            className="flex gap-2 text-md text-stone-700"
           >
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
             <span>
@@ -55,7 +55,7 @@ export function CompactClinicalValue({
               key={key}
               className="rounded-lg bg-surface-2 border border-border p-3"
             >
-              <dt className="text-sm font-semibold uppercase tracking-[0.14em] text-text-3">
+              <dt className="text-sm font-bold uppercase tracking-[0.14em] text-stone-800">
                 {titleFromValue(key)}
               </dt>
               <dd className="mt-1">

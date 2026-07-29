@@ -18,86 +18,86 @@ Se existir gerador que emite `_shared/DisorderRenderer.tsx`, o template do gerad
 
 ## 2. Arquivos criados (34 arquivos, 2.322 LOC novas)
 
-| Arquivo | LOC | Símbolo(s) exportado(s) | Origem no antigo |
-|---|---|---|---|
-| `DisorderRenderer.tsx` (barril) | 4 | `DisorderRenderer` (re-export), `ClinicalDisorder` (type re-export) | linha 1366 |
-| `renderer/DisorderRendererView.tsx` | 94 | `DisorderRendererView` | 1366–1743 |
-| `renderer/constants.ts` | 1 | `RAZAO_SEXO_GLIFO` | 1175 (D7, simplificação autorizada) |
-| `renderer/model/assessmentPort.ts` | 13 | `Assessment`, `AssessmentState`, `ClusterCounter`, 6 fatias ISP | 128 (§5.1) |
-| `renderer/model/sectionContext.ts` | 9 | `SectionContext` | — (§5.7) |
-| `renderer/ports/platform.ts` | 11 | `ClipboardPort`, `NotifyPort`, `ConfirmPort`, `PrintPort`, `PlatformPorts` | — (§5.2, DIP) |
-| `renderer/ports/browserPlatform.ts` | 37 | `browserPlatform` | 921–932 (`copyText`) + `toast`/`window.confirm`/`window.print` |
-| `renderer/ports/PlatformContext.tsx` | 23 | `PlatformProvider`, `usePlatform` (default = `browserPlatform`) | — (§5.2) |
-| `renderer/adapters/raw.ts` | 26 | `RawExtras`, `asRaw`, `str`, `list`, `rec` | todos os `(data as any)` (§5.3) |
-| `renderer/adapters/guideView.ts` | 45 | `CodeEntry`, `PrevalenceView`, `CourseStep`, `InstrumentView`, `HierarchyView`, `GuideView` (+`temGravidade`) | — (§5.5) |
-| `renderer/adapters/guideAdapter.ts` | 133 | `buildGuideView`, `clinicalGuideHasData` (+ `subtiposLabelsOf`/`hierarquiaDe` privados) | 958–966, 1097–1131, 1142–1160 |
-| `renderer/adapters/severityAdapter.ts` | 162 | `SeverityLevelView`, `SeverityDomainView`, `SeverityEpisodeGroupView`, `SeverityView`, `buildSeverityView` | 1008–1075 (§5.4) |
-| `renderer/adapters/criteriaAdapter.ts` | 36 | `conditionalCriteriaItems`, `letterOf` | 381–405, 416–419 |
-| `renderer/ui/ItemIcon.tsx` | 15 | `ItemIcon` (+ `itemIcon` privado) | 96–106 |
-| `renderer/ui/CountBadge.tsx` | 21 | `CountBadge` | 132–150 |
-| `renderer/ui/Section.tsx` | 46 | `Section` | 152–188 |
-| `renderer/ui/ToggleChip.tsx` | 24 | `ToggleChip` | 190–210 |
-| `renderer/ui/SymptomSeveritySelect.tsx` | 30 | `SymptomSeveritySelect` | 212–232 |
-| `renderer/ui/GuideCardHeader.tsx` | 25 | `GuideCardHeader` | 936–956 |
-| `renderer/ui/SeverityScale.tsx` | 35 | `SeverityScale` | 968–1000 |
-| `renderer/ui/CompactClinicalValue.tsx` | 70 | `CompactClinicalValue` (+ `hiddenKeys` privado) | 120–126, 740–791 |
-| `renderer/sections/IdentificationSection.tsx` | 167 | `IdentificationSection` | 236–379 |
-| `renderer/sections/CriteriaPanelSection.tsx` | 107 | `CriteriaPanelSection` (renomeado de `CriteriaPanel`) | 823–917 |
-| `renderer/sections/ConditionalCriteriaSection.tsx` | 82 | `ConditionalCriteriaSection` | 407–483 |
-| `renderer/sections/ClusterSection.tsx` | 94 | `ClusterSection` (renomeado de `ClusterSectionBody`) | 485–570 |
-| `renderer/sections/ImpactSection.tsx` | 69 | `ImpactSection` | 687–738 |
-| `renderer/sections/ChoiceChipsSection.tsx` | 57 | `ChoiceChipsSection` (assinatura genérica intacta) | 572–621 |
-| `renderer/sections/DifferentialSection.tsx` | 70 | `DifferentialSection` | 623–685 |
-| `renderer/sections/MarkdownPreviewSection.tsx` | 23 | `MarkdownPreviewSection` | 1727–1738 |
-| `renderer/sections/guide/ClinicalGuideSection.tsx` | 64 | `ClinicalGuideSection` (recebe `view: GuideView`) | 1133–1362 |
-| `renderer/sections/guide/PrevalenceCard.tsx` | 48 | `PrevalenceCard` | 1182–1218 |
-| `renderer/sections/guide/CourseCard.tsx` | 33 | `CourseCard` | 1222–1242 |
-| `renderer/sections/guide/SeverityBlock.tsx` | 89 | `SeverityBlock` (switch exaustivo sobre `SeverityView`) | 1008–1095 |
-| `renderer/sections/guide/SubtypesCard.tsx` | 27 | `SubtypesCard` | 1252–1266 |
-| `renderer/sections/guide/HierarchyCard.tsx` | 44 | `HierarchyCard` | 1270–1300 |
-| `renderer/sections/guide/InstrumentsCard.tsx` | 40 | `InstrumentsCard` | 1304–1325 |
-| `renderer/sections/guide/NosologyCard.tsx` | 40 | `NosologyCard` | 1331–1358 |
-| `renderer/layout/DisorderHeader.tsx` | 87 | `DisorderHeader` | 1373–1386, 1449–1502 |
-| `renderer/layout/DisorderToolbar.tsx` | 24 | `DisorderToolbar` | 1681–1691 |
-| `renderer/registry/sectionDescriptor.ts` | 26 | `SectionDescriptor`, `SlotDescriptor`, `RendererNode` | — (§5.7) |
-| `renderer/registry/buildRendererNodes.tsx` | 271 | `buildRendererNodes` (ordem canônica + visibilidade + badges) | 1388–1427, 1511–1739 |
+| Arquivo                                            | LOC | Símbolo(s) exportado(s)                                                                                       | Origem no antigo                                               |
+| -------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `DisorderRenderer.tsx` (barril)                    | 4   | `DisorderRenderer` (re-export), `ClinicalDisorder` (type re-export)                                           | linha 1366                                                     |
+| `renderer/DisorderRendererView.tsx`                | 94  | `DisorderRendererView`                                                                                        | 1366–1743                                                      |
+| `renderer/constants.ts`                            | 1   | `RAZAO_SEXO_GLIFO`                                                                                            | 1175 (D7, simplificação autorizada)                            |
+| `renderer/model/assessmentPort.ts`                 | 13  | `Assessment`, `AssessmentState`, `ClusterCounter`, 6 fatias ISP                                               | 128 (§5.1)                                                     |
+| `renderer/model/sectionContext.ts`                 | 9   | `SectionContext`                                                                                              | — (§5.7)                                                       |
+| `renderer/ports/platform.ts`                       | 11  | `ClipboardPort`, `NotifyPort`, `ConfirmPort`, `PrintPort`, `PlatformPorts`                                    | — (§5.2, DIP)                                                  |
+| `renderer/ports/browserPlatform.ts`                | 37  | `browserPlatform`                                                                                             | 921–932 (`copyText`) + `toast`/`window.confirm`/`window.print` |
+| `renderer/ports/PlatformContext.tsx`               | 23  | `PlatformProvider`, `usePlatform` (default = `browserPlatform`)                                               | — (§5.2)                                                       |
+| `renderer/adapters/raw.ts`                         | 26  | `RawExtras`, `asRaw`, `str`, `list`, `rec`                                                                    | todos os `(data as any)` (§5.3)                                |
+| `renderer/adapters/guideView.ts`                   | 45  | `CodeEntry`, `PrevalenceView`, `CourseStep`, `InstrumentView`, `HierarchyView`, `GuideView` (+`temGravidade`) | — (§5.5)                                                       |
+| `renderer/adapters/guideAdapter.ts`                | 133 | `buildGuideView`, `clinicalGuideHasData` (+ `subtiposLabelsOf`/`hierarquiaDe` privados)                       | 958–966, 1097–1131, 1142–1160                                  |
+| `renderer/adapters/severityAdapter.ts`             | 162 | `SeverityLevelView`, `SeverityDomainView`, `SeverityEpisodeGroupView`, `SeverityView`, `buildSeverityView`    | 1008–1075 (§5.4)                                               |
+| `renderer/adapters/criteriaAdapter.ts`             | 36  | `conditionalCriteriaItems`, `letterOf`                                                                        | 381–405, 416–419                                               |
+| `renderer/ui/ItemIcon.tsx`                         | 15  | `ItemIcon` (+ `itemIcon` privado)                                                                             | 96–106                                                         |
+| `renderer/ui/CountBadge.tsx`                       | 21  | `CountBadge`                                                                                                  | 132–150                                                        |
+| `renderer/ui/Section.tsx`                          | 46  | `Section`                                                                                                     | 152–188                                                        |
+| `renderer/ui/ToggleChip.tsx`                       | 24  | `ToggleChip`                                                                                                  | 190–210                                                        |
+| `renderer/ui/SymptomSeveritySelect.tsx`            | 30  | `SymptomSeveritySelect`                                                                                       | 212–232                                                        |
+| `renderer/ui/GuideCardHeader.tsx`                  | 25  | `GuideCardHeader`                                                                                             | 936–956                                                        |
+| `renderer/ui/SeverityScale.tsx`                    | 35  | `SeverityScale`                                                                                               | 968–1000                                                       |
+| `renderer/ui/CompactClinicalValue.tsx`             | 70  | `CompactClinicalValue` (+ `hiddenKeys` privado)                                                               | 120–126, 740–791                                               |
+| `renderer/sections/IdentificationSection.tsx`      | 167 | `IdentificationSection`                                                                                       | 236–379                                                        |
+| `renderer/sections/CriteriaPanelSection.tsx`       | 107 | `CriteriaPanelSection` (renomeado de `CriteriaPanel`)                                                         | 823–917                                                        |
+| `renderer/sections/ConditionalCriteriaSection.tsx` | 82  | `ConditionalCriteriaSection`                                                                                  | 407–483                                                        |
+| `renderer/sections/ClusterSection.tsx`             | 94  | `ClusterSection` (renomeado de `ClusterSectionBody`)                                                          | 485–570                                                        |
+| `renderer/sections/ImpactSection.tsx`              | 69  | `ImpactSection`                                                                                               | 687–738                                                        |
+| `renderer/sections/ChoiceChipsSection.tsx`         | 57  | `ChoiceChipsSection` (assinatura genérica intacta)                                                            | 572–621                                                        |
+| `renderer/sections/DifferentialSection.tsx`        | 70  | `DifferentialSection`                                                                                         | 623–685                                                        |
+| `renderer/sections/MarkdownPreviewSection.tsx`     | 23  | `MarkdownPreviewSection`                                                                                      | 1727–1738                                                      |
+| `renderer/sections/guide/ClinicalGuideSection.tsx` | 64  | `ClinicalGuideSection` (recebe `view: GuideView`)                                                             | 1133–1362                                                      |
+| `renderer/sections/guide/PrevalenceCard.tsx`       | 48  | `PrevalenceCard`                                                                                              | 1182–1218                                                      |
+| `renderer/sections/guide/CourseCard.tsx`           | 33  | `CourseCard`                                                                                                  | 1222–1242                                                      |
+| `renderer/sections/guide/SeverityBlock.tsx`        | 89  | `SeverityBlock` (switch exaustivo sobre `SeverityView`)                                                       | 1008–1095                                                      |
+| `renderer/sections/guide/SubtypesCard.tsx`         | 27  | `SubtypesCard`                                                                                                | 1252–1266                                                      |
+| `renderer/sections/guide/HierarchyCard.tsx`        | 44  | `HierarchyCard`                                                                                               | 1270–1300                                                      |
+| `renderer/sections/guide/InstrumentsCard.tsx`      | 40  | `InstrumentsCard`                                                                                             | 1304–1325                                                      |
+| `renderer/sections/guide/NosologyCard.tsx`         | 40  | `NosologyCard`                                                                                                | 1331–1358                                                      |
+| `renderer/layout/DisorderHeader.tsx`               | 87  | `DisorderHeader`                                                                                              | 1373–1386, 1449–1502                                           |
+| `renderer/layout/DisorderToolbar.tsx`              | 24  | `DisorderToolbar`                                                                                             | 1681–1691                                                      |
+| `renderer/registry/sectionDescriptor.ts`           | 26  | `SectionDescriptor`, `SlotDescriptor`, `RendererNode`                                                         | — (§5.7)                                                       |
+| `renderer/registry/buildRendererNodes.tsx`         | 271 | `buildRendererNodes` (ordem canônica + visibilidade + badges)                                                 | 1388–1427, 1511–1739                                           |
 
 ## 3. Checklist da §1 (28 símbolos) — ✅ 28/28
 
-| # | Símbolo | Destino verificado (grep) |
-|---|---|---|
-| 1 | `itemIcon` | ✅ `ui/ItemIcon.tsx` (privado) |
-| 2 | `ItemIcon` | ✅ `ui/ItemIcon.tsx` |
-| 3 | `clinicalSections` | ✅ **removido** (§3, grep vazio) |
-| 4 | `hiddenKeys` | ✅ `ui/CompactClinicalValue.tsx` (privado) |
-| 5 | `Assessment` | ✅ `model/assessmentPort.ts` |
-| 6 | `CountBadge` | ✅ `ui/CountBadge.tsx` |
-| 7 | `Section` | ✅ `ui/Section.tsx` |
-| 8 | `ToggleChip` | ✅ `ui/ToggleChip.tsx` |
-| 9 | `SymptomSeveritySelect` | ✅ `ui/SymptomSeveritySelect.tsx` |
-| 10 | `IdentificationSection` | ✅ `sections/IdentificationSection.tsx` |
-| 11 | `conditionalCriteriaItems` | ✅ `adapters/criteriaAdapter.ts` |
-| 12 | `ConditionalCriteriaSection` | ✅ `sections/ConditionalCriteriaSection.tsx` |
-| 13 | `ClusterSectionBody` | ✅ `sections/ClusterSection.tsx` (rename autorizado) |
-| 14 | `ChoiceChipsSection` | ✅ `sections/ChoiceChipsSection.tsx` |
-| 15 | `DifferentialSection` | ✅ `sections/DifferentialSection.tsx` |
-| 16 | `ImpactSection` | ✅ `sections/ImpactSection.tsx` |
-| 17 | `CompactClinicalValue` | ✅ `ui/CompactClinicalValue.tsx` |
-| 18 | `SupplementalSection` | ✅ **removido** (§3, grep vazio) |
-| 19 | `CriteriaPanel` | ✅ `sections/CriteriaPanelSection.tsx` (rename autorizado) |
-| 20 | `copyText` | ✅ `ports/browserPlatform.ts` (`clipboard.write`, corpo verbatim) |
-| 21 | `GuideCardHeader` | ✅ `ui/GuideCardHeader.tsx` |
-| 22 | `subtiposLabelsOf` | ✅ `adapters/guideAdapter.ts` (privado) |
-| 23 | `SeverityScale` | ✅ `ui/SeverityScale.tsx` |
-| 24 | `SeverityBlock` | ✅ `sections/guide/SeverityBlock.tsx` + `adapters/severityAdapter.ts` |
-| 25 | `hierarquiaDe` | ✅ `adapters/guideAdapter.ts` (privado) |
-| 26 | `clinicalGuideHasData` | ✅ `adapters/guideAdapter.ts` |
-| 27 | `ClinicalGuideSection` | ✅ `sections/guide/ClinicalGuideSection.tsx` + 7 cards |
-| 28 | `DisorderRenderer` | ✅ `DisorderRendererView.tsx` + `registry/*` + `layout/*` + barril |
+| #   | Símbolo                      | Destino verificado (grep)                                            |
+| --- | ---------------------------- | -------------------------------------------------------------------- |
+| 1   | `itemIcon`                   | ✅ `ui/ItemIcon.tsx` (privado)                                        |
+| 2   | `ItemIcon`                   | ✅ `ui/ItemIcon.tsx`                                                  |
+| 3   | `clinicalSections`           | ✅ **removido** (§3, grep vazio)                                      |
+| 4   | `hiddenKeys`                 | ✅ `ui/CompactClinicalValue.tsx` (privado)                            |
+| 5   | `Assessment`                 | ✅ `model/assessmentPort.ts`                                          |
+| 6   | `CountBadge`                 | ✅ `ui/CountBadge.tsx`                                                |
+| 7   | `Section`                    | ✅ `ui/Section.tsx`                                                   |
+| 8   | `ToggleChip`                 | ✅ `ui/ToggleChip.tsx`                                                |
+| 9   | `SymptomSeveritySelect`      | ✅ `ui/SymptomSeveritySelect.tsx`                                     |
+| 10  | `IdentificationSection`      | ✅ `sections/IdentificationSection.tsx`                               |
+| 11  | `conditionalCriteriaItems`   | ✅ `adapters/criteriaAdapter.ts`                                      |
+| 12  | `ConditionalCriteriaSection` | ✅ `sections/ConditionalCriteriaSection.tsx`                          |
+| 13  | `ClusterSectionBody`         | ✅ `sections/ClusterSection.tsx` (rename autorizado)                  |
+| 14  | `ChoiceChipsSection`         | ✅ `sections/ChoiceChipsSection.tsx`                                  |
+| 15  | `DifferentialSection`        | ✅ `sections/DifferentialSection.tsx`                                 |
+| 16  | `ImpactSection`              | ✅ `sections/ImpactSection.tsx`                                       |
+| 17  | `CompactClinicalValue`       | ✅ `ui/CompactClinicalValue.tsx`                                      |
+| 18  | `SupplementalSection`        | ✅ **removido** (§3, grep vazio)                                      |
+| 19  | `CriteriaPanel`              | ✅ `sections/CriteriaPanelSection.tsx` (rename autorizado)            |
+| 20  | `copyText`                   | ✅ `ports/browserPlatform.ts` (`clipboard.write`, corpo verbatim)     |
+| 21  | `GuideCardHeader`            | ✅ `ui/GuideCardHeader.tsx`                                           |
+| 22  | `subtiposLabelsOf`           | ✅ `adapters/guideAdapter.ts` (privado)                               |
+| 23  | `SeverityScale`              | ✅ `ui/SeverityScale.tsx`                                             |
+| 24  | `SeverityBlock`              | ✅ `sections/guide/SeverityBlock.tsx` + `adapters/severityAdapter.ts` |
+| 25  | `hierarquiaDe`               | ✅ `adapters/guideAdapter.ts` (privado)                               |
+| 26  | `clinicalGuideHasData`       | ✅ `adapters/guideAdapter.ts`                                         |
+| 27  | `ClinicalGuideSection`       | ✅ `sections/guide/ClinicalGuideSection.tsx` + 7 cards                |
+| 28  | `DisorderRenderer`           | ✅ `DisorderRendererView.tsx` + `registry/*` + `layout/*` + barril    |
 
 ## 4. Typecheck / build
 
-- **Sandbox (aqui):** tsc **7.0.2** `--noEmit --strict --verbatimModuleSyntax --noUnusedLocals --noUnusedParameters --jsx react-jsx --moduleResolution bundler` sobre os 34 arquivos → **EXIT=0**. Stubs de `schema`/hooks/`disorderDataAccess`/`Markdown`/`@/components/ui/*`/`lucide-react`/`sonner` reconstruídos por inferência de uso. Controle negativo injetado (import inexistente + guarda revertida) foi detectado (TS2305/TS18047/TS2322), provando que a checagem morde. **Limitação:** os módulos reais (intocados) têm tipos mais estritos que os stubs — o typecheck oficial continua obrigatório.
+- **Sandbox (aqui):** tsc **7.0.2** `--noEmit --strict --verbatimModuleSyntax --noUnusedLocals --noUnusedParameters --jsx react-jsx --moduleResolution bundler` sobre os 34 arquivos → **EXIT=0**. Stubs de `schema`/hooks/`disorderDataAccess`/`Markdown`/`@ui/*`/`lucide-react`/`sonner` reconstruídos por inferência de uso. Controle negativo injetado (import inexistente + guarda revertida) foi detectado (TS2305/TS18047/TS2322), provando que a checagem morde. **Limitação:** os módulos reais (intocados) têm tipos mais estritos que os stubs — o typecheck oficial continua obrigatório.
 - **Oficial (pendente, rodar no projeto):** `npm run typecheck && npm run build`.
 
 ## 5. Harness de fidelidade (§7) — PENDENTE NA INTEGRAÇÃO
@@ -127,7 +127,7 @@ Resultado = baseline − bloco morto. **IDENTIDADE comprovada** fora do código 
 ## 8. D1–D10 preservados (item a item)
 
 - **D1** — `guia-clinico` é o único descritor com `collapsible: false` (`buildRendererNodes.tsx:63`); `allSectionIds` filtra `collapsible` → "Expandir" não abre o Guia. ✅
-- **D2** — `DifferentialSection.tsx` mantém `state.comorbidities[...]` e `setToggle("comorbidities", ...)`. ✅
+- **D2** — ~~`DifferentialSection.tsx` mantém `state.comorbidities[...]`~~ **RESOLVIDO em 2026-07-26**: namespace `ddx` próprio no estado; DDx não compartilha mais `comorbidities`.
 - **D3** — `openByDefault` lido somente no initializer de `useState` (`DisorderRendererView.tsx:42–48`); zero `useEffect` na árvore. ✅
 - **D4** — `liveMarkdown = assessment.buildMarkdown()` no corpo da View (recalculado a cada render); `refreshMarkdown` ligado ao botão via slot da toolbar. ✅
 - **D5** — `.slice(0, 6)` (`CompactClinicalValue.tsx:33`) e `.slice(0, 8)` (`:52`). ✅

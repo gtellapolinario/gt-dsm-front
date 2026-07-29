@@ -5,15 +5,15 @@ export const data = TranstornoAnsiedadeDoencaSchema.parse({
   "meta": {
     "id": "transtorno_ansiedade_doenca",
     "nome_completo": "Transtorno de Ansiedade de Doença",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F45.21",
-        "cid11": "6B23"
-    },
     "capitulo": "Transtorno de Sintomas Somáticos e Transtornos Relacionados",
     "capitulo_id": "transtorno_de_sintomas_somaticos_e_transtornos_relacionados",
     "sigla": "TAD",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.7",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F45.21",
             "equivalencia": "direta",

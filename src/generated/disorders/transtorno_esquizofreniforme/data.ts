@@ -5,15 +5,15 @@ export const data = TranstornoEsquizofreniformeSchema.parse({
   "meta": {
     "id": "transtorno_esquizofreniforme",
     "nome_completo": "Transtorno Esquizofreniforme",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F20.81",
-        "cid11": "6A2Y"
-    },
     "capitulo": "Espectro da Esquizofrenia e Outros Transtornos Psicóticos",
     "capitulo_id": "espectro_da_esquizofrenia_e_outros_transtornos_psicoticos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "295.40",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F20.81",
             "equivalencia": "direta",

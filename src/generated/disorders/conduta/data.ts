@@ -5,15 +5,15 @@ export const data = CondutaSchema.parse({
   "meta": {
     "id": "conduta",
     "nome_completo": "Transtorno da Conduta",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F91",
-        "cid11": "6C91"
-    },
     "capitulo": "Transtornos Disruptivos, do Controle de Impulsos e da Conduta",
     "capitulo_id": "transtornos_disruptivos_do_controle_de_impulsos_e_da_conduta",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "312.8",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F91",
             "equivalencia": "contextual",

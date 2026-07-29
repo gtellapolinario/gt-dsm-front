@@ -5,15 +5,15 @@ export const data = TranstornoDepressivoPersistenteSchema.parse({
   "meta": {
     "id": "transtorno_depressivo_persistente",
     "nome_completo": "Transtorno Depressivo Persistente (Distimia)",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F34.1",
-        "cid11": "6A72"
-    },
     "capitulo": "Transtornos Depressivos",
     "capitulo_id": "transtornos_depressivos",
     "sigla": "TDP",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.4",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F34.1",
             "equivalencia": "direta",

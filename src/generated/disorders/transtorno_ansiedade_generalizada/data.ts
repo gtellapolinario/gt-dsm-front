@@ -5,15 +5,15 @@ export const data = TranstornoAnsiedadeGeneralizadaSchema.parse({
   "meta": {
     "id": "transtorno_ansiedade_generalizada",
     "nome_completo": "Transtorno de Ansiedade Generalizada",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F41.1",
-        "cid11": "6B00"
-    },
     "capitulo": "Transtornos de Ansiedade",
     "capitulo_id": "transtornos_de_ansiedade",
     "sigla": "TAG",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.02",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F41.1",
             "equivalencia": "direta",

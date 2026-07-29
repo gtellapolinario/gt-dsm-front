@@ -5,15 +5,15 @@ export const data = TricotilomaniaSchema.parse({
   "meta": {
     "id": "tricotilomania",
     "nome_completo": "Tricotilomania (Transtorno de Arrancar o Cabelo)",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F63.3",
-        "cid11": "6B25.0"
-    },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
     "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "312.39",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F63.3",
             "equivalencia": "direta",

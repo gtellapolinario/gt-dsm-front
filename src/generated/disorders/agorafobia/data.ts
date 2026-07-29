@@ -5,15 +5,15 @@ export const data = AgorafobiaSchema.parse({
   "meta": {
     "id": "agorafobia",
     "nome_completo": "Agorafobia",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F40.00",
-        "cid11": "6B02"
-    },
     "capitulo": "Transtornos de Ansiedade",
     "capitulo_id": "transtornos_de_ansiedade",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.22",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F40.00",
             "equivalencia": "direta",

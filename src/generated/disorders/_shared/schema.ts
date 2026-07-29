@@ -5,21 +5,12 @@ import { z } from "zod";
 export const UnknownRecordSchema = z.record(z.string(), z.unknown());
 export const NullableStringSchema = z.string().nullable().optional();
 
-export const CodigoSchema = z
-  .object({
-    dsm5: z.string().nullable().optional(),
-    cid10: z.string().nullable().optional(),
-    cid11: z.string().nullable().optional(),
-  })
-  .loose();
-
 export const MetaSchema = z
   .object({
     id: z.string().min(1),
     nome_completo: z.string().min(1).optional(),
     nome: z.string().min(1).optional(),
     sigla: NullableStringSchema,
-    codigo: CodigoSchema.optional(),
     capitulo: NullableStringSchema,
     capitulo_id: NullableStringSchema,
     grupo: NullableStringSchema,

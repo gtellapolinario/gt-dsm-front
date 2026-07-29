@@ -5,15 +5,15 @@ export const data = TranstornoConversaoSchema.parse({
   "meta": {
     "id": "transtorno_conversao",
     "nome_completo": "Transtorno de Conversão (Transtorno de Sintomas Neurológicos Funcionais)",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F44",
-        "cid11": "6B60"
-    },
     "capitulo": "Transtorno de Sintomas Somáticos e Transtornos Relacionados",
     "capitulo_id": "transtorno_de_sintomas_somaticos_e_transtornos_relacionados",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.11",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F44",
             "equivalencia": "contextual",

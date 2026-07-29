@@ -5,15 +5,15 @@ export const data = TranstornoDisruptivoDesregulacaoHumorSchema.parse({
   "meta": {
     "id": "transtorno_disruptivo_desregulacao_humor",
     "nome_completo": "Transtorno Disruptivo da Desregulação do Humor",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F34.81",
-        "cid11": "6A8Y"
-    },
     "capitulo": "Transtornos Depressivos",
     "capitulo_id": "transtornos_depressivos",
     "sigla": "TDDH",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "296.99",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F34.81",
             "equivalencia": "direta",

@@ -5,15 +5,15 @@ export const data = TranstornoAnsiedadeSocialSchema.parse({
   "meta": {
     "id": "transtorno_ansiedade_social",
     "nome_completo": "Transtorno de Ansiedade Social (Fobia Social)",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F40.10",
-        "cid11": "6B04"
-    },
     "capitulo": "Transtornos de Ansiedade",
     "capitulo_id": "transtornos_de_ansiedade",
     "sigla": "TAS",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.23",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F40.10",
             "equivalencia": "direta",

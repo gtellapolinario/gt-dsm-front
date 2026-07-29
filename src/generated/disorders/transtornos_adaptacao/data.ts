@@ -5,15 +5,15 @@ export const data = TranstornosAdaptacaoSchema.parse({
   "meta": {
     "id": "transtornos_adaptacao",
     "nome_completo": "Transtornos de Adaptação",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F43.20",
-        "cid11": "6B43"
-    },
     "capitulo": "Transtornos Relacionados a Trauma e a Estressores",
     "capitulo_id": "transtornos_relacionados_a_trauma_e_a_estressores",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "309.0",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F43.20",
             "equivalencia": "direta",

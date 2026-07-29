@@ -5,15 +5,15 @@ export const data = TranstornoBipolarTipo2Schema.parse({
   "meta": {
     "id": "transtorno_bipolar_tipo_2",
     "nome_completo": "Transtorno Bipolar Tipo II",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F31.81",
-        "cid11": "6A61"
-    },
     "capitulo": "Transtorno Bipolar e Transtornos Relacionados",
     "capitulo_id": "transtorno_bipolar_e_transtornos_relacionados",
     "sigla": "TB II",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "296.89",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F31.81",
             "equivalencia": "direta",

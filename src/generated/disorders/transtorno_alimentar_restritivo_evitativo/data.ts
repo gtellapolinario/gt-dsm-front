@@ -5,15 +5,15 @@ export const data = TranstornoAlimentarRestritivoEvitativoSchema.parse({
   "meta": {
     "id": "transtorno_alimentar_restritivo_evitativo",
     "nome_completo": "Transtorno Alimentar Restritivo/Evitativo",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F50.82",
-        "cid11": "6B83"
-    },
     "capitulo": "Transtornos Alimentares",
     "capitulo_id": "transtornos_alimentares",
     "sigla": "TARE",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "307.59",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F50.82",
             "equivalencia": "contextual",

@@ -5,15 +5,15 @@ export const data = TpNarcisistaSchema.parse({
   "meta": {
     "id": "tp_narcisista",
     "nome_completo": "Transtorno da Personalidade Narcisista",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F60.81",
-        "cid11": "6D10"
-    },
     "capitulo": "Transtornos da Personalidade",
     "capitulo_id": "transtornos_da_personalidade",
     "sigla": "TPN",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "301.81",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F60.81",
             "equivalencia": "direta",

@@ -7,7 +7,7 @@ import { type ReactNode } from "react";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import type { ChapterKey } from "@/lib/dsm";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset } from "@ui/sidebar";
 
 interface WorkspaceShellProps {
   collapsed?: boolean;
@@ -20,10 +20,7 @@ interface WorkspaceShellProps {
   overlay?: ReactNode;
 }
 
-export function WorkspaceShell({
-  children,
-  overlay,
-}: WorkspaceShellProps) {
+export function WorkspaceShell({ children, overlay }: WorkspaceShellProps) {
   return (
     <SidebarProvider>
       <div className="w-full h-dvh bg-bg text-text font-sans flex overflow-hidden">

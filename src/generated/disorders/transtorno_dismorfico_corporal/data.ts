@@ -5,15 +5,15 @@ export const data = TranstornoDismorficoCorporalSchema.parse({
   "meta": {
     "id": "transtorno_dismorfico_corporal",
     "nome_completo": "Transtorno Dismórfico Corporal",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F45.22",
-        "cid11": "6B21"
-    },
     "capitulo": "Transtorno Obsessivo-Compulsivo e Transtornos Relacionados",
     "capitulo_id": "transtorno_obsessivo_compulsivo_e_transtornos_relacionados",
     "sigla": "TDC",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.7",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F45.22",
             "equivalencia": "direta",

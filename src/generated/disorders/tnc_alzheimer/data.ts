@@ -5,15 +5,15 @@ export const data = TncAlzheimerSchema.parse({
   "meta": {
     "id": "tnc_alzheimer",
     "nome_completo": "Transtorno Neurocognitivo Maior ou Leve Devido à Doença de Alzheimer",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F02.8",
-        "cid11": "6D80 / 6D71"
-    },
     "capitulo": "Transtornos Neurocognitivos",
     "capitulo_id": "transtornos_neurocognitivos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "294.1x",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F02.8",
             "equivalencia": "contextual",

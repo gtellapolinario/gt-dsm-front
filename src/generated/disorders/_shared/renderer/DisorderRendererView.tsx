@@ -1,5 +1,7 @@
 import { Fragment, useState } from "react";
-import { Accordion } from "@/components/ui/accordion";
+import { Accordion } from "@ui/accordion";
+import { Separator } from "@ui/separator";
+
 import type { ClinicalDisorder } from "../schema";
 import { useDisorderAssessment } from "../hooks/useDisorderAssessment";
 import { usePlatform } from "./ports/PlatformContext";
@@ -17,7 +19,6 @@ export function DisorderRendererView({
   const assessment = useDisorderAssessment(data);
   const platform = usePlatform();
 
-  // Markdown ao vivo (como a referência: atualiza a cada mudança).
   const liveMarkdown = assessment.buildMarkdown();
 
   const handleCopy = async () => {
@@ -30,15 +31,20 @@ export function DisorderRendererView({
   };
 
   const handleReset = () => {
-    if (platform.confirm.ask("Limpar todos os dados preenchidos?"))
+    if (platform.confirm.ask("Limpar todos os dados preenchidos?")) {
       assessment.reset();
+    }
   };
 
   const nodes = buildRendererNodes(data);
-  const ctx: SectionContext = { data, assessment, liveMarkdown, onCopy: handleCopy };
 
-  // IDs das seções abertas por padrão (espelha a referência: formulário aberto,
-  // seções analíticas recolhidas). Lido só no initializer (D3).
+  const ctx: SectionContext = {
+    data,
+    assessment,
+    liveMarkdown,
+    onCopy: handleCopy,
+  };
+
   const [openSections, setOpenSections] = useState<string[]>(() =>
     nodes
       .filter(
@@ -55,7 +61,6 @@ export function DisorderRendererView({
 
   return (
     <div className="min-h-full bg-bg text-text">
-      {/* ─── Header fixo ─── */}
       <DisorderHeader
         data={data}
         onExpand={() => setOpenSections(allSectionIds)}
@@ -64,29 +69,36 @@ export function DisorderRendererView({
         onReset={handleReset}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
         <Accordion
           type="multiple"
           value={openSections}
           onValueChange={setOpenSections}
-          className="space-y-3 border-0"
+          className="border-0"
         >
-          {nodes.map((node) =>
-            node.kind === "slot" ? (
-              <Fragment key={node.id}>{node.render(ctx)}</Fragment>
-            ) : (
-              <Section
-                key={node.id}
-                id={node.id}
-                icon={node.icon}
-                iconClass={node.iconClass}
-                title={node.title}
-                badge={node.badge?.(ctx)}
-              >
-                {node.render(ctx)}
-              </Section>
-            ),
-          )}
+          {nodes.map((node, index) => {
+            const isLast = index === nodes.length - 1;
+
+            return (
+              <Fragment key={node.id}>
+                {node.kind === "slot" ? (
+                  node.render(ctx)
+                ) : (
+                  <Section
+                    id={node.id}
+                    icon={node.icon}
+                    iconClass={node.iconClass}
+                    title={node.title}
+                    badge={node.badge?.(ctx)}
+                  >
+                    {node.render(ctx)}
+                  </Section>
+                )}
+
+                {!isLast ? <Separator className="mx-auto my-6 bg-stone-300 " /> : null}
+              </Fragment>
+            );
+          })}
         </Accordion>
       </main>
     </div>

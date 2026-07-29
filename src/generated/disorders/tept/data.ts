@@ -5,15 +5,15 @@ export const data = TeptSchema.parse({
   "meta": {
     "id": "tept",
     "nome_completo": "Transtorno de Estresse Pós-Traumático",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F43.10",
-        "cid11": "6B40"
-    },
     "capitulo": "Transtornos Relacionados a Trauma e a Estressores",
     "capitulo_id": "transtornos_relacionados_a_trauma_e_a_estressores",
     "sigla": "TEPT",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "309.81",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F43.10",
             "equivalencia": "direta",

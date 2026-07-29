@@ -2,7 +2,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion";
+} from "@ui/accordion";
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
@@ -25,12 +25,14 @@ export function Section({
   return (
     <AccordionItem
       value={id}
-      className="bg-surface rounded-xl border border-border shadow-sm overflow-hidden not-last:border-b-0 data-open:bg-transparent"
+      className="bg-surface mt-2 rounded-xl border border-border shadow-lg overflow-hidden not-last:border-b-0 data-open:bg-transparent"
     >
-      <AccordionTrigger className="bg-muted/60 w-full items-center px-5 py-3 text-md hover:bg-muted hover:no-underline transition-colors cursor-pointer">
+      <AccordionTrigger className="bg-muted/50 w-full font-serif text-shadow-xs items-center px-5 py-3 text-md hover:bg-muted hover:no-underline transition-colors cursor-pointer">
         <span className="flex flex-1 items-center justify-between gap-2">
-          <span className={cn("flex items-center gap-2 font-bold", iconClass)}>
-            <Icon className="h-4 w-4" />
+          <span
+            className={cn("flex items-center gap-2 font-semibold", iconClass)}
+          >
+            <Icon className="h-5 w-5" />
             <span className="text-text">{title}</span>
           </span>
           {badge ? (

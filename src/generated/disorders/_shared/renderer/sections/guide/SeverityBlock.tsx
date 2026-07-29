@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Gauge } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@ui/badge";
 import type { SeverityView } from "../../adapters/severityAdapter";
 import { GuideCardHeader } from "../../ui/GuideCardHeader";
 import { SeverityScale } from "../../ui/SeverityScale";
@@ -22,7 +22,7 @@ export function SeverityBlock({
   switch (severity.kind) {
     case "sem_niveis_formais":
       body = (
-        <p className="mt-2 text-sm leading-relaxed text-text-2">
+        <p className="mt-2 text-sm leading-relaxed text-stone-700!">
           {severity.lembrete}
         </p>
       );
@@ -30,7 +30,7 @@ export function SeverityBlock({
     case "por_episodio":
       body = severity.grupos.map((grupo) => (
         <div key={grupo.episodioKey}>
-          <p className="mt-3 text-xs font-bold uppercase tracking-wider text-text-2">
+          <p className="mt-3 text-xs font-bold uppercase tracking-wider text-stone-700! ">
             {grupo.label}
           </p>
           <SeverityScale levels={grupo.niveis} />
@@ -50,7 +50,7 @@ export function SeverityBlock({
             </div>
           ) : null}
           {severity.condicaoAplicabilidade ? (
-            <p className="mt-2 text-xs font-medium text-amber-700 dark:text-amber-400">
+            <p className="mt-2 text-xs font-medium text-amber-700">
               {severity.condicaoAplicabilidade}
             </p>
           ) : null}
@@ -69,18 +69,18 @@ export function SeverityBlock({
   }
 
   return (
-    <div className="rounded-xl border border-border bg-surface-2/40 p-4">
-      <GuideCardHeader icon={Gauge} iconClass="text-red-600 dark:text-red-400">
+    <div className="rounded-xl shadow-md border border-border bg-surface-2/40 p-4 ">
+      <GuideCardHeader icon={Gauge} iconClass="text-red-800 text-shadow-xs">
         Parâmetros de Gravidade
       </GuideCardHeader>
       {body}
       {severity.kind !== "sem_niveis_formais" && severity.observacao ? (
-        <p className="mt-3 text-xs leading-relaxed text-text-3">
+        <p className="text-shadow-xs border-t border-border pt-2 pb-2 font-serif text-md font-semibold leading-relaxed text-stone-700 text-justify text-wrap mx-3 mb-2">
           {severity.observacao}
         </p>
       ) : null}
       {severity.kind !== "sem_niveis_formais" && severity.lembrete ? (
-        <p className="mt-2 border-t border-border pt-2 text-[11px] italic text-text-3">
+        <p className="text-shadow-sm mt-2 border-t border-border pt-2 text-xs! italic text-stone-600 text-justify text-wrap mx-3 mb-2">
           {severity.lembrete}
         </p>
       ) : null}

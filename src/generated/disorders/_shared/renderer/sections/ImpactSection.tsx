@@ -5,15 +5,15 @@ import {
   type SeverityLevel,
 } from "../../utils/disorderDataAccess";
 import { CompactClinicalValue } from "../ui/CompactClinicalValue";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
+import { Field, FieldLabel } from "@ui/field";
+import { Textarea } from "@ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@ui/select";
 
 export function ImpactSection({
   data,

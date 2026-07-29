@@ -5,15 +5,15 @@ export const data = MutismoSeletivoSchema.parse({
   "meta": {
     "id": "mutismo_seletivo",
     "nome_completo": "Mutismo Seletivo",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F94.0",
-        "cid11": "6B06"
-    },
     "capitulo": "Transtornos de Ansiedade",
     "capitulo_id": "transtornos_de_ansiedade",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "312.23",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F94.0",
             "equivalencia": "direta",

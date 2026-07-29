@@ -5,15 +5,15 @@ export const data = TranstornoDoEspectroAutistaSchema.parse({
   "meta": {
     "id": "transtorno_do_espectro_autista",
     "nome_completo": "Transtorno do Espectro Autista",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F84.0",
-        "cid11": "6A02"
-    },
     "capitulo": "Transtornos do Neurodesenvolvimento",
     "capitulo_id": "transtornos_do_neurodesenvolvimento",
     "sigla": "TEA",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "299.00",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F84.0",
             "equivalencia": "direta",

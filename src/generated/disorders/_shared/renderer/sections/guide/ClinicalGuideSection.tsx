@@ -27,7 +27,7 @@ export function ClinicalGuideSection({ view }: { readonly view: GuideView }) {
   }
 
   return (
-    <div className="p-5 space-y-4">
+    <div className="p-5 space-y-4 ">
       {view.prevalencia !== null || view.curso.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
           {view.prevalencia ? (

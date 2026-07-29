@@ -5,15 +5,15 @@ export const data = TranstornoPanicoSchema.parse({
   "meta": {
     "id": "transtorno_panico",
     "nome_completo": "Transtorno de Pânico",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F41.0",
-        "cid11": "6B01"
-    },
     "capitulo": "Transtornos de Ansiedade",
     "capitulo_id": "transtornos_de_ansiedade",
     "sigla": "TP",
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "300.01",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F41.0",
             "equivalencia": "direta",

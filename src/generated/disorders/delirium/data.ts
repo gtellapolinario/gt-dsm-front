@@ -5,15 +5,15 @@ export const data = DeliriumSchema.parse({
   "meta": {
     "id": "delirium",
     "nome_completo": "Delirium",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F05",
-        "cid11": "6D70"
-    },
     "capitulo": "Transtornos Neurocognitivos",
     "capitulo_id": "transtornos_neurocognitivos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "293.0",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F05",
             "equivalencia": "contextual",

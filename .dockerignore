@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.tanstack
+.fallow
+.antigravity
+docs
+script
+scripts
+*.md
+!README.md
+/tmp

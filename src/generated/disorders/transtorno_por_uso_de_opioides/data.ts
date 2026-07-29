@@ -5,15 +5,15 @@ export const data = TranstornoPorUsoDeOpioidesSchema.parse({
   "meta": {
     "id": "transtorno_por_uso_de_opioides",
     "nome_completo": "Transtorno por Uso de Opioides",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F11.10 / F11.20",
-        "cid11": "6C43"
-    },
     "capitulo": "Transtornos Relacionados a Substâncias e Transtornos Aditivos",
     "capitulo_id": "transtornos_relacionados_a_substancias_e_transtornos_aditivos",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "304.00",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": [
                 "F11.10",

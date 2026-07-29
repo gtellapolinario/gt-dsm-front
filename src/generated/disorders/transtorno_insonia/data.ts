@@ -5,15 +5,15 @@ export const data = TranstornoInsoniaSchema.parse({
   "meta": {
     "id": "transtorno_insonia",
     "nome_completo": "Transtorno de Insônia",
-    "codigo": {
-        "dsm5": "",
-        "cid10": "F51.01",
-        "cid11": "7A00"
-    },
     "capitulo": "Transtornos do Sono-Vigília",
     "capitulo_id": "transtornos_do_sono_vigilia",
     "sigla": null,
     "codificacao": {
+        "dsm5_tr": {
+            "codigo": "307.42",
+            "sistema_origem": "ICD-9-CM",
+            "uso": "referencia_editorial_legacy"
+        },
         "cid10_cm": {
             "referencia_base": "F51.01",
             "equivalencia": "direta",

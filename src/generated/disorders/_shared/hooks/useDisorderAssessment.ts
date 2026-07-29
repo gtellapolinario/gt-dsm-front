@@ -9,7 +9,6 @@ export interface PatientIdentification {
   sexo: string;
   genero: string;
   escolaridade: string;
-  ocupacao: string;
   queixaPrincipal: string;
 }
 
@@ -22,6 +21,7 @@ export interface DisorderAssessmentState {
   conditionalCriteria: Record<string, boolean>;
   specifiers: Record<string, boolean>;
   comorbidities: Record<string, boolean>;
+  ddx: Record<string, boolean>;
   impactFunctional: SeverityLevel;
   sectionNotes: Record<string, string>;
   markdown: string;
@@ -42,7 +42,6 @@ const initialPatient: PatientIdentification = {
   sexo: "",
   genero: "",
   escolaridade: "",
-  ocupacao: "",
   queixaPrincipal: "",
 };
 
@@ -56,6 +55,7 @@ function makeInitialState(): DisorderAssessmentState {
     conditionalCriteria: {},
     specifiers: {},
     comorbidities: {},
+    ddx: {},
     impactFunctional: "ausente",
     sectionNotes: {},
     markdown: "",
@@ -96,7 +96,7 @@ export function useDisorderAssessment(data: ClinicalDisorder) {
     setState((current) => ({ ...current, clusterNotes: { ...current.clusterNotes, [id]: note } }));
   }, []);
 
-  const setToggle = useCallback((group: "conditionalCriteria" | "specifiers" | "comorbidities", id: string, checked: boolean) => {
+  const setToggle = useCallback((group: "conditionalCriteria" | "specifiers" | "comorbidities" | "ddx", id: string, checked: boolean) => {
     setState((current) => ({ ...current, [group]: { ...current[group], [id]: checked } }));
   }, []);
 
