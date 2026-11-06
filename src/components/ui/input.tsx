@@ -14,8 +14,8 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
         "placeholder:text-muted-foreground",
         "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
         "aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
-        // visual novo (substitui border/bg/rounded/focus-visible antigos)
-        "border-none rounded-xl bg-white/55 backdrop-blur-md px-4 h-11 text-[15px] transition-shadow outline-none",
+        // visual novo sem backdrop-blur pesado
+        "border border-border/60 rounded-xl bg-white/95 px-4 h-11 text-[15px] transition-shadow outline-none",
         "shadow-[0_1px_2px_rgba(255,255,255,.7)_inset,0_6px_16px_-8px_rgba(21,24,34,.3)]",
         "focus:shadow-[0_1px_2px_rgba(255,255,255,.9)_inset,0_0_0_2px_rgba(255,255,255,.8),0_8px_20px_-8px_rgba(21,24,34,.4)]",
         className

@@ -19,8 +19,8 @@ function Checkbox({
         "group-has-disabled/field:opacity-50 after:absolute after:-inset-x-3 after:-inset-y-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
-        // frosted glass (substitui border/rounded/focus/checked antigos)
-        "border-none rounded-[7px] bg-white/55 backdrop-blur-md",
+        // superfície leve sem backdrop-blur por item (evita gargalo de GPU em tablets)
+        "border border-border/60 rounded-[7px] bg-white/95",
         "shadow-[0_1px_2px_rgba(255,255,255,.7)_inset,0_4px_10px_-4px_rgba(21,24,34,.3)]",
         "focus-visible:shadow-[0_1px_2px_rgba(255,255,255,.9)_inset,0_0_0_2px_rgba(255,255,255,.8),0_6px_14px_-6px_rgba(21,24,34,.4)]",
         // estado marcado (glass do accent)

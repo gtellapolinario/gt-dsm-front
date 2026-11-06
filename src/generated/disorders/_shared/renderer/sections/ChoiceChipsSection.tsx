@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import type { ChoiceSlice } from "../model/assessmentPort";
 import { normalizeChoiceItems } from "../../utils/disorderDataAccess";
 import { ToggleChip } from "../ui/ToggleChip";
@@ -5,22 +6,23 @@ import { ItemIcon } from "../ui/ItemIcon";
 import { Field, FieldLabel } from "@ui/field";
 import { Textarea } from "@ui/textarea";
 
-export function ChoiceChipsSection({
-  data,
-  group,
-  hint,
-  noteKey,
-  noteLabel,
-  assessment,
-}: {
-  readonly data: unknown;
-  readonly group: "specifiers" | "comorbidities";
-  readonly hint: string;
-  readonly noteKey: string;
-  readonly noteLabel: string;
-  readonly assessment: ChoiceSlice;
-}) {
-  const items = normalizeChoiceItems(data);
+export const ChoiceChipsSection = memo(
+  function ChoiceChipsSection({
+    data,
+    group,
+    hint,
+    noteKey,
+    noteLabel,
+    assessment,
+  }: {
+    readonly data: unknown;
+    readonly group: "specifiers" | "comorbidities";
+    readonly hint: string;
+    readonly noteKey: string;
+    readonly noteLabel: string;
+    readonly assessment: ChoiceSlice;
+  }) {
+    const items = useMemo(() => normalizeChoiceItems(data), [data]);
   if (items.length === 0) return null;
   return (
     <div className="p-5 space-y-3">
@@ -54,4 +56,14 @@ export function ChoiceChipsSection({
       </Field>
     </div>
   );
-}
+  },
+  (prev, next) =>
+    prev.data === next.data &&
+    prev.group === next.group &&
+    prev.noteKey === next.noteKey &&
+    prev.assessment.state[prev.group] === next.assessment.state[next.group] &&
+    (prev.assessment.state.sectionNotes[prev.noteKey] ?? "") ===
+      (next.assessment.state.sectionNotes[next.noteKey] ?? "") &&
+    prev.assessment.setToggle === next.assessment.setToggle &&
+    prev.assessment.setSectionNote === next.assessment.setSectionNote,
+);

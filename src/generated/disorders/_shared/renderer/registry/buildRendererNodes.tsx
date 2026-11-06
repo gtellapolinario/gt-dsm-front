@@ -15,7 +15,6 @@ import { Button } from "@ui/button";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
 import type { ClinicalDisorder } from "../../schema";
@@ -59,6 +58,7 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
   ];
 
   if (clinicalGuideHasData(data)) {
+    const guideView = buildGuideView(data);
     nodes.push({
       kind: "section",
       id: "guia-clinico",
@@ -67,7 +67,7 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
       title: "Guia Clínico & Informativo (Resumo do Aplicador)",
       openByDefault: false,
       collapsible: false,
-      render: (ctx) => <ClinicalGuideSection view={buildGuideView(ctx.data)} />,
+      render: () => <ClinicalGuideSection view={guideView} />,
     });
   }
 
@@ -244,68 +244,66 @@ export function buildRendererNodes(data: ClinicalDisorder): RendererNode[] {
     // HTML inválido — erro de hydration).
     badge: (ctx) => (
       <span className="flex items-center gap-2 no-print">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                asChild
-                variant="outline"
-                size="icon"
-                className="h-9 w-9 rounded-full"
-              >
-                <span
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Atualizar síntese"
-                  onClick={(e) => {
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              className="h-9 w-9 rounded-full"
+            >
+              <span
+                role="button"
+                tabIndex={0}
+                aria-label="Atualizar síntese"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  ctx.assessment.refreshMarkdown();
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
                     e.stopPropagation();
+                    e.preventDefault();
                     ctx.assessment.refreshMarkdown();
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      ctx.assessment.refreshMarkdown();
-                    }
-                  }}
-                >
-                  <RotateCcw className="h-4 w-4" />
-                </span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">Atualizar síntese</TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                asChild
-                variant="outline"
-                size="icon"
-                className="h-9 w-9 rounded-full"
+                  }
+                }}
               >
-                <span
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Copiar Markdown"
-                  onClick={(e) => {
+                <RotateCcw className="h-4 w-4" />
+              </span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">Atualizar síntese</TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              className="h-9 w-9 rounded-full"
+            >
+              <span
+                role="button"
+                tabIndex={0}
+                aria-label="Copiar Markdown"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  ctx.onCopy();
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
                     e.stopPropagation();
+                    e.preventDefault();
                     ctx.onCopy();
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      ctx.onCopy();
-                    }
-                  }}
-                >
-                  <Copy className="h-4 w-4" />
-                </span>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">Copiar Markdown</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+                  }
+                }}
+              >
+                <Copy className="h-4 w-4" />
+              </span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">Copiar Markdown</TooltipContent>
+        </Tooltip>
       </span>
     ),
     render: (ctx) => <MarkdownPreviewSection markdown={ctx.liveMarkdown} />,

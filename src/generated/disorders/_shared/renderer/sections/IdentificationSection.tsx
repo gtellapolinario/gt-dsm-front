@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   Cake,
   GraduationCap,
@@ -20,11 +21,12 @@ import {
   SelectValue,
 } from "@ui/select";
 
-export function IdentificationSection({
-  assessment,
-}: {
-  readonly assessment: PatientSlice;
-}) {
+export const IdentificationSection = memo(
+  function IdentificationSection({
+    assessment,
+  }: {
+    readonly assessment: PatientSlice;
+  }) {
   const { state, setPatientField } = assessment;
   return (
     <div className="p-5 space-y-3">
@@ -154,4 +156,8 @@ export function IdentificationSection({
       </Field>
     </div>
   );
-}
+  },
+  (prev, next) =>
+    prev.assessment.state.patient === next.assessment.state.patient &&
+    prev.assessment.setPatientField === next.assessment.setPatientField,
+);

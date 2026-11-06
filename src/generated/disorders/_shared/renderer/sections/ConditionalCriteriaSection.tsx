@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import type { ClinicalDisorder } from "../../schema";
 import type { CriteriaSlice } from "../model/assessmentPort";
 import {
@@ -8,14 +9,15 @@ import { ItemIcon } from "../ui/ItemIcon";
 import { cn } from "@/lib/utils";
 import { Checkbox } from "@ui/checkbox";
 
-export function ConditionalCriteriaSection({
-  data,
-  assessment,
-}: {
-  readonly data: ClinicalDisorder;
-  readonly assessment: CriteriaSlice;
-}) {
-  const items = conditionalCriteriaItems(data);
+export const ConditionalCriteriaSection = memo(
+  function ConditionalCriteriaSection({
+    data,
+    assessment,
+  }: {
+    readonly data: ClinicalDisorder;
+    readonly assessment: CriteriaSlice;
+  }) {
+    const items = useMemo(() => conditionalCriteriaItems(data), [data]);
 
   if (items.length === 0) return null;
 
@@ -79,4 +81,10 @@ export function ConditionalCriteriaSection({
       </div>
     </div>
   );
-}
+  },
+  (prev, next) =>
+    prev.data === next.data &&
+    prev.assessment.state.conditionalCriteria ===
+      next.assessment.state.conditionalCriteria &&
+    prev.assessment.setToggle === next.assessment.setToggle,
+);

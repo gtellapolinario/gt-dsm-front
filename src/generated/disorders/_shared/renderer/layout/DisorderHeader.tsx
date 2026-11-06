@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   Brain,
   ChevronsDown,
@@ -9,13 +10,12 @@ import { Button } from "@ui/button";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
 import type { ClinicalDisorder } from "../../schema";
 import { nosologyCodes } from "../../utils/disorderDataAccess";
 
-export function DisorderHeader({
+export const DisorderHeader = memo(function DisorderHeader({
   data,
   onExpand,
   onCollapse,
@@ -68,78 +68,76 @@ export function DisorderHeader({
             </p>
           </div>
         </div>
-        <TooltipProvider>
-          <div className="flex items-center gap-2 shrink-0">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-9 w-9 rounded-full"
-                  onClick={onExpand}
-                  aria-label="Expandir todas as seções"
-                >
-                  <ChevronsDown className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                Expandir todas as seções
-              </TooltipContent>
-            </Tooltip>
+        <div className="flex items-center gap-2 shrink-0">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-9 w-9 rounded-full"
+                onClick={onExpand}
+                aria-label="Expandir todas as seções"
+              >
+                <ChevronsDown className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              Expandir todas as seções
+            </TooltipContent>
+          </Tooltip>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-9 w-9 rounded-full"
-                  onClick={onCollapse}
-                  aria-label="Recolher todas as seções"
-                >
-                  <ChevronsUp className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                Recolher todas as seções
-              </TooltipContent>
-            </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-9 w-9 rounded-full"
+                onClick={onCollapse}
+                aria-label="Recolher todas as seções"
+              >
+                <ChevronsUp className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              Recolher todas as seções
+            </TooltipContent>
+          </Tooltip>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-9 w-9 rounded-full"
-                  onClick={onPrint}
-                  aria-label="Imprimir relatório clínico"
-                >
-                  <Printer className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                Imprimir relatório clínico
-              </TooltipContent>
-            </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-9 w-9 rounded-full"
+                onClick={onPrint}
+                aria-label="Imprimir relatório clínico"
+              >
+                <Printer className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              Imprimir relatório clínico
+            </TooltipContent>
+          </Tooltip>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="destructive"
-                  size="icon"
-                  className="h-9 w-9 rounded-full"
-                  onClick={onReset}
-                  aria-label="Limpar respostas da avaliação"
-                >
-                  <RotateCcw className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                Limpar respostas da avaliação
-              </TooltipContent>
-            </Tooltip>
-          </div>
-        </TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="destructive"
+                size="icon"
+                className="h-9 w-9 rounded-full"
+                onClick={onReset}
+                aria-label="Limpar respostas da avaliação"
+              >
+                <RotateCcw className="h-4 w-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              Limpar respostas da avaliação
+            </TooltipContent>
+          </Tooltip>
+        </div>
       </div>
     </header>
   );
-}
+});

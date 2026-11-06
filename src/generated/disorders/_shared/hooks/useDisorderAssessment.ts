@@ -1,7 +1,15 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import type { ClinicalDisorder } from "../schema";
 import { generateClinicalMarkdown } from "../utils/clinicalMarkdown";
-import { severityOptions, thresholdNumber, type SeverityLevel } from "../utils/disorderDataAccess";
+import {
+  severityOptions,
+  thresholdNumber,
+  type SeverityLevel,
+} from "../utils/disorderDataAccess";
+import {
+  createInitialAssessmentState,
+  useAssessmentStore,
+} from "@/infra/persistence/assessment-store";
 
 export interface PatientIdentification {
   nomeId: string;
@@ -36,99 +44,126 @@ export interface ClusterCounter {
   met: boolean;
 }
 
-const initialPatient: PatientIdentification = {
-  nomeId: "",
-  dataNascimento: "",
-  sexo: "",
-  genero: "",
-  escolaridade: "",
-  queixaPrincipal: "",
-};
-
-function makeInitialState(): DisorderAssessmentState {
-  return {
-    patient: initialPatient,
-    symptomChecked: {},
-    symptomSeverity: {},
-    symptomNotes: {},
-    clusterNotes: {},
-    conditionalCriteria: {},
-    specifiers: {},
-    comorbidities: {},
-    ddx: {},
-    impactFunctional: "ausente",
-    sectionNotes: {},
-    markdown: "",
-  };
-}
-
 export function useDisorderAssessment(data: ClinicalDisorder) {
-  const [state, setState] = useState<DisorderAssessmentState>(() => ({
-    ...makeInitialState(),
-    markdown: generateClinicalMarkdown(makeInitialState(), data),
-  }));
+  const disorderId = data.meta.id;
 
-  const setPatientField = useCallback(<K extends keyof PatientIdentification>(field: K, value: PatientIdentification[K]) => {
-    setState((current) => ({ ...current, patient: { ...current.patient, [field]: value } }));
-  }, []);
+  const storedState = useAssessmentStore(
+    (s) => s.assessmentsByDisorder[disorderId],
+  );
+  const sharedPatient = useAssessmentStore((s) => s.sharedPatient);
+  const hydrateDisorder = useAssessmentStore((s) => s.hydrateDisorder);
+  const storeSetPatientField = useAssessmentStore((s) => s.setPatientField);
+  const storeSetSymptomChecked = useAssessmentStore((s) => s.setSymptomChecked);
+  const storeSetSymptomSeverity = useAssessmentStore(
+    (s) => s.setSymptomSeverity,
+  );
+  const storeSetSymptomNote = useAssessmentStore((s) => s.setSymptomNote);
+  const storeSetClusterNote = useAssessmentStore((s) => s.setClusterNote);
+  const storeSetToggle = useAssessmentStore((s) => s.setToggle);
+  const storeSetImpactFunctional = useAssessmentStore(
+    (s) => s.setImpactFunctional,
+  );
+  const storeSetSectionNote = useAssessmentStore((s) => s.setSectionNote);
+  const storeRefreshMarkdown = useAssessmentStore((s) => s.refreshMarkdown);
+  const storeResetDisorder = useAssessmentStore((s) => s.resetDisorder);
 
-  const setSymptomChecked = useCallback((id: string, checked: boolean) => {
-    setState((current) => ({
-      ...current,
-      symptomChecked: { ...current.symptomChecked, [id]: checked },
-      symptomSeverity: { ...current.symptomSeverity, [id]: checked ? current.symptomSeverity[id] ?? "leve" : "ausente" },
-    }));
-  }, []);
+  useEffect(() => {
+    void hydrateDisorder(disorderId, []);
+  }, [disorderId, hydrateDisorder]);
 
-  const setSymptomSeverity = useCallback((id: string, severity: SeverityLevel) => {
-    setState((current) => ({
-      ...current,
-      symptomSeverity: { ...current.symptomSeverity, [id]: severity },
-      symptomChecked: { ...current.symptomChecked, [id]: severity !== "ausente" ? true : current.symptomChecked[id] ?? false },
-    }));
-  }, []);
+  const fallbackState = useMemo<DisorderAssessmentState>(() => {
+    const initial = createInitialAssessmentState(sharedPatient);
+    return {
+      ...initial,
+      markdown: generateClinicalMarkdown(initial, data),
+    };
+  }, [data, sharedPatient]);
 
-  const setSymptomNote = useCallback((id: string, note: string) => {
-    setState((current) => ({ ...current, symptomNotes: { ...current.symptomNotes, [id]: note } }));
-  }, []);
+  const state = storedState ?? fallbackState;
 
-  const setClusterNote = useCallback((id: string, note: string) => {
-    setState((current) => ({ ...current, clusterNotes: { ...current.clusterNotes, [id]: note } }));
-  }, []);
+  const setPatientField = useCallback(
+    <K extends keyof PatientIdentification>(
+      field: K,
+      value: PatientIdentification[K],
+    ) => {
+      storeSetPatientField(disorderId, field, value);
+    },
+    [disorderId, storeSetPatientField],
+  );
 
-  const setToggle = useCallback((group: "conditionalCriteria" | "specifiers" | "comorbidities" | "ddx", id: string, checked: boolean) => {
-    setState((current) => ({ ...current, [group]: { ...current[group], [id]: checked } }));
-  }, []);
+  const setSymptomChecked = useCallback(
+    (id: string, checked: boolean) => {
+      storeSetSymptomChecked(disorderId, id, checked);
+    },
+    [disorderId, storeSetSymptomChecked],
+  );
 
-  const setImpactFunctional = useCallback((impact: SeverityLevel) => {
-    setState((current) => ({ ...current, impactFunctional: impact }));
-  }, []);
+  const setSymptomSeverity = useCallback(
+    (id: string, severity: SeverityLevel) => {
+      storeSetSymptomSeverity(disorderId, id, severity);
+    },
+    [disorderId, storeSetSymptomSeverity],
+  );
 
-  const setSectionNote = useCallback((id: string, note: string) => {
-    setState((current) => ({ ...current, sectionNotes: { ...current.sectionNotes, [id]: note } }));
-  }, []);
+  const setSymptomNote = useCallback(
+    (id: string, note: string) => {
+      storeSetSymptomNote(disorderId, id, note);
+    },
+    [disorderId, storeSetSymptomNote],
+  );
+
+  const setClusterNote = useCallback(
+    (id: string, note: string) => {
+      storeSetClusterNote(disorderId, id, note);
+    },
+    [disorderId, storeSetClusterNote],
+  );
+
+  const setToggle = useCallback(
+    (
+      group: "conditionalCriteria" | "specifiers" | "comorbidities" | "ddx",
+      id: string,
+      checked: boolean,
+    ) => {
+      storeSetToggle(disorderId, group, id, checked);
+    },
+    [disorderId, storeSetToggle],
+  );
+
+  const setImpactFunctional = useCallback(
+    (impact: SeverityLevel) => {
+      storeSetImpactFunctional(disorderId, impact);
+    },
+    [disorderId, storeSetImpactFunctional],
+  );
+
+  const setSectionNote = useCallback(
+    (id: string, note: string) => {
+      storeSetSectionNote(disorderId, id, note);
+    },
+    [disorderId, storeSetSectionNote],
+  );
 
   const refreshMarkdown = useCallback(() => {
-    let nextMarkdown = "";
-    setState((current) => {
-      nextMarkdown = generateClinicalMarkdown(current, data);
-      return { ...current, markdown: nextMarkdown };
-    });
-    return nextMarkdown;
-  }, [data]);
+    return storeRefreshMarkdown(disorderId, data);
+  }, [data, disorderId, storeRefreshMarkdown]);
 
-  const buildMarkdown = useCallback((currentState: DisorderAssessmentState = state) => {
-    return generateClinicalMarkdown(currentState, data);
-  }, [data, state]);
+  const buildMarkdown = useCallback(
+    (currentState: DisorderAssessmentState = state) => {
+      return generateClinicalMarkdown(currentState, data);
+    },
+    [data, state],
+  );
 
   const reset = useCallback(() => {
-    const next = makeInitialState();
-    setState({ ...next, markdown: generateClinicalMarkdown(next, data) });
-  }, [data]);
+    storeResetDisorder(disorderId, data);
+  }, [data, disorderId, storeResetDisorder]);
 
   const clusterCounters = useMemo<ClusterCounter[]>(() => {
     return (data.clusters_sintomas ?? []).map((cluster, index) => {
-      const checked = cluster.sintomas.filter((symptom) => state.symptomChecked[symptom.id]).length;
+      const checked = cluster.sintomas.filter(
+        (symptom) => state.symptomChecked[symptom.id],
+      ).length;
       const total = cluster.sintomas.length;
       const threshold = thresholdNumber(cluster.limiar, total);
       return {

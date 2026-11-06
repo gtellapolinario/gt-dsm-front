@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import type { ClinicalDisorder } from "../../schema";
 import type { ChoiceSlice } from "../model/assessmentPort";
 import { normalizeChoiceItems } from "../../utils/disorderDataAccess";
@@ -5,14 +6,18 @@ import { Field, FieldLabel } from "@ui/field";
 import { Textarea } from "@ui/textarea";
 import { Checkbox } from "@ui/checkbox";
 
-export function DifferentialSection({
-  data,
-  assessment,
-}: {
-  readonly data: ClinicalDisorder;
-  readonly assessment: ChoiceSlice;
-}) {
-  const items = normalizeChoiceItems(data.diagnostico_diferencial);
+export const DifferentialSection = memo(
+  function DifferentialSection({
+    data,
+    assessment,
+  }: {
+    readonly data: ClinicalDisorder;
+    readonly assessment: ChoiceSlice;
+  }) {
+    const items = useMemo(
+      () => normalizeChoiceItems(data.diagnostico_diferencial),
+      [data.diagnostico_diferencial],
+    );
   if (items.length === 0) return null;
   return (
     <div className="p-5 space-y-3">
@@ -67,4 +72,12 @@ export function DifferentialSection({
       </Field>
     </div>
   );
-}
+  },
+  (prev, next) =>
+    prev.data === next.data &&
+    prev.assessment.state.ddx === next.assessment.state.ddx &&
+    (prev.assessment.state.sectionNotes.diagnostico_diferencial ?? "") ===
+      (next.assessment.state.sectionNotes.diagnostico_diferencial ?? "") &&
+    prev.assessment.setToggle === next.assessment.setToggle &&
+    prev.assessment.setSectionNote === next.assessment.setSectionNote,
+);

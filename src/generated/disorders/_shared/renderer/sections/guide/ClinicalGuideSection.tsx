@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { GuideView } from "../../adapters/guideView";
 import { PrevalenceCard } from "./PrevalenceCard";
 import { CourseCard } from "./CourseCard";
@@ -8,7 +9,11 @@ import { InstrumentsCard } from "./InstrumentsCard";
 import { NosologyCard } from "./NosologyCard";
 
 /** O guia só existe quando há algo para mostrar: campo nulo não renderiza. */
-export function ClinicalGuideSection({ view }: { readonly view: GuideView }) {
+export const ClinicalGuideSection = memo(function ClinicalGuideSection({
+  view,
+}: {
+  readonly view: GuideView;
+}) {
   // Campos nulos não renderizam: sem dados, sem seção.
   // (duplo gate: este early-return replica o guard do original — linhas
   // 1163–1173 do baseline — além do `clinicalGuideHasData` do registry.)
@@ -61,4 +66,4 @@ export function ClinicalGuideSection({ view }: { readonly view: GuideView }) {
       {view.codigos.length > 0 ? <NosologyCard codigos={view.codigos} /> : null}
     </div>
   );
-}
+});

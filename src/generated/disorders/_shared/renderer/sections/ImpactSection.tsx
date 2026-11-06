@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { ClinicalDisorder } from "../../schema";
 import type { ImpactSlice } from "../model/assessmentPort";
 import {
@@ -15,13 +16,14 @@ import {
   SelectValue,
 } from "@ui/select";
 
-export function ImpactSection({
-  data,
-  assessment,
-}: {
-  readonly data: ClinicalDisorder;
-  readonly assessment: ImpactSlice;
-}) {
+export const ImpactSection = memo(
+  function ImpactSection({
+    data,
+    assessment,
+  }: {
+    readonly data: ClinicalDisorder;
+    readonly assessment: ImpactSlice;
+  }) {
   return (
     <div className="p-5 space-y-3">
       <div className="grid grid-cols-1 sm:grid-cols-[12rem_1fr] gap-3 items-start">
@@ -66,4 +68,14 @@ export function ImpactSection({
       ) : null}
     </div>
   );
-}
+  },
+  (prev, next) =>
+    prev.data === next.data &&
+    prev.assessment.state.impactFunctional ===
+      next.assessment.state.impactFunctional &&
+    (prev.assessment.state.sectionNotes.impacto_funcional ?? "") ===
+      (next.assessment.state.sectionNotes.impacto_funcional ?? "") &&
+    prev.assessment.setImpactFunctional ===
+      next.assessment.setImpactFunctional &&
+    prev.assessment.setSectionNote === next.assessment.setSectionNote,
+);

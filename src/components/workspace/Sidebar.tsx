@@ -29,7 +29,6 @@ import {
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -46,13 +45,13 @@ function formatShortTitle(label: string): string {
 
 export function Sidebar() {
   const navigate = useNavigate();
-  const routerState = useRouterState();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   // Tries to extract disease key from URL if we are on /app/assess/id
   const currentDiseaseId = useMemo(() => {
-    const parts = routerState.location.pathname.split("/");
+    const parts = pathname.split("/");
     return parts[parts.length - 1];
-  }, [routerState.location.pathname]);
+  }, [pathname]);
 
   const activeChapterKey = useMemo(
     () =>
@@ -65,12 +64,11 @@ export function Sidebar() {
   const tree = useMemo(() => getGeneratedSidebarTree(), []);
 
   return (
-    <TooltipProvider>
-      <ShadcnSidebar
-        variant="sidebar"
-        collapsible="icon"
-        className="bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]! text-white border-r border-slate-800/60 shadow-2xl"
-      >
+    <ShadcnSidebar
+      variant="sidebar"
+      collapsible="icon"
+      className="bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]! text-white border-r border-slate-800/60 shadow-2xl"
+    >
         <SidebarHeader className="border-b border-white/10 px-4 py-3 bg-[linear-gradient(to_top,#020617_0%,#020617cc_18%,transparent_45%),radial-gradient(circle_at_bottom_right,#0ea5e9_0%,#0f766e_42%,#0f172a_100%)]!">
           <img
             src={headerImage}
@@ -128,8 +126,7 @@ export function Sidebar() {
                         <SidebarMenuSub className="pr-0 mr-0 text-xs border-l border-white/15 ml-4 pl-2.5 mt-1 mb-2 space-y-0.5">
                           {chapter.children.map((disease: any) => {
                             const href = `/app/assess/${disease.key}`;
-                            const isActiveDisease =
-                              routerState.location.pathname === href;
+                            const isActiveDisease = pathname === href;
                             const shortDiseaseTitle = formatShortTitle(
                               disease.label,
                             );
@@ -204,6 +201,5 @@ export function Sidebar() {
           </div>
         </SidebarFooter>
       </ShadcnSidebar>
-    </TooltipProvider>
   );
 }

@@ -1,9 +1,11 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useDeferredValue, useEffect, useMemo } from "react";
 import { Accordion } from "@ui/accordion";
 import { Separator } from "@ui/separator";
 
 import type { ClinicalDisorder } from "../schema";
 import { useDisorderAssessment } from "../hooks/useDisorderAssessment";
+import { generateClinicalMarkdown } from "../utils/clinicalMarkdown";
+import { useAssessmentStore } from "@/infra/persistence/assessment-store";
 import { usePlatform } from "./ports/PlatformContext";
 import type { SectionContext } from "./model/sectionContext";
 import { Section } from "./ui/Section";
@@ -16,48 +18,86 @@ export function DisorderRendererView({
 }: {
   readonly data: ClinicalDisorder;
 }) {
+  const disorderId = data.meta.id;
   const assessment = useDisorderAssessment(data);
   const platform = usePlatform();
 
-  const liveMarkdown = assessment.buildMarkdown();
+  const nodes = useMemo(() => buildRendererNodes(data), [data]);
 
-  const handleCopy = async () => {
+  const defaultOpenSections = useMemo(
+    () =>
+      nodes
+        .filter(
+          (n): n is SectionDescriptor =>
+            n.kind === "section" && n.openByDefault,
+        )
+        .map((n) => n.id),
+    [nodes],
+  );
+
+  const allSectionIds = useMemo(
+    () =>
+      nodes
+        .filter(
+          (n): n is SectionDescriptor => n.kind === "section" && n.collapsible,
+        )
+        .map((n) => n.id),
+    [nodes],
+  );
+
+  const storedOpenSections = useAssessmentStore(
+    (s) => s.openSectionsByDisorder[disorderId],
+  );
+  const storeSetOpenSections = useAssessmentStore((s) => s.setOpenSections);
+  const hydrateDisorder = useAssessmentStore((s) => s.hydrateDisorder);
+
+  useEffect(() => {
+    void hydrateDisorder(disorderId, defaultOpenSections);
+  }, [disorderId, defaultOpenSections, hydrateDisorder]);
+
+  const openSections = storedOpenSections ?? defaultOpenSections;
+
+  const setOpenSections = useCallback(
+    (next: string[]) => {
+      storeSetOpenSections(disorderId, next);
+    },
+    [disorderId, storeSetOpenSections],
+  );
+
+  const isMarkdownOpen = openSections.includes("markdown");
+  const deferredState = useDeferredValue(assessment.state);
+
+  const liveMarkdown = useMemo(
+    () =>
+      isMarkdownOpen ? generateClinicalMarkdown(deferredState, data) : "",
+    [isMarkdownOpen, deferredState, data],
+  );
+
+  const handleCopy = useCallback(async () => {
     try {
-      await platform.clipboard.write(liveMarkdown);
+      const markdownToCopy = assessment.buildMarkdown();
+      await platform.clipboard.write(markdownToCopy);
       platform.notify.success("Markdown copiado para a área de transferência.");
     } catch {
       platform.notify.error("Falha ao copiar o Markdown.");
     }
-  };
+  }, [assessment, platform]);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     if (platform.confirm.ask("Limpar todos os dados preenchidos?")) {
       assessment.reset();
     }
-  };
+  }, [assessment, platform]);
 
-  const nodes = buildRendererNodes(data);
-
-  const ctx: SectionContext = {
-    data,
-    assessment,
-    liveMarkdown,
-    onCopy: handleCopy,
-  };
-
-  const [openSections, setOpenSections] = useState<string[]>(() =>
-    nodes
-      .filter(
-        (n): n is SectionDescriptor => n.kind === "section" && n.openByDefault,
-      )
-      .map((n) => n.id),
+  const ctx = useMemo<SectionContext>(
+    () => ({
+      data,
+      assessment,
+      liveMarkdown,
+      onCopy: handleCopy,
+    }),
+    [data, assessment, liveMarkdown, handleCopy],
   );
-
-  const allSectionIds = nodes
-    .filter(
-      (n): n is SectionDescriptor => n.kind === "section" && n.collapsible,
-    )
-    .map((n) => n.id);
 
   return (
     <div className="min-h-full bg-bg text-text">

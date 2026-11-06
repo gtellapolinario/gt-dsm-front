@@ -5,23 +5,52 @@ import { Tooltip as TooltipPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
+function useIsCoarsePointer(): boolean {
+  const [isCoarse, setIsCoarse] = React.useState<boolean>(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return false
+    return window.matchMedia("(pointer: coarse)").matches
+  })
+
+  React.useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return
+    const mql = window.matchMedia("(pointer: coarse)")
+    const onChange = (e: MediaQueryListEvent) => setIsCoarse(e.matches)
+    mql.addEventListener("change", onChange)
+    return () => mql.removeEventListener("change", onChange)
+  }, [])
+
+  return isCoarse
+}
+
 function TooltipProvider({
-  delayDuration = 0,
+  delayDuration = 300,
+  skipDelayDuration = 100,
+  disableHoverableContent = true,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
   return (
     <TooltipPrimitive.Provider
       data-slot="tooltip-provider"
       delayDuration={delayDuration}
+      skipDelayDuration={skipDelayDuration}
+      disableHoverableContent={disableHoverableContent}
       {...props}
     />
   )
 }
 
 function Tooltip({
+  open,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+  const isCoarse = useIsCoarsePointer()
+  return (
+    <TooltipPrimitive.Root
+      data-slot="tooltip"
+      open={isCoarse ? false : open}
+      {...props}
+    />
+  )
 }
 
 function TooltipTrigger({
@@ -32,7 +61,7 @@ function TooltipTrigger({
 
 function TooltipContent({
   className,
-  sideOffset = 0,
+  sideOffset = 4,
   children,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content>) {
